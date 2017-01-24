@@ -1,32 +1,48 @@
 \select@language {ngerman}
-\contentsline {chapter}{\numberline {1}Einleitung}{5}{chapter.1}
-\contentsline {chapter}{\numberline {2}Grundlagen der medizinischen Schrei-Forschung}{6}{chapter.2}
-\contentsline {section}{\numberline {2.1}Physio-akustische Modellierung des Weinens}{7}{section.2.1}
-\contentsline {section}{\numberline {2.2}Schmer Scores}{7}{section.2.2}
-\contentsline {chapter}{\numberline {3}Grundlagen der Signalverarbeitung}{10}{chapter.3}
-\contentsline {section}{\numberline {3.1}Statistische Merkmale von Signalen}{11}{section.3.1}
-\contentsline {section}{\numberline {3.2}Faltung}{11}{section.3.2}
-\contentsline {section}{\numberline {3.3}Transformationen}{11}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Fourier-Transformation}{11}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Laplace-Transformation}{11}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Z-Transformation}{11}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Filter}{11}{section.3.4}
-\contentsline {section}{\numberline {3.5}akustische Modellierung der menschlichen Stimme}{11}{section.3.5}
-\contentsline {section}{\numberline {3.6}Feststellung von Periodizit\IeC {\"a}t in Signalen}{11}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Zero-Crossing-Rate}{11}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Methoden des Frequenzbereiches}{11}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Autokorrelation}{11}{subsection.3.6.3}
-\contentsline {subsection}{\numberline {3.6.4}Cepstrum}{11}{subsection.3.6.4}
-\contentsline {chapter}{\numberline {4}Grundlagen der Klassifikation}{12}{chapter.4}
-\contentsline {section}{\numberline {4.1}G\IeC {\"u}te bin\IeC {\"a}rer Klassifikatoren}{13}{section.4.1}
-\contentsline {section}{\numberline {4.2}Klassifikationsalgorithmen}{13}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}CARD}{13}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Andere}{13}{subsection.4.2.2}
-\contentsline {chapter}{\numberline {5}System zur Visualisierung akustischer Schmerz-Scores}{14}{chapter.5}
-\contentsline {section}{\numberline {5.1}Architektur}{15}{section.5.1}
-\contentsline {section}{\numberline {5.2}Voice Activity Detection}{15}{section.5.2}
-\contentsline {section}{\numberline {5.3}Segmentierung}{15}{section.5.3}
-\contentsline {section}{\numberline {5.4}Feature-Extraction}{15}{section.5.4}
-\contentsline {section}{\numberline {5.5}Ableitung der Schmerz-Scores}{15}{section.5.5}
-\contentsline {section}{\numberline {5.6}Visualisierung}{15}{section.5.6}
-\contentsline {chapter}{\numberline {6}Zusammenfassung}{16}{chapter.6}
+\contentsline {chapter}{\numberline {1}Einleitung}{6}{chapter.1}
+\contentsline {chapter}{\numberline {2}Grundlagen der medizinischen Schrei-Forschung}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}Schmerz Scores}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}Schmerz-Schrei aus medizinischer Sicht}{9}{section.2.2}
+\contentsline {section}{\numberline {2.3}Phyisio-Akustische Modellierung des Weinens}{10}{section.2.3}
+\contentsline {chapter}{\numberline {3}Grundlagen der Signalverarbeitung}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Statistische Merkmale von Signalen}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}Faltung}{13}{section.3.2}
+\contentsline {section}{\numberline {3.3}Transformationen}{13}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Fourier-Transformation}{13}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Laplace-Transformation}{13}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Z-Transformation}{13}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Filter}{13}{section.3.4}
+\contentsline {section}{\numberline {3.5}akustische Modellierung der menschlichen Stimme}{13}{section.3.5}
+\contentsline {section}{\numberline {3.6}Feststellung von Periodizit\IeC {\"a}t in Signalen}{13}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Zero-Crossing-Rate}{13}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Methoden des Frequenzbereiches}{13}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Autokorrelation}{13}{subsection.3.6.3}
+\contentsline {subsection}{\numberline {3.6.4}Cepstrum}{13}{subsection.3.6.4}
+\contentsline {chapter}{\numberline {4}Grundlagen der Klassifikation}{14}{chapter.4}
+\contentsline {section}{\numberline {4.1}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{14}{section.4.1}
+\contentsline {section}{\numberline {4.2}Klassifikationsalgorithmen}{15}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}CARD}{15}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Andere}{15}{subsection.4.2.2}
+\contentsline {chapter}{\numberline {5}System zur Visualisierung akustischer Schmerz-Scores}{16}{chapter.5}
+\contentsline {section}{\numberline {5.1}Architektur}{16}{section.5.1}
+\contentsline {section}{\numberline {5.2}Preprocessing}{18}{section.5.2}
+\contentsline {section}{\numberline {5.3}Voice Activity Detection}{20}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Windowing}{20}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Feature Extraction}{21}{subsection.5.3.2}
+\contentsline {subsubsection}{\nonumberline Zeit-Bereich}{21}{section*.4}
+\contentsline {subsubsection}{\nonumberline Frequenz-Bereich}{21}{section*.5}
+\contentsline {subsubsection}{\nonumberline Cepstrum}{23}{section*.6}
+\contentsline {subsubsection}{\nonumberline Autokorrelation}{26}{section*.7}
+\contentsline {subsubsection}{\nonumberline Konstruktion des Feature-Vektors}{27}{section*.8}
+\contentsline {subsection}{\numberline {5.3.3}Thresholding}{29}{subsection.5.3.3}
+\contentsline {subsubsection}{\nonumberline Finden der Grenzwerte}{29}{section*.9}
+\contentsline {subsubsection}{\nonumberline Trainings- und Testdatens\IeC {\"a}tze}{30}{section*.10}
+\contentsline {subsubsection}{\nonumberline Training und Ergebnis}{31}{section*.11}
+\contentsline {subsection}{\numberline {5.3.4}Markierung der Cry-Units}{33}{subsection.5.3.4}
+\contentsline {subsection}{\numberline {5.3.5}Decision Smoothing}{35}{subsection.5.3.5}
+\contentsline {section}{\numberline {5.4}Segmentierung}{38}{section.5.4}
+\contentsline {section}{\numberline {5.5}Feature-Extraction}{41}{section.5.5}
+\contentsline {section}{\numberline {5.6}Ableitung der Schmerz-Scores}{41}{section.5.6}
+\contentsline {section}{\numberline {5.7}Visualisierung}{41}{section.5.7}
+\contentsline {chapter}{\numberline {6}Zusammenfassung}{42}{chapter.6}
+\contentsline {chapter}{Appendices}{46}{section*.13}

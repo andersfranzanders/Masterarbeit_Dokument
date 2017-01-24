@@ -16,6 +16,20 @@
 \usepackage{fancyhdr}
 \usepackage{amsfonts}
 \usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{listings} 
+\usepackage[toc,page]{appendix}
+\usepackage[T1]{fontenc}% wichtig für Trennung von Wörtern mit Umlauten
+\usepackage{microtype}% verbesserter Randausgleich
+
+\usepackage{geometry}
+\geometry{a4paper,left=30mm,right=30mm, top=35mm, bottom=35mm} 
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\counti}{count}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -42,22 +56,17 @@
 
 \chapter{Einleitung}
 
-\chapter{Grundlagen der medizinischen Schrei-Forschung}
 \include{chapters/Grundlagen_Schreiforschung}
-
-\chapter{Grundlagen der Signalverarbeitung}
 \include{chapters/Grundlagen_Signalverarbeitung}
-
-\chapter{Grundlagen der Klassifikation}
 \include{chapters/Grundlagen_Klassifikation}
-
-\chapter{System zur Visualisierung akustischer Schmerz-Scores}
 \include{chapters/System}
 
 \chapter{Zusammenfassung}
 
 \bibliographystyle{plain}
 \bibliography{references}
+
+\include{chapters/Anhang}
 
 
 \end{document}
