@@ -1,0 +1,63 @@
+\documentclass{scrreprt}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\setlength{\parskip}{1em}
+\setlength{\parindent}{1em}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage[normalem]{ulem}
+\usepackage{soul}
+\usepackage{color}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{fancyhdr}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+
+\pagestyle{fancy}
+\fancyhf{}
+\chead{\nouppercase{\rightmark}}
+\cfoot{\thepage}
+\DeclareMathOperator{\ReX}{ReX}
+\DeclareMathOperator{\ImX}{ImX}
+
+\title{Visualisierung kontinuierlicher, multimodaler Schmerz Scors am Beispiel akustischer Signale}
+\subtitle{Masterarbeit}
+\author{Franz Anders \\ HTWK Leipzig }
+\date{Januar 2017}
+
+
+
+\begin{document}
+
+
+\maketitle
+\chapter*{Abstract}
+
+\tableofcontents
+\listoffigures
+
+\chapter{Einleitung}
+
+\chapter{Grundlagen der medizinischen Schrei-Forschung}
+\include{chapters/Grundlagen_Schreiforschung}
+
+\chapter{Grundlagen der Signalverarbeitung}
+\include{chapters/Grundlagen_Signalverarbeitung}
+
+\chapter{Grundlagen der Klassifikation}
+\include{chapters/Grundlagen_Klassifikation}
+
+\chapter{System zur Visualisierung akustischer Schmerz-Scores}
+\include{chapters/System}
+
+\chapter{Zusammenfassung}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+
+\end{document}
