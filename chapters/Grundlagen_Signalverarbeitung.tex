@@ -4,10 +4,11 @@ Ein \emph{Signal} ist eine Funktion eines Parameters mit numerischen Wertebereic
 
  Bei einem zeit-kontinuierlichen Signal $x( t )$ ist der Wertebereich kontinuierlich, wie in Formel  \ref{eq:time-cont-signal} definiert. Bei einem zeit-diskreten Signal $x[n]$ ist der Wertebreich diskret, wie in Formel \ref{eq:time-disc-signal} definiert. So beschreibt beispielsweise $x[17] = s$ den Wert zur Zeit $n = 17$. \glqq Zeit\grqq{} hat in diesem Kontext keine Einheit. Ein Wert wird auch als \emph{Sample} oder \emph{Amplitude} bezeichnet. $x[17] $ meint somit das 17. Sample des Signals. Abbildung \ref{img:aSignal} zeigt Beispiele für ein zeit-kontinuierliches und ein zeit-diskretes Signal. \cite[S. 22 - 23]{dspMichigan}
 
-\begin{equation}
+ \begin{equation}
 x(t) = s \; , t \in \mathbb{R}
 \label{eq:time-cont-signal}
 \end{equation}
+
 
 \begin{equation}
 x[n] = s \; , n \in \mathbb{Z} 
@@ -28,9 +29,10 @@ x[n] = s(n \cdot T_s) \; , -\infty < n < \infty
 \label{eq:sampling}
 \end{equation}
 	
-Da in dieser Arbeit nur zeit-diskrete Signale von Interesse sind, werden ab diesem Punkt die Definitonen für zeit-kontinuierliche Signale ausgelassen. Der \emph{Support} ist das kleinst mögliche Zeitintervall, der alle Samples enthält, die nicht den Wert 0 haben, wie Formel \ref{eq:support} definiert. Die \emph{Dauer} eines Signales ist die Länge des Supportes nach Formel . Das Signal $x[n] = \cos(n) \: ,0\leq n \leq 3$ hat beispielsweise den Support $[0,3] = \{0,1,2,3\} $ und die Dauer $4$. \cite[S. 24]{dspMichigan}
+Da in dieser Arbeit nur zeit-diskrete Signale von Interesse sind, werden ab diesem Punkt die Definitonen für zeit-kontinuierliche Signale ausgelassen. Der \emph{Support} ist das kleinst mögliche Zeitintervall, der alle Samples enthält, die nicht den Wert 0 haben, wie Formel \ref{eq:support} definiert. Die \emph{Dauer} eines Signales ist die Länge des Supportes nach Formel . Das Signal $x[n] = \cos(n) \: ,0\leq n \leq 3$ hat beispielsweise den Support $[0,3] = \{0,1,2,3\} $ und die Dauer $4$. Ein \emph{unendliches Signal} hat einen unendlichen langen Support, das heißt es gilt Duration$(x) = \infty$. Ein \emph{endliches Signal} hat einen endlichen Support, das heißt Duration$(x) \neq\infty$. \cite[S. 24]{dspMichigan}
 
 \begin{equation}
+\label{eq:support}
 \begin{split}
 \text{Sup}(x) = [sup_s, sup_e] \quad , sup_s, sup_e \in \mathbb{Z} \\,  x[sup_s] \neq 0 \:  \wedge \:  x[sup_e] \neq 0 \: \wedge \: \forall n \
 \not\in [sup_s, sup_e] : x[n] = 0
@@ -42,15 +44,111 @@ Da in dieser Arbeit nur zeit-diskrete Signale von Interesse sind, werden ab dies
 \label{eq:duration}
 \end{equation}
 
-Ein Signal gilt als \emph{periodisch}, wenn Formel \ref{eq:periodicity} erfüllt ist. Der Parameter $N$ wird als \text{Periode} von $x$ bezeichnet. Wenn ein Signal mit $N$ periodisch ist, dann ist es auch mit $2N, 3N, \ldots $ periodisch. Die Grundfrequenz $N_0$ ist das kleinste N, für das Formel \label{eq:periodicity} erfüllt ist. \cite[S. 24]{dspMichigan}
+Ein Signal gilt als \emph{periodisch}, wenn Formel \ref{eq:periodicity} erfüllt ist. Der Parameter $N$ wird als \text{Periode} von $x$ bezeichnet. Wenn ein Signal mit $N$ periodisch ist, dann ist es auch mit $2N, 3N, \ldots $ periodisch. Die Grundfrequenz $N_0$ ist das kleinste N, für das Formel \ref{eq:periodicity} erfüllt ist. Abbildung \ref{img:periodicSic} zeigt ein Beispiel für ein nicht-periodisches und ein periodisches Signal. \cite[S. 24]{dspMichigan}
 
 \begin{equation}
 \exists N : \forall n \in Sup : x[n+N] = x[n] \rightarrow \text{Periodisch}(x,N) = true
 \label{eq:periodicity}
 \end{equation}
-	
 
-\section{Statistische Merkmale von Signalen}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{bilder/periodicSig.png}
+	\caption{Ein nicht-periodisches Signal (A) und ein periodisches Signal (B)}
+	\label{img:periodicSic}
+\end{figure}
+
+\section{Statistische Merkmale}
+
+Im folgenden wird ein überblick über die häufig verwendete Signaleigenschaften gegeben. Abbildung \ref{img:sigStats} visualisiert die Erläuterungen.
+
+\begin{enumerate}[leftmargin=*]
+	
+\item Der \textbf{Maximalwert / Minimalwert} beschreibt den höchsten / niedrigsten in  $x$ enthaltenen Wert nach den Formel $\max(x)$ und $\min(x)$.
+	
+\item Der \textbf{Durchschnittswert / Average Value} beschreibt den durchschnittlichen Wert aller Samples von $x$ nach Formel \ref{eq:avg}. Dieser Durchschnittswert wird über dem Intervall $[n_1, n_2]$  berechnet.
+
+\begin{equation}
+\text{AVG}(x) = \frac{1}{n_2 - n_1 + 1} \sum_{n_1}^{n_2} x[n]
+\label{eq:avg}
+\end{equation}
+
+\item Der \textbf{Mean Squared Value} (\emph{MSV}) beschreibt den quadrierten Durchschnittswert über eine bestimmtes Interval nach Formel \ref{eq:msv}. Er wird auch als \emph{durchschnittliche Energie} oder \emph{average Power} bezeichnet.
+
+\begin{equation}
+\text{MSV}(x) = \frac{1}{n_2 - n_1 + 1} \sum_{n_1}^{n_2} x[n]^2
+\label{eq:msv}
+\end{equation}
+
+\item Das \textbf{Root Mean Square} (\emph{RMS}) ist die Wurzel des Mean Squared Value nach Formel\ref{eq:rms}. Der RMS findet häufiger Anwendung als der MSV, da er besser ins Verhältnis zu den Werten des Signals gesetzt werden kann. Er wird im Deutschen auch als \textbf{Effektivwert} oder \textbf{Durchschnittsleistung} bezeichnet. Da die deutschen Begriffe in einigen Quellen jedoch auch für den MSV verwendet werden, wird an dieser Stelle nur mit den englischen Begriffen gearbeitet.
+
+\begin{equation}
+\text{RMS}(x) = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n_1}^{n_2} x[n]^2}
+\label{eq:rms}
+\end{equation}
+
+\item Die \textbf{Energie / Energy} bezeichnet die \glqq Stärke \grqq{} eines Signals über einen bestimmten Intervall nach Formel \ref{eq:energy}. Sie entspricht dem MSV-Wert multipliziert der Länge des Intervalls. \cite[S. 27-28]{dspMichigan}
+
+\begin{equation}
+\text{E}(x) = \sum_{n_1}^{n_2} x[n]^2
+\label{eq:energy}
+\end{equation}
+	
+\end{enumerate}	
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/sigStats.png}
+	\caption{Statistische Werte eines Signals über das Intervall [50,200]}
+	\label{img:sigStats}
+\end{figure}
+
+Die Addition und Multiplikation wird bei Signalen komponentenweise durchgeführt, das heißt $x_1[n] + x_2[n] = y[n] $ und $x_1[n] \cdot x_2[n] = y[n] $. Abbildung \ref{img:addAndMultSig} visualisiert diese Operationen. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/addAndMultSig.png}
+	\caption{Komponentenweise Addition und Mulitplikation zweier Signale}
+	\label{img:addAndMultSig}
+\end{figure}
+
+Die Addition wird unter anderem für die Modellierung des Einflusses von Störungen benötigt. Angenommen, ein Signal $x$ wird übertragen, auf dem Übertragungsweg jedoch durch ein anderes Störsignal wie z.B. Rauschen $e$ überlagert. Dieses Störsignal wird in diesem Zusammenhang auch als \glqq{Fehler-Signal} bezeichnet. Das resultierende Signal $x'$ wird nach Formel \ref{eq:sigErrorAddition} berechnet. Kennt man sowohl das Eingangssignal $x$ als auch das Ausgangssignal $x'$, kann das Störsignal $e$ nach Formel \ref{eq:calErrorSig} berechnet werden. Errechnet man nun den den MSV- oder RMS-Wert des Störsignales $e$, gibt das Ergebnis einen Eindrück über die \glqq Stärke \grqq{} des Fehler-Signals. Der MSE-Wert des Fehlers wird in diesem Zusammenhang auch als \emph{Mean Squared Error} (\emph{MSE}) und der RMS-Wert als \emph{Root Mean Squared Error} (\emph{RMSE}) oder einfach als \emph{Fehler} oder \emph{Error} bezeichnet. Formel\ref{eq:mse} und \ref{eq:error} definierten die Berechnungen des MSE und RMSE. Der RMSE hat im Gegensatz zum MSE den Vorteil, dass er besser ins Verhältnis zu den Werten des Fehlersignals gestetzt werden kann. Ein RMSE $= 0$ heisst, dass $x = x'$ und somit kein Störsignal vorliegt. Ein RMSE = RMS$(x)$ heisst, dass Eingangs- und Störsignal den selben Effektivwert und somit die selbe \glqq stärke\grqq{} besitzen. \cite[S: 28 - 29]{dspMichigan}
+
+\begin{equation}
+x'[n] = x[n] + e[n]
+\label{eq:sigErrorAddition}
+\end{equation}
+
+\begin{equation}
+e[n] = x'[n] -x[n]
+\label{eq:calErrorSig}
+\end{equation}
+
+\begin{equation}
+\text{MSE}(x,x') = \frac{1}{n_2 - n_1 + 1} \sum_{n_1}^{n_2} (x[n]-x'[n])^2
+\label{eq:mse}
+\end{equation}
+
+\begin{equation}
+\text{RMSE}(x,x') = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n_1}^{n_2} (x[n]-x'[n])^2}
+\label{eq:error}
+\end{equation}
+
+Eine weitere Betrachtungsweise bezüglich der Stärke des Rauschens auf das Signal ist, das Eingangssignal ins Verhältnis zum Rauschsignal zu setzen. Formel \ref{eq:snrPre} gibt die Definition. Ein SNR\textsubscript{rel}$(x,e) = 1$ heißt, dass das Eingangssignal den selben MSV wie das Fehlersignal hat. Meistens ist der MSV des Eingangssignals in der Praxis sehr viel höher als der des Fehler-Signals. Um den Zahlenraum zu begrenzen, wird die Pseudo-Einheit dB verwendet. Formel \ref{eq:snrDb} den so berechneten \emph{Signal-Rausch-Abstand} (\emph{SNR}, englisch Signal-to-Noise-Ratio).
+
+%% To do: Gute Quelle suchen!!
+
+\begin{equation}
+\text{SNR}_{rel}(x,e) = \frac{MSE(x)}{MSE(e)}
+\label{eq:snrPre}
+\end{equation}
+
+\begin{equation}
+\text{SNR}(x,e) = 10 \cdot  \lg \frac{MSE(x)}{MSE(e)} dB
+\label{eq:snrDb}
+\end{equation}
+
+
 \section{Faltung}
 \section{Transformationen}
 \subsection{Fourier-Transformation}
