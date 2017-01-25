@@ -1,29 +1,8 @@
 \select@language {ngerman}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Veranschaulichung des Grundvokabulars}}{11}{figure.2.1}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Veranschaulichung des Grundvokabulars}}{10}{figure.2.1}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B)}}{12}{figure.3.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Confusion-Matrix}}{14}{figure.4.1}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Architektur des Systems}}{17}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Parameter eines Audio-Kompressors}}{19}{figure.5.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Ergebnis des Preprocessings}}{19}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Markierung von Schreiger\IeC {\"a}uschen im Audiosignal}}{20}{figure.5.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Features des Zeitbereiches}}{21}{figure.5.5}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Features des Frequenz-Bereiches}}{23}{figure.5.6}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Entstehung des Cepstrums}}{24}{figure.5.7}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Cepstrum}}{25}{figure.5.8}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Features des Cepstrums}}{25}{figure.5.9}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Autokorrelation eines Signals}}{26}{figure.5.10}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Features der Autokorrelation}}{27}{figure.5.11}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Differenz-Signal des RMS-Wertes}}{28}{figure.5.12}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Thresholding eines Feature-Signales}}{29}{figure.5.13}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units}}{34}{figure.5.14}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Beziehung zwischen agrenzenden Segmenten}}{35}{figure.5.15}
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Klassifizierung vor dem Decision Smoothing}}{36}{figure.5.16}
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Klassifizierung vor und nach dem Decision Smoothing}}{37}{figure.5.17}
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Ergebnis der Segmentierung}}{38}{figure.5.18}
-\contentsline {figure}{\numberline {5.19}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals}}{38}{figure.5.19}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle}}{48}{figure.1..1}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle}}{20}{figure.1..1}
