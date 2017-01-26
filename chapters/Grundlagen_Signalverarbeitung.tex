@@ -154,7 +154,7 @@ Eine weitere Betrachtungsweise bezüglich der Stärke des Rauschens auf das Sign
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/snrStuff.png}
+	\includegraphics[width=1\textwidth]{bilder/snrStuff02.png}
 	\caption{Berechnung des MSE, RMSE und SNR eines von Rauschen gestörten Signals}
 	\label{img:snrStuff}
 \end{figure}
@@ -189,19 +189,68 @@ Die \emph{Korrelation} (engl \emph{Correlation}) zweier Signale $x_1$ und $x_2$ 
 	\label{img:corrSigsComp}
 \end{figure}
 
-Die Korrelation und die normalisierte Korrelation werden aufgrund ihrer Eigenschaften verwendet, um ein Signal $x$ in einem Signal $y$ zu detektieren. Häufig ist das Ziel, ein von einem Rauschen $e$ überlagerten Signal $x+e = y$ auf das Vorhandensein des erwarteten Signales $x$ hin zu überprüfen. Wie in Abbildung \ref{img:corrSigsComp} zu sehen ist, ist der Korrelationswert jedoch von der Verzögerung des Signals abhängig. Daher wird in der $Cross-Correlation$ das Signal $y$ mit verzögerten Varianten des Signals $x$ korreliert, wie in Formel \ref{eq:XCorr} definiert. 
+Die Korrelation und die normalisierte Korrelation werden aufgrund ihrer Eigenschaften verwendet, um ein Signal $x$ in einem Signal $y$ zu detektieren. Häufig ist das Ziel, ein von einem Rauschen $e$ überlagerten Signal $x+e = y$ auf das Vorhandensein des erwarteten Signales $x$ hin zu überprüfen. Wie in Abbildung \ref{img:corrSigsComp} zu sehen ist, ist der Korrelationswert jedoch von der Verzögerung des Signals abhängig. Daher wird in der $Cross-Correlation$ das Signal $y$ mit einer verzögerten Varianten des Signals $x$ korreliert, wie in Formel \ref{eq:XCorr} definiert. Der parameter $k$ wird als \emph{Lag} bezeichnet und gibt die Verzögerung an. 
 
 \begin{equation}
-\text{XCorr}(x,y,k) = \sum_{n=-\infty}^{\infty} x[n-k] \cdot y[n]
+\text{X-Corr}(x,y,k) = \sum_{n=-\infty}^{\infty} x[n-k] \cdot y[n]
 \label{eq:XCorr}
 \end{equation}
 
+Im Prozess der so genannten \emph{Running Correlation} nutzt man die Cross-Correlation mit den Lags $k = 0 \cdots k_{max}$ zur Erstellung des \emph{Korrelationssignals} $r$, wie in Gleichung \ref{eq:runningCorrelation} definiert. Das Signal $r$ gibt Auskunft, zu welchen Verzögerungswerten $k$ die größten Ähnlichkeiten zwischen $x$ und $y$ gefunden wurden. 
+
+\begin{equation}
+r[k] = \text{X-Corr}(x,y,k) \quad, k = 0 , \ldots , k_{max} 
+\label{eq:runningCorrelation}
+\end{equation}
+
+Abbildung \ref{img:slidingCorrelation} zeigt ein Beispiel für die Erzeugung von $r$ mit der Sliding Correlation. (A) zeigt das zu detektierende Signal $x$ und (B) das Signal $y$. (C) zeigt das Korrelationssignal $r$ mit den Lags $k = 1, \ldots ,1150$ \cite[S. 47 - 48]{dspMichigan}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{bilder/slidingCorrelation.png}
+	\caption{Beispiel einer Running Correlation}
+	\label{img:slidingCorrelation}
+\end{figure}
 
 \section{Faltung}
-\section{Transformationen}
-\subsection{Fourier-Transformation}
-\subsection{Laplace-Transformation}
-\subsection{Z-Transformation}
+
+Die \emph{Faltung} (engl. \emph{Convolution}) ist eine der Zentralen Operationen zwischen zwei Signalen, so wie die Addition oder die Mulitplikation. Sie wird mit dem Symbol $*$ notiert. Sie wird notiert mit $x* h = y$. 
+
+Die Faltung basiert auf der \emph{Faltungs-Summe}, welche die Faltung zunächst Punktweise definiert. Die Gleichung wird in Formel \ref{eq:convolutionSum} abgebildet. In diesem Zusammenhang wird $x$ Eingangs- und $y$ als Ausgangs-Signal bezeichnet. Je nach Anwendungsfall bekommt $h$ den Namen \emph{Faltungs-Kernel}, \emph{Filter-Kernel} oder einfach \emph{Kernel}. \cite[S. 107-108]{dspGuide}
+
+\begin{equation}
+y[n] = x[n] * h[n] = \sum_{i=1}^{M} h[n] * x[i-n]
+\label{eq:convolutionSum}
+\end{equation}
+
+Das Ergebnis einer Berechneten Faltungssumme nach \ref{eq:convolutionSum} ist ein einzelner Wert. Wird die Faltungs-Summe ähnlich der Cross-Correlation für $n = 1...N+M-1$ durchgeführt, ist das Ergebnis ein Signal. Die tatsächliche Faltung wird in Gleichung \ref{eq:convolution} definiert. $x$ ist ein Signal mit Support$(x) = [1,N]$ und Duration$(x) = N$, $h$ ist ein Signal mit Support$(x) = [1,M]$ und Duration$(h) = M$ und $y$ ist ein Signal mit Support$(y) = [1,N+M-1]$ und Duration$(y) = N+M-1$. Das heißt, dass das Eingangssignal um die Länge des Faltungskerns verlängert wird. Abbildung 	\ref{img:convolutionExample} zeigt ein Beispiel für die Faltung.\cite[S. 115-120]{dspGuide}
+
+\begin{equation}
+y = x * h = \big[ \: x[1] * h[1] , \ldots , x[N+M-1] * h[N+M-1] \: \big]
+\label{eq:convolution}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/convolutionExample.png}
+	\caption{Beispiel für die Faltung}
+	\label{img:convolutionExample}
+\end{figure}
+
+Das neutrale Element der Faltung ist der \emph{Delta-Funktion}, definiert in Gleichung \ref{eq:delta} . Das heißt, dass $x * \delta = x$ . Die Faltung ist kommutativ, das heißt $ x * h = h * x = y$ . \cite[S. 107, 113 ]{dspGuide}
+
+\begin{equation}
+\delta[n] = 
+\begin{cases}
+1 \quad , n = 0\\
+0 \quad ,  n \neq 0
+\label{eq:delta}
+\end{cases}
+\end{equation}
+
+
+\section{Diskrete Fourier-Transformation}
+
 \section{Filter}
 \section{akustische Modellierung der menschlichen Stimme}
 \section{Feststellung von Periodizität in Signalen}
