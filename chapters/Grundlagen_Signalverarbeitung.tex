@@ -17,7 +17,7 @@ x[n] = s \; , n \in \mathbb{Z}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.6\textwidth]{bilder/aSignal02.png}
+	\includegraphics[width=0.7\textwidth]{bilder/aSignal02.png}
 	\caption{Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B)}
 	\label{img:aSignal}
 \end{figure}
@@ -69,28 +69,28 @@ Im folgenden wird ein überblick über die häufig verwendete Signaleigenschafte
 \item Der \textbf{Durchschnittswert / Average Value} beschreibt den durchschnittlichen Wert aller Samples von $x$ nach Formel \ref{eq:avg}. Dieser Durchschnittswert wird über dem Intervall $[n_1, n_2]$  berechnet.
 
 \begin{equation}
-\text{AVG}(x) = \frac{1}{n_2 - n_1 + 1} \sum_{n_1}^{n_2} x[n]
+\text{AVG}(x) = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]
 \label{eq:avg}
 \end{equation}
 
 \item Der \textbf{Mean Squared Value} (\emph{MSV}) beschreibt den quadrierten Durchschnittswert über eine bestimmtes Interval nach Formel \ref{eq:msv}. Er wird auch als \emph{durchschnittliche Energie} oder \emph{average Power} bezeichnet.
 
 \begin{equation}
-\text{MSV}(x) = \frac{1}{n_2 - n_1 + 1} \sum_{n_1}^{n_2} x[n]^2
+\text{MSV}(x) = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]^2
 \label{eq:msv}
 \end{equation}
 
 \item Das \textbf{Root Mean Square} (\emph{RMS}) ist die Wurzel des Mean Squared Value nach Formel\ref{eq:rms}. Der RMS findet häufiger Anwendung als der MSV, da er besser ins Verhältnis zu den Werten des Signals gesetzt werden kann. Er wird im Deutschen auch als \textbf{Effektivwert} oder \textbf{Durchschnittsleistung} bezeichnet. Da die deutschen Begriffe in einigen Quellen jedoch auch für den MSV verwendet werden, wird an dieser Stelle nur mit den englischen Begriffen gearbeitet.
 
 \begin{equation}
-\text{RMS}(x) = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n_1}^{n_2} x[n]^2}
+\text{RMS}(x) = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]^2}
 \label{eq:rms}
 \end{equation}
 
 \item Die \textbf{Energie / Energy} bezeichnet die \glqq Stärke \grqq{} eines Signals über einen bestimmten Intervall nach Formel \ref{eq:energy}. Sie entspricht dem MSV-Wert multipliziert der Länge des Intervalls. \cite[S. 27-28]{dspMichigan}
 
 \begin{equation}
-\text{E}(x) = \sum_{n_1}^{n_2} x[n]^2
+\text{E}(x) = \sum_{n = n_1}^{n_2} x[n]^2
 \label{eq:energy}
 \end{equation}
 	
@@ -98,7 +98,7 @@ Im folgenden wird ein überblick über die häufig verwendete Signaleigenschafte
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{bilder/sigStats.png}
+	\includegraphics[width=0.7\textwidth]{bilder/sigStats.png}
 	\caption{Statistische Werte eines Signals über das Intervall [50,200]}
 	\label{img:sigStats}
 \end{figure}
@@ -112,7 +112,9 @@ Die Addition und Multiplikation wird bei Signalen komponentenweise durchgeführt
 	\label{img:addAndMultSig}
 \end{figure}
 
-Die Addition wird unter anderem für die Modellierung des Einflusses von Störungen benötigt. Angenommen, ein Signal $x$ wird übertragen, auf dem Übertragungsweg jedoch durch ein anderes Störsignal wie z.B. Rauschen $e$ überlagert. Dieses Störsignal wird in diesem Zusammenhang auch als \glqq{Fehler-Signal} bezeichnet. Das resultierende Signal $x'$ wird nach Formel \ref{eq:sigErrorAddition} berechnet. Kennt man sowohl das Eingangssignal $x$ als auch das Ausgangssignal $x'$, kann das Störsignal $e$ nach Formel \ref{eq:calErrorSig} berechnet werden. Errechnet man nun den den MSV- oder RMS-Wert des Störsignales $e$, gibt das Ergebnis einen Eindrück über die \glqq Stärke \grqq{} des Fehler-Signals. Der MSE-Wert des Fehlers wird in diesem Zusammenhang auch als \emph{Mean Squared Error} (\emph{MSE}) und der RMS-Wert als \emph{Root Mean Squared Error} (\emph{RMSE}) oder einfach als \emph{Fehler} oder \emph{Error} bezeichnet. Formel\ref{eq:mse} und \ref{eq:error} definierten die Berechnungen des MSE und RMSE. Der RMSE hat im Gegensatz zum MSE den Vorteil, dass er besser ins Verhältnis zu den Werten des Fehlersignals gestetzt werden kann. Ein RMSE $= 0$ heisst, dass $x = x'$ und somit kein Störsignal vorliegt. Ein RMSE = RMS$(x)$ heisst, dass Eingangs- und Störsignal den selben Effektivwert und somit die selbe \glqq stärke\grqq{} besitzen. \cite[S: 28 - 29]{dspMichigan}
+\section{Fehlersignale}
+
+Die Addition wird unter anderem für die Modellierung des Einflusses von Störungen benötigt. Angenommen, ein Signal $x$ wird übertragen, auf dem Übertragungsweg jedoch durch ein anderes Störsignal wie z.B. Rauschen $e$ überlagert. Dieses Störsignal wird in diesem Zusammenhang auch als \glqq{Fehler-Signal} bezeichnet. Das resultierende Signal $x'$ wird nach Formel \ref{eq:sigErrorAddition} berechnet. Kennt man sowohl das Eingangssignal $x$ als auch das Ausgangssignal $x'$, kann das Störsignal $e$ nach Formel \ref{eq:calErrorSig} berechnet werden.
 
 \begin{equation}
 x'[n] = x[n] + e[n]
@@ -124,28 +126,74 @@ e[n] = x'[n] -x[n]
 \label{eq:calErrorSig}
 \end{equation}
 
+ Errechnet man nun den den MSV- oder RMS-Wert des Störsignales $e$, gibt das Ergebnis einen Eindrück über die \glqq Stärke \grqq{} des Fehler-Signals. Der MSE-Wert des Fehlers wird in diesem Zusammenhang auch als \emph{Mean Squared Error} (\emph{MSE}) und der RMS-Wert als \emph{Root Mean Squared Error} (\emph{RMSE}) oder einfach als \emph{Fehler} oder \emph{Error} bezeichnet. Formel\ref{eq:mse} und \ref{eq:error} definierten die Berechnungen des MSE und RMSE. Der RMSE hat im Gegensatz zum MSE den Vorteil, dass er besser ins Verhältnis zu den Werten des Fehlersignals gestetzt werden kann. Ein RMSE $= 0$ heisst, dass $x = x'$ und somit kein Störsignal vorliegt. Ein RMSE = RMS$(x)$ heisst, dass Eingangs- und Störsignal den selben Effektivwert und somit die selbe \glqq stärke\grqq{} besitzen. Abbildung \ref{img:snrStuff} visualisiert die Berechnung des MSE und RMSE. \cite[S: 28 - 29]{dspMichigan}
+
 \begin{equation}
-\text{MSE}(x,x') = \frac{1}{n_2 - n_1 + 1} \sum_{n_1}^{n_2} (x[n]-x'[n])^2
+\text{MSE}(x,x') = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} (x[n]-x'[n])^2
 \label{eq:mse}
 \end{equation}
 
 \begin{equation}
-\text{RMSE}(x,x') = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n_1}^{n_2} (x[n]-x'[n])^2}
+\text{RMSE}(x,x') = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} (x[n]-x'[n])^2}
 \label{eq:error}
 \end{equation}
 
-Eine weitere Betrachtungsweise bezüglich der Stärke des Rauschens auf das Signal ist, das Eingangssignal ins Verhältnis zum Rauschsignal zu setzen. Formel \ref{eq:snrPre} gibt die Definition. Ein SNR\textsubscript{rel}$(x,e) = 1$ heißt, dass das Eingangssignal den selben MSV wie das Fehlersignal hat. Meistens ist der MSV des Eingangssignals in der Praxis sehr viel höher als der des Fehler-Signals. Um den Zahlenraum zu begrenzen, wird die Pseudo-Einheit dB verwendet. Formel \ref{eq:snrDb} den so berechneten \emph{Signal-Rausch-Abstand} (\emph{SNR}, englisch Signal-to-Noise-Ratio).
+Eine weitere Betrachtungsweise bezüglich der Stärke des Rauschens auf das Signal ist, das Eingangssignal ins Verhältnis zum Rauschsignal zu setzen. Formel \ref{eq:snrPre} gibt die Definition. Ein SNR\textsubscript{rel}$(x,e) = 1$ heißt, dass das Eingangssignal den selben MSV wie das Fehlersignal hat. Meistens ist der MSV des Eingangssignals in der Praxis sehr viel höher als der des Fehler-Signals. Um den Zahlenraum zu begrenzen, wird die Pseudo-Einheit dB verwendet. Formel \ref{eq:snrDb} den so berechneten \emph{Signal-Rausch-Abstand} (\emph{SNR}, englisch Signal-to-Noise-Ratio). Entgegen des MSE weisst ein \emph{niedriger} SNR-Wert auf ein \emph{starkes} Rauschen hin, und ein \emph{hoher} SNR auf ein \emph{schwaches} Rauschen! Abbildung \ref{img:snrStuff} visualisiert die Berechnung des SNR.
 
 %% To do: Gute Quelle suchen!!
 
 \begin{equation}
-\text{SNR}_{rel}(x,e) = \frac{MSE(x)}{MSE(e)}
+\text{SNR}_{rel}(x,e) = \frac{MSV(x)}{MSV(e)}
 \label{eq:snrPre}
 \end{equation}
 
 \begin{equation}
-\text{SNR}(x,e) = 10 \cdot  \lg \frac{MSE(x)}{MSE(e)} dB
+\text{SNR}(x,e) = 10 \cdot  \lg \Big(\frac{MSV(x)}{MSV(e)} \Big) \text{ dB}
 \label{eq:snrDb}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/snrStuff.png}
+	\caption{Berechnung des MSE, RMSE und SNR eines von Rauschen gestörten Signals}
+	\label{img:snrStuff}
+\end{figure}
+
+\section{Korrelation}
+
+Die \emph{Korrelation} (engl \emph{Correlation}) zweier Signale $x_1$ und $x_2$ wird nach Formel \ref{eq:correlation} als die Summe aller Samples des Produktes der beiden Signale über einen bestimmtes Intervall $[n_1, n_2]$ definiert. Das Ergebnis ist eine Wert $\in \mathbb{R}$ welches die \glqq Ähnlichkeit der beiden Signale\grqq{} kennzeichnet. Ein Positiver Wert weisst auf eine \emph{positive Korrelation} hin, ein negativer Wert auf eine \emph{negative Korrelation}, und ein Wert von $\text{Corr}(x_1,x_2) = 0$ auf \emph{keine Korrelatoin}. Aus der größe des Wertes kann die Stärke der Korrelation jedoch nicht direkt interpretiert werden. Bei der \emph{normalisierten Korrelation} Corr$_N(x,y)$ wird daher die Korrelationswert ins Verhältnis zu den Energien der beiden Signale gesetzt, wie in Formel \ref{eq:normCorrelation} definiert. Der Wertebereich der normalisierten Autokorrelation  ist $-1 \leq \text{Corr}_N(x,y) \leq +1$. Daraus ergeben sich die in Formel \ref{eq:correlationProps} definierten Zusammenhänge. Ein Wert von $ \text{Corr}_N(x,y) = 1$ wird auch als \emph{perfekte Korrelation} bezeichnet, ein Wert von  $ \text{Corr}_N(x,y) = -1$ als \emph{anti-perfekte Korrelation} \cite[S. 46 - 47]{dspMichigan} Abbildung \ref{img:corrSigsComp} visualisiert die normalisierte Korrelation eines Signales $x$ mit den Signalen $y_n$.
+
+\begin{equation}
+\text{Corr}(x,y) = \sum_{n=n_1}^{n_2} x[n] \cdot y[n]
+\label{eq:correlation}
+\end{equation}
+
+\begin{equation}
+\text{Corr}_N(x,y) = \frac{\text{Corr}(x,y)}{\sqrt{\text{E}(x) \cdot \text{E}(y)}}
+\label{eq:normCorrelation}
+\end{equation}
+
+\begin{equation}
+\text{Corr}_N(x,y) = 
+\begin{cases}
+1  \quad \rightarrow  x = y \\
+-1 \; \rightarrow x = -y
+\end{cases}
+\label{eq:correlationProps}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/corrSigsComp.png}
+	\caption{Correlation der Signale $x$ und $y$}
+	\label{img:corrSigsComp}
+\end{figure}
+
+Die Korrelation und die normalisierte Korrelation werden aufgrund ihrer Eigenschaften verwendet, um ein Signal $x$ in einem Signal $y$ zu detektieren. Häufig ist das Ziel, ein von einem Rauschen $e$ überlagerten Signal $x+e = y$ auf das Vorhandensein des erwarteten Signales $x$ hin zu überprüfen. Wie in Abbildung \ref{img:corrSigsComp} zu sehen ist, ist der Korrelationswert jedoch von der Verzögerung des Signals abhängig. Daher wird in der $Cross-Correlation$ das Signal $y$ mit verzögerten Varianten des Signals $x$ korreliert, wie in Formel \ref{eq:XCorr} definiert. 
+
+\begin{equation}
+\text{XCorr}(x,y,k) = \sum_{n=-\infty}^{\infty} x[n-k] \cdot y[n]
+\label{eq:XCorr}
 \end{equation}
 
 

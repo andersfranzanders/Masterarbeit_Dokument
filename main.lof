@@ -1,11 +1,13 @@
 \select@language {ngerman}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Veranschaulichung des Grundvokabulars}}{10}{figure.2.1}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Veranschaulichung des Grundvokabulars}}{6}{figure.2.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B)}}{12}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Ein nicht-periodisches Signal (A) und ein periodisches Signal (B)}}{13}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Statistische Werte eines Signals \IeC {\"u}ber das Intervall [50,200]}}{14}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Komponentenweise Addition und Mulitplikation zweier Signale}}{15}{figure.3.4}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B)}}{8}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ein nicht-periodisches Signal (A) und ein periodisches Signal (B)}}{9}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Statistische Werte eines Signals \IeC {\"u}ber das Intervall [50,200]}}{10}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Komponentenweise Addition und Mulitplikation zweier Signale}}{11}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Berechnung des MSE, RMSE und SNR eines von Rauschen gest\IeC {\"o}rten Signals}}{12}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Correlation der Signale $x$ und $y$}}{13}{figure.3.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle}}{22}{figure.1..1}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle}}{20}{figure.1..1}

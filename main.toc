@@ -1,22 +1,24 @@
 \select@language {ngerman}
-\contentsline {chapter}{\numberline {1}Einleitung}{5}{chapter.1}
-\contentsline {chapter}{\numberline {2}Grundlagen der medizinischen Schrei-Forschung}{6}{chapter.2}
-\contentsline {section}{\numberline {2.1}Schmerz Scores}{6}{section.2.1}
-\contentsline {section}{\numberline {2.2}Schmerz-Schrei aus medizinischer Sicht}{8}{section.2.2}
-\contentsline {section}{\numberline {2.3}Phyisio-Akustische Modellierung des Weinens}{9}{section.2.3}
-\contentsline {chapter}{\numberline {3}Grundlagen der Signalverarbeitung}{12}{chapter.3}
-\contentsline {section}{\numberline {3.1}Statistische Merkmale}{13}{section.3.1}
-\contentsline {section}{\numberline {3.2}Faltung}{16}{section.3.2}
-\contentsline {section}{\numberline {3.3}Transformationen}{16}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Fourier-Transformation}{16}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Laplace-Transformation}{16}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Z-Transformation}{16}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Filter}{16}{section.3.4}
-\contentsline {section}{\numberline {3.5}akustische Modellierung der menschlichen Stimme}{16}{section.3.5}
-\contentsline {section}{\numberline {3.6}Feststellung von Periodizit\IeC {\"a}t in Signalen}{16}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Zero-Crossing-Rate}{16}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Methoden des Frequenzbereiches}{16}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Autokorrelation}{16}{subsection.3.6.3}
-\contentsline {subsection}{\numberline {3.6.4}Cepstrum}{16}{subsection.3.6.4}
-\contentsline {chapter}{\numberline {4}Zusammenfassung}{17}{chapter.4}
-\contentsline {chapter}{Appendices}{20}{section*.5}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Grundlagen der medizinischen Schrei-Forschung}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}Schmerz Scores}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Schmerz-Schrei aus medizinischer Sicht}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}Phyisio-Akustische Modellierung des Weinens}{5}{section.2.3}
+\contentsline {chapter}{\numberline {3}Grundlagen der Signalverarbeitung}{8}{chapter.3}
+\contentsline {section}{\numberline {3.1}Statistische Merkmale}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}Fehlersignale}{11}{section.3.2}
+\contentsline {section}{\numberline {3.3}Korrelation}{12}{section.3.3}
+\contentsline {section}{\numberline {3.4}Faltung}{14}{section.3.4}
+\contentsline {section}{\numberline {3.5}Transformationen}{14}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Fourier-Transformation}{14}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Laplace-Transformation}{14}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Z-Transformation}{14}{subsection.3.5.3}
+\contentsline {section}{\numberline {3.6}Filter}{14}{section.3.6}
+\contentsline {section}{\numberline {3.7}akustische Modellierung der menschlichen Stimme}{14}{section.3.7}
+\contentsline {section}{\numberline {3.8}Feststellung von Periodizit\IeC {\"a}t in Signalen}{14}{section.3.8}
+\contentsline {subsection}{\numberline {3.8.1}Zero-Crossing-Rate}{14}{subsection.3.8.1}
+\contentsline {subsection}{\numberline {3.8.2}Methoden des Frequenzbereiches}{14}{subsection.3.8.2}
+\contentsline {subsection}{\numberline {3.8.3}Autokorrelation}{14}{subsection.3.8.3}
+\contentsline {subsection}{\numberline {3.8.4}Cepstrum}{14}{subsection.3.8.4}
+\contentsline {chapter}{\numberline {4}Zusammenfassung}{15}{chapter.4}
+\contentsline {chapter}{Appendices}{18}{section*.5}
