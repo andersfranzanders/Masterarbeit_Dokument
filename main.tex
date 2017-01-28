@@ -1,7 +1,7 @@
 \documentclass{scrreprt}
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
-\setlength{\parskip}{1em}
+\setlength{\parskip}{5.5pt}
 \setlength{\parindent}{1em}
 \usepackage{hyperref}
 \usepackage{amssymb,amsmath,amsthm,enumitem}
@@ -23,13 +23,9 @@
 \usepackage{pdflscape}
 \usepackage{listings} 
 \usepackage[toc,page]{appendix}
+\usepackage{geometry}
 \usepackage[T1]{fontenc}% wichtig für Trennung von Wörtern mit Umlauten
 \usepackage{microtype}% verbesserter Randausgleich
-
-\usepackage{geometry}
-\geometry{a4paper,left=30mm,right=30mm, top=30mm, bottom=35mm} 
-\setlength{\footskip}{15mm}
-\usepackage[skip=5pt]{caption}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\counti}{count}
@@ -37,10 +33,21 @@
 \DeclareMathOperator{\ImX}{ImX}
 
 
+
+% design
+
+\geometry{a4paper,left=30mm,right=30mm, top=30mm, bottom=35mm minus 5mm} 
+\usepackage[skip=5pt]{caption}
+\setlength{\footskip}{15mm}
+
 \pagestyle{fancy}
 \fancyhf{}
 \chead{\nouppercase{\rightmark}}
 \cfoot{\thepage}
+
+\widowpenalty10000
+%\clubpenalty10000
+
 
 
 \title{Visualisierung kontinuierlicher, multimodaler Schmerz Scors am Beispiel akustischer Signale}
@@ -52,12 +59,12 @@
 
 \begin{document}
 	
-\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
-\setlength{\belowdisplayskip}{10pt plus 2pt minus 2pt}
-\setlength{\abovedisplayshortskip}{-5pt plus 2pt minus 2pt}
-\setlength{\belowdisplayshortskip}{10pt plus 2pt minus 2pt} 
+%\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
+%\setlength{\belowdisplayskip}{10pt plus 2pt minus 2pt}
+%\setlength{\abovedisplayshortskip}{-5pt plus 2pt minus 2pt}
+%\setlength{\belowdisplayshortskip}{10pt plus 2pt minus 2pt} 
 
-\setlength{\intextsep}{10mm plus 1mm minus 5mm}
+%\setlength{\intextsep}{10mm plus 1mm minus 5mm}
 
 \maketitle
 

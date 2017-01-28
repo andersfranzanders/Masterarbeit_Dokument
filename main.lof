@@ -3,13 +3,17 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{6}{figure.caption.5}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B)\relax }}{8}{figure.caption.6}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Ein nicht-periodisches Signal (A) und ein periodisches Signal (B)\relax }}{9}{figure.caption.7}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Statistische Werte eines Signals \IeC {\"u}ber das Intervall [50,200]\relax }}{10}{figure.caption.8}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Komponentenweise Addition und Mulitplikation zweier Signale\relax }}{11}{figure.caption.9}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Berechnung des MSE, RMSE und SNR eines von Rauschen gest\IeC {\"o}rten Signals\relax }}{12}{figure.caption.10}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Correlation der Signale $x$ und $y$\relax }}{13}{figure.caption.11}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Beispiel einer Running Correlation\relax }}{14}{figure.caption.12}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Beispiel f\IeC {\"u}r die Faltung\relax }}{15}{figure.caption.13}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B)\relax }}{7}{figure.caption.6}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ein nicht-periodisches Signal (A) und ein periodisches Signal (B)\relax }}{8}{figure.caption.7}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Statistische Werte eines Signals \IeC {\"u}ber das Intervall [50,200]\relax }}{9}{figure.caption.8}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Komponentenweise Addition und Mulitplikation zweier Signale\relax }}{10}{figure.caption.9}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Berechnung des MSE, RMSE und SNR eines von Rauschen gest\IeC {\"o}rten Signals\relax }}{11}{figure.caption.10}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Correlation der Signale $x$ und $y$\relax }}{12}{figure.caption.11}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Beispiel einer Running Correlation\relax }}{13}{figure.caption.12}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Beispiel f\IeC {\"u}r die Faltung\relax }}{13}{figure.caption.13}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Synthetisierung eines Signals $x$ aus vier Basis-Funktionen\relax }}{15}{figure.caption.14}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces $\ReX $ und $\ImX $-Signal f\IeC {\"u}r das Beispiel aus Abbildung \ref {img:fftExample01}\relax }}{15}{figure.caption.15}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die DFT und die iDFT\relax }}{16}{figure.caption.16}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Konvertierung des Frequenz-Bereiches aus Abbildung \ref {img:reXimX} von kartesischer in polare Notation\relax }}{17}{figure.caption.17}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{21}{figure.caption.17}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{23}{figure.caption.21}
