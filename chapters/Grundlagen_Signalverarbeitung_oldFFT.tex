@@ -36,13 +36,6 @@ x[n] = s(n \cdot T_s) \; , -\infty < n < \infty
 	\text{Samplingrate:} \quad f_s = \frac{1}{T_s} [\text{Hz}]
 	\label{eq:samplingRate}
 \end{equation}	
-
-Das so genannte \emph{Nyquist-Shannon-Abtasttheorem} nach Formel \ref{eq:shannonTheorem} besagt, dass die Samplingrate mindestens doppelt so hoch sein muss wie die höchste im abgetasteten Signal enthaltene Frequenz. Das bedeutet im Umkehrschluss, dass die höchste im abgetasteten Signal enthaltene Frequenz die Hälfte der Abtastfrequenz entspricht.
-
-\begin{equation}
-f_s > 2 \cdot f_{max}
-\label{eq:shannonTheorem}
-\end{equation}	
 	
 Da in dieser Arbeit nur zeit-diskrete Signale von Interesse sind, werden ab diesem Punkt die Definitonen für zeit-kontinuierliche Signale ausgelassen. Der \emph{Support} ist das kleinst mögliche Zeitintervall, der alle Samples enthält, die nicht den Wert 0 haben, wie Formel \ref{eq:support} definiert. Die \emph{Dauer} eines Signales ist die Länge des Supportes nach Formel \ref{eq:duration}. Das Signal $x[n] = \cos(n) \: ,0\leq n \leq 3$ hat beispielsweise den Support $[0,3] = \{0,1,2,3\} $ und die Dauer $4$. Ein \emph{unendliches Signal} hat einen unendlichen langen Support, das heißt es gilt Duration$(x) = \infty$. Ein \emph{endliches Signal} hat einen endlichen Support, das heißt Duration$(x) \neq\infty$. Unabhängig von der Endlichkeit oder Unendlichkeit des Supportes wird davon ausgegangen, dass sich alle Signale von negativer bis positiver Unendlichkeit erstrecken. Werden also berechnungen auf Samples eines Signales durchgeführt, die außerhalb seines Supportes liegen, werden diese Samples mit dem Wert 0 angenommen. \cite[S. 24]{dspMichigan}
 
@@ -62,7 +55,7 @@ Da in dieser Arbeit nur zeit-diskrete Signale von Interesse sind, werden ab dies
 Ein Signal gilt als \emph{periodisch}, wenn Formel \ref{eq:periodicity} erfüllt ist. Der Parameter $N$ wird als \text{Periode} von $x$ bezeichnet. Wenn ein Signal mit $N$ periodisch ist, dann ist es auch mit $2N, 3N, \ldots $ periodisch. Die Grundfrequenz $N_0$ ist das kleinste N, für das Formel \ref{eq:periodicity} erfüllt ist. Abbildung \ref{img:periodicSic} zeigt ein Beispiel für ein nicht-periodisches und ein periodisches Signal. \cite[S. 24]{dspMichigan}
 
 \begin{equation}
-\exists N : \forall n \in Sup : x[n+N] = x[n] \rightarrow \text{Periodisch}(x) = true
+\exists N : \forall n \in Sup : x[n+N] = x[n] \rightarrow \text{Periodisch}(x,N) = true
 \label{eq:periodicity}
 \end{equation}
 
@@ -175,7 +168,6 @@ Eine weitere Betrachtungsweise bezüglich der Stärke des Rauschens auf das Sign
 \end{figure}
 
 \section{Korrelation}
-\label{sec:correlation}
 
 Die \emph{Korrelation} (engl \emph{Correlation}) zweier Signale $x_1$ und $x_2$ wird nach Formel \ref{eq:correlation} als die Summe aller Samples des Produktes der beiden Signale über einen bestimmtes Intervall $[n_1, n_2]$ definiert. Das Ergebnis ist eine Wert $\in \mathbb{R}$ welches die \glqq Ähnlichkeit der beiden Signale\grqq{} kennzeichnet. Ein Positiver Wert weisst auf eine \emph{positive Korrelation} hin, ein negativer Wert auf eine \emph{negative Korrelation}, und ein Wert von $\text{Corr}(x_1,x_2) = 0$ auf \emph{keine Korrelatoin}. Aus der größe des Wertes kann die Stärke der Korrelation jedoch nicht direkt interpretiert werden. Bei der \emph{normalisierten Korrelation} Corr$_N(x,y)$ wird daher die Korrelationswert ins Verhältnis zu den Energien der beiden Signale gesetzt, wie in Formel \ref{eq:normCorrelation} definiert. Der Wertebereich der normalisierten Autokorrelation  ist $-1 \leq \text{Corr}_N(x,y) \leq +1$. Daraus ergeben sich die in Formel \ref{eq:correlationProps} definierten Zusammenhänge. Ein Wert von $ \text{Corr}_N(x,y) = 1$ wird auch als \emph{perfekte Korrelation} bezeichnet, ein Wert von  $ \text{Corr}_N(x,y) = -1$ als \emph{anti-perfekte Korrelation} \cite[S. 46 - 47]{dspMichigan} Abbildung \ref{img:corrSigsComp} visualisiert die normalisierte Korrelation eines Signales $x$ mit den Signalen $y_n$.
 
@@ -273,158 +265,152 @@ Die \emph{Fourier-Transformation} ist eine Familie von Transformationen, mit der
 
 Die konkrete Berechnung der Transformation ist abhängig von den Eigenschaften des Signales. Die Variante, die die meiste Anwendung in der digitalen Signalverarbeitung findet, ist die \emph{Diskrete Fourier-Transformation} (kurz \textbf{DFT} ). Sie transformiert \emph{zeit-diskrete, periodische, unendliche} Signale (siehe Formel \ref{eq:time-disc-signal} und \ref{eq:periodicity}) in den Frequenz-Bereich. Es exisitert sowohl eine reelle als auch eine complexe Variante der DFT. Die reelle Variante wird mit Hilfe reeller Zahlen, und die komplexe mit Hilfe komplexer Zahlen berechnet. An dieser Stelle werden beide Variante vorgestellt: Die komplexe, da der effizienteste Algorithmus zur Berechnung der DFT, die \emph{Fast-Fourier-Transformation} (\textbf{FFT}) auf ihr beruht, und die reelle, da sie das Verständnis der komplexen vereinfacht.\cite[S. 142 - 146]{dspGuide}
 
-\subsection{Reelle DFT}
+\subsection{reelle DFT}
 
-Jedes zeitdiskretes, periodisches Signal $x$ kann erzeugt werden, indem eine endliche Anzahl von Sinus- und Cosinus-Signalen geeigneter Frequenz und Amplitude $ = \{A_0\cos_{f_0} \ldots A_m\cos_{A_m,f_m}$ , $B_0\sin_{f_0} \ldots \sin_{f_m} \}$ aufaddiert werden. Der Umkehrschluss ist, dass sich jedes Signal in eine Menge von Sinus- und Cosinus-Signalen zerlegen lässt, ohne das Information für das Signal $x$ verloren geht. Diese Zerlegung des Signals $x$ wird als \emph{Dekomposition} bezeichnet, die Kombination der Sinus- und Cosinus-Siganel zu $x$ als \emph{Synthese}. Genauer gesagt werden für ein Signal $x$ mit Duration$(x) = N$ höchstens $\frac{N}{2}+1$ Sinus- und $\frac{N}{2}+1$ Cosinus-Wellen benötigt, also insgesamt $N+2$ Signale. Gleichung \ref{eq:fftIntroduction} fasst diese Aussage zusammen. \cite[S. 144 - 147 ]{dspGuide}
+Jedes zeitdiskretes, periodisches Signal $x$ kann erzeugt werden, indem eine endliche Anzahl von Sinus- und Cosinus-Signalen geeigneter Frequenz und Amplitude $\{\cos_{A_1,f_1} \ldots \cos_{A_m,f_m}$ , $\sin_{B_1,f_1} \ldots \sin_{B_m,f_m} \}$ aufaddiert werden. Der Umkehrschluss ist, dass sich jedes Signal in eine Menge von Sinus- und Cosinus-Signalen zerlegen lässt, ohne das Information für das Signal $x$ verloren geht. Diese Zerlegung des Signals $x$ wird als \emph{Dekomposition} bezeichnet, die Kombination der Sinus- und Cosinus-Siganel zu $x$ als \emph{Synthese}. Genauer gesagt werden für ein Signal $x$ mit Duration$(x) = N$ genau $\frac{N/2}+1$ Sinus- und $\frac{N/2}+1$ Cosinus-Wellen benötigt, also insgesamt $N+2$ Signale. Gleichung \ref{eq:fftIntroduction} fasst diese Aussage zusammen
 
 \begin{equation}
 \label{eq:fftIntroduction}
 \begin{split}
-\forall x = [x_1 \ldots x_N]: x =  A_0\cos_{f_0} + \ldots + A_m\cos_{f_m}  + B_0\sin_{f_0} + \ldots + B_m \sin_{f_m}  \\
-,\text{Periodisch}(x) = true \; ,m = \frac{N}{2}
+\forall x  \in \text{zeit-diskrete, periodische Signale}: x =  \cos_{A_1,f_1} + \ldots + \cos_{A_m,f_m}  \\ + \sin_{B_1,f_1} + \ldots + \sin_{B_m,f_m}  \\
+m = \frac{\text{Duration}(x)}{2} + 1 
 \end{split}
 \end{equation}
 
 
-Die Cosinus- und Sinus-Schwingungen, die in Gleichung \ref{eq:fftIntroduction} verwendet werden, werden in den Gleichungen \ref{eq:cosine} und \ref{eq:sine} definiert, sowohl für den kontinuierlichen als auch für den zeit-diskreten-Definitionsraum. Die Faktorn $A,B$ geben die Amplitude der entsprechenden Cosinus/Sinus-Schwingung an, der Fatkor $f$ die Frequenz der Schwingung (Perioden pro Sekunde), und $f_s$ die Sampling-Rate (Siehe Gleichung \ref{eq:samplingRate}). \cite[S. 62]{dspMichigan} \cite[S. 150]{dspGuide} \label{img:aSimpleCosine} zeigt ein Beispiel für die Cosinus-Schwingung $[A=2] \cdot cos_{f=4}$.
+Die Cosinus- und Sinus-Schwingungen, die für diese Dekomposition verwendet werden, werden in den Gleichungen \ref{eq:cosine} und \ref{eq:sine} definiert. Der Paramter 
 
 \begin{equation}
 \label{eq:cosine}
-\begin{gathered}
-A \cdot \cos_{f}(t) = A \cdot \cos(2\pi f t) \\
-A \cdot \cos_{f}[n]  = A \cdot \cos(2\pi f \frac{n}{f_s})
-\end{gathered}
+\begin{split}
+\cos_{A,f}(t) = A \cos(2\pi f t) \\
+\cos_{A,f}[n] = A \cos(2\pi f \frac{n}{f_s})
+\end{split}
 \end{equation}
 
 \begin{equation}
 \label{eq:sine}
-\begin{gathered}
- B \cdot \sin_{f} (t) = B \cdot \sin(2\pi f t) \\
- B \cdot \sin_{f}[n]  = B \cdot \sin(2\pi f \frac{n}{f_s})
-\end{gathered}
+\begin{split}
+\sin_{B,f} (t) = A \sin(2\pi f t) \\
+\sin_{B,f}[n] = A \sin(2\pi f \frac{n}{f_s})
+\end{split}
 \end{equation}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/aSimpleCosine.png}
-	\caption{$\SI{1}{\second} = 44100 $ Samples der Cosinus-Schwingung $[A = 2] \cdot cos_{f=\SI{4}{\hertz}}[n] =  2 \cdot \cos(2\pi 4 \frac{n}{f_s})$ bei einer Sampling-Rate von $f_s = \SI{44100}{\hertz} $}
-	\label{img:aSimpleCosine}
-\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Abbildung \ref{img:fftExample02} zeigt ein Beispiel für die Synthese eines Signal $x$ mit $N = 200$ Samples mit einer Samlingrate von $f_s = \SI{100}{\hertz}$. Es werden theoretisch $\frac{N}{2} + 1 = 101$ Cosinus und $101$ Sinus-Signale für die Synthese benötigt, da aber nur 4 Signale eine Amplitude > 0 haben, werden auch nur diese Signale gezeigt. Die Frage ist: Angenommen, man kennt nur das Signal $x$, wie errechnet man daraus die die Amplituden $A, B$ und Frequenzen $f$ der Cosinus- und Sinus-Signale? Anders gesagt: Wie berechnet man die Dekomposition?
+Jedes zeitdiskretes, periodisches Signal $x$ kann erzeugt werden, indem eine endliche Anzahl von Sinus- und Cosinus-Signalen geeigneter Frequenz und Amplitude aufaddiert werden. Der Umkehrschluss ist, dass sich jedes Signal in eine Menge von Sinus- und Cosinus-Signalen zerlegen lässt, ohne das Information verloren geht. Diese Zerlegung wird als \emph{Dekomposition} bezeichnet. Abbildung xxx
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{bilder/fftExp02.png}
-	\caption{Synthetisierung eines Signals $x$ aus vier Cosinus-Funktionen, mit Duration$(x) = 200$ und $f_s = \SI{100}{\hertz}$}
-	\label{img:fftExample02}
-\end{figure}
 
-Das Problem lässt sich auf die Berechnung der Amplituden $A,B$ beschränken, in dem man den Fakt, dass höchstens $\frac{2}{N} + 1$ Cosinus- und $\frac{2}{N} + 1$ Sinus-Signale für die Synthese benötigt werden, in Verbindung mit dem Nyquist-Shannon-Abtasttheorem (Gleichung \ref{eq:shannonTheorem}) bringt. Die niedrigst Mögliche Frequenz, im im Signal $x$ enthalten sein kann, ist $f_0 = \SI{0}{\hertz}$, und die höchste im Signal enthltene Frequenz $f_{max} = \frac{f_s}{2}$, womit die Frequenzen $\cos_{f_0 = 0} , \cos_{f_{max} = f_s/2},\sin_{f_0 = 0} , \sin_{f_{max} = f_s/2}$ bereits feststehen. Die restlichen $\frac{2}{N} - 1$ Cosinus-Signale teilen sich gleichmäßig auf diesen Frequenzraum auf, entsprechendes gilt für die Sinus-Signale. Die Frequenz der insgesamt $N+2$ Cosinus-Signale ergibt sich somit direkt als Funktion der Samplingrate und der Länge des Signals $x$. Gleichung \ref{eq:baseFunctions} fasst diesen Zusammenhang zusammen. Die dort beschriebenen Funktionen $\cos_k$ und $\sin_k$werden als \emph{Basisfunktionen} bezeichnet. aus dem  Index $k = 0 ... \frac{N}{2}$ sich die Frequenz der jeweiligen Basisfunktion nach Gleichung \ref{eq:baseToFreq} berechnen.\cite[140 - 151, S.]{dspGuide}  In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich die indexe $[\cos_{f=\SI{0.5}{\hertz}} = \cos_1]$, $[\cos_{f=\SI{4}{\hertz}} = \cos_8]$, $[\sin_{f=\SI{1}{\hertz}} = \sin_2]$ und $[\sin_{f=\SI{7.5}{\hertz}} = \sin_{15}]$
+Die Sinus- und Cosinus-Wellen, die für die Dekomposition verwendt werden, werden als \emph{Basisfunktionen} bezeichnet. Die Basisfunktionen werden in Gleichung \ref{eq:baseFunctions} definiert. Abbildung \ref{img:fftExample01} visualisiert, wie ein Signal $x$ durch die Addition der vier Signale $\cos_1 + \cos_8 + \sin_4 + sin_15 = x$ zusammengesetzt (synthetisiert) wird.
 
 \begin{equation}
 \label{eq:baseFunctions}
 \begin{split}
-A_k \cdot \cos_k[n] = A_k\cdot \cos(2\pi k \frac{n}{N}) \\
-B_k \cdot \sin_k[n] = B_k \cdot \sin(2\pi k \frac{n}{N}) \\
-N = \text{Duration} (x)
+\cos_k[n] = \cos(2\pi k \frac{n}{N}) \\
+\sin_k[n] = \sin(2\pi k \frac{n}{N})
 \end{split}
-\end{equation} 
+\end{equation}
 
-\begin{equation}
-\label{eq:baseToFreq}
-f = k\frac{f_s}{N} 
-\end{equation} 
+Für die Zerlegung eines $N$-Samples langen Signals $x$ werden höchstens $N+2$ Basisfunktionen benötigt, mit $\frac{N}{2}+1$ Cosinus- und  $\frac{N}{2}+1$ Sinus-Signale. Jede Basisfunktion hat die selbe Länge wie das zu synthetisierende Signal. Im Beispiel aus Abbildung \ref{img:fftExample01} haben die vier Basis-Funktionen als auch das Signal $x$ eine Länge von $N = 200$. Von den 202 benötigten Basisfunktionen werden in diesem Beispiel nur 4 benötigt, zwei Cosinus-Schwinungen mit $k = 1$ und $k = 8$ und zwei Sinus-Schwinungen mit $k = 2$ und $k=15$. Je höher der Parameter $k$, desto höher auch die Frequenz der Basisschwingung. 
 
-Das Problem der Dekomposition wird so auf die Suche der Amplituden-Koeffizienten $A_k, B_k$ beschränkt. Die Frage ist, vereinfacht formuliert, wie \glqq stark\grqq{} jede der Basisfunktionen $\cos_0 \ldots \cos_{N/2} , \sin_0 \ldots \sin_{N/2}$ in $x$ enthalten ist.  Die Antwort darauf ist die in Kapitel \ref{sec:correlation} vorgestellte Korrelation. Der Korrelationswert einer Cosinus-Basisfunktion mit Eingangssignal Corr$(x,cos_k) = \sum_{n=1}^{N} \cdot x[n]cos_k$ gibt somit eine Aussage darüber, wie stark die entsprechende Cosinus-Schwingungen zur Syntehse von $x$ beiträgt. Ein Wert von $0$ spricht für keinen Beitrag, ein hoher oder niedriger Wert für eine positiven oder Negativen Beitrag. \cite[S. 157 - 158]{dspGuide}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/fftExp01.png}
+	\caption{Synthetisierung eines Signals $x$ aus vier Basis-Funktionen}
+	\label{img:fftExample01}
+\end{figure}
 
-Dieses Vorgehen lässt sich sogenannten \emph{forward DFT} nach Formel \ref{eq:forwardDFT} verallgemeinern, kurz als \textbf{DFT} bezeichnet. Das Ergebnis sind die Koeffizienten $\bar{A}_0 \ldots \bar{A}_{N/2}, \bar{B}_0 \ldots \bar{B}_{N/2}$. \cite[S. 158]{dspGuide}
+Die Addition aller Basis-Funktionen zur Komposition von $x$ wird auch als \emph{Synthese} oder \emph{inverse DFT} (\emph{iDFT}) bezeichnet. Sie wird in Gleichung  \ref{eq:inverseDFT} definiert. Das Signal $\ReX$ enthält die Amplituden für die $\cos$-Basisfunktionen und das Signal $\ImX$ die Amplituden für die $\sin$-Basisfunktionen. Dementsprechend haben die Längen $Duration(\ReX[x]) = Duration(\ImX[x]) = N+1$.
 
 \begin{equation}
 \begin{split}
-\bar{A}_k = \sum_{n=0}^{N-1}x[n] \cos(2\pi k \frac{n}{N}) \\
-\bar{B}_k = \sum_{n=0}^{N-1}x[n] \sin(2\pi k \frac{n}{N}) \\
-\end{split}
-\label{eq:forwardDFT}
-\end{equation}
-
-In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich bei Anwendung von Formel \ref{eq:forwardDFT} auf das Signal $x$ die Koeffizienten $[ \bar{A}_{f=\SI{0.5}{\hertz}} = \bar{A}_{1} = 100 ]$ , $[  \bar{A}_{f=\SI{4}{\hertz}} = \bar{A}_{8} = 200 ]$, $[ \bar{B}_{f=\SI{1}{\hertz}} = \bar{B}_{2} = 50 ]$ und $[ \bar{B}_{f=\SI{7.5}{\hertz}} = \bar{B}_{15} = 100 ]$. Um die eigentlichen Koeffizienten $A_1 = 1, A_8 = 2, B_2 = 0.5$ und $B_{15} = 1$ zu erhalten, muss die Umrechnungsvorschrift nach den Formel \ref{eq:AConversion} und \ref{eq:BConversion} angewandt werden. \cite[S. 152 - 153]{dspGuide}
-
-\begin{equation}
-A_k = 
-\begin{cases}
-\frac{\bar{A}_k}{N} \; , \text{falls } k = 0 \vee k = N/2\\
-\frac{\bar{A}_k}{N/2} \; ,\text{sonst} \\
-\end{cases}
-\label{eq:AConversion}
-\end{equation}
-
-\begin{equation}
-B_k= \frac{A_k}{N}
-\label{eq:BConversion}
-\end{equation}
-
-Gleichung \ref{eq:inverseDFT} definiert die Synthese des Signals $x$ aus den Basis-Funktionen mit Hilfe der Koeffizienten $A$ und $B$. Die Formel wird auch als \emph{inverse DFT} (\textbf{iDFT}) bezeichnet. \cite[S. 152 - 153]{dspGuide}
-
-\begin{equation}
-\begin{split}
-x[n] = \sum_{k = 0}^{N/2} A_k\cos(2\pi k \frac{n}{N}) + \sum_{k = 0}^{N/2}B_k\sin(2\pi k \frac{n}{N}) \\
+x[n] = \sum_{k = 0}^{N/2}\ReX[k]\cos(2\pi k \frac{n}{N}) + \sum_{k = 0}^{N/2}\ImX[k]\sin(2\pi k \frac{n}{N}) \\
 ,n = 1 \ldots N = \text{Duration}(x)
 \end{split}
 \label{eq:inverseDFT}
 \end{equation}
 
-Die Koeffizienten $A$ und $B$ bilden zusammen den \emph{Frequenz-Bereich} in der sogenannten \emph{kartesischen Notation} (engl \emph{rectangular Notation}) und werden gemeinsam als $X$ bezeichnet. \cite[S. 161 - 162]{dspGuide} Abbildung  \ref{img:polarToRect02} zeigt die Koeffizienten des Beispiels aus Abbildung \ref{img:fftExample02}.
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{bilder/rectToPolar02.png}
-	\caption{Frequenz-Bereich des Beispiels aus Abbildung \ref{img:fftExample02}}
-	\label{img:polarToRect02}
-\end{figure}
-
-Abbildung \ref{img:dtOverview} gibt einen Überblick über den Zusammenhang $x$ und $X$. Da mit steigender Länge von $x$ die Anzahl an Basis-Funktionen im Frequenzbereich $X$ steigt, wird die Auflösung des Frequenz-Bereiches umso höher, je länger $x$ gewählt wird. Im Gegenzug sinkt die Auflösung in Bezug auf den Zeit-Bereich: Der Frequenz-Bereich trifft keine Aussage darüber \emph{wann} etwas passiert, sondern nur \emph{welche Frequenzen} daran beteiligt sind.\cite[S. 170]{dspGuide}
+Abbildung \ref{img:reXimX} zeigt das $\ReX$ und das $\ImX$-Signal für das Beispiel aus Abbildung \ref{img:fftExample01}. Die Formel für die Synthese das Beispielsignal ist somit: $n = 1 \ldots 200: x[n] = 1 \cdot \cos(2\pi 1 \frac{n}{200}) + 2 \cdot \cos(2\pi 8 \frac{n}{200}) + 0.5 \cdot \sin(2\pi 2 \frac{n}{200}) + 1 \cdot \sin(2\pi 15 \frac{n}{200})  $
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{bilder/dftOverview.png}
-	\caption{Überblick über die DFT und die inverse DFT}
-	\label{img:dtOverview}
+	\includegraphics[width=0.6\textwidth]{bilder/reXimX.png}
+	\caption{ $\ReX$ und $\ImX$-Signal für das Beispiel aus Abbildung \ref{img:fftExample01}}
+	\label{img:reXimX}
 \end{figure}
 
+Die Signale $\ReX$ und $\ImX$ bilden gemeinsam den sogenannten \emph{Frequenz-Bereich} und werden unter dem Variablennamen $X$ subsumiert. Wird $x$ als Eingangssignal gegeben, für das man den Frequenz-Bereich berechnen möchte, wird die \emph{forward DFT} nach Formel \ref{eq:forwardDFT} verwendet. Diese Operation wird auch kurz als \emph{DFT} bezeichnet. Wie sich erkennen lässt, handelt sich um eine Korrelation des Signales $x$ mit den einzelnen Basis-Funktionen. Je höher der Korrelations-wert der jeweiligen Basisfunktion, desto höher seine Amplitude und somit sein Beitrag zur späteren Synthese des ursprünglichen Signales. Abbildung \ref{img:timToFreq} fasst den Zusammenhang zwischen dem Zeit- und dem Frequenzbereich zusammen.
 
-Aus Formel \ref{eq:inverseDFT} geht hervor, dass bei der Synthese jeweils ein Cosinus-Signal und ein Sinus-Signal der selben Frequenz addiert wird. Diese Addition erzeugt einen sogenannten \emph{Sinusoiden}, eine Cosinuswelle mit der Amplitude $M$ der Phasenverschiebung $\phi$ nach Formel \ref{eq:sinusoid}.\cite[S. 162]{dspGuide}
+\begin{equation}
+\begin{split}
+\ReX'[k] = \sum_{n=0}^{N-1}x[n] \cos(2\pi k \frac{n}{N}) \\
+\ImX'[k] = \sum_{n=0}^{N-1}x[n] \sin(2\pi k \frac{n}{N}) \\
+k = 0, \ldots , N/2 \quad , N = \text{Duration}(x)
+\end{split}
+\label{eq:forwardDFT}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{bilder/timeToFrequency_self.png}
+	\caption{Überblick über die DFT und die iDFT}
+	\label{img:timToFreq}
+\end{figure}
+
+Es ist darauf zu achten, dass man durch die DFT die Signale $\ReX'$ und $\ImX'$ erhält, für die inverse DFT nach Formel \ref{eq:inverseDFT}  jedoch die Signale  $\ReX$ und $\ImX$ benötigt werden. Formel \ref{eq:reConversion} definiert die Umwandlung für das $\ReX$-Signal und Formel \ref{eq:imConversion} die Umwandlung des $\ImX$-Signal. Die Sonderfälle ds $\ReX$-Signals sind ein Nebenprodukt der reellen DFT, welche bei der komplexen DFT in Kapitel \ref{sec:comDFT} vereinfacht wird.
+
+\begin{equation}
+\ReX[k] = 
+\begin{cases}
+\frac{\ReX'[k]}{N} \; , \text{falls } k = 0 \\
+\frac{\ReX'[k]}{N} \; , \text{falls } k = N/2 \\
+\frac{\ReX'[k]}{N/2} \; ,\text{sonst} \\
+\end{cases}
+\label{eq:reConversion}
+\end{equation}
+
+\begin{equation}
+\ImX[k] = \frac{\ImX'[k]}{N/2}
+\label{eq:imConversion}
+\end{equation}
+
+Die Signale $ImX$ und $ReX$ werden zur Berechnung der DFT und iDFT verwendet, sind jedoch für den Menschen schwierig zu interpretieren. Sie stellen den Frequenz-Bereich in der sogenannten \emph{kartesischen Notation} (engl. \emph{rectagnular Notation}) dar. Um die Signale besser interpretieren zu können, werden sie in die \emph{polare Notation} transformiert. Dabei macht man sich zu Nutze, dass die Summe eines Sinus- und eines Cosinus-Signals der selben Frequenz ein Cosinus-Signal der selben Frequenz, jedoch mit veränderter Amplitude $M$ und Phase einer Phasenverschiebung $\phi$ erzeugt, wie aus Formel \ref{eq:sinToCosinus} hervorgeht.
 
 \begin{equation}
 \begin{split}
 A \cos(x) + B \sin(x) = M \cos(x + \phi) \\
 ,M = \sqrt{A^2 + B^2} \;, \phi = arctan(B/A)
 \end{split}
-\label{eq:sinusoid}
+\label{eq:sinToCosinus}
 \end{equation}
 
-Auf Basis von Formel \ref{eq:sinusoid} lässt sich der gesamte Frequenz-Bereich in kartesischer Notation als Menge von Sinusoiden-Schwingungen mit den Magnituden $M_0 \ldots M_{N/2}$ und den Phasenverschiebungen $\phi_0 \ldots \phi_{N/2}$ ausdrücken. Formel \ref{eq:rectToPolar} definierte diese Transformation von kartesischer Notation in die \emph{polare Notation}. Formel \label{eq:polarToRect} definiert die dazu inverse Transformation. \cite[S. 162]{dspGuide} Abbildung \ref{img:polarToRect02} zeigt den Frequenzbereich in polarer Notation für das Beispiel aus  Abbildung \ref{img:fftExample02}.
+
+Aus dieser Umrechnungsvorschrift lässt sich die Transformation der kartesischen in die polare Notation ableiten. Sie wird in Formel \ref{eq:rectToPolar} definiert. Formel \ref{eq:polarToRect} definiert die Umkehroperation. Abbildung \ref{img:rectToPolar} visualisiert diese Konvertierung der Signale des Frequenz-Bereiches von kartesischer in polarer Notation anhand des Beispiels aus Abbildung \ref{img:reXimX}.
 
 \begin{equation}
 \begin{split}
-M_k = \sqrt{(A_k^2 + B_k^2 ) }\\
-\phi_k= \arctan{(B / A) }
+\text{MagX}[k] = \sqrt{(\ReX'[k]^2 + \ImX'[k]^2 ) }\\
+\text{PhaseX}[k] = \arctan{(\ImX'[k] / \ReX'[k]) }
 \end{split}
 \label{eq:rectToPolar}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-A_k= M_k \cdot \cos(\phi_k)\\
-B_k = M_k \cdot \sin(\phi_k)
+\ReX'[k] = \text{MagX}[k] \cos(\text{PhaseX}[k])\\
+\ImX'[k] = \text{MagX}[k] \sin(\text{PhaseX}[k])
 \end{split}
 \label{eq:polarToRect}
 \end{equation}
 
-Die kartesische Notation wird verwendet, um die DFT und die inverse DFT zu berechnen. Die polare Notation hat den Vorteil, dass vor allem die Magnituden $M$ für den Menschen leichter zu interpretieren sind. Die Magnituden $M$ sind Audioingenieuren als \emph{Spectrum} bekannt und werden in dieser Arbeit auch als solches bezeichnet. Die Transformation in die polare Notation wird deshalb vor allem dann Angewandt, wenn der Mensch den Frequenz-Bereich interpretieren soll. \cite[S. 164]{dspGuide}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/rectToPolar.png}
+	\caption{ Konvertierung des Frequenz-Bereiches aus Abbildung \ref{img:reXimX}  von kartesischer in polare Notation}
+	\label{img:rectToPolar}
+\end{figure}
 
-Ein Schlussbemerkung: In der Einleitung dieses Kapitels wurde erwähnt, dass die DFT \emph{zeit-diskrete, periodische, unendliche} Signale transformiert, während in der hier vorgestellten Erläuterung das Signal sowohl als endlich angenommen, als auch keine Aussage über die Periodizität gemacht wurde. Bei der DFT wird davon ausgegangen, dass das Signal \emph{außerhalb} des Supportes von $x$ unendlich oft wiederholt wird, um die Vorraussetzungen zu erfüllen. Dabei handelt es sich jedoch um einen \glqq matehmatischen Trick \grqq{} der nur in Ausnahmefällen Einfluss auf den Frequenz-Bereich hat. Diese Ausnahmefälle tangieren diese Arbeit jedoch nicht, weshalb sie an dieser Stelle nicht weiter erläutert werden.\cite[S. 145]{dspGuide}
+Es gibt verschiedene Arten der Indexierung des \text{MagX}-Signals neben der einfachen Nummerierung $k = 0 \ldots N/2$
 
 \subsection{Komplexe DFT}
 \label{sec:comDFT}
