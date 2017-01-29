@@ -274,6 +274,7 @@ Die \emph{Fourier-Transformation} ist eine Familie von Transformationen, mit der
 Die konkrete Berechnung der Transformation ist abhängig von den Eigenschaften des Signales. Die Variante, die die meiste Anwendung in der digitalen Signalverarbeitung findet, ist die \emph{Diskrete Fourier-Transformation} (kurz \textbf{DFT} ). Sie transformiert \emph{zeit-diskrete, periodische, unendliche} Signale (siehe Formel \ref{eq:time-disc-signal} und \ref{eq:periodicity}) in den Frequenz-Bereich. Es exisitert sowohl eine reelle als auch eine complexe Variante der DFT. Die reelle Variante wird mit Hilfe reeller Zahlen, und die komplexe mit Hilfe komplexer Zahlen berechnet. An dieser Stelle werden beide Variante vorgestellt: Die komplexe, da der effizienteste Algorithmus zur Berechnung der DFT, die \emph{Fast-Fourier-Transformation} (\textbf{FFT}) auf ihr beruht, und die reelle, da sie das Verständnis der komplexen vereinfacht.\cite[S. 142 - 146]{dspGuide}
 
 \subsection{Reelle DFT}
+\label{sec:realDFT}
 
 Jedes zeitdiskretes, periodisches Signal $x$ kann erzeugt werden, indem eine endliche Anzahl von Sinus- und Cosinus-Signalen geeigneter Frequenz und Amplitude $ = \{A_0\cos_{f_0} \ldots A_m\cos_{A_m,f_m}$ , $B_0\sin_{f_0} \ldots \sin_{f_m} \}$ aufaddiert werden. Der Umkehrschluss ist, dass sich jedes Signal in eine Menge von Sinus- und Cosinus-Signalen zerlegen lässt, ohne das Information für das Signal $x$ verloren geht. Diese Zerlegung des Signals $x$ wird als \emph{Dekomposition} bezeichnet, die Kombination der Sinus- und Cosinus-Siganel zu $x$ als \emph{Synthese}. Genauer gesagt werden für ein Signal $x$ mit Duration$(x) = N$ höchstens $\frac{N}{2}+1$ Sinus- und $\frac{N}{2}+1$ Cosinus-Wellen benötigt, also insgesamt $N+2$ Signale. Gleichung \ref{eq:fftIntroduction} fasst diese Aussage zusammen. \cite[S. 144 - 147 ]{dspGuide}
 
@@ -286,7 +287,7 @@ Jedes zeitdiskretes, periodisches Signal $x$ kann erzeugt werden, indem eine end
 \end{equation}
 
 
-Die Cosinus- und Sinus-Schwingungen, die in Gleichung \ref{eq:fftIntroduction} verwendet werden, werden in den Gleichungen \ref{eq:cosine} und \ref{eq:sine} definiert, sowohl für den kontinuierlichen als auch für den zeit-diskreten-Definitionsraum. Die Faktorn $A,B$ geben die Amplitude der entsprechenden Cosinus/Sinus-Schwingung an, der Fatkor $f$ die Frequenz der Schwingung (Perioden pro Sekunde), und $f_s$ die Sampling-Rate (Siehe Gleichung \ref{eq:samplingRate}). \cite[S. 62]{dspMichigan} \cite[S. 150]{dspGuide} \label{img:aSimpleCosine} zeigt ein Beispiel für die Cosinus-Schwingung $[A=2] \cdot cos_{f=4}$.
+Die Cosinus- und Sinus-Schwingungen, die in Gleichung \ref{eq:fftIntroduction} verwendet werden, werden in den Gleichungen \ref{eq:cosine} und \ref{eq:sine} definiert, sowohl für den kontinuierlichen als auch für den zeit-diskreten-Definitionsraum. Die Faktorn $A,B$ geben die Amplitude der entsprechenden Cosinus/Sinus-Schwingung an, der Fatkor $f$ die Frequenz der Schwingung (Perioden pro Sekunde), und $f_s$ die Sampling-Rate (Siehe Gleichung \ref{eq:samplingRate}). \cite[S. 62]{dspMichigan} \cite[S. 150]{dspGuide} Abbildung \ref{img:aSimpleCosine} zeigt ein Beispiel für die Cosinus-Schwingung $[A=2] \cdot cos_{f=\SI{4}{\hertz}}$.
 
 \begin{equation}
 \label{eq:cosine}
@@ -320,7 +321,7 @@ Abbildung \ref{img:fftExample02} zeigt ein Beispiel für die Synthese eines Sign
 	\label{img:fftExample02}
 \end{figure}
 
-Das Problem lässt sich auf die Berechnung der Amplituden $A,B$ beschränken, in dem man den Fakt, dass höchstens $\frac{2}{N} + 1$ Cosinus- und $\frac{2}{N} + 1$ Sinus-Signale für die Synthese benötigt werden, in Verbindung mit dem Nyquist-Shannon-Abtasttheorem (Gleichung \ref{eq:shannonTheorem}) bringt. Die niedrigst Mögliche Frequenz, im im Signal $x$ enthalten sein kann, ist $f_0 = \SI{0}{\hertz}$, und die höchste im Signal enthltene Frequenz $f_{max} = \frac{f_s}{2}$, womit die Frequenzen $\cos_{f_0 = 0} , \cos_{f_{max} = f_s/2},\sin_{f_0 = 0} , \sin_{f_{max} = f_s/2}$ bereits feststehen. Die restlichen $\frac{2}{N} - 1$ Cosinus-Signale teilen sich gleichmäßig auf diesen Frequenzraum auf, entsprechendes gilt für die Sinus-Signale. Die Frequenz der insgesamt $N+2$ Cosinus-Signale ergibt sich somit direkt als Funktion der Samplingrate und der Länge des Signals $x$. Gleichung \ref{eq:baseFunctions} fasst diesen Zusammenhang zusammen. Die dort beschriebenen Funktionen $\cos_k$ und $\sin_k$werden als \emph{Basisfunktionen} bezeichnet. aus dem  Index $k = 0 ... \frac{N}{2}$ sich die Frequenz der jeweiligen Basisfunktion nach Gleichung \ref{eq:baseToFreq} berechnen.\cite[140 - 151, S.]{dspGuide}  In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich die indexe $[\cos_{f=\SI{0.5}{\hertz}} = \cos_1]$, $[\cos_{f=\SI{4}{\hertz}} = \cos_8]$, $[\sin_{f=\SI{1}{\hertz}} = \sin_2]$ und $[\sin_{f=\SI{7.5}{\hertz}} = \sin_{15}]$
+Das Problem lässt sich auf die Berechnung der Amplituden $A,B$ beschränken, in dem man den Fakt, dass höchstens $\frac{2}{N} + 1$ Cosinus- und $\frac{2}{N} + 1$ Sinus-Signale für die Synthese benötigt werden, in Verbindung mit dem Nyquist-Shannon-Abtasttheorem (Gleichung \ref{eq:shannonTheorem}) bringt. Die niedrigst mögliche Frequenz, die im Signal $x$ enthalten sein kann, ist $f_0 = \SI{0}{\hertz}$, und die höchst mögliche Frequenz $f_{max} = \frac{f_s}{2}$, womit die Frequenzen $\cos_{f_0 = 0} , \cos_{f_{max} = f_s/2},\sin_{f_0 = 0} , \sin_{f_{max} = f_s/2}$ bereits feststehen. Die restlichen $\frac{2}{N} - 1$ Cosinus-Signale teilen sich gleichmäßig auf diesen Frequenzraum auf, entsprechendes gilt für die Sinus-Signale. Die Frequenz der insgesamt $N+2$ Cosinus/Sinus-Signale ergibt sich somit direkt als Funktion der Samplingrate und der Länge des Signals $x$. Gleichung \ref{eq:baseFunctions} fasst diesen Zusammenhang zusammen. Die dort beschriebenen Funktionen $\cos_k$ und $\sin_k$werden als \emph{Basisfunktionen} bezeichnet. Aus dem  Index $k = 0 ... \frac{N}{2}$ lässt sich die Frequenz der jeweiligen Basisfunktion nach Gleichung \ref{eq:baseToFreq} berechnen.\cite[140 - 151, S.]{dspGuide}  In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich die indexe $[\cos_{f=\SI{0.5}{\hertz}} = \cos_1]$, $[\cos_{f=\SI{4}{\hertz}} = \cos_8]$, $[\sin_{f=\SI{1}{\hertz}} = \sin_2]$ und $[\sin_{f=\SI{7.5}{\hertz}} = \sin_{15}]$
 
 \begin{equation}
 \label{eq:baseFunctions}
@@ -336,7 +337,7 @@ N = \text{Duration} (x)
 f = k\frac{f_s}{N} 
 \end{equation} 
 
-Das Problem der Dekomposition wird so auf die Suche der Amplituden-Koeffizienten $A_k, B_k$ beschränkt. Die Frage ist, vereinfacht formuliert, wie \glqq stark\grqq{} jede der Basisfunktionen $\cos_0 \ldots \cos_{N/2} , \sin_0 \ldots \sin_{N/2}$ in $x$ enthalten ist.  Die Antwort darauf ist die in Kapitel \ref{sec:correlation} vorgestellte Korrelation. Der Korrelationswert einer Cosinus-Basisfunktion mit Eingangssignal Corr$(x,cos_k) = \sum_{n=1}^{N} \cdot x[n]cos_k$ gibt somit eine Aussage darüber, wie stark die entsprechende Cosinus-Schwingungen zur Syntehse von $x$ beiträgt. Ein Wert von $0$ spricht für keinen Beitrag, ein hoher oder niedriger Wert für eine positiven oder Negativen Beitrag. \cite[S. 157 - 158]{dspGuide}
+Das Problem der Dekomposition wird so auf die Suche der Amplituden-Koeffizienten $A_k, B_k$ beschränkt. Die Frage ist, vereinfacht formuliert, wie \glqq stark\grqq{} jede der Basisfunktionen $\cos_0 \ldots \cos_{N/2} , \sin_0 \ldots \sin_{N/2}$ in $x$ enthalten ist.  Die Antwort darauf ist die in Kapitel \ref{sec:correlation} vorgestellte Korrelation. Der Korrelationswert einer Cosinus-Basisfunktion mit Eingangssignal Corr$(x,\cos_k) = \sum_{n=1}^{N} \cdot x[n]cos_k$ gibt somit eine Aussage darüber, wie stark die entsprechende Cosinus-Schwingungen zur Syntehse von $x$ beiträgt. Ein Wert von $0$ spricht für keinen Beitrag, ein hoher oder niedriger Wert für eine positiven oder negativen Beitrag. \cite[S. 157 - 158]{dspGuide}
 
 Dieses Vorgehen lässt sich sogenannten \emph{forward DFT} nach Formel \ref{eq:forwardDFT} verallgemeinern, kurz als \textbf{DFT} bezeichnet. Das Ergebnis sind die Koeffizienten $\bar{A}_0 \ldots \bar{A}_{N/2}, \bar{B}_0 \ldots \bar{B}_{N/2}$. \cite[S. 158]{dspGuide}
 
@@ -360,7 +361,7 @@ A_k =
 \end{equation}
 
 \begin{equation}
-B_k= \frac{A_k}{N}
+B_k= \frac{A_k}{N/2}
 \label{eq:BConversion}
 \end{equation}
 
@@ -428,6 +429,106 @@ Ein Schlussbemerkung: In der Einleitung dieses Kapitels wurde erwähnt, dass die
 
 \subsection{Komplexe DFT}
 \label{sec:comDFT}
+
+Gleichwohl die in Kapitel \ref{sec:realDFT} vorgestellte \emph{reelle DFT} hilft beim Verständnis des Frequenz-Bereiches hilft, ist die Berrechnung der DFT nach Formel \ref{eq:forwardDFT} Rechnerisch zu ineffizient, um in Echtzeit durchgeführt zu werden. Der am weitesten verbreitete Algorithmus zur Berechnung des Frequenz-Bereiches, die \emph{Fast Fouerier-Transformation} erlaubt hingegen die Berechnung der DFT in Echtzeit. Da die FFT auf der \emph{complexen} Variante der DFT basiert, wird sie an dieser Stelle vorgestellt. 
+
+Die Basis der komplexen DFT ist die \emph{Eulerformel}, definiert in Formel \ref{eq:eulersRelation}. Sie erlaubt die Darstellung des Funktions-Werte einer Cosinus-Welle und einer Sinus-Welle der selben Frequenz und Amplitude als den Real/Imaginärteil eines komplexen Exponenten der Eulerschen Zahl $e$. Gleichung \ref{eq:eulersRelationDetailed} zeigt, dass die Isolierung des Real/Imaginärteil von $e^{ix}$ Zugriff auf Funktionswert der entsprechenden Cosinus/Sinuswelle erlaubt. Auf einen Beweis der Eulergleichung wird an dieser Stelle aus Platzgründen verzichtet. Abbildung \ref{img:eulersRelation} visualisiert diesen Zusammenhang.
+
+\begin{equation}
+e^{ix} = \cos(x) + i\sin(x)
+\label{eq:eulersRelation}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Re(e^{ix}) = \cos(x) \\
+\Im(e^{ix}) = \sin(x) 
+\end{split}
+\label{eq:eulersRelationDetailed}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{bilder/eulersRelation.png}
+	\caption{Visualisierung der Eulergleichung. Es wurde eine zuästzliche Zeit-Achse eingeführt, welche den Wert von $x$ als Funktionswert der Zeit darstellt\cite[S. 63]{dspMichigan}}
+	\label{img:eulersRelation}
+\end{figure}
+
+Dementsprechend lassen sich die Basisfunktionen aus Gleichung \ref{eq:baseFunctions} ebenfalls durch den Real/Imaginärteil der von $e^{ix}$ nach Gleichung \ref{eq:complexBaseFunktion} definieren. Sie werden als die \emph{komplexe Basisfunktionen} bezeichnet. Die Frequenz der jeweiligen Basisfunktion wird, wie in Formel \ref{eq:baseToFreq} definiert, durch  $f = k\frac{f_s}{N}$ errechnet. 
+
+\begin{equation}
+\begin{gathered}
+\Re(e^{i\cdot 2\pi k \frac{n}{N}}) = \cos_k[n] = \cos(2\pi k \frac{n}{N}) \\
+\Im(e^{i\cdot 2\pi k \frac{n}{N}}) = \sin_k[n] = \sin(2\pi k \frac{n}{N})
+\end{gathered}
+\label{eq:complexBaseFunktion}
+\end{equation}
+
+Auf Basis dieses Zusammenhanges wird die \emph{komplexe DFT} in \emph{kartesischer Notation} nach Formel \ref{eq:complexDFTrectanulgar} definiert, das heißt die Transformation vom Zeit-Bereich in den Frequenzbereich mit Hilfe komplexer Zahlen. Formel \ref{eq:complexDFTpolar} definiert die komplexe DFT in der kompakteren, \emph{polaren Notation}.
+
+\begin{equation}
+\label{eq:complexDFTrectanulgar}
+X[k] = \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot (\cos (2\pi k \frac{n}{N}) -i \sin (2 \pi k \frac{n}{N}) )
+\end{equation}
+
+\begin{equation}
+\label{eq:complexDFTpolar}
+X[k] =  \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot e^{-i 2\pi k \frac{n}{N}}
+\end{equation}
+
+Die wichtigen Unterschiede zwischen den komplexen DFT nach Formel  \ref{eq:complexDFTrectanulgar} und der reellen DFT nach Formel \ref{eq:forwardDFT} Formelsind (a) die Verwendung des Sinus als komplexe Zahl $i \cdot \sin$, sowie das invertieren seines Vorzeichens und (b) die Summierung über $n = 0\ldots N-1 $ anstatt $n = 0 \ldots N/2$. Der Frequenz-Bereich wird nun durch das complexe Signal $X$ ausgedrückt, welcher die Koeffizienten $A,B$ in seinem Real/Imaginärteil speichert. Der Frequenz-Bereich $X$ hat die selbe Länge wie der Zeit-Bereich $x$, das heißt $\text{Duration}(x) = \text{Duration}(X)$ Es gelten die die folgenden Zusammenhänge zwischen der reellen und der komplexen DFT \ref{eq:relationOfRealAndComplexDFT}. Es lässt sich ableiten, dass für die Indexe $k = 0 \ldots N/2$ die Real/Imaginärteil der komplexen DFT $X$ den Koeffizienten $A,B$ der reellen DFT entspricht. Da $|X| = M$, wird in dieser Arbeit $X$ ebenfalls als \emph{Spetrum} bezeichnet. 
+
+\begin{equation}
+\begin{gathered}
+\Re(X[0]) \ldots \Re(X[N/2]) = A_0 \ldots A_{N/2} \\
+\Im(X[0]) \ldots \Im(X[N/2]) = B_0 \ldots B_{N/2}  \\
+|(X[0])| \ldots |(X[N/2])| = M_0 \ldots M_{N/2} \\
+\phi((X[0])) \ldots \phi(X[N/2]) = \phi_0 \ldots \phi_{N/2} 
+\end{gathered}
+\label{eq:relationOfRealAndComplexDFT}
+\end{equation}
+
+Die \emph{inverse komplexe DFT} kann, genau wie die komplexe DFT, sowohl in polarer als auch in kartesischer Notation definiert werden. Gleichung \ref{eq:inverseComplexDFTpolar} definiert die iDFT in polarer Notation und Gleichung \ref{eq:inverseComplexDFTrectangular} in kartesischer Notation. Die polare Notation ist kompakter und die Variante, in der die komplexe inverse DFT meistens angegeben wird. Die kartesische Notation hingegen erleichtert das Verständnis. 
+
+\begin{equation}
+\label{eq:inverseComplexDFTpolar}
+x[n] =  \sum_{k = 0}^{N-1}  X[n] \cdot e^{i 2\pi k \frac{n}{N}}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+x[n] =  \sum_{k = 0}^{N-1}  
+\Re(X[n]) \cdot (\cos (2\pi k \frac{n}{N}) + i \sin (2 \pi k \frac{n}{N}) ) \\ 
+- \sum_{k = 0}^{N-1}
+\Im(X[n]) \cdot (\sin (2\pi k \frac{n}{N}) - i \cos(2 \pi k \frac{n}{N}) )
+\end{split}
+\label{eq:inverseComplexDFTrectangular}
+\end{equation}
+
+Die Frage ist: Wenn das Signal des Zeit-Bereiches$x$  aus reellen Zahlen besteht, und das Signal des Frequenz-Bereiches $X$ aus komplexen Zahlen, wie \glqq verschwinden \glqq{} diese komplexen Zahlen wieder bei der Berechnung der inversen DFT? 
+
+Genau wie das Signal des Zeitbereiches $x$ als unendlich und periodische außerhalb des transformierten Bereiches $x[0] \ldots x[N-1]$ angenommen wird, ist auch der Frequenz-Bereich unendlich periodisch außerhalb des Bereiches $X[0] \ldots X[N-1] $. Daraus lässt sich Schlussfolgern, dass $X[-N/2] \ldots X[-1] = X[N/2] ... X[N-1]$. Die Werte $X[-N/2] ... X[-1]$ werden als die \emph{negativen Frequenzen} bezeichnet. Dazu kommt der Fakt, dass der Frequenz-Bereich in Bezug auf das Interval $X[-N/2] \ldots X[N/2]$ eine Symmetrie aufweist: Der Realteil ist Achsensymmetrisch an der Stelle $X[0]$, und der Imaginäre Teil Punktsymmetrisch. Diese Symmetrie tritt nur auf, falls das Signal im Zeitbereich nur aus Reellen Zahlen besteht, was bei der Arbeit mit \glqq normalen Signalen\grqq{} immer erfüllt ist. Auf die Herleitung dieser Symmetrie wird an dieser Stelle aus Platzgründen verzichtet. 
+
+
+Abbildung 	\ref{img:complexDFTOverview} gibt einen Überblick über die Indexierung bei der komplexen DFT.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/compDFTOverview.png}
+	\caption{Überblick über die komplexe DFT und inverse DFT}
+	\label{img:complexDFTOverview}
+\end{figure}
+
+
+%Durch das Umformen der Eulergleichung lassen sich Cosinus- und Sinuswellen allein durch komplexe Exponenten von $e$ darstellen, zu sehen in Formel \ref{eq:complexSineCosine} .
+
+%\begin{equation}
+%\begin{gathered}
+%\cos(x) = \frac{e^{ix} + e^{-ix}}{2} = \frac{1}{2} e^{-ix} + \frac{1}{2} e^{ix} \\
+%\sin(x) = \frac{e^{ix} - e^{-ix}}{2i} = \frac{1}{2} ie^{-ix} - \frac{1}{2} ie^{ix}
+%\end{gathered}
+%\label{eq:complexSineCosine}
+%\end{equation}
 
 \section{Filter}
 \label{sec:filter}

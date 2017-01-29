@@ -15,5 +15,7 @@
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Synthetisierung eines Signals $x$ aus vier Cosinus-Funktionen, mit Duration$(x) = 200$ und $f_s = \SI {100}{\hertz }$\relax }}{15}{figure.caption.15}
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Frequenz-Bereich des Beispiels aus Abbildung \ref {img:fftExample02}\relax }}{17}{figure.caption.16}
 \contentsline {figure}{\numberline {3.12}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die DFT und die inverse DFT\relax }}{17}{figure.caption.17}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Visualisierung der Eulergleichung. Es wurde eine zu\IeC {\"a}stzliche Zeit-Achse eingef\IeC {\"u}hrt, welche den Wert von $x$ als Funktionswert der Zeit darstellt\cite [S. 63]{dspMichigan}\relax }}{19}{figure.caption.18}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die komplexe DFT und inverse DFT\relax }}{21}{figure.caption.19}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{24}{figure.caption.21}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{27}{figure.caption.23}
