@@ -13,11 +13,11 @@
 \contentsline {subsection}{\numberline {3.5.1}Reelle DFT}{14}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}Komplexe DFT}{18}{subsection.3.5.2}
 \contentsline {section}{\numberline {3.6}Filter}{23}{section.3.6}
-\contentsline {section}{\numberline {3.7}akustische Modellierung der menschlichen Stimme}{23}{section.3.7}
-\contentsline {section}{\numberline {3.8}Feststellung von Periodizit\IeC {\"a}t in Signalen}{23}{section.3.8}
-\contentsline {subsection}{\numberline {3.8.1}Zero-Crossing-Rate}{23}{subsection.3.8.1}
-\contentsline {subsection}{\numberline {3.8.2}Methoden des Frequenzbereiches}{23}{subsection.3.8.2}
-\contentsline {subsection}{\numberline {3.8.3}Autokorrelation}{23}{subsection.3.8.3}
-\contentsline {subsection}{\numberline {3.8.4}Cepstrum}{23}{subsection.3.8.4}
-\contentsline {chapter}{\numberline {4}Zusammenfassung}{24}{chapter.4}
-\contentsline {chapter}{Appendices}{27}{section*.22}
+\contentsline {section}{\numberline {3.7}akustische Modellierung der menschlichen Stimme}{24}{section.3.7}
+\contentsline {section}{\numberline {3.8}Feststellung von Periodizit\IeC {\"a}t in Signalen}{24}{section.3.8}
+\contentsline {subsection}{\numberline {3.8.1}Zero-Crossing-Rate}{24}{subsection.3.8.1}
+\contentsline {subsection}{\numberline {3.8.2}Methoden des Frequenzbereiches}{24}{subsection.3.8.2}
+\contentsline {subsection}{\numberline {3.8.3}Autokorrelation}{24}{subsection.3.8.3}
+\contentsline {subsection}{\numberline {3.8.4}Cepstrum}{24}{subsection.3.8.4}
+\contentsline {chapter}{\numberline {4}Zusammenfassung}{25}{chapter.4}
+\contentsline {chapter}{Appendices}{28}{section*.23}

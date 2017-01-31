@@ -44,7 +44,7 @@ f_s > 2 \cdot f_{max}
 \label{eq:shannonTheorem}
 \end{equation}	
 	
-Da in dieser Arbeit nur zeit-diskrete Signale von Interesse sind, werden ab diesem Punkt die Definitonen für zeit-kontinuierliche Signale ausgelassen. Der \emph{Support} ist das kleinst mögliche Zeitintervall, der alle Samples enthält, die nicht den Wert 0 haben, wie Formel \ref{eq:support} definiert. Die \emph{Dauer} eines Signales ist die Länge des Supportes nach Formel \ref{eq:duration}. Das Signal $x[n] = \cos(n) \: ,0\leq n \leq 3$ hat beispielsweise den Support $[0,3] = \{0,1,2,3\} $ und die Dauer $4$. Ein \emph{unendliches Signal} hat einen unendlichen langen Support, das heißt es gilt Duration$(x) = \infty$. Ein \emph{endliches Signal} hat einen endlichen Support, das heißt Duration$(x) \neq\infty$. Unabhängig von der Endlichkeit oder Unendlichkeit des Supportes wird davon ausgegangen, dass sich alle Signale von negativer bis positiver Unendlichkeit erstrecken. Werden also berechnungen auf Samples eines Signales durchgeführt, die außerhalb seines Supportes liegen, werden diese Samples mit dem Wert 0 angenommen. \cite[S. 24]{dspMichigan}
+Da in dieser Arbeit nur zeit-diskrete Signale von Interesse sind, werden ab diesem Punkt die Definitonen für zeit-kontinuierliche Signale ausgelassen. Der \emph{Support} ist das kleinst mögliche Zeitintervall, der alle Samples enthält, die nicht den Wert 0 haben, wie Formel \ref{eq:support} definiert. Die \emph{Dauer} eines Signales ist die Länge des Supportes nach Formel \ref{eq:duration}. In dieser Arbeit herrscht die Konvention, dass die Länge des Signals kurz mit der Variable $N$ abgekürzt wird. Das Signal $x[n] = \cos(n) \: ,0\leq n \leq 3$ hat beispielsweise den Support $[0,3] = \{0,1,2,3\} $ und die Dauer $4$. Ein \emph{unendliches Signal} hat einen unendlichen langen Support, das heißt es gilt Duration$(x) = \infty$. Ein \emph{endliches Signal} hat einen endlichen Support, das heißt Duration$(x) \neq\infty$. Wird in dieser Arbeit der Support nicht explizit angegeben, gilt bei endlichen Signalen als Konvention $Sup(x) = [0,N-1]$. Unabhängig von der Endlichkeit oder Unendlichkeit des Supportes wird davon ausgegangen, dass sich alle Signale von negativer bis positiver Unendlichkeit erstrecken. Werden also berechnungen auf Samples eines Signales durchgeführt, die außerhalb seines Supportes liegen, werden diese Samples mit dem Wert 0 angenommen. \cite[S. 24]{dspMichigan}
 
 \begin{equation}
 \label{eq:support}
@@ -55,7 +55,7 @@ Da in dieser Arbeit nur zeit-diskrete Signale von Interesse sind, werden ab dies
 \end{equation}
 
 \begin{equation}
-\text{Duration}(x) = sup_e - sup_s + 1
+\text{Duration}(x) = sup_e - sup_s + 1 = N
 \label{eq:duration}
 \end{equation}
 
@@ -228,6 +228,7 @@ Abbildung \ref{img:slidingCorrelation} zeigt ein Beispiel für die Erzeugung von
 	\label{img:slidingCorrelation}
 \end{figure}
 
+%% ToDo: Fix Indexes ! Use convention!
 \section{Faltung}
 
 Die \emph{Faltung} (engl. \emph{Convolution}) ist eine der Zentralen Operationen zwischen zwei Signalen, so wie die Addition oder die Mulitplikation. Sie wird mit dem Symbol $*$ notiert. Sie wird notiert mit $x* h = y$. 
@@ -253,7 +254,7 @@ y = x * h = \big[ \: x[1] * h[1] , \ldots , x[N+M-1] * h[N+M-1] \: \big]
 	\label{img:convolutionExample}
 \end{figure}
 
-Das neutrale Element der Faltung ist der \emph{Delta-Funktion}, definiert in Gleichung \ref{eq:delta} . Das heißt, dass $x * \delta = x$ . Die Faltung ist kommutativ, das heißt $ x * h = h * x = y$ . \cite[S. 107, 113 ]{dspGuide}
+Das neutrale Element der Faltung ist der \emph{Delta-Funktion}, definiert in Gleichung \ref{eq:delta} . Das heißt, dass $x * \delta = x$ . Die Faltung ist kommutativ, das heißt $ x * h = h * x = y$ . \cite[S. 107, 113 ]{dspGuide} Weitehrin ist die Faltung assoziativ, das heißt $(x*y)*z=x*(y*z)$. \cite[S. 133]{dspGuide}
 
 \begin{equation}
 \delta[n] = 
@@ -264,7 +265,7 @@ Das neutrale Element der Faltung ist der \emph{Delta-Funktion}, definiert in Gle
 \end{cases}
 \end{equation}
 
-Eines der wichtigsten Anwendungsgebiete der Faltung ist das Filtern. Weitere Erläuterungen werden in Kapitel \ref{sec:filter} gegeben.
+Eines der wichtigsten Anwendungsgebiete der Faltung sind Filter Weitere Erläuterungen werden in Kapitel \ref{sec:filter} gegeben.
 
 
 \section{Diskrete Fourier-Transformation}
@@ -478,6 +479,13 @@ X[k] = \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot (\cos (2\pi k \frac{n}{N}) -i 
 X[k] =  \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot e^{-i 2\pi k \frac{n}{N}}
 \end{equation}
 
+Diese Gleichungen definieren die komplexe DFT punktweise. Das gesamte Signal des Frequenz-Bereiches $X$ wird nach Gleichung \ref{eq:dftWholeSignal} definiert.
+
+\begin{equation}
+DFT\{x\} = X = \big[ \: [ X[0] \ldots X[N-1] \: \big]
+\label{eq:dftWholeSignal}
+\end{equation}
+
 Die wichtigen Unterschiede zwischen den komplexen DFT nach Formel  \ref{eq:complexDFTrectanulgar} und der reellen DFT nach Formel \ref{eq:forwardDFT} Formelsind (a) die Verwendung des Sinus als komplexe Zahl $i \cdot \sin$, sowie das invertieren seines Vorzeichens und (b) die Summierung über $n = 0\ldots N-1 $ anstatt $n = 0 \ldots N/2$. Der Frequenz-Bereich wird nun durch das complexe Signal $X$ ausgedrückt, welcher die Koeffizienten $A,B$ in seinem Real/Imaginärteil speichert. Der Frequenz-Bereich $X$ hat die selbe Länge wie der Zeit-Bereich $x$, das heißt $\text{Duration}(x) = \text{Duration}(X)$. \cite[S. 571]{dspGuide}
 
 Es gelten die die folgenden Zusammenhänge zwischen der reellen und der komplexen DFT \ref{eq:relationOfRealAndComplexDFT}. Es lässt sich ableiten, dass für die Indexe $k = 0 \ldots N/2$ die Real/Imaginärteil der komplexen DFT $X$ den Koeffizienten $A,B$ der reellen DFT entspricht. Da $|X| = M$, wird in dieser Arbeit $X$ ebenfalls als \emph{Spetrum} bezeichnet. \cite[S. 225 - 226, 555]{dspGuide}
@@ -492,11 +500,16 @@ Es gelten die die folgenden Zusammenhänge zwischen der reellen und der komplexe
 \label{eq:relationOfRealAndComplexDFT}
 \end{equation}
 
-Gleichung \ref{eq:inverseComplexDFTpolar} definiert die dazu inverse Operation, die \emph{komplexe inverse DFT} (iDFT) in \emph{polrarer Notation}. \cite[S. 572]{dspGuide}
+Gleichung \ref{eq:inverseComplexDFTpolar} definiert die dazu inverse Operation, die \emph{komplexe inverse DFT} (iDFT) in \emph{polrarer Notation}. \cite[S. 572]{dspGuide} Gleichung \ref{eq:idftWholeSignal} definiert die inverse DFT zur Synthese des gesamten Signales $x$ auf Basis von Gleichung \ref{eq:inverseComplexDFTpolar}.
 
 \begin{equation}
 \label{eq:inverseComplexDFTpolar}
 x[n] =  \sum_{k = 0}^{N-1}  X[n] \cdot e^{i 2\pi k \frac{n}{N}}
+\end{equation}
+
+\begin{equation}
+iDFT\{X\} = x = \big[ \: [ x[0] \ldots x[N-1] \: \big]
+\label{eq:idftWholeSignal}
 \end{equation}
 
 Die Frage ist: Wenn das Signal des Zeit-Bereiches $x$  aus reellen Zahlen besteht, und das Signal des Frequenz-Bereiches $X$ aus komplexen Zahlen, wie \glqq verschwinden \glqq{} diese komplexen Zahlen wieder bei der Berechnung der inversen DFT? 
@@ -573,6 +586,25 @@ Wie zur Einleitung dieses Kapitels erwähnt wurde, wird die Berechnung der kompl
 
 \section{Filter}
 \label{sec:filter}
+
+Ein \emph{Filter} oder \emph{System} ist ein \emph{Objekt}, welches ein Eingangs-signal $x$ entgegennimmt, um das Ausgangssignal $y$ zu erzeugen. Das Signal $y$ wird in diesem Zusammenhang auch als \emph{Antwort des Systems} bezeichnet. Abbildung \ref{img:system} visualisiert das System als Diagramm.\cite[]{dspMichiganSystems}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/system.png}
+	\caption{Visualisierung eines Systems}
+	\label{img:system}
+\end{figure}
+
+Es gibt zwei Notationen für Systeme, die in dieser Arbeit verwendet wird:
+\begin{itemize}
+\item $x[n]\mapsto y[n]$ meint, dass $x[n]$ die Antwort $y[n]$ erzeugt. Definiert auf das gesamte Signal entspricht dies $x\mapsto y = \big[x[0]\mapsto y[0] \ldots [x[N-1]\mapsto y[N-1]\big]$
+\item $S\{ x[n] \} = y[n]$ definiert das System als Operation $S\{\;\}$. Angewandt auf das gesamte Signal gilt $S\{ x \} = \big[ S\{ x[0] \} \ldots S\{ x[N-1] \} \big] $
+\end{itemize}
+
+Die Gleichungen \ref{eq:dftWholeSignal} und \ref{eq:idftWholeSignal} haben von der Zweiten Notation gebrauch gemacht. 
+
+
 
 \section{akustische Modellierung der menschlichen Stimme}
 \section{Feststellung von Periodizität in Signalen}
