@@ -430,9 +430,9 @@ Ein Schlussbemerkung: In der Einleitung dieses Kapitels wurde erwähnt, dass die
 \subsection{Komplexe DFT}
 \label{sec:comDFT}
 
-Gleichwohl die in Kapitel \ref{sec:realDFT} vorgestellte \emph{reelle DFT} hilft beim Verständnis des Frequenz-Bereiches hilft, ist die Berrechnung der DFT nach Formel \ref{eq:forwardDFT} Rechnerisch zu ineffizient, um in Echtzeit durchgeführt zu werden. Der am weitesten verbreitete Algorithmus zur Berechnung des Frequenz-Bereiches, die \emph{Fast Fouerier-Transformation} erlaubt hingegen die Berechnung der DFT in Echtzeit. Da die FFT auf der \emph{complexen} Variante der DFT basiert, wird sie an dieser Stelle vorgestellt. 
+Gleichwohl die in Kapitel \ref{sec:realDFT} vorgestellte \emph{reelle DFT} hilft beim Verständnis des Frequenz-Bereiches hilft, ist die Berrechnung der DFT nach Formel \ref{eq:forwardDFT} Rechnerisch zu ineffizient, um in Echtzeit durchgeführt zu werden. Der am weitesten verbreitete Algorithmus zur Berechnung des Frequenz-Bereiches, die \emph{Fast Fouerier-Transformation} erlaubt hingegen die Berechnung der DFT in Echtzeit. Da die FFT auf der \emph{complexen} Variante der DFT basiert, wird sie an dieser Stelle vorgestellt. \cite[S. 225]{dspGuide}
 
-Die Basis der komplexen DFT ist die \emph{Eulerformel}, definiert in Formel \ref{eq:eulersRelation}. Sie erlaubt die Darstellung des Funktions-Werte einer Cosinus-Welle und einer Sinus-Welle der selben Frequenz und Amplitude als den Real/Imaginärteil eines komplexen Exponenten der Eulerschen Zahl $e$. Gleichung \ref{eq:eulersRelationDetailed} zeigt, dass die Isolierung des Real/Imaginärteil von $e^{ix}$ Zugriff auf Funktionswert der entsprechenden Cosinus/Sinuswelle erlaubt. Auf einen Beweis der Eulergleichung wird an dieser Stelle aus Platzgründen verzichtet. Abbildung \ref{img:eulersRelation} visualisiert diesen Zusammenhang.
+Die Basis der komplexen DFT ist die \emph{Eulerformel}, definiert in Formel \ref{eq:eulersRelation}. Sie erlaubt die Darstellung des Funktions-Werte einer Cosinus-Welle und einer Sinus-Welle der selben Frequenz und Amplitude als den Real/Imaginärteil eines komplexen Exponenten der Eulerschen Zahl $e$. Gleichung \ref{eq:eulersRelationDetailed} zeigt, dass die Isolierung des Real/Imaginärteil von $e^{ix}$ Zugriff auf Funktionswert der entsprechenden Cosinus/Sinuswelle erlaubt. Außerdem werden die Funktionen $|e^{ix}|$ und $\phi(e^{ix})$ definiert. Abbildung \ref{img:eulersRelation} visualisiert diese Zusammenhänge. Auf einen Beweis der Eulergleichung wird an dieser Stelle aus Platzgründen verzichtet. \cite[S. 569]{dspGuide}
 
 \begin{equation}
 e^{ix} = \cos(x) + i\sin(x)
@@ -440,17 +440,19 @@ e^{ix} = \cos(x) + i\sin(x)
 \end{equation}
 
 \begin{equation}
-\begin{split}
+\begin{gathered}
 \Re(e^{ix}) = \cos(x) \\
-\Im(e^{ix}) = \sin(x) 
-\end{split}
+\Im(e^{ix}) = \sin(x)  \\
+|e^{ix}| = \sqrt{\cos(x)^2 + \sin(x)^2} \\
+\phi (e^{ix}|) = \arctan (\frac{\sin(x)}{\cos(x)})
+\end{gathered}
 \label{eq:eulersRelationDetailed}
 \end{equation}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\textwidth]{bilder/eulersRelation.png}
-	\caption{Visualisierung der Eulergleichung. Es wurde eine zuästzliche Zeit-Achse eingeführt, welche den Wert von $x$ als Funktionswert der Zeit darstellt\cite[S. 63]{dspMichigan}}
+	\includegraphics[width=0.5\textwidth]{bilder/eulersRelation02.png}
+	\caption{Visualisierung der Eulergleichung}
 	\label{img:eulersRelation}
 \end{figure}
 
@@ -464,7 +466,7 @@ Dementsprechend lassen sich die Basisfunktionen aus Gleichung \ref{eq:baseFuncti
 \label{eq:complexBaseFunktion}
 \end{equation}
 
-Auf Basis dieses Zusammenhanges wird die \emph{komplexe DFT} in \emph{kartesischer Notation} nach Formel \ref{eq:complexDFTrectanulgar} definiert, das heißt die Transformation vom Zeit-Bereich in den Frequenzbereich mit Hilfe komplexer Zahlen. Formel \ref{eq:complexDFTpolar} definiert die komplexe DFT in der kompakteren, \emph{polaren Notation}.
+Auf Basis dieses Zusammenhanges wird die \emph{komplexe DFT} in \emph{kartesischer Notation} nach Formel \ref{eq:complexDFTrectanulgar} definiert, das heißt die Transformation vom Zeit-Bereich in den Frequenzbereich mit Hilfe komplexer Zahlen. Formel \ref{eq:complexDFTpolar} definiert die komplexe DFT in der kompakteren, \emph{polaren Notation}. \cite[S. 570]{dspGuide}
 
 \begin{equation}
 \label{eq:complexDFTrectanulgar}
@@ -476,7 +478,9 @@ X[k] = \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot (\cos (2\pi k \frac{n}{N}) -i 
 X[k] =  \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot e^{-i 2\pi k \frac{n}{N}}
 \end{equation}
 
-Die wichtigen Unterschiede zwischen den komplexen DFT nach Formel  \ref{eq:complexDFTrectanulgar} und der reellen DFT nach Formel \ref{eq:forwardDFT} Formelsind (a) die Verwendung des Sinus als komplexe Zahl $i \cdot \sin$, sowie das invertieren seines Vorzeichens und (b) die Summierung über $n = 0\ldots N-1 $ anstatt $n = 0 \ldots N/2$. Der Frequenz-Bereich wird nun durch das complexe Signal $X$ ausgedrückt, welcher die Koeffizienten $A,B$ in seinem Real/Imaginärteil speichert. Der Frequenz-Bereich $X$ hat die selbe Länge wie der Zeit-Bereich $x$, das heißt $\text{Duration}(x) = \text{Duration}(X)$ Es gelten die die folgenden Zusammenhänge zwischen der reellen und der komplexen DFT \ref{eq:relationOfRealAndComplexDFT}. Es lässt sich ableiten, dass für die Indexe $k = 0 \ldots N/2$ die Real/Imaginärteil der komplexen DFT $X$ den Koeffizienten $A,B$ der reellen DFT entspricht. Da $|X| = M$, wird in dieser Arbeit $X$ ebenfalls als \emph{Spetrum} bezeichnet. 
+Die wichtigen Unterschiede zwischen den komplexen DFT nach Formel  \ref{eq:complexDFTrectanulgar} und der reellen DFT nach Formel \ref{eq:forwardDFT} Formelsind (a) die Verwendung des Sinus als komplexe Zahl $i \cdot \sin$, sowie das invertieren seines Vorzeichens und (b) die Summierung über $n = 0\ldots N-1 $ anstatt $n = 0 \ldots N/2$. Der Frequenz-Bereich wird nun durch das complexe Signal $X$ ausgedrückt, welcher die Koeffizienten $A,B$ in seinem Real/Imaginärteil speichert. Der Frequenz-Bereich $X$ hat die selbe Länge wie der Zeit-Bereich $x$, das heißt $\text{Duration}(x) = \text{Duration}(X)$. \cite[S. 571]{dspGuide}
+
+Es gelten die die folgenden Zusammenhänge zwischen der reellen und der komplexen DFT \ref{eq:relationOfRealAndComplexDFT}. Es lässt sich ableiten, dass für die Indexe $k = 0 \ldots N/2$ die Real/Imaginärteil der komplexen DFT $X$ den Koeffizienten $A,B$ der reellen DFT entspricht. Da $|X| = M$, wird in dieser Arbeit $X$ ebenfalls als \emph{Spetrum} bezeichnet. \cite[S. 225 - 226, 555]{dspGuide}
 
 \begin{equation}
 \begin{gathered}
@@ -488,12 +492,31 @@ Die wichtigen Unterschiede zwischen den komplexen DFT nach Formel  \ref{eq:compl
 \label{eq:relationOfRealAndComplexDFT}
 \end{equation}
 
-Die \emph{inverse komplexe DFT} kann, genau wie die komplexe DFT, sowohl in polarer als auch in kartesischer Notation definiert werden. Gleichung \ref{eq:inverseComplexDFTpolar} definiert die iDFT in polarer Notation und Gleichung \ref{eq:inverseComplexDFTrectangular} in kartesischer Notation. Die polare Notation ist kompakter und die Variante, in der die komplexe inverse DFT meistens angegeben wird. Die kartesische Notation hingegen erleichtert das Verständnis. 
+Gleichung \ref{eq:inverseComplexDFTpolar} definiert die dazu inverse Operation, die \emph{komplexe inverse DFT} (iDFT) in \emph{polrarer Notation}. \cite[S. 572]{dspGuide}
 
 \begin{equation}
 \label{eq:inverseComplexDFTpolar}
 x[n] =  \sum_{k = 0}^{N-1}  X[n] \cdot e^{i 2\pi k \frac{n}{N}}
 \end{equation}
+
+Die Frage ist: Wenn das Signal des Zeit-Bereiches $x$  aus reellen Zahlen besteht, und das Signal des Frequenz-Bereiches $X$ aus komplexen Zahlen, wie \glqq verschwinden \glqq{} diese komplexen Zahlen wieder bei der Berechnung der inversen DFT? 
+
+Genau wie das Signal des Zeitbereiches $x$ als unendlich und periodische außerhalb des transformierten Bereiches $x[0] \ldots x[N-1]$ angenommen wird, ist auch der Frequenz-Bereich unendlich und periodisch außerhalb des Bereiches $X[0] \ldots X[N-1] $. Gleichung  \ref{eq:periodicityOfDFT}  definiert diese Aussage. \cite[S. 572]{dspGuide}
+
+\begin{equation}
+\label{eq:periodicityOfDFT}
+\forall k \in \mathbb{Z}: X[n+kN] = X[n]
+\end{equation}
+
+Daraus lässt sich Schlussfolgern, dass $X[-N/2] \ldots X[-1] = X[N/2] ... X[N-1]$. Die Werte $X[-N/2] ... X[-1]$ werden als die \emph{negativen Frequenzen} bezeichnet. Dazu kommt der Fakt, dass der Frequenz-Bereich in Bezug auf das Interval $X[-N/2] \ldots X[N/2]$ eine Symmetrie aufweist: Der Realteil ist Achsensymmetrisch an der Stelle $X[0]$, und der Imaginäre Teil Punktsymmetrisch. Formel \ref{eq:symmetrieOfDFT} definiert diese Symmetrie, und Abbildung \ref{img:symmetrieInDFT} visualisiert sie Anhand eines Beispiels.  Diese Symmetrie tritt nur auf, falls das Signal im Zeitbereich nur aus Reellen Zahlen besteht, was bei der Arbeit mit  herkömmlichen akustischen Signalen immer erfüllt ist. Auf die Herleitung dieser Symmetrie wird an dieser Stelle aus Platzgründen verzichtet. \cite[S. 574]{dspGuide}
+
+
+\begin{equation}
+\label{eq:symmetrieOfDFT}
+\forall n = 0 \ldots N/2 : \; \Re (X[n]) = \Re(X[-n]) \; \wedge \; \Im (X[n]) = -\Im(X[-n]) 
+\end{equation}
+
+Diese Symmetrie ist der Grund dafür, warum bei der inversen DFT nach Formel \ref{eq:inverseComplexDFTpolar} nach der Synthese alle Imaginärteile verschwinden. Zum besseren Verständnis wird die polare Notation der komplexen inversen DFT zur \emph{kartesischen Notation} nach Formel \ref{eq:inverseComplexDFTrectangular} erweitert .\cite[S. 573]{dspGuide}
 
 \begin{equation}
 \begin{split}
@@ -505,12 +528,41 @@ x[n] =  \sum_{k = 0}^{N-1}
 \label{eq:inverseComplexDFTrectangular}
 \end{equation}
 
-Die Frage ist: Wenn das Signal des Zeit-Bereiches$x$  aus reellen Zahlen besteht, und das Signal des Frequenz-Bereiches $X$ aus komplexen Zahlen, wie \glqq verschwinden \glqq{} diese komplexen Zahlen wieder bei der Berechnung der inversen DFT? 
+Das weitere vorgehen wird anhand des Beispiels aus Abbildung \ref{img:symmetrieInDFT}  erklärt. Aus Formel \ref{eq:inverseComplexDFTrectangular} geht  hervor, dass jeder Realteil von $X$ zu einer reellen Cosinuswelle und einer imaginären Sinuswelle beiträgt. Jeder Imaginärteil trägt zu einer reellen Sinuswelle und einer imaginären Cosinuswelle bei. Angenommen, im Zeit-Bereich soll eine Cinuswelle mit der Frequenz $f/f_s = 0.23$ und der Amplitude 1 synthetisiert werden, also $ x = 1 \cdot \cos(2  \pi 0.23 n)$. Für die Synthese wird sowohl eine positive als auch eine quenz benötigt. Marker 1 in Abbildung \ref{img:symmetrieInDFT} erzeugt somit eine relle Cosinuswelle und eine imaginäre Sinuswelle im Zeitbereich mit der Frequenz $0.23$ und der Ampltitude $0.5$, also $0.5 \cdot \cos(2  \pi 0.23 n) + i \sin(2  \pi 0.23 n)$. Genau so trägt die Negative Frequenz von $-0.23$ bei Marker 2 zu einer reellen Cosinus-Welle und einer imaginären Sinuswelle im Frequenzbereich bei, also $0.5 \cdot \cos(2  \pi (-0.23) n) + i \sin(2  \pi (-0.23) n)$. Nach der Beziehung $\cos(x) = \cos(-x) $ und $\sin(x) = -\sin(-x) $ lässt sich der Beitrag der negativen Frequenzen umformen zu $0.5 \cdot \cos(2  \pi 0.23 n) - i \sin(2  \pi 0.23 n)$. Die Addition dieser beiden Beiträge des reelen und des imaginären Teils, welche bei der Synthese vorgenommen wird, wird in Formel \ref{eq:explainIDFTstep01} zusammengefasst. Wie zu sehen ist, addieren sich die reellen Cosinuswellen, während sich die imaginären  Sinuswellen auslöschen. \cite[S. 573- 574]{dspGuide}
 
-Genau wie das Signal des Zeitbereiches $x$ als unendlich und periodische außerhalb des transformierten Bereiches $x[0] \ldots x[N-1]$ angenommen wird, ist auch der Frequenz-Bereich unendlich periodisch außerhalb des Bereiches $X[0] \ldots X[N-1] $. Daraus lässt sich Schlussfolgern, dass $X[-N/2] \ldots X[-1] = X[N/2] ... X[N-1]$. Die Werte $X[-N/2] ... X[-1]$ werden als die \emph{negativen Frequenzen} bezeichnet. Dazu kommt der Fakt, dass der Frequenz-Bereich in Bezug auf das Interval $X[-N/2] \ldots X[N/2]$ eine Symmetrie aufweist: Der Realteil ist Achsensymmetrisch an der Stelle $X[0]$, und der Imaginäre Teil Punktsymmetrisch. Diese Symmetrie tritt nur auf, falls das Signal im Zeitbereich nur aus Reellen Zahlen besteht, was bei der Arbeit mit \glqq normalen Signalen\grqq{} immer erfüllt ist. Auf die Herleitung dieser Symmetrie wird an dieser Stelle aus Platzgründen verzichtet. 
-
-
-Abbildung 	\ref{img:complexDFTOverview} gibt einen Überblick über die Indexierung bei der komplexen DFT.
+\begin{equation}
+\begin{split}
+0.5 \cdot \cos(2  \pi 0.23 n) + i \: 0.5 \cdot \sin(2  \pi 0.23 n) \\
++ \quad 0.5 \cdot \cos(2  \pi 0.23 n) - i \:  0.5 \cdot \sin(2  \pi 0.23 n) \\
+\midrule
+1 \cdot  \cos(2  \pi 0.23 n) \qquad \qquad \qquad \qquad \quad \;
+\end{split}
+\label{eq:explainIDFTstep01}
+\end{equation}
+ 
+ In der selben weise kann eine reele Sinuswelle im Zeitbereich mit Hilfe der imaginären Werte von $X$ synthetisiert werden. Marker 3 zeigt die positive Frequenz $0.23$ und 4 die Negative Frequenz $-0.23$ im Imaginärteil von $X$. Folgt man dem selben Prinzip der oben vorgestellten Rechnung zur Synthese einer Cosinuswelle, ergibt sich die in Gleichung \ref{eq:explainIDFTstep02} Addition. Dieses mal löschen sich die Cosinuswellen aus, während die Sinuswellen addiert werden. Außerdem ist zu sehen, dass das Vorzeichen der Sinuswelle invertiert wird.  Diese Invertierung muss entweder bei der Synthese oder der Dekomposition mit einbezogen werden und ist der Grund für die invertierung des Vorzeichens vor dem Sinus in Gleichung \ref{eq:complexDFTrectanulgar}. \cite[S. 574]{dspGuide} 
+ 
+ \begin{equation}
+ \begin{split}
+-\; 0.5 \cdot \sin(2  \pi 0.23 n) - i \: 0.5 \cdot \cos(2  \pi 0.23 n) \\
+-\; 0.5 \cdot \sin(2  \pi 0.23 n) + i \:  0.5 \cdot \cos(2  \pi 0.23 n) \\
+\midrule
+-\quad 1 \cdot  \sin (2  \pi 0.23 n) \qquad \qquad \qquad \qquad \quad \: \:
+ \end{split}
+ \label{eq:explainIDFTstep02}
+ \end{equation}
+ 
+Die hier vorgestellte Beispielrechnung verdeutlicht, wie die Symmetrie des Frequenzbereiches genutzt wird, um bei der Summation einer positiven und der entsprechenden negativen Frequenz zu einem rein reellwerteigen Signal im Frequenz-Bereich zu führen. Wird der Frequenzbereich jedoch durch den Menschen betrachtet, wird , wie in Kapitel \ref{sec:realDFT} beschrieben, dass als \emph{Spectrum} bezeichnete $M$-Signal verwendet, definiert in Formel \ref{eq:relationOfRealAndComplexDFT} als der Absolutwert des komplexen Frequenz-Bereiches. Dazu wird die Betrachtung auf den Indexbereich $n = [0 \ldots N/2]$ eingeschränkt, was dem Index-Bereich der reellen DFT entspricht, da die negativen Frequenzen aufgrund ihrer Symmetrie bei der Betrachtung redundante Informationen darstellen. Daraus ergibt sich, dass es für die Erzeugung des Spectrums rein mathematisch betrachtet unerheblich ist, ob die reelle oder die komplexe DFT verwendet wird. Abbildung \ref{img:complexDFTOverview} gibt einen zusammenfassenden Überblick über die Indexierung der des Zeit- und Frequenzbereiches bei verwendung der komplexen DFT. \cite[S. 225 - 226]{dspGuide}
+ 
+ \begin{figure}[h]
+ 	\centering
+ 	\includegraphics[width=0.7\textwidth]{bilder/dftSymmetrie.png}
+ 	\caption{Symmetrie des Frequenzbereiches in den Indexen $n = [-N/2 = -0.5*N ,\ldots ,  N/2 = 0.5*N]$. Die Marker 1 und 2 haben eine Amplitude von $+0.5$, der Marker 3 hat eine Amplitude von $-0.5$ und Marker 4 eine Amplitude von $+0.5$ }
+ 	\label{img:symmetrieInDFT}
+ \end{figure} 
+ 
+ 
+Wie zur Einleitung dieses Kapitels erwähnt wurde, wird die Berechnung der komplexen DFT und inversen DFT mit Hilfe eines Algorithmus implementiert, der als \emph{Fast Fourier Transformation} (\textbf{FFT} bzw. \textbf{iFFT}). Die Funktionsweise dieses Algorithmus wird an dieser Stelle aus Platzgründen nicht näher erläutert. Schlussendlich ist das Ergebnis der FFT bzw. iFFT der Frequenz-/Zeit-Bereich nach den in diesen Kapitel vorgestellten definitionen. Die FFT fordert als einzige voraussetzung, dass die Länge des Signals als Potenz von zwei gewählt wird, das heißt Duration$(x) = N = 2^k$. \cite[S. 225 - 226]{dspGuide}
 
 \begin{figure}[h]
 	\centering
@@ -518,17 +570,6 @@ Abbildung 	\ref{img:complexDFTOverview} gibt einen Überblick über die Indexier
 	\caption{Überblick über die komplexe DFT und inverse DFT}
 	\label{img:complexDFTOverview}
 \end{figure}
-
-
-%Durch das Umformen der Eulergleichung lassen sich Cosinus- und Sinuswellen allein durch komplexe Exponenten von $e$ darstellen, zu sehen in Formel \ref{eq:complexSineCosine} .
-
-%\begin{equation}
-%\begin{gathered}
-%\cos(x) = \frac{e^{ix} + e^{-ix}}{2} = \frac{1}{2} e^{-ix} + \frac{1}{2} e^{ix} \\
-%\sin(x) = \frac{e^{ix} - e^{-ix}}{2i} = \frac{1}{2} ie^{-ix} - \frac{1}{2} ie^{ix}
-%\end{gathered}
-%\label{eq:complexSineCosine}
-%\end{equation}
 
 \section{Filter}
 \label{sec:filter}
