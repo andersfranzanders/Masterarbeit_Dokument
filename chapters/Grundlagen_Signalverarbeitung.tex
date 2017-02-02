@@ -5,16 +5,16 @@ Ein \emph{Signal} ist eine Funktion eines Parameters mit numerischen Wertebereic
 %\emph{ } 
 \medskip
 
- Bei einem zeit-kontinuierlichen Signal $x( t )$ ist der Wertebereich kontinuierlich, wie in Formel  \ref{eq:time-cont-signal} definiert. Bei einem zeit-diskreten Signal $x[n]$ ist der Wertebreich diskret, wie in Formel \ref{eq:time-disc-signal} definiert. So beschreibt beispielsweise $x[17] = s$ den Wert zur Zeit $n = 17$. \glqq Zeit\grqq{} hat in diesem Kontext keine Einheit. Ein Wert wird auch als \emph{Sample} oder \emph{Amplitude} bezeichnet. $x[17] $ meint somit das 17. Sample des Signals. Abbildung \ref{img:aSignal} zeigt Beispiele für ein zeit-kontinuierliches und ein zeit-diskretes Signal. \cite[S. 22 - 23]{dspMichigan}
+ Bei einem zeit-kontinuierlichen Signal $x( \: )$ ist der Wertebereich kontinuierlich, wie in Formel  \ref{eq:time-cont-signal} definiert. Bei einem zeit-diskreten Signal $x[\;]$ ist der Wertebreich diskret, wie in Formel \ref{eq:time-disc-signal} definiert. Abbildung \ref{img:aSignal} zeigt Beispiele für ein zeit-kontinuierliches und ein zeit-diskretes Signal.  So beschreibt beispielsweise $x[17] = s$ den Wert zur Zeit $n = 17$. \glqq Zeit\grqq{} hat in diesem Kontext keine Einheit. Ein Wert wird auch als \emph{Sample} oder \emph{Amplitude} bezeichnet. \cite[S. 22 - 23]{dspMichigan}
 
  \begin{equation}
-x(t) = s \; , t \in \mathbb{R}
+x(\;) \Longleftrightarrow \forall t \in \mathbb{R} :\ x(t) = s
 \label{eq:time-cont-signal}
 \end{equation}
 
 
 \begin{equation}
-x[n] = s \; , n \in \mathbb{Z} 
+x[\;] \Longleftrightarrow \forall n \in \mathbb{Z} :\ x[n] = s
 \label{eq:time-disc-signal}
 \end{equation}
 
@@ -44,25 +44,29 @@ f_s > 2 \cdot f_{max}
 \label{eq:shannonTheorem}
 \end{equation}	
 	
-Da in dieser Arbeit nur zeit-diskrete Signale von Interesse sind, werden ab diesem Punkt die Definitonen für zeit-kontinuierliche Signale ausgelassen. Der \emph{Support} ist das kleinst mögliche Zeitintervall, der alle Samples enthält, die nicht den Wert 0 haben, wie Formel \ref{eq:support} definiert. Die \emph{Dauer} eines Signales ist die Länge des Supportes nach Formel \ref{eq:duration}. In dieser Arbeit herrscht die Konvention, dass die Länge des Signals kurz mit der Variable $N$ abgekürzt wird. Das Signal $x[n] = \cos(n) \: ,0\leq n \leq 3$ hat beispielsweise den Support $[0,3] = \{0,1,2,3\} $ und die Dauer $4$. Ein \emph{unendliches Signal} hat einen unendlichen langen Support, das heißt es gilt Duration$(x) = \infty$. Ein \emph{endliches Signal} hat einen endlichen Support, das heißt Duration$(x) \neq\infty$. Wird in dieser Arbeit der Support nicht explizit angegeben, gilt bei endlichen Signalen als Konvention $Sup(x) = [0,N-1]$. Unabhängig von der Endlichkeit oder Unendlichkeit des Supportes wird davon ausgegangen, dass sich alle Signale von negativer bis positiver Unendlichkeit erstrecken. Werden also berechnungen auf Samples eines Signales durchgeführt, die außerhalb seines Supportes liegen, werden diese Samples mit dem Wert 0 angenommen. \cite[S. 24]{dspMichigan}
+Da in dieser Arbeit nur zeit-diskrete Signale von Interesse sind, werden ab diesem Punkt die Definitonen für zeit-kontinuierliche Signale ausgelassen. In den beiden Hauptquellen dieser Arbeit, \cite{dspGuide} und \cite{dspMichigan} ist eine Uneinigkeit und Inkonsistent über die symbolische Bezeichung von Signal und Sample festzustellen.  In \cite{dspMichigan} wird die Konvention eingeführt, mit $x[n]$ das gesamte Signal, als auch ein Sample des des Signals zu bezeichnen, was an einigen kritischen Stellen zu unklaren Definitionen führt. In \cite{dspGuide} wird eingeführt, dass das gesamte Signal als $x[\;]$, und ein Sample als $x[n]$ bezeichnet wird. Diese Definition wird im Buch jedoch inkonsistent verwendet und an einigen Stellen $x[n]$ als Bezeichung für das gesamte Signal verwendet.  In dieser Arbeit wird die Konvention eingeführt, mit $x[\;]$ das gesamte Signal, und mit $x[n]$ ein Sample dieses Signals zu bezeichen. Dies führt zwangsweise zur Abwandlung einiger Formeln der beiden Hauptquellen dieses Grundlagenteils, um die Konsistenz beizubehalten.
+
+Der \emph{Support} ist das kleinst mögliche Zeitintervall, der alle Samples enthält, die nicht den Wert 0 haben, wie Formel \ref{eq:support} definiert. 
 
 \begin{equation}
 \label{eq:support}
 \begin{split}
-\text{Sup}(x) = [sup_s, sup_e] \quad , sup_s, sup_e \in \mathbb{Z} \\,  x[sup_s] \neq 0 \:  \wedge \:  x[sup_e] \neq 0 \: \wedge \: \forall n \
+\text{Sup}(x[\;]) = [sup_s, sup_e] \quad , sup_s, sup_e \in \mathbb{Z} \\,  x[sup_s] \neq 0 \:  \wedge \:  x[sup_e] \neq 0 \: \wedge \: \forall n \
 \not\in [sup_s, sup_e] : x[n] = 0
 \end{split}
 \end{equation}
 
+Die \emph{Dauer} eines Signales ist die Länge des Supportes nach Formel \ref{eq:duration}. In dieser Arbeit herrscht die Konvention, dass die Länge des Signals kurz mit der Variable $N$ abgekürzt wird. Das Signal $x[n] = \cos(n) \: ,0\leq n \leq 3$ hat beispielsweise den Support $[0,3] = \{0,1,2,3\} $ und die Dauer $4$. Ein \emph{unendliches Signal} hat einen unendlichen langen Support, das heißt es gilt Length$(x[\;]) = \infty$. Ein \emph{endliches Signal} hat einen endlichen Support, das heißt Length$(x[\;]) \neq\infty$. Wird in dieser Arbeit der Support nicht explizit angegeben, gilt bei endlichen Signalen als Konvention $Sup(x[\;]) = [0,N-1]$. Unabhängig von der Endlichkeit oder Unendlichkeit des Supportes wird davon ausgegangen, dass sich alle Signale von negativer bis positiver Unendlichkeit erstrecken. Werden also Berechnungen auf Samples eines Signales durchgeführt, die außerhalb seines Supportes liegen, werden diese Samples mit dem Wert 0 angenommen. \cite[S. 24]{dspMichigan}
+
 \begin{equation}
-\text{Duration}(x) = sup_e - sup_s + 1 = N
+\text{Length}(x[\;]) = sup_e - sup_s + 1 = N
 \label{eq:duration}
 \end{equation}
 
-Ein Signal gilt als \emph{periodisch}, wenn Formel \ref{eq:periodicity} erfüllt ist. Der Parameter $N$ wird als \text{Periode} von $x$ bezeichnet. Wenn ein Signal mit $N$ periodisch ist, dann ist es auch mit $2N, 3N, \ldots $ periodisch. Die Grundfrequenz $N_0$ ist das kleinste N, für das Formel \ref{eq:periodicity} erfüllt ist. Abbildung \ref{img:periodicSic} zeigt ein Beispiel für ein nicht-periodisches und ein periodisches Signal. \cite[S. 24]{dspMichigan}
+Ein Signal gilt als \emph{periodisch}, wenn Formel \ref{eq:periodicity} erfüllt ist. Der Parameter $N$ wird als \text{Periode} von $x[\;]$ bezeichnet. Wenn ein Signal mit $N$ periodisch ist, dann ist es auch mit $2N, 3N, \ldots $ periodisch. Die Grundfrequenz $N_0$ ist das kleinste N, für das Formel \ref{eq:periodicity} erfüllt ist. Abbildung \ref{img:periodicSic} zeigt ein Beispiel für ein nicht-periodisches und ein periodisches Signal. \cite[S. 24]{dspMichigan}
 
 \begin{equation}
-\exists N : \forall n \in Sup : x[n+N] = x[n] \rightarrow \text{Periodisch}(x) = true
+\exists N : \forall n \in Sup : x[n+N] = x[n] \rightarrow \text{Periodisch}(x[n]) = true
 \label{eq:periodicity}
 \end{equation}
 
@@ -79,33 +83,42 @@ Im folgenden wird ein überblick über die häufig verwendete Signaleigenschafte
 
 \begin{enumerate}[leftmargin=*]
 	
-\item Der \textbf{Maximalwert / Minimalwert} beschreibt den höchsten / niedrigsten in  $x$ enthaltenen Wert nach den Formel $\max(x)$ und $\min(x)$.
-	
-\item Der \textbf{Durchschnittswert / Average Value} beschreibt den durchschnittlichen Wert aller Samples von $x$ nach Formel \ref{eq:avg}. Dieser Durchschnittswert wird über dem Intervall $[n_1, n_2]$  berechnet.
+\item Der \textbf{Maximalwert / Minimalwert} beschreibt den höchsten / niedrigsten in  $x[\;]$ enthaltenen Wert nach den Formel \ref{eq:maxAndMin}.
 
 \begin{equation}
-\text{AVG}(x) = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]
+\begin{gathered}
+ \max(x[\;]) = \max\limits_{n=0\ldots N-1}(x[n]) \\ 
+ \min(x[\;])= \min\limits_{n=0\ldots N-1}{n}(x[n])
+\end{gathered}
+\label{eq:maxAndMin}
+\end{equation}
+
+	
+\item Der \textbf{Durchschnittswert / Average Value} beschreibt den durchschnittlichen Wert aller Samples von $x[\;]$ nach Formel \ref{eq:avg}. Dieser Durchschnittswert wird über dem Intervall $[n_1, n_2]$  berechnet.
+
+\begin{equation}
+\text{AVG}(x[\;]) = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]
 \label{eq:avg}
 \end{equation}
 
 \item Der \textbf{Mean Squared Value} (\emph{MSV}) beschreibt den quadrierten Durchschnittswert über eine bestimmtes Interval nach Formel \ref{eq:msv}. Er wird auch als \emph{durchschnittliche Energie} oder \emph{average Power} bezeichnet.
 
 \begin{equation}
-\text{MSV}(x) = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]^2
+\text{MSV}(x[\;]) = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]^2
 \label{eq:msv}
 \end{equation}
 
 \item Das \textbf{Root Mean Square} (\emph{RMS}) ist die Wurzel des Mean Squared Value nach Formel\ref{eq:rms}. Der RMS findet häufiger Anwendung als der MSV, da er besser ins Verhältnis zu den Werten des Signals gesetzt werden kann. Er wird im Deutschen auch als \textbf{Effektivwert} oder \textbf{Durchschnittsleistung} bezeichnet. Da die deutschen Begriffe in einigen Quellen jedoch auch für den MSV verwendet werden, wird an dieser Stelle nur mit den englischen Begriffen gearbeitet.
 
 \begin{equation}
-\text{RMS}(x) = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]^2}
+\text{RMS}(x[\;]) = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]^2}
 \label{eq:rms}
 \end{equation}
 
 \item Die \textbf{Energie / Energy} bezeichnet die \glqq Stärke \grqq{} eines Signals über einen bestimmten Intervall nach Formel \ref{eq:energy}. Sie entspricht dem MSV-Wert multipliziert der Länge des Intervalls. \cite[S. 27-28]{dspMichigan}
 
 \begin{equation}
-\text{E}(x) = \sum_{n = n_1}^{n_2} x[n]^2
+\text{E}(x[\;]) = \sum_{n = n_1}^{n_2} x[n]^2
 \label{eq:energy}
 \end{equation}
 	
@@ -118,7 +131,15 @@ Im folgenden wird ein überblick über die häufig verwendete Signaleigenschafte
 	\label{img:sigStats}
 \end{figure}
 
-Die Addition und Multiplikation wird bei Signalen komponentenweise durchgeführt, das heißt $x_1[n] + x_2[n] = y[n] $ und $x_1[n] \cdot x_2[n] = y[n] $. Abbildung \ref{img:addAndMultSig} visualisiert diese Operationen. 
+Die Addition und Multiplikation wird bei Signalen komponentenweise durchgeführt, wie Formel \label{eq:addAndMult} definiert.  Abbildung \ref{img:addAndMultSig} visualisiert diese Operationen. 
+
+\begin{equation}
+\begin{gathered} 
+x_1[\;] + x_2[\;] = y[\;]\Longleftrightarrow \mathop{\forall}_{n = n_1}^{n_2}  :  x_1[n] + x_2[n] = y[n] \\
+x_1[\;] \cdot x_2[\;] = y[\;]\Longleftrightarrow \mathop{\forall}_{n = n_1}^{n_2}  :  x_1[n] \cdot x_2[n] = y[n]
+\end{gathered}
+\label{eq:addAndMult}
+\end{equation}
 
 \begin{figure}[h]
 	\centering
@@ -129,41 +150,41 @@ Die Addition und Multiplikation wird bei Signalen komponentenweise durchgeführt
 
 \section{Fehlersignale}
 
-Die Addition wird unter anderem für die Modellierung des Einflusses von Störungen benötigt. Angenommen, ein Signal $x$ wird übertragen, auf dem Übertragungsweg jedoch durch ein anderes Störsignal wie z.B. Rauschen $e$ überlagert. Dieses Störsignal wird in diesem Zusammenhang auch als \glqq{Fehler-Signal} bezeichnet. Das resultierende Signal $x'$ wird nach Formel \ref{eq:sigErrorAddition} berechnet. Kennt man sowohl das Eingangssignal $x$ als auch das Ausgangssignal $x'$, kann das Störsignal $e$ nach Formel \ref{eq:calErrorSig} berechnet werden.
+Die Addition wird unter anderem für die Modellierung des Einflusses von Störungen benötigt. Angenommen, ein Signal $x[\;]$ wird übertragen, auf dem Übertragungsweg jedoch durch ein anderes Störsignal wie z.B. Rauschen $e[\;]$ überlagert. Dieses Störsignal wird in diesem Zusammenhang auch als \glqq{Fehler-Signal} bezeichnet. Das resultierende Signal $x'[\;]$ wird nach Formel \ref{eq:sigErrorAddition} berechnet. Kennt man sowohl das Eingangssignal $x[\;]$ als auch das Ausgangssignal $x'[\;]$, kann das Störsignal $e[\;]$ nach Formel \ref{eq:calErrorSig} berechnet werden.
 
 \begin{equation}
-x'[n] = x[n] + e[n]
+x'[\;] \Longleftrightarrow \mathop{\forall}_{n = n_1}^{n_2} :\ x'[n] = x[n] + e[n]
 \label{eq:sigErrorAddition}
 \end{equation}
 
 \begin{equation}
-e[n] = x'[n] -x[n]
+e[\;] \Longleftrightarrow \mathop{\forall}_{n = n_1}^{n_2} :\ e[n] = x'[n] -x[n]
 \label{eq:calErrorSig}
 \end{equation}
 
- Errechnet man nun den den MSV- oder RMS-Wert des Störsignales $e$, gibt das Ergebnis einen Eindrück über die \glqq Stärke \grqq{} des Fehler-Signals. Der MSE-Wert des Fehlers wird in diesem Zusammenhang auch als \emph{Mean Squared Error} (\emph{MSE}) und der RMS-Wert als \emph{Root Mean Squared Error} (\emph{RMSE}) oder einfach als \emph{Fehler} oder \emph{Error} bezeichnet. Formel\ref{eq:mse} und \ref{eq:error} definierten die Berechnungen des MSE und RMSE. Der RMSE hat im Gegensatz zum MSE den Vorteil, dass er besser ins Verhältnis zu den Werten des Fehlersignals gestetzt werden kann. Ein RMSE $= 0$ heisst, dass $x = x'$ und somit kein Störsignal vorliegt. Ein RMSE = RMS$(x)$ heisst, dass Eingangs- und Störsignal den selben Effektivwert und somit die selbe \glqq stärke\grqq{} besitzen. Abbildung \ref{img:snrStuff} visualisiert die Berechnung des MSE und RMSE. \cite[S: 28 - 29]{dspMichigan}
+ Errechnet man nun den den MSV- oder RMS-Wert des Störsignales $e[\;]$, gibt das Ergebnis einen Eindrück über die \glqq Stärke \grqq{} des Fehler-Signals. Der MSE-Wert des Fehlers wird in diesem Zusammenhang auch als \emph{Mean Squared Error} (\emph{MSE}) und der RMS-Wert als \emph{Root Mean Squared Error} (\emph{RMSE}) oder einfach als \emph{Fehler} oder \emph{Error} bezeichnet. Formel\ref{eq:mse} und \ref{eq:error} definierten die Berechnungen des MSE und RMSE. Der RMSE hat im Gegensatz zum MSE den Vorteil, dass er besser ins Verhältnis zu den Werten des Fehlersignals gestetzt werden kann. Ein RMSE $= 0$ heisst, dass $x[\;] = x'[\;]$ und somit kein Störsignal vorliegt. Ein RMSE = RMS$(x)$ heisst, dass Eingangs- und Störsignal den selben Effektivwert und somit die selbe \glqq stärke\grqq{} besitzen. Abbildung \ref{img:snrStuff} visualisiert die Berechnung des MSE und RMSE. \cite[S: 28 - 29]{dspMichigan}
 
 \begin{equation}
-\text{MSE}(x,x') = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} (x[n]-x'[n])^2
+\text{MSE}(x[\;],x'[\;]) = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} (x[n]-x'[n])^2
 \label{eq:mse}
 \end{equation}
 
 \begin{equation}
-\text{RMSE}(x,x') = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} (x[n]-x'[n])^2}
+\text{RMSE}(x[\;],x'[\;]) = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} (x[n]-x'[n])^2}
 \label{eq:error}
 \end{equation}
 
-Eine weitere Betrachtungsweise bezüglich der Stärke des Rauschens auf das Signal ist, das Eingangssignal ins Verhältnis zum Rauschsignal zu setzen. Formel \ref{eq:snrPre} gibt die Definition. Ein SNR\textsubscript{rel}$(x,e) = 1$ heißt, dass das Eingangssignal den selben MSV wie das Fehlersignal hat. Meistens ist der MSV des Eingangssignals in der Praxis sehr viel höher als der des Fehler-Signals. Um den Zahlenraum zu begrenzen, wird die Pseudo-Einheit dB verwendet. Formel \ref{eq:snrDb} den so berechneten \emph{Signal-Rausch-Abstand} (\emph{SNR}, englisch Signal-to-Noise-Ratio). Entgegen des MSE weisst ein \emph{niedriger} SNR-Wert auf ein \emph{starkes} Rauschen hin, und ein \emph{hoher} SNR auf ein \emph{schwaches} Rauschen! Abbildung \ref{img:snrStuff} visualisiert die Berechnung des SNR.
+Eine weitere Betrachtungsweise bezüglich der Stärke des Rauschens auf das Signal ist, das Eingangssignal ins Verhältnis zum Rauschsignal zu setzen. Formel \ref{eq:snrPre} gibt die Definition. Ein SNR\textsubscript{rel}$(x[\;],e[\;]) = 1$ heißt, dass das Eingangssignal den selben MSV wie das Fehlersignal hat. Meistens ist der MSV des Eingangssignals in der Praxis sehr viel höher als der des Fehler-Signals. Um den Zahlenraum zu begrenzen, wird die Pseudo-Einheit dB verwendet. Formel \ref{eq:snrDb} den so berechneten \emph{Signal-Rausch-Abstand} (\emph{SNR}, englisch Signal-to-Noise-Ratio). Entgegen des MSE weisst ein \emph{niedriger} SNR-Wert auf ein \emph{starkes} Rauschen hin, und ein \emph{hoher} SNR auf ein \emph{schwaches} Rauschen! Abbildung \ref{img:snrStuff} visualisiert die Berechnung des SNR.
 
 %% To do: Gute Quelle suchen!!
 
 \begin{equation}
-\text{SNR}_{rel}(x,e) = \frac{MSV(x)}{MSV(e)}
+\text{SNR}_{rel}(x[\;],e[\;]) = \frac{MSV(x[\;])}{MSV(e[\;])}
 \label{eq:snrPre}
 \end{equation}
 
 \begin{equation}
-\text{SNR}(x,e) = 10 \cdot  \lg \Big(\frac{MSV(x)}{MSV(e)} \Big) \text{ dB}
+\text{SNR}(x[\;],e[\;]) = 10 \cdot  \lg \Big(\frac{MSV(x[\;])}{MSV(e[\;])} \Big) \text{ dB}
 \label{eq:snrDb}
 \end{equation}
 
@@ -177,23 +198,23 @@ Eine weitere Betrachtungsweise bezüglich der Stärke des Rauschens auf das Sign
 \section{Korrelation}
 \label{sec:correlation}
 
-Die \emph{Korrelation} (engl \emph{Correlation}) zweier Signale $x_1$ und $x_2$ wird nach Formel \ref{eq:correlation} als die Summe aller Samples des Produktes der beiden Signale über einen bestimmtes Intervall $[n_1, n_2]$ definiert. Das Ergebnis ist eine Wert $\in \mathbb{R}$ welches die \glqq Ähnlichkeit der beiden Signale\grqq{} kennzeichnet. Ein Positiver Wert weisst auf eine \emph{positive Korrelation} hin, ein negativer Wert auf eine \emph{negative Korrelation}, und ein Wert von $\text{Corr}(x_1,x_2) = 0$ auf \emph{keine Korrelatoin}. Aus der größe des Wertes kann die Stärke der Korrelation jedoch nicht direkt interpretiert werden. Bei der \emph{normalisierten Korrelation} Corr$_N(x,y)$ wird daher die Korrelationswert ins Verhältnis zu den Energien der beiden Signale gesetzt, wie in Formel \ref{eq:normCorrelation} definiert. Der Wertebereich der normalisierten Autokorrelation  ist $-1 \leq \text{Corr}_N(x,y) \leq +1$. Daraus ergeben sich die in Formel \ref{eq:correlationProps} definierten Zusammenhänge. Ein Wert von $ \text{Corr}_N(x,y) = 1$ wird auch als \emph{perfekte Korrelation} bezeichnet, ein Wert von  $ \text{Corr}_N(x,y) = -1$ als \emph{anti-perfekte Korrelation} \cite[S. 46 - 47]{dspMichigan} Abbildung \ref{img:corrSigsComp} visualisiert die normalisierte Korrelation eines Signales $x$ mit den Signalen $y_n$.
+Die \emph{Korrelation} (engl \emph{Correlation}) zweier Signale $x_1[\;]$ und $x_2[\;]$ wird nach Formel \ref{eq:correlation} als die Summe aller Samples des Produktes der beiden Signale über einen bestimmtes Intervall $[n_1, n_2]$ definiert. Das Ergebnis ist eine Wert $\in \mathbb{R}$ welches die \glqq Ähnlichkeit der beiden Signale\grqq{} kennzeichnet. Ein Positiver Wert weisst auf eine \emph{positive Korrelation} hin, ein negativer Wert auf eine \emph{negative Korrelation}, und ein Wert von $\text{Corr}(x_1[\;],x_2[\;]) = 0$ auf \emph{keine Korrelation}. Aus der größe des Wertes kann die Stärke der Korrelation jedoch nicht direkt interpretiert werden. Bei der \emph{normalisierten Korrelation} Corr$_N(x[\;],y[\;])$ wird daher die Korrelationswert ins Verhältnis zu den Energien der beiden Signale gesetzt, wie in Formel \ref{eq:normCorrelation} definiert. Der Wertebereich der normalisierten Autokorrelation  ist $-1 \leq \text{Corr}_N(x[\;],y[\;]) \leq +1$. Daraus ergeben sich die in Formel \ref{eq:correlationProps} definierten Zusammenhänge. Ein Wert von $ \text{Corr}_N(x[\;],y[\;]) = 1$ wird auch als \emph{perfekte Korrelation} bezeichnet, ein Wert von  $ \text{Corr}_N(x[\;],y[\;]) = -1$ als \emph{anti-perfekte Korrelation} \cite[S. 46 - 47]{dspMichigan} Abbildung \ref{img:corrSigsComp} visualisiert die normalisierte Korrelation eines Signales $x[\;]$ mit den Signalen $y[\;]$.
 
 \begin{equation}
-\text{Corr}(x,y) = \sum_{n=n_1}^{n_2} x[n] \cdot y[n]
+\text{Corr}(x[\;],y[\;]) = \sum_{n=n_1}^{n_2} x[n] \cdot y[n]
 \label{eq:correlation}
 \end{equation}
 
 \begin{equation}
-\text{Corr}_N(x,y) = \frac{\text{Corr}(x,y)}{\sqrt{\text{E}(x) \cdot \text{E}(y)}}
+\text{Corr}_N(x[\;],y[\;]) = \frac{\text{Corr}(x[\;],y[\;])}{\sqrt{\text{E}(x[\;]) \cdot \text{E}(y[\;])}}
 \label{eq:normCorrelation}
 \end{equation}
 
 \begin{equation}
-\text{Corr}_N(x,y) = 
+\text{Corr}_N(x[\;],y[\;]) = 
 \begin{cases}
-1  \quad \rightarrow  x = y \\
--1 \; \rightarrow x = -y
+1  \quad \rightarrow  x[\;] = y[\;] \\
+-1 \; \rightarrow x[\;] = -y[\;]
 \end{cases}
 \label{eq:correlationProps}
 \end{equation}
@@ -201,25 +222,25 @@ Die \emph{Korrelation} (engl \emph{Correlation}) zweier Signale $x_1$ und $x_2$ 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/corrSigsComp.png}
-	\caption{Correlation der Signale $x$ und $y$}
+	\caption{Correlation der Signale $x[n]$ und $y[n]$}
 	\label{img:corrSigsComp}
 \end{figure}
 
-Die Korrelation und die normalisierte Korrelation werden aufgrund ihrer Eigenschaften verwendet, um ein Signal $x$ in einem Signal $y$ zu detektieren. Häufig ist das Ziel, ein von einem Rauschen $e$ überlagerten Signal $x+e = y$ auf das Vorhandensein des erwarteten Signales $x$ hin zu überprüfen. Wie in Abbildung \ref{img:corrSigsComp} zu sehen ist, ist der Korrelationswert jedoch von der Verzögerung des Signals abhängig. Daher wird in der $Cross-Correlation$ das Signal $y$ mit einer verzögerten Varianten des Signals $x$ korreliert, wie in Formel \ref{eq:XCorr} definiert. Der parameter $k$ wird als \emph{Lag} bezeichnet und gibt die Verzögerung an. 
+Die Korrelation und die normalisierte Korrelation werden aufgrund ihrer Eigenschaften verwendet, um ein Signal $x[\;]$ in einem Signal $y[\;]$ zu detektieren. Häufig ist das Ziel, ein von einem Rauschen $e[\;]$ überlagerten Signal $x[\;]+e[\;] = y[\;]$ auf das Vorhandensein des erwarteten Signales $x[\;]$ hin zu überprüfen. Wie in Abbildung \ref{img:corrSigsComp} zu sehen ist, ist der Korrelationswert jedoch von der Verzögerung des Signals abhängig. Daher wird in der $Cross-Correlation$ das Signal $y[\;]$ mit einer verzögerten Varianten des Signals $x[\;]$ korreliert, wie in Formel \ref{eq:XCorr} definiert. Der parameter $k$ wird als \emph{Lag} bezeichnet und gibt die Verzögerung an. 
 
 \begin{equation}
-\text{X-Corr}(x,y,k) = \sum_{n=-\infty}^{\infty} x[n-k] \cdot y[n]
+\text{X-Corr}(x[\;],y[\;],k) = \sum_{n=-\infty}^{\infty} x[n-k] \cdot y[n]
 \label{eq:XCorr}
 \end{equation}
 
-Im Prozess der so genannten \emph{Running Correlation} nutzt man die Cross-Correlation mit den Lags $k = 0 \cdots k_{max}$ zur Erstellung des \emph{Korrelationssignals} $r$, wie in Gleichung \ref{eq:runningCorrelation} definiert. Das Signal $r$ gibt Auskunft, zu welchen Verzögerungswerten $k$ die größten Ähnlichkeiten zwischen $x$ und $y$ gefunden wurden. 
+Im Prozess der so genannten \emph{Running Correlation} nutzt man die Cross-Correlation mit den Lags $k = 0 \cdots k_{max}$ zur Erstellung des \emph{Korrelationssignals} $r[\;]$, wie in Gleichung \ref{eq:runningCorrelation} definiert. Das Signal $r[\;]$ gibt Auskunft, zu welchen Verzögerungswerten $k$ die größten Ähnlichkeiten zwischen $x$ und $y$ gefunden wurden. 
 
 \begin{equation}
-r[k] = \text{X-Corr}(x,y,k) \quad, k = 0 , \ldots , k_{max} 
+r[\;] \Longleftrightarrow \mathop{\forall}_{k = 0}^{k_{max}} :\ r[k] = \text{X-Corr}(x[\;],y[\;],k)
 \label{eq:runningCorrelation}
 \end{equation}
 
-Abbildung \ref{img:slidingCorrelation} zeigt ein Beispiel für die Erzeugung von $r$ mit der Sliding Correlation. (A) zeigt das zu detektierende Signal $x$ und (B) das Signal $y$. (C) zeigt das Korrelationssignal $r$ mit den Lags $k = 1, \ldots ,1150$ \cite[S. 47 - 48]{dspMichigan}
+Abbildung \ref{img:slidingCorrelation} zeigt ein Beispiel für die Erzeugung von $r[\;]$ mit der Sliding Correlation. (A) zeigt das zu detektierende Signal $x[\;]$ und (B) das Signal $y[\;]$. (C) zeigt das Korrelationssignal $r[\;]$ mit den Lags $k = 0, \ldots ,1150$ . \cite[S. 47 - 48]{dspMichigan}
 
 \begin{figure}[h]
 	\centering
@@ -231,21 +252,21 @@ Abbildung \ref{img:slidingCorrelation} zeigt ein Beispiel für die Erzeugung von
 %% ToDo: Fix Indexes ! Use convention!
 \section{Faltung}
 
-Die \emph{Faltung} (engl. \emph{Convolution}) ist eine der Zentralen Operationen zwischen zwei Signalen, so wie die Addition oder die Mulitplikation. Sie wird mit dem Symbol $*$ notiert. Sie wird notiert mit $x* h = y$. 
+Die \emph{Faltung} (engl. \emph{Convolution}) ist eine der Zentralen Operationen zwischen zwei Signalen, so wie die Addition oder die Mulitplikation. Sie wird mit dem Symbol $*$ notiert. Sie wird notiert mit $x[\;]* h[\;] = y[\;]$. 
 
-Die Faltung basiert auf der \emph{Faltungs-Summe}, welche die Faltung zunächst Punktweise definiert. Die Gleichung wird in Formel \ref{eq:convolutionSum} abgebildet. In diesem Zusammenhang wird $x$ Eingangs- und $y$ als Ausgangs-Signal bezeichnet. Je nach Anwendungsfall bekommt $h$ den Namen \emph{Faltungs-Kernel}, \emph{Filter-Kernel} oder einfach \emph{Kernel}. \cite[S. 107-108]{dspGuide}
+Die Faltung basiert auf der sogenannten \emph{Faltungs-Summe}, definiert in Gleichung \ref{eq:convolutionSum}. In diesem Zusammenhang wird $x[\;]$ Eingangs- und $y[\;]$ als Ausgangs-Signal bezeichnet. Je nach Anwendungsfall bekommt $h[\;]$ den Namen \emph{Faltungs-Kernel}, \emph{Filter-Kernel} oder einfach \emph{Kernel}. \cite[S. 107-108]{dspGuide}
 
 \begin{equation}
-y[n] = x[n] * h[n] = \sum_{i=1}^{M} h[i] * x[n-i]
+y[n] = x[n] * h[n] = \sum_{i=1}^{M} h[i] \cdot x[n-i] \quad
 \label{eq:convolutionSum}
 \end{equation}
 
-Das Ergebnis einer Berechneten Faltungssumme nach \ref{eq:convolutionSum} ist ein einzelner Wert. Wird die Faltungs-Summe ähnlich der Cross-Correlation für $n = 1...N+M-1$ durchgeführt, ist das Ergebnis ein Signal. Die tatsächliche Faltung wird in Gleichung \ref{eq:convolution} definiert. $x$ ist ein Signal mit Support$(x) = [1,N]$ und Duration$(x) = N$, $h$ ist ein Signal mit Support$(x) = [1,M]$ und Duration$(h) = M$ und $y$ ist ein Signal mit Support$(y) = [1,N+M-1]$ und Duration$(y) = N+M-1$. Das heißt, dass das Eingangssignal um die Länge des Faltungskerns verlängert wird. Abbildung 	\ref{img:convolutionExample} zeigt ein Beispiel für die Faltung.\cite[S. 115-120]{dspGuide}
-
-\begin{equation}
-y = x * h = \big[ \: x[1] * h[1] , \ldots , x[N+M-1] * h[N+M-1] \: \big]
-\label{eq:convolution}
-\end{equation}
+ $x[\;]$ ist ein Signal mit Support$(x[\;]) = [0,N-1]$ und Length$(x[[\;]) = N$. $h[\;]$ ist ein Signal mit Support$(h[\;]) = [0,M-1]$ und Length$(h[\;]) = M$ und $y[\;]$ ist ein Signal mit Support$(y[\;]) = [0,N+M-2]$ und Length$(y[\;]) = N+M-1$. Das heißt, dass das Eingangssignal um die Länge des Faltungskerns verlängert wird. Abbildung 	\ref{img:convolutionExample} zeigt ein Beispiel für die Faltung.\cite[S. 115-120]{dspGuide}
+ 
+ \begin{equation}
+x[\;] *  h[\;] =  y[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N+M-2} :\ x[n] * h[n] = y[n]
+ \label{eq:convolutionSum}
+ \end{equation}
 
 \begin{figure}[h]
 	\centering
@@ -254,10 +275,10 @@ y = x * h = \big[ \: x[1] * h[1] , \ldots , x[N+M-1] * h[N+M-1] \: \big]
 	\label{img:convolutionExample}
 \end{figure}
 
-Das neutrale Element der Faltung ist der \emph{Delta-Funktion}, definiert in Gleichung \ref{eq:delta} . Das heißt, dass $x * \delta = x$ . Die Faltung ist kommutativ, das heißt $ x * h = h * x = y$ . \cite[S. 107, 113 ]{dspGuide} Weitehrin ist die Faltung assoziativ, das heißt $(x*y)*z=x*(y*z)$. \cite[S. 133]{dspGuide}
+Das neutrale Element der Faltung ist der \emph{Delta-Funktion} $\delta[\;]$, definiert in Gleichung \ref{eq:delta} . Das heißt, dass $x[\;] * \delta[\;] = x[\;]$ . Die Faltung ist kommutativ, das heißt $ x[\;]* h[\;] = h[\;] * x[\;] = y[\;]$ . \cite[S. 107, 113 ]{dspGuide} Weitehrin ist die Faltung assoziativ, das heißt $(x[\;]*y[\;])*z[\;]=x[\;]*(y[\;]*z[\;])$. \cite[S. 133]{dspGuide}
 
 \begin{equation}
-\delta[n] = 
+\mathop{\forall}_{n = -\infty}^{\infty} :\ \delta[n] = 
 \begin{cases}
 1 \quad , n = 0\\
 0 \quad ,  n \neq 0
@@ -277,59 +298,50 @@ Die konkrete Berechnung der Transformation ist abhängig von den Eigenschaften d
 \subsection{Reelle DFT}
 \label{sec:realDFT}
 
-Jedes zeitdiskretes, periodisches Signal $x$ kann erzeugt werden, indem eine endliche Anzahl von Sinus- und Cosinus-Signalen geeigneter Frequenz und Amplitude $ = \{A_0\cos_{f_0} \ldots A_m\cos_{A_m,f_m}$ , $B_0\sin_{f_0} \ldots \sin_{f_m} \}$ aufaddiert werden. Der Umkehrschluss ist, dass sich jedes Signal in eine Menge von Sinus- und Cosinus-Signalen zerlegen lässt, ohne das Information für das Signal $x$ verloren geht. Diese Zerlegung des Signals $x$ wird als \emph{Dekomposition} bezeichnet, die Kombination der Sinus- und Cosinus-Siganel zu $x$ als \emph{Synthese}. Genauer gesagt werden für ein Signal $x$ mit Duration$(x) = N$ höchstens $\frac{N}{2}+1$ Sinus- und $\frac{N}{2}+1$ Cosinus-Wellen benötigt, also insgesamt $N+2$ Signale. Gleichung \ref{eq:fftIntroduction} fasst diese Aussage zusammen. \cite[S. 144 - 147 ]{dspGuide}
+Jedes zeitdiskretes, periodisches Signal $x[\;]$ kann erzeugt werden, indem eine endliche Anzahl von Sinus- und Cosinus-Signalen geeigneter Frequenz und Amplitude aufaddiert werden. Der Umkehrschluss ist, dass sich jedes Signal in eine Menge von Sinus- und Cosinus-Signalen zerlegen lässt, ohne das Information für das Signal $x[\;]$ verloren geht. Diese Zerlegung des Signals $x[\;]$ wird als \emph{Dekomposition} bezeichnet, die Kombination der Sinus- und Cosinus-Siganel zu $x[\;]$ als \emph{Synthese}. Genauer gesagt werden für ein Signal $x[\;]$ mit Length$(x[\;]) = N$ höchstens $\frac{N}{2}+1$ Sinus- und $\frac{N}{2}+1$ Cosinus-Wellen benötigt, also insgesamt $N+2$ Signale. Gleichung \ref{eq:fftIntroduction} fasst diese Aussage zusammen. \cite[S. 144 - 147 ]{dspGuide}
 
 \begin{equation}
 \label{eq:fftIntroduction}
 \begin{split}
-\forall x = [x_1 \ldots x_N]: x =  A_0\cos_{f_0} + \ldots + A_m\cos_{f_m}  + B_0\sin_{f_0} + \ldots + B_m \sin_{f_m}  \\
-,\text{Periodisch}(x) = true \; ,m = \frac{N}{2}
+x[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\ x[n] =  A[0]\cos_{f_0}[n] + \ldots + A[N/2]\cos_{f_{N/2}}[n]  \\ + B[0]\sin_{f_{N/2}}[n] + \ldots + B[N/2] \sin_{f_{N/2}}[n]
 \end{split}
 \end{equation}
 
 
-Die Cosinus- und Sinus-Schwingungen, die in Gleichung \ref{eq:fftIntroduction} verwendet werden, werden in den Gleichungen \ref{eq:cosine} und \ref{eq:sine} definiert, sowohl für den kontinuierlichen als auch für den zeit-diskreten-Definitionsraum. Die Faktorn $A,B$ geben die Amplitude der entsprechenden Cosinus/Sinus-Schwingung an, der Fatkor $f$ die Frequenz der Schwingung (Perioden pro Sekunde), und $f_s$ die Sampling-Rate (Siehe Gleichung \ref{eq:samplingRate}). \cite[S. 62]{dspMichigan} \cite[S. 150]{dspGuide} Abbildung \ref{img:aSimpleCosine} zeigt ein Beispiel für die Cosinus-Schwingung $[A=2] \cdot cos_{f=\SI{4}{\hertz}}$.
+Die Cosinus- und Sinus-Schwingungen, die in Gleichung \ref{eq:fftIntroduction} verwendet werden, werden in Gleichung \ref{eq:cosine} definiert. Die Faktoren $A[\;],B[\;]$ geben die Amplitude der entsprechenden Cosinus/Sinus-Schwingung an, der Fatkor $f$ die Frequenz der Schwingung (Perioden pro Sekunde), und $f_s$ die Sampling-Rate (Siehe Gleichung \ref{eq:samplingRate}). \cite[S. 62]{dspMichigan} \cite[S. 150]{dspGuide} Abbildung \ref{img:aSimpleCosine} zeigt ein Beispiel für die Cosinus-Schwingung $[A_f=2] \cdot cos_{f=\SI{4}{\hertz}}[\;]$.
 
 \begin{equation}
 \label{eq:cosine}
 \begin{gathered}
-A \cdot \cos_{f}(t) = A \cdot \cos(2\pi f t) \\
-A \cdot \cos_{f}[n]  = A \cdot \cos(2\pi f \frac{n}{f_s})
-\end{gathered}
-\end{equation}
-
-\begin{equation}
-\label{eq:sine}
-\begin{gathered}
- B \cdot \sin_{f} (t) = B \cdot \sin(2\pi f t) \\
- B \cdot \sin_{f}[n]  = B \cdot \sin(2\pi f \frac{n}{f_s})
+\cos_{f}[n]  = \cos(2\pi f \frac{n}{f_s}) \\
+\sin_{f}[n]  = \sin(2\pi f \frac{n}{f_s})
 \end{gathered}
 \end{equation}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{bilder/aSimpleCosine.png}
-	\caption{$\SI{1}{\second} = 44100 $ Samples der Cosinus-Schwingung $[A = 2] \cdot cos_{f=\SI{4}{\hertz}}[n] =  2 \cdot \cos(2\pi 4 \frac{n}{f_s})$ bei einer Sampling-Rate von $f_s = \SI{44100}{\hertz} $}
+	\caption{$\SI{1}{\second} = 44100 $ Samples der Cosinus-Schwingung $[A = 2] \cdot cos_{f=\SI{4}{\hertz}}[\;] =  2 \cdot \cos(2\pi 4 \frac{n}{f_s})$ bei einer Sampling-Rate von $f_s = \SI{44100}{\hertz} $}
 	\label{img:aSimpleCosine}
 \end{figure}
 
-Abbildung \ref{img:fftExample02} zeigt ein Beispiel für die Synthese eines Signal $x$ mit $N = 200$ Samples mit einer Samlingrate von $f_s = \SI{100}{\hertz}$. Es werden theoretisch $\frac{N}{2} + 1 = 101$ Cosinus und $101$ Sinus-Signale für die Synthese benötigt, da aber nur 4 Signale eine Amplitude > 0 haben, werden auch nur diese Signale gezeigt. Die Frage ist: Angenommen, man kennt nur das Signal $x$, wie errechnet man daraus die die Amplituden $A, B$ und Frequenzen $f$ der Cosinus- und Sinus-Signale? Anders gesagt: Wie berechnet man die Dekomposition?
+Abbildung \ref{img:fftExample02} zeigt ein Beispiel für die Synthese eines Signal $x[\;]$ mit $N = 200$ Samples mit einer Samlingrate von $f_s = \SI{100}{\hertz}$. Es werden theoretisch $\frac{N}{2} + 1 = 101$ Cosinus und $101$ Sinus-Signale für die Synthese benötigt, da aber nur 4 Signale eine Amplitude $> 0$ haben, werden auch nur diese Signale gezeigt. Die Frage ist: Angenommen, man kennt nur das Signal $x[\;]$, wie errechnet man daraus die die Amplituden $A[\;], B[\;]$ und Frequenzen $f$ der Cosinus- und Sinus-Signale? Anders gesagt: Wie berechnet man die Dekomposition?
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/fftExp02.png}
-	\caption{Synthetisierung eines Signals $x$ aus vier Cosinus-Funktionen, mit Duration$(x) = 200$ und $f_s = \SI{100}{\hertz}$}
+	\caption{Synthetisierung eines Signals $x[\;]$ aus vier Cosinus-Funktionen, mit Length$(x[\;]) = 200$ und $f_s = \SI{100}{\hertz}$}
 	\label{img:fftExample02}
 \end{figure}
 
-Das Problem lässt sich auf die Berechnung der Amplituden $A,B$ beschränken, in dem man den Fakt, dass höchstens $\frac{2}{N} + 1$ Cosinus- und $\frac{2}{N} + 1$ Sinus-Signale für die Synthese benötigt werden, in Verbindung mit dem Nyquist-Shannon-Abtasttheorem (Gleichung \ref{eq:shannonTheorem}) bringt. Die niedrigst mögliche Frequenz, die im Signal $x$ enthalten sein kann, ist $f_0 = \SI{0}{\hertz}$, und die höchst mögliche Frequenz $f_{max} = \frac{f_s}{2}$, womit die Frequenzen $\cos_{f_0 = 0} , \cos_{f_{max} = f_s/2},\sin_{f_0 = 0} , \sin_{f_{max} = f_s/2}$ bereits feststehen. Die restlichen $\frac{2}{N} - 1$ Cosinus-Signale teilen sich gleichmäßig auf diesen Frequenzraum auf, entsprechendes gilt für die Sinus-Signale. Die Frequenz der insgesamt $N+2$ Cosinus/Sinus-Signale ergibt sich somit direkt als Funktion der Samplingrate und der Länge des Signals $x$. Gleichung \ref{eq:baseFunctions} fasst diesen Zusammenhang zusammen. Die dort beschriebenen Funktionen $\cos_k$ und $\sin_k$werden als \emph{Basisfunktionen} bezeichnet. Aus dem  Index $k = 0 ... \frac{N}{2}$ lässt sich die Frequenz der jeweiligen Basisfunktion nach Gleichung \ref{eq:baseToFreq} berechnen.\cite[140 - 151, S.]{dspGuide}  In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich die indexe $[\cos_{f=\SI{0.5}{\hertz}} = \cos_1]$, $[\cos_{f=\SI{4}{\hertz}} = \cos_8]$, $[\sin_{f=\SI{1}{\hertz}} = \sin_2]$ und $[\sin_{f=\SI{7.5}{\hertz}} = \sin_{15}]$
+Das Problem lässt sich auf die Berechnung der Amplituden $A[k],B[k]$ beschränken, in dem man den Fakt, dass höchstens $\frac{2}{N} + 1$ Cosinus- und $\frac{2}{N} + 1$ Sinus-Signale für die Synthese benötigt werden, in Verbindung mit dem Nyquist-Shannon-Abtasttheorem (Gleichung \ref{eq:shannonTheorem}) bringt. Die niedrigst mögliche Frequenz, die im Signal $x[\;]$ enthalten sein kann, ist $f_0 = \SI{0}{\hertz}$, und die höchst mögliche Frequenz $f_{max} = \frac{f_s}{2}$, womit die Frequenzen der Signale $\cos_{f_0 = 0}[\;] , \cos_{f_{max} = f_s/2}[\;],\sin_{f_0 = 0}[\;], \sin_{f_{max} = f_s/2}[\;]$ bereits feststehen. Die restlichen $\frac{2}{N} - 1$ Cosinus-Signale teilen sich gleichmäßig auf diesen Frequenzraum auf, entsprechendes gilt für die Sinus-Signale. Die Frequenz der insgesamt $N+2$ Cosinus/Sinus-Signale ergibt sich somit direkt als Funktion der Samplingrate und der Länge des Signals $x[\;]$. Gleichung \ref{eq:baseFunctions} fasst diesen Zusammenhang zusammen. Die dort beschriebenen Funktionen $\cos_k[\;]$ und $\sin_k[\;]$werden als \emph{Basisfunktionen} bezeichnet. Aus dem  Index $k = 0 ,\ldots, \frac{N}{2}$ lässt sich die Frequenz der jeweiligen Basisfunktion nach Gleichung \ref{eq:baseToFreq} berechnen.\cite[140 - 151, S.]{dspGuide}  In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich die Indexe $[\cos_{f=\SI{0.5}{\hertz}}[\;] = \cos_1[\;]]$, $[\cos_{f=\SI{4}{\hertz}}[\;] = \cos_8[\;]]$, $[\sin_{f=\SI{1}{\hertz}}[\;] = \sin_2[\;]]$ und $[\sin_{f=\SI{7.5}{\hertz}}[\;] = \sin_{15}[\;]]$
 
 \begin{equation}
 \label{eq:baseFunctions}
 \begin{split}
-A_k \cdot \cos_k[n] = A_k\cdot \cos(2\pi k \frac{n}{N}) \\
-B_k \cdot \sin_k[n] = B_k \cdot \sin(2\pi k \frac{n}{N}) \\
-N = \text{Duration} (x)
+\cos_k[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\ \cos_k[n] = \cos(2\pi k \frac{n}{N}) \\
+\sin_k[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\ \sin_k[n] = \sin(2\pi k \frac{n}{N}) \\
+N = \text{Length} (x[\;] )
 \end{split}
 \end{equation} 
 
@@ -338,45 +350,43 @@ N = \text{Duration} (x)
 f = k\frac{f_s}{N} 
 \end{equation} 
 
-Das Problem der Dekomposition wird so auf die Suche der Amplituden-Koeffizienten $A_k, B_k$ beschränkt. Die Frage ist, vereinfacht formuliert, wie \glqq stark\grqq{} jede der Basisfunktionen $\cos_0 \ldots \cos_{N/2} , \sin_0 \ldots \sin_{N/2}$ in $x$ enthalten ist.  Die Antwort darauf ist die in Kapitel \ref{sec:correlation} vorgestellte Korrelation. Der Korrelationswert einer Cosinus-Basisfunktion mit Eingangssignal Corr$(x,\cos_k) = \sum_{n=1}^{N} \cdot x[n]cos_k$ gibt somit eine Aussage darüber, wie stark die entsprechende Cosinus-Schwingungen zur Syntehse von $x$ beiträgt. Ein Wert von $0$ spricht für keinen Beitrag, ein hoher oder niedriger Wert für eine positiven oder negativen Beitrag. \cite[S. 157 - 158]{dspGuide}
+Das Problem der Dekomposition wird so auf die Suche der Amplituden-Koeffizienten $A[\;], B[\;]$ beschränkt, die zu den jeweiligen Basisfunktionen $\cos_k[\;]$ und $\sin_k[\;]$ gehören. Die Frage ist, vereinfacht formuliert, wie \glqq stark\grqq{} jede der Basisfunktionen $\cos_0[\;], \ldots ,\cos_{N/2}[\;]$ und $\sin_0[\;] ,\ldots ,\sin_{N/2}[\;]$ in $x[\;]$ enthalten ist.  Die Antwort darauf ist die in Kapitel \ref{sec:correlation} vorgestellte Korrelation. Der Korrelationswert einer Cosinus-Basisfunktion mit Eingangssignal Corr$(x[\;],\cos_k[\;]) = \sum_{n=0}^{N-1} \cdot x[n]cos_k[n]$ gibt somit eine Aussage darüber, wie stark die entsprechende Cosinus-Schwingungen zur Syntehse von $x[\;]$ beiträgt. Ein Wert von $0$ spricht für keinen Beitrag, ein hoher oder niedriger Wert für eine positiven oder negativen Beitrag. \cite[S. 157 - 158]{dspGuide}
 
-Dieses Vorgehen lässt sich sogenannten \emph{forward DFT} nach Formel \ref{eq:forwardDFT} verallgemeinern, kurz als \textbf{DFT} bezeichnet. Das Ergebnis sind die Koeffizienten $\bar{A}_0 \ldots \bar{A}_{N/2}, \bar{B}_0 \ldots \bar{B}_{N/2}$. \cite[S. 158]{dspGuide}
+Dieses Vorgehen lässt sich sogenannten \emph{forward DFT} nach Formel \ref{eq:forwardDFT} verallgemeinern, kurz als \textbf{DFT} bezeichnet. Das Ergebnis sind die Koeffizienten $\bar{A}[\;] = \bar{A}[0]\ldots \bar{A}[N/2]$ und $\bar{B}[\;] = \bar{B}[0] \ldots \bar{B}[N/2]$. Die Koeffizienten werden gemeinsam als der \emph{Frequenz-Bereich} in \emph{kartesischer Notation} $X[\;]$ bezeichnet. Das $X[\;]$ hat im Zusammenhang mit der reellen DFT einen rein symbolisch bezeichnenden Charakter und wird erst im Zusammenhang mit der \emph{komplexen DFT} in Kapitel \ref{sec:comDFT} zu einem Signal.  \cite[S. 158]{dspGuide}
 
 \begin{equation}
-\begin{split}
-\bar{A}_k = \sum_{n=0}^{N-1}x[n] \cos(2\pi k \frac{n}{N}) \\
-\bar{B}_k = \sum_{n=0}^{N-1}x[n] \sin(2\pi k \frac{n}{N}) \\
-\end{split}
+\text{DFT}\{x[\;]\} = X[\;] \Longleftrightarrow
+\begin{dcases}
+\mathop{\forall}_{k = 0}^{N/2} :\ \bar{A}[k] = \sum_{n=0}^{N-1}x[n] \cos(2\pi k \frac{n}{N}) \Longleftrightarrow \bar{A}[\;] \\
+\mathop{\forall}_{k = 0}^{N/2} :\ \bar{B}[k] = \sum_{n=0}^{N-1}x[n] \sin(2\pi k \frac{n}{N}) \Longleftrightarrow \bar{B}[\;] 
+\end{dcases}
 \label{eq:forwardDFT}
 \end{equation}
 
-In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich bei Anwendung von Formel \ref{eq:forwardDFT} auf das Signal $x$ die Koeffizienten $[ \bar{A}_{f=\SI{0.5}{\hertz}} = \bar{A}_{1} = 100 ]$ , $[  \bar{A}_{f=\SI{4}{\hertz}} = \bar{A}_{8} = 200 ]$, $[ \bar{B}_{f=\SI{1}{\hertz}} = \bar{B}_{2} = 50 ]$ und $[ \bar{B}_{f=\SI{7.5}{\hertz}} = \bar{B}_{15} = 100 ]$. Um die eigentlichen Koeffizienten $A_1 = 1, A_8 = 2, B_2 = 0.5$ und $B_{15} = 1$ zu erhalten, muss die Umrechnungsvorschrift nach den Formel \ref{eq:AConversion} und \ref{eq:BConversion} angewandt werden. \cite[S. 152 - 153]{dspGuide}
+In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich bei Anwendung von Formel \ref{eq:forwardDFT} auf das Signal $x[n]$ die Koeffizienten $[ \bar{A}_{f=\SI{0.5}{\hertz}} = \bar{A}[1] = 100 ]$ , $[  \bar{A}_{f=\SI{4}{\hertz}} = \bar{A}[8] = 200 ]$, $[ \bar{B}_{f=\SI{1}{\hertz}} = \bar{B}[2] = 50 ]$ und $[ \bar{B}_{f=\SI{7.5}{\hertz}} = \bar{B}[15] = 100 ]$. Um die eigentlichen Koeffizienten $A[1] = 1, A[8] = 2, B[2] = 0.5$ und $B[[15] = 1$ zu erhalten, muss die Umrechnungsvorschrift nach den Formel \ref{eq:AConversion} und \ref{eq:BConversion} angewandt werden. Dieser Transformationsschritt $\bar{A}[\;] \longmapsto  A[\;]$ und $\bar{B}[\;] \longmapsto  B[\;]$ ist ein \emph{Extra-Schritt}, den jeder reelle DFT nach sich zieht. \cite[S. 152 - 153]{dspGuide}
 
 \begin{equation}
-A_k = 
-\begin{cases}
-\frac{\bar{A}_k}{N} \; , \text{falls } k = 0 \vee k = N/2\\
-\frac{\bar{A}_k}{N/2} \; ,\text{sonst} \\
-\end{cases}
+A[\;] \Longleftrightarrow \mathop{\forall}_{k = 0}^{N/2} :\ A[k] = 
+\begin{dcases}
+\frac{\bar{A}[k]}{N} \quad, \text{falls } k = 0 \vee k = N/2\\
+\frac{\bar{A}[k]}{N/2} \quad ,\text{sonst} \\
+\end{dcases}
 \label{eq:AConversion}
 \end{equation}
 
 \begin{equation}
-B_k= \frac{A_k}{N/2}
+B[\;] \Longleftrightarrow \mathop{\forall}_{k = 0}^{N/2} :\
+B[k]= \frac{B_k}{N/2}
 \label{eq:BConversion}
 \end{equation}
 
-Gleichung \ref{eq:inverseDFT} definiert die Synthese des Signals $x$ aus den Basis-Funktionen mit Hilfe der Koeffizienten $A$ und $B$. Die Formel wird auch als \emph{inverse DFT} (\textbf{iDFT}) bezeichnet. \cite[S. 152 - 153]{dspGuide}
+Gleichung \ref{eq:inverseDFT} definiert die Synthese des Signals $x[\;]$ aus den Basis-Funktionen mit Hilfe der Koeffizienten $A[\;]$ und $B[\;]$. Die Formel wird auch als \emph{inverse DFT} (\textbf{iDFT}) bezeichnet. \cite[S. 152 - 153]{dspGuide}
 
 \begin{equation}
-\begin{split}
-x[n] = \sum_{k = 0}^{N/2} A_k\cos(2\pi k \frac{n}{N}) + \sum_{k = 0}^{N/2}B_k\sin(2\pi k \frac{n}{N}) \\
-,n = 1 \ldots N = \text{Duration}(x)
-\end{split}
+\text{DFT}\{X[\;]\} = x[\;]
+\Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\ x[n] = \sum_{k = 0}^{N/2} A[k]\cos(2\pi k \frac{n}{N}) + \sum_{k = 0}^{N/2}B[k]\sin(2\pi k \frac{n}{N}) \\
 \label{eq:inverseDFT}
 \end{equation}
-
-Die Koeffizienten $A$ und $B$ bilden zusammen den \emph{Frequenz-Bereich} in der sogenannten \emph{kartesischen Notation} (engl \emph{rectangular Notation}) und werden gemeinsam als $X$ bezeichnet. \cite[S. 161 - 162]{dspGuide} Abbildung  \ref{img:polarToRect02} zeigt die Koeffizienten des Beispiels aus Abbildung \ref{img:fftExample02}.
 
 
 \begin{figure}[h]
@@ -386,7 +396,7 @@ Die Koeffizienten $A$ und $B$ bilden zusammen den \emph{Frequenz-Bereich} in der
 	\label{img:polarToRect02}
 \end{figure}
 
-Abbildung \ref{img:dtOverview} gibt einen Überblick über den Zusammenhang $x$ und $X$. Da mit steigender Länge von $x$ die Anzahl an Basis-Funktionen im Frequenzbereich $X$ steigt, wird die Auflösung des Frequenz-Bereiches umso höher, je länger $x$ gewählt wird. Im Gegenzug sinkt die Auflösung in Bezug auf den Zeit-Bereich: Der Frequenz-Bereich trifft keine Aussage darüber \emph{wann} etwas passiert, sondern nur \emph{welche Frequenzen} daran beteiligt sind.\cite[S. 170]{dspGuide}
+Abbildung \ref{img:dtOverview} gibt einen Überblick über den Zusammenhang $x[\;]$ und $X[\;]$. Da mit steigender Länge von $x[\;]$ die Anzahl an Basis-Funktionen im Frequenzbereich $X[\;]$ steigt, wird die Auflösung des Frequenz-Bereiches umso höher, je länger $x[\;]$ gewählt wird. Im Gegenzug sinkt die Auflösung in Bezug auf den Zeit-Bereich: Der Frequenz-Bereich trifft keine Aussage darüber \emph{wann} etwas passiert, sondern nur \emph{welche Frequenzen} daran beteiligt sind.\cite[S. 170]{dspGuide}
 
 \begin{figure}[h]
 	\centering
@@ -395,36 +405,37 @@ Abbildung \ref{img:dtOverview} gibt einen Überblick über den Zusammenhang $x$ 
 	\label{img:dtOverview}
 \end{figure}
 
-
 Aus Formel \ref{eq:inverseDFT} geht hervor, dass bei der Synthese jeweils ein Cosinus-Signal und ein Sinus-Signal der selben Frequenz addiert wird. Diese Addition erzeugt einen sogenannten \emph{Sinusoiden}, eine Cosinuswelle mit der Amplitude $M$ der Phasenverschiebung $\phi$ nach Formel \ref{eq:sinusoid}.\cite[S. 162]{dspGuide}
 
 \begin{equation}
 \begin{split}
 A \cos(x) + B \sin(x) = M \cos(x + \phi) \\
-,M = \sqrt{A^2 + B^2} \;, \phi = arctan(B/A)
+,M = \sqrt{A^2 + B^2} \quad, \phi = arctan(B/A)
 \end{split}
 \label{eq:sinusoid}
 \end{equation}
 
-Auf Basis von Formel \ref{eq:sinusoid} lässt sich der gesamte Frequenz-Bereich in kartesischer Notation als Menge von Sinusoiden-Schwingungen mit den Magnituden $M_0 \ldots M_{N/2}$ und den Phasenverschiebungen $\phi_0 \ldots \phi_{N/2}$ ausdrücken. Formel \ref{eq:rectToPolar} definierte diese Transformation von kartesischer Notation in die \emph{polare Notation}. Formel \label{eq:polarToRect} definiert die dazu inverse Transformation. \cite[S. 162]{dspGuide} Abbildung \ref{img:polarToRect02} zeigt den Frequenzbereich in polarer Notation für das Beispiel aus  Abbildung \ref{img:fftExample02}.
+Auf Basis von Formel \ref{eq:sinusoid} lässt sich der gesamte Frequenz-Bereich in kartesischer Notation als Menge von Sinusoiden-Schwingungen mit den Magnituden $M[\;] = M[0] \ldots M[N/2]$ und den Phasenverschiebungen $\phi[\;] = \phi[0] \ldots \phi[N/2]$ ausdrücken. Formel \ref{eq:rectToPolar} definierte diese Transformation des Frequenz-Bereichs von kartesischer Notation in die \emph{polare Notation}. Formel \label{eq:polarToRect} definiert die dazu inverse Transformation. \cite[S. 162]{dspGuide} Abbildung \ref{img:polarToRect02} zeigt den Frequenzbereich in polarer Notation für das Beispiel aus  Abbildung \ref{img:fftExample02}.
 
 \begin{equation}
-\begin{split}
-M_k = \sqrt{(A_k^2 + B_k^2 ) }\\
-\phi_k= \arctan{(B / A) }
-\end{split}
+(A[\;], B[\;]) \longmapsto (M[\;], \phi[\;])  = 
+\begin{dcases}
+\mathop{\forall}_{k = 0}^{N/2} :\ M[k] = \sqrt{(A[k]^2 + B[k]^2 ) } \Longleftrightarrow M[\;]  \\
+\mathop{\forall}_{k = 0}^{N/2} :\ \phi[k]= \arctan{(B[k] / A[k]) } \Longleftrightarrow \phi[\;]  
+\end{dcases}
 \label{eq:rectToPolar}
 \end{equation}
 
 \begin{equation}
-\begin{split}
-A_k= M_k \cdot \cos(\phi_k)\\
-B_k = M_k \cdot \sin(\phi_k)
-\end{split}
+(M[\;], \phi[\;]) \longmapsto (A[\;], B[\;])  =
+\begin{dcases}
+\mathop{\forall}_{k = 0}^{N/2} :\ A_k= M_k \cdot \cos(\phi_k) \Longleftrightarrow A[\;]  \\
+\mathop{\forall}_{k = 0}^{N/2} :\ B_k = M_k \cdot \sin(\phi_k) \Longleftrightarrow B[\;]  
+\end{dcases}
 \label{eq:polarToRect}
 \end{equation}
 
-Die kartesische Notation wird verwendet, um die DFT und die inverse DFT zu berechnen. Die polare Notation hat den Vorteil, dass vor allem die Magnituden $M$ für den Menschen leichter zu interpretieren sind. Die Magnituden $M$ sind Audioingenieuren als \emph{Spectrum} bekannt und werden in dieser Arbeit auch als solches bezeichnet. Die Transformation in die polare Notation wird deshalb vor allem dann Angewandt, wenn der Mensch den Frequenz-Bereich interpretieren soll. \cite[S. 164]{dspGuide}
+Die kartesische Notation wird verwendet, um die DFT und die inverse DFT zu berechnen. Die polare Notation hat den Vorteil, dass vor allem die Magnituden $M_k$ für den Menschen leichter zu interpretieren sind. Die Magnituden $M_k$ sind Audioingenieuren als \emph{Spectrum} bekannt und werden in dieser Arbeit auch als solches bezeichnet. Die Transformation in die polare Notation wird deshalb vor allem dann Angewandt, wenn der Mensch den Frequenz-Bereich interpretieren soll. \cite[S. 164]{dspGuide}
 
 Ein Schlussbemerkung: In der Einleitung dieses Kapitels wurde erwähnt, dass die DFT \emph{zeit-diskrete, periodische, unendliche} Signale transformiert, während in der hier vorgestellten Erläuterung das Signal sowohl als endlich angenommen, als auch keine Aussage über die Periodizität gemacht wurde. Bei der DFT wird davon ausgegangen, dass das Signal \emph{außerhalb} des Supportes von $x$ unendlich oft wiederholt wird, um die Vorraussetzungen zu erfüllen. Dabei handelt es sich jedoch um einen \glqq matehmatischen Trick \grqq{} der nur in Ausnahmefällen Einfluss auf den Frequenz-Bereich hat. Diese Ausnahmefälle tangieren diese Arbeit jedoch nicht, weshalb sie an dieser Stelle nicht weiter erläutert werden.\cite[S. 145]{dspGuide}
 
@@ -461,8 +472,8 @@ Dementsprechend lassen sich die Basisfunktionen aus Gleichung \ref{eq:baseFuncti
 
 \begin{equation}
 \begin{gathered}
-\Re(e^{i\cdot 2\pi k \frac{n}{N}}) = \cos_k[n] = \cos(2\pi k \frac{n}{N}) \\
-\Im(e^{i\cdot 2\pi k \frac{n}{N}}) = \sin_k[n] = \sin(2\pi k \frac{n}{N})
+\cos_k[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\  \Re(e^{i\cdot 2\pi k \frac{n}{N}}) = \cos_k[n] = \cos(2\pi k \frac{n}{N}) \\
+\sin_k[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\ \Im(e^{i\cdot 2\pi k \frac{n}{N}}) = \sin_k[n] = \sin(2\pi k \frac{n}{N})
 \end{gathered}
 \label{eq:complexBaseFunktion}
 \end{equation}
@@ -471,22 +482,22 @@ Auf Basis dieses Zusammenhanges wird die \emph{komplexe DFT} in \emph{kartesisch
 
 \begin{equation}
 \label{eq:complexDFTrectanulgar}
-X[k] = \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot (\cos (2\pi k \frac{n}{N}) -i \sin (2 \pi k \frac{n}{N}) )
+DFT(x,k) = X[k] = \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot (\cos (2\pi k \frac{n}{N}) -i \sin (2 \pi k \frac{n}{N}) )
 \end{equation}
 
 \begin{equation}
 \label{eq:complexDFTpolar}
-X[k] =  \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot e^{-i 2\pi k \frac{n}{N}}
+DFT(x,k) = X[k] =  \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot e^{-i 2\pi k \frac{n}{N}}
 \end{equation}
 
-Diese Gleichungen definieren die komplexe DFT punktweise. Das gesamte Signal des Frequenz-Bereiches $X$ wird nach Gleichung \ref{eq:dftWholeSignal} definiert.
+Gleichung \ref{eq:dftWholeSignal} verdeutlicht die Zusammensetzung des gesamten Signales $X$.
 
 \begin{equation}
-DFT\{x\} = X = \big[ \: [ X[0] \ldots X[N-1] \: \big]
+DFT\{x\} = X = \big[ DFT(x,0) \ldots DFT(x,N-1)]
 \label{eq:dftWholeSignal}
 \end{equation}
 
-Die wichtigen Unterschiede zwischen den komplexen DFT nach Formel  \ref{eq:complexDFTrectanulgar} und der reellen DFT nach Formel \ref{eq:forwardDFT} Formelsind (a) die Verwendung des Sinus als komplexe Zahl $i \cdot \sin$, sowie das invertieren seines Vorzeichens und (b) die Summierung über $n = 0\ldots N-1 $ anstatt $n = 0 \ldots N/2$. Der Frequenz-Bereich wird nun durch das complexe Signal $X$ ausgedrückt, welcher die Koeffizienten $A,B$ in seinem Real/Imaginärteil speichert. Der Frequenz-Bereich $X$ hat die selbe Länge wie der Zeit-Bereich $x$, das heißt $\text{Duration}(x) = \text{Duration}(X)$. \cite[S. 571]{dspGuide}
+Die wichtigen Unterschiede zwischen den komplexen DFT nach Formel  \ref{eq:complexDFTrectanulgar} und der reellen DFT nach Formel \ref{eq:forwardDFT} Formelsind (a) die Verwendung des Sinus als komplexe Zahl $i \cdot \sin$, sowie das invertieren seines Vorzeichens und (b) die Summierung über $n = 0\ldots N-1 $ anstatt $n = 0 \ldots N/2$. Der Frequenz-Bereich wird nun durch das complexe Signal $X$ ausgedrückt, welcher die Koeffizienten $A,B$ in seinem Real/Imaginärteil speichert. Der Frequenz-Bereich $X$ hat die selbe Länge wie der Zeit-Bereich $x$, das heißt $\text{Length}(x) = \text{Length}(X)$. \cite[S. 571]{dspGuide}
 
 Es gelten die die folgenden Zusammenhänge zwischen der reellen und der komplexen DFT \ref{eq:relationOfRealAndComplexDFT}. Es lässt sich ableiten, dass für die Indexe $k = 0 \ldots N/2$ die Real/Imaginärteil der komplexen DFT $X$ den Koeffizienten $A,B$ der reellen DFT entspricht. Da $|X| = M$, wird in dieser Arbeit $X$ ebenfalls als \emph{Spetrum} bezeichnet. \cite[S. 225 - 226, 555]{dspGuide}
 
@@ -500,15 +511,15 @@ Es gelten die die folgenden Zusammenhänge zwischen der reellen und der komplexe
 \label{eq:relationOfRealAndComplexDFT}
 \end{equation}
 
-Gleichung \ref{eq:inverseComplexDFTpolar} definiert die dazu inverse Operation, die \emph{komplexe inverse DFT} (iDFT) in \emph{polrarer Notation}. \cite[S. 572]{dspGuide} Gleichung \ref{eq:idftWholeSignal} definiert die inverse DFT zur Synthese des gesamten Signales $x$ auf Basis von Gleichung \ref{eq:inverseComplexDFTpolar}.
+Gleichung \ref{eq:inverseComplexDFTpolar} definiert die dazu inverse Operation, die \emph{komplexe inverse DFT} (iDFT) in \emph{polrarer Notation}. \cite[S. 572]{dspGuide} Gleichung \ref{eq:idftWholeSignal} verdeutlicht die Zusammensetzung des gesamten Signals $x$ auf Basis von Gleichung \ref{eq:inverseComplexDFTpolar}.
 
 \begin{equation}
 \label{eq:inverseComplexDFTpolar}
-x[n] =  \sum_{k = 0}^{N-1}  X[n] \cdot e^{i 2\pi k \frac{n}{N}}
+iDFT(X,n) = x[n] =  \sum_{k = 0}^{N-1}  X[k] \cdot e^{i 2\pi k \frac{n}{N}}
 \end{equation}
 
 \begin{equation}
-iDFT\{X\} = x = \big[ \: [ x[0] \ldots x[N-1] \: \big]
+iDFT\{X\} = x = \big[ \: [ iDFT(X,0) ,\ldots, iDFT(X,N-1)]
 \label{eq:idftWholeSignal}
 \end{equation}
 
@@ -533,10 +544,10 @@ Diese Symmetrie ist der Grund dafür, warum bei der inversen DFT nach Formel \re
 
 \begin{equation}
 \begin{split}
-x[n] =  \sum_{k = 0}^{N-1}  
-\Re(X[n]) \cdot (\cos (2\pi k \frac{n}{N}) + i \sin (2 \pi k \frac{n}{N}) ) \\ 
+iDFT(X,n) = x[n] =  \sum_{k = 0}^{N-1}  
+\Re(X[k]) \cdot (\cos (2\pi k \frac{n}{N}) + i \sin (2 \pi k \frac{n}{N}) ) \\ 
 - \sum_{k = 0}^{N-1}
-\Im(X[n]) \cdot (\sin (2\pi k \frac{n}{N}) - i \cos(2 \pi k \frac{n}{N}) )
+\Im(X[k]) \cdot (\sin (2\pi k \frac{n}{N}) - i \cos(2 \pi k \frac{n}{N}) )
 \end{split}
 \label{eq:inverseComplexDFTrectangular}
 \end{equation}
@@ -575,7 +586,7 @@ Die hier vorgestellte Beispielrechnung verdeutlicht, wie die Symmetrie des Frequ
  \end{figure} 
  
  
-Wie zur Einleitung dieses Kapitels erwähnt wurde, wird die Berechnung der komplexen DFT und inversen DFT mit Hilfe eines Algorithmus implementiert, der als \emph{Fast Fourier Transformation} (\textbf{FFT} bzw. \textbf{iFFT}). Die Funktionsweise dieses Algorithmus wird an dieser Stelle aus Platzgründen nicht näher erläutert. Schlussendlich ist das Ergebnis der FFT bzw. iFFT der Frequenz-/Zeit-Bereich nach den in diesen Kapitel vorgestellten definitionen. Die FFT fordert als einzige voraussetzung, dass die Länge des Signals als Potenz von zwei gewählt wird, das heißt Duration$(x) = N = 2^k$. \cite[S. 225 - 226]{dspGuide}
+Wie zur Einleitung dieses Kapitels erwähnt wurde, wird die Berechnung der komplexen DFT und inversen DFT mit Hilfe eines Algorithmus implementiert, der als \emph{Fast Fourier Transformation} (\textbf{FFT} bzw. \textbf{iFFT}). Die Funktionsweise dieses Algorithmus wird an dieser Stelle aus Platzgründen nicht näher erläutert. Schlussendlich ist das Ergebnis der FFT bzw. iFFT der Frequenz-/Zeit-Bereich nach den in diesen Kapitel vorgestellten definitionen. Die FFT fordert als einzige voraussetzung, dass die Länge des Signals als Potenz von zwei gewählt wird, das heißt Length$(x) = N = 2^k$. \cite[S. 225 - 226]{dspGuide}
 
 \begin{figure}[h]
 	\centering
@@ -583,6 +594,67 @@ Wie zur Einleitung dieses Kapitels erwähnt wurde, wird die Berechnung der kompl
 	\caption{Überblick über die komplexe DFT und inverse DFT}
 	\label{img:complexDFTOverview}
 \end{figure}
+
+\subsection{Short Time Fourier Transform}
+
+Wie aus Kapitel \ref{sec:comDFT} hervorgeht, enthält die Signal des Zeit-Bereiches die Informationen über den zeitlichen Verlauf des Signals, während der Frequenz-Bereich Aufschluss über Frequenzanteile des Signales gibt. Abbildung \ref{img:stft01} visualisiert den Zusammenhang: Oben ist der Zeit-Bereich eines 1.8 Sekunden langen Signals zu sehen. Es können klar drei nacheinander gespielte Töne erkannt werden. Der Zeit-Bereich macht nicht erkennbar, welche Frequenz-Anteile in den Tönen enthalten sind. Unten ist das Frequenz-Spectrum (Magnituden-Signal im Bereich  $n = 0 \ldots N/2$) abgebildet. Die x-Achse bezeichnet die Frequenz von 0 bis \SI{22050}{\hertz}, die x und die y-Achse werden logarithmisiert dargestellt. Wie zu erkennen ist, gibt das Frequenz-Spectrum einen Eindruck der Frequenz-Anteile des Signals, aber die zeitliche Information über die drei Töne geht verloren.
+
+ \begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/stft01.png}
+	\caption{Ein 1.8-Sekunden langes Signal. Oben: Der Zeitbereich mit drei klar erkennbaren Events. Unten: Das Frequenz-Spectrum des gesamten Signals mit logarithmisierten Achsen.}
+	\label{img:stft01}
+\end{figure}
+
+Es ist wünschenswert, einen Kompromiss aus den Vorteilen beider Bereiche zu finden, in dem man das Frequenz-Spectrum kürzerer Zeitabschnitte des Signals bildet. Dazu wird der Zeit-Bereich $x$ in Fenster der Länge $M$ zerlegt. Die zeitliche Differenz zwischen zwei Fensterns wird als \emph{Hoptime} $R$ bezeichnet. Gleichung definiert die Bildung des Signal-Fensters $x_m$.\cite{juliusSmith}
+
+ \begin{equation}
+x_{m}[n] = x[n+m\cdot R] \quad , n = 0 ,\ldots, M-1 
+\label{eq:signal-Window}
+\end{equation}
+
+Abbildung \ref{img:siganlWindows} gibt ein Beispiel für die Zerlegung von $x$ in Signalfenster $x_0 \ldots x_4$. Die Samplingrate des Signals ist $f_s = 44100$, die Fensterlänge beträgt $M = 22050 / f_s = \SI{0.5}{\second}$ und die Hoptime $R = M / 2= \SI{0.25}{\second}$.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/signalWindows.png}
+	\caption{Zerlegung eines Signals in Singal-Fenster}
+	\label{img:siganlWindows}
+\end{figure}
+
+Als Vorbereitungsschritt für die Transformation der Signal-Fenster in den Frequenz-Bereich wird nun jedes Fenster mit einer sogenannten \emph{Fensterfunktion} (engl \emph{window}) $w[n]$ multipliziert. Gleichung \ref{eq:hammingWindow} definiert eine der am weitesten verbreiteten Fenster-Funktionen, das \emph{Hamming-Window}. Der Paramter $M$ gibt die länge des Fensters an. Abbildung 	\ref{img:hamming} visualisiert das Hamming-Window. \cite[S. 286]{dspGuide}
+
+ \begin{equation}
+w[n] = 0.54 - 0.46 \cos(\frac{2\pi n}{M} ) \quad, n = 0 ,\ldots, M-1 
+\label{eq:hammingWindow}
+\end{equation}
+
+ \begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{bilder/hamming01.png}
+	\caption{Das Hamming-Window}
+	\label{img:hamming}
+\end{figure}
+
+Die Gleichung \ref{eq:stft} definiert die \emph{Kurzzeit-Fourier-Transformation} (engl \emph{Short Time Fourier Transformation}, \emph{STFT}), implementiert mit Hilfe der DFT. Dabei wird das Signalfenster $x_m$ mit der Fensterfunktion $w$ multipliziert und in das \emph{Frequenz-Fenster} $X_m$ transformiert.\cite{stft} Gleichung \ref{eq:stftWhole} definiet das gesamte Frequenz-Fenster $X_m$. Abbildung \ref{img:stft02} visualisiert die STFT des Beispiels aus Abbildung \ref{img:siganlWindows}.
+
+ \begin{equation}
+STFT(x_m,k) = X_m[k] = \sum_{n=0}^{M-1} x[n+m R] \cdot w[n] \cdot e^{-i 2\pi k \frac{n}{N}}
+\label{eq:stft}
+\end{equation}
+
+ \begin{equation}
+STFT\{x_m\} = X_m = DFT\{x_m \cdot w\}
+\label{eq:stftWhole}
+\end{equation}
+
+ \begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/stft02.png}
+	\caption{STFT des Beispiel-Signals aus Abbildung \ref{img:siganlWindows}}
+	\label{img:stft02}
+\end{figure}
+
 
 \section{Filter}
 \label{sec:filter}
@@ -599,10 +671,10 @@ Ein \emph{Filter} oder \emph{System} ist ein \emph{Objekt}, welches ein Eingangs
 Es gibt zwei Notationen für Systeme, die in dieser Arbeit verwendet wird:
 \begin{itemize}
 \item $x[n]\mapsto y[n]$ meint, dass $x[n]$ die Antwort $y[n]$ erzeugt. Definiert auf das gesamte Signal entspricht dies $x\mapsto y = \big[x[0]\mapsto y[0] \ldots [x[N-1]\mapsto y[N-1]\big]$
-\item $S\{ x[n] \} = y[n]$ definiert das System als Operation $S\{\;\}$. Angewandt auf das gesamte Signal gilt $S\{ x \} = \big[ S\{ x[0] \} \ldots S\{ x[N-1] \} \big] $
+\item $S\{ x[n] \} = y[n]$ definiert das System als Operation $S\{\;\}$. Angewandt auf das gesamte Signal gilt $S\{ x \} = \big[ S\{ x[0] \} \ldots S\{ x[N-1] \} \big] $. \cite[]{dspMichiganSystems}
 \end{itemize}
 
-Die Gleichungen \ref{eq:dftWholeSignal} und \ref{eq:idftWholeSignal} haben von der Zweiten Notation gebrauch gemacht. 
+Die Gleichungen \ref{eq:dftWholeSignal} und \ref{eq:idftWholeSignal} haben von der zweiten Notation gebrauch gemacht. 
 
 
 
