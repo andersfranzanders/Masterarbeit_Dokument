@@ -8,17 +8,18 @@
 \contentsline {section}{\numberline {3.1}Statistische Merkmale}{9}{section.3.1}
 \contentsline {section}{\numberline {3.2}Fehlersignale}{11}{section.3.2}
 \contentsline {section}{\numberline {3.3}Korrelation}{12}{section.3.3}
-\contentsline {section}{\numberline {3.4}Faltung}{13}{section.3.4}
-\contentsline {section}{\numberline {3.5}Diskrete Fourier-Transformation}{14}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Reelle DFT}{15}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Komplexe DFT}{19}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Short Time Fourier Transform}{23}{subsection.3.5.3}
-\contentsline {section}{\numberline {3.6}Filter}{26}{section.3.6}
-\contentsline {section}{\numberline {3.7}akustische Modellierung der menschlichen Stimme}{26}{section.3.7}
-\contentsline {section}{\numberline {3.8}Feststellung von Periodizit\IeC {\"a}t in Signalen}{26}{section.3.8}
-\contentsline {subsection}{\numberline {3.8.1}Zero-Crossing-Rate}{26}{subsection.3.8.1}
-\contentsline {subsection}{\numberline {3.8.2}Methoden des Frequenzbereiches}{26}{subsection.3.8.2}
-\contentsline {subsection}{\numberline {3.8.3}Autokorrelation}{26}{subsection.3.8.3}
-\contentsline {subsection}{\numberline {3.8.4}Cepstrum}{26}{subsection.3.8.4}
-\contentsline {chapter}{\numberline {4}Zusammenfassung}{27}{chapter.4}
-\contentsline {chapter}{Appendices}{30}{section*.27}
+\contentsline {section}{\numberline {3.4}Diskrete Fourier-Transformation}{13}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Reelle DFT}{14}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Komplexe DFT}{18}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Short Time Fourier Transform}{22}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}Filter}{25}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Differenzengleichung}{25}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Faltung}{26}{subsection.3.5.2}
+\contentsline {section}{\numberline {3.6}akustische Modellierung der menschlichen Stimme}{27}{section.3.6}
+\contentsline {section}{\numberline {3.7}Feststellung von Periodizit\IeC {\"a}t in Signalen}{27}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Zero-Crossing-Rate}{27}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Methoden des Frequenzbereiches}{27}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.3}Autokorrelation}{27}{subsection.3.7.3}
+\contentsline {subsection}{\numberline {3.7.4}Cepstrum}{27}{subsection.3.7.4}
+\contentsline {chapter}{\numberline {4}Zusammenfassung}{28}{chapter.4}
+\contentsline {chapter}{Appendices}{31}{section*.26}

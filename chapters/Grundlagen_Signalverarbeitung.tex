@@ -249,45 +249,6 @@ Abbildung \ref{img:slidingCorrelation} zeigt ein Beispiel für die Erzeugung von
 	\label{img:slidingCorrelation}
 \end{figure}
 
-%% ToDo: Fix Indexes ! Use convention!
-\section{Faltung}
-
-Die \emph{Faltung} (engl. \emph{Convolution}) ist eine der Zentralen Operationen zwischen zwei Signalen, so wie die Addition oder die Mulitplikation. Sie wird mit dem Symbol $*$ notiert. Sie wird notiert mit $x[\;]* h[\;] = y[\;]$. 
-
-Die Faltung basiert auf der sogenannten \emph{Faltungs-Summe}, definiert in Gleichung \ref{eq:convolutionSum}. In diesem Zusammenhang wird $x[\;]$ Eingangs- und $y[\;]$ als Ausgangs-Signal bezeichnet. Je nach Anwendungsfall bekommt $h[\;]$ den Namen \emph{Faltungs-Kernel}, \emph{Filter-Kernel} oder einfach \emph{Kernel}. \cite[S. 107-108]{dspGuide}
-
-\begin{equation}
-y[n] = x[n] * h[n] = \sum_{i=1}^{M} h[i] \cdot x[n-i] \quad
-\label{eq:convolutionSum}
-\end{equation}
-
- $x[\;]$ ist ein Signal mit Support$(x[\;]) = [0,N-1]$ und Length$(x[[\;]) = N$. $h[\;]$ ist ein Signal mit Support$(h[\;]) = [0,M-1]$ und Length$(h[\;]) = M$ und $y[\;]$ ist ein Signal mit Support$(y[\;]) = [0,N+M-2]$ und Length$(y[\;]) = N+M-1$. Das heißt, dass das Eingangssignal um die Länge des Faltungskerns verlängert wird. Abbildung 	\ref{img:convolutionExample} zeigt ein Beispiel für die Faltung.\cite[S. 115-120]{dspGuide}
- 
- \begin{equation}
-x[\;] *  h[\;] =  y[\;] := \quad \mathop{\forall}_{n = 0}^{N+M-2} :\ x[n] * h[n] = y[n]
- \label{eq:convolutionSum}
- \end{equation}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/convolutionExample.png}
-	\caption{Beispiel für die Faltung}
-	\label{img:convolutionExample}
-\end{figure}
-
-Das neutrale Element der Faltung ist der \emph{Delta-Funktion} $\delta[\;]$, definiert in Gleichung \ref{eq:delta} . Das heißt, dass $x[\;] * \delta[\;] = x[\;]$ . Die Faltung ist kommutativ, das heißt $ x[\;]* h[\;] = h[\;] * x[\;] = y[\;]$ . \cite[S. 107, 113 ]{dspGuide} Weitehrin ist die Faltung assoziativ, das heißt $(x[\;]*y[\;])*z[\;]=x[\;]*(y[\;]*z[\;])$. \cite[S. 133]{dspGuide}
-
-\begin{equation}
-\delta [\;] := \quad \mathop{\forall}_{n = -\infty}^{\infty} :\ \delta[n] = 
-\begin{cases}
-1 \quad , n = 0\\
-0 \quad ,  n \neq 0
-\label{eq:delta}
-\end{cases}
-\end{equation}
-
-Eines der wichtigsten Anwendungsgebiete der Faltung sind Filter Weitere Erläuterungen werden in Kapitel \ref{sec:filter} gegeben.
-
 
 \section{Diskrete Fourier-Transformation}
 
@@ -642,23 +603,115 @@ Die Gleichung \ref{eq:stft} definiert die \emph{Kurzzeit-Fourier-Transformation}
 \section{Filter}
 \label{sec:filter}
 
-Ein \emph{Filter} oder \emph{System} ist ein \emph{Objekt}, welches ein Eingangs-signal $x$ entgegennimmt, um das Ausgangssignal $y$ zu erzeugen. Das Signal $y$ wird in diesem Zusammenhang auch als \emph{Antwort des Systems} bezeichnet. Abbildung \ref{img:system} visualisiert das System als Diagramm.\cite[]{dspMichiganSystems}
+Ein \emph{Filter} ist eine Funktion, welches ein Eingangs-Signal $x[\;]$ auf ein Sample eines Ausgangssignals $y[n]$ abbildet. Er wird mit Hilfe des sogenannten \emph{Signal Operators} $T_n{\;}$ notiert, wie Gleichung \ref{eq:SignalOperator} definiert. \cite[\glqq Definition of a Filter\grqq ]{introductionToFilters}
+
+ \begin{equation}
+T_n \{ x[\;] \} = y[n]
+\label{eq:SignalOperator}
+\end{equation}
+
+Auf Basis des \ref{eq:SignalOperator} wird die \emph{Transformation} $T\{ \; \}$ als Operation definiert, welche das Signal $x[\;]$ auf ein Signal $y[\;]$ abbildet, in dem $T_n{\;}$ für meherere n angewandt wird, wie Gleichung \ref{eq:TransformationOperator} definiert. Diese Notation ist bereits bekannt aus den Gleichungen der DFT und iDFT bekannt (Gleichungen \ref{eq:complexDFTpolar}, \ref{eq:complexDFTrectanulgar} und \ref{eq:inverseComplexDFTpolar}). \cite[\glqq Definition of a Filter\grqq ]{introductionToFilters}
+
+ \begin{equation}
+T \{ x[\;] \} = y[\;] := \quad \mathop{\forall}_{n = n_1}^{n_2} :\ T_n\{x[\;]\} = y[n]
+\label{eq:TransformationOperator}
+\end{equation}
+
+
+Besonders interesant im Zusammenahng mit Audioverarbeitung ist die Klasse der \emph{Lineare, Zeit-Invariante Filter} (engl. \emph{Linear Time-Invariant Filters}, \textbf{LTI}-Filter), notiert mit durch $L_n\{  \}$. Dabei handelt es sich um Filter, die die folgenden drei Eigenschaften erfüllen:
+
+\begin{description}
+	\item[Scaling], das heißt, dass eine Skalierung des Input-Signals $x[\;]$ um den Faktor $\alpha$ zur Skalierung des Output-Samples $y[n]$ um den selben Faktor führt, wie Gleichung \ref{eq:scaling} definiert.
+	
+	 \begin{equation}
+	L_n\{ \alpha \cdot x[\;] \} = \alpha \cdot y[n]
+	\label{eq:scaling}
+	\end{equation}
+	
+	\item[Super-Position], da heißt, dass das Anwenden des Filters auf die Summmer zweier Signale zum selben Ergebnis führt wie die die isolierte Anwendung des Filters auf die beiden Signale mit nachgelagerter Summation, wie Gleichung \ref{eq:super-position} definiert. \cite[\glqq Linear Filters\grqq ]{introductionToFilters}
+	
+	 \begin{equation}
+	L_n\{ x_1[\;] + x_2[\;] \} = L_n\{ x_1[\;]\}  + L_n\{ x_2[\;]\}
+	\label{eq:super-position}
+	\end{equation}
+	
+	\item[Zeit-Invariant], das heißt, dass die Verzögerung des Eingangssingals um einen Faktor $n_0$ zur selben Verzögerung der Ausgangs-Samples führt, wie Gleichung \ref{eq:timeInvariance} definiert.\cite[Filters III, S. 2 - 5 ]{dspMichiganSystems}
+	
+	 \begin{equation}
+		L_{n-n_0}\{ x[\;] \} = y[n-n_0]
+	\label{eq:timeInvariance}
+	\end{equation}
+	
+\end{description}
+
+An dieser Stelle werden verschiedene Betrachtungsweisen von Filtern vorgestellt. Jede dieser Betrachtungsweisen definiert den Filtern vollständig, bietet jedoch unterschiedliche Betrachtungsweisen des Einflusses des Filters auf das Eingangssignal. \cite[Filters III, S. 1 ]{dspMichiganSystems}
+
+\subsection{Differenzengleichung}
+\label{sec:differenzengleichung}
+
+Eine Variante der Beschreibung eines Filters ist mit Hilfe einer \emph{Differenzengleichung} nach Gleichung \ref{eq:FilterDifferenceEquation}. In dieser Arbeit wird ein Linearer Filter, welcher durch eine Differenzen-Gleichung implementiert wird, mit dem Operator $LD_n\{\;\}$ gekennzeichnet. Ein solcher Filter wird vollständig durch die Koeffizienten $a_1 ,\ldots, a_N$ und $b_0 ,\ldots, b_M$  definiert. Ein Filter hat somit $N$ a-Glieder und $M+1$ b-Glieder.  \cite[\glqq Difference Equation\grqq]{introductionToFilters}
+
+ \begin{equation}
+\begin{split}
+LD_n\{x[\;]\}= y[n] = b_0 x[n] + b_1 x[n-1] + \ldots +b_M x[n-M] \\
+- a_1 y[n-1] - \ldots - a_N y[n-N] \\
+ = \sum_{i=0}^{M} b_i x[n-i] - \sum_{j=1}^{N} a_j y[n-j]
+\end{split}
+\label{eq:FilterDifferenceEquation}
+\end{equation}
+
+Die Glieder $b_0 ,\ldots, b_M$ sind die Koeffizienten des aktuellen Samples und vergangener Samples des Einganssignals. Die Glieder $a_1 ,\ldots, a_N$ sind die Koeffizienten vergangener Samples der Antwort $y[\;]$. Sie werden daher auch als \emph{rekursive Glieder} bezeichnet. Verwendet ein Filter nur $b$-Glieder und kein $a$-Glied, wird er als \emph{Finite Impulse Response}-Filter (\textbf{FIR}-Filter) bezeichnet. Verwendet ein Filter zumindest ein $a$-Glied, wird er als \emph{Infinite Impulse Response}-Filter (\textbf{IIR}-Filter) bezeichnet.\cite[\glqq Difference Equation\grqq]{introductionToFilters}
+
+ \begin{equation}
+\begin{gathered}
+\text{FIR} := \quad \forall j = [1,N] :\ a_j = 0 \\
+\text{IIR} := \quad \exists j \in [1,N]:  a_j \neq 0
+\end{gathered}
+\label{eq:FilterDifferenceEquation}
+\end{equation}
+
+Die \emph{Ordnung} eines Filters wird definiert als die $\max(M,N)$. \cite[\glqq Filter Order\grqq]{introductionToFilters}.
+
+> Hier folgt ein Beispiel für Filter <.
+
+%% ToDo: Fix Indexes ! Use convention!
+\subsection{Faltung}
+
+Die \emph{Faltung} (engl. \emph{Convolution}) ist eine der Zentralen Operationen zwischen zwei Signalen, so wie die Addition oder die Mulitplikation. Sie wird mit dem Symbol $*$ notiert. Sie wird notiert mit $x[\;]* h[\;] = y[\;]$. 
+
+Die Faltung basiert auf der sogenannten \emph{Faltungs-Summe}, definiert in Gleichung \ref{eq:convolutionSum}. In diesem Zusammenhang wird $x[\;]$ Eingangs- und $y[\;]$ als Ausgangs-Signal bezeichnet. Je nach Anwendungsfall bekommt $h[\;]$ den Namen \emph{Faltungs-Kernel}, \emph{Filter-Kernel} oder einfach \emph{Kernel}. In dieser Arbeit wird die Faltungs-Summe mit dem Operator $LF_n\{\;\}$ definiert. \cite[S. 107-108]{dspGuide}
+
+\begin{equation}
+LF_n\{x[\;]\} = y[n] = x[n] * h[n] = \sum_{i=1}^{M} h[i] \cdot x[n-i] \quad
+\label{eq:convolutionSum}
+\end{equation}
+
+Wird die Faltung auf alle Samples des Signal $x[\;]$, wird das Ausgangs-Signal $y[\;]$ im Vergleich zum Eingangs-Signal um die Länge des Faltungskern verlängert, wie Gleichung \ref{eq:convolutionTrans} definiert. $x[\;]$ ist ein Signal mit Support$(x[\;]) = [0,N-1]$ und Length$(x[[\;]) = N$. $h[\;]$ ist ein Signal mit Support$(h[\;]) = [0,M-1]$ und Length$(h[\;]) = M$ und $y[\;]$ ist ein Signal mit Support$(y[\;]) = [0,N+M-2]$ und Length$(y[\;]) = N+M-1$.  um die Länge des Faltungskerns verlängert wird. Abbildung 	\ref{img:convolutionExample} zeigt ein Beispiel für die Faltung.\cite[S. 115-120]{dspGuide}
+
+\begin{equation}
+LF\{x[\;]\} = x[\;] *  h[\;] =  y[\;] := \quad \mathop{\forall}_{n = 0}^{N+M-2} :\ x[n] * h[n] = y[n]
+\label{eq:convolutionTrans}
+\end{equation}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{bilder/system03.png}
-	\caption{Visualisierung eines Systems}
-	\label{img:system}
+	\includegraphics[width=0.7\textwidth]{bilder/convolutionExample.png}
+	\caption{Beispiel für die Faltung}
+	\label{img:convolutionExample}
 \end{figure}
 
-Es gibt zwei Notationen für Systeme, die in dieser Arbeit verwendet wird:
-\begin{itemize}
-\item $x[\;]\mapsto y[\;]$ meint, dass $x[\;]$ die Antwort $y[\;]$ erzeugt.
-\item $S\{ x[\;] \} = y[\;]$ definiert das System als Operation $S\{\;\}$. \cite[]{dspMichiganSystems}
-\end{itemize}
+Das neutrale Element der Faltung ist der \emph{Delta-Funktion} $\delta[\;]$, definiert in Gleichung \ref{eq:delta} . Das heißt, dass $x[\;] * \delta[\;] = x[\;]$ . Die Faltung ist kommutativ, das heißt $ x[\;]* h[\;] = h[\;] * x[\;] = y[\;]$ . \cite[S. 107, 113 ]{dspGuide} Weitehrin ist die Faltung assoziativ, das heißt $(x[\;]*y[\;])*z[\;]=x[\;]*(y[\;]*z[\;])$. \cite[S. 133]{dspGuide}
 
-Die Gleichungen \ref{eq:complexDFTpolar}, \ref{eq:complexDFTrectangular} und \ref{eq:inverseComplexDFTrectanulgar}  haben von der zweiten Notation gebrauch gemacht. 
+\begin{equation}
+\delta [\;] := \quad \mathop{\forall}_{n = -\infty}^{\infty} :\ \delta[n] = 
+\begin{cases}
+1 \quad , n = 0\\
+0 \quad ,  n \neq 0
+\label{eq:delta}
+\end{cases}
+\end{equation}
 
+Die Faltung ist eine der Varianten der Umsetzung von Filtern, neben den in Kapitel \ref{sec:differenzengleichung} vorgestellten Differenzengleichungen.
 
 
 \section{akustische Modellierung der menschlichen Stimme}
