@@ -8,20 +8,20 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Statistische Werte eines Signals \IeC {\"u}ber das Intervall [50,200]\relax }}{10}{figure.caption.8}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Komponentenweise Addition und Mulitplikation zweier Signale\relax }}{10}{figure.caption.9}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Berechnung des MSE, RMSE und SNR eines von Rauschen gest\IeC {\"o}rten Signals\relax }}{12}{figure.caption.10}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Correlation der Signale $x[n]$ und $y[n]$\relax }}{13}{figure.caption.11}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Correlation der Signale $x[n]$ und $y[n]$\relax }}{12}{figure.caption.11}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Beispiel einer Running Correlation\relax }}{13}{figure.caption.12}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Beispiel f\IeC {\"u}r die Faltung\relax }}{14}{figure.caption.13}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces $\SI {1}{\second } = 44100 $ Samples der Cosinus-Schwingung $[A = 2] \cdot cos_{f=\SI {4}{\hertz }}[\tmspace +\thickmuskip {.2777em}] = 2 \cdot \qopname \relax o{cos}(2\pi 4 \frac {n}{f_s})$ bei einer Sampling-Rate von $f_s = \SI {44100}{\hertz } $\relax }}{16}{figure.caption.14}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces $\SI {1}{\second } = 44100 $ Samples der Cosinus-Schwingung $[A = 2] \cdot cos_{f=\SI {4}{\hertz }}[\tmspace +\thickmuskip {.2777em}] = 2 \cdot \qopname \relax o{cos}(2\pi 4 \frac {n}{f_s})$ bei einer Sampling-Rate von $f_s = \SI {44100}{\hertz } $\relax }}{15}{figure.caption.14}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Synthetisierung eines Signals $x[\tmspace +\thickmuskip {.2777em}]$ aus vier Cosinus-Funktionen, mit Length$(x[\tmspace +\thickmuskip {.2777em}]) = 200$ und $f_s = \SI {100}{\hertz }$\relax }}{16}{figure.caption.15}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Frequenz-Bereich des Beispiels aus Abbildung \ref {img:fftExample02}\relax }}{18}{figure.caption.16}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die DFT und die inverse DFT\relax }}{18}{figure.caption.17}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die DFT und die inverse DFT\relax }}{18}{figure.caption.16}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Frequenz-Bereich des Beispiels aus Abbildung \ref {img:fftExample02}\relax }}{19}{figure.caption.17}
 \contentsline {figure}{\numberline {3.13}{\ignorespaces Visualisierung der Eulergleichung\relax }}{20}{figure.caption.18}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Symmetrie des Frequenzbereiches in den Indexen $n = [-N/2 = -0.5*N ,\ldots , N/2 = 0.5*N]$. Die Marker 1 und 2 haben eine Amplitude von $+0.5$, der Marker 3 hat eine Amplitude von $-0.5$ und Marker 4 eine Amplitude von $+0.5$ \relax }}{23}{figure.caption.19}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Symmetrie des Frequenzbereiches in den Indexen $n = (-N/2 = -0.5*N) ,\ldots , (N/2 = 0.5*N)$. Die Marker 1 und 2 haben eine Amplitude von $+0.5$, der Marker 3 hat eine Amplitude von $-0.5$ und Marker 4 eine Amplitude von $+0.5$ \relax }}{23}{figure.caption.19}
 \contentsline {figure}{\numberline {3.15}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die komplexe DFT und inverse DFT\relax }}{24}{figure.caption.20}
 \contentsline {figure}{\numberline {3.16}{\ignorespaces Ein 1.8-Sekunden langes Signal. Oben: Der Zeitbereich mit drei klar erkennbaren Events. Unten: Das Frequenz-Spectrum des gesamten Signals mit logarithmisierten Achsen.\relax }}{24}{figure.caption.21}
 \contentsline {figure}{\numberline {3.17}{\ignorespaces Zerlegung eines Signals in Singal-Fenster\relax }}{25}{figure.caption.22}
 \contentsline {figure}{\numberline {3.18}{\ignorespaces Das Hamming-Window\relax }}{25}{figure.caption.23}
-\contentsline {figure}{\numberline {3.19}{\ignorespaces STFT des Beispiel-Signals aus Abbildung \ref {img:siganlWindows}\relax }}{26}{figure.caption.24}
+\contentsline {figure}{\numberline {3.19}{\ignorespaces STFT des Beispiel-Signals aus Abbildung \ref {img:siganlWindows}\relax }}{25}{figure.caption.24}
 \contentsline {figure}{\numberline {3.20}{\ignorespaces Visualisierung eines Systems\relax }}{26}{figure.caption.25}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{32}{figure.caption.29}

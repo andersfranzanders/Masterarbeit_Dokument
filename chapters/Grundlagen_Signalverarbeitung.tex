@@ -8,19 +8,19 @@ Ein \emph{Signal} ist eine Funktion eines Parameters mit numerischen Wertebereic
  Bei einem zeit-kontinuierlichen Signal $x( \: )$ ist der Wertebereich kontinuierlich, wie in Formel  \ref{eq:time-cont-signal} definiert. Bei einem zeit-diskreten Signal $x[\;]$ ist der Wertebreich diskret, wie in Formel \ref{eq:time-disc-signal} definiert. Abbildung \ref{img:aSignal} zeigt Beispiele für ein zeit-kontinuierliches und ein zeit-diskretes Signal.  So beschreibt beispielsweise $x[17] = s$ den Wert zur Zeit $n = 17$. \glqq Zeit\grqq{} hat in diesem Kontext keine Einheit. Ein Wert wird auch als \emph{Sample} oder \emph{Amplitude} bezeichnet. \cite[S. 22 - 23]{dspMichigan}
 
  \begin{equation}
-x(\;) \Longleftrightarrow \forall t \in \mathbb{R} :\ x(t) = s
+x(\;) := \quad \forall t \in \mathbb{R} :\ x(t) = s
 \label{eq:time-cont-signal}
 \end{equation}
 
 
 \begin{equation}
-x[\;] \Longleftrightarrow \forall n \in \mathbb{Z} :\ x[n] = s
+x[\;] := \quad  \forall n \in \mathbb{Z} :\ x[n] = s
 \label{eq:time-disc-signal}
 \end{equation}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/aSignal02.png}
+	\includegraphics[width=0.7\textwidth]{bilder/aSignal04.png}
 	\caption{Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B)}
 	\label{img:aSignal}
 \end{figure}
@@ -72,7 +72,7 @@ Ein Signal gilt als \emph{periodisch}, wenn Formel \ref{eq:periodicity} erfüllt
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/periodicSig.png}
+	\includegraphics[width=0.8\textwidth]{bilder/periodicSig03.png}
 	\caption{Ein nicht-periodisches Signal (A) und ein periodisches Signal (B)}
 	\label{img:periodicSic}
 \end{figure}
@@ -126,7 +126,7 @@ Im folgenden wird ein überblick über die häufig verwendete Signaleigenschafte
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/sigStats.png}
+	\includegraphics[width=0.7\textwidth]{bilder/sigStats02.png}
 	\caption{Statistische Werte eines Signals über das Intervall [50,200]}
 	\label{img:sigStats}
 \end{figure}
@@ -135,15 +135,15 @@ Die Addition und Multiplikation wird bei Signalen komponentenweise durchgeführt
 
 \begin{equation}
 \begin{gathered} 
-x_1[\;] + x_2[\;] = y[\;]\Longleftrightarrow \mathop{\forall}_{n = n_1}^{n_2}  :  x_1[n] + x_2[n] = y[n] \\
-x_1[\;] \cdot x_2[\;] = y[\;]\Longleftrightarrow \mathop{\forall}_{n = n_1}^{n_2}  :  x_1[n] \cdot x_2[n] = y[n]
+x_1[\;] + x_2[\;] = y[\;] :=\ \mathop{\forall}_{n = n_1}^{n_2}  :  x_1[n] + x_2[n] = y[n] \\
+x_1[\;] \cdot x_2[\;] = y[\;] :=\ \mathop{\forall}_{n = n_1}^{n_2}  :  x_1[n] \cdot x_2[n] = y[n]
 \end{gathered}
 \label{eq:addAndMult}
 \end{equation}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{bilder/addAndMultSig.png}
+	\includegraphics[width=1\textwidth]{bilder/addAndMultSig02.png}
 	\caption{Komponentenweise Addition und Mulitplikation zweier Signale}
 	\label{img:addAndMultSig}
 \end{figure}
@@ -153,12 +153,12 @@ x_1[\;] \cdot x_2[\;] = y[\;]\Longleftrightarrow \mathop{\forall}_{n = n_1}^{n_2
 Die Addition wird unter anderem für die Modellierung des Einflusses von Störungen benötigt. Angenommen, ein Signal $x[\;]$ wird übertragen, auf dem Übertragungsweg jedoch durch ein anderes Störsignal wie z.B. Rauschen $e[\;]$ überlagert. Dieses Störsignal wird in diesem Zusammenhang auch als \glqq{Fehler-Signal} bezeichnet. Das resultierende Signal $x'[\;]$ wird nach Formel \ref{eq:sigErrorAddition} berechnet. Kennt man sowohl das Eingangssignal $x[\;]$ als auch das Ausgangssignal $x'[\;]$, kann das Störsignal $e[\;]$ nach Formel \ref{eq:calErrorSig} berechnet werden.
 
 \begin{equation}
-x'[\;] \Longleftrightarrow \mathop{\forall}_{n = n_1}^{n_2} :\ x'[n] = x[n] + e[n]
+x'[\;] := \quad \mathop{\forall}_{n = n_1}^{n_2} :\ x'[n] = x[n] + e[n]
 \label{eq:sigErrorAddition}
 \end{equation}
 
 \begin{equation}
-e[\;] \Longleftrightarrow \mathop{\forall}_{n = n_1}^{n_2} :\ e[n] = x'[n] -x[n]
+e[\;] := \quad \mathop{\forall}_{n = n_1}^{n_2} :\ e[n] = x'[n] -x[n]
 \label{eq:calErrorSig}
 \end{equation}
 
@@ -190,7 +190,7 @@ Eine weitere Betrachtungsweise bezüglich der Stärke des Rauschens auf das Sign
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/snrStuff02.png}
+	\includegraphics[width=1\textwidth]{bilder/snrStuff04.png}
 	\caption{Berechnung des MSE, RMSE und SNR eines von Rauschen gestörten Signals}
 	\label{img:snrStuff}
 \end{figure}
@@ -221,7 +221,7 @@ Die \emph{Korrelation} (engl \emph{Correlation}) zweier Signale $x_1[\;]$ und $x
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/corrSigsComp.png}
+	\includegraphics[width=1\textwidth]{bilder/corrSigsComp02.png}
 	\caption{Correlation der Signale $x[n]$ und $y[n]$}
 	\label{img:corrSigsComp}
 \end{figure}
@@ -236,7 +236,7 @@ Die Korrelation und die normalisierte Korrelation werden aufgrund ihrer Eigensch
 Im Prozess der so genannten \emph{Running Correlation} nutzt man die Cross-Correlation mit den Lags $k = 0 \cdots k_{max}$ zur Erstellung des \emph{Korrelationssignals} $r[\;]$, wie in Gleichung \ref{eq:runningCorrelation} definiert. Das Signal $r[\;]$ gibt Auskunft, zu welchen Verzögerungswerten $k$ die größten Ähnlichkeiten zwischen $x$ und $y$ gefunden wurden. 
 
 \begin{equation}
-r[\;] \Longleftrightarrow \mathop{\forall}_{k = 0}^{k_{max}} :\ r[k] = \text{X-Corr}(x[\;],y[\;],k)
+r[\;] := \quad \mathop{\forall}_{k = 0}^{k_{max}} :\ r[k] = \text{X-Corr}(x[\;],y[\;],k)
 \label{eq:runningCorrelation}
 \end{equation}
 
@@ -264,7 +264,7 @@ y[n] = x[n] * h[n] = \sum_{i=1}^{M} h[i] \cdot x[n-i] \quad
  $x[\;]$ ist ein Signal mit Support$(x[\;]) = [0,N-1]$ und Length$(x[[\;]) = N$. $h[\;]$ ist ein Signal mit Support$(h[\;]) = [0,M-1]$ und Length$(h[\;]) = M$ und $y[\;]$ ist ein Signal mit Support$(y[\;]) = [0,N+M-2]$ und Length$(y[\;]) = N+M-1$. Das heißt, dass das Eingangssignal um die Länge des Faltungskerns verlängert wird. Abbildung 	\ref{img:convolutionExample} zeigt ein Beispiel für die Faltung.\cite[S. 115-120]{dspGuide}
  
  \begin{equation}
-x[\;] *  h[\;] =  y[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N+M-2} :\ x[n] * h[n] = y[n]
+x[\;] *  h[\;] =  y[\;] := \quad \mathop{\forall}_{n = 0}^{N+M-2} :\ x[n] * h[n] = y[n]
  \label{eq:convolutionSum}
  \end{equation}
 
@@ -278,7 +278,7 @@ x[\;] *  h[\;] =  y[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N+M-2} :\ 
 Das neutrale Element der Faltung ist der \emph{Delta-Funktion} $\delta[\;]$, definiert in Gleichung \ref{eq:delta} . Das heißt, dass $x[\;] * \delta[\;] = x[\;]$ . Die Faltung ist kommutativ, das heißt $ x[\;]* h[\;] = h[\;] * x[\;] = y[\;]$ . \cite[S. 107, 113 ]{dspGuide} Weitehrin ist die Faltung assoziativ, das heißt $(x[\;]*y[\;])*z[\;]=x[\;]*(y[\;]*z[\;])$. \cite[S. 133]{dspGuide}
 
 \begin{equation}
-\mathop{\forall}_{n = -\infty}^{\infty} :\ \delta[n] = 
+\delta [\;] := \quad \mathop{\forall}_{n = -\infty}^{\infty} :\ \delta[n] = 
 \begin{cases}
 1 \quad , n = 0\\
 0 \quad ,  n \neq 0
@@ -303,7 +303,7 @@ Jedes zeitdiskretes, periodisches Signal $x[\;]$ kann erzeugt werden, indem eine
 \begin{equation}
 \label{eq:fftIntroduction}
 \begin{split}
-x[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\ x[n] =  A[0]\cos_{f_0}[n] + \ldots + A[N/2]\cos_{f_{N/2}}[n]  \\ + B[0]\sin_{f_{N/2}}[n] + \ldots + B[N/2] \sin_{f_{N/2}}[n]
+x[\;] := \quad \mathop{\forall}_{n = 0}^{N-1} :\ x[n] =  A[0]\cos_{f_0}[n] + \ldots + A[N/2]\cos_{f_{N/2}}[n]  \\ + B[0]\sin_{f_{N/2}}[n] + \ldots + B[N/2] \sin_{f_{N/2}}[n]
 \end{split}
 \end{equation}
 
@@ -329,18 +329,18 @@ Abbildung \ref{img:fftExample02} zeigt ein Beispiel für die Synthese eines Sign
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/fftExp02.png}
+	\includegraphics[width=1\textwidth]{bilder/fftExp05.png}
 	\caption{Synthetisierung eines Signals $x[\;]$ aus vier Cosinus-Funktionen, mit Length$(x[\;]) = 200$ und $f_s = \SI{100}{\hertz}$}
 	\label{img:fftExample02}
 \end{figure}
 
-Das Problem lässt sich auf die Berechnung der Amplituden $A[k],B[k]$ beschränken, in dem man den Fakt, dass höchstens $\frac{2}{N} + 1$ Cosinus- und $\frac{2}{N} + 1$ Sinus-Signale für die Synthese benötigt werden, in Verbindung mit dem Nyquist-Shannon-Abtasttheorem (Gleichung \ref{eq:shannonTheorem}) bringt. Die niedrigst mögliche Frequenz, die im Signal $x[\;]$ enthalten sein kann, ist $f_0 = \SI{0}{\hertz}$, und die höchst mögliche Frequenz $f_{max} = \frac{f_s}{2}$, womit die Frequenzen der Signale $\cos_{f_0 = 0}[\;] , \cos_{f_{max} = f_s/2}[\;],\sin_{f_0 = 0}[\;], \sin_{f_{max} = f_s/2}[\;]$ bereits feststehen. Die restlichen $\frac{2}{N} - 1$ Cosinus-Signale teilen sich gleichmäßig auf diesen Frequenzraum auf, entsprechendes gilt für die Sinus-Signale. Die Frequenz der insgesamt $N+2$ Cosinus/Sinus-Signale ergibt sich somit direkt als Funktion der Samplingrate und der Länge des Signals $x[\;]$. Gleichung \ref{eq:baseFunctions} fasst diesen Zusammenhang zusammen. Die dort beschriebenen Funktionen $\cos_k[\;]$ und $\sin_k[\;]$werden als \emph{Basisfunktionen} bezeichnet. Aus dem  Index $k = 0 ,\ldots, \frac{N}{2}$ lässt sich die Frequenz der jeweiligen Basisfunktion nach Gleichung \ref{eq:baseToFreq} berechnen.\cite[140 - 151, S.]{dspGuide}  In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich die Indexe $[\cos_{f=\SI{0.5}{\hertz}}[\;] = \cos_1[\;]]$, $[\cos_{f=\SI{4}{\hertz}}[\;] = \cos_8[\;]]$, $[\sin_{f=\SI{1}{\hertz}}[\;] = \sin_2[\;]]$ und $[\sin_{f=\SI{7.5}{\hertz}}[\;] = \sin_{15}[\;]]$
+Das Problem lässt sich auf die Berechnung der Amplituden $A[\;],B[\; ]$ beschränken, in dem man den Fakt, dass höchstens $\frac{2}{N} + 1$ Cosinus- und $\frac{2}{N} + 1$ Sinus-Signale für die Synthese benötigt werden, in Verbindung mit dem Nyquist-Shannon-Abtasttheorem (Gleichung \ref{eq:shannonTheorem}) bringt. Die niedrigst mögliche Frequenz, die im Signal $x[\;]$ enthalten sein kann, ist $f_0 = \SI{0}{\hertz}$, und die höchst mögliche Frequenz $f_{max} = \frac{f_s}{2}$, womit die Frequenzen der Signale $\cos_{f_0 = 0}[\;] , \cos_{f_{max} = f_s/2}[\;],\sin_{f_0 = 0}[\;], \sin_{f_{max} = f_s/2}[\;]$ bereits feststehen. Die restlichen $\frac{2}{N} - 1$ Cosinus-Signale teilen sich gleichmäßig auf diesen Frequenzraum auf, entsprechendes gilt für die Sinus-Signale. Die Frequenz der insgesamt $N+2$ Cosinus/Sinus-Signale ergibt sich somit direkt als Funktion der Samplingrate und der Länge des Signals $x[\;]$. Gleichung \ref{eq:baseFunctions} fasst diesen Zusammenhang zusammen. Die dort beschriebenen Funktionen $\cos_k[\;]$ und $\sin_k[\;]$werden als \emph{Basisfunktionen} bezeichnet. Aus dem  Index $k = 0 ,\ldots, \frac{N}{2}$ lässt sich die Frequenz der jeweiligen Basisfunktion nach Gleichung \ref{eq:baseToFreq} berechnen.\cite[140 - 151, S.]{dspGuide}  In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich die Indexe $[\cos_{f=\SI{0.5}{\hertz}}[\;] = \cos_1[\;]]$, $[\cos_{f=\SI{4}{\hertz}}[\;] = \cos_8[\;]]$, $[\sin_{f=\SI{1}{\hertz}}[\;] = \sin_2[\;]]$ und $[\sin_{f=\SI{7.5}{\hertz}}[\;] = \sin_{15}[\;]]$
 
 \begin{equation}
 \label{eq:baseFunctions}
 \begin{split}
-\cos_k[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\ \cos_k[n] = \cos(2\pi k \frac{n}{N}) \\
-\sin_k[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\ \sin_k[n] = \sin(2\pi k \frac{n}{N}) \\
+\cos_k[\;] := \quad \mathop{\forall}_{n = 0}^{N-1} :\ \cos_k[n] = \cos(2\pi k \frac{n}{N}) \\
+\sin_k[\;] := \quad \mathop{\forall}_{n = 0}^{N-1} :\ \sin_k[n] = \sin(2\pi k \frac{n}{N}) \\
 N = \text{Length} (x[\;] )
 \end{split}
 \end{equation} 
@@ -350,15 +350,15 @@ N = \text{Length} (x[\;] )
 f = k\frac{f_s}{N} 
 \end{equation} 
 
-Das Problem der Dekomposition wird so auf die Suche der Amplituden-Koeffizienten $A[\;], B[\;]$ beschränkt, die zu den jeweiligen Basisfunktionen $\cos_k[\;]$ und $\sin_k[\;]$ gehören. Die Frage ist, vereinfacht formuliert, wie \glqq stark\grqq{} jede der Basisfunktionen $\cos_0[\;], \ldots ,\cos_{N/2}[\;]$ und $\sin_0[\;] ,\ldots ,\sin_{N/2}[\;]$ in $x[\;]$ enthalten ist.  Die Antwort darauf ist die in Kapitel \ref{sec:correlation} vorgestellte Korrelation. Der Korrelationswert einer Cosinus-Basisfunktion mit Eingangssignal Corr$(x[\;],\cos_k[\;]) = \sum_{n=0}^{N-1} \cdot x[n]cos_k[n]$ gibt somit eine Aussage darüber, wie stark die entsprechende Cosinus-Schwingungen zur Syntehse von $x[\;]$ beiträgt. Ein Wert von $0$ spricht für keinen Beitrag, ein hoher oder niedriger Wert für eine positiven oder negativen Beitrag. \cite[S. 157 - 158]{dspGuide}
+Das Problem der Dekomposition wird so auf die Suche der Amplituden-Koeffizienten $A[k], B[k]$ beschränkt, die zu den jeweiligen Basisfunktionen $\cos_k[\;]$ und $\sin_k[\;]$ gehören. Die Frage ist, vereinfacht formuliert, wie \glqq stark\grqq{} jede der Basisfunktionen $\cos_0[\;], \ldots ,\cos_{N/2}[\;]$ und $\sin_0[\;] ,\ldots ,\sin_{N/2}[\;]$ in $x[\;]$ enthalten ist.  Die Antwort darauf ist die in Kapitel \ref{sec:correlation} vorgestellte Korrelation. Der Korrelationswert einer Cosinus-Basisfunktion mit Eingangssignal Corr$(x[\;],\cos_k[\;]) = \sum_{n=0}^{N-1} \cdot x[n]cos_k[n]$ gibt somit eine Aussage darüber, wie stark die entsprechende Cosinus-Schwingungen zur Syntehse von $x[\;]$ beiträgt. Ein Wert von $0$ spricht für keinen Beitrag, ein hoher oder niedriger Wert für eine positiven oder negativen Beitrag. \cite[S. 157 - 158]{dspGuide}
 
 Dieses Vorgehen lässt sich sogenannten \emph{forward DFT} nach Formel \ref{eq:forwardDFT} verallgemeinern, kurz als \textbf{DFT} bezeichnet. Das Ergebnis sind die Koeffizienten $\bar{A}[\;] = \bar{A}[0]\ldots \bar{A}[N/2]$ und $\bar{B}[\;] = \bar{B}[0] \ldots \bar{B}[N/2]$. Die Koeffizienten werden gemeinsam als der \emph{Frequenz-Bereich} in \emph{kartesischer Notation} $X[\;]$ bezeichnet. Das $X[\;]$ hat im Zusammenhang mit der reellen DFT einen rein symbolisch bezeichnenden Charakter und wird erst im Zusammenhang mit der \emph{komplexen DFT} in Kapitel \ref{sec:comDFT} zu einem Signal.  \cite[S. 158]{dspGuide}
 
 \begin{equation}
-\text{DFT}\{x[\;]\} = X[\;] \Longleftrightarrow
+\text{DFT}\{x[\;]\} = X[\;] :=
 \begin{dcases}
-\mathop{\forall}_{k = 0}^{N/2} :\ \bar{A}[k] = \sum_{n=0}^{N-1}x[n] \cos(2\pi k \frac{n}{N}) \Longleftrightarrow \bar{A}[\;] \\
-\mathop{\forall}_{k = 0}^{N/2} :\ \bar{B}[k] = \sum_{n=0}^{N-1}x[n] \sin(2\pi k \frac{n}{N}) \Longleftrightarrow \bar{B}[\;] 
+\bar{A}[\;]  := \mathop{\forall}_{k = 0}^{N/2} :\ \bar{A}[k] = \sum_{n=0}^{N-1}x[n] \cos(2\pi k \frac{n}{N}) \\
+ \bar{B}[\;] := \mathop{\forall}_{k = 0}^{N/2} :\ \bar{B}[k] = \sum_{n=0}^{N-1}x[n] \sin(2\pi k \frac{n}{N}) 
 \end{dcases}
 \label{eq:forwardDFT}
 \end{equation}
@@ -366,7 +366,7 @@ Dieses Vorgehen lässt sich sogenannten \emph{forward DFT} nach Formel \ref{eq:f
 In Bezug auf das Beispiel aus Abbildung \ref{img:fftExample02} ergeben sich bei Anwendung von Formel \ref{eq:forwardDFT} auf das Signal $x[n]$ die Koeffizienten $[ \bar{A}_{f=\SI{0.5}{\hertz}} = \bar{A}[1] = 100 ]$ , $[  \bar{A}_{f=\SI{4}{\hertz}} = \bar{A}[8] = 200 ]$, $[ \bar{B}_{f=\SI{1}{\hertz}} = \bar{B}[2] = 50 ]$ und $[ \bar{B}_{f=\SI{7.5}{\hertz}} = \bar{B}[15] = 100 ]$. Um die eigentlichen Koeffizienten $A[1] = 1, A[8] = 2, B[2] = 0.5$ und $B[[15] = 1$ zu erhalten, muss die Umrechnungsvorschrift nach den Formel \ref{eq:AConversion} und \ref{eq:BConversion} angewandt werden. Dieser Transformationsschritt $\bar{A}[\;] \longmapsto  A[\;]$ und $\bar{B}[\;] \longmapsto  B[\;]$ ist ein \emph{Extra-Schritt}, den jeder reelle DFT nach sich zieht. \cite[S. 152 - 153]{dspGuide}
 
 \begin{equation}
-A[\;] \Longleftrightarrow \mathop{\forall}_{k = 0}^{N/2} :\ A[k] = 
+A[\;] := \quad \mathop{\forall}_{k = 0}^{N/2} :\ A[k] = 
 \begin{dcases}
 \frac{\bar{A}[k]}{N} \quad, \text{falls } k = 0 \vee k = N/2\\
 \frac{\bar{A}[k]}{N/2} \quad ,\text{sonst} \\
@@ -375,7 +375,7 @@ A[\;] \Longleftrightarrow \mathop{\forall}_{k = 0}^{N/2} :\ A[k] =
 \end{equation}
 
 \begin{equation}
-B[\;] \Longleftrightarrow \mathop{\forall}_{k = 0}^{N/2} :\
+B[\;] := \quad \mathop{\forall}_{k = 0}^{N/2} :\
 B[k]= \frac{B_k}{N/2}
 \label{eq:BConversion}
 \end{equation}
@@ -384,23 +384,15 @@ Gleichung \ref{eq:inverseDFT} definiert die Synthese des Signals $x[\;]$ aus den
 
 \begin{equation}
 \text{DFT}\{X[\;]\} = x[\;]
-\Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\ x[n] = \sum_{k = 0}^{N/2} A[k]\cos(2\pi k \frac{n}{N}) + \sum_{k = 0}^{N/2}B[k]\sin(2\pi k \frac{n}{N}) \\
+:= \quad \mathop{\forall}_{n = 0}^{N-1} :\ x[n] = \sum_{k = 0}^{N/2} A[k]\cos(2\pi k \frac{n}{N}) + \sum_{k = 0}^{N/2}B[k]\sin(2\pi k \frac{n}{N}) \\
 \label{eq:inverseDFT}
 \end{equation}
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{bilder/rectToPolar02.png}
-	\caption{Frequenz-Bereich des Beispiels aus Abbildung \ref{img:fftExample02}}
-	\label{img:polarToRect02}
-\end{figure}
 
 Abbildung \ref{img:dtOverview} gibt einen Überblick über den Zusammenhang $x[\;]$ und $X[\;]$. Da mit steigender Länge von $x[\;]$ die Anzahl an Basis-Funktionen im Frequenzbereich $X[\;]$ steigt, wird die Auflösung des Frequenz-Bereiches umso höher, je länger $x[\;]$ gewählt wird. Im Gegenzug sinkt die Auflösung in Bezug auf den Zeit-Bereich: Der Frequenz-Bereich trifft keine Aussage darüber \emph{wann} etwas passiert, sondern nur \emph{welche Frequenzen} daran beteiligt sind.\cite[S. 170]{dspGuide}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{bilder/dftOverview.png}
+	\includegraphics[width=1\textwidth]{bilder/dftOverview04.png}
 	\caption{Überblick über die DFT und die inverse DFT}
 	\label{img:dtOverview}
 \end{figure}
@@ -420,8 +412,8 @@ Auf Basis von Formel \ref{eq:sinusoid} lässt sich der gesamte Frequenz-Bereich 
 \begin{equation}
 (A[\;], B[\;]) \longmapsto (M[\;], \phi[\;])  = 
 \begin{dcases}
-\mathop{\forall}_{k = 0}^{N/2} :\ M[k] = \sqrt{(A[k]^2 + B[k]^2 ) } \Longleftrightarrow M[\;]  \\
-\mathop{\forall}_{k = 0}^{N/2} :\ \phi[k]= \arctan{(B[k] / A[k]) } \Longleftrightarrow \phi[\;]  
+M[\;] := \mathop{\forall}_{k = 0}^{N/2} :\ M[k] = \sqrt{(A[k]^2 + B[k]^2 ) }   \\
+ \phi[\;]  := \mathop{\forall}_{k = 0}^{N/2} :\ \phi[k]= \arctan{(B[k] / A[k]) }
 \end{dcases}
 \label{eq:rectToPolar}
 \end{equation}
@@ -429,13 +421,20 @@ Auf Basis von Formel \ref{eq:sinusoid} lässt sich der gesamte Frequenz-Bereich 
 \begin{equation}
 (M[\;], \phi[\;]) \longmapsto (A[\;], B[\;])  =
 \begin{dcases}
-\mathop{\forall}_{k = 0}^{N/2} :\ A_k= M_k \cdot \cos(\phi_k) \Longleftrightarrow A[\;]  \\
-\mathop{\forall}_{k = 0}^{N/2} :\ B_k = M_k \cdot \sin(\phi_k) \Longleftrightarrow B[\;]  
+A[\;]  := \mathop{\forall}_{k = 0}^{N/2} :\ A_k= M_k \cdot \cos(\phi_k) \\
+B[\;]  := \mathop{\forall}_{k = 0}^{N/2} :\ B_k = M_k \cdot \sin(\phi_k)
 \end{dcases}
 \label{eq:polarToRect}
 \end{equation}
 
 Die kartesische Notation wird verwendet, um die DFT und die inverse DFT zu berechnen. Die polare Notation hat den Vorteil, dass vor allem die Magnituden $M_k$ für den Menschen leichter zu interpretieren sind. Die Magnituden $M_k$ sind Audioingenieuren als \emph{Spectrum} bekannt und werden in dieser Arbeit auch als solches bezeichnet. Die Transformation in die polare Notation wird deshalb vor allem dann Angewandt, wenn der Mensch den Frequenz-Bereich interpretieren soll. \cite[S. 164]{dspGuide}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/rectToPolar03.png}
+	\caption{Frequenz-Bereich des Beispiels aus Abbildung \ref{img:fftExample02}}
+	\label{img:polarToRect02}
+\end{figure}
 
 Ein Schlussbemerkung: In der Einleitung dieses Kapitels wurde erwähnt, dass die DFT \emph{zeit-diskrete, periodische, unendliche} Signale transformiert, während in der hier vorgestellten Erläuterung das Signal sowohl als endlich angenommen, als auch keine Aussage über die Periodizität gemacht wurde. Bei der DFT wird davon ausgegangen, dass das Signal \emph{außerhalb} des Supportes von $x$ unendlich oft wiederholt wird, um die Vorraussetzungen zu erfüllen. Dabei handelt es sich jedoch um einen \glqq matehmatischen Trick \grqq{} der nur in Ausnahmefällen Einfluss auf den Frequenz-Bereich hat. Diese Ausnahmefälle tangieren diese Arbeit jedoch nicht, weshalb sie an dieser Stelle nicht weiter erläutert werden.\cite[S. 145]{dspGuide}
 
@@ -472,8 +471,8 @@ Dementsprechend lassen sich die Basisfunktionen aus Gleichung \ref{eq:baseFuncti
 
 \begin{equation}
 \begin{gathered}
-\cos_k[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\  \Re(e^{i\cdot 2\pi k \frac{n}{N}}) = \cos_k[n] = \cos(2\pi k \frac{n}{N}) \\
-\sin_k[\;] \Longleftrightarrow \mathop{\forall}_{n = 0}^{N-1} :\ \Im(e^{i\cdot 2\pi k \frac{n}{N}}) = \sin_k[n] = \sin(2\pi k \frac{n}{N})
+\cos_k[\;] := \quad \mathop{\forall}_{n = 0}^{N-1} :\  \Re(e^{i\cdot 2\pi k \frac{n}{N}}) = \cos_k[n] = \cos(2\pi k \frac{n}{N}) \\
+\sin_k[\;] := \quad \mathop{\forall}_{n = 0}^{N-1} :\ \Im(e^{i\cdot 2\pi k \frac{n}{N}}) = \sin_k[n] = \sin(2\pi k \frac{n}{N})
 \end{gathered}
 \label{eq:complexBaseFunktion}
 \end{equation}
@@ -482,69 +481,58 @@ Auf Basis dieses Zusammenhanges wird die \emph{komplexe DFT} in \emph{kartesisch
 
 \begin{equation}
 \label{eq:complexDFTrectanulgar}
-DFT(x,k) = X[k] = \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot (\cos (2\pi k \frac{n}{N}) -i \sin (2 \pi k \frac{n}{N}) )
+\text{DFT}\{x[\;]\} = X[\;]  := \quad \mathop{\forall}_{k = 0}^{N-1} :\ X[k] = \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot (\cos (2\pi k \frac{n}{N}) -i \sin (2 \pi k \frac{n}{N}) )
 \end{equation}
 
 \begin{equation}
 \label{eq:complexDFTpolar}
-DFT(x,k) = X[k] =  \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot e^{-i 2\pi k \frac{n}{N}}
+\text{DFT}\{x[\;]\} = X[\;]  := \quad \mathop{\forall}_{k = 0}^{N-1} :\ X[k] =  \frac{1}{N} \sum_{n = 0}^{N-1}  x[n] \cdot e^{-i 2\pi k \frac{n}{N}}
 \end{equation}
 
-Gleichung \ref{eq:dftWholeSignal} verdeutlicht die Zusammensetzung des gesamten Signales $X$.
+Die wichtigen Unterschiede zwischen den komplexen DFT nach Formel  \ref{eq:complexDFTrectanulgar} und der reellen DFT nach Formel \ref{eq:forwardDFT} Formelsind (a) die Verwendung des Sinus als komplexe Zahl $i \cdot \sin$, sowie das invertieren seines Vorzeichens und (b) die Summierung über $k = 0\ldots N-1 $ anstatt $k = 0 \ldots N/2$. Der Frequenz-Bereich wird nun durch das complexe Signal $X[\;]$ ausgedrückt, welcher die Koeffizienten $A[\;],B[\;]$ in seinem Real/Imaginärteil beinhaltet. Der Frequenz-Bereich $X[\;]$ hat die selbe Länge wie der Zeit-Bereich $x[\;]$, das heißt $\text{Length}(x[\;]) = \text{Length}(X[\;])$. \cite[S. 571]{dspGuide}
 
-\begin{equation}
-DFT\{x\} = X = \big[ DFT(x,0) \ldots DFT(x,N-1)]
-\label{eq:dftWholeSignal}
-\end{equation}
-
-Die wichtigen Unterschiede zwischen den komplexen DFT nach Formel  \ref{eq:complexDFTrectanulgar} und der reellen DFT nach Formel \ref{eq:forwardDFT} Formelsind (a) die Verwendung des Sinus als komplexe Zahl $i \cdot \sin$, sowie das invertieren seines Vorzeichens und (b) die Summierung über $n = 0\ldots N-1 $ anstatt $n = 0 \ldots N/2$. Der Frequenz-Bereich wird nun durch das complexe Signal $X$ ausgedrückt, welcher die Koeffizienten $A,B$ in seinem Real/Imaginärteil speichert. Der Frequenz-Bereich $X$ hat die selbe Länge wie der Zeit-Bereich $x$, das heißt $\text{Length}(x) = \text{Length}(X)$. \cite[S. 571]{dspGuide}
-
-Es gelten die die folgenden Zusammenhänge zwischen der reellen und der komplexen DFT \ref{eq:relationOfRealAndComplexDFT}. Es lässt sich ableiten, dass für die Indexe $k = 0 \ldots N/2$ die Real/Imaginärteil der komplexen DFT $X$ den Koeffizienten $A,B$ der reellen DFT entspricht. Da $|X| = M$, wird in dieser Arbeit $X$ ebenfalls als \emph{Spetrum} bezeichnet. \cite[S. 225 - 226, 555]{dspGuide}
+Es gelten die die folgenden Zusammenhänge zwischen der reellen und der komplexen DFT \ref{eq:relationOfRealAndComplexDFT}. Es lässt sich ableiten, dass für die Indexe $k = 0 \ldots N/2$ die Real/Imaginärteil der komplexen DFT $X[\;]$ den Koeffizienten $A[\;],B[\;]$ der reellen DFT entspricht. Da $|X[0]|,\ldots,|X[N/2]| = M[\;]$, wird in dieser Arbeit $|X[0]|,\ldots,|X[N/2]|$ ebenfalls als \emph{Spetrum} bezeichnet. \cite[S. 225 - 226, 555]{dspGuide}
 
 \begin{equation}
 \begin{gathered}
-\Re(X[0]) \ldots \Re(X[N/2]) = A_0 \ldots A_{N/2} \\
-\Im(X[0]) \ldots \Im(X[N/2]) = B_0 \ldots B_{N/2}  \\
-|(X[0])| \ldots |(X[N/2])| = M_0 \ldots M_{N/2} \\
-\phi((X[0])) \ldots \phi(X[N/2]) = \phi_0 \ldots \phi_{N/2} 
+\Re(X[0]) ,\ldots, \Re(X[N/2]) = A[0] ,\ldots, A[N/2] = A[\;] \\
+\Im(X[0]) ,\ldots, \Im(X[N/2]) = B[0] ,\ldots, B[N/2] = B[\;]  \\
+|(X[0])| ,\ldots, |(X[N/2])| = M[0] ,\ldots, M[N/2] = M[\;] \\
+\phi(X[0]) ,\ldots, \phi(X[N/2]) = \phi[0] ,\ldots, \phi[N/2] = \phi[\;]
 \end{gathered}
 \label{eq:relationOfRealAndComplexDFT}
 \end{equation}
 
-Gleichung \ref{eq:inverseComplexDFTpolar} definiert die dazu inverse Operation, die \emph{komplexe inverse DFT} (iDFT) in \emph{polrarer Notation}. \cite[S. 572]{dspGuide} Gleichung \ref{eq:idftWholeSignal} verdeutlicht die Zusammensetzung des gesamten Signals $x$ auf Basis von Gleichung \ref{eq:inverseComplexDFTpolar}.
+Gleichung \ref{eq:inverseComplexDFTpolar} definiert die dazu inverse Operation, die \emph{komplexe inverse DFT} (iDFT) in \emph{polrarer Notation}. \cite[S. 572]{dspGuide}
 
 \begin{equation}
 \label{eq:inverseComplexDFTpolar}
-iDFT(X,n) = x[n] =  \sum_{k = 0}^{N-1}  X[k] \cdot e^{i 2\pi k \frac{n}{N}}
+\text{iDFT}\{X[\;]\} = x[\;] := \quad \mathop{\forall}_{n = 0}^{N-1} :\ x[n] = \sum_{k = 0}^{N-1}  X[k] \cdot e^{i 2\pi k \frac{n}{N}}
 \end{equation}
 
-\begin{equation}
-iDFT\{X\} = x = \big[ \: [ iDFT(X,0) ,\ldots, iDFT(X,N-1)]
-\label{eq:idftWholeSignal}
-\end{equation}
 
-Die Frage ist: Wenn das Signal des Zeit-Bereiches $x$  aus reellen Zahlen besteht, und das Signal des Frequenz-Bereiches $X$ aus komplexen Zahlen, wie \glqq verschwinden \glqq{} diese komplexen Zahlen wieder bei der Berechnung der inversen DFT? 
+Die Frage ist: Wenn das Signal des Zeit-Bereiches $x[\;]$  aus reellen Zahlen besteht, und das Signal des Frequenz-Bereiches $X[\;]$ aus komplexen Zahlen, wie \glqq verschwinden \grqq{} diese komplexen Zahlen wieder bei der Berechnung der inversen DFT? 
 
-Genau wie das Signal des Zeitbereiches $x$ als unendlich und periodische außerhalb des transformierten Bereiches $x[0] \ldots x[N-1]$ angenommen wird, ist auch der Frequenz-Bereich unendlich und periodisch außerhalb des Bereiches $X[0] \ldots X[N-1] $. Gleichung  \ref{eq:periodicityOfDFT}  definiert diese Aussage. \cite[S. 572]{dspGuide}
+Genau wie das Signal des Zeitbereiches $x[\;]$ als unendlich und periodische außerhalb des transformierten Bereiches $x[0] \ldots x[N-1]$ angenommen wird, ist auch der Frequenz-Bereich unendlich und periodisch außerhalb des Bereiches $X[0] \ldots X[N-1] $. Gleichung  \ref{eq:periodicityOfDFT}  definiert diese Aussage. \cite[S. 572]{dspGuide}
 
 \begin{equation}
 \label{eq:periodicityOfDFT}
 \forall k \in \mathbb{Z}: X[n+kN] = X[n]
 \end{equation}
 
-Daraus lässt sich Schlussfolgern, dass $X[-N/2] \ldots X[-1] = X[N/2] ... X[N-1]$. Die Werte $X[-N/2] ... X[-1]$ werden als die \emph{negativen Frequenzen} bezeichnet. Dazu kommt der Fakt, dass der Frequenz-Bereich in Bezug auf das Interval $X[-N/2] \ldots X[N/2]$ eine Symmetrie aufweist: Der Realteil ist Achsensymmetrisch an der Stelle $X[0]$, und der Imaginäre Teil Punktsymmetrisch. Formel \ref{eq:symmetrieOfDFT} definiert diese Symmetrie, und Abbildung \ref{img:symmetrieInDFT} visualisiert sie Anhand eines Beispiels.  Diese Symmetrie tritt nur auf, falls das Signal im Zeitbereich nur aus Reellen Zahlen besteht, was bei der Arbeit mit  herkömmlichen akustischen Signalen immer erfüllt ist. Auf die Herleitung dieser Symmetrie wird an dieser Stelle aus Platzgründen verzichtet. \cite[S. 574]{dspGuide}
+Daraus lässt sich Schlussfolgern, dass $X[-N/2] ,\ldots, X[-1] = X[N/2] ,\ldots , X[N-1]$. Die Werte $X[-N/2] ... X[-1]$ werden als die \emph{negativen Frequenzen} bezeichnet. Dazu kommt der Fakt, dass der Frequenz-Bereich in Bezug auf das Interval $X[-N/2] ,\ldots, X[N/2]$ eine Symmetrie aufweist: Der Realteil ist Achsensymmetrisch an der Stelle $X[0]$, und der Imaginäre Teil Punktsymmetrisch. Formel \ref{eq:symmetrieOfDFT} definiert diese Symmetrie, und Abbildung \ref{img:symmetrieInDFT} visualisiert sie Anhand eines Beispiels.  Diese Symmetrie tritt nur auf, falls das Signal im Zeitbereich nur aus Reellen Zahlen besteht, was bei der Arbeit mit  herkömmlichen akustischen Signalen immer erfüllt ist. Auf die Herleitung dieser Symmetrie wird an dieser Stelle aus Platzgründen verzichtet. \cite[S. 574]{dspGuide}
 
 
 \begin{equation}
 \label{eq:symmetrieOfDFT}
-\forall n = 0 \ldots N/2 : \; \Re (X[n]) = \Re(X[-n]) \; \wedge \; \Im (X[n]) = -\Im(X[-n]) 
+\mathop{\forall}_{n = 0}^{N-1} :\ Re (X[n]) = \Re(X[-n]) \; \wedge \; \Im (X[n]) = -\Im(X[-n]) 
 \end{equation}
 
 Diese Symmetrie ist der Grund dafür, warum bei der inversen DFT nach Formel \ref{eq:inverseComplexDFTpolar} nach der Synthese alle Imaginärteile verschwinden. Zum besseren Verständnis wird die polare Notation der komplexen inversen DFT zur \emph{kartesischen Notation} nach Formel \ref{eq:inverseComplexDFTrectangular} erweitert .\cite[S. 573]{dspGuide}
 
 \begin{equation}
 \begin{split}
-iDFT(X,n) = x[n] =  \sum_{k = 0}^{N-1}  
+\text{iDFT}\{X[\;]\} = x[\;] := \quad \mathop{\forall}_{n = 0}^{N-1} :\ x[n] =  \sum_{k = 0}^{N-1}  
 \Re(X[k]) \cdot (\cos (2\pi k \frac{n}{N}) + i \sin (2 \pi k \frac{n}{N}) ) \\ 
 - \sum_{k = 0}^{N-1}
 \Im(X[k]) \cdot (\sin (2\pi k \frac{n}{N}) - i \cos(2 \pi k \frac{n}{N}) )
@@ -552,7 +540,7 @@ iDFT(X,n) = x[n] =  \sum_{k = 0}^{N-1}
 \label{eq:inverseComplexDFTrectangular}
 \end{equation}
 
-Das weitere vorgehen wird anhand des Beispiels aus Abbildung \ref{img:symmetrieInDFT}  erklärt. Aus Formel \ref{eq:inverseComplexDFTrectangular} geht  hervor, dass jeder Realteil von $X$ zu einer reellen Cosinuswelle und einer imaginären Sinuswelle beiträgt. Jeder Imaginärteil trägt zu einer reellen Sinuswelle und einer imaginären Cosinuswelle bei. Angenommen, im Zeit-Bereich soll eine Cinuswelle mit der Frequenz $f/f_s = 0.23$ und der Amplitude 1 synthetisiert werden, also $ x = 1 \cdot \cos(2  \pi 0.23 n)$. Für die Synthese wird sowohl eine positive als auch eine quenz benötigt. Marker 1 in Abbildung \ref{img:symmetrieInDFT} erzeugt somit eine relle Cosinuswelle und eine imaginäre Sinuswelle im Zeitbereich mit der Frequenz $0.23$ und der Ampltitude $0.5$, also $0.5 \cdot \cos(2  \pi 0.23 n) + i \sin(2  \pi 0.23 n)$. Genau so trägt die Negative Frequenz von $-0.23$ bei Marker 2 zu einer reellen Cosinus-Welle und einer imaginären Sinuswelle im Frequenzbereich bei, also $0.5 \cdot \cos(2  \pi (-0.23) n) + i \sin(2  \pi (-0.23) n)$. Nach der Beziehung $\cos(x) = \cos(-x) $ und $\sin(x) = -\sin(-x) $ lässt sich der Beitrag der negativen Frequenzen umformen zu $0.5 \cdot \cos(2  \pi 0.23 n) - i \sin(2  \pi 0.23 n)$. Die Addition dieser beiden Beiträge des reelen und des imaginären Teils, welche bei der Synthese vorgenommen wird, wird in Formel \ref{eq:explainIDFTstep01} zusammengefasst. Wie zu sehen ist, addieren sich die reellen Cosinuswellen, während sich die imaginären  Sinuswellen auslöschen. \cite[S. 573- 574]{dspGuide}
+Das weitere vorgehen wird anhand des Beispiels aus Abbildung \ref{img:symmetrieInDFT}  erklärt. Aus Formel \ref{eq:inverseComplexDFTrectangular} geht  hervor, dass jeder Realteil von $X[\;]$ zu einer reellen Cosinuswelle und einer imaginären Sinuswelle beiträgt. Jeder Imaginärteil trägt zu einer reellen Sinuswelle und einer imaginären Cosinuswelle bei. Angenommen, im Zeit-Bereich soll eine Cinuswelle mit der Frequenz $f/f_s = 0.23$ und der Amplitude 1 synthetisiert werden, also $ x[n] = 1 \cdot \cos(2  \pi 0.23 n)$. Für die Synthese wird sowohl eine positive als auch eine quenz benötigt. Marker 1 in Abbildung \ref{img:symmetrieInDFT} erzeugt somit eine relle Cosinuswelle und eine imaginäre Sinuswelle im Zeitbereich mit der Frequenz $0.23$ und der Ampltitude $0.5$, also $0.5 \cdot \cos(2  \pi 0.23 n) + i \sin(2  \pi 0.23 n)$. Genau so trägt die Negative Frequenz von $-0.23$ bei Marker 2 zu einer reellen Cosinus-Welle und einer imaginären Sinuswelle im Frequenzbereich bei, also $0.5 \cdot \cos(2  \pi (-0.23) n) + i \sin(2  \pi (-0.23) n)$. Nach der Beziehung $\cos(x) = \cos(-x) $ und $\sin(x) = -\sin(-x) $ lässt sich der Beitrag der negativen Frequenzen umformen zu $0.5 \cdot \cos(2  \pi 0.23 n) - i \sin(2  \pi 0.23 n)$. Die Addition dieser beiden Beiträge des reelen und des imaginären Teils, welche bei der Synthese vorgenommen wird, wird in Formel \ref{eq:explainIDFTstep01} zusammengefasst. Wie zu sehen ist, addieren sich die reellen Cosinuswellen, während sich die imaginären  Sinuswellen auslöschen. \cite[S. 573- 574]{dspGuide}
 
 \begin{equation}
 \begin{split}
@@ -564,7 +552,7 @@ Das weitere vorgehen wird anhand des Beispiels aus Abbildung \ref{img:symmetrieI
 \label{eq:explainIDFTstep01}
 \end{equation}
  
- In der selben weise kann eine reele Sinuswelle im Zeitbereich mit Hilfe der imaginären Werte von $X$ synthetisiert werden. Marker 3 zeigt die positive Frequenz $0.23$ und 4 die Negative Frequenz $-0.23$ im Imaginärteil von $X$. Folgt man dem selben Prinzip der oben vorgestellten Rechnung zur Synthese einer Cosinuswelle, ergibt sich die in Gleichung \ref{eq:explainIDFTstep02} Addition. Dieses mal löschen sich die Cosinuswellen aus, während die Sinuswellen addiert werden. Außerdem ist zu sehen, dass das Vorzeichen der Sinuswelle invertiert wird.  Diese Invertierung muss entweder bei der Synthese oder der Dekomposition mit einbezogen werden und ist der Grund für die invertierung des Vorzeichens vor dem Sinus in Gleichung \ref{eq:complexDFTrectanulgar}. \cite[S. 574]{dspGuide} 
+ In der selben weise kann eine reele Sinuswelle im Zeitbereich mit Hilfe der imaginären Werte von $X[\;]$ synthetisiert werden. Marker 3 zeigt die positive Frequenz $0.23$ und 4 die Negative Frequenz $-0.23$ im Imaginärteil von $X$. Folgt man dem selben Prinzip der oben vorgestellten Rechnung zur Synthese einer Cosinuswelle, ergibt sich die in Gleichung \ref{eq:explainIDFTstep02} Addition. Dieses mal löschen sich die Cosinuswellen aus, während die Sinuswellen addiert werden. Außerdem ist zu sehen, dass das Vorzeichen der Sinuswelle invertiert wird.  Diese Invertierung muss entweder bei der Synthese oder der Dekomposition mit einbezogen werden und ist der Grund für die invertierung des Vorzeichens vor dem Sinus in Gleichung \ref{eq:complexDFTrectanulgar}. \cite[S. 574]{dspGuide} 
  
  \begin{equation}
  \begin{split}
@@ -576,28 +564,28 @@ Das weitere vorgehen wird anhand des Beispiels aus Abbildung \ref{img:symmetrieI
  \label{eq:explainIDFTstep02}
  \end{equation}
  
-Die hier vorgestellte Beispielrechnung verdeutlicht, wie die Symmetrie des Frequenzbereiches genutzt wird, um bei der Summation einer positiven und der entsprechenden negativen Frequenz zu einem rein reellwerteigen Signal im Frequenz-Bereich zu führen. Wird der Frequenzbereich jedoch durch den Menschen betrachtet, wird , wie in Kapitel \ref{sec:realDFT} beschrieben, dass als \emph{Spectrum} bezeichnete $M$-Signal verwendet, definiert in Formel \ref{eq:relationOfRealAndComplexDFT} als der Absolutwert des komplexen Frequenz-Bereiches. Dazu wird die Betrachtung auf den Indexbereich $n = [0 \ldots N/2]$ eingeschränkt, was dem Index-Bereich der reellen DFT entspricht, da die negativen Frequenzen aufgrund ihrer Symmetrie bei der Betrachtung redundante Informationen darstellen. Daraus ergibt sich, dass es für die Erzeugung des Spectrums rein mathematisch betrachtet unerheblich ist, ob die reelle oder die komplexe DFT verwendet wird. Abbildung \ref{img:complexDFTOverview} gibt einen zusammenfassenden Überblick über die Indexierung der des Zeit- und Frequenzbereiches bei verwendung der komplexen DFT. \cite[S. 225 - 226]{dspGuide}
+Die hier vorgestellte Beispielrechnung verdeutlicht, wie die Symmetrie des Frequenzbereiches genutzt wird, um bei der Summation einer positiven und der entsprechenden negativen Frequenz zu einem rein reellwerteigen Signal im Frequenz-Bereich zu führen. Wird der Frequenzbereich jedoch durch den Menschen betrachtet, wird , wie in Kapitel \ref{sec:realDFT} beschrieben, dass als \emph{Spectrum} bezeichnete $M[\;]$-Signal verwendet, definiert in Formel \ref{eq:relationOfRealAndComplexDFT} als der Absolutwert des komplexen Frequenz-Bereiches. Dazu wird die Betrachtung auf den Indexbereich $n = 0 ,\ldots, N/2$ eingeschränkt, was dem Index-Bereich der reellen DFT entspricht, da die negativen Frequenzen aufgrund ihrer Symmetrie bei der Betrachtung redundante Informationen darstellen. Daraus ergibt sich, dass es für die Erzeugung des Spectrums rein mathematisch betrachtet unerheblich ist, ob die reelle oder die komplexe DFT verwendet wird. Abbildung \ref{img:complexDFTOverview} gibt einen zusammenfassenden Überblick über die Indexierung der des Zeit- und Frequenzbereiches bei verwendung der komplexen DFT. \cite[S. 225 - 226]{dspGuide}
  
  \begin{figure}[h]
  	\centering
  	\includegraphics[width=0.7\textwidth]{bilder/dftSymmetrie.png}
- 	\caption{Symmetrie des Frequenzbereiches in den Indexen $n = [-N/2 = -0.5*N ,\ldots ,  N/2 = 0.5*N]$. Die Marker 1 und 2 haben eine Amplitude von $+0.5$, der Marker 3 hat eine Amplitude von $-0.5$ und Marker 4 eine Amplitude von $+0.5$ }
+ 	\caption{Symmetrie des Frequenzbereiches in den Indexen $n = (-N/2 = -0.5*N) ,\ldots ,  (N/2 = 0.5*N)$. Die Marker 1 und 2 haben eine Amplitude von $+0.5$, der Marker 3 hat eine Amplitude von $-0.5$ und Marker 4 eine Amplitude von $+0.5$ }
  	\label{img:symmetrieInDFT}
  \end{figure} 
  
  
-Wie zur Einleitung dieses Kapitels erwähnt wurde, wird die Berechnung der komplexen DFT und inversen DFT mit Hilfe eines Algorithmus implementiert, der als \emph{Fast Fourier Transformation} (\textbf{FFT} bzw. \textbf{iFFT}). Die Funktionsweise dieses Algorithmus wird an dieser Stelle aus Platzgründen nicht näher erläutert. Schlussendlich ist das Ergebnis der FFT bzw. iFFT der Frequenz-/Zeit-Bereich nach den in diesen Kapitel vorgestellten definitionen. Die FFT fordert als einzige voraussetzung, dass die Länge des Signals als Potenz von zwei gewählt wird, das heißt Length$(x) = N = 2^k$. \cite[S. 225 - 226]{dspGuide}
+Wie zur Einleitung dieses Kapitels erwähnt wurde, wird die Berechnung der komplexen DFT und inversen DFT mit Hilfe eines Algorithmus implementiert, der als \emph{Fast Fourier Transformation} (\textbf{FFT} bzw. \textbf{iFFT}). Die Funktionsweise dieses Algorithmus wird an dieser Stelle aus Platzgründen nicht näher erläutert. Schlussendlich ist das Ergebnis der FFT bzw. iFFT der Frequenz-/Zeit-Bereich nach den in diesen Kapitel vorgestellten definitionen. Die FFT fordert als einzige voraussetzung, dass die Länge des Signals als Potenz von zwei gewählt wird, das heißt Length$(x[\;]) = N = 2^k$. \cite[S. 225 - 226]{dspGuide}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{bilder/compDFTOverview.png}
+	\includegraphics[width=1\textwidth]{bilder/compDFTOverview02.png}
 	\caption{Überblick über die komplexe DFT und inverse DFT}
 	\label{img:complexDFTOverview}
 \end{figure}
 
 \subsection{Short Time Fourier Transform}
 
-Wie aus Kapitel \ref{sec:comDFT} hervorgeht, enthält die Signal des Zeit-Bereiches die Informationen über den zeitlichen Verlauf des Signals, während der Frequenz-Bereich Aufschluss über Frequenzanteile des Signales gibt. Abbildung \ref{img:stft01} visualisiert den Zusammenhang: Oben ist der Zeit-Bereich eines 1.8 Sekunden langen Signals zu sehen. Es können klar drei nacheinander gespielte Töne erkannt werden. Der Zeit-Bereich macht nicht erkennbar, welche Frequenz-Anteile in den Tönen enthalten sind. Unten ist das Frequenz-Spectrum (Magnituden-Signal im Bereich  $n = 0 \ldots N/2$) abgebildet. Die x-Achse bezeichnet die Frequenz von 0 bis \SI{22050}{\hertz}, die x und die y-Achse werden logarithmisiert dargestellt. Wie zu erkennen ist, gibt das Frequenz-Spectrum einen Eindruck der Frequenz-Anteile des Signals, aber die zeitliche Information über die drei Töne geht verloren.
+Wie aus Kapitel \ref{sec:comDFT} hervorgeht, enthält die Signal des Zeit-Bereiches die Informationen über den zeitlichen Verlauf des Signals, während der Frequenz-Bereich Aufschluss über Frequenzanteile des Signales gibt. Abbildung \ref{img:stft01} visualisiert den Zusammenhang: Oben ist der Zeit-Bereich eines 1.8 Sekunden langen Signals zu sehen. Es können klar drei nacheinander gespielte Töne erkannt werden. Der Zeit-Bereich macht nicht erkennbar, welche Frequenz-Anteile in den Tönen enthalten sind. Unten ist das Frequenz-Spectrum (Magnituden-Signal im Bereich  $n = 0 ,\ldots, N/2$) abgebildet. Die x-Achse bezeichnet die Frequenz von 0 bis \SI{22050}{\hertz}, die x und die y-Achse werden logarithmisiert dargestellt. Wie zu erkennen ist, gibt das Frequenz-Spectrum einen Eindruck der Frequenz-Anteile des Signals, aber die zeitliche Information über die drei Töne geht verloren.
 
  \begin{figure}[h]
 	\centering
@@ -606,26 +594,26 @@ Wie aus Kapitel \ref{sec:comDFT} hervorgeht, enthält die Signal des Zeit-Bereic
 	\label{img:stft01}
 \end{figure}
 
-Es ist wünschenswert, einen Kompromiss aus den Vorteilen beider Bereiche zu finden, in dem man das Frequenz-Spectrum kürzerer Zeitabschnitte des Signals bildet. Dazu wird der Zeit-Bereich $x$ in Fenster der Länge $M$ zerlegt. Die zeitliche Differenz zwischen zwei Fensterns wird als \emph{Hoptime} $R$ bezeichnet. Gleichung definiert die Bildung des Signal-Fensters $x_m$.\cite{juliusSmith}
+Es ist wünschenswert, einen Kompromiss aus den Vorteilen beider Bereiche zu finden, in dem man das Frequenz-Spectrum kürzerer Zeitabschnitte des Signals bildet. Dazu wird der Zeit-Bereich $x[\;]$ in Fenster der Länge $M$ zerlegt. Die zeitliche Differenz zwischen zwei Fensterns wird als \emph{Hoptime} $R$ bezeichnet. Gleichung definiert die Bildung des Signal-Fensters $x_m[\;]$.\cite{juliusSmith}
 
  \begin{equation}
-x_{m}[n] = x[n+m\cdot R] \quad , n = 0 ,\ldots, M-1 
+x_m[\;] := \quad \mathop{\forall}_{n = 0}^{M-1} :\ x_{m}[n] = x[n+m\cdot R]
 \label{eq:signal-Window}
 \end{equation}
 
-Abbildung \ref{img:siganlWindows} gibt ein Beispiel für die Zerlegung von $x$ in Signalfenster $x_0 \ldots x_4$. Die Samplingrate des Signals ist $f_s = 44100$, die Fensterlänge beträgt $M = 22050 / f_s = \SI{0.5}{\second}$ und die Hoptime $R = M / 2= \SI{0.25}{\second}$.
+Abbildung \ref{img:siganlWindows} gibt ein Beispiel für die Zerlegung von $x$ in Signalfenster $x_0[\;] ,\ldots, x_4[\;]$. Die Samplingrate des Signals ist $f_s = 44100$, die Fensterlänge beträgt $M = 22050 / f_s = \SI{0.5}{\second}$ und die Hoptime $R = M / 2= \SI{0.25}{\second}$.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{bilder/signalWindows.png}
+	\includegraphics[width=1\textwidth]{bilder/signalWindows02.png}
 	\caption{Zerlegung eines Signals in Singal-Fenster}
 	\label{img:siganlWindows}
 \end{figure}
 
-Als Vorbereitungsschritt für die Transformation der Signal-Fenster in den Frequenz-Bereich wird nun jedes Fenster mit einer sogenannten \emph{Fensterfunktion} (engl \emph{window}) $w[n]$ multipliziert. Gleichung \ref{eq:hammingWindow} definiert eine der am weitesten verbreiteten Fenster-Funktionen, das \emph{Hamming-Window}. Der Paramter $M$ gibt die länge des Fensters an. Abbildung 	\ref{img:hamming} visualisiert das Hamming-Window. \cite[S. 286]{dspGuide}
+Als Vorbereitungsschritt für die Transformation der Signal-Fenster in den Frequenz-Bereich wird nun jedes Fenster mit einer sogenannten \emph{Fensterfunktion} (engl \emph{window}) $w[\;]$ multipliziert. Gleichung \ref{eq:hammingWindow} definiert eine der am weitesten verbreiteten Fenster-Funktionen, das \emph{Hamming-Window}. Der Paramter $M$ gibt die länge des Fensters an. Abbildung 	\ref{img:hamming} visualisiert das Hamming-Window. \cite[S. 286]{dspGuide}
 
  \begin{equation}
-w[n] = 0.54 - 0.46 \cos(\frac{2\pi n}{M} ) \quad, n = 0 ,\ldots, M-1 
+w[\;] := \quad \mathop{\forall}_{n = 0}^{M-1} :\ w[n] = 0.54 - 0.46 \cos(\frac{2\pi n}{M} )
 \label{eq:hammingWindow}
 \end{equation}
 
@@ -636,21 +624,16 @@ w[n] = 0.54 - 0.46 \cos(\frac{2\pi n}{M} ) \quad, n = 0 ,\ldots, M-1
 	\label{img:hamming}
 \end{figure}
 
-Die Gleichung \ref{eq:stft} definiert die \emph{Kurzzeit-Fourier-Transformation} (engl \emph{Short Time Fourier Transformation}, \emph{STFT}), implementiert mit Hilfe der DFT. Dabei wird das Signalfenster $x_m$ mit der Fensterfunktion $w$ multipliziert und in das \emph{Frequenz-Fenster} $X_m$ transformiert.\cite{stft} Gleichung \ref{eq:stftWhole} definiet das gesamte Frequenz-Fenster $X_m$. Abbildung \ref{img:stft02} visualisiert die STFT des Beispiels aus Abbildung \ref{img:siganlWindows}.
+Die Gleichung \ref{eq:stft} definiert die \emph{Kurzzeit-Fourier-Transformation} (engl \emph{Short Time Fourier Transformation}, \emph{STFT}), implementiert mit Hilfe der DFT. Dabei wird das Signalfenster $x_m[\;]$ mit der Fensterfunktion $w[\;]$ multipliziert und in das \emph{Frequenz-Fenster} $X_m[\;]$ transformiert.\cite{stft} Abbildung \ref{img:stft02} visualisiert die STFT des Beispiels aus Abbildung \ref{img:siganlWindows}.
 
  \begin{equation}
-STFT(x_m,k) = X_m[k] = \sum_{n=0}^{M-1} x[n+m R] \cdot w[n] \cdot e^{-i 2\pi k \frac{n}{N}}
+\text{STFT}\{x_m[\;]\} = X_m[\;] := \quad \mathop{\forall}_{k = 0}^{M-1} :\ X_m[k] = \sum_{n=0}^{M-1} x_m[n] \cdot w[n] \cdot e^{-i 2\pi k \frac{n}{N}}
 \label{eq:stft}
-\end{equation}
-
- \begin{equation}
-STFT\{x_m\} = X_m = DFT\{x_m \cdot w\}
-\label{eq:stftWhole}
 \end{equation}
 
  \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/stft02.png}
+	\includegraphics[width=1\textwidth]{bilder/stft03.png}
 	\caption{STFT des Beispiel-Signals aus Abbildung \ref{img:siganlWindows}}
 	\label{img:stft02}
 \end{figure}
@@ -663,18 +646,18 @@ Ein \emph{Filter} oder \emph{System} ist ein \emph{Objekt}, welches ein Eingangs
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{bilder/system.png}
+	\includegraphics[width=0.6\textwidth]{bilder/system03.png}
 	\caption{Visualisierung eines Systems}
 	\label{img:system}
 \end{figure}
 
 Es gibt zwei Notationen für Systeme, die in dieser Arbeit verwendet wird:
 \begin{itemize}
-\item $x[n]\mapsto y[n]$ meint, dass $x[n]$ die Antwort $y[n]$ erzeugt. Definiert auf das gesamte Signal entspricht dies $x\mapsto y = \big[x[0]\mapsto y[0] \ldots [x[N-1]\mapsto y[N-1]\big]$
-\item $S\{ x[n] \} = y[n]$ definiert das System als Operation $S\{\;\}$. Angewandt auf das gesamte Signal gilt $S\{ x \} = \big[ S\{ x[0] \} \ldots S\{ x[N-1] \} \big] $. \cite[]{dspMichiganSystems}
+\item $x[\;]\mapsto y[\;]$ meint, dass $x[\;]$ die Antwort $y[\;]$ erzeugt.
+\item $S\{ x[\;] \} = y[\;]$ definiert das System als Operation $S\{\;\}$. \cite[]{dspMichiganSystems}
 \end{itemize}
 
-Die Gleichungen \ref{eq:dftWholeSignal} und \ref{eq:idftWholeSignal} haben von der zweiten Notation gebrauch gemacht. 
+Die Gleichungen \ref{eq:complexDFTpolar}, \ref{eq:complexDFTrectangular} und \ref{eq:inverseComplexDFTrectanulgar}  haben von der zweiten Notation gebrauch gemacht. 
 
 
 
