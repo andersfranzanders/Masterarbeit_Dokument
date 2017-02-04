@@ -644,23 +644,23 @@ Besonders interesant im Zusammenahng mit Audioverarbeitung ist die Klasse der \e
 	
 \end{description}
 
-An dieser Stelle werden verschiedene Betrachtungsweisen von Filtern vorgestellt. Jede dieser Betrachtungsweisen definiert den Filtern vollständig, bietet jedoch unterschiedliche Betrachtungsweisen des Einflusses des Filters auf das Eingangssignal. \cite[Filters III, S. 1 ]{dspMichiganSystems}
+An dieser Stelle werden verschiedene Betrachtungsweisen von Filtern vorgestellt. Jede dieser \emph{Repräsentationen} definiert den Filtern vollständig, bietet jedoch unterschiedliche Betrachtungsweisen des Einflusses des Filters auf das Eingangssignal. \cite[Filters III, S. 1 ]{dspMichiganSystems}
 
 \subsection{Differenzengleichung}
 \label{sec:differenzengleichung}
 
-Eine Variante der Beschreibung eines Filters ist mit Hilfe einer \emph{Differenzengleichung} nach Gleichung \ref{eq:FilterDifferenceEquation}. In dieser Arbeit wird ein Linearer Filter, welcher durch eine Differenzen-Gleichung implementiert wird, mit dem Operator $LD_n\{\;\}$ gekennzeichnet. Ein solcher Filter wird vollständig durch die Koeffizienten $a_1 ,\ldots, a_N$ und $b_0 ,\ldots, b_M$  definiert. Ein Filter hat somit $N$ a-Glieder und $M+1$ b-Glieder.  \cite[\glqq Difference Equation\grqq]{introductionToFilters}
+Eine Variante der Beschreibung eines Filters ist mit Hilfe einer \emph{Differenzengleichung} nach Gleichung \ref{eq:FilterDifferenceEquation}. In dieser Arbeit wird ein Linearer Filter, welcher durch eine Differenzen-Gleichung implementiert wird, mit dem Operator $ab_n\{\;\}$ gekennzeichnet. Ein solcher Filter wird vollständig durch die Koeffizienten $a_1 ,\ldots, a_N$ und $b_0 ,\ldots, b_M$  definiert. Ein Filter hat somit $N$ a-Glieder und $M+1$ b-Glieder.  \cite[\glqq Difference Equation\grqq]{introductionToFilters}
 
  \begin{equation}
 \begin{split}
-LD_n\{x[\;]\}= y[n] = b_0 x[n] + b_1 x[n-1] + \ldots +b_M x[n-M] \\
-- a_1 y[n-1] - \ldots - a_N y[n-N] \\
+ab_n\{x[\;]\}= \overbrace{y[n] = b_0 x[n] + b_1 x[n-1] + \ldots +b_M x[n-M]}^\text{Feed-Forward} \\
+\underbrace{-\ a_1 y[n-1] - \ldots - a_N y[n-N]}_\text{Feed-Back} \\
  = \sum_{i=0}^{M} b_i x[n-i] - \sum_{j=1}^{N} a_j y[n-j]
 \end{split}
 \label{eq:FilterDifferenceEquation}
 \end{equation}
 
-Die Glieder $b_0 ,\ldots, b_M$ sind die Koeffizienten des aktuellen Samples und vergangener Samples des Einganssignals. Die Glieder $a_1 ,\ldots, a_N$ sind die Koeffizienten vergangener Samples der Antwort $y[\;]$. Sie werden daher auch als \emph{rekursive Glieder} bezeichnet. Verwendet ein Filter nur $b$-Glieder und kein $a$-Glied, wird er als \emph{Finite Impulse Response}-Filter (\textbf{FIR}-Filter) bezeichnet. Verwendet ein Filter zumindest ein $a$-Glied, wird er als \emph{Infinite Impulse Response}-Filter (\textbf{IIR}-Filter) bezeichnet.\cite[\glqq Difference Equation\grqq]{introductionToFilters}
+Die Glieder $b_0 ,\ldots, b_M$ sind die Koeffizienten des aktuellen Samples und vergangener Samples des Einganssignals, und werden auch als \emph{Feed-Forward}-Koeffizienten bezeichnet. Die Glieder $a_1 ,\ldots, a_N$ sind die Koeffizienten vergangener Samples der Antwort $y[\;]$. Sie werden daher auch als \emph{Feed-Back}-Koeffizienten oder \emph{rekursive Glieder} bezeichnet. Verwendet ein Filter nur $b$-Glieder und kein $a$-Glied, wird er als \emph{Finite Impulse Response}-Filter (\textbf{FIR}-Filter) bezeichnet. Verwendet ein Filter zumindest ein $a$-Glied, wird er als \emph{Infinite Impulse Response}-Filter (\textbf{IIR}-Filter) bezeichnet.\cite[\glqq Difference Equation\grqq]{introductionToFilters}
 
  \begin{equation}
 \begin{gathered}
@@ -676,20 +676,21 @@ Die \emph{Ordnung} eines Filters wird definiert als die $\max(M,N)$. \cite[\glqq
 
 %% ToDo: Fix Indexes ! Use convention!
 \subsection{Faltung}
+\label{sec:convolution}
 
 Die \emph{Faltung} (engl. \emph{Convolution}) ist eine der Zentralen Operationen zwischen zwei Signalen, so wie die Addition oder die Mulitplikation. Sie wird mit dem Symbol $*$ notiert. Sie wird notiert mit $x[\;]* h[\;] = y[\;]$. 
 
-Die Faltung basiert auf der sogenannten \emph{Faltungs-Summe}, definiert in Gleichung \ref{eq:convolutionSum}. In diesem Zusammenhang wird $x[\;]$ Eingangs- und $y[\;]$ als Ausgangs-Signal bezeichnet. Je nach Anwendungsfall bekommt $h[\;]$ den Namen \emph{Faltungs-Kernel}, \emph{Filter-Kernel} oder einfach \emph{Kernel}. In dieser Arbeit wird die Faltungs-Summe mit dem Operator $LF_n\{\;\}$ definiert. \cite[S. 107-108]{dspGuide}
+Die Faltung basiert auf der sogenannten \emph{Faltungs-Summe}, definiert in Gleichung \ref{eq:convolutionSum}. In diesem Zusammenhang wird $x[\;]$ Eingangs- und $y[\;]$ als Ausgangs-Signal bezeichnet. Je nach Anwendungsfall bekommt $h[\;]$ den Namen \emph{Faltungs-Kernel}, \emph{Filter-Kernel} oder einfach \emph{Kernel}. In dieser Arbeit wird die Faltungs-Summe mit dem Operator $h_n\{\;\}$ definiert. \cite[S. 107-108]{dspGuide}
 
 \begin{equation}
-LF_n\{x[\;]\} = y[n] = x[n] * h[n] = \sum_{i=1}^{M} h[i] \cdot x[n-i] \quad
+h_n\{x[\;]\} = y[n] = x[n] * h[n] = \sum_{i=1}^{M} h[i] \cdot x[n-i] \quad
 \label{eq:convolutionSum}
 \end{equation}
 
 Wird die Faltung auf alle Samples des Signal $x[\;]$, wird das Ausgangs-Signal $y[\;]$ im Vergleich zum Eingangs-Signal um die Länge des Faltungskern verlängert, wie Gleichung \ref{eq:convolutionTrans} definiert. $x[\;]$ ist ein Signal mit Support$(x[\;]) = [0,N-1]$ und Length$(x[[\;]) = N$. $h[\;]$ ist ein Signal mit Support$(h[\;]) = [0,M-1]$ und Length$(h[\;]) = M$ und $y[\;]$ ist ein Signal mit Support$(y[\;]) = [0,N+M-2]$ und Length$(y[\;]) = N+M-1$.  um die Länge des Faltungskerns verlängert wird. Abbildung 	\ref{img:convolutionExample} zeigt ein Beispiel für die Faltung.\cite[S. 115-120]{dspGuide}
 
 \begin{equation}
-LF\{x[\;]\} = x[\;] *  h[\;] =  y[\;] := \quad \mathop{\forall}_{n = 0}^{N+M-2} :\ x[n] * h[n] = y[n]
+h\{x[\;]\} = x[\;] *  h[\;] =  y[\;] := \quad \mathop{\forall}_{n = 0}^{N+M-2} :\ x[n] * h[n] = y[n]
 \label{eq:convolutionTrans}
 \end{equation}
 
@@ -711,7 +712,38 @@ Das neutrale Element der Faltung ist der \emph{Delta-Funktion} $\delta[\;]$, def
 \end{cases}
 \end{equation}
 
-Die Faltung ist eine der Varianten der Umsetzung von Filtern, neben den in Kapitel \ref{sec:differenzengleichung} vorgestellten Differenzengleichungen.
+Die Faltung ist eine der Varianten der Umsetzung von linearen, zeit-invarianten Filtern, neben den in Kapitel \ref{sec:differenzengleichung} vorgestellten Differenzengleichungen. Während ein Filter $L_n\{\;\}]$ in der Repräsentation  als Differenzen-Gleichung vollständig durch die Koeffizienten $a$ und $b$ beschrieben wird, wird bei der Faltungs-Repräsentation ein Filter vollständig durch die Impulsantwort $h[\;]$ beschrieben. Um die Impulsantwort für einen Filter zu erhalten, der zunächst durch einen anderen linearen Filter repräsentiert wird,  filtert man den Delta-Impuls mit diesem Filter, wie Gleichung \ref{eq:howToGetH} definiert. Wird also beispielsweise ein Filter als Differenzengleichung definiert, aber soll mit Hilfe der Faltung umgesetzt werden, so erhält man die Impulsantwort durch $h[n] = ab_n\{\delta[n]\}$.\cite[Impulse-Response Representation ]{introductionToFilters}
+
+\begin{equation}
+h[\;] := \quad \mathop{\forall}_{n = 0}^{\infty} :\ h[n] = L_n\{\delta[n]\}
+\label{eq:howToGetH}
+\end{equation}
+
+Daraus ergibt sich, dass bei FIR-Filtern die Impuls-Antwort endlich ist, das heißt Length$(h[\;]) = M \neq infty$, womit bei einem endlichen Eingangssignal $x[\;]$ auch das Ausgangssignal $y[\;]$ endlich wird. Bei IIR Filtern ist die Impulsantwort hingegen unendlich, da heißt  Length$(h[\;]) = M = infty$, womit auch das Ausngangssignal $y[\;]$ zwangsweise eine unendliche Länge erhält. \cite[\glqq The Finite in FIR\grqq]{introductionToFilters}
+
+\subsection{Multiplikation im Frequenz-Bereich}
+
+Die Faltung im Zeit-Bereich nach den in Kapitel \ref{sec:convolution} vorgestellten Prinzipien entspricht einer Multiplikation im Ortsbereich, wie Formel \ref{eq:fftConvolution} definiert. Das Prinzip wird auch als \emph{FFT-Convolution} bezeichnet. Dazu werden zunächst das Eingangssignal und die Impulsantwort mit Hilfe der DFT in den Frequenz-Bereich transformiert, also $\text{DFT}\{x[\;]\} = X[\;]$ und $\text{DFT}\{h[\;]\} = H[\;]$. Diese beiden Frequenz-Bereiche werden nun miteinander Multipliziert, um den Frequenz-Bereich des Ausganssignals zu erzeugen, das heißt $\forall n = [0,N-1]: X[n] \cdot H[n] = Y[n]$. Mit Hilfe der inversen DFT wird der Frequenz-Bereich in den Zeit-Bereich zurücktransformiert, also $\text{iDFT}\{ Y[\;] \} = y[\;]$. Das so erzeugte Ausgangs-Signal entspricht dem Signal, welches durch die Faltung $x[\;] * h[\;] = y[\;]$ entstanden wäre.\cite[S. 182]{dspGuide}
+
+\begin{equation}
+x[\;] * h[\;] = y[\;] = \text{iDFT}\Big\{\ \text{DFT}\{x[\;]\} \cdot \text{DFT}\{h[\;]\}\ \Big\}
+\label{eq:fftConvolution}
+\end{equation}
+
+In Kapitel \label{sec:convolution} wurde erwähnt, dass sich ein Signal $x[\;]$ durch die Faltung um die Länge der Impulantwort ausdehnt. Daher muss sichergestellt werden, dass das Signal $x[\;]$ vor der Transformation in den Frequenz-Bereich mindestens Length$(h[\;]) = M$ 0-Samples an seinem Ende hat, welche gegebenenalls zuerst angehangen werden müssen. Dadurch wird der Frequenz-Bereich von $x[\;]$ nur dahingehend beeinflusst, dass seine Auflösung erhöht wird. Damit die Frequenz-Bereiche $ X[\;]$ und $H[\;]$ multipliziert werden können, müssen sie die selbe Länge haben. Da die Impulsantwort meistens kürzer als das Eingangssignal ist, müssen ihr vor der DFT meist 0-Samples angehangen werden, um sie auf die selbe länge wie das Eingangsssignal \glqq zu strecken\grqq{}.\cite[S. 183 -184]{dspGuide}
+
+Ein weiterer Vorteil der FFT-Convolution ist, dass Einblick über den Einfluss des Filters auf den Frequenz-Bereich des Eingangs-Signals zur Erzeugung des Ausgangs-Signals gibt. Abbildung \ref{img:convolutionExample} verdeutlicht dieses Prinzip am Beispiel des \glqq windowed Sync Filters\grqq.  Links ist der Zeit-Bereich des Filter-Kernels zu sehen, rechts der Frequenzbereich $\text{DFT}\{h[\;]\} = H[\;]$. Der Frequenz-Bereich macht deutlich dass es sich bei der Impuls-Antwort um einen Tiefpass-Filter handelt, also ein Filter, welcher hohe Frequenzen des Eingangs-signals $x[\;]$ bei seiner Anwendung blockiert, aber tiefe Frequenzen jedoch passieren lässt.\cite[S. 180]{dspGuide}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/lowPassFilter.png}
+	\caption{Links: Zeit-Bereich einer Impulsantwort $h[\;]$ des \glqq windowed Sync Filters\grqq. Rechts: Frequenz-Bereich dieser Impulsantwort $\text{DFT}\{h[\;]\} = H[\;]$ \cite[S. 287]{dspGuide}}
+	\label{img:convolutionExample}
+\end{figure}
+
+Da ein FIR-Filter eine endlich lange Impulsantwort hat, folgt daraus auch ein endlichlanger Frequenz-Bereich. Ein IIR-Filter hingegen hat einen unenlich lange Impulsantwort und somit auch einen unendlich langen Frequenz-Bereich.
+
+
 
 
 \section{akustische Modellierung der menschlichen Stimme}

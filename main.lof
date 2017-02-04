@@ -22,5 +22,6 @@
 \contentsline {figure}{\numberline {3.17}{\ignorespaces Das Hamming-Window\relax }}{24}{figure.caption.22}
 \contentsline {figure}{\numberline {3.18}{\ignorespaces STFT des Beispiel-Signals aus Abbildung \ref {img:siganlWindows}\relax }}{24}{figure.caption.23}
 \contentsline {figure}{\numberline {3.19}{\ignorespaces Beispiel f\IeC {\"u}r die Faltung\relax }}{27}{figure.caption.24}
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Links: Zeit-Bereich einer Impulsantwort $h[\tmspace +\thickmuskip {.2777em}]$ des \glqq windowed Sync Filters\grqq . Rechts: Frequenz-Bereich dieser Impulsantwort $\text {DFT}\{h[\tmspace +\thickmuskip {.2777em}]\} = H[\tmspace +\thickmuskip {.2777em}]$ \cite [S. 287]{dspGuide}\relax }}{28}{figure.caption.25}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{33}{figure.caption.28}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{35}{figure.caption.29}
