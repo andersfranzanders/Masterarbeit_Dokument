@@ -388,7 +388,7 @@ B[\;]  := \mathop{\forall}_{k = 0}^{N/2} :\ B_k = M_k \cdot \sin(\phi_k)
 \label{eq:polarToRect}
 \end{equation}
 
-Die kartesische Notation wird verwendet, um die DFT und die inverse DFT zu berechnen. Die polare Notation hat den Vorteil, dass vor allem die Magnituden $M_k$ für den Menschen leichter zu interpretieren sind. Die Magnituden $M_k$ sind Audioingenieuren als \emph{Spectrum} bekannt und werden in dieser Arbeit auch als solches bezeichnet. Die Transformation in die polare Notation wird deshalb vor allem dann Angewandt, wenn der Mensch den Frequenz-Bereich interpretieren soll. \cite[S. 164]{dspGuide}
+Die kartesische Notation wird verwendet, um die DFT und die inverse DFT zu berechnen. Die polare Notation hat den Vorteil, dass vor allem die Magnituden $M[\;]$ für den Menschen leichter zu interpretieren sind. Die Magnituden $M[\;]k$ sind Audioingenieuren als \emph{Spectrum} bekannt und werden in dieser Arbeit auch als solches bezeichnet. Die Phasen-Informationen $\phi[\;]$ hingegen haben für das menschliche Gehör kaum Einfluss und wird daher, zumindest bei der Betrachtung durch den Menschen, kaum Einfluss. \cite[Signals and transforms, S. 10 ]{ricardo_ceps} Die Transformation in die polare Notation wird deshalb vor allem dann Angewandt, wenn der Mensch den Frequenz-Bereich interpretieren soll. \cite[S. 164]{dspGuide}
 
 \begin{figure}[h]
 	\centering
@@ -545,6 +545,7 @@ Wie zur Einleitung dieses Kapitels erwähnt wurde, wird die Berechnung der kompl
 \end{figure}
 
 \subsection{Short Time Fourier Transform}
+\label{sec:stft}
 
 Wie aus Kapitel \ref{sec:comDFT} hervorgeht, enthält die Signal des Zeit-Bereiches die Informationen über den zeitlichen Verlauf des Signals, während der Frequenz-Bereich Aufschluss über Frequenzanteile des Signales gibt. Abbildung \ref{img:stft01} visualisiert den Zusammenhang: Oben ist der Zeit-Bereich eines 1.8 Sekunden langen Signals zu sehen. Es können klar drei nacheinander gespielte Töne erkannt werden. Der Zeit-Bereich macht nicht erkennbar, welche Frequenz-Anteile in den Tönen enthalten sind. Unten ist das Frequenz-Spectrum (Magnituden-Signal im Bereich  $n = 0 ,\ldots, N/2$) abgebildet. Die x-Achse bezeichnet die Frequenz von 0 bis \SI{22050}{\hertz}, die x und die y-Achse werden logarithmisiert dargestellt. Wie zu erkennen ist, gibt das Frequenz-Spectrum einen Eindruck der Frequenz-Anteile des Signals, aber die zeitliche Information über die drei Töne geht verloren.
 
@@ -653,7 +654,7 @@ Eine Variante der Beschreibung eines Filters ist mit Hilfe einer \emph{Differenz
 
  \begin{equation}
 \begin{split}
-ab_n\{x[\;]\}= \overbrace{y[n] = b_0 x[n] + b_1 x[n-1] + \ldots +b_M x[n-M]}^\text{Feed-Forward} \\
+ab_n\{x[\;]\}= y[n] = \overbrace{b_0 x[n] + b_1 x[n-1] + \ldots +b_M x[n-M]}^\text{Feed-Forward} \\
 \underbrace{-\ a_1 y[n-1] - \ldots - a_N y[n-N]}_\text{Feed-Back} \\
  = \sum_{i=0}^{M} b_i x[n-i] - \sum_{j=1}^{N} a_j y[n-j]
 \end{split}
@@ -743,11 +744,82 @@ Ein weiterer Vorteil der FFT-Convolution ist, dass Einblick über den Einfluss d
 
 Da ein FIR-Filter eine endlich lange Impulsantwort hat, folgt daraus auch ein endlichlanger Frequenz-Bereich. Ein IIR-Filter hingegen hat einen unenlich lange Impulsantwort und somit auch einen unendlich langen Frequenz-Bereich.
 
-
-
-
 \section{akustische Modellierung der menschlichen Stimme}
+
+An dieser Stelle wird die ein akustisches Modell der menschlichen Stimme vorgestellt. Folgende Organe sind an der Produktion der menschlichen Stimme beteiligt. Abbildung 	\ref{img:schematicVocalOrgans} visualisiert diese Organe schematisch.
+
+\begin{enumerate}
+	\item \textbf{Lunge / Lung}, welcher einen Luftstrom als Grundlage der Lutäußerung erzeugt
+	\item \textbf{Stimmbäner / Vocal Chords}, platziert im Kehlkopf (engl. Larynx). Sie erzeugen auf Basis des Luftstroms einen Ton, bezeichnet als \emph{Glottal Source}. Werden die Stimmbänder leicht gespannt, vibrieren sie und erzeugen einen Ton, dass heißt ein im zeit-bereich (quasi-) periodisches Signal (engl. \emph{periodic Source}). Sind die Stimmbänder stark gespannt und nur leicht geöffnet, erzeugen Sie ein Rauschen (engl. \emph{turbulance Source}). Ein durch vibration erzeugter Ton wird als \emph{stimmhaft} bezeichnet, ein durch Rauschen erzeugter Ton als \emph{stimmlos}. Der Ton wür über den Schlund weitergegeben (engl Pharynx) weitergegeben. 
+	\item  \textbf{Vokaltrakt / Vocal-Tract}, bestehend aus der Mundhöhle und den Namenraum. Das Velum bestimmt, ob der Ton der Stimmbänder in die Mundhöhle oder den Nasenraum weitergeleitet wird. Je nach Stellung der Zunge, Kiefer, Lippen etc. wird der von den Stimmbändern erzeugte Ton verschieden moduliert. Resonanzen, die durch den Vokaltrakt entstehen, werden als \emph{Formanten} bezeichnet. \cite[S. 62]{cryModel} \cite{speechProduction}
+\end{enumerate}
+	
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{bilder/SchematicVocalOrgans.png}
+	\caption{Schematische Übersicht über die Organe der Spracherzeugung \cite{speechProduction}}
+	\label{img:schematicVocalOrgans}
+\end{figure}	
+
+Die menschliche Laut-Prudktion wird nach dem so genannten \emph{Source-Filter-Modell} modelliert. Der periodische Ton, der durch die Stimmbänder erzeugt wird, wir angenähert durch einen Impuls-Zug (produziet durch die Stimmbänder), welcher durch den Schlund als linearen Filter leicht wird. Der stimmlose , nicht-periodische Ton wird durch weißes Rauschen angenähert. Der so erzeugte periodische oder nicht-periodische Ton wird als das Eingangs-Signal $u[\;]$ bezeichnet. Dieses Signal wird daraufhin an den Vocaltrakt weitergeben, welcher als linearer, zeitinvarianter Filter mit der Impulsantwort $v[\;]$ angenommen wird. Diese Impulsantwort ist abhängig von der Konfiguraiton der Organe des Vokaltraktes. Die Lippen werden als zweiter linearer, zeit-invarianter Filter mit der Impulsantort $r[\;]$. Das Ausgangssignal $y[\;]$ entsteht also aus der glottal Source $u[\;]$ und den zwei linearen, zeit-invarianten Filtern nach Gleichung \ref{eq:source-Filter-Model}. dargestellt als Faltung im Zeit-Bereich oder Mulitplikation im Frequenz-Bereich.
+Abbildung \ref{img:source-filter-model} visualsiert dieses Vorgehen Schematisch. \cite[S. 62 - 63]{cryModel} \cite{speechProduction}
+
+\begin{equation}
+\begin{gathered}
+u[\;] * v[\;] * r[\;] = y[\;] \\
+U[\;] \cdot V[\;] \cdot R[\;] = Y[\;] 
+\end{gathered} 
+\label{eq:source-Filter-Model}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/source-filter-model.png}
+	\caption{Schematische über das Source-Filter-Model \cite[S. \glqq Source estimation\grqq, S. 17]{ricardo_ceps}}
+	\label{img:source-filter-model}
+\end{figure}	
+
+Abbidlung \ref{glottalSource} zeigt die Zeitbereiche der periodic und der turbulance Source im Detail. Wie zu sehen ist, bestimmt der zeitliche Abstand zwischen den Impulsen die Grund-Frequenz der Stimme. Dieses Signal $p[\;]$ wird durch die Stimmbändern gefiltert und um den Zeit-Bereich der periodic Source ensteht $G\{p[\;]\} = u_p[\;]$. Darunter ist der Zeit-Bereich des weißen Rauschen zu sehen. \cite[Source]{speechAcoustics}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/glottalSource.png}
+	\caption{Zeit-Bereiche der periodic und der turbulance Source \cite[Source]{speechAcoustics}}
+	\label{img:glottalSource}
+\end{figure}	
+
+Abbildung \ref{img:sourceFilerSpectra} zeigt die Betrachtung der Frequenz-Bereiche des Source-Filter-Modells. Die periodic Source ($U[\;]$ links) zeichnet sich im Frequenz-Bereich durch gleichmäßig verteilte Spitzen aus, die mit steigender Frequenz an Amplitude verlieren. Jeweils zwei Spitzen haben einen Abstand von $f$ zueinander, also in diesem Fall $\SI{300}{\hertz}$. Die Frequenz-Antwort des Vocal Tract Model $V[\;]$ zeichnet sich durch Resonanz-Frequenzen aus, in diesem Beispiel sind 4 erkennbar. Das Radiation Model $R[\;]$ wird als Hochpass-Filter angenähert, also ein Filter, welcher hohe Frequenzen passieren lässt und tiefe blockiert. Das Ausgangssignal $U[\;] \cdot V[\;] \cdot R[\;] = Y[\;] $ zeigt den Einfluss der Filter auf das Eingangssignal.\cite[Source estimation]{ricardo_ceps}, \cite[Vocal Tract Resonance]{speechAcoustics}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/sourceFilterSpectra.png}
+	\caption{Betrachtung der Frequenz-Bereiche des Source-Filer-Modell }
+	\label{img:sourceFilerSpectra}
+\end{figure}	
+
+Abbildung \ref{img:formants} \footnote{Bildquelle: \url{http://hyperphysics.phy-astr.gsu.edu/hbase/index.html}} verdeutlicht, wie das als linearer, Zeit-Invarianter Filter modellierte Vokaltrakt mit Hilfe von Formanten beschrieben wird. Die Formanten spielen vor allem bei der Beschreibung von Vokalen eine Rolle. Formanten sind lokale Maxima im Spektrum, die dadurch erzeugt werden, dass der Vokaltrakt Resonanzfrequenzen erzeugt. Die Formanten werden von links nach rechts durchnummeriert, von $F_1 ,\ldots\,F_n$. Jeder Formant wird durch seine Mittenfrequenz, seine Bandbreite und seine Amplitude beschrieben, das wichtigste Merkmal ist jedoch die Mittenfrequenz. Mit steigender Frequenz nimmt die Amplitude der Formanten ab, der dominanteste Formant ist also immer der erste. Daher werden meist nur die ersten 2 oder 3 Formanten zur Beschreibung eines Vokals verzeichnet. Für verschiedene Sprachen sind allerlei Tabellen zu finden, welche die Formantenfrequenzen der Vokale listen.\cite[S. 19]{sprachverarbeitung}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{bilder/formants02.png}
+	\caption{Formanten im Sprach-Signal}
+	\label{img:formants}
+\end{figure}	
+
+Da Sprache etwas zeitlich dynamisches ist, befinden sich sowohl die Glottal Source als auch der Filter des Vokaltraktes und der Lippen in ständiger Veränderung. Da die Informationen der Sprache vor allem im Frequenz-Bereich codiert sind, wird die in Kapitel \ref{sec:stft} vorgstellte Short Time Fourier Transformation für die Visualisierung von Sprache eingesetzt. Dabei wird auf der x-Achse die Zeitpunkte der Fenster, auf der y-Achse die Frequenz dargestellt. Die Frequenz-Fenster werden sozusagen \glqq auf die Seite gelegt\grqq{}, damit ihr zeitlicher Verlauf übersichtlich betrachtet werden kann. Die Helligkeit codiert die Amplitude der entsprechenden Frequenz. Dunkle Stellen stehen für hohe Amplituden, und helle Stellen für geringe Amplituden. Je länger das Zeitfenster der STFT, desto besser die Auflösung bezüglich des Frequenz-Bereiches, desto schlechter ist jedoch die Auflösung bezüglich des zeitlichen Verlaufen. Je kürzer die Zeitfenster der STFT, desto besser wird der zeitliche Verlauf bei sinkender Frequenz-Auflösung erkennbar.\cite[S. 48 - 50]{sprachverarbeitung} \cite[Acoustic Representations of Speech]{speechAcoustics}. Abbildung \ref{img:formants} zeigt ein Beispiel für ein Spectogram, bei dem der Verlauf der formanten mit bunten Linien verdeutlicht wird.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{bilder/spectogram02.png}
+	\caption{Spectogram des Wortes englischen Wortes \glqq hide\grqq{} \cite[Acoustic Representations of Speech]{speechAcoustics}}
+	\label{img:formants}
+\end{figure}	
+
+
 \section{Feststellung von Periodizität in Signalen}
+
+Die Feststellung von Periodizität in Zeit-Bereich in einem Signal hat eine besondere Rolle in der Sprachverarbeitung. 
+
 \subsection{Zero-Crossing-Rate}
 \subsection{Methoden des Frequenzbereiches}
 \subsection{Autokorrelation}

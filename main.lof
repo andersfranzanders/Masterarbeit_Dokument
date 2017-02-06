@@ -23,5 +23,11 @@
 \contentsline {figure}{\numberline {3.18}{\ignorespaces STFT des Beispiel-Signals aus Abbildung \ref {img:siganlWindows}\relax }}{24}{figure.caption.23}
 \contentsline {figure}{\numberline {3.19}{\ignorespaces Beispiel f\IeC {\"u}r die Faltung\relax }}{27}{figure.caption.24}
 \contentsline {figure}{\numberline {3.20}{\ignorespaces Links: Zeit-Bereich einer Impulsantwort $h[\tmspace +\thickmuskip {.2777em}]$ des \glqq windowed Sync Filters\grqq . Rechts: Frequenz-Bereich dieser Impulsantwort $\text {DFT}\{h[\tmspace +\thickmuskip {.2777em}]\} = H[\tmspace +\thickmuskip {.2777em}]$ \cite [S. 287]{dspGuide}\relax }}{28}{figure.caption.25}
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber die Organe der Spracherzeugung \cite {speechProduction}\relax }}{29}{figure.caption.26}
+\contentsline {figure}{\numberline {3.22}{\ignorespaces Schematische \IeC {\"u}ber das Source-Filter-Model \cite [S. \glqq Source estimation\grqq , S. 17]{ricardo_ceps}\relax }}{30}{figure.caption.27}
+\contentsline {figure}{\numberline {3.23}{\ignorespaces Zeit-Bereiche der periodic und der turbulance Source \cite [Source]{speechAcoustics}\relax }}{30}{figure.caption.28}
+\contentsline {figure}{\numberline {3.24}{\ignorespaces Betrachtung der Frequenz-Bereiche des Source-Filer-Modell \relax }}{31}{figure.caption.29}
+\contentsline {figure}{\numberline {3.25}{\ignorespaces Formanten im Sprach-Signal\relax }}{32}{figure.caption.30}
+\contentsline {figure}{\numberline {3.26}{\ignorespaces Spectogram des Wortes englischen Wortes \glqq hide\grqq {} \cite [Acoustic Representations of Speech]{speechAcoustics}\relax }}{33}{figure.caption.31}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{35}{figure.caption.29}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{40}{figure.caption.35}
