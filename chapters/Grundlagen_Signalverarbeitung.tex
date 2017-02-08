@@ -1,4 +1,5 @@
 \chapter{Grundlagen der Signalverarbeitung}
+\label{sec:signalFoundations}
 
 Ein \emph{Signal} ist eine Funktion eines Parameters mit numerischen Wertebereich. Die Abbildung zwischen Defintions- und Wertebereich kann, aber muss nicht durch eine Formel definiert sein. So fällt $f(x) = \sin( x )$ genauso unter die Definition eines Signals wie eine Folge numerischer Werte, die durch die Aufnahme eines Messgerätes enstanden sind. Weiterhin kommt dem Wertebereich eine gewissen Bedeutung zu, wie \emph{Zeit} oder \emph{Ort}. Ein typisches Beispiel für ein Signal ist die Spannung, die abhängig von der Zeit von einem Mikrofon erzeugt wird.  Da in dieser Arbeit nur Signale von Bedeutung sind, deren Wertebereich sich auf die Zeit bezieht, konzetrieren sich alle folgenden Bereich auf diesen Bereich- Im Zusammenhang mit Signalen wird der Definitionsbereich auch als \emph{unabhängiger Parameter} und der Wertebereich auch als \emph{abhängiger Parameter} bezeichnet. \cite[S. 11-12]{dspGuide} \cite[S. 22-23]{dspMichigan}
 
@@ -229,14 +230,14 @@ Die \emph{Korrelation} (engl \emph{Correlation}) zweier Signale $x_1[\;]$ und $x
 Die Korrelation und die normalisierte Korrelation werden aufgrund ihrer Eigenschaften verwendet, um ein Signal $x[\;]$ in einem Signal $y[\;]$ zu detektieren. Häufig ist das Ziel, ein von einem Rauschen $e[\;]$ überlagerten Signal $x[\;]+e[\;] = y[\;]$ auf das Vorhandensein des erwarteten Signales $x[\;]$ hin zu überprüfen. Wie in Abbildung \ref{img:corrSigsComp} zu sehen ist, ist der Korrelationswert jedoch von der Verzögerung des Signals abhängig. Daher wird in der $Cross-Correlation$ das Signal $y[\;]$ mit einer verzögerten Varianten des Signals $x[\;]$ korreliert, wie in Formel \ref{eq:XCorr} definiert. Der parameter $k$ wird als \emph{Lag} bezeichnet und gibt die Verzögerung an. 
 
 \begin{equation}
-\text{X-Corr}(x[\;],y[\;],k) = \sum_{n=-\infty}^{\infty} x[n-k] \cdot y[n]
+\text{X-Corr}_k(x[\;],y[\;]) = \sum_{n=-\infty}^{\infty} x[n-k] \cdot y[n]
 \label{eq:XCorr}
 \end{equation}
 
 Im Prozess der so genannten \emph{Running Correlation} nutzt man die Cross-Correlation mit den Lags $k = 0 \cdots k_{max}$ zur Erstellung des \emph{Korrelationssignals} $r[\;]$, wie in Gleichung \ref{eq:runningCorrelation} definiert. Das Signal $r[\;]$ gibt Auskunft, zu welchen Verzögerungswerten $k$ die größten Ähnlichkeiten zwischen $x$ und $y$ gefunden wurden. 
 
 \begin{equation}
-r[\;] := \quad \mathop{\forall}_{k = 0}^{k_{max}} :\ r[k] = \text{X-Corr}(x[\;],y[\;],k)
+r[\;] := \quad \mathop{\forall}_{k = 0}^{k_{max}} :\ r[k] = \text{X-Corr}_k(x[\;],y[\;])
 \label{eq:runningCorrelation}
 \end{equation}
 
@@ -745,8 +746,9 @@ Ein weiterer Vorteil der FFT-Convolution ist, dass Einblick über den Einfluss d
 Da ein FIR-Filter eine endlich lange Impulsantwort hat, folgt daraus auch ein endlichlanger Frequenz-Bereich. Ein IIR-Filter hingegen hat einen unenlich lange Impulsantwort und somit auch einen unendlich langen Frequenz-Bereich.
 
 \section{akustische Modellierung der menschlichen Stimme}
+\label{sec:theVoice}
 
-An dieser Stelle wird die ein akustisches Modell der menschlichen Stimme vorgestellt. Folgende Organe sind an der Produktion der menschlichen Stimme beteiligt. Abbildung 	\ref{img:schematicVocalOrgans} visualisiert diese Organe schematisch.
+An dieser Stelle wird die ein akustisches Modell der menschlichen Stimme vorgestellt. Folgende Organe sind an der Produktion der menschlichen Stimme beteiligt. Abbildung \ref{img:schematicVocalOrgans} visualisiert diese Organe schematisch.
 
 \begin{enumerate}
 	\item \textbf{Lunge / Lung}, welcher einen Luftstrom als Grundlage der Lutäußerung erzeugt
@@ -797,6 +799,15 @@ Abbildung \ref{img:sourceFilerSpectra} zeigt die Betrachtung der Frequenz-Bereic
 	\label{img:sourceFilerSpectra}
 \end{figure}	
 
+Abbildung \ref{img:pitchPeaks} zeigt anhand des Frequenz-Spectrums eines stimmhaften Sprachsignals, wie die die Grundfrequenz und die harmonischen Obertonwellen erkannt werden: Die Grundfrequenz $N_0$ ist Bezüglich des Zeit-Bereiches nach Formel \ref{eq:periodicity} definiert. Im Frequenz-Bereich sind die Grund-Frequenz und die harmonischen Oberwellen als die \glqq vielen, kurzen Spitzen\grqq{} erkennbar. Die Frequenz der ersten dieser Spitzen entspricht der Grund-Frequenz $N_0$, in diesem Beispiel $\SI{250.7}{\hertz}$. Die harmonsichen Oberwellen entsprechen dem doppelten, dreifachen, \ldots dieser Grundfrequenz und werden bezeichnet hals $H_1, H_2, \ldots$. Die Grundfrequenz ist \emph{nicht zwingend} die Spitze der höchsten Amplitude! Durch den Einfluss des Vokaltrackts als Filter können harmonische Oberwellen eine höhere Amplitude als die Grundfrequenz haben. Vielmehr lässt sich durch den kleinsten gemeinsamen Teiler der Frequenzspitzen auf die Grundfrequenz schließen.\cite[S. 52 - 53]{sprachverarbeitung}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{bilder/pitchPeaks.png}
+	\caption{ Grundfrequenz und Harmonische Oberwellen eines Sprachsignals.}
+	\label{img:pitchPeaks}
+\end{figure}	
+
 Abbildung \ref{img:formants} \footnote{Bildquelle: \url{http://hyperphysics.phy-astr.gsu.edu/hbase/index.html}} verdeutlicht, wie das als linearer, Zeit-Invarianter Filter modellierte Vokaltrakt mit Hilfe von Formanten beschrieben wird. Die Formanten spielen vor allem bei der Beschreibung von Vokalen eine Rolle. Formanten sind lokale Maxima im Spektrum, die dadurch erzeugt werden, dass der Vokaltrakt Resonanzfrequenzen erzeugt. Die Formanten werden von links nach rechts durchnummeriert, von $F_1 ,\ldots\,F_n$. Jeder Formant wird durch seine Mittenfrequenz, seine Bandbreite und seine Amplitude beschrieben, das wichtigste Merkmal ist jedoch die Mittenfrequenz. Mit steigender Frequenz nimmt die Amplitude der Formanten ab, der dominanteste Formant ist also immer der erste. Daher werden meist nur die ersten 2 oder 3 Formanten zur Beschreibung eines Vokals verzeichnet. Für verschiedene Sprachen sind allerlei Tabellen zu finden, welche die Formantenfrequenzen der Vokale listen.\cite[S. 19]{sprachverarbeitung}
 
 \begin{figure}[h]
@@ -806,21 +817,122 @@ Abbildung \ref{img:formants} \footnote{Bildquelle: \url{http://hyperphysics.phy-
 	\label{img:formants}
 \end{figure}	
 
-Da Sprache etwas zeitlich dynamisches ist, befinden sich sowohl die Glottal Source als auch der Filter des Vokaltraktes und der Lippen in ständiger Veränderung. Da die Informationen der Sprache vor allem im Frequenz-Bereich codiert sind, wird die in Kapitel \ref{sec:stft} vorgstellte Short Time Fourier Transformation für die Visualisierung von Sprache eingesetzt. Dabei wird auf der x-Achse die Zeitpunkte der Fenster, auf der y-Achse die Frequenz dargestellt. Die Frequenz-Fenster werden sozusagen \glqq auf die Seite gelegt\grqq{}, damit ihr zeitlicher Verlauf übersichtlich betrachtet werden kann. Die Helligkeit codiert die Amplitude der entsprechenden Frequenz. Dunkle Stellen stehen für hohe Amplituden, und helle Stellen für geringe Amplituden. Je länger das Zeitfenster der STFT, desto besser die Auflösung bezüglich des Frequenz-Bereiches, desto schlechter ist jedoch die Auflösung bezüglich des zeitlichen Verlaufen. Je kürzer die Zeitfenster der STFT, desto besser wird der zeitliche Verlauf bei sinkender Frequenz-Auflösung erkennbar.\cite[S. 48 - 50]{sprachverarbeitung} \cite[Acoustic Representations of Speech]{speechAcoustics}. Abbildung \ref{img:formants} zeigt ein Beispiel für ein Spectogram, bei dem der Verlauf der formanten mit bunten Linien verdeutlicht wird.
+Da Sprache etwas zeitlich dynamisches ist, befinden sich sowohl die Glottal Source als auch der Filter des Vokaltraktes und der Lippen in ständiger Veränderung. Da die Informationen der Sprache vor allem im Frequenz-Bereich codiert sind, wird die in Kapitel \ref{sec:stft} vorgstellte Short Time Fourier Transformation für die Visualisierung von Sprache eingesetzt. Dabei wird auf der x-Achse die Zeitpunkte der Fenster, auf der y-Achse die Frequenz dargestellt. Die Frequenz-Fenster werden sozusagen \glqq auf die Seite gelegt\grqq{}, damit ihr zeitlicher Verlauf übersichtlich betrachtet werden kann. Die Amplitude der entsprechenden Frequenz wird farblich oder durch Helligkeiten codiert, abhängig von der konkreten Implementierung des Spectograms. Je länger das Zeitfenster der STFT, desto besser die Auflösung bezüglich des Frequenz-Bereiches, desto schlechter ist jedoch  die zeitliche Auflösung. Je kürzer die Zeitfenster der STFT, desto besser wird der zeitliche Verlauf bei sinkender Frequenz-Auflösung erkennbar.\cite[S. 48 - 50]{sprachverarbeitung} \cite[Acoustic Representations of Speech]{speechAcoustics}. Abbildung \ref{img:formants} zeigt ein Beispiel für zwei Spectogramme mit unterschiedlichen Fenstergrößen der STFT, angewandt auf einem 9 sekunden langen Signal mit Baby-Weinen. Es ist zu erkennen, wie bei sinkender Fensterlänge der zeitliche Verlauf besser erkennbar, jedoch die einzelnen harmonsichen Obertöne weniger gut voneinander unterscheidbar sind. Inbesondere bei der Analyse von Audiosignalen des Weinens der Neugeborenen von Golub und Corwin waren \cite{cryModel} waren Auswertungen von Spectogrammen von Zentraler Bedeutung.
+%%Citation from Cry as a Signal!!
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/spectogram02.png}
-	\caption{Spectogram des Wortes englischen Wortes \glqq hide\grqq{} \cite[Acoustic Representations of Speech]{speechAcoustics}}
+	\includegraphics[width=0.7\textwidth]{bilder/spectogram03.png}
+	\caption{Spectogram von Baby-Weinen. Rot = Hohe Amplituden, Blau = niedrige Amplituden. Oben: Zeit-Bereich. Mitte: Spectogram mit einer Fensterlänge von $\SI{185}{\milli\second}$(8192-Sample DFT). Unten: Spectogram mit einer Fensterlänge von $\SI{5}{\milli\second}$} (265-Sample DFT).
 	\label{img:formants}
 \end{figure}	
 
 
 \section{Feststellung von Periodizität in Signalen}
 
-Die Feststellung von Periodizität in Zeit-Bereich in einem Signal hat eine besondere Rolle in der Sprachverarbeitung. 
+Die Feststellung von Periodizität in Zeit-Bereich in einem Signal hat eine besondere Rolle in der Sprachverarbeitung. Ein Ensatzgebiet, welches in dieser Arbeit weiter von Bedeutung sein wird, ist die Voice-Activity-Detection, die Feststellung des Vorhandenseins von Stimme in einem Signal. \cite{vad_Lisboa} Ein weiteres Einsatzgebiet ist die Tonhöhenerkennung. \cite{pitch-paper-overview}  \cite[S. 1 - 2]{pitchHistory}
 
-\subsection{Zero-Crossing-Rate}
-\subsection{Methoden des Frequenzbereiches}
+Ein Sprachsignal ist 1.) nur über kurze Zeitfenster periodisch, da sich die Tonhöhe jederzeit ändern kann, und 2.) selbst bei \glqq perfekt gewählter Fensterlänge\grqq{} nicht perfekt periodisch, sondern nur annhäernd periodisch (\emph{quasi periodisch}).\cite[S. 1 - 2]{pitchHistory} Formel \ref{eq:quasi-periodicity} definiert diese Aussage als Formel für den Zeit-Bereich.
+
+\begin{equation}
+ x[n+N] \approx x[n]
+\label{eq:quasi-periodicity}
+\end{equation}
+
+%Kapitel einfügen >.<
+Über die Jahre wurde eine Vielzahl an Methoden zur Feststellung der Periodizität entwickelt. An dieser Stelle wird eine Auswahl vorgestellt, die für die Voice-Activity-Deteciton in Kapitel xxx von Bedeutung sind.
+
+%\subsection{Zero-Crossing-Rate}
+
+%Bei der Zero-Crossing-Rate (ZCR) wird gezählt, wie oft das signal die x-Achse überschreitet, also das  Vorzeiche wechselt Formel \ref{eq:zcr} definiert die ZCR.\cite[S. 335]{vad_ceps}
+
+%\begin{equation}
+%\text{ZCR}(x_m[\;]) = \sum_{n=n_1}^{n_2} | \text{sgn}(x_m[n]) -  \text{sgn}(x_m[n-1]) |
+%\label{eq:zcr}
+%\end{equation}
+
+%Mit Hilfe der Zer-Crossing-Rate wird nicht Periodizität, sondern das Nicht-Vorhandensein von Rauschen nachgewiesen. Da Rauschen eine höhere Zero-Crossing-Rate hat als ein periodisches Signal (mit einer Grundfrequenz im Bereich der menschlichen Stimme), sprechen niedrige Zero-Crossing-Rates für das vorhandensein von Periodizität. Der Nachteil dieser Methode ist, dass bei kompletter Abwesenheit von Hintergrundrauschen eine ZCR von 0 fälschlicherweise für Periodzittät sprechen würde. \cite[S. 335]{vad_ceps}
+
+%\subsection{Most Dominant Frequenzcy}
+
+%Die dominansteste Frequenz (Most Dominant Frequency) wird nach Formel \ref{eq:domFreq} als die Frequenz mit der höchsten Amplitude des Frequenz-Fensters $(X_m[\;]$ definiert. \cite[S. 2550]{vad_Easy} 
+
+%\begin{equation}
+%f_{Dom}(X_m[\;]) = \argmax_f\{X_m[f]\}
+%\label{eq:domFreq}
+%\end{equation}
+ 
+ %Wie Abbdilung in\ref{img:source-filter-model} und \ref{img:pitchPeaks} zu sehen ist, hat der Fequenz-Bereich eines periodisches Signals die dominanteste Frequenz im Bereich der Grund-Frequenz-Frequenz oder einer harmonischen Oberwelle, während Rauschen die Dominanteste Ferquenz an einer beliebigen Position haben kann. Nach Moattar und Homayounpour \cite[S. 2550]{vad_Easy} ist die dominanteste Frequenz bei Rauschen tiefer zu erwarten als bei einem periodischen Signal. 
+
 \subsection{Autokorrelation}
+
+Die Korrelation wurde in Kapitel \ref{sec:correlation} vorgestellt. Bei der Autokorrelation wird ein Signal mit einer vezögerten Variante von sich selber korrelliert. Gleichung \ref{eq:ACorr} definiert die Autokorrelation des Signals eines $N$-Samples langen Signals $x[\;]$ mit einer um das Lag $k$ verzögerten Variante von sich selber.
+
+\begin{equation}
+\text{A-Corr}_k(x[\;]) = \sum_{n=k}^{N} x[n-k] \cdot x[n]
+\label{eq:ACorr}
+\end{equation}
+
+Wie bei der in Kapitel \ref{sec:correlation} vorgestellten Cross-Correlation gibt es verschiedene Möglichkeiten der Normalisierung der Korrelationswertes in Bezug auf die Signalenergien. Gleichung \ref{eq:NACorr} definiert die normalisierte Autokorrelation.\cite{vad_Lisboa}
+
+\begin{equation}
+\text{NA-Corr}_k(x[\;]) = \frac{\sum_{n=k}^{N} x[n-k] \cdot x[n]}{ \sqrt{\sum_{n=1}^{N-k}  x[n]^2}  \cdot  \sqrt{\sum_{n=k}^{N}  x[n]^2} }
+\label{eq:NACorr}
+\end{equation}
+
+Nun wird das Autokorrelations-Signal $a[\;]$ erstellt, in dem Gleichung \ref{eq:ACorr} oder \ref{eq:NACorr} für verschiedene $k = k_min \ldots k_max$ angewandt wird, wie Gleichung \ref{eq:a-Signal} definiert. 
+
+\begin{equation}
+a[\;] := \quad \mathop{\forall}_{k = k_{min}}^{k_{max}} :\ a[k] = \text{NA-Corr}_k(x[\;]) 
+\label{eq:a-Signal}
+\end{equation}
+
+Ein hoher Wert des Signals $a[\;]$ an der Position $k$ spricht für eine Periodizität des Signals mit der Frequenz $f =  f_s / k $. Es ist üblich, den Bereich $[k_{min},k_{max}]$ so einzuschränken, dass die Autokorrelation nur für den Frequenz-Raum durchegeführt wird, in dem man Periodizität erwartet. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/acorr.png}
+	\caption{Autokorrelation eines Signals}
+	\label{img:acorr}
+\end{figure}	
+
+Abbildung \ref{img:acorr} verdeutlicht das Vorgehen an einem Beispiel. Gezeigt wird  in (a) der Zeit-Bereich eines quasi-periodischen Signals $x[\;]$, welches mit einer Sampling-Frequenz von $f_s = \SI{16.000}{\hertz}$ aufgenommen wurde. Es wird eine Periodizität im Bereich $\SI{50}{\hertz} - \SI{400}{\hertz}$ vermutet, daher wird die normalisierte Autokorrelation nach Formel \ref{eq:a-Signal} durchgeführt mit den Lags $k_{min} = \SI{16.000}{\hertz} / \SI{400}{\hertz} = 40$ bis $k_{max} = \SI{16.000}{\hertz} / \SI{50}{\hertz} = 320$. (b) zeigt das so entstandene Signal $a[\;]$. Das Maximum an der Stelle $k = 146$ weisst auf eine Grundfrequenz von $N_0 \approx \SI{109}{\hertz}$ hin. Dabei kann es sich jedoch auch um die Frequenz einer Harmonische Schwingung handeln, welche durch den Einfluss des Filters des Vokaltraktes verstärkt wurde. Es kann sich auch um die Hälfte der Grundfrequenz handeln, da wie in Kapitel \ref{sec:signalFoundations} erläutert, ein Signal mit der Periode $N$ ebenfalls eine Periodizität bezüglich $2N, 3N,\ldots$ aufweist. \cite{vad_Lisboa} \cite[S. 24]{dspMichigan}
+
 \subsection{Cepstrum}
+
+Das Cepstrum wird nach Gleichung \ref{eq:cepstrum} als die inverse DFT des Logarithmus des Magnitudensignals des Frequenz-Bereiches definiert. 
+
+\begin{equation}
+ceps[\;] =  \text{iDFT}\Big\{ \log \Big(\ \big|\ \text{DFT}\{x[\;]\} \big|\ \Big) \Big\}
+\label{eq:cepstrum}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/cepstrum04.png}
+	\caption{Berechnung des Cepstrums}
+	\label{img:cepstrumOverview}
+\end{figure}	
+
+
+Das Vorgehen wird mit Hilfe des Beispiels aus Abbildung \ref{img:cepstrumOverview} erläutert. $ |\ \text{DFT}\{x[\;]\} \big| $  zeigt das Spectrum (Magnituden-Signal) eines \glqq typischen stimmhaften\grqq{} Signals $x[\;]$. Es sind die in Kapitel \ref{sec:theVoice} erläuterten harmonischen Obertöne zu sehen, welche mit steigender Frequenz an Amplitude verlieren. Durch das logarithmieren des Spectrums $\log \Big(\ \big|\ \text{DFT}\{x[\;]\} \big|\ \Big)$ wird die Dynamic des Frequenz-Bereiches verringert und somit der Amplituden-Verlust der höheren Obertöne verringert. Nun stellt man sich vor, dieses Spectrum wäre ein Signal des Zeit-Bereiches. Dieses Signal würde man als ein Quasi-Periodisches Signal mit einer Amplituden-Modulation interpretieren, das heißt ein Signal mit hoher Frequenz, addiert mit einem Signal mit nierdiger Frequenz. Um diese beiden Komponenten voneinander zu trennen, würde man wieder die DFT anwenden, um das Spectrum zu bilden. Diese DFT kommt in dem Fall einer inversen DFT gleichkommt, da das Magnituden-Signal verworfen wird. Man erwartet in diesem \glqq Spectrum vom Spectrum\grqq{} einen Peak im \glqq oberen Frequenz-Bereich\grqq , bedingt durch die harmonischen Oberwellen, sowie einen Peak im  \glqq unteren Frequenz-Bereich\grqq, bedingt durch die Formanten.\cite[Cepstral analysis]{ricardo_ceps}
+
+Der Bereich dieser \glqq Fouriertransformation der Foueriertransformation\grqq{} wird als \emph{Cepstrum} bezeichnet. Cepstrum ist ein ein Wortspiel, welches durch die Umkehrung der ersten vier Buchstaben des Wortes "Spectrum" ensteht. Die Unabhängige Variable des Cepstrum folgt dem Wortspiel und wird als \emph{Quefrency} bezeichnet. Damit wird verdeutlicht, dass die unabhängige Variable des Cepstrum zwar mathematisch betrachtet die Zeit darstellt, jedoch als Frequenz interpretiert wird.\cite[S. 7]{ricardo_ceps}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/cepstrum05.png}
+	\caption{Aufkommen eines Peaks im oberen Quefrency-Bereich bei stimmhaften Signalfenstern \cite[S. 17]{ricardo_ceps}}
+	\label{img:cepstrumVoicedPeak}
+\end{figure}	
+
+Insbesondere ein Auftauchen eines Peakes im oberen Quefrency-Bereich $> \SI{3}{\milli\second}$ spricht für das vorhandensein von harmonischen Obertönen und somit für periodizität im Signal, wie sie durch Stimme entsteht. Abbildung \ref{img:cepstrumVoicedPeak} verdeutlicht das Prinzip an einem Beispiel. Zu sehen ist die STFT eines Signals mit einer Fensterlänge von $\SI{50}{\milli\second}$ und einer Hopsize von $\SI{12.5}{\milli\second}$. Links wird das Logarithmisierte Spektrum abgebildet, und rechts das Cepstrum. Die Frames 1-5 sind stimmlos, die Frames 8-15 sind stimmhaft, und die zwischen-Frames eine Mischung. Man sieht das Aufkommen eines Peaks bei einer Quefrency $q = \SI{12}{\milli\second}$.\cite[S. 16]{ricardo_ceps}
+
+Abbildung \ref{img:cepstrumPitch} verdeutlicht, wie eine Grundfrequenz $f_0$ im Zeit-Bereich einen Peak im Cepstrum erzeugt. So weist ein Peak an bei der Quefrency $q$ auf eine Grundfrequenz von  $q = f_s/f_0$ hin. Dabei kann es sich, wie bei der Autokorrelation, um einen Oktaven-Fehler handeln, das heißt, dass der höchste Peak das Doppelte oder die Hälfte der eigentlichen Grundrequenz beträgt. \cite{cepstrumPitchTranslation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/cepstrumPitch.png}
+	\caption{Feststellung der Grundfrequenz aus dem Cepstrum\cite{cepstrumPitchTranslation}}
+	\label{img:cepstrumPitch}
+\end{figure}	
