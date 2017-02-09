@@ -3,36 +3,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{6}{figure.caption.5}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B)\relax }}{7}{figure.caption.6}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Ein nicht-periodisches Signal (A) und ein periodisches Signal (B)\relax }}{9}{figure.caption.7}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Statistische Werte eines Signals \IeC {\"u}ber das Intervall [50,200]\relax }}{10}{figure.caption.8}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Komponentenweise Addition und Mulitplikation zweier Signale\relax }}{10}{figure.caption.9}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Berechnung des MSE, RMSE und SNR eines von Rauschen gest\IeC {\"o}rten Signals\relax }}{12}{figure.caption.10}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Correlation der Signale $x[n]$ und $y[n]$\relax }}{12}{figure.caption.11}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Beispiel einer Running Correlation\relax }}{13}{figure.caption.12}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces $\SI {1}{\second } = 44100 $ Samples der Cosinus-Schwingung $[A = 2] \cdot cos_{f=\SI {4}{\hertz }}[\tmspace +\thickmuskip {.2777em}] = 2 \cdot \qopname \relax o{cos}(2\pi 4 \frac {n}{f_s})$ bei einer Sampling-Rate von $f_s = \SI {44100}{\hertz } $\relax }}{14}{figure.caption.13}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Synthetisierung eines Signals $x[\tmspace +\thickmuskip {.2777em}]$ aus vier Cosinus-Funktionen, mit Length$(x[\tmspace +\thickmuskip {.2777em}]) = 200$ und $f_s = \SI {100}{\hertz }$\relax }}{15}{figure.caption.14}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die DFT und die inverse DFT\relax }}{17}{figure.caption.15}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Frequenz-Bereich des Beispiels aus Abbildung \ref {img:fftExample02}\relax }}{18}{figure.caption.16}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Visualisierung der Eulergleichung\relax }}{19}{figure.caption.17}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Symmetrie des Frequenzbereiches in den Indexen $n = (-N/2 = -0.5*N) ,\ldots , (N/2 = 0.5*N)$. Die Marker 1 und 2 haben eine Amplitude von $+0.5$, der Marker 3 hat eine Amplitude von $-0.5$ und Marker 4 eine Amplitude von $+0.5$ \relax }}{22}{figure.caption.18}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die komplexe DFT und inverse DFT\relax }}{23}{figure.caption.19}
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Ein 1.8-Sekunden langes Signal. Oben: Der Zeitbereich mit drei klar erkennbaren Events. Unten: Das Frequenz-Spectrum des gesamten Signals mit logarithmisierten Achsen.\relax }}{23}{figure.caption.20}
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Zerlegung eines Signals in Singal-Fenster\relax }}{24}{figure.caption.21}
-\contentsline {figure}{\numberline {3.17}{\ignorespaces Das Hamming-Window\relax }}{24}{figure.caption.22}
-\contentsline {figure}{\numberline {3.18}{\ignorespaces STFT des Beispiel-Signals aus Abbildung \ref {img:siganlWindows}\relax }}{24}{figure.caption.23}
-\contentsline {figure}{\numberline {3.19}{\ignorespaces Beispiel f\IeC {\"u}r die Faltung\relax }}{27}{figure.caption.24}
-\contentsline {figure}{\numberline {3.20}{\ignorespaces Links: Zeit-Bereich einer Impulsantwort $h[\tmspace +\thickmuskip {.2777em}]$ des \glqq windowed Sync Filters\grqq . Rechts: Frequenz-Bereich dieser Impulsantwort $\text {DFT}\{h[\tmspace +\thickmuskip {.2777em}]\} = H[\tmspace +\thickmuskip {.2777em}]$ \cite [S. 287]{dspGuide}\relax }}{28}{figure.caption.25}
-\contentsline {figure}{\numberline {3.21}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber die Organe der Spracherzeugung \cite {speechProduction}\relax }}{29}{figure.caption.26}
-\contentsline {figure}{\numberline {3.22}{\ignorespaces Schematische \IeC {\"u}ber das Source-Filter-Model \cite [S. \glqq Source estimation\grqq , S. 17]{ricardo_ceps}\relax }}{30}{figure.caption.27}
-\contentsline {figure}{\numberline {3.23}{\ignorespaces Zeit-Bereiche der periodic und der turbulance Source \cite [Source]{speechAcoustics}\relax }}{30}{figure.caption.28}
-\contentsline {figure}{\numberline {3.24}{\ignorespaces Betrachtung der Frequenz-Bereiche des Source-Filer-Modell \relax }}{31}{figure.caption.29}
-\contentsline {figure}{\numberline {3.25}{\ignorespaces Grundfrequenz und Harmonische Oberwellen eines Sprachsignals.\relax }}{32}{figure.caption.30}
-\contentsline {figure}{\numberline {3.26}{\ignorespaces Formanten im Sprach-Signal\relax }}{32}{figure.caption.31}
-\contentsline {figure}{\numberline {3.27}{\ignorespaces Spectogram von Baby-Weinen. Rot = Hohe Amplituden, Blau = niedrige Amplituden. Oben: Zeit-Bereich. Mitte: Spectogram mit einer Fensterl\IeC {\"a}nge von $\SI {185}{\milli \second }$(8192-Sample DFT). Unten: Spectogram mit einer Fensterl\IeC {\"a}nge von $\SI {5}{\milli \second }$\relax }}{33}{figure.caption.32}
-\contentsline {figure}{\numberline {3.28}{\ignorespaces Autokorrelation eines Signals\relax }}{34}{figure.caption.33}
-\contentsline {figure}{\numberline {3.29}{\ignorespaces Berechnung des Cepstrums\relax }}{35}{figure.caption.34}
-\contentsline {figure}{\numberline {3.30}{\ignorespaces Aufkommen eines Peaks im oberen Quefrency-Bereich bei stimmhaften Signalfenstern \cite [S. 17]{ricardo_ceps}\relax }}{36}{figure.caption.35}
-\contentsline {figure}{\numberline {3.31}{\ignorespaces Feststellung der Grundfrequenz aus dem Cepstrum\cite {cepstrumPitchTranslation}\relax }}{37}{figure.caption.36}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Entscheidungsbaum, der durch den ID3-Algorithmus f\IeC {\"u}r den Datensatz aus Beispiel \ref {tab:id3_example} erzeugt wurde.\relax }}{10}{figure.caption.8}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Confusion-Matrix\relax }}{13}{figure.caption.9}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{44}{figure.caption.40}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{20}{figure.caption.13}
