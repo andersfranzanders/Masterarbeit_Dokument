@@ -45,6 +45,7 @@ Das Klassifzierungs-Problem wird folgendermaßen modelliert:
 Es existieren \emph{Instanzen} $x$. Jede Instanzen hat eine Reihe an Eigenschaften, bezeichnet als \emph{Features} oder \emph{Attribute} $f$, wobei jedes Feature einen eigenen Wertebereich, bezeichnet als \emph{Domain} hat. Menge aller möglichen Feautre-Kombinationen wird als \emph{Feature-Raum} $X$ bezeichnet.  
 
 \begin{equation}
+\label{eq:feature-space}
 \begin{gathered}
 \text{Feature-Raum :} \qquad X = \{\  dom(f_1) \times , \ldots, \times dom(f_n)\ \} \\
 \text{Instanz :} \qquad  x \in X 
@@ -54,6 +55,7 @@ Es existieren \emph{Instanzen} $x$. Jede Instanzen hat eine Reihe an Eigenschaft
 Außerdem exisistiert eine Menge an \emph{Klassen} $C = \{1, \ldots , k\}$. Die \emph{Klassifizierungs-Funktion}, \emph{Predictor}  oder \emph{Classifier} $c$ bestimmt für eine Instanz eine Klasse.
 
 \begin{equation}
+\label{eq:classifier-classes}
 \begin{gathered}
 \text{Classes :} \qquad C = \{ 1 , \ldots , k \} \\
 \text{Classifier: } \qquad  c: X \mapsto C
@@ -63,8 +65,9 @@ Außerdem exisistiert eine Menge an \emph{Klassen} $C = \{1, \ldots , k\}$. Die 
 Es gibt einen Datensatz $D$ mit einer Menge an Instanzen. Für jede der Instanzen ist die zugehörige Klasse bekannt. Ein Paar aus Instanz und Klasse wird als \emph{Example} $e$ bezeichnet. Die einer Instanz $x_i$ zugewiesenen Klasse $c_i$ wird als \emph{Label} beschrieben.
  
 \begin{equation}
+\label{eq:dataAndExample}
 \begin{gathered}
-\text{Datensatz :} \qquad D = \{ \langle x_1, c_1 \rangle, \ldots , \langle x_1, c_1 \rangle  \} \\
+\text{Datensatz :} \qquad D = \{ \langle x_1, c_1 \rangle, \ldots , \langle x_n, c_n \rangle  \} \\
 \text{Example: } \qquad  e \in D
 \end{gathered}
 \end{equation}
@@ -72,7 +75,7 @@ Es gibt einen Datensatz $D$ mit einer Menge an Instanzen. Für jede der Instanze
 Die Fehlerfunktion $E$ zählt für einen Datensatz die Menge aller nicht richtig klassifzierten Instanzen
 
 \begin{equation}
-\text{E}(D,C) = \counti_{\langle x_i, c_i \rangle \in D} (C(x_i) \neq c_i)
+\text{E}(D,c) = \counti_{\langle x_i, c_i \rangle \in D} (c(x_i) \neq c_i)
 \end{equation}
 
 Das Ziel des Klassfikations-Problems ist es, diejenige Funktion $C$ zu finden, die für einen Test-Datensatz $D_{test} \subseteq D$ die Anzahl falsch klassifzierter Examples minimiert. Nach dem in Kapitel \ref{sec:learning} vorgestellten Muster nach $T$, $P$ und $E$ ergibt sich folgende Aufgabenbeschreibung. \cite[S. 8 - 9]{learning_cart_dobra} \cite[S. 14]{cart_loh} \cite[S. 7 - 10, 18]{machine_marsland}
@@ -115,7 +118,8 @@ Das Ziel ist, in Zukunft abschätzen zu können, allein durch die Kenntniss der 
 
 Es gibt eine Reihe an Algorithmen, die Classifikatoren nach unterschiedlichen Methoden erstellen. Beispiele sind für \emph{k-NN}, \emph{Support-Vector-Maschienen} oder \emph{künstliche Neuronale Netze}. Eine Klasse an Klassifikations-Algorithmen, die in dieser Arbeit Anwendung finden, sind die sogenannten \emph{Entscheidungsbäume}
 
-\section{Entscheidungsbäume}
+\subsection{ID3}
+\label{sec:id3}
 
 Es gibt drei Algorithmen zur Erzeugung von Entscheidungsbäumen, die weitreichende Einsatz finden: \emph{ID3}, \emph{C.45} und \emph{CART}, wobei die letzteren Erweiterungen der grundlegenden Idee des \emph{ID3}-Algorithmus darstellen. Daher wird an dieser Stelle zuerst der \emph{ID3}-Algorithmus vorgestellt. 
 
@@ -196,30 +200,39 @@ Gain(D,Temperatur) =  0.91 - \Big( \overbrace{\frac{2}{6} \cdot (-\frac{2}{2} \l
 \end{split}
 \end{equation}
 
-Algorithmus\ref{alg:id3} zeigt den Ablauf des ID-3 in Psuedocode. 
+Algorithmus\ref{alg:id3} zeigt den Ablauf des ID-3 in Pseudocode. $D$ ist die Menge aller Test-Examples, $X$ ist die Menge aller Features, $C$ ist die Menge aller Klassen, $f_{parent}$ das Feature des momentanen Eltern-Knotens und  $v_{parent}$ der Wert des zum momentan konstruierten Knotens eingehenden Kante. \cite[S. 139]{machine_marsland} \cite[S. 56]{machine_mitchell}
 
 %% Verbessern :O
 \begin{algorithm}[H]
+	\footnotesize
 	\caption{ID3-Algorithmus in Pseudocode}
 	\label{alg:id3}
 	\begin{algorithmic}[1]
 		\State $tree = \{ \}$
-		\Function{ID3}{$D, X, C, f_{current}$}
-		
+		\Function{ID3}{$D, X, C, f_{parent}, v_{parent}$ }
+		\State \Comment If all Examples have the same label, return a leaf with that Label
 		\If{ $\forall e \in D: \exists k \in C : e.c = k$}
-			\State \Return $k$
+			\State $tree = tree \cup \{(f_{parent}, v_{parrent},k)\}$
+			\State \Return 
 	
 		\Else
+			\State \Comment If there are no Features left to test, return a leaf with 
+			\State \Comment the most common Label  of the Examples remaining in $D$
 			\If{ $isEmpty(X)$}
-				\State \Return most common Label in D
+				\State $tree = tree \cup \{(f_{parent}, v_{parrent}, \text{most common Label in D})\}$
+				\State \Return 
 			\Else
+				\State \Comment Choose the feature that maximizes the Information-Gain to be the next node
 				\State $f_{best} = \maxi_{f \in X} Gain(D,f)$
-				\State $parentKnot \gets f_{best}$
-				\State $X \gets X / f_{dom}$
+				\State \Comment Add a Branch to this node
+				\State  $tree = tree \cup \{(f_{parent}, v_{parrent},f_{best})\}$
+				\State \Comment Remove the feature from the set of features
+				\State $X_{/f} \gets X / f_{dom}$
 				\For{$v \in f_{best}$}
-						\State $D_f \gets \forall e \in D : e.f_{best} = v$
-						\State \Call{CalcSquare}{$a$}
-						\State $tree = tree \cup \langle f_current, f_ \rangle$
+							\State \Comment Calculate the new Dataset $D_{/f}$ by removing all instances with the corresponding value
+						\State $D_{/f} \gets \forall e \in D : e.f_{best} = v$
+						\State \Comment Recursivly call the algorithm
+						\State \Call{ID3}{$D_{/f}, X_{/f}, f_{dom}, v$}
 				\EndFor
 			\EndIf
 		\EndIf
@@ -231,33 +244,96 @@ Algorithmus\ref{alg:id3} zeigt den Ablauf des ID-3 in Psuedocode.
 
 Der ID3-Algorithmus hat folgende \textbf{Vorteile}:
 
-\begin{itemize}
-\item Der Klassifizierer versucht, möglichst kurze Entscheidungsbäume zu bauen, indem Features mit hohem Informationsgewinn bevorzugt werden. Dies ist eine Umsetzung von \emph{Ocam's Razor}: \glqq Bevorzuge die kürzeste Hypothese\grqq{}
-\item  Der Klassifikator ist für den Menschen verständlich (im Gegensatz zu zum Beispiel Neuronalen Netzen)\cite[S. 65]{machine_mitchell}
-\end{itemize}
+\begin{description}
+\item[Kurze Entscheidungsbäume] Der Klassifizierer versucht, möglichst kurze Entscheidungsbäume zu bauen, indem Features mit hohem Informationsgewinn bevorzugt werden. Dies ist eine Umsetzung von \emph{Ocam's Razor}: \glqq Bevorzuge die kürzeste Hypothese\grqq{}
+\item[Verständlichkeit]  Der Klassifikator ist für den Menschen verständlich, da er sich in Regeln übersetzen lässt (im Gegensatz zu zum Beispiel Neuronalen Netzen). Es existiert die unbewiesene Hypothese, dass der Mensch bei der Klassifizierung intuitiv ähnlich vorgeht wie der ID3-Algorithmus.\cite[S. 63 - 65]{machine_mitchell}
+\end{description}
 
 Der ID3-Algorithmus hat folgende \textbf{Nachteile}
+\begin{description}
+	\item[Nur Diskrete Werte] Der Algorithmus akzeptiert keine kontinuierlichen Werte \cite[S. 72]{machine_mitchell}
+	\item[Overfitting] Der Algorithmus neigt zu \emph{Overfitting}. Overfitting bedeutet, dass der erzeugte Klassfikator $c$ zwar einen möglichst geringen Fehler in Bezug auf den \emph{Trainings-Datensatz} hat, es jedoch einen anderen Klassifikator $c'$ gibt, welcher in Bezug auf den Trainings-Datensatz einen höheren Fehler erzeugt, jedoch einen geringeren Fehler als $c$ in Bezug auf \emph{alle möglichen Instanzen dieses Typs} erzeugt. Anders formuliert bedeutet Overfitting, dass der Klassifikator den Trainings-Datensatz \glqq auswendig gelernt hat\grqq{} und nicht mehr genügend generalisiert, um auf im Training nicht enthaltene Instanzen angewandt werden zu können. Overfitting im Zusammenhang mit dem ID-3 Algorithmus wird durch \emph{Rauschen im Trainings-Datensatz} bedingt. Es gibt keinen festen Beweis für das vorhandensein von Overfitting. Methoden zum Feststellen von Overfitting sind:
+	\begin{itemize}
+		\item Verwendung eines seperaten Test-Datensatzes, welcher bestätigt, dass der für den Trainings-Datensatz erzeugte Klassifikationsfehler auch bei bisher unbekannten Instanzen erzeugt wird.
+		\item Verwendung von Statistischen Tests, die eine signifikante Reduktion des Klassifikationsfehlers bei Erweiterung des Entscheidungsbaumes beweisen.
+		\item Expertenwissen über applikationstypischen Tiefen von Entscheidungsbäumen.\cite[S. 66 - 70]{machine_mitchell}
+	\end{itemize}
+	\item[Lokale Maxima] Der Algorithmus bevorzugt greedy Attribute, die zum Zeitpunkt der Berechnung den höchsten Inforamtionsgewinn gewährleisten. Dabei besteht die Gefahr, dass der Algorithmus in ein lokales Maximum läuft.\cite[S. 66 - 70]{machine_mitchell}
+\end{description}
 
+\subsection{C4.5}
 
-\section{Gütemaße binärer Klassifikatoren}
+Der \emph{C4.5}-Algorithmus erweitert den \emph{ID3}, um dessen Nachteile auszumerzen, das heißt die Möglichkeit der Einführung kontinuierlicher Attribute sowie Lösungsansätze für das Overfitting. An dieser Stelle wird der \emph{C4.5} nicht im Detail vorgestellt, sondern die Erweiterungskonzepte vorgestellt. \cite[S. 66]{machine_mitchell}
 
-Bei einer binären Klassifikation gibt es vier mögliche Klassifikationsergebnisse. Die beiden Klassen werden im allgemeinen als \emph{Positive} und \emph{Negative} beschrieben, was in diesem speziellen Fall \emph{Stimme} und \emph{Stille} entspricht. Eine Klassifikation, bei der ein tatsächliches Positive richtig als Positive vorhergesagt wird, spricht man von einem \emph{True Positive} [TP]. Wird hingegen ein tatsächliches Positive fälschlicherweise als Negative vorhergesagt, spricht man von einem \emph{False-Negative} [FN]. Das System wird entsprechend für die Klassifikation tatsächlicher Negatives angewandt und ergibt. \emph{True-Negatives} [TN] und \emph{False-Positives} [FP]. Die \emph{Confusion Matrix} in Abbildung \ref{img:Confusion-Matrix} gibt eine Übersicht über die vier möglichen Klassifikations-Ergebnisse.
+\subsubsection*{Kontinuierliche Werte}
+Der \emph{C4.5} ermöglicht sowohl diskrete als auch kontinuierliche Attribute. Für ein kontinuierliches Attribut wird in ein \emph{boolsches Attribut} entworfen, das heißt ein Attribut mit dem Wertebereich $\{0,1\}$. Zur Abbildung des kontinuierlichen Attributs auf das boolsche Attribut wird durch einen Grenzwert $c$ auf dessen kontinuierlichen Wertebereich festgelegt, in Form von \texttt{if} $f_c > c$ \texttt{then} $1$ \texttt{else} $0$. Abbildung \ref{img:c45_contvalue} visualisiert einen solchen Knoten in einem Entscheidungsbaum. \cite[S. 72]{machine_mitchell}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.3\textwidth]{bilder/Confusion-Matrix.png}
+	\includegraphics[width=0.3\textwidth]{bilder/c45_contvalue.png}
+	\caption{Knoten eines Entscheidungsbaums für kontinuierliche Werte}
+	\label{img:c45_contvalue}
+\end{figure}
+
+Angenommen, das Attribut \emph{Temperatur} aus Tabelle \ref{tab:id3_example} wird in ein kontinuierliches Attribut umgewandelt, in dem die Temperatur in Grad ausgedrückt wird, wie Tabelle \ref{tab:c45-example} zeigt. 
+
+\begin{table}[h]
+	\centering
+	\caption{kontinuierliche Attribut-Werte des Features \glqq Temperatur\grqq }
+	\label{tab:c45-example}
+	\begin{tabular}{lllllll}
+		\toprule
+		Temperatur & 23   & 5   & 15 & -2 & 18 & 26  \\
+		Spaß       & Ja & Ja & Nein & Nein & Ja &Ja \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+Das Ziel ist nun, denjenigen Grenzwert $c$ zu finden, der den größt möglichen Informationsgewinn für dieses Attribut erzeugt. Das Vorgehen zum finden dieses Grenzwertes ist wie folgt:
+\begin{enumerate}
+\item Ordnen aller Examples nach dem kontinuerlichen Feature $f_c$. 
+\item Identifizierung benachbarter Examples mit unterschiedlicher Klasse als Kandidaten für einen Grenzert
+\item Errechnung des Informationsgewinn bei Setzung des Grenzwertes auf den Attributwert jedes gefundenen Kandidaten. Wahl desjenigen Grenzwetes, der den höchsten Informationsgewinn bringt. \cite[S. 73]{machine_mitchell}
+\end{enumerate}
+
+%To do: durchrechnen, ob wirklich 15!
+Tabelle \ref{tab:c45-example-ordered} zeigt die nach dem Temperatur-Wert geordneten Examples aus Tabelle \ref{tab:c45-example} zur Verdeutlichung des Vorgehens. In diesem Beispiel bilden die Examples mit Temperatur-Werten von $-2, 5, 15$ und $18$ Kandidaten. Der höchste Inforamtionsgewinn wird mit einem Informationsgewinn nach der Entscheidungsregeln \texttt{if} $Temperatur > 15$ \texttt{then} $1$ \texttt{else} $0$.
+
+\begin{table}[h]
+	\centering
+	\caption{kontinuierliche Attribut-Werte des Features \glqq Temperatur\grqq }
+	\label{tab:c45-example-ordered}
+	\begin{tabular}{lllllll}
+		\toprule
+		Temperatur & -2   & 5   & 15     & 18    & 23 & 26  \\
+		Spaß            & Nein& Ja  & Nein & Ja & Ja   &Ja \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+\subsubsection*{Pruning}
+
+Das in Kapitel \ref{sec:id3} als Overfitting beschriebene Problem lässt sich vermeiden, in dem die Tiefe des Entscheidungsbaumes reduziert wird. Diese Begrenzung wird als \emph{Beschneiden} oder \emph{Pruning} bezeichnet. Es gibt grundlegend zwei verschiedene Ansätze: (1) Ab der Überschreitung einer bestimmten Tiefe der Algorithmus frühzeitig stoppen, oder (alias \emph{Pre-Pruning}) (2) zuerst den kompletten Entscheidungsbaum aufbauen und Overfitting zulassen, um diesen im Nachhinein in seiner Tiefe reduzieren (alias \emph{Post-Pruning}). Post-Pruning hat sich insgesamt als erfolgreicher herausgestellt. \cite[S. 68 - 69]{machine_mitchell} 
+
+Eines der am weitesten verbreiteten Post-Pruning-Algorithmen ist das sogenannte \emph{Reduced Error Pruning}. Dabei wird ein Knoten des Entscheidungsbaumes zu einem Blatt umgewandelt und diesem Blatt das Label zugewiesen, welches in seinem Sub-Baum am häufigsten vorkommt. Daraufhin wird der originale Entscheidungsbaum und sowie der beschnittene Entscheidungsbaum verwendet, um den Test-Datensatz zu klassifizieren. Ist der Klassifizierungsfehler des beschnittenen Baumes nicht schlechter als der des originalen Baumes, wird das Pruning übernommen. Dieses Vorgehen wird für jeden Knoten des Entscheidungsbaumes angewandt.
+
+\subsection{Gütemaße binärer Klassifikatoren}
+
+Ein binärer Klassifikation ist eine, bei dem es nur zwei Klassen gibt, das heißt $|C| = 2$. Applikationsabhängig werden die beiden Klassen als \emph{Positive} und \emph{Negative}, $1$ und $0$ oder \emph{True} und \emph{False} beschrieben. Eine Klassifikation, bei der ein tatsächliches Positive richtig als Positive vorhergesagt wird, spricht man von einem \emph{True Positive} [TP]. Wird hingegen ein tatsächliches Positive fälschlicherweise als Negative vorhergesagt, spricht man von einem \emph{False-Negative} [FN]. Das System wird entsprechend für die Klassifikation tatsächlicher Negatives angewandt und ergibt. \emph{True-Negatives} [TN] und \emph{False-Positives} [FP]. Die \emph{Confusion Matrix} in Abbildung \ref{img:Confusion-Matrix} gibt eine Übersicht über die vier möglichen Klassifikations-Ergebnisse.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{bilder/Confusion-Matrix02.png}
 	\caption{Confusion-Matrix}
 	\label{img:Confusion-Matrix}
 \end{figure}
 
-Die insgesamte Güte einer Klassifikation wird durch die \emph{Accuracy} nach Formel \ref{eq:accuracy} bestimmt. Eine Accuracy von 100\% bedeutet, dass \emph{alle} Instanzen richtig klassifiziert werden, eine Accuracy von 50\% bedeutet, dass die Hälfte aller instanzen richtig klassifiziert werden, was der Güte einer rein zufälligen Wahl entspricht.
+Die insgesamte Güte einer Klassifikation wird durch die \emph{Accuracy} nach Formel \ref{eq:accuracy} bestimmt. Eine Accuracy von 100\% bedeutet, dass \emph{alle} Instanzen richtig klassifiziert werden, eine Accuracy von 50\% bedeutet, dass die Hälfte aller Instanzen richtig klassifiziert werden, was der Güte einer rein zufälligen Wahl entspricht.
 
 \begin{equation}
 \text{Accuracy} = \frac{TP+TN}{TP+TN+FN+FP}
 \label{eq:accuracy}
 \end{equation}
 
-Die Accuracy beziffert die insgesamte Performance des Klassifikators, gibt jedoch keinen Aufschluss darüber, ob der Klassifikator eher eine Tendenz zur falschen Klassifizierung von Positives oder Negatives hat. Bei einer Datenbank mit der selben Anzahl an Positives und Negatives kann eine Accuracy von 50\% beispielsweise dadurch entstehen, dass \emph{alle} Instanzen als Positives markiert werden, also sowohl die Positives richtigerweise als Positives, aber die Negatives fälschlicherweise ebenfalls als Positives. Im Umgedrehten Fall ergibt die Klassifizierung aller Instanzen als Negatives ebenfalls eine Accuracy von 50\%. In einem dritten Fall irrt sich die Klassifikator gleich oft bei der Einordnung der Negatives und Positives.Die Maße \emph{Sensitivity} und \emph{Specificity} geben Aufschluss über die Güte der Klassifikation hinsichtlich der Positives und Negatives. Die \emph{Sensitivity}, auch bezeichnet als \emph{True-Positive-Rate}, bemisst den Anteil tatsächlicher Positives, die auch als solche erkannt wurden, nach Formel \ref{eq:sensitivity}. Eine Sensitivity von 100\% bedeutet, dass alle Positives durch den Klassifikator erkannt wurden. Die Erkennungsrate der Negatives hat keinen Einfluss auf die Sensitivity. Eine hohe Sensitivity lässt sich somit \glqq einfach\grqq{} erzielen, in dem man \emph{alle} Instanzen immer als Positives klassifiziert. Die Specificity nach Formel \ref{eq:specificity} bestimmt analog zur Sensitivity den Anteil der korrekt als Negatives bestimmten Instanzen. Ein Klassifikator, der alle Instanzen als Positives markiert, hat zwar eine Sensitivity von 100\%, aber eine Specificity von 0\%. Ergeben zwei verschiedene Klassifikationsmodelle sehr ähnliche Accuracies, hilft die Bestimmung der Sensitivity und Specificity bei der Auswahl des für den Anwendugnsfall Adequäteren Klassifikators. So ist beispielsweise bei der Bestimmung von schweren Krankheiten eventuell ein Klassifikator mit höherer Sensitivity wünschbar, um die Wahrscheinlichkeit zu minimieren, dass die entsprechende Krankheit nicht erkannt wird. \cite{sens-and_spec} \cite{accuracy}
+Die Accuracy beziffert die insgesamte Performance des Klassifikators, gibt jedoch keinen Aufschluss darüber, ob der Klassifikator eher eine Tendenz zur falschen Klassifizierung von Positives oder Negatives hat. Bei einer Datenbank mit der selben Anzahl an Positives und Negatives kann eine Accuracy von 50\% beispielsweise dadurch entstehen, dass \emph{alle} Instanzen als Positives markiert werden, also sowohl die Positives richtigerweise als Positives, aber die Negatives fälschlicherweise ebenfalls als Positives. Im Umgedrehten Fall ergibt die Klassifizierung aller Instanzen als Negatives ebenfalls eine Accuracy von 50\%. In einem dritten Fall irrt sich die Klassifikator gleich oft bei der Einordnung der Negatives und Positives. Die Maße \emph{Sensitivity} und \emph{Specificity} geben Aufschluss über die Güte der Klassifikation hinsichtlich der Positives und Negatives. Die \emph{Sensitivity}, auch bezeichnet als \emph{True-Positive-Rate}, bemisst den Anteil tatsächlicher Positives, die auch als solche erkannt wurden, nach Formel \ref{eq:sensitivity}. Eine Sensitivity von 100\% bedeutet, dass alle Positives durch den Klassifikator erkannt wurden. Die Erkennungsrate der Negatives hat keinen Einfluss auf die Sensitivity. Eine hohe Sensitivity lässt sich somit \glqq einfach\grqq{} erzielen, in dem man \emph{alle} Instanzen immer als Positives klassifiziert. Die Specificity nach Formel \ref{eq:specificity} bestimmt analog zur Sensitivity den Anteil der korrekt als Negatives bestimmten Instanzen. Ein Klassifikator, der alle Instanzen als Positives markiert, hat zwar eine Sensitivity von 100\%, aber eine Specificity von 0\%. Ergeben zwei verschiedene Klassifikationsmodelle sehr ähnliche Accuracies, hilft die Bestimmung der Sensitivity und Specificity bei der Auswahl des für den Anwendugnsfall Adäquteren Klassifikators. So ist beispielsweise bei der Bestimmung von schweren Krankheiten eventuell ein Klassifikator mit höherer Sensitivity wünschbar, um die Wahrscheinlichkeit zu minimieren, dass die entsprechende Krankheit nicht erkannt wird. \cite{sens-and_spec} \cite{accuracy}
 
 \begin{equation}
 \text{Sensitivity} = \frac{TP}{TP+FN}
@@ -268,6 +344,30 @@ Die Accuracy beziffert die insgesamte Performance des Klassifikators, gibt jedoc
 \text{Specificity} = \frac{TN}{TN+FP}
 \label{eq:specificity}
 \end{equation}
-\section{Klassifikationsalgorithmen}
-\subsection{CARD}
-\subsection{Andere}
+
+\section{Regression}
+
+Während der Klassfikator $c$ bei der Klassifikation die Instanzen auf eine \emph{diskrete, quantitative} Menge abbildet werden, werden bei der Regression die Instanzen auf eine \emph{kontinuierliche, qualitative} Menge abgebildet. Der Klassifikator $c$ wird in der Regression als \emph{Regressor} $r$ bezeichnet, und die Menge, auf die die Instanzen abgebildet werden, als \emph{Output}, \emph{Predicted Attribut} oder \emph{abhängige Variable} $Y$. Wird keine explizite Einschränkung für $Y$ gegeben, so gilt $Y = \mathbb{R}$. \cite[S. 24]{learning_cart_dobra} \cite[S. 8]{machine-marsland}
+
+Die in Kapitel \ref{sec:classification} benannten Definitionen für die Begriffe \emph{Feature-Raum} und \emph{Instanzen} aus Gleichung \ref{eq:feature-space} sowie für \emph{Datensatz} aus Gleichung \ref{eq:dataAndExample} werden bei der Formalisierung der Regression übernommen. Die Defintion von \emph{Classes} und \emph{Classifier} aus Formel \ref{eq:classifier-classes} wird Ersetzt durch \emph{Output} und \emph{Regressor} nach Gleichung \ref{eq:output-regressor}.\cite[S. 24]{learning_cart_dobra}
+
+\begin{equation}
+\label{eq:output-regressor}
+\begin{gathered}
+\text{Output :} \qquad Y = \mathbb{R}\\
+\text{Regressor: } \qquad  r: X \mapsto Y
+\end{gathered}
+\end{equation}
+
+Ein Datensatz $D$ enthält bei der Regression Tupel aus Samples und dem bekannten Output.
+
+\begin{equation}
+\text{Datensatz :} \qquad D = \{ \langle x_1, y_1 \rangle, \ldots , \langle x_n, y_n \rangle  \} \\
+\end{equation}
+
+Die Fehlerfunktion entspricht dem aus Gleichung \ref{eq:reg-error} als Summe aller quadrieten differenzen zwischen dem tatsächlichen und dem durch den Regressor geschätzten Output definiert.
+
+\begin{equation}
+\label{eq:reg-error}
+\text{Error :} E(D,r) = \sum_{ \langle x_i, y_i \rangle \in D} ( r(x_i) - y_i )^2
+\end{equation}

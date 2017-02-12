@@ -4,6 +4,7 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{6}{figure.caption.5}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Entscheidungsbaum, der durch den ID3-Algorithmus f\IeC {\"u}r den Datensatz aus Beispiel \ref {tab:id3_example} erzeugt wurde.\relax }}{10}{figure.caption.8}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Confusion-Matrix\relax }}{13}{figure.caption.9}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Knoten eines Entscheidungsbaums f\IeC {\"u}r kontinuierliche Werte\relax }}{14}{figure.caption.10}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Confusion-Matrix\relax }}{15}{figure.caption.14}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{20}{figure.caption.13}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{22}{figure.caption.18}
