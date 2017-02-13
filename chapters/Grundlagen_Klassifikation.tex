@@ -86,7 +86,7 @@ Das Ziel des Klassfikations-Problems ist es, diejenige Funktion $C$ zu finden, d
 	\item \textbf{Training experience} $E$: Ein Trainings-Datensatz $D_{training} \subseteq D$ 
 \end{itemize}
 
-Im Zusammenahang mit Klassifikation haben die Klassen $C$ die Eigenschaft, dass die Klassen eine \emph{qualitativen} Charakter, und keinen \emph{quantitativen}. Das heißt, dass die Klassen untereinander keine hierarchische Ordnung besitzen, bei der eine Klasse \glqq besser ist als die andere\grqq{}. Außerdem handelt es sich um eine diskrete Menge, und keinen kontinuierlichen Zahlenbereich. \cite[S. 127]{statistical_learning}. Ein besonderer Fall der Klassifikation ist ein sogenannter \emph{binärer Klassfikator}, bei dem es nur zwei Klassen gibt: $C = \{0, 1\}$ (oder $C = \{yes, no\}$ ). %Citatioooon
+Im Zusammenahang mit Klassifikation haben die Klassen $C$ die Eigenschaft, dass die Klassen eine \emph{qualitativen} Charakter, und keinen \emph{quantitativen}. Das heißt, dass die Klassen untereinander keine hierarchische Ordnung besitzen, bei der eine Klasse \glqq besser ist als die andere\grqq{}. Auch, wenn die Klassen durch Zahlen beschrieben werden sollten (z.B. $C = \{1,0\}$), hat diese Zahl einen rein beschreibenden Charakter und macht keine Aussage über die Güte der Instanz. Außerdem handelt es sich um eine diskrete Menge, und keinen kontinuierlichen Zahlenbereich. \cite[S. 28, 127]{statistical_learning}. Ein besonderer Fall der Klassifikation ist ein sogenannter \emph{binärer Klassfikator}, bei dem es nur zwei Klassen gibt: $C = \{0, 1\}$ (oder $C = \{yes, no\}$ ). %Citatioooon
 Die Domains der Features können ebenfalls qualitativer natur sein, das heißt einen Wert in einem diskreten, ungeordneten Raum annehmen, oder  quantitativer Natur, das heißt, einen Wert in einem kontinuierlichen, geordneten Zahlenraum annehmen. \cite[S. 54]{machine_mitchell}
 
 Eine andere Art und Weise, die Aufgabenstellung der Klassifikation zu betrachten, ist die \emph{Generalisation zur Prongnose}. Das heißt, dass die Ableitung der Klassen aus den Instanzen des Datensatzes verallgemeinert wird, um in Zukunft für neue, noch nicht bekannte Instanzen die Klasse vorhersagen (prognostizieren) zu können. \cite[S. 6 - 7]{machine_marsland}
@@ -317,7 +317,7 @@ Eines der am weitesten verbreiteten Post-Pruning-Algorithmen ist das sogenannte 
 
 \subsection{Gütemaße binärer Klassifikatoren}
 
-Ein binärer Klassifikation ist eine, bei dem es nur zwei Klassen gibt, das heißt $|C| = 2$. Applikationsabhängig werden die beiden Klassen als \emph{Positive} und \emph{Negative}, $1$ und $0$ oder \emph{True} und \emph{False} beschrieben. Eine Klassifikation, bei der ein tatsächliches Positive richtig als Positive vorhergesagt wird, spricht man von einem \emph{True Positive} [TP]. Wird hingegen ein tatsächliches Positive fälschlicherweise als Negative vorhergesagt, spricht man von einem \emph{False-Negative} [FN]. Das System wird entsprechend für die Klassifikation tatsächlicher Negatives angewandt und ergibt. \emph{True-Negatives} [TN] und \emph{False-Positives} [FP]. Die \emph{Confusion Matrix} in Abbildung \ref{img:Confusion-Matrix} gibt eine Übersicht über die vier möglichen Klassifikations-Ergebnisse.
+Ein binärer Klassifikation ist eine, bei dem es nur zwei Klassen gibt, das heißt $|C| = 2$. Applikationsabhängig werden die beiden Klassen als \emph{Positive} und \emph{Negative}, $1$ und $0$ oder \emph{True} und \emph{False} beschrieben. Eine Klassifikation, bei der ein tatsächliches Positive richtig als Positive vorhergesagt wird, spricht man von einem \emph{True Positive} [TP]. Wird hingegen ein tatsächliches Positive fälschlicherweise als Negative vorhergesagt, spricht man von einem \emph{False-Negative} [FN]. Das System wird entsprechend für die Klassifikation tatsächlicher Negatives angewandt und ergibt. \emph{True-Negatives} [TN] und \emph{False-Positives} [FP]. Die \emph{Confusion Matrix} in Abbildung \ref{img:Confusion-Matrix} gibt eine Übersicht über die vier möglichen Klassifikations-Ergebnisse. \cite[S. 213 - 214]{machine_kubat}
 
 \begin{figure}[h]
 	\centering
@@ -326,14 +326,14 @@ Ein binärer Klassifikation ist eine, bei dem es nur zwei Klassen gibt, das hei�
 	\label{img:Confusion-Matrix}
 \end{figure}
 
-Die insgesamte Güte einer Klassifikation wird durch die \emph{Accuracy} nach Formel \ref{eq:accuracy} bestimmt. Eine Accuracy von 100\% bedeutet, dass \emph{alle} Instanzen richtig klassifiziert werden, eine Accuracy von 50\% bedeutet, dass die Hälfte aller Instanzen richtig klassifiziert werden, was der Güte einer rein zufälligen Wahl entspricht.
+Die insgesamte Güte einer Klassifikation wird durch die \emph{Accuracy} nach Formel \ref{eq:accuracy} bestimmt. Eine Accuracy von 100\% bedeutet, dass \emph{alle} Instanzen richtig klassifiziert werden, eine Accuracy von 50\% bedeutet, dass die Hälfte aller Instanzen richtig klassifiziert werden, was der Güte einer rein zufälligen Wahl entspricht. \cite[S. 214]{machine_kubat}
 
 \begin{equation}
 \text{Accuracy} = \frac{TP+TN}{TP+TN+FN+FP}
 \label{eq:accuracy}
 \end{equation}
 
-Die Accuracy beziffert die insgesamte Performance des Klassifikators, gibt jedoch keinen Aufschluss darüber, ob der Klassifikator eher eine Tendenz zur falschen Klassifizierung von Positives oder Negatives hat. Bei einer Datenbank mit der selben Anzahl an Positives und Negatives kann eine Accuracy von 50\% beispielsweise dadurch entstehen, dass \emph{alle} Instanzen als Positives markiert werden, also sowohl die Positives richtigerweise als Positives, aber die Negatives fälschlicherweise ebenfalls als Positives. Im Umgedrehten Fall ergibt die Klassifizierung aller Instanzen als Negatives ebenfalls eine Accuracy von 50\%. In einem dritten Fall irrt sich die Klassifikator gleich oft bei der Einordnung der Negatives und Positives. Die Maße \emph{Sensitivity} und \emph{Specificity} geben Aufschluss über die Güte der Klassifikation hinsichtlich der Positives und Negatives. Die \emph{Sensitivity}, auch bezeichnet als \emph{True-Positive-Rate}, bemisst den Anteil tatsächlicher Positives, die auch als solche erkannt wurden, nach Formel \ref{eq:sensitivity}. Eine Sensitivity von 100\% bedeutet, dass alle Positives durch den Klassifikator erkannt wurden. Die Erkennungsrate der Negatives hat keinen Einfluss auf die Sensitivity. Eine hohe Sensitivity lässt sich somit \glqq einfach\grqq{} erzielen, in dem man \emph{alle} Instanzen immer als Positives klassifiziert. Die Specificity nach Formel \ref{eq:specificity} bestimmt analog zur Sensitivity den Anteil der korrekt als Negatives bestimmten Instanzen. Ein Klassifikator, der alle Instanzen als Positives markiert, hat zwar eine Sensitivity von 100\%, aber eine Specificity von 0\%. Ergeben zwei verschiedene Klassifikationsmodelle sehr ähnliche Accuracies, hilft die Bestimmung der Sensitivity und Specificity bei der Auswahl des für den Anwendugnsfall Adäquteren Klassifikators. So ist beispielsweise bei der Bestimmung von schweren Krankheiten eventuell ein Klassifikator mit höherer Sensitivity wünschbar, um die Wahrscheinlichkeit zu minimieren, dass die entsprechende Krankheit nicht erkannt wird. \cite{sens-and_spec} \cite{accuracy}
+Die Accuracy beziffert die insgesamte Performance des Klassifikators, gibt jedoch keinen Aufschluss darüber, ob der Klassifikator eher eine Tendenz zur falschen Klassifizierung von Positives oder Negatives hat. Bei einer Datenbank mit der selben Anzahl an Positives und Negatives kann eine Accuracy von 50\% beispielsweise dadurch entstehen, dass \emph{alle} Instanzen als Positives markiert werden, also sowohl die Positives richtigerweise als Positives, aber die Negatives fälschlicherweise ebenfalls als Positives. Im Umgedrehten Fall ergibt die Klassifizierung aller Instanzen als Negatives ebenfalls eine Accuracy von 50\%. In einem dritten Fall irrt sich die Klassifikator gleich oft bei der Einordnung der Negatives und Positives. Die Maße \emph{Sensitivity} und \emph{Specificity} geben Aufschluss über die Güte der Klassifikation hinsichtlich der Positives und Negatives. Die \emph{Sensitivity}, auch bezeichnet als \emph{True-Positive-Rate}, bemisst den Anteil tatsächlicher Positives, die auch als solche erkannt wurden, nach Formel \ref{eq:sensitivity}. Eine Sensitivity von 100\% bedeutet, dass alle Positives durch den Klassifikator erkannt wurden. Die Erkennungsrate der Negatives hat keinen Einfluss auf die Sensitivity. Eine hohe Sensitivity lässt sich somit \glqq einfach\grqq{} erzielen, in dem man \emph{alle} Instanzen immer als Positives klassifiziert. Die Specificity nach Formel \ref{eq:specificity} bestimmt analog zur Sensitivity den Anteil der korrekt als Negatives bestimmten Instanzen. Ein Klassifikator, der alle Instanzen als Positives markiert, hat zwar eine Sensitivity von 100\%, aber eine Specificity von 0\%. Ergeben zwei verschiedene Klassifikationsmodelle sehr ähnliche Accuracies, hilft die Bestimmung der Sensitivity und Specificity bei der Auswahl des für den Anwendugnsfall Adäquteren Klassifikators. So ist beispielsweise bei der Bestimmung von schweren Krankheiten eventuell ein Klassifikator mit höherer Sensitivity wünschbar, um die Wahrscheinlichkeit zu minimieren, dass die entsprechende Krankheit nicht erkannt wird. \cite{sens-and_spec}  \cite[S. 222]{machine_kubat}
 
 \begin{equation}
 \text{Sensitivity} = \frac{TP}{TP+FN}
@@ -347,7 +347,7 @@ Die Accuracy beziffert die insgesamte Performance des Klassifikators, gibt jedoc
 
 \section{Regression}
 
-Während der Klassfikator $c$ bei der Klassifikation die Instanzen auf eine \emph{diskrete, quantitative} Menge abbildet werden, werden bei der Regression die Instanzen auf eine \emph{kontinuierliche, qualitative} Menge abgebildet. Der Klassifikator $c$ wird in der Regression als \emph{Regressor} $r$ bezeichnet, und die Menge, auf die die Instanzen abgebildet werden, als \emph{Output}, \emph{Predicted Attribut} oder \emph{abhängige Variable} $Y$. Wird keine explizite Einschränkung für $Y$ gegeben, so gilt $Y = \mathbb{R}$. \cite[S. 24]{learning_cart_dobra} \cite[S. 8]{machine-marsland}
+Während der Klassfikator $c$ bei der Klassifikation die Instanzen auf eine \emph{diskrete, quantitative} Menge abbildet werden, werden bei der Regression die Instanzen auf eine \emph{kontinuierliche, qualitative} Menge abgebildet. Der Klassifikator $c$ wird in der Regression als \emph{Regressor} $r$ bezeichnet, und die Menge, auf die die Instanzen abgebildet werden, als \emph{Output}, \emph{Predicted Attribut} oder \emph{abhängige Variable} $Y$. Wird keine explizite Einschränkung für $Y$ gegeben, so gilt $Y = \mathbb{R}$. \cite[S. 24]{learning_cart_dobra} \cite[S. 8]{machine_marsland} \cite[S. 28]{statistical_learning}
 
 Die in Kapitel \ref{sec:classification} benannten Definitionen für die Begriffe \emph{Feature-Raum} und \emph{Instanzen} aus Gleichung \ref{eq:feature-space} sowie für \emph{Datensatz} aus Gleichung \ref{eq:dataAndExample} werden bei der Formalisierung der Regression übernommen. Die Defintion von \emph{Classes} und \emph{Classifier} aus Formel \ref{eq:classifier-classes} wird Ersetzt durch \emph{Output} und \emph{Regressor} nach Gleichung \ref{eq:output-regressor}.\cite[S. 24]{learning_cart_dobra}
 
@@ -365,9 +365,124 @@ Ein Datensatz $D$ enthält bei der Regression Tupel aus Samples und dem bekannte
 \text{Datensatz :} \qquad D = \{ \langle x_1, y_1 \rangle, \ldots , \langle x_n, y_n \rangle  \} \\
 \end{equation}
 
-Die Fehlerfunktion entspricht dem aus Gleichung \ref{eq:reg-error} als Summe aller quadrieten differenzen zwischen dem tatsächlichen und dem durch den Regressor geschätzten Output definiert.
+Die Fehlerfunktion entspricht dem aus Gleichung \ref{eq:reg-error} als Summe aller quadrieten differenzen zwischen dem tatsächlichen und dem durch den Regressor geschätzten Output definiert.\cite[S. 29]{statistical_learning} \cite[S. 25]{learning_cart_dobra}
 
 \begin{equation}
 \label{eq:reg-error}
-\text{Error :} E(D,r) = \sum_{ \langle x_i, y_i \rangle \in D} ( r(x_i) - y_i )^2
+\text{Error :} \qquad E(D,r) = \frac{1}{|D|} \sum_{ \langle x_i, y_i \rangle \in D} ( r(x_i) - y_i )^2
 \end{equation}
+
+Die Regressions-Aufgabe lautet somit wie die in \ref{sec:classification} beschriebene Aufgabe, mit dem Unterschied, dass die Fehlerfunktion nach Formel \ref{eq:reg-error} anstatt der Fehlerfunktion der Klassifikation verwendet wird. \cite[S. 25]{learning_cart_dobra}
+
+Wie bei der Klassifikation existieren verschiedene Algorithmen zur Lösung dieser Aufgabe. An dieser Stelle werden zwei Methoden vorgestellt:
+
+\subsection{Simple Linear Regression}
+
+Bei der simplen linearen Regression geht es um die Prädiktion des Outputs $Y$ aus einer Prädiktions-Variable $X$. Diese Predictionsvariable $X$ ist ein Feature-Raum mit nur einem kontinuierlichen Feature, das heißt $X = dom(f_c) = \mathbb{R}$. Bei der simplen linearen Regression wird davon ausgegangen, dass einen annährend linearen Zusammenhang zwischen $X$ und $Y$ gibt, das heißt: \cite[S. 61]{statistical_learning}
+
+\begin{equation}
+\label{eq:linearRegressionModel}
+Y \approx \beta_0 + \beta_1 X
+\end{equation}
+
+Die Konstanten $\beta_0$ und  $\beta_1$ bezeichnen den \emph{Schnittpunkt} sowie die \emph{Steilheit} des linearen Modells. Kennt man die Konstanten, so kann der Wert $y_i$ eines Examples $x_i$ prognostiziert werden mit $y_i \approx \beta_0 + \beta_1 x_i$. Das Ziel ist somit die Bestimmung $\beta_0$ und  $\beta_1$ zur Definition des einfachen Regressionsmodells.
+
+Abbildung \ref{img:skin_cancer}zeigt ein Beispiel für ein einfaches lineares Regressionsmodell. Der Regressor bildet das Attibut  $X = Latitude$ auf die Sterblichkeitsrate bei Hautkrebs $Y$ ab. Die blauen Punkte sind die Samples des Datensatzes $X$, die rote Linie das Regressionsmodell. Das durch die rote Linie dargestellte Regressionmodell wird auch als \glqq best fitting Line\grqq{}, da es es sich vereinfacht betrachtet um die Linie handelt, welche den Verlauf von $Y$ mit steigendem $X$ am besten annähert. \cite[What is Simple Linear Regression?]{regression_lecture}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/skin_cancer.png}
+	\caption{Beispiel eines einfachen linearen Regressionsmodells $X = Latitude$ und $Y = Mortality of Skin Cancer$ \cite{regression_lecture}}
+	\label{img:skin_cancer}
+\end{figure}
+
+Die Frage ist: Nach welchem Kriterium wird festgelegt, was genau die \glqq best fitting Line\grqq{} bestimmt? Abbildung \ref{img:best_fitting_line} verdeutlicht die Fragestellung, in dem zwei Kandidten für simple lineare Regressionsmodelle für einen Datensatz gezeigt werden. Welches dieser beiden Kandidaten schätzt den Verlauf von $Y$ besser? \cite[What is the Best Fitting Line?]{regression_lecture}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/heightweight.jpeg}
+	\caption{Zwei Kandidaten für ein simples lineares Regressionmodell}
+	\label{img:best_fitting_line}
+\end{figure}
+
+Es sei $x_i$ die i-te Prädiktions-Variable, $y_i$ der tatsächliche Output dieser Prädiktionsvariable und $\hat{y}_i =  \beta_0 + \beta_1 x_i$ der für diese Variable durch den Regressor geschätzte Wert. Nach dem in Formel \ref{eq:reg-error} derjenige Regressor der beste, welcher die Fehlerfunktion der quadrierten Differnenzschen zwischen dem tatsächlichen und dem geschätzten Output minimiert. Da das Teilen des Ergebnisses durch die Anzahl der Elemente einen linearen Skalierungsfaktor darstellt, wird  diese Division in dieser Rechnung ausgelassen.
+
+\begin{equation}
+\label{eq:sumOfSquares}
+E = \sum_{i = 1}^{n} (y_i - \hat{y}_i)^2
+\end{equation}
+
+Durch das Einsetzen von $\hat{y}_i =  \beta_0 + \beta_1 x_i$ in Gleichung\ref{eq:sumOfSquares} und anschließendes Umformen lassen sich die Parameter $\beta_0$ und  $\beta_1$ wie in Formel \ref{eq:beta0andbeta1} definiert errechnen. Die Parameter $\bar{x}$ und $\bar{y}$ sind die Durchschnittswerte der Prädiktions-Variablen bzw. der Output-Variablen. Auf einen Beweis wird an dieser Stelle aus Platzgründen verzichtet.\cite[S. 62]{statistical_learning}
+
+\begin{equation}
+\label{eq:beta0andbeta1}
+\begin{gathered}
+\beta_0 = \bar{y} - \beta_1 \bar{x} \\
+\beta_1 = \frac{\sum_{i = 1}^{n} (x_i - \bar{x}) (y_i - \bar{y}) }{ \sum_{i_1}^{n} (x_i - \bar{x})^2  }
+\end{gathered}
+\end{equation}
+
+\subsection{Multiple Linear Regression}
+
+Bei der \emph{multiplen linearen Regression} (auch \emph{mehrdimensionale lineare Regression}) werden im Gegensatz zur einfachen linearen Präditktions-Variablen eine beliebige Anzahl von  Prädiktions-Variablen $X_1 , \ldots X_n$ nach $Y$ abgebildet. Das heißt, dass eine Instanz nun mehrere Features besitzen kann, der Feature-Raum wird definiert durch $X = X_1 \times , ... \times X_n$. Das Regressionsmodell entspricht nun einer Hyperebene. Beispielsweise entspricht bei einem zweidimensionalen Featureraum $X = \mathbb{R}^2$ entspricht das Regressionsmodell einer Ebene im dreidimensionalen Raum, wobei die dritte Dimension dem Output $Y$ enspricht. Die einfache lineare Regression ist dementsprechend ein Spezialfall der mehrdimensionalen linearen Regression, bei dem der Feature-Raum nur eine Dimension besitzt. \cite[Multiple Linear Regression]{regression_lecture} \cite[S.71]{statistical_learning} Abbildung \ref{img:multregression} zeigt ein Beispiel für die lineare Regression eines zweidimensionalen Feature-Raumes. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/multregression.png}
+	\caption{Lineare Regression eines zweidimensionalen Feature-Raumes \cite[S. 73]{statistical_learning}}
+	\label{img:multregression}
+\end{figure}
+
+Aufbauend auf dem in Gleichung \ref{eq:linearRegressionModel} definierten einfachen linearen Regressionsmodell wird das mehrdimensionale Regressionsmodell nach Gleichung \ref{eq:multipleLinearRegressionModell} definiert. \cite[S. 71]{statistical_learning}
+
+\begin{equation}
+\label{eq:multipleLinearRegressionModell}
+Y \approx \beta_0 + \beta_1 X_1 + \ldots + \beta_k X_k = \beta_0 + \sum_{k = 1}^{p} \beta_k X_k
+\end{equation}
+
+Die in Gleichung \ref{eq:sumOfSquares} definierte Fehlerfunktion ist auch bei der mehrdimensionalen linearen Regression anwendbar.
+
+Wie bei der simplen linearen Regression werden die Koeffizienten $ \beta = \beta_0 \ldots \beta_k$ durch Umformung durch Einsetzen von Gleichung \ref{eq:multipleLinearRegressionModell} in Gleichung \ref{eq:sumOfSquares}  und anschließender Umformung hergeleitet. Der Beweis dieser Herleitung ist aufwendig und wird aus Platzgründen an dieser Stelle ausgelassen. Eine detailliete Beschreibung kann in dme Kapitel \glqq A Matrix Formulation of the Multiple Regression Model\grqq{} in Quelle \cite{regression_lecture} gefunden werden. Gleichung \ref{eq:multipleLinearRegressionKoeffs} definiert das Ergebnis zur Berechnung der Koeffizienten $\beta$.
+
+%% eeeehm noch besser erkären was hier was ist.
+\begin{equation}
+\label{eq:multipleLinearRegressionKoeffs}
+\beta = \begin{bmatrix} \beta_0 \\ \beta_1 \\ \vdots \\ b_{p-1} \end{bmatrix} = (X'X)^{-1}X'Y 
+\end{equation}
+
+%% Buchhinweis einführen.
+Die simple und die mehrdimensionale lineare Regression wurden vorgestellt, um dem Leser eine Idee von den Methoden der Regression zu geben. Diese Methoden sind jedoch nur dazu in der Lage, lineare Abhängigkeiten zwischen den Attributen und dem Output zu modellieren. Für nicht-lineare Zusammenhänge jeder Art wurde eine Vielzahl an Methoden und Algorithmen entwickelt.
+
+\begin{description}
+\item[polinomiellen Regression] werden polinomielle Zusammenhänge hergestellt. Das heißt, dass Features der Form $X_k^2$ modelliert werden können.
+\item[Step Functions] erlauben die Einteilung des kontinuierlichen Feature-Raumes in Bereiche. Für jeden Bereich wir ein lineares Regressionsmodell gebildet. 
+\item[Regression Splines] stellen eine Kombination der polinomiellen Regression und von Step Functions dar, in dem polinomioelle Regressionsmodelle für den in Bereiche eingeteilten Feature-Raum berechnet werden.\cite[S. 265 - 266]{statistical_learning}
+\item[Classification and Regression Trees] (\emph{CART}), Entescheidungsbäume ähnlich den in Kapitel \ref{sec:classification} vorgestellten \emph{ID3} und \emph{C4.5}, die neben der Klassfikation auch zur Regression in der Lage sind. \cite[S. 145]{machine_marsland}
+\end{description}
+
+\section{Methoden der experimentellen Evaluation}
+
+Sowohl bei der Klassizierung als auch bei der Regression wird ein Test- und ein Trainingsdatensatz zur Konstruktion und zur Evaluierung des Prediktors verwendet. Im folgenden werden verschiedene Methoden der Aufteilung des Datensatzes vorgestellt.
+
+\subsection*{Einfache Ansätze}
+
+Die einfachste Variante ist, keine Aufspaltung in Test- und Trainings-Datesatz festzulegen. Der Gesamte Datensatz wird sowohl zum Training als auch für das Testing verwendet, das heißt $D = D_{Test} = D_{Training}$. Der Nachteil dieser Methode ist, dass nicht feststellbar ist, ob Overfitting vorliegt.
+
+Eine weitere Variante ist, den Datensatz manuell in einen Test- und einen Trainings-Datensatz aufzuspalten. Die Klassifikation/Regression wird mit verschiedenen Paramter-Einstellungen für den jeweiligen Algorithmus auf Basis des Trainings-Datensatzes durchgeführt, und dasjenige Modell gewählt, welches für den Test-Datensatz den geringsten Klassifikationsfehler erzielt. \cite[S. 227]{machine_kubat}
+
+\subsection*{Random Subsampling}
+
+Beim Random Subsampling wird das Training und die Evaluation des Klassifikators $k$ mal wiederholt. In jeder Wiederholung wird der gesamte Datensatz in einen Test- und einen Trainingsdatensatz aufgespalten, wobei beide Datensätze $50 \%$ der Examples erhalten und die Zuteilung zufällig erfolgt. Die insgesamte Fehlerrate wird als Durchschnitt der aus allen Fehlerraten der $k$ Wiederholungen berechnet. \cite[S. 227 - 228]{machine_kubat}
+
+\subsection{k-fold Crossvalidation}
+
+Eine erweiterung des random Subsampling. Dabei wird der Datensatz in $k$ gleichgroße Untermengen aufgeteilt, bezeichnet als \emph{Folds}. Nun wird die Konstruktion des Prädiktors $k$ mal durchgeführt, wobei bei jeder Wiederholung ein Fold als Test-Datensatz und die anderen als Trainings-Datensatz verwendet werden. Die Fehlerrate wird wie beim Random Subsampling aus dem Durchschnitt aller $k$ Durchläufe errechnet. Der Vorteil im Vergleich zum Random Subsampling ist, dass garantiert werden kann, dass jedes Example exakt einmal zum testing verwendet wird. Abbildung \ref{k-Fold-Crossvalidation} visualsiert das Vorgehen bei der  k-fold Crossvalidation schematisch. \cite[S. 228]{machine_kubat}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/k-Fold-Crossvalidation.png}
+	\caption{Schematische Darstellung der Aufteilung in Test- und Trainingsdatensatz bei einer 5-fold Crossvalidation}
+	\label{k-Fold-Crossvalidation}
+\end{figure}
+
+
