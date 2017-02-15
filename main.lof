@@ -3,32 +3,24 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{6}{figure.caption.5}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Entscheidungsbaum, der durch den ID3-Algorithmus f\IeC {\"u}r den Datensatz aus Beispiel \ref {tab:id3_example} erzeugt wurde.\relax }}{10}{figure.caption.8}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Knoten eines Entscheidungsbaums f\IeC {\"u}r kontinuierliche Werte\relax }}{14}{figure.caption.10}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Confusion-Matrix\relax }}{15}{figure.caption.14}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Beispiel eines einfachen linearen Regressionsmodells $X = Latitude$ und $Y = Mortality of Skin Cancer$ \cite {regression_lecture}\relax }}{17}{figure.caption.15}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Zwei Kandidaten f\IeC {\"u}r ein simples lineares Regressionmodell\relax }}{18}{figure.caption.16}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Lineare Regression eines zweidimensionalen Feature-Raumes \cite [S. 73]{statistical_learning}\relax }}{19}{figure.caption.17}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Schematische Darstellung der Aufteilung in Test- und Trainingsdatensatz bei einer 5-fold Crossvalidation\relax }}{21}{figure.caption.20}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Architektur des Systems\relax }}{10}{figure.caption.6}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Parameter eines Audio-Kompressors\relax }}{12}{figure.caption.7}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Ergebnis des Preprocessings\relax }}{12}{figure.caption.8}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Markierung von Schreiger\IeC {\"a}uschen im Audiosignal\relax }}{13}{figure.caption.9}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Features des Zeitbereiches\relax }}{14}{figure.caption.11}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Features des Frequenz-Bereiches\relax }}{15}{figure.caption.13}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Entstehung des Cepstrums\relax }}{17}{figure.caption.15}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Cepstrum\relax }}{18}{figure.caption.16}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Features des Cepstrums\relax }}{18}{figure.caption.17}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Autokorrelation eines Signals\relax }}{19}{figure.caption.19}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Features der Autokorrelation\relax }}{19}{figure.caption.20}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Differenz-Signal des RMS-Wertes\relax }}{20}{figure.caption.22}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Thresholding eines Feature-Signales\relax }}{21}{figure.caption.24}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }}{26}{figure.caption.27}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Beziehung zwischen agrenzenden Segmenten\relax }}{26}{figure.caption.28}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{28}{figure.caption.29}
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Klassifizierung vor und nach dem Decision Smoothing\relax }}{29}{figure.caption.30}
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Ergebnis der Segmentierung\relax }}{30}{figure.caption.31}
+\contentsline {figure}{\numberline {3.19}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{30}{figure.caption.32}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Architektur des Systems\relax }}{23}{figure.caption.21}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Parameter eines Audio-Kompressors\relax }}{25}{figure.caption.22}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Ergebnis des Preprocessings\relax }}{25}{figure.caption.23}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Markierung von Schreiger\IeC {\"a}uschen im Audiosignal\relax }}{26}{figure.caption.24}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Features des Zeitbereiches\relax }}{27}{figure.caption.26}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Features des Frequenz-Bereiches\relax }}{28}{figure.caption.28}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Entstehung des Cepstrums\relax }}{30}{figure.caption.30}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Cepstrum\relax }}{31}{figure.caption.31}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Features des Cepstrums\relax }}{31}{figure.caption.32}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Autokorrelation eines Signals\relax }}{32}{figure.caption.34}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Features der Autokorrelation\relax }}{32}{figure.caption.35}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Differenz-Signal des RMS-Wertes\relax }}{33}{figure.caption.37}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Thresholding eines Feature-Signales\relax }}{34}{figure.caption.39}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }}{39}{figure.caption.42}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Beziehung zwischen agrenzenden Segmenten\relax }}{39}{figure.caption.43}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{41}{figure.caption.44}
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Klassifizierung vor und nach dem Decision Smoothing\relax }}{42}{figure.caption.45}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Ergebnis der Segmentierung\relax }}{43}{figure.caption.46}
-\contentsline {figure}{\numberline {4.19}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{43}{figure.caption.47}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{53}{figure.caption.51}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{40}{figure.caption.36}

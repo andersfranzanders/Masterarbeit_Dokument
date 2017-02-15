@@ -22,7 +22,7 @@ x[\;] := \quad  \forall n \in \mathbb{Z} :\ x[n] = s
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{bilder/aSignal04.png}
-	\caption{Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B)}
+	\caption{Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B) (nach \cite[S. 22]{dspMichigan})}
 	\label{img:aSignal}
 \end{figure}
 
@@ -74,7 +74,7 @@ Ein Signal gilt als \emph{periodisch}, wenn Formel \ref{eq:periodicity} erfüllt
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{bilder/periodicSig03.png}
-	\caption{Ein nicht-periodisches Signal (A) und ein periodisches Signal (B)}
+	\caption{Ein nicht-periodisches Signal (A) und ein periodisches Signal (B) (nach \cite[S. 145]{dspGuide})}
 	\label{img:periodicSic}
 \end{figure}
 
@@ -246,7 +246,7 @@ Abbildung \ref{img:slidingCorrelation} zeigt ein Beispiel für die Erzeugung von
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{bilder/slidingCorrelation.png}
-	\caption{Beispiel einer Running Correlation}
+	\caption{Beispiel einer Running Correlation (nach \cite[S. 48]{dspMichigan})}
 	\label{img:slidingCorrelation}
 \end{figure}
 
@@ -355,7 +355,7 @@ Abbildung \ref{img:dtOverview} gibt einen Überblick über den Zusammenhang $x[\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/dftOverview04.png}
-	\caption{Überblick über die DFT und die inverse DFT}
+	\caption{Überblick über die DFT und die inverse DFT (nach: \cite[S. 147]{dspGuide})}
 	\label{img:dtOverview}
 \end{figure}
 
@@ -531,7 +531,7 @@ Die hier vorgestellte Beispielrechnung verdeutlicht, wie die Symmetrie des Frequ
  \begin{figure}[h]
  	\centering
  	\includegraphics[width=0.7\textwidth]{bilder/dftSymmetrie.png}
- 	\caption{Symmetrie des Frequenzbereiches in den Indexen $n = (-N/2 = -0.5*N) ,\ldots ,  (N/2 = 0.5*N)$. Die Marker 1 und 2 haben eine Amplitude von $+0.5$, der Marker 3 hat eine Amplitude von $-0.5$ und Marker 4 eine Amplitude von $+0.5$ }
+ 	\caption{Symmetrie des Frequenzbereiches in den Indexen $n = (-N/2 = -0.5*N) ,\ldots ,  (N/2 = 0.5*N)$. Die Marker 1 und 2 haben eine Amplitude von $+0.5$, der Marker 3 hat eine Amplitude von $-0.5$ und Marker 4 eine Amplitude von $+0.5$ \cite[S. 572]{dspGuide}}
  	\label{img:symmetrieInDFT}
  \end{figure} 
  
@@ -541,7 +541,7 @@ Wie zur Einleitung dieses Kapitels erwähnt wurde, wird die Berechnung der kompl
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/compDFTOverview02.png}
-	\caption{Überblick über die komplexe DFT und inverse DFT}
+	\caption{Überblick über die komplexe DFT und inverse DFT (nach \cite[S. 226]{dspGuide})}
 	\label{img:complexDFTOverview}
 \end{figure}
 
@@ -699,7 +699,7 @@ h\{x[\;]\} = x[\;] *  h[\;] =  y[\;] := \quad \mathop{\forall}_{n = 0}^{N+M-2} :
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{bilder/convolutionExample.png}
-	\caption{Beispiel für die Faltung}
+	\caption{Beispiel für die Faltung \cite[S. 112]{dspGuide}}
 	\label{img:convolutionExample}
 \end{figure}
 
@@ -734,13 +734,13 @@ x[\;] * h[\;] = y[\;] = \text{iDFT}\Big\{\ \text{DFT}\{x[\;]\} \cdot \text{DFT}\
 
 In Kapitel \label{sec:convolution} wurde erwähnt, dass sich ein Signal $x[\;]$ durch die Faltung um die Länge der Impulantwort ausdehnt. Daher muss sichergestellt werden, dass das Signal $x[\;]$ vor der Transformation in den Frequenz-Bereich mindestens Length$(h[\;]) = M$ 0-Samples an seinem Ende hat, welche gegebenenalls zuerst angehangen werden müssen. Dadurch wird der Frequenz-Bereich von $x[\;]$ nur dahingehend beeinflusst, dass seine Auflösung erhöht wird. Damit die Frequenz-Bereiche $ X[\;]$ und $H[\;]$ multipliziert werden können, müssen sie die selbe Länge haben. Da die Impulsantwort meistens kürzer als das Eingangssignal ist, müssen ihr vor der DFT meist 0-Samples angehangen werden, um sie auf die selbe länge wie das Eingangsssignal \glqq zu strecken\grqq{}.\cite[S. 183 -184]{dspGuide}
 
-Ein weiterer Vorteil der FFT-Convolution ist, dass Einblick über den Einfluss des Filters auf den Frequenz-Bereich des Eingangs-Signals zur Erzeugung des Ausgangs-Signals gibt. Abbildung \ref{img:convolutionExample} verdeutlicht dieses Prinzip am Beispiel des \glqq windowed Sync Filters\grqq.  Links ist der Zeit-Bereich des Filter-Kernels zu sehen, rechts der Frequenzbereich $\text{DFT}\{h[\;]\} = H[\;]$. Der Frequenz-Bereich macht deutlich dass es sich bei der Impuls-Antwort um einen Tiefpass-Filter handelt, also ein Filter, welcher hohe Frequenzen des Eingangs-signals $x[\;]$ bei seiner Anwendung blockiert, aber tiefe Frequenzen jedoch passieren lässt.\cite[S. 180]{dspGuide}
+Ein weiterer Vorteil der FFT-Convolution ist, dass Einblick über den Einfluss des Filters auf den Frequenz-Bereich des Eingangs-Signals zur Erzeugung des Ausgangs-Signals gibt. Abbildung \ref{img:kernelFreq} verdeutlicht dieses Prinzip am Beispiel des \glqq windowed Sync Filters\grqq.  Links ist der Zeit-Bereich des Filter-Kernels zu sehen, rechts der Frequenzbereich $\text{DFT}\{h[\;]\} = H[\;]$. Der Frequenz-Bereich macht deutlich dass es sich bei der Impuls-Antwort um einen Tiefpass-Filter handelt, also ein Filter, welcher hohe Frequenzen des Eingangs-signals $x[\;]$ bei seiner Anwendung blockiert, aber tiefe Frequenzen jedoch passieren lässt.\cite[S. 180]{dspGuide}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/lowPassFilter.png}
 	\caption{Links: Zeit-Bereich einer Impulsantwort $h[\;]$ des \glqq windowed Sync Filters\grqq. Rechts: Frequenz-Bereich dieser Impulsantwort $\text{DFT}\{h[\;]\} = H[\;]$ \cite[S. 287]{dspGuide}}
-	\label{img:convolutionExample}
+	\label{img:kernelFreq}
 \end{figure}
 
 Da ein FIR-Filter eine endlich lange Impulsantwort hat, folgt daraus auch ein endlichlanger Frequenz-Bereich. Ein IIR-Filter hingegen hat einen unenlich lange Impulsantwort und somit auch einen unendlich langen Frequenz-Bereich.
@@ -777,11 +777,11 @@ U[\;] \cdot V[\;] \cdot R[\;] = Y[\;]
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/source-filter-model.png}
-	\caption{Schematische über das Source-Filter-Model \cite[S. \glqq Source estimation\grqq, S. 17]{ricardo_ceps}}
+	\caption{Schematische über das Source-Filter-Model \cite[Source estimation, S. 17]{ricardo_ceps}}
 	\label{img:source-filter-model}
 \end{figure}	
 
-Abbidlung \ref{glottalSource} zeigt die Zeitbereiche der periodic und der turbulance Source im Detail. Wie zu sehen ist, bestimmt der zeitliche Abstand zwischen den Impulsen die Grund-Frequenz der Stimme. Dieses Signal $p[\;]$ wird durch die Stimmbändern gefiltert und um den Zeit-Bereich der periodic Source ensteht $G\{p[\;]\} = u_p[\;]$. Darunter ist der Zeit-Bereich des weißen Rauschen zu sehen. \cite[Source]{speechAcoustics}
+Abbidlung \ref{img:glottalSource} zeigt die Zeitbereiche der periodic und der turbulance Source im Detail. Wie zu sehen ist, bestimmt der zeitliche Abstand zwischen den Impulsen die Grund-Frequenz der Stimme. Dieses Signal $p[\;]$ wird durch die Stimmbändern gefiltert und um den Zeit-Bereich der periodic Source ensteht $G\{p[\;]\} = u_p[\;]$. Darunter ist der Zeit-Bereich des weißen Rauschen zu sehen. \cite[Source]{speechAcoustics}
 
 \begin{figure}[h]
 	\centering
@@ -795,7 +795,7 @@ Abbildung \ref{img:sourceFilerSpectra} zeigt die Betrachtung der Frequenz-Bereic
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/sourceFilterSpectra.png}
-	\caption{Betrachtung der Frequenz-Bereiche des Source-Filer-Modell }
+	\caption{Betrachtung der Frequenz-Bereiche des Source-Filer-Modell (nach: \cite[Source Estimation, S. 3]{ricardo_ceps})}
 	\label{img:sourceFilerSpectra}
 \end{figure}	
 
@@ -804,7 +804,7 @@ Abbildung \ref{img:pitchPeaks} zeigt anhand des Frequenz-Spectrums eines stimmha
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{bilder/pitchPeaks.png}
-	\caption{ Grundfrequenz und Harmonische Oberwellen eines Sprachsignals.}
+	\caption{Grundfrequenz und Harmonische Oberwellen eines Sprachsignals.}
 	\label{img:pitchPeaks}
 \end{figure}	
 
@@ -813,7 +813,7 @@ Abbildung \ref{img:formants} \footnote{Bildquelle: \url{http://hyperphysics.phy-
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{bilder/formants02.png}
-	\caption{Formanten im Sprach-Signal}
+	\caption{Formanten im Sprach-Signal (nach: \cite{benade})}
 	\label{img:formants}
 \end{figure}	
 
@@ -892,7 +892,7 @@ Ein hoher Wert des Signals $a[\;]$ an der Position $k$ spricht für eine Periodi
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.8\textwidth]{bilder/acorr.png}
-	\caption{Autokorrelation eines Signals}
+	\caption{Autokorrelation eines Signals \cite{vad_Lisboa}}
 	\label{img:acorr}
 \end{figure}	
 
@@ -910,7 +910,7 @@ ceps[\;] =  \text{iDFT}\Big\{ \log \Big(\ \big|\ \text{DFT}\{x[\;]\} \big|\ \Big
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{bilder/cepstrum04.png}
-	\caption{Berechnung des Cepstrums}
+	\caption{Berechnung des Cepstrums (nach: \cite[Cepstral Analysis, S. 3]{ricardo_ceps})}
 	\label{img:cepstrumOverview}
 \end{figure}	
 
@@ -922,7 +922,7 @@ Der Bereich dieser \glqq Fouriertransformation der Foueriertransformation\grqq{}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{bilder/cepstrum05.png}
-	\caption{Aufkommen eines Peaks im oberen Quefrency-Bereich bei stimmhaften Signalfenstern \cite[S. 17]{ricardo_ceps}}
+	\caption{Aufkommen eines Peaks im oberen Quefrency-Bereich bei stimmhaften Signalfenstern \cite[Cepstral Analysis, S. 17]{ricardo_ceps}}
 	\label{img:cepstrumVoicedPeak}
 \end{figure}	
 

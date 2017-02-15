@@ -4,36 +4,27 @@
 \contentsline {section}{\numberline {2.1}Schmerz Scores}{2}{section.2.1}
 \contentsline {section}{\numberline {2.2}Schmerz-Schrei aus medizinischer Sicht}{4}{section.2.2}
 \contentsline {section}{\numberline {2.3}Phyisio-Akustische Modellierung des Weinens}{5}{section.2.3}
-\contentsline {chapter}{\numberline {3}\IeC {\"U}berwachtest Lernen}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Klassifizierung}{8}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}ID3}{9}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}C4.5}{13}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{15}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Regression}{16}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Simple Linear Regression}{17}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Multiple Linear Regression}{18}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Methoden der experimentellen Evaluation}{20}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}k-fold Crossvalidation}{20}{subsection.3.3.1}
-\contentsline {chapter}{\numberline {4}System zur Visualisierung akustischer Schmerz-Scores}{22}{chapter.4}
-\contentsline {section}{\numberline {4.1}Architektur}{22}{section.4.1}
-\contentsline {section}{\numberline {4.2}Preprocessing}{24}{section.4.2}
-\contentsline {section}{\numberline {4.3}Voice Activity Detection}{25}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Windowing}{26}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Feature Extraction}{26}{subsection.4.3.2}
-\contentsline {subsubsection}{\nonumberline Zeit-Bereich}{26}{section*.25}
-\contentsline {subsubsection}{\nonumberline Frequenz-Bereich}{27}{section*.27}
-\contentsline {subsubsection}{\nonumberline Cepstrum}{28}{section*.29}
-\contentsline {subsubsection}{\nonumberline Autokorrelation}{30}{section*.33}
-\contentsline {subsubsection}{\nonumberline Konstruktion des Feature-Vektors}{32}{section*.36}
-\contentsline {subsection}{\numberline {4.3.3}Thresholding}{34}{subsection.4.3.3}
-\contentsline {subsubsection}{\nonumberline Finden der Grenzwerte}{34}{section*.38}
-\contentsline {subsubsection}{\nonumberline Trainings- und Testdatens\IeC {\"a}tze}{35}{section*.40}
-\contentsline {subsubsection}{\nonumberline Training und Ergebnis}{36}{section*.41}
-\contentsline {subsection}{\numberline {4.3.4}Markierung der Cry-Units}{38}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Decision Smoothing}{40}{subsection.4.3.5}
-\contentsline {section}{\numberline {4.4}Segmentierung}{42}{section.4.4}
-\contentsline {section}{\numberline {4.5}Feature-Extraction}{46}{section.4.5}
-\contentsline {section}{\numberline {4.6}Ableitung der Schmerz-Scores}{46}{section.4.6}
-\contentsline {section}{\numberline {4.7}Visualisierung}{46}{section.4.7}
-\contentsline {chapter}{\numberline {5}Zusammenfassung}{47}{chapter.5}
-\contentsline {chapter}{Appendices}{51}{section*.49}
+\contentsline {chapter}{\numberline {3}System zur Visualisierung akustischer Schmerz-Scores}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Literatur-\IeC {\"U}beblick}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Verarbeitungs-Pipeline}{9}{section.3.2}
+\contentsline {section}{\numberline {3.3}Preprocessing}{11}{section.3.3}
+\contentsline {section}{\numberline {3.4}Voice Activity Detection}{13}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Windowing}{13}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Feature Extraction}{13}{subsection.3.4.2}
+\contentsline {subsubsection}{\nonumberline Zeit-Bereich}{14}{section*.10}
+\contentsline {subsubsection}{\nonumberline Frequenz-Bereich}{14}{section*.12}
+\contentsline {subsubsection}{\nonumberline Cepstrum}{16}{section*.14}
+\contentsline {subsubsection}{\nonumberline Autokorrelation}{17}{section*.18}
+\contentsline {subsubsection}{\nonumberline Konstruktion des Feature-Vektors}{19}{section*.21}
+\contentsline {subsection}{\numberline {3.4.3}Thresholding}{21}{subsection.3.4.3}
+\contentsline {subsubsection}{\nonumberline Finden der Grenzwerte}{21}{section*.23}
+\contentsline {subsubsection}{\nonumberline Trainings- und Testdatens\IeC {\"a}tze}{22}{section*.25}
+\contentsline {subsubsection}{\nonumberline Training und Ergebnis}{23}{section*.26}
+\contentsline {subsection}{\numberline {3.4.4}Markierung der Cry-Units}{25}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.5}Decision Smoothing}{27}{subsection.3.4.5}
+\contentsline {section}{\numberline {3.5}Segmentierung}{29}{section.3.5}
+\contentsline {section}{\numberline {3.6}Feature-Extraction}{33}{section.3.6}
+\contentsline {section}{\numberline {3.7}Ableitung der Schmerz-Scores}{33}{section.3.7}
+\contentsline {section}{\numberline {3.8}Visualisierung}{33}{section.3.8}
+\contentsline {chapter}{\numberline {4}Zusammenfassung}{34}{chapter.4}
+\contentsline {chapter}{Appendices}{38}{section*.34}
