@@ -865,6 +865,7 @@ Ein Sprachsignal ist 1.) nur über kurze Zeitfenster periodisch, da sich die Ton
  %Wie Abbdilung in\ref{img:source-filter-model} und \ref{img:pitchPeaks} zu sehen ist, hat der Fequenz-Bereich eines periodisches Signals die dominanteste Frequenz im Bereich der Grund-Frequenz-Frequenz oder einer harmonischen Oberwelle, während Rauschen die Dominanteste Ferquenz an einer beliebigen Position haben kann. Nach Moattar und Homayounpour \cite[S. 2550]{vad_Easy} ist die dominanteste Frequenz bei Rauschen tiefer zu erwarten als bei einem periodischen Signal. 
 
 \subsection{Autokorrelation}
+\label{sec:autocorrelation}
 
 Die Korrelation wurde in Kapitel \ref{sec:correlation} vorgestellt. Bei der Autokorrelation wird ein Signal mit einer vezögerten Variante von sich selber korrelliert. Gleichung \ref{eq:ACorr} definiert die Autokorrelation des Signals eines $N$-Samples langen Signals $x[\;]$ mit einer um das Lag $k$ verzögerten Variante von sich selber.
 
@@ -903,7 +904,7 @@ Abbildung \ref{img:acorr} verdeutlicht das Vorgehen an einem Beispiel. Gezeigt w
 Das Cepstrum wird nach Gleichung \ref{eq:cepstrum} als die inverse DFT des Logarithmus des Magnitudensignals des Frequenz-Bereiches definiert. 
 
 \begin{equation}
-ceps[\;] =  \text{iDFT}\Big\{ \log \Big(\ \big|\ \text{DFT}\{x[\;]\} \big|\ \Big) \Big\}
+c[\;] =  \text{iDFT}\Big\{ \log \Big(\ \big|\ \text{DFT}\{x[\;]\} \big|\ \Big) \Big\}
 \label{eq:cepstrum}
 \end{equation}
 
