@@ -6,15 +6,15 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Die Verarbeitungs-Pipeline des vorgestellten Systems\relax }}{10}{figure.caption.6}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Parameter eines Audio-Kompressors\relax }}{11}{figure.caption.7}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Ergebnis des Preprocessings\relax }}{12}{figure.caption.8}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Markierung von Schreiger\IeC {\"a}uschen im Audiosignal\relax }}{12}{figure.caption.9}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Markierung von Schreiger\IeC {\"a}uschen im Audiosignal. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Rot: Klassifizierung in Stimmhaft/Stille\relax }}{12}{figure.caption.9}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Features, die f\IeC {\"u}r die Voice Activity Detection verwendet werden.\relax }}{17}{figure.caption.14}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Differenz-Signal des RMS-Wertes\relax }}{18}{figure.caption.16}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Thresholding eines Feature-Signales\relax }}{18}{figure.caption.18}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }}{23}{figure.caption.21}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Beziehung zwischen agrenzenden Segmenten\relax }}{24}{figure.caption.22}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{25}{figure.caption.23}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Klassifizierung vor und nach dem Decision Smoothing\relax }}{26}{figure.caption.24}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Ergebnis der Segmentierung\relax }}{27}{figure.caption.25}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{27}{figure.caption.26}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden. Schwarz: Eingangs-Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }}{18}{figure.caption.16}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Thresholding eines Feature-Signales. Schwarz: Das Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Beispiel-Grenzwert\relax }}{19}{figure.caption.18}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }}{23}{figure.caption.22}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Beziehung zwischen agrenzenden Cry-Units\relax }}{23}{figure.caption.23}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{25}{figure.caption.24}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Klassifizierung vor und nach dem Decision Smoothing\relax }}{26}{figure.caption.25}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Ergebnis der Segmentierung\relax }}{26}{figure.caption.26}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{27}{figure.caption.27}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{37}{figure.caption.30}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{36}{figure.caption.31}

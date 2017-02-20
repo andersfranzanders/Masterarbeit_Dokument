@@ -98,12 +98,12 @@ Abbildung \ref{img:compressing01} zeigt das ein Signal vor und nach dem Preproce
 \section{Voice Activity Detection}
 \label{sec:vad}
 
-Das Ziel ist, in einem Audiosignal diejenigen Stellen zu markieren, in denen Stimme enthalten ist. Abbilung \ref{img:vad01} visualisiert ein Beispiel für eine solche Markierung: Zu sehen ist der Zeitbereich eines Audiosignales mit drei klar erkennbaren Cry-Units. Die Rote Linie, die das Signal überspannt, bildet die Zeiteinheiten des Eingangssignales in die binären Kategorien \emph{Stimmhaft} und \emph{Stille} ab.
+Das Ziel ist, in einem Audiosignal diejenigen Stellen zu markieren, in denen Stimme enthalten ist. Abbilung \ref{img:vad01} visualisiert ein Beispiel für eine solche Markierung: Zu sehen ist der Zeitbereich eines Audiosignales mit drei klar erkennbaren Cry-Units. Die rote Linie, die das Signal überspannt, bildet die Zeiteinheiten des Eingangssignales in die binären Kategorien \emph{Stimmhaft} und \emph{Stille} ab.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{bilder/vad_introduction01.png}
-	\caption{Markierung von Schreigeräuschen im Audiosignal}
+	\caption{Markierung von Schreigeräuschen im Audiosignal. Schwarz: Das Eingangssignal $x[\;]$. Rot: Klassifizierung in Stimmhaft/Stille}
 	\label{img:vad01}
 \end{figure}
 
@@ -181,7 +181,7 @@ Aus dem \textbf{Frequenz-Bereich} werden die drei Features \emph{unnormalisierte
 
 Als Vorbereitungsschritt werden die Signalfenster des Zeit-Bereiches $x_0[\;] \ldots x_m[\;]$ zunächst mit der in Kapitel \ref{sec:stft} vorgestellten Short Time Fourier Transformation in die \emph{Frequenz-Fenster} \label{eq:stft} $X_0[\;] \ldots X_m[\;]$ transformiert. Das heißt, dass $X_i[\;] = \text{DFT}(w[\;] \cdot x_i[\;])$. Es wurde eine $2048$ Punkte Lange FFT und eine Hamming-Window als Fensterfunktion verwendet.
 
-Kristjansson et al \cite[S. 2]{vad_Lisboa} verwenden die \emph{spektrale Entropie} Voice Activity Detection. Dabei wird das Spektrum des Frequenzfensters $X_i$ als Wahrscheinlichkeitsverteilung betrachtet. Die Entropie als Maß zur \glqq Unreinheit\grqq{} wird in Kapitel \ref{sec:id3} erläutert. Die \emph{normalisierte spektrale Entropie} wird nach der Formel \ref{eq:norm_se} berechnet. Das Signal $px_i$ ergibt sich durch die Normalisierung des $N$-Punkte langen Spektrums nach Formel \ref{eq:norm_spek}. Neben der in \cite{vad_Lisboa} vorgestellten normalisierten spektralen Entropie wird zusätzlich die \emph{unnormalisierte Spektrale Entropie} nach Formel \ref{eq:unnnorm_se} berechnet. Bei dieser wird das Spektrum nicht normalisiert, das heißt, es gilt $px_i[f] = X_i[f]$. Somit hat Energie des Signals einen größeren Einfluss die höhe des Features. Bei der normalisierten spektralen Entropie ist zu erwarten, dass Frequenzfenster mit Hintergrundrauschen eine höhere Entropie haben als Fenster mit Stimme . Bei der unnormalisierten spektralen Entropie ist zu erwarten, dass Signalfenster mit Stimme eine höherer Spektrale Entropie haben als Fenster mit Stille.\footnote{Ein Hinweis: Kristjansson et al \cite[S. 2]{vad_Lisboa} verwenden zur Entropie-Berechnung den Logarithmus zur Basis 10, anstatt zur Basis 2. Es ist nicht klar, ob es sich dabei um einen Fehler handelt. Zur Featureberechnung in dieser Arbeit wurde, wie in dem Paper beschrieben, ebenfalls der Logarithmus zur Basis 10 verwendet!}
+Kristjansson et al \cite[S. 2]{vad_Lisboa} verwenden die \emph{spektrale Entropie} Voice Activity Detection. Dabei wird das Spektrum des Frequenzfensters $X_i$ als Wahrscheinlichkeitsverteilung betrachtet. Die Entropie als Maß zur \glqq Unreinheit\grqq{} wird in Kapitel \ref{sec:id3} erläutert. Die \emph{normalisierte spektrale Entropie} wird nach der Formel \ref{eq:norm_se} berechnet. Das Signal $px_i[\;]$ ergibt sich durch die Normalisierung des $N$-Punkte langen Spektrums nach Formel \ref{eq:norm_spek}. Neben der in \cite{vad_Lisboa} vorgestellten normalisierten spektralen Entropie wird zusätzlich die \emph{unnormalisierte Spektrale Entropie} nach Formel \ref{eq:unnnorm_se} berechnet. Bei dieser wird das Spektrum nicht normalisiert, das heißt, es gilt $px_i[f] = X_i[f]$. Somit hat Energie des Signals einen größeren Einfluss die höhe des Features. Bei der normalisierten spektralen Entropie ist zu erwarten, dass Frequenzfenster mit Hintergrundrauschen eine höhere Entropie haben als Fenster mit Stimme . Bei der unnormalisierten spektralen Entropie ist zu erwarten, dass Signalfenster mit Stimme eine höherer Spektrale Entropie haben als Fenster mit Stille.\footnote{Kristjansson et al \cite[S. 2]{vad_Lisboa} verwenden zur Entropie-Berechnung den Logarithmus zur Basis 10, anstatt zur Basis 2. Es ist nicht klar, ob es sich dabei um einen Fehler handelt. Zur Featureberechnung in dieser Arbeit wurde, wie in dem Paper beschrieben, ebenfalls der Logarithmus zur Basis 10 verwendet!}
 
 In die Berechnungen wurden nur die Frequenzen im Bereich von 200 - \SI{8000}{\hertz} mit einbezogen, da aus Kapitel \ref{sec:cryModel} die tiefst Mögliche Frequenz kindlicher Lautäußerung bei \SI{200}{\hertz} liegt und nach Shen et al \cite{vad_entropie02} Stimme keine Informationen oberhalb von \SI{8000}{\hertz} übertragen.
 
@@ -200,7 +200,7 @@ px_i[n] = \frac{X_i[n]}{\sum_{k=1}^{N} X_i[k]}
 \label{eq:unnnorm_se}
 \end{equation}
 
-Moattar et al \cite[S. 2550]{vad_Easy} stellen die \emph{dominanteste Frequenzkomponente} zur Voice-Activity-Detection vor. Für jedes Frequenzfenster $X_i$ wird diejenige Frequenz nach Formel \ref{eq:domfreq} berechnet, welches die höchste Amplitude hat. Es wird dabei, im Gegensatz zur spektralen Entropie, der gesamte Frequenzraum betrachtet! Ein stimmhaftes Signal hat typischerweise eine höhere $f_{Dom}$ als ein nicht stimmhaftes Signal, bedingt durch die hohe Amplitude der Grundfrequenz.
+Moattar et al \cite[S. 2550]{vad_Easy} stellen die \emph{dominanteste Frequenzkomponente} zur Voice-Activity-Detection vor. Für jedes Frequenzfenster $X_i[\;]$ wird diejenige Frequenz nach Formel \ref{eq:domfreq} berechnet, welches die höchste Amplitude hat. Es wird dabei, im Gegensatz zur spektralen Entropie, der gesamte Frequenzraum betrachtet. Ein stimmhaftes Signal hat typischerweise eine höhere $f_{Dom}$ als ein nicht stimmloses Signal, bedingt durch die hohe Amplitude der Grundfrequenz.
 
 \begin{equation}
 f_{Dom}(X_i[\;]) = \argmax_k\{X_i[k]\}
@@ -217,24 +217,24 @@ f_{Dom}(X_i[\;]) = \argmax_k\{X_i[k]\}
 %\end{figure}
 
 \subsubsection{Cepstrum}
+\label{sec:cepstrum-feature}
 
-In Kapitel \ref{sec:autocorrelation} wurde das Cepstrum vorgestellt und Erläutert, wie Peaks im oberen Quefrency-Bereich auf das Vorhandensein eines periodischen, obertonreichen Signals, wie Stimme, hinweist. Aus dem Cepstrum-Bereich werden die Features \emph{Upper Cepstrum Peak} $[ Ceps_{mag} ]$ und \emph{Upper Cepstrum Peak Location} $[ Ceps_{loc} ]$ berechnet.
+In Kapitel \ref{sec:autocorrelation} wurde das Cepstrum vorgestellt und Erläutert, wie Peaks im oberen Quefrency-Bereich auf das Vorhandensein eines periodischen, obertonreichen Signals, wie die Stimme eines ist, hinweist. Aus dem Cepstrum-Bereich werden die Features \emph{Upper Cepstrum Peak} $[ Ceps_{mag} ]$ und \emph{Upper Cepstrum Peak Location} $[ Ceps_{loc} ]$ berechnet.
 
-Ahmadi et al \cite{vad_ceps} sowie Kristjansson et al\cite{vad_Lisboa} schlagen vor, die \emph{höchste Magnitude im oberen Quefrency-Bereich} (Upper Cepstrum Peak) als Feature zu verwenden. Formel \ref{eq:ceps_maxpeak} definiert die Berechnung. $c_i[\;]$ ist das Cepstrum des iten Frequenzfenster $X_[\;]$. Wie in Kapitel \ref{sec:acousticModel} erläutert, kann die Grundfrequenz nur zwischen 200 und \SI{2000}{\hertz} liegen, was einem Quefrency-Bereich von 5 - 40 ms entspricht. Folglich werden bei der Berechnung nach Formel \ref{eq:ceps_maxpeak} nur Quefrency-Werte in diesem Bereich betrachtet werden. Eine hoher $Ceps_{mag}$-Wert weist auf das Vorhandensein von Stimme für das aus dem Fenster $x_i$ Berechneten Cepstrum $x_i$ hin. Als zweites Features wird die Quefrency der höchsten Amplitude des Cepstrum (Upper Cepstrum Peak Location) nach Formel \ref{eq:ceps_loc} berechnet. Bei Signalfenstern mit Stille ist es wahrscheinlicher, dass sich die höchste Ampltiude am Mindest- oder Maximum-Wert des durchsuchten Qufrency-Bereiches befindet.
+Ahmadi et al \cite{vad_ceps} sowie Kristjansson et al\cite{vad_Lisboa} schlagen vor, die \emph{höchste Magnitude im oberen Quefrency-Bereich} (Upper Cepstrum Peak) als Feature zu verwenden. Formel \ref{eq:ceps_maxpeak} definiert die Berechnung. $c_i[\;]$ ist das Cepstrum des $i$-ten Frequenzfenster $X_i[\;]$. Wie in Kapitel \ref{sec:acousticModel} erläutert, liegt die Grundfrequenz bei kindlichen Lautäußerungen zwischen 200 und \SI{2000}{\hertz}, was einem Quefrency-Bereich von 5 - \SI{40}{\milli\second} entspricht. Folglich werden bei der Berechnung nach Formel \ref{eq:ceps_maxpeak} nur Quefrency-Werte in diesem Bereich betrachtet. Eine hoher $Ceps_{mag}$-Wert weist auf das Vorhandensein von Stimme für das aus dem Fenster $x_i[\;]$ Berechneten Cepstrum $c_i[\;]$ hin. Als zweites Features wird die Quefrency der höchsten Amplitude des Cepstrum (Upper Cepstrum Peak Location) nach Formel \ref{eq:ceps_loc} berechnet. Bei Signalfenstern mit Stille ist es wahrscheinlicher, dass sich die höchste Ampltiude am Mindest- oder Maximum-Wert des durchsuchten Quefrency-Bereiches befindet.
 
 \begin{equation}
-Ceps_{mag}(c_i) = \max_{k}\text{mag}\{\text{mag}(c[k])\}
+Ceps_{mag}(c_i) = \max_{k}\text{mag}\{c[k]\}
 \label{eq:ceps_maxpeak}
 \end{equation}
 
 \begin{equation}
-Ceps_{loc}(c_i) = \argmax_{k}\{\text{mag}(c[k])\}
+Ceps_{loc}(c_i) = \argmax_{k}\{c[k]\}
 \label{eq:ceps_loc}
 \end{equation}
 
-%Abbildung \ref{img:VAD_CeDsignals} visualisiert die beiden Features des Cepstrums auf die selbe Art und Weise, wie es bei Abbildung \ref{img:VAD_TDsignals}
 
-Abbildung \ref{img:vadAllFeatures} visualisiert alle vorgestellten Features, die für die Voice Activity Detection eingesetzt werden. Der oberste Plot zeigt das Audiosignal aus Abbildung \ref{img:vad01} mit einem Signal/Rauschabstand von \SI{20}{\decibel}. Die Rote Linie über dem Signal zeigt, welche Zeitabschnitte stimmhaft, und welche nicht stimmhaft sind.
+Abbildung \ref{img:vadAllFeatures} visualisiert alle vorgestellten Features, die für die Voice Activity Detection eingesetzt werden. Der oberste Plot zeigt das Audiosignal aus Abbildung \ref{img:vad01} mit einem Signal/Rauschabstand von \SI{20}{\decibel}. Der rote Graph über den Plot klassifiziert die Zeitbereiche in $1 = $ \emph{stimmhaft} und $0 = $ \emph{nicht stimmhaft}. Alle darunter eingezeichneten Plots zeigen den zeitlichen Verlauf der entsprechenden Features. Bei jedem Feature ist eine Korrelation mit der stimmhaftigkeit oder nicht-stimmhaftigkeit der entsprechenen Signalabschnitte zu sehen, welche bei einigen Feature stärker ausfällt als bei anderen..
 
 \begin{figure}[h!]
 	\centering
@@ -243,38 +243,29 @@ Abbildung \ref{img:vadAllFeatures} visualisiert alle vorgestellten Features, die
 	\label{img:vadAllFeatures}
 \end{figure}
 
-\subsubsection{Konstruktion des Feature-Vektors}
+\subsubsection{Konstruktion des Feature-Raumes}
 
-Für jedes Signalfenster à \SI{25}{\milli\second} werden die 9 vorgestellten Features \emph{RMS, ZCR, SEnt\textsubscript{u}, SEnt\textsubscript{n}, $f_{Dom}$, Ceps\textsubscript{mag}, Ceps\textsubscript{loc}, aMax} und \emph{aCount} berechnet. Wie beschrieben, sollten Signalfenster mit Stimme einen höheren Wert des jeweiligen Features erzeugen als Signalfenster mit Stille (oder, abhängig vom Feature wie der ZCR, einen tieferen). 
-
-Abbildung \ref{img:min-signal} zeigt in (a) die RMS-Werte eines Signals mit einem Signal-Rausch-Abstand (SNR) von \SI{50}{\decibel}. Die Zeiträume mit Stille haben einen weitaus niedrigeren RMS-Wert als die Signalteile mit Stimme. In (b) ist das selbe Signal mit einem Signal-Rausch-Abstand von \SI{3}{\decibel} zu sehen. Nun liegen die RMS-Werte des Rauschens nur noch knapp unter denen des Sprachsignals. Zu sehen ist, dass starkes Hintergrundrauschen ähnlich hohe Feature-Werte erzeugen kann wie die Stimme.
+Abbildung \ref{img:min-signal} zeigt in (A) des zeitlichen Verlauf des \emph{RMS}-Features eines Signals mit einem Signal-Rausch-Abstand (SNR) von \SI{50}{\decibel}. Die Zeiträume mit Stille haben einen weitaus niedrigeren RMS-Wert als die Zeiträume mit Stimme. In (B) ist das selbe Signal mit einem Signal-Rausch-Abstand von \SI{3}{\decibel} zu sehen. Nun liegen die RMS-Werte der stimmlosen Bereiche nur noch knapp unter denen des Sprachsignals. Zu sehen ist, dass starkes Hintergrundrauschen ähnlich hohe Feature-Werte erzeugen kann wie die Stimme.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{bilder/min-signal.png}
-	\caption{Differenz-Signal des RMS-Wertes}
+	\includegraphics[width=0.7\textwidth]{bilder/rms_diff.png}
+	\caption{Das RMS-Feature bei verschiedenen Signal/Rausch-Abständen. Schwarz: Eingangs-Signal $x[\;]$. Grün: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.}
 	\label{img:min-signal}
 \end{figure}
 
-In \cite{vad_Easy} und \cite{vad_entropy} wird die Idee präsentiert, den Wert des jeweiligen Features zu messen, der in den stimmlosen Segmenten durch das Hintergrundrauschen erzeugt wird. Jedoch ist für ein Signalfenster $x_i$ zum Zeitpunkt der Berechnung des Features noch nicht bekannt, ob es sich um ein Zeitfenster mit Stille oder Stimme handelt. Genau diese Entscheidung wird später auf Basis der Features getroffen. Man kann jedoch davon ausgehen, dass kein Baby-Schrei länger eine bestimmte Zeitraum $t_{max}$ dauert, bevor das Babie Luft holen muss und somit ein Zeitfenster mit Stille entsteht. Der Mindestwert eines Features in einem Zeitraum  $t_{max}$ ist somit der Wert des Features, der mindestens durch das Hintergrundrauschen erzeugt wird. Er wird nach Formel \label{ref:minFeat} berechnet, wobei $t_{xi}$ die Länge eines Signalfensters $x_i$ ist (in diesem Fall \SI{25}{\milli\second}). Das \emph{Differenzfeature} wird definiert nach Formel \ref{eq:difFeature} als die Differenz des für das aktuelle Signalfenster berechneten Features und dem Mindestwert dieses Feature der letzten $t_{max}$ Sekunden.
+Moattar et al \cite{vad_Easy} und Waheed et al \cite{vad_entropy} präsentieren die Idee, den Wert des jeweiligen Features zu messen, der in den stimmlosen Bereichen durch das Hintergrundrauschen erzeugt wird. So kann davon ausgegangen werden, dass die ersten Signalfenster zunächst noch keine Stimme enthalten, und der Feature-Wert des Rauschens somit anhand der ersten Signalfenster bestimmt werden. Bei einer langanhaltenden und kontinuierlichen Analyse können sich die Signal/Rausch-Verhältnisse jedoch ständig ändern, weshalb der Feature-Werte der stimmlosen Signalbereiche regelmäßig aktualisiert werden müssem. Es kann jedoch davon ausgegangen werden, dass die Länge einer Cry-Unit eine bestimmte Länge $t_{max}$ nicht überschreiten kann, bevor das Babie Luft holen muss und somit ein Zeitfenster mit Stille entsteht. So haben Zeskind et al \cite{rythmic} diesen Wert mit $t_{max} = \SI{4.75}{\second}$ festgstellt. In einem Zeitbereich $ t > t_{max}$ muss somit zumindest ein Feature-Wert enthalten sein, der durch stimmlose Signalteile erzeugt wird. Auf Basis dieser Überlegung wird das \emph{Differenz-Feature} Diff($Feat(x_i[\;])$) nach Formel \ref{eq:difFeature} definiert als die Differenz des aktuell gemessenen Feature-Wertes und des geringsten Feature-Wertes, welcher im vergangenen Zeitbereich $t$ gemessen wurde. $Feat(x_i[\;])$ ist dabei ein beliebiger Feature-Wert des Signalfensters $x_i[\;]$, $t_{xi}$ die Länge eines Signalfensters in Sekunden $x_i$ ist (in diesem Fall \SI{25}{\milli\second}), und $t$ der in der Vergangenheit zu durchsuchende Zeitbereich in Sekunden, welcher größer als $t_{max}$ gewählt wird. In Abbildung \ref{img:min-signal} wird in (C) das Differenz-Feature für den RMS-Wert gezeigt.
 
 \begin{equation}
-\text{MinF}(Feat(x_i)) = \min_{k=i-z...i}( \text{Feat}(x_k)), z = \frac{2 t_{max}}{t_{xi}}
-\label{eq:minFeat}
-\end{equation}
-
-\begin{equation}
-\text{DiffF}(Feat(x_i)) = Feat(x_i) - MinF(Feat(x_i))
+\text{Diff}_t(Feat(x_i[\;])) = Feat(x_i[\;])\ - \mini_{k=i-z...i}( Feat(x_k[\;])), \qquad z = \frac{2 t}{t_{xi}}
 \label{eq:difFeature}
 \end{equation}
 
-Der Featurevektor, der schlussendlich für jedes Signalfesnter $x_i[]$ berechnet wurde, besteht neben den 9 vorgestellten Features, zusätzlich aus den Differenzfeatures für einen Zeitraum von $t_{max} = 4$ Sekunden. Features, deren Wert bei Stimmhaften Signalfenstern geringer ist als bei stimmlosen, werden an der x-Achse gespiegelt, um Formel \ref{eq:minFeat} anwenden zu können (das Betrifft die Features ZCR, SEnt\textsubscript{u} und aCount). Das einzige Feature, welches nicht als Differenzfeature dem Feautrevektor beigefügt wurde, ist der \emph{Upper Cepstral Peak Location}-Feature [$Ceps_{loc}$], da es bei Stille sowohl einen höheren als auch einen niedrigeren Wert annehmen kann. Der Feature-Vektor $V$ des Signalfensters $x_i$ wird nach Formel \ref{eq:featureVektor} berechnet umfasst 17 Features, wobei 9 absolute Features und 8 Differenzfeatures verwendet werden.
+Der Feature-Raum setzt sich schlussendlich folgendermaßen zusammen: Die ersten 9 Features bilden die in Kapitel \ref{sec:timeFeats} - \ref{sec:cepstrum-feature} insgesamt 9 vorgestellten Features \emph{RMS, ZCR, SEnt\textsubscript{u}, SEnt\textsubscript{n}, $f_{Dom}$, Ceps\textsubscript{mag}, Ceps\textsubscript{loc}, aMax} und \emph{aCount}. Weiterhin wird für jedes Feature nach Formel \ref{eq:difFeature} das Differenz-Feature mit $t = \SI{5}{\second}$  berechnet. Die Features \emph{ZCR, SEnt\textsubscript{u}} und \emph{aCount} wurden vor der Berechnung des Differenz-Features bezüglich ihres Vorzeichens invertiert, da bei Ihnen ein hoher anstatt ein niedriger Wert stimmhafte Signalteile anzeigt. Das einzige Feature, welches nicht als Differenzfeature dem Feautrevektor beigefügt wurde, ist der \emph{Upper Cepstral Peak Location}-Feature [$Ceps_{loc}$], da es bei Stille sowohl einen höheren als auch einen niedrigeren Wert annehmen kann. Der Feature-Raum umfasst somit insgesamt $9 + 8 = 17 $ Dimensionen. Gleichung \ref{eq:featureVektor} verdeutlicht die Zusammensetzung des Feature-Vektors $v_i$, der aus dem Signalfenster $x_[\;]$ berechnet wird.
 
 \begin{equation}
-\begin{split}
-V(x_i) = \Big( \text{RMS}(x_i), ...,\text{ aCount}(x_i)\\
-\text{DiffF}(\text{RMS}(x_i)) .... \text{DiffF}(-\text{ aCount}(x_i))\Big)
-\end{split}
+v_i = \Big( \text{RMS}(x_i[\;]), ...,\text{ aCount}(x_i[\;]), 
+\text{Diff}_{t}(\text{RMS}(x_i[\;])) .... \text{Diff}_{t}(-\text{ aCount}(x_i[\;]))\Big)
 \label{eq:featureVektor}
 \end{equation}
 
@@ -282,121 +273,96 @@ V(x_i) = \Big( \text{RMS}(x_i), ...,\text{ aCount}(x_i)\\
 
 \subsubsection{Finden der Grenzwerte}
 
-Für jedes Signalfenster $x_1...x_n$ liegt nun ein Featurevektor $v_1...v_n$ vor. Das Ziel ist nun, Grenzwerte für die Features zu finden, bei deren Überschreitung das Signalfenster als \emph{Stimmhaft} kategorisiert wird. Abbildung \ref{img:thresholded} verdeutlicht das Prinzip für das Feature \emph{Ceps\textsubscript{mag}}. Eine binäre Kategorisierung nach dem Muster $C(x_i) = \{ 1, \text{wenn} \text{ Ceps}_{mag}(x_i) \geq 0.2 , 0 \text{ sonst}\}$ würde auf den ersten Blick eine weitgehend richtige Kategorisierung vornehmen.
+Wird die Voice-Activity-Detection für ein Signal $x[\;]$ durchgeführt, wird es in die Signalfenster $x_1[\;]...x_n[\;]$ zerlegt  die Featurevektoren $v_1...v_n$ berechnet. Das Ziel ist nun, Grenzwerte für die Features zu finden, bei deren Über- oder Unterschreitung das Signalfenster als \emph{stimmhaft} kategorisiert wird. Abbildung \ref{img:thresholded} verdeutlicht das Prinzip für das Feature \emph{RMS}. Diese Entscheidung nach einem Grenzwert ist ein klassisches Vorgehen bei der Voice-Activity-Detection. Eine binäre Klassifizierung nach dem Muster $C(x_i) = \{ 1, \text{wenn } \text{RMS}(x_i[\;]) \geq 0.18 ,\quad 0 \text{ sonst}\}$ würde auf den in diesem Fall für eine weitgehend richtige Klassifizierung vornehmen.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{bilder/thresholded.png}
-	\caption{Thresholding eines Feature-Signales}
+	\includegraphics[width=0.6\textwidth]{bilder/thresholded02.png}
+	\caption{Thresholding eines Feature-Signales. Schwarz: Das Signal $x[\;]$. Grün: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Beispiel-Grenzwert}
 	\label{img:thresholded}
 \end{figure}
 
-Es sind  Kombinationen von Grenzwerten in Form von Entscheidungsbäumen denkbar, wenn mehrere Features in die Kategorisierung einfließen. Ein Beispiel wird in Listing \ref{lst:tree01} dargestellt, bei dem die Kategorsierung hierarchisch zuerst nach einem Grenzwert für Ceps$_{mag}$ und danach für den RMS-Wert entschieden wird.
-
+Eine Methode zum Finden der optimalen Grenzwerte ist der in Kapitel \ref{sec:c45} vorgestellte \emph{C4.5}-Algorithmus. Da der \emph{C4.5} Entscheidungsbäume erstellt, kann die Entschiedung aufgrund der Verkettung von Grenzwerten mehrerer Features gefällt werden. Ein Beispiel wird in Listing \ref{lst:tree01} dargestellt, bei dem die Klasse eines  Signalfensters hierarchisch zuerst nach einem Grenzwert für Ceps$_{mag}$ und danach für den RMS-Wert entschieden wird.
 
 \begin{lstlisting}[frame=single,mathescape=true,basicstyle=\footnotesize,language=Java,label=lst:tree01,caption=Beispiel eines CART-Entscheidungsbaums,linewidth=1\textwidth]
-if Ceps$_{mag}$($x_i$) > 0.2
-|   if RMS($x_i$) < 0.13
-|   |   C($x_i$) = 0
+if Ceps$_{mag}$($x_i[\;]$) > 0.2
+|   if RMS($x_i[\;]$) < 0.13
+|   |   C($x_i[\;]$) = 0
 |   |else
-|   |   C($x_i$) = 1
+|   |   C($x_i[\;]$) = 1
 |else
-|    C($x_i$) = 1
+|    C($x_i[\;]$) = 1
 \end{lstlisting}
-
-
-Zur Festlegung der Grenzwerte wird ein \emph{Classification And Regression Tree} (CART)-Algorithmus verwendet. CART-Algorithmen sind Klassifizierungsalgorithmen, bei denen Entscheidungsbäume wie in Listing \ref{lst:tree01} konstruiert werden. Sie haben den Vorteil, dass die Klassifizierung in Form von Regeln mit Grenzwerten dargestellt werden können, die für den Menschen nachvollziehbar sind (im Gegensatz zu z.B. Neuronalen Netzen). Der durch den CART-Algorithmus konstruierte Entscheidungsbaum wird auch als \emph{Klassifizierungs-Modell} bezeichnet.\cite{id3}
-
-Einer der bekanntesten CART-Algorithmen ist der ID3-Algorithmus, entwickelt von J. Ross Quinlan an der University of Sidney. Als Trainingsdatensatz $S$ wird eine Menge an Instanzen verwendet, deren Klassenzugehörigkeit bereits bekannt ist. Der ID-3 Algorithmus funktioniert nur für diskrete Features und Klassen. Ein Beispiel für ein diskretes Feauture ist [\emph{Lautstärke = \{laut, leise\}}]. Ein Beispiel für ein numerisches Feature, welches vom ID-3 Algorithmus nicht akzeptiert wird, ist [\emph{Lautstärke =} $\mathbb{N}$]. Der Algorithmus funktioniert folgendermaßen:
-\begin{enumerate}
-	\item Gehören alle Instanzen des Datensatzes $S$ nur einer Klasse an?
-	\begin{enumerate}
-		\item Ja: Markiere diesen Knoten als Blatt und STOP. 
-		\item Nein: Erzeuge einen neuen Knoten. Wähle das Feature $F$, welches den höchsten \emph{Informationsgewinn} bringt. Das heisst, dass dieses Feature die stärkste Unterscheidung zwischen den einzelnen Klassen ermöglicht. Der Informationsgewinn $H(S)$ eines Features $F$ mit den Untermengen $X$, welche aus den Instanzen der selben Klasse bestehen, wird mit Hilfe der Entropie nach Formel \ref{eq:entropie} berechnet.
-	\end{enumerate}
-	
-	\begin{equation}
-	H(S) = -\sum_{x \in X} F(x) \log_2 F(x)
-	\label{eq:entropie}
-	\end{equation}
-	
-	\item Unterteilung den Trainingsdatensatz $S$ in die Untermengen $S_1 ... S_n$, wobei eine Untermenge für jeden möglichen Attributbwert des ausgewählten Features gebildet wird. 
-	
-	\item Wiederhole die Schritte 1. und 2. für alle Untermengen $S_1...S_n$ \cite{id3}
-	
-\end{enumerate}
-
-Der C.45-Algorithmus ist eine Erweiterung des ID-3 Algorithmus, der neben anderen Erweiterungen ebenfalls mit numerischen Attributwerten umgehen kann. Dafür werden für ein Feature alle Instanzen des Datensatzes $S$ nach den Werten dieses Features geordnet und derjenige Grenzwert gesucht, der den höchsten Informationsgewinn bringt. Der Datensatz wird daraufhin an den Knoten in genau 2 Untermengen  aufgespalten.\cite{c45} 
-
-Zum Finden der Grenzwerte der in Kapitel \ref{sec:featExtraction} beschriebenen Features wurde die Implementierung des C.45-Algorithmus \emph{REPTree}\footnote{Dokumentation von REPTree: \url{http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/REPTree.html}} der Open Source Data-Mining-Bibliothek \emph{Weka}\footnote{Download von WEKA: \url{http://www.cs.waikato.ac.nz/ml/weka/}} verwendet. Diese hat den Vorteil, dass die Tiefe des Entscheidungsbaumes festlegbar ist und somit die Komplexität des Baumes begrenzt werden kann. Ein Nebeneffekt ist, dass so Overfitting, also die Überanpassung des Entscheidungsbaumes auf den Trainingsdatensatz, vermieden wird.
 
 \subsubsection{Trainings- und Testdatensätze}
 \label{sec:databases}
 
-Zum Training des REPTree-Algorithmus musste in Trainingsdatensatz $S$ erstellt werden. Dazu wird zunächst eine Menge an Audiosignalen benötigt. Es wurden 6 Audiosignale mit Weinen von Babies von der freien Online-Sound-Bibliothek \url{https://www.freesound.org/} heruntergeladen und zu Segmenten à 10 Sekunden beschnitten. Diese Audiosignale sind weitestgehend Rausch-frei. Die Segmente der Audiosignale wurden händisch Kategorisiert in die Klassen \{1 = Stimme, 0 =  Still\}. Weiterhin wurden 3 verschiedene Rauschsignale heruntergeladen. Es handelt sich um "realistische" Rauschsignale mit Krankenhausatmosphären. Jedes dieser 3 Rauschsignale wurde mit den 6 Weinsignalen überlagert, einmal mit einem Signal-Rausch-Abstand von \SI{50}{\decibel} (fast unhörbares Rauschen), und einmal mit einem Signal-Rausch-Abstand von \SI{3}{\decibel} (sehr starkes Rauschen). Außerdem wurde ein Testsignal erzeugt, welches eine siebte Tonaufnahme eines Kinderweinens enthält, dass mit einem vierten Rauschsignal mit einem SNR von \SI{7}{\decibel} überlagert wurde. Dieses Signal spielt eine Sonderrolle, da es nur zur Verifikation verwendet wird und enthält daher nur ein Audiosignal (Siehe Kapitel \ref{sec:results}) So wurden vier Mengen an Audiosignalen erzeugt:
+Zur Training und zur Evaluation des REPTree muss ein Datensatz $D$ erstellt werden, dessen Erzeugung in diesem Kapitel beschriebn wird. 
+
+Es wurden sechs Audioaufnahmen mit Weinen von Babies von der freien Online-Sound-Bibliothek \url{https://www.freesound.org/} heruntergeladen und zu Segmenten à 10 Sekunden beschnitten. Es handelt sich um weitgesgehend rauschfreie Aufnahmen, die von verschiedenen Babys stammen. In den Audiosignalen wurden manuell die Zeitbereiche markiert, welche Stimme enthalten. Es wurden \emph{keine} Geräusche markiert, bei denen es sich offensichtlich um Einatumungs-Geräusche handelt. Geräusche, bei denen nur Anhand der Aufnahme nicht mit Sicherheit festgestellt werden konnte, es ob sie durch Einatmungs- oder Ausatmungs-Geräusche handelt, wurden als Stimme markiert. Weiterhin wurden drei verschiedene Rauschsignale heruntergeladen. Es handelt sich um \glqq realistische\grqq{} Atmosphären von Krankenhäusern. Jedes der sechs Audioaufnahmen der Babys wurde mit jedem der drei Rauschsignale überlagert, einmal mit einem Signal/Rausch-Abstand von \SI{50}{\decibel} (\glqq fast unhörbares Rauschen\grqq), und einmal mit einem Signal/Rausch-Abstand von \SI{3}{\decibel} (\glqq starkes Rauschen\grqq). Außerdem wurde ein siebte Aufnahme eines Babies heruntergeladen, welches mit einem vierten Rauschsignale mit einem SNR von \SI{7}{\decibel} überlagert wurde. Dieses Signal spielt eine Sonderrolle, da es bei der Konstruktion der Entscheidungsbäume nur zur Verifikation verwendet wird. So wurden vier Mengen an Audiosignalen erzeugt:
 
 \begin{description}
-	\item[A\textsubscript{\SI{50}{\decibel}}] enthält $3 \cdot 6=18$ Audiosignale, bei dem alle 6 Wein-Signale mit den 3 Rauschsignalen bei einem Signal-Rausch-Abstand von \textbf{\SI{50}{\decibel}} überlagert wurden
+	\item[A\textsubscript{\SI{50}{\decibel}}] enthält $3 \cdot 6=18$ Audiosignale, bei dem alle sechs Baby-Aufnahmen mit den drei Rauschsignalen bei einem Signal-Rausch-Abstand von \textbf{\SI{50}{\decibel}} überlagert wurden
 	
-	\item[A\textsubscript{\SI{3}{\decibel}}] enthält $3 \cdot 6=18$ Audiosignale, bei dem alle 6 Wein-Signale mit den 3 Rauschsignalen bei einem Signal-Rausch-Abstand von \textbf{\SI{3}{\decibel}} überlagert wurden
+	\item[A\textsubscript{\SI{3}{\decibel}}] enthält $3 \cdot 6=18$ Audiosignale, bei dem alle sechs Baby-Aufnahmen mit den drei Rauschsignalen bei einem Signal-Rausch-Abstand von \textbf{\SI{3}{\decibel}} überlagert wurden
 	
 	\item[A\textsubscript{50+\SI{3}{\decibel}}] $ = \{ A_{\SI{50}{\decibel}} \cup  A_{\SI{3}{\decibel}}\} = 32$ Audiosignale
 	
-	\item[A\textsubscript{\SI{7}{\decibel}*}] enthält $1$ Audiosignal, bei dem ein siebstes Wein-Signale mit einem vierten Rauschsignal bei einem Signal-Rausch-Abstand von \textbf{\SI{7}{\decibel}} überlagert wurde.
+	\item[A\textsubscript{\SI{7}{\decibel}*}] enthält $1$ Audiosignal, bei dem eine siebte Baby-Aunfahme mit einem vierten Rauschsignal bei einem Signal-Rausch-Abstand von \textbf{\SI{7}{\decibel}} überlagert wurde.
 	
 \end{description}
 
-Im nächsten Schritt werden die eigentlichen Trainingsdatensätze $S_{SNR,Feat}$ gebildet, in dem Audiosignale dieser Signalmengen (1) wie in Kapitel \ref{sec:preprocessing} vorverarbeitet werden, (2) wie in Kapitel \ref{sec:windowing} in die Signalfenster à \SI{25}{\milli\second} zerlegt werden und (3) für jedes Audiosignal die durch Gleichung \ref{eq:featureVektor} definierte Featurevektoren berechnet werden. Außerdem wird jedem Featurevektor die Klasseninformation \emph{Stimme/Stille} zum Training des REPTree-Algorithmus mitgegeben. 
+Im nächsten Schritt werden die eigentlichen Datensätze $D_{SNR,Feats}$ gebildet, in dem Audiosignale dieser Signalmengen (1) wie in Kapitel \ref{sec:preprocessing} beschrieben vorverarbeitet werden, (2) wie in Kapitel \ref{sec:windowing} in die Signalfenster à \SI{25}{\milli\second} zerlegt werden und (3) für jedes Signalfenster der durch Gleichung \ref{eq:featureVektor} definierte Featurevektoren berechnet wird. Außerdem wird jedem Featurevektor die Klasseninformation \emph{Stimme/Stille} zugewiesen.
 
-Es ist rechnerisch zu Aufwendig, alle genannten Features in einem kontinuierlichen System zur Voice Activity Detection zu berechnen. Daher werden Untermengen der Features in den Datensätzen gebildet. Das Ziel ist es, diejenige Untermenge an Features zu finden, die sich am besten für die Voice-Activity-Detection sowohl bei niedrigem als auch bei starkem Hintergrundrauschen eignet. Die Untermengen werden in Bezug auf die Methode gebildet, durch die die Features berechnet werden. Das heißt, dass beispielsweise die Untermenge \emph{Zeit} die in Kapitel \ref{sec:timeFeats} beschriebenen Features \emph{RMS} und \emph{ZCR} sowie die dazugehören Differenzfeatures \emph{FDiff(RMS)} und \emph{FDiff(ZCR)} beinhaltet. 
+Es ist rechnerisch zu aufwendig, alle genannten Features in einem kontinuierlichen System zur Voice Activity Detection zu berechnen. Daher werden die Datensätze in Untermengen bezüglich der verwendeten Features eingeteilt. Das Ziel ist es, diejenige Untermenge an Features zu finden, die sich am besten für die Voice-Activity-Detection sowohl bei niedrigem als auch bei starkem Hintergrundrauschen eignet. Die Untermengen werden in Bezug auf die Methode gebildet, durch die die Features berechnet werden. Das heißt, dass beispielsweise die Untermenge \emph{Zeit} die in Kapitel \ref{sec:timeFeats} beschriebenen Features \emph{RMS} und \emph{ZCR} sowie die dazugehören Differenzfeatures \emph{Diff\textsubscript{t}(RMS)} und \emph{Diff\textsubscript{t}(ZCR)} beinhaltet. 
 
-Die 9 Untermengen sind: \{ Zeitbereich, Frequenzbereich, Cepstrum, Autokorrelation, Zeit + Frequenzbereich, Zeit + Cepstrum, Zeit + Autokorrelation, Frequenz + Cepstrum, Frequenz + Autokorrelation \}. 
+Die 9 Untermengen sind: \{ Zeitbereich, Frequenzbereich, Cepstrum, Autokorrelation, Zeit + Frequenzbereich, Zeit + Cepstrum, Zeit + Autokorrelation, Frequenz + Cepstrum, Frequenz + Autokorrelation \}. Cepstrum- und Autokorrelation werden nicht gemeinsam in eine Untermenge hinzugefügt, da Sie die Rechnerisch aufwendigsten sind. So enthält beispielsweise der Datensatz $D_{\SI{3}{\decibel},Zeit}$ die Featurevektoren des Zeitbereiches für die Audiosignale mit einem Signal-Rausch-Abstand von \SI{3}{\decibel}. Alle Audiosignal-Mengen [A\textsubscript{\SI{50}{\decibel}}], [A\textsubscript{\SI{3}{\decibel}}], [A\textsubscript{50+\SI{3}{\decibel}}] und [A\textsubscript{\SI{7}{\decibel}}] wurden in Datensätze umgewandelt. Es wurden schlussendlich $4 \cdot 9 = 36$ Datensätze gebildet.
 
-So enthält beispielsweise der Datensatz $S_{\SI{3}{\decibel},Zeit}$
-die Featurevektoren des Zeitbereiches für die Audiosignale mit einem Signal-Rausch-Abstand von 3\SI{25}{\decibel}. Die Audiosignal-Mengen [A\textsubscript{\SI{50}{\decibel}}], [A\textsubscript{\SI{3}{\decibel}}] [A\textsubscript{50+\SI{3}{\decibel}}] und [A\textsubscript{\SI{7}{\decibel}* }] wurden in Datensätze umgewandelt. Es werden schlussendlich $4 \cdot 9 = 36$ Datensätze gebildet.
+\subsubsection{Training} 
+\label{sec:training}
 
-\subsubsection{Training und Ergebnis} 
-\label{sec:results}
+Das Ziel ist, mit Hilfe des C4.5-Algorithmus einen Entschidungsbaum zu finden, der auf Basis einer möglichst geringen Feature-Menge eine möglichst hohe Klassifkationsgenauigkeit für sowohl niedrige als auch hohe Signal/Rausch-Abstänge erzielt. Die Frage ist, ob ein Entschiedungsbaum, der auf Basis von Signalen mit einem niedrigen SNR gebildet wird, auch für hohe SNR eine hohe Klassifikationsgenauigkeiten erzielt, oder ob der umgedrehte Fall zutreffend ist. Daher werden die Entscheidungsbäume sowohl auf Basis verschiedener SNRs als auch verschiedener Feature-Untermengen gebildet. Die Entschäudungsbäume werden daraufhin gegen die Signale mit den verschiedenen SNRs evaluiert. Wird also beispielsweise der Datensatz $D_{\SI{50}{\decibel},Zeit}$ zum Training und der Datensatz $D_{\SI{3}{\decibel}}$ verwendet, so wird berechnet, wie gut sich der Klassifikator unter Verwendung der Zeit-Features zur Klassifizierung niedriger SNRs eignet, obwohl er für hohe SNRs entworfen wurde. Dabei ist unerheblich, welche Features der Test-Datensatz verwendet, da es bei der Evaluation nur auf die Klasseninformation der Instanzen ankommt.
 
-Der REPTree-Algorithmus entwirft einen Entscheidungsbaum, der für den angegebenen Trainingsdatensatz eine möglichst hohe Accuracy gewährleistet (unter den gegebenen Einschränkungen eines CART-Algoirthmus). Wird dem REPTree-Algorithmus beispielsweise der Datensatz $S_{\SI{3}{\decibel},Zeit}$ (also der Datensatz mit einem SNR von \SI{3}{\decibel} unter Verwendung der Zeit-Features, siehe Kapitel \ref{sec:databases}) als Input gegeben, entwirft der Algorithmus einen Entscheidungsbaum auf Basis dieses Datensatzes. Wird das gebildete Modell daraufhin für die Klassifikation der A\textsubscript{\SI{3}{\decibel}}-Signalmenge verwendet, kann man aus dem Klassifikationsergebnis die Accuracy des Modells für diesen Signal-Rausch-Abstand berechnen. 
+Die Implementierung, die für den \emph{C4.5} verwendet wurde, ist der \emph{REPTree}-Algorithmus \footnote{Dokumentation von REPTree: \url{http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/REPTree.html}} der Open Source Data-Mining-Bibliothek \emph{Weka}\footnote{Download von WEKA: \url{http://www.cs.waikato.ac.nz/ml/weka/}}. Die Implementierung hat den Vorteil, dass die maximale Tiefe des Entscheidungsbaumes festlegbar ist und somit die Komplexität des Baumes begrenzt werden kann und Overfitting vermieden wird.
 
-Der Datensatz $S_{SNR,Feat}$, der als Input für den REPTree-Algorithmus und somit zur Bildung des Entscheidungsbaums verwendet wird, wird als \emph{Trainings-Datensatz} bezeichnet. Die Signalmenge $A_{SNR}$, auf den das Modell angewandt wird und für den die Accuracy berechnet wird, wird als \emph{Test-Datensatz} bezeichnet. Wird also beispielsweise der Trainings-Datensatz $S_{\SI{50}{\decibel},Zeit}$ und als Test-Signalmenge $A_{\SI{3}{\decibel}}$ verwendet, so kann man berechnen, wie gut sich ein Modell unter Verwendung der Zeit-Features zur Klassifizierung niedriger SNRs eignet, obwohl es für hohe SNRs entworfen wurde.
+Es wurden insgesamt $3 \cdot 9 = 27$ Trainings-Datensätze erzeugt ( [3 SNR-Werte: \SI{3}{\decibel}, \SI{50}{\decibel} und 50+\SI{3}{\decibel} ] $\times$ [9 Feature-Untermengen]. Der Datensatz mit einem SNR von \SI{7}{\decibel} wurde \emph{nicht} zum Training verwendet). Mit diesen 27 Trainingsdatensätze wurden mit Hilfe des \emph{REPTree}-Algorithmus 27 Klassifikationsbäume erzeugt. Jeder Klassifikationsbaum wurde gegen die 3 Testdatensätze D\textsubscript{\SI{3}{\decibel}}, D\textsubscript{\SI{50}{\decibel}} und D\textsubscript{\SI{7}{\decibel}*} evaluiert und die Accuracy berechnet. Das Signal A\textsubscript{\SI{7}{\decibel}*} erfüllt dabei eine Sonderrolle, da es nicht in den Trainingsdatenstäzen enthalten war und somit der Kontrolle dient, ob Overfitting vorliegt. Da jeder Datensatz ungefähr dreimal mehr Stimmhafte Examples als nicht-Stimmhafte enhthielt, wurde jede Stimmlose Instanz eines Datensatzes eingefügt. Somit wurde für jeden Datensatz  ein ausgewogenes Verhältnis zwischen positiven und negativen Examples gewährleistet. Um die Komplexitiät des Entscheidungsbaumes zu verringern eine Nutzung von möglichst wenig Features zur Klassifizierung zu erzwingen, wurde die maximale Tiefe des REPTree auf 2 gesetzt. 
 
-Das Ziel ist, den Entscheidungsbaum für eine Feature-Untermenge zu finden, die eine möglichst hohe Klassifikations-Accuracy für sowohl hohe als auch niedrige SNR gewährleistet. Die Frage ist, ob ein Entschiedungsbaum, der für einen niedrigen SNR gebildet wird, auch für hohe SNR gut funktioniert, oder ob das Gegenteil zutreffend ist. Daher werden die Entscheidungsbäume sowohl auf Basis verschiedener SNRs als auch verschiedener Feature-Untermengen gebildet. Die Modelle werden daraufhin gegen die Signale mit den hohen und niedrigen SNRs getestet.
+\subsubsection{Ergebnis} 
+\label{sec:vad_result}
 
-Es wurden, wie in Kapitel \ref{sec:databases} beschrieben, $3 \cdot 9 = 27$ Trainings-Datensätze erzeugt ( [3 SNR-Werten: \SI{3}{\decibel}, \SI{50}{\decibel} und 50+\SI{3}{\decibel} ] $\times$ [9 Feature-Untermengen]. Der Datensatz mit einem SNR von \SI{7}{\decibel} wird \emph{nicht} zum Training verwendet). Mit diesen 27 Trainingsdatensätze werden mit Hilfe des REPTree-Algorithmus 27 Klassifikationsbäume erzeugt. Jeder Klassifikationsbaum wurde gegen die 3 Testdatensätze A\textsubscript{\SI{3}{\decibel}}, A\textsubscript{\SI{50}{\decibel}} und A\textsubscript{\SI{7}{\decibel}*} getestet und die Accuracy berechnet. Das Signal A\textsubscript{\SI{7}{\decibel}*} erfüllt dabei eine Sonderrolle, da weder das Signal des Weinens noch das Rausch-Signal in den Trainingsdatensätzen enthalten sind und somit verifiziert wird, ob der Datensatz nur \glqq auswendig gelernt\grqq{} wird oder das Modell auf neue Anwedungsfälle übertragen werden kann. Um Overfitting des Modells zu vermeiden und die Komplexität des Entscheidungsbaumes zu verringern, wurde die maximale Tiefe des REPTree auf 2 gesetzt. Die Ergebnisse sind in Tabelle \ref{tab:reptree_results} zu sehen.
+Die Evaluations-Ergebnisse  sind in Tabelle \ref{tab:reptree_results} zu sehen. Für jeden Trainingsdatensatz mit einem bestimmten SNR und einer Feature-Untermenge wird die Accuracy für den jeweilgen Test-Datensatz mit einem SNR von \SI{3}{\decibel}, \SI{50}{\decibel} und \SI{7}{\decibel}* verwendet.\footnote{Der Stern verdeutlicht die Sonderrolle des  Datensatzes mit einem SNR von \SI{7}{\decibel}, da er nur zu Evaluation verwendet wurde }. Außerdem wird der Durchschnittswert aller drei Accuracy-Werte angegeben.
 
-Die Features, welche zu den höchsten Accuracy-Werten führten, sind die des \emph{Cepstrum}-Bereiches, genauer gesagt das DiffF(Ceps\textsubscript{mag})-Feature, da es vom REPTree-Algorithmus als einziges Feature dieses Bereiches für die Entscheidungsbäumen ausgewählt wurde. Die Entscheidungsbäume, die mit dem DiffF(Ceps\textsubscript{mag})-Feature entworfen wurden, erreichten eine durchschnittliche Accuracy (das heißt, gemittelt über die Testsignale A\textsubscript{\SI{3}{\decibel}}, A\textsubscript{\SI{50}{\decibel}} und A\textsubscript{\SI{7}{\decibel}*}) von mindestens 91,45\%. Der nächstbeste Entscheidungsbaum mit einer Accuracy von 86,96\% wurde unter Verwendung der Features des Zeitbereiches und der rechnerisch aufwendigeren Autokorrelation auf dem Datensatz S\textsubscript{50+\SI{3}{\decibel},Zeit+Correlation} entworfen. Sobald der Cepstrum-Bereich in Verbindung mit den Features der Bereiche \emph{Zeit} und \emph{Frequenz} verwendet wurde, wurde das DiffF(Ceps\textsubscript{mag})-Feature vom REPTree-Algorithmus bevorzugt, so dass die Features der anderen beiden Bereiche keine Anwendung mehr in den entsprechenden Bäumen fanden.
+Die Features, welche zu den höchsten Accuracy-Werten führten, sind die des \emph{Cepstrum}-Bereiches, genauer gesagt das Diff\textsubscript{t}(Ceps\textsubscript{mag})-Feature, da es vom REPTree als einziges Feature dieses Bereiches für die Entscheidungsbäume ausgewählt wurde. Die Entscheidungsbäume, die mit dem Diff\textsubscript{t}(Ceps\textsubscript{mag})-Feature entworfen wurden, erreichten eine durchschnittliche Accuracy von mindestens 91,45\%. Der nächstbeste Entscheidungsbaum mit einer Accuracy von 86,96\% wurde unter Verwendung der Features des Zeitbereiches und der Autokorrelation auf dem Datensatz D\textsubscript{50+\SI{3}{\decibel},Zeit+Correlation} entworfen. Sobald der Cepstrum-Bereich in Verbindung mit den Features anderer Bereiche verwendet wurde, wurde das Diff\textsubscript{t}(Ceps\textsubscript{mag})-Feature vom REPTree-Algorithmus bevorzugt und die Features der anderen Bereiche nicht mehr verwendet.
 
-Auf Basis der Datensätze S\textsubscript{\SI{3}{\decibel},Ceps}, S\textsubscript{\SI{3}{\decibel},Zeit+Ceps}, S\textsubscript{\SI{3}{\decibel},Freq+Ceps}, S\textsubscript{50+\SI{3}{\decibel},Ceps}, S\textsubscript{50+\SI{3}{\decibel},Zeit+Ceps} sowie \linebreak S\textsubscript{50+\SI{3}{\decibel},Freq+Ceps} wurde der selbe Entscheidungsbaum erzeugt, der in Listing \ref{lst:cepsTree01} zu sehen ist. Auf Basis der Datensätze S\textsubscript{\SI{50}{\decibel},Ceps} und S\textsubscript{\SI{50}{\decibel},Zeit+Ceps} wurde der Entscheidungsbaum in Listing \ref{lst:cepsTree02} erzeugt. Es ist zu sehen, dass (a) beide Entscheidungsbaum einen einfachen Grenzwert für das DiffF(Ceps\textsubscript{mag})-Feature setzen, und zweitens (b) sich die beiden Modelle nur im konkreten Wert des Grenzwertes unterscheiden. 
-
-Da das Modell aus Listing \ref{lst:cepsTree01} eine durchschnittliche Accuracy von 92,22\% und das Modell aus Listing \ref{lst:cepsTree02} eine unwesentlich geringere Accuracy von 91,45\% erreicht, wurden für beide Modelle die Specificity und Sensitivity berechnet, um eine Entscheidung für eines der beiden Modelle fällen zu können. Dazu wurden die Signalmengen A\textsubscript{\SI{3}{\decibel}}, A\textsubscript{\SI{50}{\decibel}} und A\textsubscript{\SI{7}{\decibel}*} in Frames à 100 Windows zerlegt und für jedes Zeitfenster die Senstivity, Specificity und Accuracy bezüglich der beiden Modelle berechnet. Die Ergebnisse werden als Boxplots in Abbildung \ref{img:boxplots} dargestellt. Der Unterschied zwischen den Modellen ist am Stärksten beim Testing gegen die Signale mit einem SNR von \SI{3}{\decibel} und \SI{7}{\decibel}  zu sehen. Das Modell mit dem Grenzwert von 0.03 erzielt in beiden Fällen eine höhere Specificity, aber geringere Senstivitiy als das Modell mit dem Grenzwert bei 0.02. Es wurde sich für das Modell für mit einem Grenzwert von 0.02 entschieden, da durch die höhere Senstivity mehr Wein-Signale erkannt werden, die in späteren Verarbeitungsschritten immernoch als False-Positives erkannt und verworfen werden können. Einmal im Prozess der VAD als Stimmlos markierte Fenster werden jedoch nicht weiter verarbeitet und gehen somit \glqq verloren\grqq. 
-
-\begin{minipage}{\linewidth}
-	\begin{lstlisting}[frame=single,mathescape=true,basicstyle=\footnotesize,language=Java,label=lst:cepsTree01,caption=Entscheidungsbaum für die VAD mit einem Cepstrum-Grenzwert von 0.02,linewidth=1\textwidth]
-	if FDiff(Ceps$_{mag}$($x_i$)) < 0.02
-	|   C($x_i$) = 0
-	|else
-	|   C($x_i$) = 1
-	\end{lstlisting}
-\end{minipage}
-
-\begin{minipage}{\linewidth}
-	\begin{lstlisting}[frame=single,mathescape=true,basicstyle=\footnotesize,language=Java,label=lst:cepsTree02,caption=Entscheidungsbaum für die VAD mit einem Cepstrum-Grenzwert von 0.03,linewidth=1\textwidth]
-	if FDiff(Ceps$_{mag}$($x_i$)) < 0.03
-	|   C($x_i$) = 0
-	|else
-	|   C($x_i$) = 1
-	\end{lstlisting}
-\end{minipage}
-
-Der Finale Funktion zur Klassifikation eines Signalfensters C$(x)$ in $0 = Stille$ oder $1=Stimme$ ist somit durch Gleichung  \ref{eq:vad-final} gegeben.
+Auf Basis der Datensätze D\textsubscript{\SI{3}{\decibel},Ceps}, D\textsubscript{\SI{3}{\decibel},Zeit+Ceps}, D\textsubscript{\SI{3}{\decibel},Freq+Ceps}, D\textsubscript{50+\SI{3}{\decibel},Ceps}, D\textsubscript{50+\SI{3}{\decibel},Zeit+Ceps} sowie D\textsubscript{50+\SI{3}{\decibel},Freq+Ceps} wurde der selbe Klassifikator erzeugt, der in Gleichung \ref{eq:cepTree01} zu definiert wird. Wie zu sehen ist, handelt es sich um einen einfachen Grenzwert des \emph{v.Diff\textsubscript{t}(Ceps\textsubscript{mag})}-Features, da trotz der höchst möglichen Baumtiefe von 2 nur eine Tiefe von 1 genutzt wurde.
 
 \begin{equation}
-C(x)=
-\begin{cases}
-1, & \text{if}\ \text{Ceps}_{mag}(x) >= 0.02 \\
-0, & \text{otherwise}
+C(v_i) = \begin{cases}
+1, \quad \text{if } v.Diff_t(Ceps_{mag}) > 0.02, \\
+0 \quad \text{else}
+\end{cases}
+\label{eq:cepTree01}
+\end{equation}
+
+
+Auf Basis der Datensätze D\textsubscript{\SI{50}{\decibel},Ceps} und D\textsubscript{\SI{50}{\decibel},Zeit+Ceps} wurde der Klassifikator nach Gleichung \ref{eq:cepTree02} erzeugt. Er unterscheidet sich von dem Klassifikator aus Gleichung \ref{eq:cepTree01} nur durch den Grenzwert.
+
+\begin{equation}
+C(v_i) = \begin{cases}
+1, \quad \text{if } v.Diff_t(Ceps_{mag}) > 0.03, \\
+0 \quad \text{else}
+\end{cases}
+\label{eq:cepTree02}
+\end{equation}
+
+Da der Klassifikator aus Gleichung \ref{eq:cepTree01} eine durchschnittliche Accuracy von 92,22\% und der Klassifikator aus Gleichung \ref{eq:cepTree02} eine unwesentlich geringere Accuracy von 91,45\% erzielt, wurden für beide Modelle die Specificity und Sensitivity berechnet, um eine Entscheidung für eines der beiden Modelle fällen zu können. Dazu wurden die Signalmengen A\textsubscript{\SI{3}{\decibel}}, A\textsubscript{\SI{50}{\decibel}} und A\textsubscript{\SI{7}{\decibel}*} in Frames à 100 Windows zerlegt und für jedes Zeitfenster die Senstivity, Specificity und Accuracy bezüglich der beiden Klassifikatoren berechnet. Die Ergebnisse werden als Boxplots in Abbildung \ref{img:boxplots} dargestellt. Die Modelle unterscheiden sich am stärksten bezüglich der Datensätze mit \SI{3}{\decibel} und \SI{7}{\decibel}. Der Klassifikator mit dem Grenzwert von 0.03 erzielt in beiden Fällen eine höhere Specificity, aber geringere Senstivitiy als das Modell mit dem Grenzwert bei 0.02. Es wurde sich für das Modell für mit einem Grenzwert von 0.02 entschieden, da durch die höhere Senstivity mehr Cry-Units erkannt werden, die in späteren Verarbeitungsschritten immernoch als False-Positives erkannt und verworfen werden können. Einmal im Prozess der VAD als Stimmlos markierte Fenster werden jedoch nicht weiter verarbeitet und gehen somit \glqq verloren\grqq. 
+
+Der Finale Klassifikations-Funktion eines Signalfensters $C(x_i[\;])$ in $0 \longmapsto Stille$ oder $1 \longmapsto Stimme$ ist somit durch Gleichung \ref{eq:vad-final} gegeben, wobei $c_i[\;]$ das Cepstrum des Signalfensters ist.
+
+\begin{equation}
+C(x_i[\;]) = \begin{cases}
+1, \quad \text{if } v.Diff_t(Ceps_{mag}(c_i[\;])) > 0.02, \\
+0 \quad \text{else}
 \end{cases}
 \label{eq:vad-final}
 \end{equation}
@@ -404,71 +370,76 @@ C(x)=
 \subsection{Markierung der Cry-Units}
 \label{sec:CryUnit}
 
-Das Ergebnis der Voice-Activity-Detection ist eine Zurdnung aller Signalfenster $x_1 ... x_n$ zu den Klassen $C(x_i) = 0$ \emph{Stille} oder  $C(x_i) = 1$ \emph{Stimme}. In \cite{vad_entropy} wird die Idee vorgestellt, zusammenhängende und ununterbrochene Ketten als \emph{stimmhaft} klassifizierter Signalfesnter zu \emph{Stimm-Segmenten} zusammenzufassen, welche in diesem Zusammenhang eine \emph{Cry-Units} entsprechen. Abbildung \ref{img:cryUnit} veranschaulicht diese Gruppierung. Formel \ref{eq:cry-Unit} gibt die Definition des Datentypes \emph{Cry-Unit} $[CU]$. Eine Cry-Unit definiert sich durch einen Anfangszeitpunkt $start$, einen Endzeitpunkt $end$ und der Liste seiner Signalfenster $windows = [x_1 ... x_n]$.
+Wird die Voice-Activity-Detection für das Signal $x[\;]$ nach Gleichung \ref{eq:vad-final} durchgeführt, ist das Ergebnis eine Zuordnung der Signalfenster $x_1[\;] \ldots x_n[\;]$ zu den Klassen $C(x_i[\;]) = 1$ \emph{Stimme} oder  $C(x_i[\;]) = 0$ \emph{Stille}. Varallyay \cite[S. 16 - 17]{cry_thesis} stellt die Idee vor, auf Grundlage der Informationen der Voice-Activity-Detection die Cry-Units zu extrahieren (welche er in seiner Publikation als Cry-Segmente beschreibt). Das genaue vorgehen konnte jedoch nicht eingesehen werden, da der Autor dieser Arbeit keine Zugriffsrechte auf die Publikation erhielt.
+
+Waheed et al \cite{vad_entropy} stellen die Idee vor, zusammenhängende und ununterbrochene Ketten als \emph{stimmhaft} klassifizierter Signalfenster zu \emph{Stimm-Segmenten} zusammenzufassen. Dieser Ansatz wird übernommen, wobei ein Stimmsegment in dem Kontext dieser Arbeit einer \emph{Cry-Units} entspricht. Möglicherweise ist dies der Ansatz, den auch  Varallyay \cite[S. 16 - 17]{cry_thesis} gewählt hat. Abbildung \ref{img:cryUnit} veranschaulicht diese Gruppierung. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{bilder/cry-Unit01.png}
+	\includegraphics[width=0.6\textwidth]{bilder/cry-Unit02.png}
 	\caption{Zusammenfassung klassifizierter Signalfenster zu Cry-Units}
 	\label{img:cryUnit}
 \end{figure}
 
-Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie in der Liste aller Signalfenster $X_{windows} = [x_1 ... x_n]$ eine Liste von Cry-Units $CU_{all} = [cu_1 ... cu_m]$ markiert wird. Die Funktion C$(x)$ ist die Klassifikations-Funktion der Signalfenster in Stille/Stimme nach Gleichung \ref{eq:vad-final}. Die Funktion getTimeOf$(x)$ liefert die Anfangszeitpunkt des Signalfensters $x$.
+Formel \ref{eq:cry-Unit} gibt die Definition des Datentypes \emph{Cry-Unit} $[CU]$. Eine Cry-Unit wird definiert durch den Anfangszeitpunkt $start$, einen Endzeitpunkt $end$ und der Liste seiner Signalfenster $windows = [x_1 ... x_m]$.
 
 \begin{equation}
-CU = (windows = [x_1 ... x_n ], start \in Zeit, end \in Zeit)
+CU = (windows = [x_1 ... x_m ], start \in Zeit, end \in Zeit)
 \label{eq:cry-Unit}
 \end{equation}
 
+Die Dauer eine Cry-Unit $cu \in CU$ wird nach Formel \ref{eq:cry-Lambda} berechnet und mit $\lambda$ bezeichnet. Der (Stille)-Zeitraum zwischen zwei Cry-Units d($cu_i, cu_j$), wird nach Formel \ref{eq:cry-distance} berechnet. Diese Zusammenhänge werden in Abbildung \ref{img:cryUnit-details} visualisiert.\cite{vad_entropy}
+
 \begin{equation}
-\lambda (CU) = CU.end - CU.start
+\lambda (cu) = cu.end - cu.start
 \label{eq:cry-Lambda}
 \end{equation}
 
 \begin{equation}
-\text{d}(CU_i, CU_j) = CU_j.start - CU_i.end
+\text{d}(cu_i, cu_j) = cu_j.start - cu_i.end
 \label{eq:cry-distance}
 \end{equation}
 
-Die Dauer eine Cry-Unit $\lambda(CU)$ wird nach Formel \ref{eq:cry-Lambda} berechnet. Der (Stille)-Zeitraum zwischen zwei Cry-Units d($CU_i, CU_j$), wird nach Formel \ref{eq:cry-distance} berechnet. Diese Zusammenhänge werden in Abbildung \ref{img:cryUnit-details} visualisiert.\cite{vad_entropy}
-
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{bilder/newSmoothing03.png}
-	\caption{Beziehung zwischen agrenzenden Segmenten}
+	\includegraphics[width=0.8\textwidth]{bilder/newSmoothing05.png}
+	\caption{Beziehung zwischen agrenzenden Cry-Units}
 	\label{img:cryUnit-details}
 \end{figure}
 
-\begin{algorithm}[H]
-	\caption{Gruppierung von x-Windows zu Cry-Units}
+Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie auf Basis der Liste aller Signalfenster eines Signals $X_{all} = [x_1[\;] ,\ldots, x_n[\;]]$ die Liste der Cry-Units $CU_{all} = [cu_1 ... cu_m]$ generiert wird. Die Funktion $C(x)$ ist die Klassifikations-Funktion der Signalfenster in Stille/Stimme nach Gleichung \ref{eq:vad-final}. Die Funktion getTimeOf$(x_i[\;])$ liefert die Anfangszeitpunkt des Signalfensters $x_i[\;]$.
+
+\begin{algorithm}[h]
+	\caption{Gruppierung von Signalfenstern zu Cry-Units}
 	\label{alg:cryUnit}
 	\begin{algorithmic}[1]
-		\Function{turnWindowsIntoCryUnits}{$X_{windows}$}
-		\State $ CU_{all} \gets []$
-		\State $ cu_i \gets ([],0,0)$
-		\For{ $i = 1...length(X_{windows})$}
-		\State $ c_i \gets C(x_i)$
-		\State \Comment Start of Cry-Unit
-		\If {$c_i == 1 \wedge \text{isEmpty}(cu_i.windows)$}
-		\State $cu_i.start \gets \text{getTimeOf}(x_i)$
-		\State $cu_i.windows \gets [cu_i.windows, x_i]$
-		\EndIf
-		\State \Comment Inside Cry-Unit
-		\If {$c_i == 1 \wedge \text{ ! isEmpty}(cu_i.windows)$}
-		\State $cu_i.windows \gets [cu_i.windows, x_i]$
-		\EndIf
-		\State \Comment End of Cry-Unit
-		\If {$c_i == 0 \wedge \text{ ! isEmpty}(cu_i.windows)$}
-		\State $cu_i.end \gets  getTimeOf(x_i)$
-		\State $CU \gets [CU, cu_i]$
-		\State $cu_i.windows \gets []$
-		\EndIf
+		\Function{turnWindowsIntoCryUnits}{$X_{all}$}
+		\State $ CU_{all} \gets [\;]$
+		\State $ cu\gets ([\;],0,0)$
+		\For{ $i = 1,\ldots,length(X_{all})$}
+				\State $ c_i \gets C(x_i[\;])$
+				\State \Comment Start of Cry-Unit
+				\If {$c_i == 1 \wedge \text{isEmpty}(cu_j.windows)$}
+						\State $ cu\gets ([\;],0,0)$
+						\State $cu.start \gets \text{getTimeOf}(x_i[\;])$
+						\State $cu.windows \gets [cu.windows, x_i[\;]]$
+				\EndIf
+				\State \Comment Inside Cry-Unit
+				\If {$c_i == 1 \wedge \text{ ! isEmpty}(cu.windows)$}
+						\State $cu.windows \gets [cu.windows, x_i[\;]]$
+				\EndIf
+				\State \Comment End of Cry-Unit
+				\If {$c_i == 0 \wedge \text{ ! isEmpty}(cu.windows)$}
+						\State $cu.end \gets  getTimeOf(x_i[\;])$
+						\State $CU \gets [CU, cu]$
+						\State $cu.windows \gets [\;]$
+				\EndIf
 		\EndFor
 		
-		\State \Comment End last Cry-Unit by force if still open.
-		\If {$\text{ ! isEmpty}(cu_i.windows) == 0$}
-		\State $cu_i.end \gets  getTimeOf(X_{windows}[end])$
-		\State $CU_{all} \gets [CU_{all}, cu_i]$
+		\State \Comment End last Cry-Unit by force if is still open.
+		\If {$\text{ ! isEmpty}(cu.windows) == 0$}
+		\State $cu.end \gets  getTimeOf(X_{windows}[end])$
+		\State $CU_{all} \gets [CU_{all}, cu]$
 		\EndIf
 		
 		\Return $CU_{all}$
@@ -480,7 +451,8 @@ Die Dauer eine Cry-Unit $\lambda(CU)$ wird nach Formel \ref{eq:cry-Lambda} berec
 
 \subsection{Decision Smoothing}
 
-Abbildung \ref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal-Rausch-Abstand von \SI{3}{\decibel}, bei dem die Klassifizierung nach dem Entscheidungsbaum aus Listing \ref{lst:cepsTree01} durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifizierung, und die grüne Linie die gefundene Klassifizierung nach dem vorgestellten Algorithmus. Die tatsächlichen/gefunden Cry-Units sind klar zu erkennen als die Bereiche, die von der roten/grünen Linie überspannt werden. Es ist zu sehen, dass False-Negatives und False-Positives in der Klassifizierung enthalten sind. Im folgenden werden drei charakteristische Arten falscher Klassifizierungen näher erläutert:
+Abbildung \ref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal-Rausch-Abstand von \SI{3}{\decibel}, bei dem die Klassifikation nach Gleichung \ref{eq:vad-final} durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifizierung und die grüne Linie die prognostizierte Klassifizierung. Die tatsächlichen/gefunden Cry-Units sind klar zu erkennen als die Bereiche, die von der roten/grünen Linie überspannt werden. Es ist zu sehen, dass False-Negatives und False-Positives in der Klassifizierung enthalten sind. Im folgenden werden drei charakteristische Arten falscher Klassifikationen näher erläutert:
+
 \begin{description}
 	\item [False Negatives nach (a) :] Eine korrekt erkannte, längere Cry-Unit wird zu früh beendet. Oft werden kurz nach dem Ende sehr kurze Cry-Units erkannt, die eigentlich noch zu der längeren, vorhergehenden Cry-Unit gehören.
 	\item [False Positives nach (b): ] Kurze Cry-Units werden in eigentlichen Stille-Bereichen erkannt.
