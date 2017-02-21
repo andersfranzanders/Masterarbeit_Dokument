@@ -23,9 +23,11 @@
 \contentsline {subsubsection}{\nonumberline Ergebnis}{21}{section*.21}
 \contentsline {subsection}{\numberline {3.4.4}Markierung der Cry-Units}{22}{subsection.3.4.4}
 \contentsline {subsection}{\numberline {3.4.5}Decision Smoothing}{23}{subsection.3.4.5}
-\contentsline {section}{\numberline {3.5}Segmentierung}{26}{section.3.5}
-\contentsline {section}{\numberline {3.6}Feature-Extraction}{29}{section.3.6}
-\contentsline {section}{\numberline {3.7}Ableitung der Schmerz-Scores}{29}{section.3.7}
-\contentsline {section}{\numberline {3.8}Visualisierung}{29}{section.3.8}
-\contentsline {chapter}{\numberline {4}Zusammenfassung}{30}{chapter.4}
-\contentsline {chapter}{Appendices}{34}{section*.29}
+\contentsline {subsection}{\numberline {3.4.6}Diskussion der Voice-Activity-Detection}{25}{subsection.3.4.6}
+\contentsline {section}{\numberline {3.5}Segmentierung}{27}{section.3.5}
+\contentsline {section}{\numberline {3.6}Feature-Extraktion und Ableitung der Schmerzscore}{29}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Feature-Extraction}{31}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Ableitung der Pain-Score}{31}{subsection.3.6.2}
+\contentsline {section}{\numberline {3.7}Visualisierung}{32}{section.3.7}
+\contentsline {chapter}{\numberline {4}Zusammenfassung}{33}{chapter.4}
+\contentsline {chapter}{Appendices}{37}{section*.29}

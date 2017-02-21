@@ -11,10 +11,10 @@
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden. Schwarz: Eingangs-Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }}{18}{figure.caption.16}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Thresholding eines Feature-Signales. Schwarz: Das Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Beispiel-Grenzwert\relax }}{19}{figure.caption.18}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }}{23}{figure.caption.22}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Beziehung zwischen agrenzenden Cry-Units\relax }}{23}{figure.caption.23}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Beziehung zwischen agrenzenden Cry-Units, nach \cite [S. 2]{vad_entropy}\relax }}{23}{figure.caption.23}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{25}{figure.caption.24}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Klassifizierung vor und nach dem Decision Smoothing\relax }}{26}{figure.caption.25}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Ergebnis der Segmentierung\relax }}{26}{figure.caption.26}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{27}{figure.caption.27}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Klassifizierung vor und nach dem Decision Smoothing\relax }}{25}{figure.caption.25}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{27}{figure.caption.26}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Ergebnis der Segmentierung\relax }}{29}{figure.caption.27}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{36}{figure.caption.31}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{39}{figure.caption.31}

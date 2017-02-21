@@ -347,6 +347,7 @@ Die Accuracy beziffert die insgesamte Performance des Klassifikators, gibt jedoc
 \end{equation}
 
 \section{Regression}
+\label{sec:regression}
 
 Während der Klassfikator $c$ bei der Klassifikation die Instanzen auf eine \emph{diskrete, quantitative} Menge abbildet werden, werden bei der Regression die Instanzen auf eine \emph{kontinuierliche, qualitative} Menge abgebildet. Der Klassifikator $c$ wird in der Regression als \emph{Regressor} $r$ bezeichnet, und die Menge, auf die die Instanzen abgebildet werden, als \emph{Output}, \emph{Predicted Attribut} oder \emph{abhängige Variable} $Y$. Wird keine explizite Einschränkung für $Y$ gegeben, so gilt $Y = \mathbb{R}$. \cite[S. 24]{learning_cart_dobra} \cite[S. 8]{machine_marsland} \cite[S. 28]{statistical_learning}
 
@@ -424,6 +425,7 @@ Durch das Einsetzen von $\hat{y}_i =  \beta_0 + \beta_1 x_i$ in Gleichung\ref{eq
 \end{equation}
 
 \subsection{Multiple Linear Regression}
+\label{sec:multipleRegression}
 
 Bei der \emph{multiplen linearen Regression} (auch \emph{mehrdimensionale lineare Regression}) werden im Gegensatz zur einfachen linearen Präditktions-Variablen eine beliebige Anzahl von  Prädiktions-Variablen $X_1 , \ldots X_n$ nach $Y$ abgebildet. Das heißt, dass eine Instanz nun mehrere Features besitzen kann, der Feature-Raum wird definiert durch $X = X_1 \times , ... \times X_n$. Das Regressionsmodell entspricht nun einer Hyperebene. Beispielsweise entspricht bei einem zweidimensionalen Featureraum $X = \mathbb{R}^2$ entspricht das Regressionsmodell einer Ebene im dreidimensionalen Raum, wobei die dritte Dimension dem Output $Y$ enspricht. Die einfache lineare Regression ist dementsprechend ein Spezialfall der mehrdimensionalen linearen Regression, bei dem der Feature-Raum nur eine Dimension besitzt. \cite[Multiple Linear Regression]{regression_lecture} \cite[S.71]{statistical_learning} Abbildung \ref{img:multregression} zeigt ein Beispiel für die lineare Regression eines zweidimensionalen Feature-Raumes. 
 

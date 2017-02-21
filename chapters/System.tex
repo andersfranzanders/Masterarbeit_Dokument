@@ -38,12 +38,12 @@ In dieser Arbeit wird die folgende Verarbeitungs-Pipeline vorgestellt. Sie wird 
 	
 	\item \textbf{Voice-Activity-Detection}. Das Audiosignal wird in einander überlappende Zeitfenster weniger Millisekunden zerschnitten. Mit Hilfe eines Klassifizierungs-Algorithmus werden die Zeitfenster in als \emph{Stimmhaft} oder \emph{nicht Stimmhaft} markiert. Ununterbrochene Reihen von Stimmhaften Signalfenstern werden zu \emph{Cry-Units} zusammengefasst. Das Ergebnis der Voice-Activity-Detection sind Markierungen der Anfangs- und Endzeitpunkte \emph{Cry-Units}, die die Basis aller darauf folgenden Auswertungen bilden. Diese Idee ist aus der Dissertation von Várallyay \cite[S. 16 - 17]{cry_thesis} übernommen, welcher Cry-Units als \emph{Segments} bezeichnet. Die Voice-Activity-Detection wird in Kapitel \ref{sec:vad} vorgestellt.
 	
-	\item \textbf{Segmentierung} (engl \emph{Segmenting}), das Zusammenfassen mehrer Cry-Units zu Segmenten, welche in Kapitel \ref{sec:acousticModel} als \emph{Cry} bezeichnet werden. Dieser Schritt ist Notwendig, weil die Ableitung der Schmerz-Scores nicht aus den Informationen einer Cry-Unit, sondern aus dem Verbund mehrerer Cry-Units geschieht. Keine der in Kapitel \ref{sec:system_literature} vorgestellten Veröffentlichungen beschreibt ein Verfahren, welches  adaptiert werden können, entweder weil der Input der Algorithmen bereits auf die Länge der Segmente beschnitten wurde, oder weil ein eventuell verwendetes Verfahren nicht beschrieben wird. Daher wird ein simpler Algorithmus für die Segmentierung vorgeschlagen, welcher für die kontinuierliche Auswertung implementiert werden kann. Die Segmentierung wird in Kapitel \ref{sec:segmenting} vorgestellt.		
+	\item \textbf{Segmentierung} (engl \emph{Segmenting}), das Zusammenfassen mehrer Cry-Units zu Segmenten, welche in Kapitel \ref{sec:acousticModel} als \emph{Cry} bezeichnet werden. Dieser Schritt ist notwendig, weil die Ableitung der Schmerz-Scores nicht aus den Informationen einer Cry-Unit, sondern aus dem Verbund mehrerer Cry-Units geschieht. Keine der in Kapitel \ref{sec:system_literature} vorgestellten Veröffentlichungen beschreibt ein Verfahren, welches  adaptiert werden können, entweder weil der Input der Algorithmen bereits auf die Länge der Segmente beschnitten wurde, oder weil ein eventuell verwendetes Verfahren nicht beschrieben wird. Daher wird ein simpler Algorithmus für die Segmentierung vorgeschlagen, welcher für die kontinuierliche Auswertung implementiert werden kann. Die Segmentierung wird in Kapitel \ref{sec:segmenting} vorgestellt.		
 	
 	\item \textbf{Feature-Extraction}, das heißt die Berechnung von Eigenschaften für jedes Segment, die für die Ableitung der Pain-Scores von Interesse sind. Diese Eigenschaften weden in Regelmäßigen Zeitintervallen innheralb des Segmentes abgefragt. Diese Feature-Extraktion ist ein notwendiger Vorbereitungsschritt für die Anschließende Klassifikation/Regression, welcher in allen in Kapitel \ref{sec:system_literature} vorgestellten Veröffentlichungen durchgeführt wird.
 	Die Feauture-Extraction wird in Kapitel \ref{sec:segmentFeatures} vorgestellt.	
 	
-	\item \textbf{Ableitung der Pain Score} aus den Features des Segmentes. Während es sich in allen in Kapitel \ref{sec:system_literature} vorgestellten Veröffentlichungen um Klassifikationsaufgaben handelte, wird hier eine Regression vorgenommen. Die Feature-Extraction wird in Kapitel \ref{sec:regressionPainScore} vorgestellt.
+	\item \textbf{Ableitung der Pain Score} aus den Features des Segmentes. Während es sich in allen in Kapitel \ref{sec:system_literature} vorgestellten Veröffentlichungen um Klassifikationsaufgaben handelte, wird hier eine Regression vorgenommen. Die Feature-Extraction wird in Kapitel \ref{sec:overviewPainRegression} und \ref{sec:regressionPainScore} vorgestellt.
 	
 	\item \textbf{Visualisierung} der errechneten Pain-Score. In dieser Arbeit werden mehrere Versionen eines Systems vorgeschlagen, welche den zeitlichen Verlauf auf Ampel-Farben abbilden, welche die höhe der Schmerz-Score codieren. die Visualisierung wird in Kapitel \ref{sec:visualisation}	
 \end{enumerate}
@@ -388,7 +388,7 @@ CU = (windows = [x_1 ... x_m ], start \in Zeit, end \in Zeit)
 \label{eq:cry-Unit}
 \end{equation}
 
-Die Dauer eine Cry-Unit $cu \in CU$ wird nach Formel \ref{eq:cry-Lambda} berechnet und mit $\lambda$ bezeichnet. Der (Stille)-Zeitraum zwischen zwei Cry-Units d($cu_i, cu_j$), wird nach Formel \ref{eq:cry-distance} berechnet. Diese Zusammenhänge werden in Abbildung \ref{img:cryUnit-details} visualisiert.\cite{vad_entropy}
+Die Dauer eine Cry-Unit $cu \in CU$ wird nach Formel \ref{eq:cry-Lambda} berechnet und mit $\lambda$ bezeichnet. Der (Stille)-Zeitraum zwischen zwei Cry-Units d($cu_i, cu_j$), wird nach Formel \ref{eq:cry-distance} berechnet. Diese Zusammenhänge werden in Abbildung \ref{img:cryUnit-details} visualisiert.\cite[S. 2]{vad_entropy}
 
 \begin{equation}
 \lambda (cu) = cu.end - cu.start
@@ -403,7 +403,7 @@ Die Dauer eine Cry-Unit $cu \in CU$ wird nach Formel \ref{eq:cry-Lambda} berechn
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{bilder/newSmoothing05.png}
-	\caption{Beziehung zwischen agrenzenden Cry-Units}
+	\caption{Beziehung zwischen agrenzenden Cry-Units, nach \cite[S. 2]{vad_entropy}}
 	\label{img:cryUnit-details}
 \end{figure}
 
@@ -451,12 +451,12 @@ Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie auf Basis der Liste alle
 
 \subsection{Decision Smoothing}
 
-Abbildung \ref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal-Rausch-Abstand von \SI{3}{\decibel}, bei dem die Klassifikation nach Gleichung \ref{eq:vad-final} durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifizierung und die grüne Linie die prognostizierte Klassifizierung. Die tatsächlichen/gefunden Cry-Units sind klar zu erkennen als die Bereiche, die von der roten/grünen Linie überspannt werden. Es ist zu sehen, dass False-Negatives und False-Positives in der Klassifizierung enthalten sind. Im folgenden werden drei charakteristische Arten falscher Klassifikationen näher erläutert:
+Abbildung \ref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal-Rausch-Abstand von \SI{3}{\decibel}, bei dem die Klassifikation nach Gleichung \ref{eq:vad-final} durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifizierung und die grüne Linie die prognostizierte Klassifizierung. Es ist zu sehen, dass False-Negatives und False-Positives in der Klassifizierung enthalten sind. Im folgenden werden drei charakteristische Arten falscher Klassifikationen näher erläutert:
 
 \begin{description}
-	\item [False Negatives nach (a) :] Eine korrekt erkannte, längere Cry-Unit wird zu früh beendet. Oft werden kurz nach dem Ende sehr kurze Cry-Units erkannt, die eigentlich noch zu der längeren, vorhergehenden Cry-Unit gehören.
+	\item [False Negatives nach (a) :] Eine korrekt erkannte, längere Cry-Unit wird zu früh beendet. Oft werden kurz nach dem Ende einer längeren Cry-Unit sehr kurze Cry-Units erkannt, die eigentlich noch zu der längeren, vorhergehenden Cry-Unit gehören.
 	\item [False Positives nach (b): ] Kurze Cry-Units werden in eigentlichen Stille-Bereichen erkannt.
-	\item [False Negatives nach (c): ] Eine Cry-Unit zerfällt in zwei kürzere Cry-Units, da einige Signalfenster in der Mitte als Stille erkannt wurden.
+	\item [False Negatives nach (c): ] Eine Cry-Unit zerfällt in zwei Cry-Units, da Signalfenster in der Mitte als Stille erkannt wurden.
 \end{description}
 
 \begin{figure}[h]
@@ -466,47 +466,48 @@ Abbildung \ref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal-Rausc
 	\label{img:beforeSmoothing}
 \end{figure}
 
-Im Process des \textbf{Decision Smoothing} werden kontextuelle Informationen genutzt, um nachträglich False-Positives und False-Negatives zu entfernen. Es werden dazu die in \cite{vad_entropy} präsentierten Ideen verwendet. Es werden zwei Parameter eingeführt: $\lambda_{min}$, die Mindestlänge einer akzeptierten Cry-Unit, und d$_{min}$, die Mindestlänge eines akzeptierten Stille-Segmentes. Das Decision Smoothing wird nach den folgenden Entscheidungsregeln durchgeführt:
+Im Process des \textbf{Decision Smoothing} werden kontextuelle Informationen genutzt, um nachträglich False-Positives und False-Negatives zu entfernen. Es werden dazu die von Waheed et al \cite{vad_entropy} präsentierten Ideen verwendet. Es werden zwei Parameter eingeführt: $\lambda_{min}$, die Mindestlänge einer akzeptierten Cry-Unit, und d$_{min}$, die Mindestlänge eines akzeptierten Stille-Segmentes. Das Decision Smoothing wird nach den folgenden Entscheidungsregeln durchgeführt:
 
 \noindent\rule{\linewidth}{0.3pt}
 \begin{itemize}
-	\item ist $\lambda (CU_{i}) \leq \lambda_{min}$ ?
+	\item ist $\lambda (cu_{i}) \leq \lambda_{min}$ ?
 	\begin{itemize}
-		\item wenn $\lambda (CU_{i-1}) > \lambda_{min}$ und $d (CU_{i-1}, CU_{i}) \leq d_{min}$, dann vereinige $CU_{i}$ mit $CU_{i-1}$ . $\Rightarrow$ behebt False-Negatives des Types (a)
-		\item ansonsten entferne $CU_i \Rightarrow$ behebt False-Negatives des Types (b)
+		\item wenn $\lambda (cu_{i-1}) > \lambda_{min}$ und $d (cu_{i-1}, cu_{i}) \leq d_{min}$, dann vereinige $CU_{i}$ mit $CU_{i-1}$ . $\Rightarrow$ behebt False-Negatives des Types (a)
+		\item ansonsten entferne $cu_i \Rightarrow$ behebt False-Negatives des Types (b)
 	\end{itemize}
-	\item wenn $\lambda (CU_{i} > \lambda_{min}$ und $d (CU_{i-1}, CU_{i}) \leq d_{min}$, dann vereinige $CU_{i}$ mit $CU_{i-1}$ . $\Rightarrow$ behebt False-Negatives des Types (c)
+	\item wenn $\lambda (cu_{i}) > \lambda_{min}$ und $d (cu_{i-1}, cu_{i}) \leq d_{min}$, dann vereinige $cu_{i}$ mit $cu_{i-1}$ . $\Rightarrow$ behebt False-Negatives des Types (c)
 \end{itemize}
 \noindent\rule{\linewidth}{0.3pt}
 
-Die Entscheidungsregeln greifen Algorithmus greifen nur auf die aktuellen und die letzten bekannte Cry-Unit um, um eine kontinuierliche Analyse zu gewährleisten, weshalb die Entscheidungsregeln jedoch auch komplex sind. Bei einer offline-Analyse können die Entscheidungsregeln vereinfacht werden, da False-Negative Type (a) und (c) mit der selben Regeln abgefragt werden können. Algorithmus \ref{alg:decisionSmoothing} zeigt in Pseudo-Code, wie das Decision-Smoothing durchgeführt wird. Input der Funktion ist die Liste aller Cry-Units $CU_{all}$, die durch Algorithmus \ref{alg:cryUnit} entstanden ist, sowie die Grenzwerte $\lambda_{min}, d_{min}$. Ausgang der Funktion ist die Liste aller Cry-Units nach dem Decision-Smoothing $CU_{smoothed}$.
+Die Entscheidungsregeln greifen nur auf die letzten beiden erkannten Cry-Units zu, um eine kontinuierliche Analyse zu gewährleisten. Bei einer kontinuierlichen Analyse wird die Auswertung um die Zeitdauer einer Cry-Unit verzögert, da die Entscheidungsregeln erst nach Beendigung einer Cry-Unit abgefragt werden können. Bei einer offline-Analyse können die Entscheidungsregeln vereinfacht werden, da die False-Negatives nach Typ (a) und (c) mit der selben Regel abgefragt werden können. Algorithmus \ref{alg:decisionSmoothing} zeigt in Pseudo-Code, wie das Decision-Smoothing durchgeführt wird. Input der Funktion ist die Liste aller Cry-Units $CU_{all}$, die durch Algorithmus \ref{alg:cryUnit} entstanden ist, sowie die Grenzwerte $\lambda_{min}, d_{min}$. Ausgang der Funktion ist die Liste aller Cry-Units nach dem Decision-Smoothing $CU_{smoothed}$.
 
-\begin{algorithm}[H]
-	\caption{Decision-Smoothing of VAD}
+\begin{algorithm}[h]
+	\caption{Decision-Smoothing for VAD}
 	\label{alg:decisionSmoothing}
 	\begin{algorithmic}[1]
 		\Function{decisionSmoothing}{$CU_{all}, \lambda_{min}, d_{min}$}
 		\State $CU_{smoothed} \gets[CU_{all}[1]] $
-		\For{ $i = 2...length(CU_{all})$}
-		\State $cu_i \gets CU_{all}[i]$
-		\State $cu_{i-1} \gets CU_{smoothed}[end]$
-		\If{$\lambda(cu_i) > \lambda_{min}$}
-		\If{d$(cu_{i-1},cu_{i}) > d_{min}$}
-		\State $CU_{smoothed} \gets [CU_{smoothed}, cu_i] $
-		\Else
-		\State \Comment Erase False-Negative Type (c)
-		\State $cu_i \gets \text{vereinige}(cu_i, cu_{i-1})$
-		\State $CU_{smoothed} \gets [CU_{smoothed}[1:end-1], cu_i] $
-		\EndIf
-		\Else
-		\State \Comment Erase False-Negative Type (a)
-		\If{$\lambda(cu_i) > \lambda_{min} \wedge  d(cu_{i-1},cu_{i}) \leq d_{min}$ }
-		\State $cu_i \gets \text{vereinige}(cu_i, cu_{i-1})$
-		\State $CU_{smoothed} \gets [CU_{smoothed}[1:end-1], cu_i] $
-		\Else
-		\State \Comment Don't accept $cu_i$. Erases False-Positives (b)
-		\EndIf
-		\EndIf
+		\For{ $i = 2 , \ldots , length(CU_{all})$}
+			\State $cu_i \gets CU_{all}[i]$
+			\State $cu_{i-1} \gets CU_{smoothed}[end]$
+			\If{$\lambda(cu_i) > \lambda_{min}$}
+			\State \Comment Accept Cry-Unit
+			\If{d$(cu_{i-1},cu_{i}) > d_{min}$}
+					\State $CU_{smoothed} \gets [CU_{smoothed}, cu_i] $
+			\Else
+					\State \Comment Erase False-Negative Type (c)
+					\State $cu_i \gets \text{vereinige}(cu_i, cu_{i-1})$
+					\State $CU_{smoothed} \gets [CU_{smoothed}[1:end-1], cu_i] $
+			\EndIf
+			\Else
+			\State \Comment Erase False-Negative Type (a)
+			\If{$d(cu_{i-1},cu_{i}) \leq d_{min}$ }
+			\State $cu_i \gets \text{vereinige}(cu_i, cu_{i-1})$
+			\State $CU_{smoothed} \gets [CU_{smoothed}[1:end-1], cu_i] $
+			\Else
+			\State \Comment Don't accept $cu_i$. Erases False-Positives (b)
+			\EndIf
+			\EndIf
 		\EndFor
 		
 		\Return $CU_{smoothed}$
@@ -515,7 +516,7 @@ Die Entscheidungsregeln greifen Algorithmus greifen nur auf die aktuellen und di
 	\end{algorithmic}
 \end{algorithm}
 
-Abbildung \ref{img:after-smoothing} zeigt das Signal vor und nach dem Decision-Smoothing. Die Parameter wurden experimentell mit $\lambda_{min} = 50 ms$ und $d_{min} = 50 ms$ bestimmt.
+Abbildung \ref{img:after-smoothing} zeigt das Beispielsignal vor und nach dem Decision-Smoothing. In verschiedenen Veröffentlichungen wurden unterschiedliche Mindestlängen von Cry-Units festgestellt. Varallyay \cite[S. 8]{cry_thesis} hat eine Mindestlänge von \SI{250}{\milli\second} gemessen. Der geringste Wert, der nach dem Wissen des Autors dieser Arbeit in einer Veröffentlichung genannt wurde, stammt von Zeskind et al \cite[S. 325]{rythmic} und beträgt  \SI{60}{\milli\second}, welcher für $\lambda-{min}$ übernommen wurde. Es konnten hingegen keine Werte über die geringste festgestellte Pause zwischen zwei Cry-Units gefunden werden. Der Wert wurde daher auf Basis des verwendeten Trainings-Datensatzes experimentell ebenfalls mit $d_{min} = \SI{60}{\milli\second}$ bestimmt. 
 
 \begin{figure}[h]
 	\centering
@@ -524,40 +525,46 @@ Abbildung \ref{img:after-smoothing} zeigt das Signal vor und nach dem Decision-S
 	\label{img:after-smoothing}
 \end{figure}
 
+\subsection{Diskussion der Voice-Activity-Detection}
+
+In diesem Kapitel wurden verschiedene Varianten der Voice-Activity-Detection vorgestellt, verglichen und evaluiert, wobei eine Voice-Activity-Detection auf Basis des Cepstrums die besten Ergebnisse erzielt hat. Die Voice-Activity-Detection betrachtet kontextuelle Informationen in Bezug auf den zeitlichen Verlauf jedoch nur in einem geringen Maße beim Decision-Smoothing. Schlussendlich markiert der VAD-Algorithmus eine Reihe von kurzen Signalfenstern genau dann als zusammenhängende Cry-Unit, wenn jedes Signalfenster für sich betrachtet als Lautäußerung eines Babies klassifiziert wurde. Ob jedoch die Reihenfolge der in den Signalfenstern enthaltenen Lautäußerungen Sinn macht, wird nicht betrachtet. Schneidet man beispielsweise wenige Sekunden aus der Mitte einer längeren Cry-Unit aus und konkateniert dieses Sample viele Male, um eine synthetische, längere Cry-Unit zu erzeugen, klingt das Ergebnis für den Menschen stark unnatürlich, wird von dem hier vorgestellten VAD-Algorithmus jedoch trotzdem als valide Cry-Unit markiert. Das Cepstrum als Feature mit der höchsten Accuracy ist somit so zu bewerten, dass es vor allem im geringen Maße kontextuell Informationen benötigt, um eine Entscheidung über das vorahndensein von Stimme zu fällen. Zukünftige Forschungen könnnen an diesem Punkt ansetzen, um die Accuracy der VAD zu erhöhen.
+
 \section{Segmentierung}
 \label{sec:segmenting}
-Das Ergebnis der Voice-Activiy-Detection ist eine Liste an Cry-Units  $CU_1 ... CU_n$. Das Ziel ist nun, diese Cry-Units zu Cry-Segmenten zu gruppieren. Ein Cry-Segment definiert sich nach Golub et al \cite{cryModel} als \glqq die komplette klangliche Antwort auf einen spezifischen Stimulus. Sie kann mehrere Cry-Units entahlten \grqq . Die Defintion lässt folgende Fragen offen:
-
-\begin{itemize}[leftmargin=*]
-	\item Beginnt das Segment bereits bei Zuführung des Stimulus, oder erst ab der ersten Cry-Unit? 
-	\item Wodurch definiert sich der Beginn, wenn ohne Zuführung eines Stimulus das Baby beginnt, zu weinen?
-	\item Endet ein Cry-Segment mit Ende der letzten \glqq Cry-Unit\grqq{}, oder erstreckt es sich bis zu Beginn des nächsten Cry-Segmentes?
-\end{itemize}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.75\textwidth]{bilder/segmentierung06.png}
-	\caption{Ergebnis der Segmentierung}
-	\label{img:segmenting03}
-\end{figure}
-
-
-Die Zusammenfassung von Cry-Units zu Cry-Segmentes unterliegt einer gewissen subjektiven Einschätzung, welche Cry-Units als Zuammengehörig angesehen werden, insbesondere, wenn kein erkennbarer Stimulus vorliegt. Abbildung \ref{img:segmenting02} verdeutlicht das Problem. 
+Das Ergebnis der Voice-Activiy-Detection ist eine Liste an Cry-Units  $cu_1 ... cu_n$. Pain-Scores werden nicht aus einzelnen Cry-Units abgeleitet, sondern aus dem Verbund mehrerer Cry-Units. Daher ist es notwendig, die Cry-Units zu Cry-Segmenten zusammenzufassen. Dieser Prozess des Zusammenfassens von Cry-Units zu Segmenten wird in dieser Arbeit kurz als \emph{Segmentierung} bezeichnet. Die Frage ist, nach welchen Kriterien Cry-Units zu Segmenten zusammengefasst werden. Abbildung \ref{img:segmenting02} verdeutlicht das Problem, in dem drei mögliche Segmentierungen für eine Signal beispielhaft gezeigt werden.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.48\textwidth]{bilder/segmentierung04.png}
+	\includegraphics[width=0.7\textwidth]{bilder/segmentierung07.png}
 	\caption{Mögliche Segmentierungen eines Signals}
 	\label{img:segmenting02}
 \end{figure}
 
-Um das Problem zu objektivieren, wird es mathematisch formuliert. 
-Eine \emph{Cry-Segment} $[CS]$ wird als Datentyp nach Formel \ref{eq:cry-segment} definiert. Ein Cry-Segment ist folglich eine Liste aufeinander folgenden Cry-Units, die gruppiert werden. Der Start-Zeitpunkt eines Cry-Segmentes wird nach Formel \ref{eq:cry-segment-start} als der Startzeitpunkt der ersten Cry-Unit des Segmentes definiert. Die Begründung für diese Entscheidung liegt darin, dass rein aus dem Audiomaterial der Zeitpunkt des Stimulus nicht festgestellt werden kann und das Segment mit Sicherheit erst bei der ersten feststellbaren Cry-Unit beginnt. Das Ende eines Segmentes wird definiert als das Ende der letzten Cry-Unit nach Gleichung \ref{eq:cry-segment-end}. Die Begründung liegt darin, dass das Ende der Reaktion auf den Stimulus ebenfalls rein aus dem Audiosignal abgeleitet werden kann und somit der einzig feststellbare Indikator die letzte Cry-Unit des Segmentes ist. 
+Ein Cry-Segment wird von Golub et al definiert als \glqq die komplette klangliche Antwort auf einen spezifischen Stimulus. Sie kann mehrere Cry-Units entahlten \grqq. \cite[S. 61, übersetzt aus dem Englischen]{cryModel}. Die Defintion lässt folgende Fragen offen:
+
+\begin{itemize}[leftmargin=*]
+	\item Beginnt das Segment bereits bei Zuführung des Stimulus, oder erst ab der ersten Cry-Unit? 
+	\item Wodurch definiert sich der Beginn, wenn der Stimulus unbekannt ist?
+	\item Endet ein Cry-Segment mit Ende der letzten \glqq Cry-Unit\grqq{}, oder erstreckt es sich bis zu Beginn des nächsten Cry-Segmentes?
+\end{itemize}
+
+Keines der in Kapitel \ref{sec:system_literature} vorgestellten Veröffentlichungen schlägt Methoden zur Segmentierung vor. Bei den nicht-kontinuierlichen Systemen werden manuell geschnittene Cry-Segmente verwendet. Entweder werden keine objektiv messbaren Krtierien gegeben zur Festlegun der länge dieser Cry-Segmente gegeben, oder feste Längen wie zum Beispiel \SI{90}{\second}\cite[S. 324]{rythmic} gegeben. Bei den kontinuierlichen Systemen wird die Segmentierung nicht als Verarbeitungsschritt erwähnt.
+
+Es wird daher das folgende Vorgehen zur kontinuierlichen Segmentierung vorgestellt: Wenn das Baby keine Äußerungen von sich gibt, weil es beispielsweise schläft, wird keine Cry-Unit festgestellt, und somit existiert auch momentan kein offenes Segment. Fängt das Baby an, Laute von sich zu geben, also eine Cry-Unit zu produzieren, wird ein neues Segment eröffnet und die Cry-Unit diesem Segment hinzugefügt. Weitere Cry-Units werden so lange diesem Segment hinzugefügt, wie die Dauer der Stille nach einer Cry-Unit einen festgelegten Grenzwert $t_{s}$ nicht überschreitet. Ein Cry-Segment wird folglich dann geschlossen, wenn das Baby \glqq aufhört, zu weinen\grqq{}, also keine Laute mehr für einen festgelegten Zeitraum von sich gibt. Das Endzeitpunkt des Segmentes wird als der Endzeitpunkt der letzten Cry-Unit des Segmentes festgelegt. 
+
+Formel \ref{eq:cry-segment}  definiert ein \emph{Cry-Segment} $[CS]$ als Datentyp. Ein Cry-Segment ist eine Liste von Cry-Units. Alle Cry-Units erfüllen die Nebenbedingung \ref{eq:cry-segment-nb}, das heißt, dass die Distanz aller benachbarter Cry-Units eines Cry-Segments unterhalb des Grenzwertes $t_{s}$ liegen.
 
 \begin{equation}
-CS = [cu_1 ,  ... ,  CU_n]
+CS = [cu_1 ,  \ldots,  cu_n]
 \label{eq:cry-segment}
 \end{equation}
+
+\begin{equation}
+\forall cs \in CS: \forall i = 1 \ldots length(cs)-1 : d(cs[i], cs[i+1]) < t_{s}
+\label{eq:cry-segment-nb}
+\end{equation}
+
+Der Start-Zeitpunkt eines Cry-Segmentes wird nach Formel \ref{eq:cry-segment-start} als der Startzeitpunkt der ersten Cry-Unit des Segmentes definiert. Das Ende eines Segmentes wird definiert als das Ende der letzten Cry-Unit nach Gleichung \ref{eq:cry-segment-end}.
 
 \begin{equation}
 start(CS) = CS[1].start
@@ -569,39 +576,25 @@ end(CS) = CS[end].end
 \label{eq:cry-segment-end}
 \end{equation}
 
-Wurde bei der kontinuierlichen Analyse des Signals ein Segment geschlossen, führt die Markierung einer neuen Cry-Unit zur Eröffnung eines neuen Segmentes, dessen Start-Zeitpunkt der Start-Punkt dieser Cry-Unit ist. Die Frage ist, welches Kriterium zum schließen dieses Segments führt. Laut Golub et al \cite{cryModel} ein Cry-Segment \glqq die komplette klangliche Antwort auf einen spezifischen Stimulus \grqq. Eine mögliche und objektiv messbare Interepration dieses Endes ist, dass nach dem Auftreten von Cry-Units eine längere Stille mit einer  Abwesenheit von Cry-Units festgestellt wird, da das Baby \glqq aufgehört hat, zu weinen \grqq. Übertragen auf die in \ref{sec:CryUnit} vorgestellte Terminologie heißt das, dass ein Segment beendet und ein neues begonnen wird, wenn die Distanz (Zeitraum der Stille) zwischen zwei benachbarten Cry-Units d$(CU_{i}, CU_{i+1})$ einen gewissen Grenzwert $t_{seg-max}$ überschreitet. Gleichung \ref{eq:cry-segment-constraint1} formalisiert diesen Zusammenhang. Daraus lässt sich schlussfolgern, dass die Distanzen zwischen allen benachbarten Cry-Unit eines Segmentes unter diesem Grenzwert $t_{seg-max}$ liegen. Gleichung \ref{eq:cry-segment-constraint2} formalisiert diese Nebenbedingung an die Cry-Units eines Segmentes. 
-
-\begin{equation}
-d(cu_i, cu_{i+1}) > t_{seg-max} \rightarrow CS_{n} =[CS_n, cu_i] \wedge CS_{n+1} = [cu_{i+1}]  
-\label{eq:cry-segment-constraint1}
-\end{equation}
-
-\begin{equation}
-\forall i = 1 ... \text{length}(CS)-1: \text{d}(CS[i], CS[i+1]) \leq t_{seg-max}
-\label{eq:cry-segment-constraint2}
-\end{equation}
-
-Die einfachste Art, $t_{seg-max}$ festzulegen, ist, einen festen Grenzwert von $t$ s zuzuweisen. Abbildung \ref{img:segmenting03} visualisiert die so resultierende Segmentierung an einem Beispiel. Jeder Grenzwert mit $t_{seg-max} > \SI{0.5}{\second}$ würde zu der gezeigten Segmentierung führen. 
-
-Algorithmus \ref{alg:crySegment} zeigt die Segmentierung nach diesem Prinzip in Pseudo-Code. Input des Algorithmus ist die Liste aller Cry-Units $CU_{all} = [cu_1 ... cu_n]$, die nach dem Decision-Smoothing nach Algorithmus \ref{alg:decisionSmoothing} entstanden ist.  Das Ergebnis des Algorithmus ist die Liste, die alle gefundene Cry-Segmente  $[cs_1 ...  cs_n]$ enthält. 
+Algorithmus \ref{alg:crySegment} zeigt einen Pseudocode, wie die Segmentierung nach dem beschriebenen Prinzipien offline durchgeführt wird. Input des Algorithmus ist die Liste aller Cry-Units $CU_{all} = [cu_1 ... cu_n]$, die nach dem Decision-Smoothing nach Algorithmus \ref{alg:decisionSmoothing} entstanden ist.  Das Ergebnis des Algorithmus ist die Liste, die alle gefundene Cry-Segmente  $[cs_1 ...  cs_m]$ enthält. Der Algorithmus eignet sich nicht für eine Online-Segmentierung, da das Ende eines Segmentes erst nach dem Abschluss einer Cry-Unit festgestellt wird, wobei beliebig viel Zeit zwischen zwei Cry-Units liegen kann. Bei einer online durchgeführten Segmentierung empfiehlt es sich, ein Segment sofort zu beenden, wenn der Zeitraum der Stille nach einem Segment den Grenzwert $t_s$ überschreitet. Abbildung \ref{Ergebnis der Segmentierung} die Segmentierung anhand eines Beispiels.
 
 \begin{algorithm}[H]
 	\caption{Gruppierung von Cry-Units zu Cry-Segments}
 	\label{alg:crySegment}
 	\begin{algorithmic}[1]
-		\Function{segmentCryUnits}{$CU_{all}, t_{seg-max}$}
+		\Function{segmentCryUnits}{$CU_{all}, t_{s}$}
 		\State $ CS_{all} \gets []$
 		\State $ cs_i \gets [CU_{all}[1]]$
-		\For{ $i = 2...length(CU_{all})$}
-		\State $ cu_i \gets CU_{all}[i]$
-		\State $cu_{i-1} \gets CU_{all}[i-1]$
-		\If{d$(cu_{i-1},cu_i) < t_{seg-max}$}
-		\State $cs_i \gets [cs_i , cu_i]$
-		\Else
-		\State $CS_{all} \gets [CS_{all}, cs_i]$
-		\State $cs_i \gets [cu_i]$
-		\EndIf
-		\EndFor
+				\For{ $i = 2...length(CU_{all})$}
+						\State $ cu_i \gets CU_{all}[i]$
+						\State $cu_{i-1} \gets CU_{all}[i-1]$
+						\If{d$(cu_{i-1},cu_i) < t_{seg-max}$}
+								\State $cs_i \gets [cs_i , cu_i]$
+						\Else
+								\State $CS_{all} \gets [CS_{all}, cs_i]$
+								\State $cs_i \gets [cu_i]$
+						\EndIf
+				\EndFor
 		\Return $CS_{all}$
 		
 		\EndFunction
@@ -609,20 +602,60 @@ Algorithmus \ref{alg:crySegment} zeigt die Segmentierung nach diesem Prinzip in 
 	\end{algorithmic}
 \end{algorithm}
 
-Algorithmus  \ref{alg:crySegment} kann zwar kontinuierlich durchgeführt werden, da er jeweils nur auf die aktuelle gefundene und eine vergangene Cry-Unit zurückgreift, hat in dieser Form jedoch den nachteil, dass das Ende eines Segmentes später als notwendig festgestellt wird. Angenommen, ein Grenzwert von $t_{seg-max} = \SI{20}{\second}$ wurde festgelegt
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{bilder/segmentierung06.png}
+	\caption{Ergebnis der Segmentierung}
+	\label{img:segmenting03}
+\end{figure}
 
+Das hier vorgestellte Vorgehen ist absichtlich trivial gehalten, damit der Sinn des Parameters $t_{s}$ leicht ersichtlich ist und somit von der medizinischen Fachkracht selbständig festgelegt werden kann. Schlussendlich ist diese Segmentierung ist eines der Hauptziele dieser Segmentierung, die unnötige Berechnung von Schmerzscores in den nachfolgenden Schritten zu vermeiden, so lange keine Cry-Units vorliegen. Trotz der Trivialität dieser laufenden Segmentierung liegt hier ein wichtiger Unterschied im Gegensatz zu vergleichbaren Systemen, wie zum Beispiel das von Cohen et al \cite{cohenCry}, bei dem die Ableitung von Weinen/nicht-Weinen für Segmente mit einer festen Fenstergröße von 10 Sekunden vorgenommen wird. 
 
-Bei einer kontinuierlichen durchgeführten Segmentierung wird das erste Segment dann eröffnet, sobald die erste Cry-Unit durch die VAD markiert wurde, und diese Cry-Unit dem Segment hinzugefügt. Die Dauer der Stille nach dieser Cry-Unit wird kontinuierlich gemessen. Wird ein nächste Cry-Unit festgestellt, bevor die Stille $d_{seg-max}$ übersteigt, so wird diese Cry-Unit dem Segment hinzugefügt und das Messen der Stille nach dieser Cry-Unit beginnt von vorne. Dieser Prozess wird so lange wiederholt, bis die Dauer der Stille nach einer hinzugefügten Cry-Unit $d_{seg-max}$ übersteigt. Dann wird das Segment beendet und der Endzeitpunt des Segmentes auf den Endzeitpunkt der letzten Cry-Unit gesetzt. Abbildung \ref{img:segmenting03} zeigt die resultiderende Segmentierung für Beispielsignal mit $d_{seg-max}  = \SI{3}{\second}$. Tatsächlich würde in dem Beispiel jeder Grenzwert $d_{seg-max} >\SI{0.5}{\second}$ zur gezeigten Segmentierung führen.
+\section{Feature-Extraktion und Ableitung der Schmerzscore}
+\label{sec:overviewPainRegression}
 
-Es gibt verschiedene Möglichkeiten, die höchst mögliche Pause d$_{seg-max}$ zu definieren. Der Einfachste Fall, der auch in Abbildung \ref{img:segmenting03} angenommen wurde, ist das Setzen eines global festlegten Grenzwertes. Weitere Möglichkeiten sind, d$_{seg-max}(CS)$ als Funktion des Segmentes selber zu gestalten. So könnte beispielsweise ein längeres Segment eine höhere maximal-Pause erzeugen. 
+Das Erebnis der Segmentierung ist eine Litse an Cry-Segmenten $cs_1,  \ldots , c_n$. Diese Cry-Segmente bilden nun die Basis für die Ableitung der Pain-Score. Die medizinische Fachkraft muss dabei zuerst die Wahl treffen, welche Pain-Scale verwendet werden soll. Das einfachste denkbare Vorgehen ist die Ableitung genau einer Punktzahl aus den insgesamten Eigenschaften eines Segmentes, wobei diese Ableitung erst vollzogen werden kann, sobald ein Segment abgeschlossen wurde und alle Informationen für dieses Segment vorliegen. Es wird also jedem Segment genau eine Punktzahl zugewiesen. Das Vorgehen wird am Beispiel der NIPS aus Tabelle \ref{tab:nips} verdeutlicht: Dabei steht die Abwesenheit von Weinen für null Punkte, \glqq mumbling\grqq{} (murmeln) für einen Punkt und \glqq vigorous\grqq{} (energisch) für zwei Punkte. Die Abwesenheit von Lautäußerungen, also der Zeitraum zwischen den Segmenten, bekommt somit null Punkte. Ein Segment, dessen Qualität insgesamt als \glqq murmelnd\grqq{} bewertet wird, bekommt somit einen Punkt, und ein Segment, welches als insgesamt als \glqq energisch\grqq{} bewertet wird, zwei Punkte. Das Problem ist offensichtlich: \glqq murmelnd\grqq{} und \glqq energisch\grqq{} sind subjektiv behaftete Begriffe und lassen sich nicht ohne weiteres feststellen aus den Eigenschaften eines Segmentes feststellen. 
 
-Schlussendlich konnten in der Fachliteratur keine konkreten Hinweise zur Bestimmung von d$_{seg-max}$ gefunden werden. Daher wurde entschieden, dem Arzt, der das System benutzt, selber einstellen zu lassen. Es wird mit einem Festen 
+Um Unklarheiten zu vermeiden, wird an dieser Stelle noch einmal darauf hingewiesen, dass mit \glqq Pain-Scale\grqq{} eine Scale, wie zum Beispiel die NIPS gemeint ist, und mit \glqq Pain-Score\glqq{} oder einfach nur \glqq Score\grqq{} die vergebene Punktzahl.
 
-\section{Feature-Extraction}
+Es werden zwei verschiedene Lösungs-Strategien für dieses Problem geschildert.  Strategie 1 löst das Problem mit Hilfe von \emph{Regression} (Siehe Kapitel \ref{sec:regression}):
+\begin{enumerate}
+ \item Man erstellt eine Datenbank mit Aufnahmen von kindlichen Lautäußerungen, die man Segmentiert. 
+ \item Man errechnet so viele \emph{objektiv} messabare Eigenschaften wie möglich für jedes Segment, wie zum Beispiel die insgesamte Länge, die durchschnittliche Länge der enthaltenen Cry-Units, durchschnittliche Tonhöhe usw., 
+ \item Man bittet medizinische Fachkräfte, für jedes Segment der Datenbank eine Score bezüglich einer Pain-Scale zu vergeben. Dadurch erhält man eine gelabelte Test-Datenbank.
+ \item  Man verwendet einen \emph{Regressionsalgorithmus}, um den Zusammenhang zwischen den in Schritt 2 objektiv gemessenen Eigenschaften der Segmente und den in Schritt 3 vergebenen \emph{Scores} herzustellen. An dieser Stelle kann zum Beispiel die in Kapitel \ref{sec:multipleRegression} beschriebene multiple lineare Regression verwendet werden. Man erhält somit einen Regressor für jede Pain-Scale.
+ \item Möchte man für neue, unbekannte Segmente die Pain-Score ableiten, nutzt man den entsprechenden Regressor.
+\end{enumerate}
+
+Das Vorteil dieses Vorgehens ist, dass das Problem der Übersetzung der objektiv messbaren Parameter in die subjektiv behafteten Begriffe überbrückt wird, indem die Regression direkt von den objektiv messbaren Parametern auf eine Punktzahl durchgeführt wird. Der Nachteil ist, dass eine Testdatenbank für jede Pain-Scale aufgebaut werden muss. Wird ein neue Pain-Scale eingeführt, muss der Regressor für diese Scale durch erneutes Labeln festgestellt werden. Ein weiterer Effekt der Abbildung des Problems als Regression ist, dass ein Regressor in einen kontinuierlichen Zahlenraum abbildet. Es sind also Regressionsergebnisse wie zum Beispiel $2.8$ denkbar. Diese \glqq bessere Auflösung\grqq{} kann als Vorteil gesehen werden. Ist jedoch eine direkte Übersetzung der Pain-Scale inklusive der ganzzahligen Punktzahlen gewünscht, so stellt sich die Frage, ob eine $2.8$ auf- oder abgerundet wird.
+
+Strategie 2 löst das Problem mit Hilfe von Klassifizierung (Siehe Kapitel \ref{sec:classification}):
+\begin{enumerate}
+	\item und 2. entsprechen Strategie 1
+	\stepcounter{enumi}
+	\item Man sammelt alle subektiven Begriffe, die in Pain-Scales verwendet werden, wie zum Beispiel \glqq murmeln\grqq , \glqq energisch\grqq , usw.
+	\item Man bittet medizinische Fachkräfte, jedes Segment der Datenbann mit denjenigen Begriffen zu labeln, die die jeweilige Person für zutreffend hält. 
+	\item  Man Verwendet einen \emph{Klassifizierungsgorithmus}, um einen Zusammenhang zwischen den in Schritt 2 festgestellten objektiv messbaren Eigenschaften der Segmente und den \emph{subjektiv behafteten Begriffen} zu finden. Man erhält somit einen Klassifikator für jedenBegriff, der binär in \emph{positive = zutreffend} und \emph{negative = nicht zutreffend} klassifiziert.
+	\item Möchte man für neue, unbekannte Segmente die Pain-Score ableiten, so wird für jede Puntkzahl der Pain-Scale überprüft, ob für alle subjektiv beschreibenden Begriffe der entsprechende Klassifikator ein positive prognostiziert. Die Ableitung Score ist somit ein weiters Klassifikationsproblem, wobei eine Score einer Klasse entspricht und genau dann abgeleitet werden kann, wenn alle Vorraussetzungen für die Klasse erfüllt sind.
+\end{enumerate}
+
+Der Vorteil dieser Methode ist, dass auch zum Zeitpunkt der Erstellung der Testdatenbank unbekannte Pain-Scores zu einem späteren Zeitpunkt eingebunden werden können, insofern alle in dieser neuen Pain-Scale verwendeten subjektiv behafteten Begriffe bereits gelabelt vorliegen, weil sie auch in anderen Pain-Scales verwendet werden. Das Vorgehen erlaubt somit eine gewissen Flexibilität bezüglich zukünftig entwickelter Pain-Scales. Der Nachteil dieser Methode ist, dass durch die Umwandlung der eigentlich quantitativ geordenten Punktzahl einer Pain-Scale in qualitative Klassen aus einem implizit als Regression zu betrachtenden Problem ein Klassifizierungsproblem macht. Dies wirft neue Fragen auf, wie zum Beispiel die folgende: Angenommen, in einer Pain-Scale wird jede Score mit jeweils drei subjektiven Begriffen beschrieben, und bei der Klassifizierung eines Segmentes wird festgestellt, dass für jede Punktzahl genau zwei der drei Begriffe erfüllt werden. Welche Score wird dann abeleitet? Ein anderes Beispiel wird am Beispiel der der NIPS-Score aus Tabelle \ref{tab:nips} verdeutlicht: Angenommen, ein Cry-Segment enthält hörbar \glqq starkes\grqq{} Schreien, es kann jedoch weder \glqq mumbling = murmelnd \grqq{} noch \glqq vigorous = energisch\grqq{} abgeleitet werden. Demzufolgen müsste dieses Segment eine Score von 0 Punkten erthalten, wobei ein Mensch in dieser Situation eventuell \glqq stark\grqq{} zu \glqq heftig\grqq{} uminterpretieren und 2 Punkte vergeben würde.  Strategie 1 ist weniger anfällig für dieses Problem.
+
+In jedem Fall werden medizinische Fachkräfte benötigt, um das Labeling der Cry-Segmente durchzuführen, was aus Zeitgründen im Rahmen dieser Arbeit nicht möglich ist. Die Aquise von Audioaufnahmen von Babie, und das Labeling der Aufanhmen erfodern nicht nur Zeit, sondern das Fachwissen über das Führen und die Auswerten von Interviews.
+
+\subsection{Feature-Extraction}
 \label{sec:segmentFeatures}
 
-\section{Ableitung der Schmerz-Scores}
+Im vergangenen Kapitel wurde besprochen, wie die Basis für die Ableitung einer Pain-Score für ein Segment die 
+
+\subsection{Ableitung der Pain-Score}
 \label{sec:regressionPainScore}
+
+Zu Beginn von Kapitel \ref{sec:overviewPainRegression} wurde gesagt, dass genau eine Score für ein Segment abgeleitet wird. Diese Aussage wurde getroffen, da dies der einfachste denkbare Fall ist. Dieses Vorgehen hat zwei Nachteile: 1. Kann die Score erst nach der Beendigung eines Segmentes abgeleitet werden, was für einige Anwendungsfälle eventuell zu spät ist. So ist es eventuell notwendig, bereits eine Score abzuleiten, bevor das Segment beendet wurde, um zum Beispiel das schnelle Reagieren auf akuten und starken Schmerz zu ermöglichen. 2. Ist es denkbar, dass sich der Schmerz innerhalb eines Segmentes verändert und eventuell stärker oder schwächer wird. 
+
+Eine Lösung ist, bei einem momentan offenen Segment in regelmäßigen Abständen die Eigenschaften abzufragen und direkt die Pain-Score abzuleiten, um Zwischenergebnisse zu erhalten. Der este Parameter, der dafür eingeführt werden muss, ist die Häufigkeit, mit der diese \glqq Aktualisierung\grqq{} durchgeführt werden soll Der am häufigsten umsetzbare Fall ist, ein Aktualisierung nach jeder neu dem Segment hinzgefügten Cry-Unit vorzunehmen. Der am wenigsten häufige Fall ist der bereits genannte einfachste, die Aktualisierung erst bei Beedingung eines Segmentes durchzuführen. Wird die Entscheidung  der medizinischen Fachkraft überlassen, empfiehlt es sich, den Parameter möglichst einfach verstehbar zu machen, in dem man einen festen Intervall $t_{act}$ festlegen lässt. Ein $t_{act}$ von beispielsweise \SI{10}{\second} bedeutet, dass alle 10 Sekunden ein neuer Pain-Score für ein Segment berechnet wird. Die Beendigung eines Segmentes würde in jedem Fall eine Ableitung der Pain-Score auslösen und einen \glqq erzwungenen Aktualisierungszeitpunkt\grqq{} darstellen. Es ist denkbar, den Aktualisierungsintervall fest an eine Pain-Scale zu binden. Die CRIES-Scale ist beispielsweise für das post-operative Monitoring gedacht und benötigt somit möglicherweise weniger häufige Aktualisierungen als der DAN, welcher ebenfalls zur Schmerzdiagnostik während einer Operation eingesetzt werden kann. \cite[S. 98]{painInNeonates}
+
+Der zweite Parameter, der eingeführt werden muss, ist der Zeitraum, für den die Pain-Score berechnet wird, also der \emph{Beobachtungszeitraum}. Es gibt Eigenschaften, die sich implizit auf den Zeitraum \emph{Beginn des Segmentes} bis \emph{Aktualisierungs-Zeitpunkt} beziehen, wie beispielsweise die \emph{Länge des Segmentes}. Dieser Zeitraum gleichzeitig der längst mögliche Zeitraum innerhalb eines Segmentes, insofern keine Pain-Scores über mehrere Segmente hinweg abgeleitet werden sollen. Es ist jedoch auch möglich, kürzere Beobachtugnszeiträume zu wählen. Die in Kapitel \ref{sec:painScores} geben wenig Aufschluss über \glqq typische 
 
 \section{Visualisierung}
 \label{sec:visualisation}
