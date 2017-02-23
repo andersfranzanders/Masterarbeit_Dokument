@@ -27,7 +27,8 @@
 \contentsline {section}{\numberline {3.5}Segmentierung}{27}{section.3.5}
 \contentsline {section}{\numberline {3.6}Feature-Extraktion und Ableitung der Schmerzscore}{29}{section.3.6}
 \contentsline {subsection}{\numberline {3.6.1}Feature-Extraction}{31}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Ableitung der Pain-Score}{31}{subsection.3.6.2}
-\contentsline {section}{\numberline {3.7}Visualisierung}{32}{section.3.7}
-\contentsline {chapter}{\numberline {4}Zusammenfassung}{33}{chapter.4}
-\contentsline {chapter}{Appendices}{37}{section*.29}
+\contentsline {subsubsection}{\nonumberline Features des Zeitbereiches}{31}{section*.28}
+\contentsline {subsection}{\numberline {3.6.2}Ableitung der Pain-Score}{34}{subsection.3.6.2}
+\contentsline {section}{\numberline {3.7}Visualisierung}{35}{section.3.7}
+\contentsline {chapter}{\numberline {4}Zusammenfassung}{36}{chapter.4}
+\contentsline {chapter}{Appendices}{40}{section*.31}

@@ -3,9 +3,9 @@
 
 Das Ziel dieser Arbeit ist die Ableitung des Schmerz-Scores aus einem Audiosignal sowie die darauf folgende Visualisierung dieser Schmerz-Scores. Folgende Anforderungen werden an das System gestellt:
 \begin{enumerate}
-	\item Das System muss dazu in der Lage sein, aus den akustischen Eigenschaften des Weinens die Schmerz-Score abzuleiten
+	\item Das System muss dazu in der Lage sein, aus den akustischen Eigenschaften des Weinens die Schmerz-Score bezüglich einer bestimmten Schmerz-Scale abzuleiten
 	\item Das System muss dazu in der Lage sein, die Schmer-Score zu visualiseren.
-	\item Die Verarbeitungspipeline muss genug Flexibilität bieten, um beliebige Pain-Scores einzubinden. 
+	\item Die Verarbeitungspipeline muss genug Flexibilität bieten, um beliebige Pain-Scales einzubinden. 
 	\item Die Analyse muss auch bei nicht-optimalen akustischen Bedingungen Einsatzfähig sein.
 	\item Die Methoden müssen kontinuierlich eingesetzt werden können. Das heißt, dass zu einem Analysezeitpunkt nur Informationen verwendet werden können, die nicht in der Zukunft liegen.
 \end{enumerate}
@@ -567,12 +567,12 @@ CS = [cu_1 ,  \ldots,  cu_n]
 Der Start-Zeitpunkt eines Cry-Segmentes wird nach Formel \ref{eq:cry-segment-start} als der Startzeitpunkt der ersten Cry-Unit des Segmentes definiert. Das Ende eines Segmentes wird definiert als das Ende der letzten Cry-Unit nach Gleichung \ref{eq:cry-segment-end}.
 
 \begin{equation}
-start(CS) = CS[1].start
+start(cs) = cs[1].start
 \label{eq:cry-segment-start}
 \end{equation}
 
 \begin{equation}
-end(CS) = CS[end].end
+end(cs) = cs[end].end
 \label{eq:cry-segment-end}
 \end{equation}
 
@@ -646,16 +646,135 @@ In jedem Fall werden medizinische Fachkräfte benötigt, um das Labeling der Cry
 \subsection{Feature-Extraction}
 \label{sec:segmentFeatures}
 
-Im vergangenen Kapitel wurde besprochen, wie die Basis für die Ableitung einer Pain-Score für ein Segment die 
+Im vergangenen Kapitel wurde erläutert, dass die Basis für die Ableitung einer Pain-Score für ein Segment die extraktion von \glqq so vielen Features wie möglich\grqq{}. In diesem Kapitel wird präzisiert, welche Features damit gemeint sind.  Varallyay \cite[S. 16 - 17]{cry_thesis} schlägt vor, drei Kategorien an Features zu betrachten: (1.) dem Zeitbereich, (2.) dem Frequenzbereich, und (3.) Melodie-bezogene Attribute. Diese Kategorisierung wird übernommen.
+
+Viele der hier vorgestellten Features sind solche, die in der medizinischen Schreiforschung zur Analyse kindlicher Lautäußerungen genutzt wurden, jedoch in den meisten Fällen nicht computergestützt, sondern manuell ausgewertet wurden. Das hat zur Folge, dass die Features (1.) nicht mathematisch, sondern nur wörtlich beschrieben wurden, und (2.) einige Eigenschaften, die eigentlich trivial zu berechnen sind, ausgelassen wurden. Der vermutete Grund dafür ist, die Menge an Features überschaubarer zu halten. So wurden in einigen Veröffentlichungen beispielsweise häufig das Maximum, Minimum und Durchschnitt der Tonhöhen aller Cry-Units des Segmentes gemessen, in Bezug auf die Längen der Cry-Units jedoch nur der Durchschnitt (Beispiel: LaGasse et al \cite[S. 85]{parentalPerception}). Da in dieser Arbeit jedoch die Auslese der tatsächlich zu verwendenden Feautes zur Ableitung der Pain-Scores automatisiert durch einen Regressions oder Klassifizierungs-Algorithmus geschehen wird, gibt es keinen Grund, die Anzahl an Features von vorneherein zu begrenzen.  Auf Basis der eingeführten Datentypen Cry-Unit $CU$ aus Gleichung \ref{eq:cry-Unit} und Cry-Segment $[CS]$ \ref{eq:cry-segment} können die Features mathematisch definiert werden. Die nachfolgende Übersicht die nach Wissen des Autors der erste Versuch, eine umfassendere Menge von Features, die in der medizinischen Schreiforschung verwendet werden, mathematisch zu notieren.
+
+\subsubsection{Features des Zeitbereiches}
+
+Mit Features des Zeitbereiches sind solche gemeint, die sich allein aus Kenntnis der Cry-Units des Segments gewinnen lassen, wie beispielsweise die durchschnittliche Länge der Cry-Units, durchschnittliche Pause zwischen den Cry-Units, das relative Verhältnis von Cry-Units zu Pausen usw. Die folgenden Features werden konnkret definiert. In diesem Kapitel gilt die Konvention, dass eine Cry-Segment $cu$ insgesamt $N$ Cry-Units enthält und die Indexierung bei 1 beginnt.
+
+\begin{description}
+\item[Segment-Length:] Zeitliche Länge des Segmentes:
+\begin{equation}
+\text{Segment-Length}(cs) = cs[N].end - cs[1].start
+\label{eq:segment_length}
+\end{equation}
+
+\item[Densitie:] Relativer Anteil der Cry-Units an der Länge des Segmentes (\glqq Dichte\grqq{})
+\begin{equation}
+\text{Density}(cs) = \frac{\sum_{i = 1}^{N} \lambda(cs[i])}{\text{Segment-Length}(cs)}
+\end{equation}
+
+\item[Tempo:] Das Verhältnis zwischen der segment-Length und der Anzahl der Cry-Units des Segmentes. Dieses Feature wird von LaGasse et al \cite[S. 85]{parentalPerception} als \emph{Utterances} bezeichnet.
+
+\begin{equation}
+\text{Tempo}(cs) =  \frac{N}{\text{Segment-Length}(cs)}
+\end{equation}
+
+\item[Statistics of Cry-Units:] Statistische Auswertungen bezüglich der \emph{Länge der Cry-Units} $\text{stats}_{cu}(cs)$: Durchschnitt, Median, Minimum, Maximum und Standardabweichung der Cry-Units. Das $\text{mean}_{cu}(cs)$-Feature wird von LaGasse et al \cite[S. 85]{parentalPerception} und vielen weiteren Schreiforschern als \emph{Duration} bezeichnet.
+
+\begin{equation}
+\text{stats}_{cu}(cs) = 
+\begin{dcases}
+\text{mean}_{cu}(cs) = \meani_{i = 1 \ldots N}\{\lambda(cs[i])\} \\
+\text{median}_{cu}(cs) = \mediani_{i = 1 \ldots N}\{\lambda(cs[i])\} \\
+\text{min}_{cu}(cs) = \mini_{i = 1 \ldots N}\{\lambda(cs[i])\} \\
+\text{max}_{cu}(cs) = \maxi_{i = 1 \ldots N}\{\lambda(cs[i])\} \\
+\sigma_{cu}(cs) =  \sigma_{i = 1 \ldots N}\{\lambda(cs[i])\} 
+\end{dcases}
+\label{eq:featuresOfCryUnits}
+\end{equation}
+
+\item[Statistics of Bursts:] Die in Gleichung \ref{eq:featuresOfCryUnits} definierten Features können ebenso in Bezug auf die \emph{Längen der Bursts} errechnet werden, in dem in jeder Gleichung $\lambda(cs[i])$ ersetzt wird durch $d(cs[i], cs[i+1])$. Die Indexierung muss auf $i = 1 \ldots N-1$ begrenzt werden, da das Ende eines Bursts durch eine weitere Cry-Unit begrenzt wird (siehe Kapitel \ref{sec:acousticModel}). 
+
+\begin{equation}
+\text{stats}_{burst}(cs) = 
+\begin{dcases}
+\text{mean}_{burst}(cs) = \meani_{i = 1 \ldots N-1}\{cs[i+1].start - cs[i].start\} \\
+\text{median}_{burst}(cs) = \mediani_{i = 1 \ldots N-1}\{cs[i+1].start - cs[i].start\} \\
+\ldots
+\end{dcases}
+\label{eq:featuresOfCryUnits}
+\end{equation}
+
+\item[Statistics of Pauses:] Nach dem selben Muster werden die statistischen Auswertungen bezüglich der  \emph{Längen der Pausen} ermittelt. Eine Pause entspricht in diesem Zusammenhang der Distanz zweier aufeineraderfolgenden Cry-Units, welche in Kapitel \ref{sec:CryUnit} definiert wurde.
+
+\begin{equation}
+\text{stats}_{pause}(cs) = 
+\begin{dcases}
+\text{mean}_{pause}(cs) = \meani_{i = 1 \ldots N-1}\{d(c[i],c[i+1])\} \\
+\ldots
+\end{dcases}
+\label{eq:featuresOfCryUnits}
+\end{equation}
+
+\end{description}
+
+Diese statistischen Auswertungen bezüglich der Länge der Cry-Units und Bursts wurden beispielsweise von Zeskind et al \cite{rythmic} vorgenommen, wenn auch nicht Computer-gestützt. Es ist zu bemerken, dass in der Schrei-Forschung aus medizinischer Sicht zeitliche Features kaum in Betracht gezogen werden. Hier wird der Fokus eher auf die Auswertung des Frequenz-Bereiches und der Melodie gelegt. Die einzigen zeitliche Features, die zum Beispiel von Wasz-Hockert et al \cite{25years}, Fuller \cite{threeCryTypes} und LaGasse et al\cite{parentalPerception} in Betracht gezogen wurden, sind \emph{die durchschnittliche Länge der Cry-Units} (hier $\text{mean}_{cu}(cs)$) und die \emph{Latenz zwischen Reiz und erster Cry-Unit}. Dabei ist die Latenz nur auf Basis eines Audiosignals nicht feststellbar. Obwohl den zeitlichen Features in der medizinischen Schreiforschung weniger Beachtung geschenkt wird, gibt es keinen Beweis, dass sie hinsichtlich der Ableitung von Schmerz-Scores nicht doch von Bedeutung sein können. Die anschließende Nutzung der Features zur Regression/Klassifizierung wird Auskunft darüber geben, welchen Beitrag diese Features zur Schmerzdiagnose leisten können.
+
+\subsubsection*{Features des Frequenzbereiches}
+
+Mit Features des Frequenz-Bereiches sind diejenigen Features gemeint, die sich aus der Short Time Fourier Transformation der Cry-Units gewinnen lassen. Um die Features durch mathematische Formeln definieren zu können, wird zuerst das \emph{Spectrum des Segmentes} $X_{seg}[\;]$ nach Formel \ref{eq:specOfSegment} als die Liste aller Frequenz-Bereiche der Signalfenster der Cry-Units definiert. Ein Cry-Segment besitzt $1 , \ldots N$ Cry-Units und eine Cry-Unit $1 \ldots M$ Signalfenster. $w[\;]$ ist eine Fensterfunktion wie z.B. das Hamming-Window. Die Indexierung von $X_{seg}[ ]$ wird definiert mit $1 , \ldots , R$. Nach dem selben Muster wird wird das \emph{Cepstrum des Segmentes} $c_{seg}[\;]$ definiert.
+
+\begin{equation}
+X_{seg}[\; ] = |DFT\{cs[1].windows[1] \cdot w[\;]\}|\ , \ldots,\ |DFT\{cs[N].windows[M] \cdot w[\;]\}|
+\label{eq:specOfSegment}
+\end{equation}
+
+Die folgenden Features des Frequenzbereiches lassen sich mit den in dieser Arbeit vorgestellten Methoden berechnen:
+
+\begin{description}
+\item[Tensness:] Ein von Fuller \cite{threeCryTypes} eingeführtes Feature, welches die Spannung des Vocaltraktes beschreibt. Fuller bezeichnete das Feature ursprünglich als \emph{Ratio2}. Definiert als das Verältnis der Energie aller Frequenzen über \SI{2000}{\hertz} zu den Energien aller Frequenzen unter \SI{2000}{\hertz}. Wie bei den statistischen Auswertungen kann der Durchschnitt, Median, Maximum, Minimum und Standardabweichung berechnet werden.
+
+\begin{equation}
+\text{Tensness}(cs) = 
+\begin{dcases}
+\text{mean}_{Tens}(cs) = \meani_{i=1\ldots R} \Big\{ \frac{\sum_{k=0}^{\SI{2000}{\hertz}} X_{sec}[i][k]}{\sum_{j=\SI{2000}{\hertz}}^{f_{s}} X_{sec}[i][j]} \Big\} \\
+\ldots
+\end{dcases}
+\end{equation}
+
+\item[Clarity: ] Wie in Kapitel \ref{sec:cepstrum-feature} erläutert wurde, lässt eine stark ausgebildete Spitze im oberen Cepstrum-Bereich auf ein stimmhaftes Signal schließen. Ein hoher Anteil stärkerer Cepstrum-Peaks lässt also auf vermehrt phonierte Laute schließen, geringere Cepstrum-Peaks auf dysphonierte Laute (Siehe Kapitel \ref{sec:acousticModel}). In der medizinischen Forschung wurde der relative Anteil phonierter und dysphonieter Laute häufig Untersucht \cite{parentalPerception} und findet sich in diesem Maß wieder.
+
+\begin{equation}
+\text{Clarity}(cs) = 
+\begin{dcases}
+\text{mean}_{Clarity}(cs) = \meani_{i=1\ldots R} \Big\{ Ceps_{mag}(c_{seg}[i])  \Big\} \\
+\ldots
+\end{dcases}
+\end{equation}
+	
+	
+\end{description}
+
+Die folgenden Features lassen sich nicht mehr mit den in dieser Arbeit vorgestellten Methoden berechnen. Sie beziehen sich vor allem auf die Lage der Formanten und die Grundfrequenz der Stimme (Siehe Kapitel \ref{sec:theVoice}). Es wurde eine Vielzahl an Algorithmen entwickelt, um die Lage der Formanten und die Grundfrequenz für ein Signalfenster zu bestimmen, aus Zeitgründen konnten diese jedoch nicht im Rahmen dieser Masterarbeit implementiert oder evaluiert werden.
+
+\begin{description}
+\item[Pitch: ] Statistische Auswertungen bezüglich der Grundtonhöhe der Signalfenster. $f_0(X[\;])$ ist dabei eine idealisierte Funktion, die die Grundtonhöhe des Signalfensters $X[\;]$ extrahiert. Insbesondere die Features der durchschnittlichen, der maximalen und der minimalen Grundtonhöhe werden in der medizinischen Schreiforschung intensiv genutzt \cite[S. 158]{parentalPerception}, \cite[S. 84]{parentalPerception} \cite[S. 158]{threeCryTypes} \cite[S. 90]{25years}
+
+\begin{equation}
+\text{Pitch}(cs) = 
+\begin{dcases}
+	\text{mean}_{Pitch}(cs) = \meani_{i=1\ldots R} \Big\{ f_0(cs.spectrum[i]) \Big\} \\
+	\ldots
+\end{dcases}
+\end{equation}
+
+\item[Hyperphonation: ] beschreibt nach der Definition in Kapitel 
+	
+\end{description}
+
+ 
 
 \subsection{Ableitung der Pain-Score}
 \label{sec:regressionPainScore}
 
-Zu Beginn von Kapitel \ref{sec:overviewPainRegression} wurde gesagt, dass genau eine Score für ein Segment abgeleitet wird. Diese Aussage wurde getroffen, da dies der einfachste denkbare Fall ist. Dieses Vorgehen hat zwei Nachteile: 1. Kann die Score erst nach der Beendigung eines Segmentes abgeleitet werden, was für einige Anwendungsfälle eventuell zu spät ist. So ist es eventuell notwendig, bereits eine Score abzuleiten, bevor das Segment beendet wurde, um zum Beispiel das schnelle Reagieren auf akuten und starken Schmerz zu ermöglichen. 2. Ist es denkbar, dass sich der Schmerz innerhalb eines Segmentes verändert und eventuell stärker oder schwächer wird. 
+Zu Beginn von Kapitel \ref{sec:overviewPainRegression} wurde gesagt, dass genau eine Score für ein Segment abgeleitet wird. Diese Aussage wurde getroffen, da dies der einfachste denkbare Fall ist. Dieses Vorgehen hat zwei Nachteile: 1. Kann die Score erst nach der Beendigung eines Segmentes abgeleitet werden, was für einige Anwendungsfälle eventuell zu spät ist. So ist es eventuell notwendig, bereits eine Score abzuleiten, bevor das Segment beendet wurde, um zum Beispiel das schnelle Reagieren auf akuten und starken Schmerz zu ermöglichen. 2. Ist es denkbar, dass sich der Schmerz innerhalb eines Segmentes verändert und zu- oder abnimmt.
 
-Eine Lösung ist, bei einem momentan offenen Segment in regelmäßigen Abständen die Eigenschaften abzufragen und direkt die Pain-Score abzuleiten, um Zwischenergebnisse zu erhalten. Der este Parameter, der dafür eingeführt werden muss, ist die Häufigkeit, mit der diese \glqq Aktualisierung\grqq{} durchgeführt werden soll Der am häufigsten umsetzbare Fall ist, ein Aktualisierung nach jeder neu dem Segment hinzgefügten Cry-Unit vorzunehmen. Der am wenigsten häufige Fall ist der bereits genannte einfachste, die Aktualisierung erst bei Beedingung eines Segmentes durchzuführen. Wird die Entscheidung  der medizinischen Fachkraft überlassen, empfiehlt es sich, den Parameter möglichst einfach verstehbar zu machen, in dem man einen festen Intervall $t_{act}$ festlegen lässt. Ein $t_{act}$ von beispielsweise \SI{10}{\second} bedeutet, dass alle 10 Sekunden ein neuer Pain-Score für ein Segment berechnet wird. Die Beendigung eines Segmentes würde in jedem Fall eine Ableitung der Pain-Score auslösen und einen \glqq erzwungenen Aktualisierungszeitpunkt\grqq{} darstellen. Es ist denkbar, den Aktualisierungsintervall fest an eine Pain-Scale zu binden. Die CRIES-Scale ist beispielsweise für das post-operative Monitoring gedacht und benötigt somit möglicherweise weniger häufige Aktualisierungen als der DAN, welcher ebenfalls zur Schmerzdiagnostik während einer Operation eingesetzt werden kann. \cite[S. 98]{painInNeonates}
+Eine Lösung ist, bei einem momentan offenen Segment in regelmäßigen Abständen die Eigenschaften abzufragen und direkt die Pain-Score abzuleiten, um Zwischenergebnisse zu erhalten. Der erste Parameter, der dafür eingeführt werden muss, ist die Häufigkeit, mit der diese \glqq Aktualisierung\grqq{} durchgeführt werden soll. Der am häufigsten umsetzbare Fall ist, ein Aktualisierung nach jeder neu dem Segment hinzgefügten Cry-Unit vorzunehmen. Der am wenigsten häufige Fall ist der bereits genannte einfachste, die Aktualisierung erst bei Beendingung eines Segmentes durchzuführen. An den in Kapitel \ref{sec:segmentFeatures} vorgestellten Formeln ändert dies nicht, wenn zum Aktualisierungszeitpunkt das potentielle Ende des Segmentes angenommen wird. Wird die Entscheidung über die Aktualisierungshäufigkeit der medizinischen Fachkraft überlassen, empfiehlt es sich, den Parameter möglichst einfach verstehbar zu machen, in dem man einen festen Intervall $t_{act}$ festlegen lässt. Ein $t_{act}$ von beispielsweise \SI{10}{\second} bedeutet, dass alle 10 Sekunden ein neuer Pain-Score für ein Segment berechnet wird. Die Beendigung eines Segmentes würde in jedem Fall eine Ableitung der Pain-Score auslösen und einen \glqq erzwungenen Aktualisierungszeitpunkt\grqq{} darstellen. Es ist denkbar, den Aktualisierungsintervall fest an eine Pain-Scale zu binden. Die CRIES-Scale ist beispielsweise für das post-operative Monitoring gedacht und benötigt somit möglicherweise weniger häufige Aktualisierungen als der DAN, welcher ebenfalls zur Schmerzdiagnostik während einer Operation eingesetzt werden kann. \cite[S. 98]{painInNeonates}
 
-Der zweite Parameter, der eingeführt werden muss, ist der Zeitraum, für den die Pain-Score berechnet wird, also der \emph{Beobachtungszeitraum}. Es gibt Eigenschaften, die sich implizit auf den Zeitraum \emph{Beginn des Segmentes} bis \emph{Aktualisierungs-Zeitpunkt} beziehen, wie beispielsweise die \emph{Länge des Segmentes}. Dieser Zeitraum gleichzeitig der längst mögliche Zeitraum innerhalb eines Segmentes, insofern keine Pain-Scores über mehrere Segmente hinweg abgeleitet werden sollen. Es ist jedoch auch möglich, kürzere Beobachtugnszeiträume zu wählen. Die in Kapitel \ref{sec:painScores} geben wenig Aufschluss über \glqq typische 
+Der zweite Parameter, der eingeführt werden muss, ist der Zeitraum, für den die Pain-Score berechnet wird, also der \emph{Beobachtungszeitraum} $t_{obs}$. Es gibt Eigenschaften, die sich implizit auf den Zeitraum \emph{Beginn des Segmentes} bis \emph{Aktualisierungs-Zeitpunkt} beziehen, wie beispielsweise die \emph{Zeitliche Länge des Segmentes} aus Formel \ref{eq:segment_length}. Dieser Zeitraum ist gleichzeitig der längst mögliche Zeitraum innerhalb eines Segmentes. Es ist jedoch auch möglich, kürzere Beobachtungszeiträume zu wählen. Dies hat zur Folge, dass die ersten Cry-Units des Segmentes ausgelassen werden müssen, die außerhalb des Beobachtungszeitraumes liegen. Ist der Beobachtungszeitraum länger als die momentane Länge des Segmentes, können die Berechnungen einfach für das gesamte Segment durchgeführt. Die in Kapitel \ref{sec:painScores} beschriebenen Pain-Scales geben wenig Aufschluss über \glqq typische Beobachtungszeiträume von Pain-Scales\grqq{}, da sie meistens in den Anleitungen nicht beschrieben werden. Bei der FLACC-Scale wird empfohlen, das Baby eine bis fünf Minuten zu beobachten.\cite{flacc} Es gibt es keine belastbare Grundlagen, um Werte für $t_{obs}$ vorzuschalgen. Eine einfache Variante wäre, $t_{obs} = k \cdot t_{act}$ mit $k=1$ für nicht-überlappende und $k=2$ für überlappende Zeiträume zu setzen, so dass das medizinische Personal nur einen Parameter festzulegen hat.
 
 \section{Visualisierung}
 \label{sec:visualisation}
