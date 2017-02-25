@@ -2,20 +2,20 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{7}{figure.caption.5}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces (1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite [S. 298]{justForTheMelody}\relax }}{8}{figure.caption.6}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces (1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite [S. 142]{signal}\relax }}{8}{figure.caption.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Die Verarbeitungs-Pipeline des vorgestellten Systems\relax }}{12}{figure.caption.7}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Parameter eines Audio-Kompressors\relax }}{13}{figure.caption.8}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Ergebnis des Preprocessings\relax }}{14}{figure.caption.9}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Markierung von Schreiger\IeC {\"a}uschen im Audiosignal. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Rot: Klassifizierung in Stimmhaft/Stille\relax }}{14}{figure.caption.10}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die Verarbeitungs-Pipeline dieser Arbeit\relax }}{13}{figure.caption.7}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Parameter eines Audio-Kompressors\relax }}{14}{figure.caption.8}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Ergebnis des Preprocessings\relax }}{15}{figure.caption.9}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Markierung stimmhafter Bereiche in einem Audiosignal. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Rot: Klassifizierung in Stimmhaft/Stille\relax }}{15}{figure.caption.10}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Features, die f\IeC {\"u}r die Voice Activity Detection verwendet werden.\relax }}{19}{figure.caption.15}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden. Schwarz: Eingangs-Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }}{20}{figure.caption.17}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Thresholding eines Feature-Signales. Schwarz: Das Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Beispiel-Grenzwert\relax }}{21}{figure.caption.19}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Thresholding eines Features. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Grenzwert\relax }}{21}{figure.caption.19}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }}{25}{figure.caption.23}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Beziehung zwischen agrenzenden Cry-Units, nach \cite [S. 2]{vad_entropy}\relax }}{25}{figure.caption.24}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{27}{figure.caption.25}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Klassifizierung vor und nach dem Decision Smoothing\relax }}{27}{figure.caption.26}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Beziehung zwischen agrenzenden Cry-Units, nach \cite [S. 2]{vad_entropy}\relax }}{26}{figure.caption.24}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{26}{figure.caption.25}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Klassifizierung vor und nach dem Decision Smoothing\relax }}{29}{figure.caption.26}
 \contentsline {figure}{\numberline {3.12}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{29}{figure.caption.27}
 \contentsline {figure}{\numberline {3.13}{\ignorespaces Ergebnis der Segmentierung\relax }}{31}{figure.caption.28}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{45}{figure.caption.34}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{46}{figure.caption.34}
