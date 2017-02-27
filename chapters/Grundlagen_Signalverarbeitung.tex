@@ -132,7 +132,7 @@ Im folgenden wird ein überblick über die häufig verwendete Signaleigenschafte
 	\label{img:sigStats}
 \end{figure}
 
-Die Addition und Multiplikation wird bei Signalen komponentenweise durchgeführt, wie Formel \label{eq:addAndMult} definiert.  Abbildung \ref{img:addAndMultSig} visualisiert diese Operationen. 
+Die Addition und Multiplikation wird bei Signalen komponentenweise durchgeführt, wie Formel \ref{eq:addAndMult} definiert.  Abbildung \ref{img:addAndMultSig} visualisiert diese Operationen. 
 
 \begin{equation}
 \begin{gathered} 
@@ -369,7 +369,7 @@ A \cos(x) + B \sin(x) = M \cos(x + \phi) \\
 \label{eq:sinusoid}
 \end{equation}
 
-Auf Basis von Formel \ref{eq:sinusoid} lässt sich der gesamte Frequenz-Bereich in kartesischer Notation als Menge von Sinusoiden-Schwingungen mit den Magnituden $M[\;] = M[0] \ldots M[N/2]$ und den Phasenverschiebungen $\phi[\;] = \phi[0] \ldots \phi[N/2]$ ausdrücken. Formel \ref{eq:rectToPolar} definierte diese Transformation des Frequenz-Bereichs von kartesischer Notation in die \emph{polare Notation}. Formel \label{eq:polarToRect} definiert die dazu inverse Transformation. \cite[S. 162]{dspGuide} Abbildung \ref{img:polarToRect02} zeigt den Frequenzbereich in polarer Notation für das Beispiel aus  Abbildung \ref{img:fftExample02}.
+Auf Basis von Formel \ref{eq:sinusoid} lässt sich der gesamte Frequenz-Bereich in kartesischer Notation als Menge von Sinusoiden-Schwingungen mit den Magnituden $M[\;] = M[0] \ldots M[N/2]$ und den Phasenverschiebungen $\phi[\;] = \phi[0] \ldots \phi[N/2]$ ausdrücken. Formel \ref{eq:rectToPolar} definierte diese Transformation des Frequenz-Bereichs von kartesischer Notation in die \emph{polare Notation}. Formel \ref{eq:polarToRect} definiert die dazu inverse Transformation. \cite[S. 162]{dspGuide} Abbildung \ref{img:polarToRect02} zeigt den Frequenzbereich in polarer Notation für das Beispiel aus  Abbildung \ref{img:fftExample02}.
 
 \begin{equation}
 (A[\;], B[\;]) \longmapsto (M[\;], \phi[\;])  = 
@@ -669,7 +669,7 @@ Die Glieder $b_0 ,\ldots, b_M$ sind die Koeffizienten des aktuellen Samples und 
 \text{FIR} := \quad \forall j = [1,N] :\ a_j = 0 \\
 \text{IIR} := \quad \exists j \in [1,N]:  a_j \neq 0
 \end{gathered}
-\label{eq:FilterDifferenceEquation}
+\label{eq:FIRvsIIR}
 \end{equation}
 
 Die \emph{Ordnung} eines Filters wird definiert als die $\max(M,N)$. \cite[\glqq Filter Order\grqq]{introductionToFilters}.
@@ -732,7 +732,7 @@ x[\;] * h[\;] = y[\;] = \text{iDFT}\Big\{\ \text{DFT}\{x[\;]\} \cdot \text{DFT}\
 \label{eq:fftConvolution}
 \end{equation}
 
-In Kapitel \label{sec:convolution} wurde erwähnt, dass sich ein Signal $x[\;]$ durch die Faltung um die Länge der Impulantwort ausdehnt. Daher muss sichergestellt werden, dass das Signal $x[\;]$ vor der Transformation in den Frequenz-Bereich mindestens Length$(h[\;]) = M$ 0-Samples an seinem Ende hat, welche gegebenenalls zuerst angehangen werden müssen. Dadurch wird der Frequenz-Bereich von $x[\;]$ nur dahingehend beeinflusst, dass seine Auflösung erhöht wird. Damit die Frequenz-Bereiche $ X[\;]$ und $H[\;]$ multipliziert werden können, müssen sie die selbe Länge haben. Da die Impulsantwort meistens kürzer als das Eingangssignal ist, müssen ihr vor der DFT meist 0-Samples angehangen werden, um sie auf die selbe länge wie das Eingangsssignal \glqq zu strecken\grqq{}.\cite[S. 183 -184]{dspGuide}
+In Kapitel \ref{sec:convolution} wurde erwähnt, dass sich ein Signal $x[\;]$ durch die Faltung um die Länge der Impulantwort ausdehnt. Daher muss sichergestellt werden, dass das Signal $x[\;]$ vor der Transformation in den Frequenz-Bereich mindestens Length$(h[\;]) = M$ 0-Samples an seinem Ende hat, welche gegebenenalls zuerst angehangen werden müssen. Dadurch wird der Frequenz-Bereich von $x[\;]$ nur dahingehend beeinflusst, dass seine Auflösung erhöht wird. Damit die Frequenz-Bereiche $ X[\;]$ und $H[\;]$ multipliziert werden können, müssen sie die selbe Länge haben. Da die Impulsantwort meistens kürzer als das Eingangssignal ist, müssen ihr vor der DFT meist 0-Samples angehangen werden, um sie auf die selbe länge wie das Eingangsssignal \glqq zu strecken\grqq{}.\cite[S. 183 -184]{dspGuide}
 
 Ein weiterer Vorteil der FFT-Convolution ist, dass Einblick über den Einfluss des Filters auf den Frequenz-Bereich des Eingangs-Signals zur Erzeugung des Ausgangs-Signals gibt. Abbildung \ref{img:kernelFreq} verdeutlicht dieses Prinzip am Beispiel des \glqq windowed Sync Filters\grqq.  Links ist der Zeit-Bereich des Filter-Kernels zu sehen, rechts der Frequenzbereich $\text{DFT}\{h[\;]\} = H[\;]$. Der Frequenz-Bereich macht deutlich dass es sich bei der Impuls-Antwort um einen Tiefpass-Filter handelt, also ein Filter, welcher hohe Frequenzen des Eingangs-signals $x[\;]$ bei seiner Anwendung blockiert, aber tiefe Frequenzen jedoch passieren lässt.\cite[S. 180]{dspGuide}
 
@@ -817,22 +817,22 @@ Abbildung \ref{img:formants} \footnote{Bildquelle: \url{http://hyperphysics.phy-
 	\label{img:formants}
 \end{figure}	
 
-Da Sprache etwas zeitlich dynamisches ist, befinden sich sowohl die Glottal Source als auch der Filter des Vokaltraktes und der Lippen in ständiger Veränderung. Da die Informationen der Sprache vor allem im Frequenz-Bereich codiert sind, wird die in Kapitel \ref{sec:stft} vorgstellte Short Time Fourier Transformation für die Visualisierung von Sprache eingesetzt. Dabei wird auf der x-Achse die Zeitpunkte der Fenster, auf der y-Achse die Frequenz dargestellt. Die Frequenz-Fenster werden sozusagen \glqq auf die Seite gelegt\grqq{}, damit ihr zeitlicher Verlauf übersichtlich betrachtet werden kann. Die Amplitude der entsprechenden Frequenz wird farblich oder durch Helligkeiten codiert, abhängig von der konkreten Implementierung des Spectograms. Je länger das Zeitfenster der STFT, desto besser die Auflösung bezüglich des Frequenz-Bereiches, desto schlechter ist jedoch  die zeitliche Auflösung. Je kürzer die Zeitfenster der STFT, desto besser wird der zeitliche Verlauf bei sinkender Frequenz-Auflösung erkennbar.\cite[S. 48 - 50]{sprachverarbeitung} \cite[Acoustic Representations of Speech]{speechAcoustics}. Abbildung \ref{img:formants} zeigt ein Beispiel für zwei Spectogramme mit unterschiedlichen Fenstergrößen der STFT, angewandt auf einem 9 sekunden langen Signal mit Baby-Weinen. Es ist zu erkennen, wie bei sinkender Fensterlänge der zeitliche Verlauf besser erkennbar, jedoch die einzelnen harmonsichen Obertöne weniger gut voneinander unterscheidbar sind. Inbesondere bei der Analyse von Audiosignalen des Weinens der Neugeborenen von Golub und Corwin waren \cite{cryModel} waren Auswertungen von Spectogrammen von Zentraler Bedeutung.
+Da Sprache etwas zeitlich dynamisches ist, befinden sich sowohl die Glottal Source als auch der Filter des Vokaltraktes und der Lippen in ständiger Veränderung. Da die Informationen der Sprache vor allem im Frequenz-Bereich codiert sind, wird die in Kapitel \ref{sec:stft} vorgstellte Short Time Fourier Transformation für die Visualisierung von Sprache eingesetzt. Dabei wird auf der x-Achse die Zeitpunkte der Fenster, auf der y-Achse die Frequenz dargestellt. Die Frequenz-Fenster werden sozusagen \glqq auf die Seite gelegt\grqq{}, damit ihr zeitlicher Verlauf übersichtlich betrachtet werden kann. Die Amplitude der entsprechenden Frequenz wird farblich oder durch Helligkeiten codiert, abhängig von der konkreten Implementierung des Spectograms. Je länger das Zeitfenster der STFT, desto besser die Auflösung bezüglich des Frequenz-Bereiches, desto schlechter ist jedoch  die zeitliche Auflösung. Je kürzer die Zeitfenster der STFT, desto besser wird der zeitliche Verlauf bei sinkender Frequenz-Auflösung erkennbar.\cite[S. 48 - 50]{sprachverarbeitung} \cite[Acoustic Representations of Speech]{speechAcoustics}. Abbildung \ref{img:spectoExample} zeigt ein Beispiel für zwei Spectogramme mit unterschiedlichen Fenstergrößen der STFT, angewandt auf einem 9 sekunden langen Signal mit Baby-Weinen. Es ist zu erkennen, wie bei sinkender Fensterlänge der zeitliche Verlauf besser erkennbar, jedoch die einzelnen harmonsichen Obertöne weniger gut voneinander unterscheidbar sind. Inbesondere bei der Analyse von Audiosignalen des Weinens der Neugeborenen von Golub und Corwin waren \cite{cryModel} waren Auswertungen von Spectogrammen von Zentraler Bedeutung.
 %%Citation from Cry as a Signal!!
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{bilder/spectogram03.png}
 	\caption{Spectogram von Baby-Weinen. Rot = Hohe Amplituden, Blau = niedrige Amplituden. Oben: Zeit-Bereich. Mitte: Spectogram mit einer Fensterlänge von $\SI{185}{\milli\second}$(8192-Sample DFT). Unten: Spectogram mit einer Fensterlänge von $\SI{5}{\milli\second}$} (265-Sample DFT).
-	\label{img:formants}
+	\label{img:spectoExample}
 \end{figure}	
 
 
 \section{Feststellung von Periodizität in Signalen}
 
-Die Feststellung von Periodizität in Zeit-Bereich in einem Signal hat eine besondere Rolle in der Sprachverarbeitung. Ein Ensatzgebiet, welches in dieser Arbeit weiter von Bedeutung sein wird, ist die Voice-Activity-Detection, die Feststellung des Vorhandenseins von Stimme in einem Signal. \cite{vad_Lisboa} Ein weiteres Einsatzgebiet ist die Tonhöhenerkennung. \cite{pitch-paper-overview}  \cite[S. 1 - 2]{pitchHistory}
+Die Feststellung von Periodizität in Zeit-Bereich in einem Signal hat eine besondere Rolle in der Sprachverarbeitung. Ein Ensatzgebiet, welches in dieser Arbeit weiter von Bedeutung sein wird, ist die Voice-Activity-Detection, die Feststellung des Vorhandenseins von Stimme in einem Signal. \cite{vad_Lisboa} Ein weiteres Einsatzgebiet ist die Tonhöhenerkennung. \cite{pitch-paper-overview}  \cite[S. 1 - 2]{pitch_History}
 
-Ein Sprachsignal ist 1.) nur über kurze Zeitfenster periodisch, da sich die Tonhöhe jederzeit ändern kann, und 2.) selbst bei \glqq perfekt gewählter Fensterlänge\grqq{} nicht perfekt periodisch, sondern nur annhäernd periodisch (\emph{quasi periodisch}).\cite[S. 1 - 2]{pitchHistory} Formel \ref{eq:quasi-periodicity} definiert diese Aussage als Formel für den Zeit-Bereich.
+Ein Sprachsignal ist 1.) nur über kurze Zeitfenster periodisch, da sich die Tonhöhe jederzeit ändern kann, und 2.) selbst bei \glqq perfekt gewählter Fensterlänge\grqq{} nicht perfekt periodisch, sondern nur annhäernd periodisch (\emph{quasi periodisch}).\cite[S. 1 - 2]{pitch_History} Formel \ref{eq:quasi-periodicity} definiert diese Aussage als Formel für den Zeit-Bereich.
 
 \begin{equation}
  x[n+N] \approx x[n]
@@ -840,7 +840,7 @@ Ein Sprachsignal ist 1.) nur über kurze Zeitfenster periodisch, da sich die Ton
 \end{equation}
 
 %Kapitel einfügen >.<
-Über die Jahre wurde eine Vielzahl an Methoden zur Feststellung der Periodizität entwickelt. An dieser Stelle wird eine Auswahl vorgestellt, die für die Voice-Activity-Deteciton in Kapitel xxx von Bedeutung sind.
+Über die Jahre wurde eine Vielzahl an Methoden zur Feststellung der Periodizität entwickelt. An dieser Stelle wird eine Auswahl vorgestellt, die für die Voice-Activity-Deteciton in Kapitel \ref{sec:vad} Bedeutung sind.
 
 %\subsection{Zero-Crossing-Rate}
 
