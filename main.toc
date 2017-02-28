@@ -27,7 +27,7 @@
 \contentsline {section}{\numberline {3.3}Methoden der experimentellen Evaluation}{46}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}k-fold Crossvalidation}{46}{subsection.3.3.1}
 \contentsline {chapter}{\numberline {4}Grundlagen der medizinischen Schrei-Forschung}{48}{chapter.4}
-\contentsline {section}{\numberline {4.1}Pain-Scales}{48}{section.4.1}
+\contentsline {section}{\numberline {4.1}Pain Scales}{48}{section.4.1}
 \contentsline {section}{\numberline {4.2}Schmerz-Schrei aus medizinischer Sicht}{51}{section.4.2}
 \contentsline {section}{\numberline {4.3}Klassische Schreiforschung}{52}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Phyisio-Akustische Modellierung des Weinens}{52}{subsection.4.3.1}
