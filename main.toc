@@ -1,62 +1,36 @@
 \select@language {ngerman}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Grundlagen der Signalverarbeitung}{2}{chapter.2}
-\contentsline {section}{\numberline {2.1}Statistische Merkmale}{4}{section.2.1}
-\contentsline {section}{\numberline {2.2}Fehlersignale}{6}{section.2.2}
-\contentsline {section}{\numberline {2.3}Korrelation}{7}{section.2.3}
-\contentsline {section}{\numberline {2.4}Diskrete Fourier-Transformation}{8}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Reelle DFT}{9}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Komplexe DFT}{13}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Short Time Fourier Transform}{17}{subsection.2.4.3}
-\contentsline {section}{\numberline {2.5}Filter}{20}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Differenzengleichung}{20}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Faltung}{21}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Multiplikation im Frequenz-Bereich}{22}{subsection.2.5.3}
-\contentsline {section}{\numberline {2.6}akustische Modellierung der menschlichen Stimme}{24}{section.2.6}
-\contentsline {section}{\numberline {2.7}Feststellung von Periodizit\IeC {\"a}t in Signalen}{28}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}Autokorrelation}{29}{subsection.2.7.1}
-\contentsline {subsection}{\numberline {2.7.2}Cepstrum}{30}{subsection.2.7.2}
-\contentsline {chapter}{\numberline {3}\IeC {\"U}berwachtest Lernen}{33}{chapter.3}
-\contentsline {section}{\numberline {3.1}Klassifizierung}{34}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}ID3}{35}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}C4.5}{39}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{41}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Regression}{42}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Simple Linear Regression}{43}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Multiple Linear Regression}{44}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Methoden der experimentellen Evaluation}{46}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}k-fold Crossvalidation}{46}{subsection.3.3.1}
-\contentsline {chapter}{\numberline {4}Grundlagen der medizinischen Schrei-Forschung}{48}{chapter.4}
-\contentsline {section}{\numberline {4.1}Pain Scales}{48}{section.4.1}
-\contentsline {section}{\numberline {4.2}Schmerz-Schrei aus medizinischer Sicht}{51}{section.4.2}
-\contentsline {section}{\numberline {4.3}Klassische Schreiforschung}{52}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Phyisio-Akustische Modellierung des Weinens}{52}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Diskussion}{55}{subsection.4.3.2}
-\contentsline {chapter}{\numberline {5}System zur Visualisierung akustischer Schmerz-Scores}{56}{chapter.5}
-\contentsline {section}{\numberline {5.1}Literatur-\IeC {\"U}beblick}{56}{section.5.1}
-\contentsline {section}{\numberline {5.2}Verarbeitungs-Pipeline}{58}{section.5.2}
-\contentsline {section}{\numberline {5.3}Preprocessing}{59}{section.5.3}
-\contentsline {section}{\numberline {5.4}Voice Activity Detection}{61}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Windowing}{62}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Feature Extraction}{62}{subsection.5.4.2}
-\contentsline {subsubsection}{\nonumberline Zeit-Bereich}{62}{section*.56}
-\contentsline {subsubsection}{\nonumberline Autokorrelation}{62}{section*.57}
-\contentsline {subsubsection}{\nonumberline Frequenz-Bereich}{63}{section*.58}
-\contentsline {subsubsection}{\nonumberline Cepstrum}{64}{section*.59}
-\contentsline {subsubsection}{\nonumberline Konstruktion des Feature-Raumes}{64}{section*.61}
-\contentsline {subsection}{\numberline {5.4.3}Thresholding}{67}{subsection.5.4.3}
-\contentsline {subsubsection}{\nonumberline Finden der Grenzwerte}{67}{section*.63}
-\contentsline {subsubsection}{\nonumberline Trainings- und Testdatens\IeC {\"a}tze}{68}{section*.65}
-\contentsline {subsubsection}{\nonumberline Training}{69}{section*.66}
-\contentsline {subsubsection}{\nonumberline Ergebnis}{69}{section*.67}
-\contentsline {subsection}{\numberline {5.4.4}Markierung der Cry-Units}{71}{subsection.5.4.4}
-\contentsline {subsection}{\numberline {5.4.5}Decision Smoothing}{72}{subsection.5.4.5}
-\contentsline {subsection}{\numberline {5.4.6}Diskussion der Voice-Activity-Detection}{74}{subsection.5.4.6}
-\contentsline {section}{\numberline {5.5}Segmentierung}{75}{section.5.5}
-\contentsline {section}{\numberline {5.6}Feature-Extraktion und Ableitung der Schmerzscore}{78}{section.5.6}
-\contentsline {subsection}{\numberline {5.6.1}Feature-Extraction}{80}{subsection.5.6.1}
-\contentsline {subsubsection}{\nonumberline Features des Zeitbereiches}{80}{section*.74}
-\contentsline {subsection}{\numberline {5.6.2}Ableitung der Pain-Score}{83}{subsection.5.6.2}
-\contentsline {section}{\numberline {5.7}Visualisierung}{85}{section.5.7}
-\contentsline {chapter}{\numberline {6}Zusammenfassung}{86}{chapter.6}
-\contentsline {chapter}{Appendices}{92}{section*.78}
+\contentsline {chapter}{\numberline {2}Grundlagen der medizinischen Schrei-Forschung}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}Pain Scales}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Schmerz-Schrei aus medizinischer Sicht}{5}{section.2.2}
+\contentsline {section}{\numberline {2.3}Klassische Schreiforschung}{6}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Phyisio-Akustische Modellierung des Weinens}{6}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Diskussion}{9}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}System zur Visualisierung von Schmerz Scores am Beispiel akustischer Signale}{10}{chapter.3}
+\contentsline {section}{\numberline {3.1}Literatur\IeC {\"u}berblick}{10}{section.3.1}
+\contentsline {section}{\numberline {3.2}Verarbeitungs-Pipeline}{12}{section.3.2}
+\contentsline {section}{\numberline {3.3}Vorverarbeitung}{13}{section.3.3}
+\contentsline {section}{\numberline {3.4}Voice Activity Detection}{15}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Windowing}{16}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Extraktion von Eigenschaften}{16}{subsection.3.4.2}
+\contentsline {subsubsection}{\nonumberline Zeitbereich}{16}{section*.10}
+\contentsline {subsubsection}{\nonumberline Autokorrelation}{17}{section*.11}
+\contentsline {subsubsection}{\nonumberline Frequenzbereich}{17}{section*.12}
+\contentsline {subsubsection}{\nonumberline Cepstrum}{18}{section*.13}
+\contentsline {subsubsection}{\nonumberline Konstruktion des Feature-Raumes}{19}{section*.15}
+\contentsline {subsection}{\numberline {3.4.3}Thresholding}{21}{subsection.3.4.3}
+\contentsline {subsubsection}{\nonumberline Finden der Grenzwerte}{21}{section*.17}
+\contentsline {subsubsection}{\nonumberline Trainings- und Testdatens\IeC {\"a}tze}{22}{section*.19}
+\contentsline {subsubsection}{\nonumberline Training}{23}{section*.20}
+\contentsline {subsubsection}{\nonumberline Ergebnis}{24}{section*.21}
+\contentsline {subsection}{\numberline {3.4.4}Markierung der Cry-Units}{25}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.5}Decision Smoothing}{26}{subsection.3.4.5}
+\contentsline {subsection}{\numberline {3.4.6}Diskussion der Voice-Activity-Detection}{28}{subsection.3.4.6}
+\contentsline {section}{\numberline {3.5}Segmentierung}{29}{section.3.5}
+\contentsline {section}{\numberline {3.6}Feature-Extraktion und Ableitung der Schmerzscore}{33}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Extrahierung von Eigenschaften}{35}{subsection.3.6.1}
+\contentsline {subsubsection}{\nonumberline Features des Zeitbereiches}{35}{section*.28}
+\contentsline {subsection}{\numberline {3.6.2}Ableitung der Pain-Score}{38}{subsection.3.6.2}
+\contentsline {section}{\numberline {3.7}Visualisierung}{39}{section.3.7}
+\contentsline {chapter}{\numberline {4}Zusammenfassung}{40}{chapter.4}
+\contentsline {chapter}{Appendices}{45}{section*.32}

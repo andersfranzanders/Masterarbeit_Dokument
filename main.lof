@@ -1,60 +1,20 @@
 \select@language {ngerman}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Ein zeit-kontinuierliches Signal (A) und ein zeit-diskretes Signal (B) (nach \cite [S. 22]{dspMichigan})\relax }}{2}{figure.caption.4}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Ein nicht-periodisches Signal (A) und ein periodisches Signal (B) (nach \cite [S. 145]{dspGuide})\relax }}{4}{figure.caption.5}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Statistische Werte eines Signals \IeC {\"u}ber das Intervall [50,200]\relax }}{5}{figure.caption.6}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Komponentenweise Addition und Mulitplikation zweier Signale\relax }}{5}{figure.caption.7}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Berechnung des MSE, RMSE und SNR eines von Rauschen gest\IeC {\"o}rten Signals\relax }}{7}{figure.caption.8}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Correlation der Signale $x[n]$ und $y[n]$\relax }}{7}{figure.caption.9}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Beispiel einer Running Correlation (nach \cite [S. 48]{dspMichigan})\relax }}{8}{figure.caption.10}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces $\SI {1}{\second } = 44100 $ Samples der Cosinus-Schwingung $[A = 2] \cdot cos_{f=\SI {4}{\hertz }}[\tmspace +\thickmuskip {.2777em}] = 2 \cdot \qopname \relax o{cos}(2\pi 4 \frac {n}{f_s})$ bei einer Sampling-Rate von $f_s = \SI {44100}{\hertz } $\relax }}{9}{figure.caption.11}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Synthetisierung eines Signals $x[\tmspace +\thickmuskip {.2777em}]$ aus vier Cosinus-Funktionen, mit Length$(x[\tmspace +\thickmuskip {.2777em}]) = 200$ und $f_s = \SI {100}{\hertz }$\relax }}{10}{figure.caption.12}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die DFT und die inverse DFT (nach: \cite [S. 147]{dspGuide})\relax }}{12}{figure.caption.13}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Frequenz-Bereich des Beispiels aus Abbildung \ref {img:fftExample02}\relax }}{13}{figure.caption.14}
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Visualisierung der Eulergleichung\relax }}{14}{figure.caption.15}
-\contentsline {figure}{\numberline {2.13}{\ignorespaces Symmetrie des Frequenzbereiches in den Indexen $n = (-N/2 = -0.5*N) ,\ldots , (N/2 = 0.5*N)$. Die Marker 1 und 2 haben eine Amplitude von $+0.5$, der Marker 3 hat eine Amplitude von $-0.5$ und Marker 4 eine Amplitude von $+0.5$ \cite [S. 572]{dspGuide}\relax }}{17}{figure.caption.16}
-\contentsline {figure}{\numberline {2.14}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die komplexe DFT und inverse DFT (nach \cite [S. 226]{dspGuide})\relax }}{18}{figure.caption.17}
-\contentsline {figure}{\numberline {2.15}{\ignorespaces Ein 1.8-Sekunden langes Signal. Oben: Der Zeitbereich mit drei klar erkennbaren Events. Unten: Das Frequenz-Spectrum des gesamten Signals mit logarithmisierten Achsen.\relax }}{18}{figure.caption.18}
-\contentsline {figure}{\numberline {2.16}{\ignorespaces Zerlegung eines Signals in Singal-Fenster\relax }}{19}{figure.caption.19}
-\contentsline {figure}{\numberline {2.17}{\ignorespaces Das Hamming-Window\relax }}{19}{figure.caption.20}
-\contentsline {figure}{\numberline {2.18}{\ignorespaces STFT des Beispiel-Signals aus Abbildung \ref {img:siganlWindows}\relax }}{19}{figure.caption.21}
-\contentsline {figure}{\numberline {2.19}{\ignorespaces Beispiel f\IeC {\"u}r die Faltung \cite [S. 112]{dspGuide}\relax }}{22}{figure.caption.22}
-\contentsline {figure}{\numberline {2.20}{\ignorespaces Links: Zeit-Bereich einer Impulsantwort $h[\tmspace +\thickmuskip {.2777em}]$ des \glqq windowed Sync Filters\grqq . Rechts: Frequenz-Bereich dieser Impulsantwort $\text {DFT}\{h[\tmspace +\thickmuskip {.2777em}]\} = H[\tmspace +\thickmuskip {.2777em}]$ \cite [S. 287]{dspGuide}\relax }}{23}{figure.caption.23}
-\contentsline {figure}{\numberline {2.21}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber die Organe der Spracherzeugung \cite {speechProduction}\relax }}{24}{figure.caption.24}
-\contentsline {figure}{\numberline {2.22}{\ignorespaces Schematische \IeC {\"u}ber das Source-Filter-Model \cite [Source estimation, S. 17]{ricardo_ceps}\relax }}{25}{figure.caption.25}
-\contentsline {figure}{\numberline {2.23}{\ignorespaces Zeit-Bereiche der periodic und der turbulance Source \cite [Source]{speechAcoustics}\relax }}{25}{figure.caption.26}
-\contentsline {figure}{\numberline {2.24}{\ignorespaces Betrachtung der Frequenz-Bereiche des Source-Filer-Modell (nach: \cite [Source Estimation, S. 3]{ricardo_ceps})\relax }}{26}{figure.caption.27}
-\contentsline {figure}{\numberline {2.25}{\ignorespaces Grundfrequenz und Harmonische Oberwellen eines Sprachsignals.\relax }}{27}{figure.caption.28}
-\contentsline {figure}{\numberline {2.26}{\ignorespaces Formanten im Sprach-Signal (nach: \cite {benade})\relax }}{27}{figure.caption.29}
-\contentsline {figure}{\numberline {2.27}{\ignorespaces Spectogram von Baby-Weinen. Rot = Hohe Amplituden, Blau = niedrige Amplituden. Oben: Zeit-Bereich. Mitte: Spectogram mit einer Fensterl\IeC {\"a}nge von $\SI {185}{\milli \second }$(8192-Sample DFT). Unten: Spectogram mit einer Fensterl\IeC {\"a}nge von $\SI {5}{\milli \second }$\relax }}{28}{figure.caption.30}
-\contentsline {figure}{\numberline {2.28}{\ignorespaces Autokorrelation eines Signals \cite {vad_Lisboa}\relax }}{29}{figure.caption.31}
-\contentsline {figure}{\numberline {2.29}{\ignorespaces Berechnung des Cepstrums (nach: \cite [Cepstral Analysis, S. 3]{ricardo_ceps})\relax }}{30}{figure.caption.32}
-\contentsline {figure}{\numberline {2.30}{\ignorespaces Aufkommen eines Peaks im oberen Quefrency-Bereich bei stimmhaften Signalfenstern \cite [Cepstral Analysis, S. 17]{ricardo_ceps}\relax }}{31}{figure.caption.33}
-\contentsline {figure}{\numberline {2.31}{\ignorespaces Feststellung der Grundfrequenz aus dem Cepstrum\cite {cepstrumPitchTranslation}\relax }}{32}{figure.caption.34}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{7}{figure.caption.5}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces (1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite [S. 142]{signal}\relax }}{8}{figure.caption.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Entscheidungsbaum, der durch den ID3-Algorithmus f\IeC {\"u}r den Datensatz aus Beispiel \ref {tab:id3_example} erzeugt wurde.\relax }}{36}{figure.caption.37}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Knoten eines Entscheidungsbaums f\IeC {\"u}r kontinuierliche Werte\relax }}{40}{figure.caption.39}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Confusion-Matrix (nach: \cite [S. 214]{machine_kubat})\relax }}{41}{figure.caption.43}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Beispiel eines einfachen linearen Regressionsmodells $X = Latitude$ und $Y = Mortality of Skin Cancer$ \cite {regression_lecture}\relax }}{43}{figure.caption.44}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Zwei Kandidaten f\IeC {\"u}r ein simples lineares Regressionmodell\relax }}{44}{figure.caption.45}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Lineare Regression eines zweidimensionalen Feature-Raumes \cite [S. 73]{statistical_learning}\relax }}{45}{figure.caption.46}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Schematische Darstellung der Aufteilung in Test- und Trainingsdatensatz bei einer 5-fold Crossvalidation\relax }}{47}{figure.caption.49}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die Verarbeitungs-Pipeline dieser Arbeit\relax }}{13}{figure.caption.7}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ergebnis der Vorverarbeitung. Oben: Das Signal vor der Vorverarbeitung. Unten: Das Signal nach der Vorverarbeitung.\relax }}{14}{figure.caption.8}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Markierung stimmhafter Bereiche in einem Audiosignal. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Rot: Klassifizierung in stimmhaft/Stille. Es sind f\IeC {\"u}nf Cry-Units zu erkennen.\relax }}{15}{figure.caption.9}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Features, die f\IeC {\"u}r die Voice Activity Detection erprobt wurden.\relax }}{20}{figure.caption.14}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden. Schwarz: Eingangs-Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }}{21}{figure.caption.16}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Thresholding eines Features. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Grenzwert\relax }}{22}{figure.caption.18}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }}{26}{figure.caption.22}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Beziehung zwischen agrenzenden Cry-Units, nach \cite [S. 2]{vad_entropy}\relax }}{26}{figure.caption.23}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{28}{figure.caption.24}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Klassifikation vor und nach dem Decision Smoothing\relax }}{30}{figure.caption.25}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{30}{figure.caption.26}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Ergebnis der Segmentierung mit einem Grenzwert von $t_s = \SI {6}{\second }$\relax }}{32}{figure.caption.27}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{53}{figure.caption.51}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces (1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite [S. 142]{signal}\relax }}{54}{figure.caption.52}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die Verarbeitungs-Pipeline dieser Arbeit\relax }}{59}{figure.caption.53}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Ergebnis des Preprocessings\relax }}{60}{figure.caption.54}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Markierung stimmhafter Bereiche in einem Audiosignal. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Rot: Klassifizierung in Stimmhaft/Stille\relax }}{61}{figure.caption.55}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Features, die f\IeC {\"u}r die Voice Activity Detection verwendet werden.\relax }}{65}{figure.caption.60}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden. Schwarz: Eingangs-Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }}{66}{figure.caption.62}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Thresholding eines Features. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Grenzwert\relax }}{67}{figure.caption.64}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }}{71}{figure.caption.68}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Beziehung zwischen agrenzenden Cry-Units, nach \cite [S. 2]{vad_entropy}\relax }}{72}{figure.caption.69}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{72}{figure.caption.70}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Klassifikation vor und nach dem Decision Smoothing\relax }}{75}{figure.caption.71}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{75}{figure.caption.72}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Ergebnis der Segmentierung mit einem Grenzwert von $t_s = \SI {6}{\second }$\relax }}{77}{figure.caption.73}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{94}{figure.caption.80}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{47}{figure.caption.34}
