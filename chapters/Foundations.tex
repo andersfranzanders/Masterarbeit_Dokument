@@ -1,0 +1,662 @@
+\chapter{Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}
+
+Das Ziel dieses Kapitels ist es, wichtig Grundlagen zum Verständnis der Schmerzbewertung bei Neugeberonenen auf Basis akustischer Signale zu legen. Dazu wird in Kapitel \ref{sec:medicalFoundations} zunächst Erläutert, wie die Schmerzbewertung aus Sicht medizinischer Fachkräfte im klinischen Alltag durchgeführt wird. Der Fokus liegt dabei insbesondere auf die Schlüsse, die man aus dem Weinen eines Babys auf dessen Schmerz machen kann. Um die menschliche Stimme automatisiert analysieren zu können, werden Methoden der Signalverarbeitung verwendet. Daher werden in  Kapitel \ref{sec:signal_foundations} technische Grundlagen erläutert, die zu diesem Zweck unerlässlich sind. In Kapitel \ref{sec:cryresearch_foundations} wird eine Einführung in die \glqq klassische Schreiforschung\grqq{}. Dabei handelt es sich um Wissenschaftsgebiet, bei dem versucht wird, mit Hilfe von Methoden der Signalverarbeitung ein tieferes Verständnis über die Bedeutung des Weinens von Babys zu erhalten. Da sich in dieser Arbeit erstellte Konzept zur automatisierten Analyse des Weinenes als Erweiterung der klassischen Methoden versteht, ist ein Verständnis des Wissenschaftsgebietes unerlässlich. In Kapitel \ref{sec:learning} werden Grundlagen des Überwachten maschienellen Lernens erläutert, da diese zur automatisierten Interpretation von Audiosignalen von Bedeutung sind.
+
+\section{Schmerz und Weinen bei Neugeborenen aus medizinischer Sicht}
+\label{sec:medicalFoundations} 
+
+Schmerz wird definiert als eine \glqq ein unangenehmes Sinnes- oder Gefühlserlebnis, das mit tatsächlicher oder potenzieller Gewebeschädigung einhergeht\grqq{}.\cite[S. 438]{PainAssessment01} Abseits von dieser theoretischen Definition hat der Mensch ein intuitives Verständnis für Schmerz, da jeder ihn in seine Leben erfahren musste. In der ersten Hälfte des 20sten Jahrhunderts war die vorherrschende Meinung, dass Neugeborene keinen Schmerz empfinden können. Beispielsweise bekam sie nach Operationen keine Schmerzmittel verabreicht. Die aktuell vorherrschende Meinung ist, dass Neugeborene im selben Maße wie Erwachsene Schmerz empfinden können. Die freien Nervenenden, die in der Lage sind, physische Schäden am Körper festzustellen, sind bei Neugeborenen ebenso wie bei Erwachsenen über den Körper verteilt. Die hormonelle Reaktion ist ebenfalls vergleichbar. \cite[S. 402]{PainAssessment03} \cite[S. 438]{PainAssessment01}
+
+\subsection{Pain Scales}
+\label{sec:painScores}
+
+Es gibt diverse Gründe, warum Neugeborene Schmerz empfinden können. Sie reichen über physische Schäden, aufgrund von komplikationen bei der Geburt oder Gewalteinwirkungen, über Erkrankungen, wie Kopfschmerzen oder Infektionen, bis hin zu therapeutischen Prozeduren, wie Injektionen oder Desinfektionen von Wunden.  Das Vorhandensein von Schmerz ist anhand diverser physiologischer, biochemischer, verhaltensbezogener und psychologischer Veränderungen messbar.\cite[S. 441]{PainAssessment01}
+
+Schlussendlich ist Schmerz jedoch ein subjektives Empfinden. Daher wird der Schmerzgrad bei Erwachsenen typischerweise durch eine Selbsteinschätzung des Patienten unter der Leitung gezielter Fragen des Arztes festgestellt. Bei Kindern unter 3 Jahren ist diese Selbsteinschätzung nicht möglich. Diese Einschätzung muss daher von anderen Personen vorgenommen werden. Im klinischen Kontext sind dies medizinische Fachkräfte, wie beispielsweise Ärzte, Krankenpfleger oder Geburtshelfer. Die von außen am leichtesten feststellbaren Indikatoren von Schmerz sind die verhaltensbasierten Merkmale, wie zum Beispiel ein Verkrampfen des Gesichtsausdrucks, erhöhte Körperbewegungen oder lang anhaltendes Weinen.\cite[S. 438]{PainAssessment01} Die Schmerzdiagnostik durch eine andere Person ist etwas inherent subjektives und abhängig von Faktoren wie dem Alter, Geschlecht, kulturellen Hintergrund, persönlichen Erfahrungen mit Schmerz etc.\cite[S. 3]{overview} Um die Schmerzdiagnostik objektiver zu gestalten, wurden daher sogenannte \emph{Pain Scales} entwickelt, mit Hilfe eines Punktesystems den Schmerzgrad des Babys quantifizieren.\cite[S. 438 - 439]{PainAssessment01} Es existieren \emph{monomodale} oder \emph{unidimensionale} Pain Scales, bei denen der Schmerzgrad aus der Beobachtung \emph{eines} Merkmals geschlossen wird, wie beispielsweise der Gesichtsausdruck. Ein Merkmal wird in diesem Zusammenhang als \emph{Schmerzindikator} bezeichnet. \emph{ Multimodale} oder auch \emph{Multidimensionale} Pain Scales beziehen mehrere Schmerzindikatoren in das Scoring mit ein.\cite[S. 69 - 71]{PainAssessment02}. Tabelle \ref{tab:nips} zeigt das Scoring-System \glqq Neonatal Infant Pain Scale\grqq{}(NIPS) als Beispiel für eine multimodale Pain Scale. Für jede aufgeführte Kategorie werden ein, zwei oder drei Punkte vergeben und anschließend aufsummiert. Ein insgesamter Wert von $>3$ zeigt moderaten Schmerz an, ein Wert von $>4$ großen Schmerz.\cite{nips}
+
+\begin{table}[h]
+	\footnotesize
+	\centering
+	\caption{Neonatal Infant Pain Scale \cite{nips}}
+	\label{tab:nips}
+	\begin{tabular}{@{}cccc@{}}
+		\toprule
+		\textbf{NIPS}     & \textbf{0 points} & \textbf{1 point}     & \textbf{2 points} \\ \midrule
+		Facial Expr. & Relaxed           & Contracted           & -                 \\
+		Cry               & Absent            & Mumbling             & Vigorous          \\
+		Breathing         & Relaxed           & Different than basal & -                 \\
+		Arms              & Relaxed           & flexed/stretched     & -                 \\
+		Legs              & Relaxed           & flexed/stretched     & -                 \\
+		Alertness         & Sleeping          & uncomfortable        & -                 \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+
+Nach dem Muster der NIPS existieren viele weitere Pain Scales. Sie unterscheiden sich hinsichtlich der Schmerzindikatoren, die betrachtet werden, dem Punktesystem oder dem konkreten Einsatzzweck. Einige Pain Scales sind beispielsweise auf die Schmerzdiagnostik während eines Eingriffes spezialisiert, andere auf den darauf folgenden Heilungsprozess. In den meisten Pain Scales wird das Weinen oder Schreien der Babys als Schmerzindikator mit einbezogen. In der englischen Fachliteratur ist von \glqq Cry\grqq{} die Rede.\cite[S. 97 - 98]{painInNeonates} In dieser Arbeit wird \glqq Cry\grqq{} mit \glqq Weinen\grqq{} oder mit dem neutraleren Begriff \glqq kindliche Lautäußerungen\grqq{} übersetzt. Tabelle \ref{tab:painscores} zeigt eine Übersicht über einige multimodale Pain Scales. In der Übersicht wird nur der Teil wiedergegeben, der sich auf das Weinen bezieht. Es wird nicht gezeigt, welche weiteren Merkmale in das jeweilige Scoring mit einbezogen werden, für welchen Altersbereich die Scales gedacht sind oder welches Scoring auf welche Schmerzintensität hinweist. Es soll an dieser Stelle nur verdeutlicht werden, welche Ansätze zur Bewertung des Weinens aus medizinischer Sicht im Zusammenhang mit Pain Scales existieren. 
+
+%\begin{table}[H]
+%	\centering
+\begin{longtable}{@{}lll@{}}
+	
+	%	\begin{tabular}{@{}lll@{}}
+	\toprule
+	\textbf{System} & \textbf{P.} & \textbf{Description}                                                                                \\ \midrule
+	FLACC***\cite{flacc}           & 0           & No cry (awake or asleep)                                                                            \\
+	& 1           & Moans or whimpers; occasional complaint                                                             \\
+	& 2           & \begin{tabular}[c]{@{}l@{}}Crying steadily, screams or sobs, \\ frequent complaints\end{tabular}    \\\midrule
+	N-PASS***\cite{npass}          & -2          & No cry with painful stimul                                                                          \\
+	& -1          & \begin{tabular}[c]{@{}l@{}}Moans or cries minimally \\ with painful stimuli\end{tabular}            \\
+	& 0           & Appropiate Crying                                                                                   \\
+	& 1           & \begin{tabular}[c]{@{}l@{}}Irritable or Crying at Intervals.\\ Consolable\end{tabular}                                                        \\
+	& 2           & \begin{tabular}[c]{@{}l@{}}High-pitched or silent-continuous crying. \\ Not consolable\end{tabular} \\\midrule
+	BIIP\cite{BIIP}            & 0           & No Crying                                                                                           \\
+	& 1           & Crying \textless 2 minutes                                                                          \\
+	& 2           & Crying \textgreater 2 minutes                                                                       \\
+	& 3           & Shrill Crying \textgreater 2 minutes                                                                \\\midrule
+	CRIES*\cite{cries}            & 0           & If no cry or cry which is not high pitched                                                          \\
+	& 1           & \begin{tabular}[c]{@{}l@{}}If cry high pitched but baby \\ is easily consoled\end{tabular}          \\
+	& 2           & \begin{tabular}[c]{@{}l@{}}If cry is high pitched and baby \\ is inconsolable\end{tabular}          \\\midrule
+	COVERS**\cite{covers}          & 0           & No Cry                                                                                              \\
+	& 1           & High-Pitched or visibly crying                                                                      \\
+	& 2           & Inconsolable or difficult to soothe                                                                 \\\midrule
+	PAT*\cite{pat}             & 0           & No Cry                                                                                              \\
+	& 1           & Cry                                                                                                 \\\midrule
+	DAN**\cite{dan}             & 0           & Moans Briefly                                                                                       \\
+	& 1           & Intermittent Crying                                                                                 \\
+	& 2           & Long-Lasting Crying, Continuous howl                                                                \\\midrule
+	COMFORT*\cite{comfort}         & 0           & No crying                                                                                           \\
+	& 1           & Sobbing or gasping                                                                                  \\
+	& 2           & Moaning                                                                                             \\
+	& 3           & Crying                                                                                              \\
+	& 4           & Screaming                                                                                           \\\midrule
+	MBPS\cite{mbps}            & 0           & Laughing or giggling                                                                                \\
+	& 1           & Not Crying                                                                                          \\
+	& 2           & \begin{tabular}[c]{@{}l@{}}Moaning quiet vocalizing gentle or \\ whimpering cry\end{tabular}        \\
+	& 3           & Full lunged cry or sobbing                                                                          \\
+	& 4           & Full lunged cry more than baseline cry                                                              \\ \bottomrule
+	%\end{tabular}
+	\caption{Übersicht über Pain-Scales. Legende zu den Einsatzbereichen: *** Anhaltender/chronischer Schmerz, ** Prozeduraler Schmerz, *Post-Operativer Schmerz\cite[S. 98 ]{painInNeonates} }
+	\label{tab:painscores}
+\end{longtable}
+%\end{table}
+
+Da die Begriffe \emph{Pain Scale} und \emph{Pain Score} in einigen Veröffentlichungen inkonsistent verwendet werden, wird in dieser Arbeit die Konvention getroffen, dass mit \emph{Pain Scale} das System zur Schmerzdiangostik gemeint ist und mit \emph{Pain Score} die auf Basis der Pain Scale vergebene Punktzahl. \emph{NIPS} ist also beispielsweise eine Pain Scale, und $3$ eine Pain Score. 
+
+Folgende Anmerkungen werden bezüglich der Pain Scales aus Tabelle \ref{tab:painscores} gemacht:
+
+\begin{enumerate}
+	
+	\item Die Kriterien zur Bewertung des Weinens werden zum größten Teil mit \emph{subjektiv behafteten Begriffen} beschrieben. Beispielsweise wird bei dem \emph{N-PASS}-System ein Score von drei für \glqq High-pitched or silent-continuous crying\grqq{} vergeben. Die Begriffe \glqq high-pitched\grqq{} und \glqq silent-continuous\grqq{} werden nicht näher definiert.  Auch in die Anwendungsvorschriften der Pain Scales werden keine festen Definitionen gegeben. Dies erleichtert den praktischen Einsatz der Pain Scales, führt jedoch zu einem Interpretationsspielraum und somit zu einem von der diagnostizierenden Person abhängigen Scoring. Die \emph{BIIP}-Scale nutzt als einzige der vorgestellten Scales objektiv messbare Eigenschaften. 
+	
+	\item Die Pain Scales fokussieren unterschiedliche Eigenschaften. Bei \emph{CRIES} ist die Tonhöhe, bei \emph{BIIP} die Länge und bei \emph{COMFORT} die Art des Weinens ausschlagebend für das Scoring.
+	
+	\item Die Beschreibungen sind kurz und prägnant gehalten, die diagnostizierende Person hat bei keiner Pain Scale auf mehr als drei Eigenschaften des Weinens zu achten.
+\end{enumerate}
+
+
+\subsection{Weinen bei Neugeborenen}
+
+An dieser Stelle stellt sich der Leser eventuell die Frage, woher die unterschiedlichen Bewertungskriterien in den Pain Scales stammen. Gibt es eine \glqq beste\grqq{} Pain Scale? Dieser Frage unterliegen zwei grundlegendere Fragen:
+
+\begin{enumerate}
+	\item Ist es möglich, aus den akustischen Eigenschaften den motivierenden Grund für die Lautäußerung abzuleiten?  Klingt ein durch Hunger bedingtes Weinen anders als ein durch Schmerz bedingtes?
+	\item Ist es möglich, anhand der akustischen Eigenschaften den Schweregrad dieses motivierenden Grundes abzuleiten?
+\end{enumerate}
+
+Die Annahme, dass es möglich sei, aus den Eigenschaften des Weinens den Grund ablesen zu können, wird als \glqq Cry-Types Hypothesis\grqq{} bezeichnet. Die berühmtesten Befürworter dieser Hypothese ist eine skandinavische Forschungsgruppe, auch bezeichnet als \glqq Scandinavian Cry-Group\grqq , die die Idee in dem Buch \glqq Infant Crying: Theoretical and Research Perspectives\grqq \cite{crygroup} publik machte. Die Hypothese besagt, dass die Empfindungen \emph{Hunger, Freude, Schmerz, Geburt} sowie {Sonstiges} klare Unterschiede hinsichtlich der akustischen Merkmale des Weinens aufweisen. Diese Unterschiede seien im Spektogramm sichtbar. Wenige Jahre Später zeigten Müller et al. \cite{cryisnoise}, dass bei leichter Veränderung des Experimentes die Unterscheidung nicht mehr möglich sei. Die Gegenhypothese ist, dass Weinen \glqq nichts als undifferenziertes Rauschen\grqq{} sei. 50 Jahre später liegt kein anerkannter Beweis für die eine oder andere Hypothese vor. Es gibt lediglich starke Hinweise dafür, dass die Plötzlichkeit des Eintretens des Grundes sich in den akustischen Eigenschaften bemerkbar macht. Ein plötzliches Ereignis, wie ein Nadelstich oder ein lautes Geräusch, führen auch zu einem plötzlich beginnenden Weinen. Ein langsam eintretendes Ereignis, wie ein langsam zunehmender Schmerz oder Hunger führen auch zu einem langsam eintretenden Weinen. Da nach Kenntnis des Autors bis heute keine wissenschaftlich belastbarer Beweis vorgelegt wurde, wird empfohlen, den Grund aus dem Kontext abzuleiten.\cite[S. 9 - 13, 17 - 19]{signal}
+
+Die Zweite Frage nach der Ableitung der Stärke des Unwohlseins aus den akustischen Eigenschaften des Weinens wird in der Fachliteratur unter dem Begriff \emph{Cry as a graded Signal} subsumiert. Je \glqq stärker\grqq{} das Weinen, desto höher das Unwohlsein (\emph{Level of Distress (LoD)}) des Säuglings. Tatsächlich bemessen wird dabei der von dem Beobachter vermutete Grad des Unwohlseins des Babys, und nicht der tatsächliche Grad, da dieser ohne die Möglichkeit der direkten Befragung des Kindes nie mit absoluter Sicherheit bestimmt werden kann. Ein hohes Unwohlsein hat vor allem eine schnelle Reaktion der Aufsichtspersonen zur Beruhigung des Babys zur Folge, womit dem Weinen eine Art Alarmfunktion zukommt. Es gibt starke Hinweise darauf, dass das Level of Distress anhand objektiv messbarer Eigenschaften des Audiosignals bestimmt werden kann. So herrscht beispielsweise weitestgehend Einigung darüber, dass ein \glqq lang\grqq{} anhaltendes Wein auf einen hohen Level of Distress hinweist. Insofern aus dem Kontext des Weinens Schmerz als die wahrscheinlichste Ursache eingegrenzt werden kann, kann aus einem hohen Level of Distress ein hoher Schmerz abgeleitet werden. \cite[S. 13 - 17]{signal} \cite{lod} Es herrscht wiederum keine Einigung darüber, welche akustischen Eigenschaften im Detail ein hohes Level of Distress anzeigen. Carlo V Bellieni et al. \cite{dan} haben festgestellt, dass bei sehr hohem Schmerz in Bezug auf die DAN-Scala (siehe Tabelle \ref{tab:painscores}) die Tonhöhe steigt. Qiaobing Xie et al. \cite{lod} haben festgestellt, dass häufiges und \glqq verzerrtes\grqq{} Schreien (ohne feststellbares Grundfrequenz, da der Ton stimmlos erzeugt wird)  auf einen hohen Level of Distress hinweist.
+
+\section{Signalverarbeitung}
+\label{sec:signal_foundations}
+
+In Kapitel \ref{sec:medicalFoundations} wurde erläutert, wie Weinen von Neugeborenen mit Hilfe subjektiv behafteter Begriffe beschrieben werden kann. Möchte man das Weinen objektiv beschreiben und messbar machten, so verwendet man die Methoden der digitalen Signalverarbeitung. An dieser Stelle wird eine Einführung in die wichtigsten Themen dieses Wissenschaftsgebietes gegeben, die im Zusammenhang mit der Audiosignalverarbeitung größere Bedeutung haben. Es wird ein grundlegendes Verständnis der Signalverarbeitung vorausgesetzt, da die Erläuterungen in diesem Kapitel eher der Definition der verwendeten Begriffe dient, aus Platzgründen jedoch keine für Neulinge geeignete Einführung in das Themengebiet gewährleisten kann. Falls dieses Wissen nicht vorhanden ist, wird zur Einarbeitung das Buch \glqq The Scientist and Engineer's Guide to Digital Signal Processing\grqq{} von Steven W. Smith empfohlen.\cite{dspGuide}, welches kostenlos als E-Book bereitgestellt wird.
+
+\subsection{Grundlegende Definitionen}
+
+In dieser Arbeit sind nur \emph{digitale Signale} von Bedeutung. Ein digitales Signal $x[\;]$ ist nach Formel \ref{eq:time-disc-signal} ein beliebige Zahlenfolge mit diskreten Definitionsbereich. Dem Definitionsbereich kommt die Bedeutung \emph{Zeit} zu.\cite[S. 11-12]{dspGuide} In dieser Arbeit gilt die Konvention, dass mit $x[\;]$ das gesamte Signal gemeint ist und mit $x[n]$ \emph{ein} Wert des Signals (in diesem Zusammenhang auch als \emph{Sample} bezeichnet) an dem Index $\hat{=}$ Zeitpunkt $n$. Die Samplingfrequenz des digitalen Signales wird mit $f_s$ bezeichnet.
+
+\begin{equation}
+x[\;] := \quad  \forall n \in \mathbb{Z} :\ x[n] = s
+\label{eq:time-disc-signal}
+\end{equation}
+
+Der Definitionsbereich eines Signals erstreckt sich implizit immer von negativer bis positiver Unendlichkeit. Das heißt nicht, dass alle Samples des Signals auch Informationen enthalten müssen. Der \emph{Support} ist das kleinst mögliche Zeitintervall, der alle Samples enthält, die nicht den Wert 0 haben, wie Formel \ref{eq:support} definiert. Wird also auf ein Sample zugegriffen, das außerhalb des Supportes liegt, hat dieses Sample den Wert 0 (ein \glqq 0-Sample\grqq )\cite[S. 24]{dspMichigan}
+
+\begin{equation}
+\label{eq:support}
+\begin{split}
+\text{Sup}(x[\;]) = [sup_s, sup_e] \quad , sup_s, sup_e \in \mathbb{Z} \\,  x[sup_s] \neq 0 \:  \wedge \:  x[sup_e] \neq 0 \: \wedge \: \forall n \
+\not\in [sup_s, sup_e] : x[n] = 0
+\end{split}
+\end{equation}
+
+Die \emph{Dauer} eines Signales ist die Länge des Supportes nach Formel \ref{eq:duration}. In dieser Arbeit herrscht die Konvention, dass die Länge des Signals kurz mit der Variable $N$ abgekürzt wird. Wenn nicht anders definiert, erstreckt sich der Support eines Signals von $0 ,\ldots, N-1$.\cite[S. 24]{dspMichigan}
+
+\begin{equation}
+\text{Length}(x[\;]) = sup_e - sup_s + 1 = N
+\label{eq:duration}
+\end{equation}
+
+
+\subsection{Statistische Merkmale}
+
+Im folgenden wird ein Überblick über die häufig verwendete Signaleigenschaften gegeben. Abbildung \ref{img:sigStats} visualisiert die Erläuterungen.
+
+\begin{enumerate}[leftmargin=*]
+	
+	\item Der \textbf{Maximalwert / Minimalwert} beschreibt den höchsten / niedrigsten in  $x[\;]$ enthaltenen Wert nach den Formel \ref{eq:maxAndMin}.
+	
+	\begin{equation}
+	\begin{gathered}
+	\max(x[\;]) = \max\limits_{n=\text{Sup}(x[\;]) }(x[n]) \\ 
+	\min(x[\;])= \min\limits_{n=\text{Sup}(x[\;]}{n}(x[n])
+	\end{gathered}
+	\label{eq:maxAndMin}
+	\end{equation}
+	
+	
+	\item Der \textbf{Durchschnittswert / Average Value} beschreibt den durchschnittlichen Wert aller Samples von $x[\;]$ nach Formel \ref{eq:avg}. Dieser Durchschnittswert wird über ein beliebiges Intervall $[n_1, n_2]$ berechnet.
+	
+	\begin{equation}
+	\text{AVG}(x[\;]) = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]
+	\label{eq:avg}
+	\end{equation}
+	
+	\item Der \textbf{Mean Squared Value} (\emph{MSV}) beschreibt den quadrierten Durchschnittswert über eine bestimmtes Intervall nach Formel \ref{eq:msv}. Er wird auch als \emph{durchschnittliche Energie} oder \emph{average Power} bezeichnet.
+	
+	\begin{equation}
+	\text{MSV}(x[\;]) = \frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]^2
+	\label{eq:msv}
+	\end{equation}
+	
+	\item Das \textbf{Root Mean Square} (\emph{RMS}) wird definiert als die Wurzel des Mean Squared Value nach Formel\ref{eq:rms}. Der RMS kann im Vergleich zum MSV besser ins Verhältnis zu den Werten des Signals gesetzt werden kann. Er wird im Deutschen auch als \textbf{Effektivwert} oder \textbf{Durchschnittsleistung} bezeichnet. Da die deutschen Begriffe in einigen Quellen jedoch auch für den MSV verwendet werden, wird an dieser Stelle nur mit den englischen Begriffen gearbeitet.
+	
+	\begin{equation}
+	\text{RMS}(x[\;]) = \sqrt{\frac{1}{n_2 - n_1 + 1} \sum_{n = n_1}^{n_2} x[n]^2}
+	\label{eq:rms}
+	\end{equation}
+	
+	\item Die \textbf{Energie / Energy} eines Signals wird nach Formel \ref{eq:energy} definiert. Sie entspricht dem MSV-Wert multipliziert mit der Länge des Intervalls. \cite[S. 27-28]{dspMichigan}
+	
+	\begin{equation}
+	\text{E}(x[\;]) = \sum_{n = n_1}^{n_2} x[n]^2
+	\label{eq:energy}
+	\end{equation}
+	
+\end{enumerate}	
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{bilder/sigStats02.png}
+	\caption{Statistische Werte eines Signals über das Intervall [50,200]}
+	\label{img:sigStats}
+\end{figure}
+
+\subsection{Fehlersignale}
+
+Angenommen, ein Signal $x[\;]$ wird übertragen, auf dem Übertragungsweg jedoch durch ein anderes Störsignal wie z.B. Rauschen $e[\;]$ überlagert, auch bezeichnet als Fehlersignal. Das resultierende Signal $x'[\;]$ wird nach Formel \ref{eq:sigErrorAddition} berechnet. 
+
+\begin{equation}
+x'[\;] := \quad \mathop{\forall}_{n = n_1}^{n_2} :\ x'[n] = x[n] + e[n]
+\label{eq:sigErrorAddition}
+\end{equation}
+
+Kennt man sowohl das Eingangssignal $x[\;]$ als auch das Ausgangssignal $x'[\;]$, kann das Störsignal $e[\;]$ nach Formel \ref{eq:calErrorSig} berechnet werden.
+
+\begin{equation}
+e[\;] := \quad \mathop{\forall}_{n = n_1}^{n_2} :\ e[n] = x'[n] -x[n]
+\label{eq:calErrorSig}
+\end{equation}
+
+Eine Möglichkeit der Quantifizierung der Stärke des Rauschens auf das Signal ist, das Eingangssignal ins Verhältnis zum Rauschsignal zu setzen. Formel \ref{eq:snrPre} gibt die Definition.
+
+%% To do: Gute Quelle suchen!!
+
+\begin{equation}
+\text{SNR}_{rel}(x[\;],e[\;]) = \frac{MSV(x[\;])}{MSV(e[\;])}
+\label{eq:snrPre}
+\end{equation}
+
+In der Praxis ist der MSV des Eingangssignals meist sehr viel höher als der des Fehlersignals. Um den Zahlenraum zu begrenzen, wird die Pseudoeinheit dB verwendet. Formel \ref{eq:snrDb} definiert den \emph{Signal/Rausch-Abstand} (\emph{SNR}, englisch Signal-to-Noise-Ratio). Ein \emph{niedriger} SNR-Wert auf ein \emph{starkes} Rauschen hin, und ein \emph{hoher} SNR auf ein \emph{schwaches} Rauschen. Abbildung \ref{img:snrStuff} visualisiert die Berechnung des SNR. Im Zusammenhang mit der Spracherkennung ist der Signal/Rausch-Abstand von Bedeutung, da ein höheres Rauschen die Verarbeitung des Nutzssignals, der Sprache, erschwert.
+
+\begin{equation}
+\text{SNR}(x[\;],e[\;]) = 10 \cdot  \lg \Big(\frac{MSV(x[\;])}{MSV(e[\;])} \Big) \text{ dB}
+\label{eq:snrDb}
+\end{equation}
+
+\subsection{Kurzzeit-Fourier-Transformation}
+\label{sec:stft}
+
+Das Signal $x[\;]$ beschreibt den Zeitbereich des Signals, da die unabhängige Variable die Zeit definiert. Gleichung \ref{eq:complexDFTpolar} definiert die \emph{komplexe diskrete Fouriertransformation}, kurz \emph{DFT}, die das diskrete Signal $x[\;]$ aus dem Zeitbereich in den Frequenzbereich $X[\;]$ transformiert. Das Signal des Frequenzbereiches ist, ebenso wie das Signal des Zeitbereiches, $N$ punkte Lang und hat den Support $0 , \ldots , N-1$. Jedes Sample des Frequenzbereiches ist eine komplexe Zahl, deren Realteil $\Re(x[k])$ die Amplitude der entsprechenden Sinuswelle mit der Frequenz $f = k\frac{f_s}{N}$ bezeichnet und deren Imaginärteil  $\Im(x[k])$ die Amplitude der entsprechenden Kosinuswelle bezeichnet.\cite[S. 149, S. 567 - 571]{dspGuide} \cite[S. 60]{sprachverarbeitung}
+
+\begin{equation}
+\label{eq:complexDFTpolar}
+\text{DFT}\{x[\;]\} = X[\;]  := \quad \mathop{\forall}_{k = 0}^{N-1} :\ X[k] =  \sum_{n = 0}^{N-1}  x[n] \cdot e^{-j 2\pi k \frac{n}{N}}
+\end{equation}
+
+Das \emph{Spektrum} wird nach Gleichung \ref{eq:spectrum} definiert als der Absolutwert des Frequenzbereiches im Bereich $0, \ldots , N/2$.
+
+\begin{equation}
+\label{eq:spectrum}
+\text{Spektrum} := \quad |X[0]| , \; \ldots \; , |X[N/2]|
+\end{equation}
+
+Abbildung \ref{img:stft01} visualisiert die Transformation in den Frequenzbereich: In der Abbildung ist oben der Zeitbereich eines 1.8 Sekunden langen Signals zu sehen. Es können klar drei nacheinander gespielte Töne erkannt werden. Der Zeitbereich lässt klar erkennen, zu welchen Zeitpunkten die Töne beginnen und Enden, aber nicht, welche Frequenzen in den Tönen enthalten sind. Unten ist der Spektrum abgebildet. Die x-Achse bezeichnet die Frequenz von 0 bis \SI{22050}{\hertz} und die x-Achse die Amplitude der entsprechenden Frequenz. Beide Achsen werden logarithmisiert dargestellt. Das Frequenzspektrum zeigt, welche Frequenzen im dem Signal enthalten sind. So sind beispielsweise keine Frequenz unterhalb von \SI{1000}{\hertz} enthalten. Das Spektrum acht jedoch nicht erkennbar, welche Frequenzen enthalten sind.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/stft01.png}
+	\caption{Ein 1.8-Sekunden langes Signal. Oben: Der Zeitbereich mit drei klar erkennbaren Events. Unten: Das Frequenz-Spectrum des gesamten Signals mit logarithmisierten Achsen.}
+	\label{img:stft01}
+\end{figure}
+
+Es ist wünschenswert, einen Kompromiss aus den Vorteilen beider Bereiche zu finden, in dem man das Spektrum kürzerer Zeitabschnitte des Signals bildet. Dazu wird der Zeitbereich $x[\;]$ in Fenster der Länge $M$ zerlegt. Die zeitliche Differenz zwischen zwei Fenstern wird als \emph{Hoptime} $R$ bezeichnet. Gleichung definiert die Bildung des Signalfensters $x_i[\;]$. Dieser Prozess wird als \emph{Windowing} bezeichnet.\cite{juliusSmith}
+
+\begin{equation}
+x_i[\;] := \quad \mathop{\forall}_{n = 0}^{M-1} :\ x_{m}[n] = x[n+i\cdot R]
+\label{eq:signal-Window}
+\end{equation}
+
+Abbildung \ref{img:siganlWindows} gibt ein Beispiel für die Zerlegung von $x$ in Signalfenster $x_0[\;] ,\ldots, x_4[\;]$. Die Samplingrate des Signals ist $f_s = 44100$, die Fensterlänge beträgt $M = 22050 / f_s = \SI{0.5}{\second}$ und die Hoptime $R = M / 2= \SI{0.25}{\second}$.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/signalWindows02.png}
+	\caption{Windowing: Die Zerlegung eines Signals in kürzere Fenster.}
+	\label{img:siganlWindows}
+\end{figure}
+
+Als Vorbereitungsschritt für die Transformation der Signalfenster in den Frequenzbereich wird nun jedes Fenster mit einer sogenannten \emph{Fensterfunktion} (engl \emph{window}) $w[\;]$ multipliziert.\cite[S. 69]{sprachverarbeitung} Gleichung \ref{eq:hammingWindow} definiert eine der am weitesten verbreiteten Fenster-Funktionen, das \emph{Hamming-Window}. Der Paramter $M$ gibt die länge des Fensters an. Abbildung \ref{img:hamming} visualisiert das Hamming-Window. \cite[S. 286]{dspGuide}
+
+\begin{equation}
+w[\;] := \quad \mathop{\forall}_{n = 0}^{M-1} :\ w[n] = 0.54 - 0.46 \cos(\frac{2\pi n}{M} )
+\label{eq:hammingWindow}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{bilder/hamming01.png}
+	\caption{Das Hamming-Window}
+	\label{img:hamming}
+\end{figure}
+
+Die Gleichung \ref{eq:stft} definiert die \emph{Kurzzeit-Fourier-Transformation} (engl \emph{Short Time Fourier Transformation}, \emph{STFT}), implementiert mit Hilfe der DFT. Dabei wird das Signalfenster $x_i[\;] = x[n+i\cdot R]$ mit der Fensterfunktion $w[\;]$ multipliziert und in das \emph{Frequenz-Fenster} $X_i[\;]$ transformiert.\cite[S. 69]{sprachverarbeitung} \cite{stft} Abbildung \ref{img:stft02} visualisiert die STFT des Beispiels aus Abbildung \ref{img:siganlWindows}.
+
+\begin{equation}
+\text{STFT}_i\{x[\;]\} = X_i[\;] := \quad \mathop{\forall}_{k = 0}^{M-1} :\ X_i[k] = \sum_{n=0}^{M-1} x[n+i\cdot R] \cdot w[n] \cdot e^{-j 2\pi k \frac{n}{N}}
+\label{eq:stft}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/stft03.png}
+	\caption{STFT des Beispiel-Signals aus Abbildung \ref{img:siganlWindows}}
+	\label{img:stft02}
+\end{figure}
+
+\subsection{Akustische Modellierung der menschlichen Stimme}
+\label{sec:theVoice}
+
+Der menschliche Sprechapparat wird in die folgenden Komponenten Unterteilt:
+
+\begin{description}
+
+\item[Schallproduktion: ] Die Lunge stößt Luft aus, welche die Stimmbänder passieren. Sind die Stimmbänder leicht gespannt, so wird der Luftstrom periodisch unterbrochen. Die Schwingfrequenz beträgt bei Männern etwa \SI{120}{\hertz} und bei Frauen \SI{220}{\hertz}. Die Frequenz kann während des Sprechens um bis zu einer Oktave variieren. Es wird so ein periodisches, akustisches Signal produziert, bezeichnet als \glqq periodische Quelle\grqq{} (engl. \glqq periodic Source\grqq). Sind die Stimmbänder stark gespannt, so entstehen Turbulenzen, die sich akustisch als ein zischendes Geräusch ohne identifizierbare Tonhöhe äußert. Dieses stimmlose Signal wird bezeichnet als \glqq Turbulenzquelle\grqq{} (engl. \glqq turbulance Source\grqq)
+\item[Klangformung: ] Das Signal der Stimmlippen passiert den Rachen, Mund- und Nasenraum, welche gemeinsam als \glqq Vokaltrakt\grqq{} beschrieben werden. Das Halszäpfchen bestimmt, ob der Luftstrom in den Mund- oder Nasenraum geleitet wird. Die Stellung der Artikulatoren, bestehend aus Kiefer, der Zunge usw. bestimmen die Beeinflussung des Klanges, der durch die Stimmbänder erzeugt wurde. Diese Beeinflussung wird als Filter angenähert. \cite[S. 62]{cryModel} \cite[S. 13]{sprachverarbeitung} Abbildung \ref{img:schematicVocalOrgans} visualisiert diese Komponenten.
+\end{description}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{bilder/SchematicVocalOrgans.png}
+	\caption{Schematische Übersicht über die Organe der Spracherzeugung. Lung = Lunge, Vocal Chords = Stimmbänder, Pharynx = Rachen, Velum = Halszäpfchen, Mouth Cavity = Mundraum, Nasal Cavity = Nasenraum \cite{speechProduction}}
+	\label{img:schematicVocalOrgans}
+\end{figure}	
+
+Aus Sicht der Signalverarbeitung wird die menschliche Lautproduktion durch das sogenannte \emph{Source-Filter-Modell} modelliert. Der durch die Stimmbänder erzeugte periodische Ton wird angenähert durch einen Impuls-Zug, welcher durch den Schlund als linearen Filter moduliert wird. Der stimmlose, nicht-periodische Ton wird durch weißes Rauschen angenähert. Der so erzeugte periodische oder nicht-periodische Ton wird als das Eingangs-Signal $u[\;]$ bezeichnet. Dieses Signal wird daraufhin an den Vokaltrakt weitergeben, welcher als lineares, zeitinvariantes Filter mit der Impulsantwort $v[\;]$ modelliert wird. Diese Impulsantwort ist abhängig von der Konfiguration der Organe des Vokaltraktes. Die Lippen werden als zweites lineares, zeitinvariantes Filter mit der Impulsantwort $r[\;]$ modelliert. $r[\;]$ wird auch als \glqq radiant Model\grqq{} bezeichnet. Das tatsächliche Sprachsignal $y[\;]$ entsteht somit als die Faltung des Signals $u[\;]$ und den beiden linearen, zeitinvarianten Filtern nach Gleichung \ref{eq:source-Filter-Model}. Gleichung \ref{eq:source-Filter-Model2} definiert den Frequenzbereich des Ausgangssignals $Y[\;]$ durch die Multiplikation der Frequenzbereiche dieser drei Komponenten. Abbildung \ref{img:source-filter-model} visualisiert diesen Prozess schematisch. \cite[S. 62 - 63]{cryModel} \cite{speechProduction}
+
+\begin{equation}
+u[\;] * v[\;] * r[\;] = y[\;] 
+\label{eq:source-Filter-Model}
+\end{equation}
+
+\begin{equation}
+U[\;] \cdot V[\;] \cdot R[\;] = Y[\;] 
+\label{eq:source-Filter-Model2}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/source-filter-model.png}
+	\caption{Schematische über das Source-Filter-Model \cite[nach Source estimation, S. 17]{ricardo_ceps}}
+	\label{img:source-filter-model}
+\end{figure}	
+
+Abbildung \ref{img:glottalSource} zeigt die Zeitbereiche des stimmhaften und turbulenten Signals im Vergleich. Wie zu sehen ist, bestimmt der zeitliche Abstand zwischen den Impulsen die Grundfrequenz der Stimme. Dieses Signal $p[\;]$ wird durch den Schlund als Filter $G\{ \; \}$gefiltert, wodurch der Zeitbereich der periodischen Quelle entsteht $G\{p[\;]\} = u_p[\;]$. Darunter ist der Zeitbereich des weißen Rauschen zu sehen. \cite[Source]{speechAcoustics}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/glottalSource.png}
+	\caption{Zeit-Bereiche der periodic und der turbulance Source \cite[Source]{speechAcoustics}}
+	\label{img:glottalSource}
+\end{figure}	
+
+Abbildung \ref{img:sourceFilerSpectra} zeigt die Frequenzbereiche der Komponenten des Source-Filter-Modells. Die periodische Quelle ($U[\;]$ links) zeichnet sich im Frequenzbereich durch gleichmäßig verteilte Spitzen aus, die mit steigender Frequenz an Amplitude verlieren. Rechts daneben ist der Frequenzbereich des weißen Rauschen zu sehen. Die Frequenzantwort des Vokaltraktes $V[\;]$ zeichnet sich durch Resonanzfrequenzen aus, von denen in diesem Beispiel vier  erkennbar sind. Die Übertragungsfunktion der Lippen $R[\;]$ wird als Hochpassfilter angenähert. Das Ausgangssignal $Y[\;] = U[\;] \cdot V[\;] \cdot R[\;]$ zeigt den Einfluss der Filter auf das jeweilige Eingangssignal.\cite[Source estimation]{ricardo_ceps}, \cite[Vocal Tract Resonance]{speechAcoustics}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/sourceFilterSpectra.png}
+	\caption{Betrachtung der Frequenz-Bereiche des Source-Filer-Modell (nach: \cite[Source Estimation, S. 3]{ricardo_ceps})}
+	\label{img:sourceFilerSpectra}
+\end{figure}	
+
+Abbildung \ref{img:pitchPeaks} zeigt schematisch das Spektrum eines stimmhaften Sprachsignals. Sowohl die Grundfrequenz als auch die harmonischen Obertonwellen sind rein visuell als \glqq vielen, kurzen Signalspitzen\grqq{} im Spektrum erkennbar. Der kleinste gemeinsame Teiler der Frequenzen dieser Signalspitzen entspricht der Grundfrequenz  $f_0$ dieses Stimmsignals, in diesem Beispiel $\SI{250.7}{\hertz}$. Die Grundfrequenz ist ebenfalls an der Signalspitze mit der tiefsten Frequenz ablesbar. Die harmonsichen Obertöne entsprechen der doppelten, dreifachen, \ldots Frequenz dieser Grundfrequenz, das heißt $2\cdot f_0, 3\cdot f_0, \ldots$ und werden bezeichnet mit $H_1, H_2, \ldots$. Die Grundfrequenz ist \emph{nicht zwingend} die Spitze der höchsten Amplitude! Durch den Einfluss des Vokaltraktes als Filter können harmonische Oberwellen eine höhere Amplitude als die Grundfrequenz erhalten. Auf Basis des Spektrums lässt sich somit rein visuell ein stimmhaften Signal von einem nicht stimmhaften (Rausch-)Signal unterscheiden, in dem das Spektrum nach dem Vorhandensein dieser regelmäßigen Signalspitzen geprüft wird (vergleiche mit Abbildung \ref{img:sourceFilerSpectra}).\cite[S. 52 - 53]{sprachverarbeitung}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{bilder/pitchPeaks.png}
+	\caption{Grundfrequenz und harmonische Obertöne eines Sprachsignals.}
+	\label{img:pitchPeaks}
+\end{figure}	
+
+Abbildung \ref{img:formants} verdeutlicht, wie der als lineares, zeitinvariantes Filter modellierte Vokaltrakt durch Formanten beschrieben wird. Diese Formanten spielen vor allem bei der Beschreibung von Vokalen eine Rolle. Formanten sind lokale Maxima im Spektrum der Transferfunktion, die dadurch erzeugt werden, dass der Vokaltrakt Resonanzen erzeugt. Die Formanten werden von links nach rechts durchnummeriert, von $F_1 ,\ldots\,F_n$. Jeder Formant wird durch seine Mittenfrequenz, seine Bandbreite und seine Amplitude beschrieben. Das wichtigste Merkmal ist jedoch die Mittenfrequenz, da sie vom menschlichen Gehör am stärkster zur Identifikation und Unterscheidung der Vokale genutzt werden. Mit steigender Frequenz nimmt die Amplitude der Formanten ab, der dominanteste Formant ist somit immer der erste. Daher werden meist nur die ersten 2 oder 3 Formanten zur Beschreibung eines Vokals angegeben, auch, wenn theoretisch weitaus mehr vom Vokaltrakt erzeugt werden. Für verschiedene Sprachen sind allerlei Tabellen zu finden, welche die Formantenfrequenzen der Vokale auflisten.\cite[S. 19]{sprachverarbeitung}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{bilder/formants02.png}
+	\caption{Formanten im Sprach-Signal (nach: \cite{benade})}
+	\label{img:formants}
+\end{figure}	
+
+Beim Sprechen befinden sich sowohl das Signal der Stimmbänder als auch das Filter des Vokaltraktes und der Lippen in ständiger Veränderung. Ein stimmhaftes Sprachsignal gilt über kurze Zeitbereiche weniger Millisekunden als periodisch. Schlussendlich ist die Stimme nie perfekt periodisch, sondern nur annähernd periodisch. Da die Informationen der Sprache vor allem im Frequenzbereich codiert sind, wird die in Kapitel \ref{sec:stft} vorgestellte Kurzzeit-Fourier-Transformation zur Analyse von Sprache eingesetzt. Die Visualisierung der STFT wird als \emph{Spektogramm} bezeichnet. Dabei werden auf der x-Achse die Zeitpunkte der Fenster und auf der y-Achse die Frequenz dargestellt. Die Frequenzfenster werden \glqq auf die Seite gelegt\grqq{}, damit ihr zeitlicher Verlauf übersichtlich betrachtet werden kann. Die Amplitude der entsprechenden Frequenzen wird farblich oder durch Helligkeiten codiert, abhängig von der konkreten Implementierung des Spektograms. Je länger das Zeitfenster der STFT, desto höher ist die Auflösung bezüglich des Frequenzbereiches und desto niedriger die Auflösung bezüglich der Zeitbereiches. Je kürzer die Zeitfenster der STFT, desto höher ist die Auflösung bezüglich des Zeitbereiches, und desto niedriger die Auflösung des Frequenzbereiches.\cite[S. 45 - 50]{sprachverarbeitung} \cite[Acoustic Representations of Speech]{speechAcoustics}. 
+
+Abbildung \ref{img:spectoExample} zeigt ein Beispiel für zwei Spektogramme mit unterschiedlichen Fensterlängen der STFT, angewandt auf einer 9 Sekunden langen Aufnahme eines weinenden Babys. Es ist zu erkennen, wie bei der geringeren Fensterlänge der zeitliche Verlauf besser erkennbar, jedoch die einzelnen harmonsichen Obertöne weniger gut voneinander unterscheidbar sind. Bei der längeren Fensterlänge sind die Formanten leichter zu unterscheiden, der Beginn und das Ende der Lautäußerungen jedoch schwerer zu lokalisieren.
+%%Citation from Cry as a Signal!!
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{bilder/spectogram03.png}
+	\caption{Spectogram von Baby-Weinen. Rot = Hohe Amplituden, Blau = niedrige Amplituden. Oben: Zeit-Bereich. Mitte: Spectogram mit einer Fensterlänge von $\SI{185}{\milli\second}$(8192-Sample DFT). Unten: Spectogram mit einer Fensterlänge von $\SI{5}{\milli\second}$} (265-Sample DFT).
+	\label{img:spectoExample}
+\end{figure}	
+
+\section{Schreiforschung}
+\label{sec:cryresearch_foundations}
+
+Das Wissenschaftsgebiet, welches sich mit der Analyse und Interpretation von Lautäußerungen Neugeborener auseinandersetzt, wird als \glqq Schreiforschung\grqq{} bezeichnet. Das bis heute wohl prominenteste Forschungsgruppe dieses Wissenschaftsgebietes ist die im vergangenen Kapitel erwähnte \glqq Scandinavian Cry-Group\grqq \cite{crygroup}, welche zwischen 1960 und 1990 die Laute von Babys systematisch erforscht haben. Das wichtigste Werkzeug zur Analyse der Lautäußerungen war das eben vorgestellte Spektogramm, welches damals auf analogen Technologien basierte. Das Ziel der frühen Schreiforschung war es, mit Hilfe des Spektogramms Muster zur Unterscheidung eines abnormalem Weinen von einem normalen Weinen zu finden, um beispielsweise Krankheiten erkennen zu können.\cite[S. 142]{signal} 
+
+Teil der Scandinavian Cry-Group waren H Golub und M Corwin, die in der Veröffentlichung \glqq A Physioacoustic Model of the Infant Cry\grqq \cite{cryModel} ein Vokabular zur Beschreibung typischer, im Spektogramm erkennbarer Muster festgelegt haben. Da das Vokabular bis heute Einsatz findet, wird eine Teilmenge dieses Vokabulars an dieser Stelle vorgestellt. Weiterhin werden Begriffe eingeführt, die von Zeskind et al. in \glqq Rythmic organization of the Sound of Infant Cry \grqq{} veröffentlicht wurden.\cite{rythmic}
+
+\subsection{Phyisio-Akustische Modellierung des Weinens}
+\label{sec:acousticModel}
+
+Das Weinen von Babys lässt sich im allgemeinen als das \glqq rythmische Wiederholen eines beim Ausatmen erzeugen Geräusches, einer kurzen Pause, einem Einatmungs-Geräusch, einer zweiten Pause, und dem erneuten Beginn des Ausatmungs-Geräusches\grqq beschreiben. \cite{wolff}.
+
+Die folgenen Begriffe werden in Abbildung \ref{img:cryVocabulary} veranschaulicht.
+
+\begin{itemize}
+	\item \textbf{Expiration (Ausatmung):} Der Klang, der bei einem einzelnen, ununterbrochenen Ausatmen mit Aktivierung der Stimmbänder durch das Baby erzeugt wird. \cite{rythmic}. Der von Golub et al. \cite[S. 61]{cryModel} verwendete Begriff \textbf{Cry-Unit} wird in dieser Arbeit synonym verwendet. Umgangssprachlich ist handelt es sich um einen einzelnen, ununterbrochenen \emph{Schrei}.
+	\item \textbf{Inspiration (Einatmung):} Der Klang, der beim Einatmen durch das Baby erzeugt wird.
+	\item  \textbf{Burst:} Die Einheit einer Ausatmung und der darauf folgenden Einatmung. Das heisst, dass die zeitliche Dauer eines Bursts sowohl die Ausatmung, die Einatmung als auch die beiden Pausen zwischen diesen Geräuschen umfasst. Praktisch ergibt sich das Problem, dass vor allem bei stärkerem Hintergrundrauschen die Einatmung häufig weder hörbar noch auf dem Spektrogramm erkennbar ist. Daher wird die Zeitdauer eines Bursts von Beginn einer Ausatmung bis zum Beginn der darauf folgenden Ausatmung definiert und somit allein von den Ausatmungsgeräuschen auf die Bursts geschlossen. Implizit wird somit eine Einatmung zwischen zwei Ausatmungen angenommen.
+	\item  \textbf{Cry:} Die gesamte klangliche Antwort zu einem spezifischen Stimulus. Eine Gruppe mehrerer Cry-Units.\cite[S. 61]{cryModel} In dieser Arbeit wird ein \emph{Cry} auch als \textbf{Cry-Segment} bezeichnet, um Verwechslungen zu vermeiden.
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{bilder/cryVoc02.png}
+	\caption{Veranschaulichung des Grundvokabulars}
+	\label{img:cryVocabulary}
+\end{figure}
+
+Cry-Units werden von H Golub und M Corwin in eine der drei folgenen Kategorien eingeordnet, bezeichnet als \emph{Cry-Types}: \cite[S. 61 - 62]{cryModel}
+
+\begin{itemize}
+	\item \textbf{Phonation} beschreibt eine Cry-Unit mit einer \glqq vollen Vibration der Stimmbänder\grqq{} und einer Grundfrequenz zwischen 250 und \SI{700}{\hertz}. Entspricht umgangssprachlich einem Weinen mit einem \glqq klaren, hörbaren Ton\grqq{}.
+	\item \textbf{Hyper-Phonation} beschreibt eine Cry-Unit mit einer \glqq falsetto-artigen Vibration der Stimmbänder\grqq{} mit einer Grundfrequenz zwischen 1000 und \SI{2000}{\hertz}. Entspricht umgangssprachlich einem Weinen mit einem \glqq sehr hohen, aber klar hörbaren Ton\grqq{}.
+	\item \textbf{Dysphonation} beschreibt eine Cry-Unit ohne klar feststellbare Tonhöhe, produziert durch Turbulenzen an den Stimmbändern. Entspricht umgangsprachlich dem \glqq Brüllen oder Krächzen\grqq{}.
+\end{itemize}
+
+Die folgenden weiteren Eigenschaften können für einzelne Cry-Units extrahiert werden:
+
+\begin{itemize}
+	\item \textbf{Duration:} Die zeitliche Dauer der Cry-Unit.
+	\item \textbf{Duration of Inspiration: }Die zeitliche Dauer der Pause zwischen zwei Cry-Units.
+	\item \textbf{Grundfrequenz:} Für eine Cry-Unit kann die durchschnittliche, die höchste und die niedrigste Grundfrequenz sowie die Varianz festgestellt werden.
+	\item \textbf{Frequenz der Formanten:} Wie bei der Grundfrequenz kann der Durchschnitt, das Maximum, Minimum etc. für eine Cry-Unit berechnet werden.
+	\item \textbf{Ratio2: } Verhältnis zwischen den Energien der Frequenzen unterhalb von \SI{2000}{\hertz} zu den Frequenzen oberhalb von \SI{2000}{\hertz}
+	\item \textbf{Cry-Mode Changes:} Häufigkeit des Wechsels des Cry-Modes innerhalb einer Cry-Unit.
+	\item \textbf{Amplitude:} Die Lautstärke der Cry-Unit, gemessen in Dezibel. \cite[S. 85]{parentalPerception} \cite[S. 156]{threeCryTypes}
+\end{itemize}
+
+Golub et al. haben weiterhin eine Reihe von Features vorgestellt, die das zeitliche Verhalten der Grundfrequenz und der harmonischen Obertöne innheralb einer Cry-Unit beschreiben. \cite[S. 73]{cryModel}
+
+\begin{itemize}
+	\item \textbf{Pitch of Shift:} Grundfrequenz nach einem schnellen Anstieg zu Beginn der Cry-Unit
+	\item \textbf{Glide:} Kurzes, starkes ansteigen der Grundfrequenz
+	\item  \textbf{Glottal Roll:} Dysphonation, die häufig am Ende einer Cry-Unit nach einem Abfall der Grundfrequenz beobachtet wird.
+	\item  \textbf{Vibrato:} Mehr als vier starke Schwankungen der Grundfrequenz innerhalb einer Cry-Unit.
+	\item  \textbf{Melody-Type:} einer Cry-Unit. Meist: fallend, steigend/fallend, steigend, fallend/steigend, flach. 
+	\item  \textbf{Continuity:} Verhältnis zwischen stimmhaften und nicht-stimmhaften Bereichen der Cry-Unit
+	\item  \textbf{Double Harmonic Break:} Das Aufkommen einer zweiten Serie von harmonischen Obertönen zwischen den eigentlichen harmonischen Obertönen der Cry-Unit.
+	\item  \textbf{Biphonation:} Das Aufkommen einer zweiten Grundfrequenz mit eigenen harmonischen Obertönen zusätzlich zu der eigentlichen Grundfrequenz.
+	\item  \textbf{Noise Concentration:} Starke Energiespitzen zwischen 2000 und \SI{2300}{\hertz}.
+	\item  \textbf{Furcation:} Plötzliches Aufteilen der Grundfrequenz und harmonsichen Obertöne in mehrere, schwächere Obertöne.
+\end{itemize}
+
+Abbildung \ref{img:cryMelodies} visualsiert diese Grundfrequenz bezogenen Features in einem schematisch dargstellten Spektogramm.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{bilder/melodyTypes.png}
+	\caption{(1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite[S. 142]{signal}}
+	\label{img:cryMelodies}
+\end{figure}
+
+Die folgende Features werden in Bezug auf das gesamte Cry-Segment, oder zumindest auf eine Menge aufeinander folgender Cry-Units berechnet:
+
+\begin{itemize}
+	\item \textbf{Cry Latence: } Zeit zwischen Stimulus, wie zum Beispiel einem Nadelstich, und erster Cry-Unit.
+	\item \textbf{Utterances: } Anzahl der Cry-Units im Segment.
+	\item \textbf{Short Utterances: } Anzahl stimmloser Cry-Units im Segment.
+	\item .... und statistische Auswertungen bezüglich aller oben genannten Features, die sich auf eine Cry-Unit beziehen, wie beispielsweise der Durchschnitt aller durchschnittlichen Tonhöhen, Anzahl des Vorkommens bestimmter Melodiekonturen, Varianz der Länge der Cry-Units etc.\cite[S. 85]{parentalPerception}
+\end{itemize}
+
+Verschiedene Krankheitsbilder wurden in Zusammenhang mit dem vorkommen bestimmter Features des Cry-Segmentes gebracht. So wurde eine Korrelation zwischen dem Anstieg der durchschnittlichen Grundfrequenz, häufiger Biphonation und geringer Duration in Zusammenhang mit Gehirnschäden gebracht. Tendenziell niedrige Grundfrequenzen zeigen eine Korrelation mit Trisomie 13, 18 und 21\cite[S. 85]{parentalPerception}
+
+\subsection{Diskussion}
+\label{sec:cryDiscussion}
+
+Bis heute bleibt die Analyse von kindlichen Lautäußerungen weitestgehend unstandartisiert \cite[S. 142]{signal}:
+\begin{itemize}
+	\item Es gibt keine Einigung darüber, welche der zahlreichen vorgestellten Eigenschaften die wichtigsten sind. Beispielsweise konzentrierten sich Golub et al. \cite{cryModel} vermehrt auf die Erkennung von Mustern im Melodieverlauf, Zeskind et al. auf zeitliche Eigenschaften. \cite{rythmic}. Die Eigenschaft, die am häufigsten mit Schmerz, Krankheiten und sonstigen Abnormalitäten in Verbindung gebracht wird, ist eine abnormal hohe oder niedrige Tonhöhe. Bei einigen Features, die vor allem von Golub et al. verwendet wurden \cite{cryModel}, ist nicht einmal gesichert, ob es sich nicht doch um technische Artefakte der damals verwendeten Analogtechnik handelt. \cite[S. 84 - 85]{parentalPerception}
+	\item Zusammenhänge, die zwischen bestimmten Eigenschaften des Weinens und bestimmten Krankheitsbildern festgestellt wurden, haben häufig eine hohe Spezifität, aber niedrige Sensitivität. So wurde zum Beispiel festgestellt, dass Kinder, die am plötzlichen Kindstot verstarben, fast immer eine Erhöhung der Frequenz des ersten Formanten in Verbindung mit häufigen Cry-Mode-Changes zeigen. Viele Babys, die nicht am plötzlichen Kindstot versterben, zeigen jedoch die selben Merkmale.\cite[S. 85]{parentalPerception}
+	\item Selbst, wenn in verschiedenen Studien die selbe Eigenschaft verwendet wird, wie zum Beispiel die durchschnittliche Tonhöhe, ist nicht standardisiert, wie dieses exakt zu berechnen ist. Mit \glqq durchschnittliche Tonhöhe des Segmentes\grqq{} kann gemeint sein: (1) die Durchschnittliche Tonhöhe, errechnet aus den durchschnittlichen Tonhöhen der der Cry-Units (2) Die durchschnittliche Tonhöhe aller festgestellten Tonhöhen (3) die durchschnittliche Tonhöhe nur von Ausatmungslauten etc.
+	\item Golub et al. behaupten, bereits in den achziger Jahren ein System zur computergestützten und voll automatisierten Analyse von Cry-Segmenten implementiert zu haben. Das System nimmt (1.) eine Audioaufnahme, gespeichert auf einer Kasette an, (2.) berechnet Formanten, Grundfrequenz und Amplitude gegen die Zeit, (3.) samplt die Grundfrequenz-Kontur (4.) berechnet insgesamt 88 akkumulierte Features für das gesamte Segment und (5.) zieht Schlussfolgerungen aus den 88 Features, wie zum Beispiel die Diagnose einer bestimmten Krankheit.\cite[S. 75 - 76]{cryModel} Abseits der kurzen Erwähnung der Existenz dieser \grqq Mutter aller automatisierten Analysesysteme für das Weinen von Babys\grqq{} konnte der Autor dieser Arbeit keine Implementierungsdetails oder sonstige genaueren Ausführungen finden, welche für diese Arbeit von höchstem Interesse gewesen wären.
+\end{itemize}
+
+\section{Klassifizierung und Regression}
+\label{sec:learning}
+
+Klassifzierung und Regression sind Teilgebiete des Wissenschaftsgebietes des \emph{Überwachten Lernens}, einem Teilgebiet des Wissenschaftsgebietes des \emph{maschienellen Lernens}. Das Ziel der Überwachten Lernen ist es, ein \emph{Prädikator} (\emph{Modell}) zu entwerfen, der aus den Eigenschaften einer Instanz dessen Kategorie oder Wert ableiten kann. Im Zusammenhang mit der Schreiforschung könnte eine Instanz eine Baby sein, dessen Eigenschaften (1.) das Gewicht und (2.) die Augenfarbe ist. Der Prädikator hat nun die Aufgabe, aus diesen beiden Eigenschaften eine Klasse abzuleiten, wie zum Beispiel das Geschlecht des Babys, oder einen Wert, wie beispielsweise das Alter. Das Lernen basiert dabei aus dem Generalisieren einer Liste von Beispielen, die der Algorithmus zur Verfügung gestellt bekommt. In diesem Zusammenhang wäre dies eine Liste an Babys, bei der für jede Instanz das Geschlecht oder das Alter bereits bekannt ist. Der Algorithmus versucht nun, diese Beispiele soweit zu Verallgemeinern, dass er für neue, bisher unbekannte Babys die Klasse oder den Wert korrekt voraussagen kann.\cite[S. 6 - 7]{machine_marsland}
+
+Eine Instanz $x$ ist ein Vektor $x = ( f_1 \in F_1 , \ldots , f_n \in F_n )$. $f_i$ wird in diesem Zusammenhang als \emph{Eigenschaft}, \emph{Feature} oder \emph{Attribut} bezeichnet werden. In Bezug auf das eben genannte Beispiel wäre das erste Feature $F_1 = $ \emph{Gewicht} und das zweite Feature $F_2 = $ \emph{Augenfarbe}. Eine Instanz wäre in diesem Fall ein Tupel mit zwei beliebigen Werten dieser Attribute, wie zum Beispiel $x = ( \SI{3}{\kilogram}, \text{Blau}) )$. Features, die einen kontinuierliche Wertebereich mit einem quantitativem Charakter haben, wie zum Beispiel das Gewicht, werden als \emph{kontinuierliche} Features bezeichnet. Features, die einen diskreten Wertebereich mit einem qualitativem Charakter haben, wie zum Beispiel die Augenfarbe, werden als \emph{diskrete} Features bezeichnet.  Die Menge aller möglichen Kombination der Features $F_1 \times , \ldots , F_n$ wird als \emph{Feature-Raum} bezeichnet. Der Trainings-Datensatz $D_{Traing}$ besteht aus einer Liste an Instanzen, wobei für jede Instanz die Kategorie oder der Wert, gemeinsam Bezeichnet als \emph{Output} oder \emph{Target} $y \in Y$, bekannt ist. $Y$ bezeichnet die Menge aller möglichen Outputs des Problems. Das heißt, $D_{Training} = \big( \; (x_1, t_1), \ldots  (x_N, t_N) \; \big)$. Der Prädiktor $P$ ist nun eine Funktion, die von einer Instanz auf den Output abbildet, also $P: X \mapsto Y$. Die Fehlerfunktion $E$ berechnet, wie häufig sich der Prädiktor bei der Bestimmung der Targets eines bisher bekannte oder unbekannten Trainings-Datensatzes $D_{Test}$ irrt. Der Test- und der Trainingsdatensatz können die selben Instanzen, teilweise die selben oder gar keine gemeinsamen Instanzen beinhalten.\cite[S. 6 - 7, 18 - 19]{machine_marsland} \cite[S. 8 - 9]{learning_cart_dobra} 
+
+Bei der \textbf{Klassifizierung} wird eine Target als \emph{Klasse} bezeichnet. Die Menge aller möglichen Klassen eines bestimmten Problems $Y = \{ y_1 , \ldots, y_n\}$ ist dabei diskret und hat einen \emph{qualitativen} Charakter. Das heißt, dass keine Klasse \glqq besser\grqq{} oder \glqq höher\grqq{} ist als eine andere. Ein Beispiel für ein Klassifizierungsproblem wäre die also die Ableitung des Geschlechtes für eine Instanz, also $Y = \{m, w\}$. Der Prädiktor wird in diesem Fall als Klassifikator $C$ bezeichnet.\footnote{In vielen Quellen werden die Begriffe \emph{Klassifizierung} und \emph{Klassifikation} inkonsitent verwendet. Die \emph{Klassifizierung} ist ein Prozess, dessen Ergebnis die \emph{Klassifikation} ist. Daher wird von einem \emph{Klassifizierungs-Algorithmus} gesprochen, da sich der Algorithmus auf den Prozess des Klassifizerens konzentriert, aber vom \emph{Klassifikationsfehler}, da der Fehler des Ergebnisses der Klassifzierung bestimmt wird.} \cite[S. 28, 127]{statistical_learning}
+
+Bei der Regression \emph{Regression} ist die Menge der möglichen Targets eines bestimmten Problem \emph{kontinuierlich} und hat einen \glqq{quantitativen} Charakter. Das heißt, es kann eine interne Ordnung in der Menge der Outputs festgelegt werden. Ein Beispiel für ein Regressionsproblem wäre die also die Ableitung des Alters des Babys, also $Y = \{0 , \ldots , 130\}$. De Prädiktor wird in diesem Fall auch als \emph{Regressor} $R$ bezeichnet.\cite[S. 24]{learning_cart_dobra} \cite[S. 8]{machine_marsland} \cite[S. 28]{statistical_learning}
+
+Es gibt eine Vielzahl an Algorithmen zum Finden des Klassfikators oder Prediktors. Welcher Algorithmus der \glqq beste\grqq{} ist, das heißt für einen Test-Datensatz eine möglichst hohe \emph{Genaugigkeit} oder einen möglichst geringen \emph{Klassifikationsfehler} erzeugt, ist abhängig von der konkreten Problemstellung. Auf die Bestimmung der Genauigkeit wird weiter in Kapitel \ref{sec:howGoodIsMyClassifier} eingegangen. Ein Algorithmus, der in dieser Arbeit zur Klassifizierung eingesetzt wird, ist der \emph{ID3}-Algorithmus, welcher genauer in Kapitel \ref{sec:id3} beschrieben wird.
+
+\subsection{ID3}
+\label{sec:id3}
+
+Es gibt drei Algorithmen zur Erzeugung von Entscheidungsbäumen, die weitreichende Einsatz finden: \emph{ID3}, \emph{C.45} und \emph{CART}, wobei die letzteren Erweiterungen der grundlegenden Idee des \emph{ID3}-Algorithmus darstellen. Daher wird an dieser Stelle zuerst der \emph{ID3}-Algorithmus vorgestellt. 
+
+Es wird zunächst davon ausgegangen, dass alle Features diskret und nicht kontinuierlich sind. Tabelle \ref{tab:id3_example} gibt einen Beispieldatensatz, an dessen Beispiel ein Classificator mit Hilfe des ID3 erzeugt wird. Es geht ähnlich dem Beispiel aus Tabelle \ref{sec:classification} um die Frage, ob Federball-Spielen abhängig von Temperatur und Tageszeit Spaß macht, nur sind in diesem Fall alle Features diskret. 
+
+\begin{table}[h]
+	\centering
+	\caption{Beispieldatensatz D für die Kassfikation mit ID3}
+	\label{tab:id3_example}
+	\begin{tabular}{cccc}
+		\toprule
+		$x_i$    &Temperatur   & Tageszeit & $c_i$ = Spaß? \\\midrule
+		$x_1$  & warm                & Tag          & Ja           \\
+		$x_2$  & kalt                & Tag          & Ja           \\
+		$x_3$  & normal                & Nacht          & Nein         \\
+		$x_4$  & kalt                & Nacht          & Nein           \\
+		$x_5$  & normal                & Tag         & Ja       \\
+		$x_6$  & warm                & Nacht          & Ja       \\ \bottomrule  
+	\end{tabular}
+\end{table}
+
+Abbildung \ref{img:id3tree} zeigt einen Klassifikator, den der ID-3 Algorithmus für diesen Datensatz baut. Es handelt sich um einen Entscheidungsbaum. In Jedem Knoten steht ein Feature, welches einen Ast für jeden möglichen Wert dieses Features bildet. In den Blättern stehen die Klassen.\cite[S. 134]{machine_marsland}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/id3tree.png}
+	\caption{Entscheidungsbaum, der durch den ID3-Algorithmus für den Datensatz aus Beispiel \ref{tab:id3_example} erzeugt wurde.}
+	\label{img:id3tree}
+\end{figure}
+
+Der Entscheidungsbaum lässt sich in eine Reihe von \texttt{if ... then ...}
+-Regeln transformieren. Jeder Weg von der Wurzel bis zu einem Blatt ergibt eine Entscheidungsregel, bei der Feauture-Werte der betretenen Kanten konjunktiv Verknüpft werden und die Klasse implizieren. Die Entscheidungsregeln für den Baum aus Abbildung 	\ref{img:id3tree} sind: \cite[S. 134]{machine_marsland}
+
+\begin{itemize}
+	\item \texttt{if}  \emph{Tageszeit = Tag} \texttt{then} \emph{Spaß = Ja}
+	\item \texttt{if}  \emph{Tageszeit = Nacht} \texttt{and} \emph{Temperatur = warm} \texttt{then} \emph{Spaß = Ja}
+	\item \texttt{if}  \emph{Tageszeit = Nacht} \texttt{and} \emph{Temperatur = normal} \texttt{then} \emph{Spaß = Nein}
+	\item \texttt{if}  \emph{Tageszeit = Nacht} \texttt{and} \emph{Temperatur = kalt} \texttt{then} \emph{Spaß = Nein}
+\end{itemize}
+
+Der Klassifikator, das heißt der Entscheidungsbaum,  wird beim ID3 Algorithmus nach folgenden Muster erstellt:
+Der Baum wird Top-Down erzeugt, dass heisst beginnend bei der Wurzel bis zu den Blättern. Da in jedem Knoten genau ein Feature  aufgespalten wird, wird an der Wurzel die Frage gestellt \glqq \emph{Welches Feature sollte zuerst getestet werden?}\grqq . Um diese Frage zu beantworten, wird jedes Feature einem statistischen Test unterzogen und festzustellen, wie \glqq gut\grqq{} es zur Klassifikation der Trainings-Daten beiträgt. Das \glqq beste\grqq{} Attribut wird ausgewählt und als Wurzel festgelegt. Nun wird ein Kind für jeden möglichen Wert des Features gebildet. Der Datensatz des Elternknotens wird in disjunkte Teilmengen aufteilt, wobei jedes Kind die Untermenge erhält, die den jeweiligen Feature-Wert bestitzt. Daraufhin beginnt für jedes Kind der Prozess des Auswählen des \glqq besten\grqq{} Attributes von vorn. Ein Kind wird dann zu einem Blatt, wenn seine Teilmenge an Daten nur noch aus Instanzen einer Klasse besteht und somit kein weiteres Aufteilen notwendig ist.\cite[S. 55]{machine_mitchell}
+
+Das Wort \glqq gut\grqq{} wurd ein dieser Beschreibung in Anführungsstrichen geschrieben, da es subjektiv ist und quantifiziert werden muss. Zur Quantifizierung der Information wird die Entropie nach Formel \ref{eq:entropy} als Hilfsmittel definiert. $p_i$ ist die Wahrscheinlichkeit, dass in einem Datensatz $D$ eine Instanz mit der Klasse $i \in C$ angetroffen wird.
+
+\begin{equation}
+H(p) = -\sum_{i \in C} p_i \cdot \log_{2} p_i
+\label{eq:entropy}
+\end{equation}
+
+Die Entropie quantifiziert die \emph{Unreinheit des Datensatzes}. Angenommen, ein Datensatz hat zwei Klassen, $C = \{+,-\}$. Existiert der gesamte Datensatz nur aus einer der beiden Klasse, ist die Entropie $- p_{+} \log_{2} p_{+}- p_{-}  \log_{2} p_{-} = -1 log_{2} 1 -0 log_{2} 0 = 0$. Das heißt, dass die \emph{Unreinheit des Datensatzes} $0$  beträgt. Ist die \emph{Unreinheit des Datensatzes} hingegen maximal, das heißt es liegen exakt 50\% positive und 50\% negative Samples vor, ist die Entropie $- p_{+} \log_{2} p_{+} - p_{-}  \log_{2} p_{-} = -0.5 log_{0.5} 1 - 0.5 log_{2} 0.5 = 1$. \cite[S. 135]{machine_marsland}
+
+Es ist das Attribut in einem Knoten zu wählen, welches den höchsten \emph{Informatoinsgewinn} gewährleistet, das heißt, zu einer bestmöglichen \emph{Reinheit} bei der alleinigen Unterteilung des Datensatzes auf Basis dieses Attributs führt. Der informationsgewinn eines Features $f$ für den Datensatz $D$ wird nach Formel \ref{eq:informationGain} definiert. $v$ sind alle möglichen Werte dieses Features. $|D|$ beschreibt die Anzahl an Instanzen des Datensatzes. $D_v$ ist die Untermenge an Instanzen, die für das Feature $f$ den Wert $v$ besitzen.\cite[S. 136 - 137]{machine_marsland}
+
+\begin{equation}
+\text{Gain}(D,f) = H(D) - \sum_{v \in dom(f)} \frac{|D_v|}{|D|} H(D_v)
+\label{eq:informationGain}
+\end{equation}
+
+Für das Beispiel aus Tabelle \ref{img:id3tree} ergibt sich für den ersten Test folgende Berechnung des Informationsgewinnes der beiden Features \emph{Temperatur} und \emph{Tageszeit}. Da die Tageszeit den höheren Informationsgewinn gewährleistet, wird dieses Features in der Wurzel gewählt. 
+
+\begin{equation}
+H(D) = - p_{+} \log_{2} p_{+} - p_{-}  \log_{2} p_{-} = -\frac{4}{6} \log_{2} (\frac{4}{6}) -\frac{2}{6} \log_{2}( \frac{2}{6} ) = 0.91
+\end{equation}
+\begin{equation}
+\begin{split}
+Gain(D,Tageszeit) = 0.91 - \Big( \overbrace{\frac{3}{6} \cdot (-\frac{3}{3} \log_{2} \frac{3}{3} -  -\frac{0}{3} \log_{2} \frac{0}{3} }^{Tag}   )\ \quad \quad \quad \; \\
+\underbrace{\frac{3}{6} \cdot (-\frac{1}{3} \log_{2} \frac{1}{3} -  -\frac{2}{3} \log_{2} \frac{2}{3} }_{Nacht}   \Big)  = 0.86
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+Gain(D,Temperatur) =  0.91 - \Big( \overbrace{\frac{2}{6} \cdot (-\frac{2}{2} \log_{2} \frac{2}{2} -  -\frac{0}{2} \log_{2} \frac{0}{2} }^{warm}   ) \quad \quad \quad \quad \\
+\overbrace{\frac{2}{6} \cdot (-\frac{1}{2} \log_{2} \frac{1}{2} -  -\frac{1}{2} \log_{2} \frac{1}{2} }_{normal}   \quad \quad \quad \quad \\
+\overbrace{\frac{2}{6} \cdot (-\frac{1}{2} \log_{2} \frac{1}{2} -  -\frac{1}{2} \log_{2} \frac{1}{2} }_{kalt} 
+\Big)  = 0.66
+\end{split}
+\end{equation}
+
+Algorithmus\ref{alg:id3} zeigt den Ablauf des ID-3 in Pseudocode. $D$ ist die Menge aller Test-Examples, $X$ ist die Menge aller Features, $C$ ist die Menge aller Klassen, $f_{parent}$ das Feature des momentanen Eltern-Knotens und  $v_{parent}$ der Wert des zum momentan konstruierten Knotens eingehenden Kante. \cite[S. 139]{machine_marsland} \cite[S. 56]{machine_mitchell}
+
+%% Verbessern :O
+\begin{algorithm}[H]
+	\footnotesize
+	\caption{ID3-Algorithmus in Pseudocode}
+	\label{alg:id3}
+	\begin{algorithmic}[1]
+		\State $tree = \{ \}$
+		\Function{ID3}{$D, X, C, f_{parent}, v_{parent}$ }
+		\State \Comment If all Examples have the same label, return a leaf with that Label
+		\If{ $\forall e \in D: \exists k \in C : e.c = k$}
+		\State $tree = tree \cup \{(f_{parent}, v_{parrent},k)\}$
+		\State \Return 
+		
+		\Else
+		\State \Comment If there are no Features left to test, return a leaf with 
+		\State \Comment the most common Label  of the Examples remaining in $D$
+		\If{ $isEmpty(X)$}
+		\State $tree = tree \cup \{(f_{parent}, v_{parrent}, \text{most common Label in D})\}$
+		\State \Return 
+		\Else
+		\State \Comment Choose the feature that maximizes the Information-Gain to be the next node
+		\State $f_{best} = \maxi_{f \in X} Gain(D,f)$
+		\State \Comment Add a Branch to this node
+		\State  $tree = tree \cup \{(f_{parent}, v_{parrent},f_{best})\}$
+		\State \Comment Remove the feature from the set of features
+		\State $X_{/f} \gets X / f_{dom}$
+		\For{$v \in f_{best}$}
+		\State \Comment Calculate the new Dataset $D_{/f}$ by removing all instances with the corresponding value
+		\State $D_{/f} \gets \forall e \in D : e.f_{best} = v$
+		\State \Comment Recursivly call the algorithm
+		\State \Call{ID3}{$D_{/f}, X_{/f}, f_{dom}, v$}
+		\EndFor
+		\EndIf
+		\EndIf
+		
+		\EndFunction
+		
+	\end{algorithmic}
+\end{algorithm}
+
+Der ID3-Algorithmus hat folgende \textbf{Vorteile}:
+
+\begin{description}
+	\item[Kurze Entscheidungsbäume] Der Klassifizierer versucht, möglichst kurze Entscheidungsbäume zu bauen, indem Features mit hohem Informationsgewinn bevorzugt werden. Dies ist eine Umsetzung von \emph{Ocam's Razor}: \glqq Bevorzuge die kürzeste Hypothese\grqq{}
+	\item[Verständlichkeit]  Der Klassifikator ist für den Menschen verständlich, da er sich in Regeln übersetzen lässt (im Gegensatz zu zum Beispiel Neuronalen Netzen). Es existiert die unbewiesene Hypothese, dass der Mensch bei der Klassifizierung intuitiv ähnlich vorgeht wie der ID3-Algorithmus.\cite[S. 63 - 65]{machine_mitchell}
+\end{description}
+
+Der ID3-Algorithmus hat folgende \textbf{Nachteile}
+\begin{description}
+	\item[Nur Diskrete Werte] Der Algorithmus akzeptiert keine kontinuierlichen Werte \cite[S. 72]{machine_mitchell}
+	\item[Overfitting] Der Algorithmus neigt zu \emph{Overfitting}. Overfitting bedeutet, dass der erzeugte Klassfikator $c$ zwar einen möglichst geringen Fehler in Bezug auf den \emph{Trainings-Datensatz} hat, es jedoch einen anderen Klassifikator $c'$ gibt, welcher in Bezug auf den Trainings-Datensatz einen höheren Fehler erzeugt, jedoch einen geringeren Fehler als $c$ in Bezug auf \emph{alle möglichen Instanzen dieses Typs} erzeugt. Anders formuliert bedeutet Overfitting, dass der Klassifikator den Trainings-Datensatz \glqq auswendig gelernt hat\grqq{} und nicht mehr genügend generalisiert, um auf im Training nicht enthaltene Instanzen angewandt werden zu können. Overfitting im Zusammenhang mit dem ID-3 Algorithmus wird durch \emph{Rauschen im Trainings-Datensatz} bedingt. Es gibt keinen festen Beweis für das vorhandensein von Overfitting. Methoden zum Feststellen von Overfitting sind:
+	\begin{itemize}
+		\item Verwendung eines seperaten Test-Datensatzes, welcher bestätigt, dass der für den Trainings-Datensatz erzeugte Klassifikationsfehler auch bei bisher unbekannten Instanzen erzeugt wird.
+		\item Verwendung von Statistischen Tests, die eine signifikante Reduktion des Klassifikationsfehlers bei Erweiterung des Entscheidungsbaumes beweisen.
+		\item Expertenwissen über applikationstypischen Tiefen von Entscheidungsbäumen.\cite[S. 66 - 70]{machine_mitchell}
+	\end{itemize}
+	\item[Lokale Maxima] Der Algorithmus bevorzugt greedy Attribute, die zum Zeitpunkt der Berechnung den höchsten Inforamtionsgewinn gewährleisten. Dabei besteht die Gefahr, dass der Algorithmus in ein lokales Maximum läuft.\cite[S. 66 - 70]{machine_mitchell}
+\end{description}
+
+\subsection{Gütemaße binärer Klassifikatoren}
+\label{sec:howGoodIsMyClassifier}
+
+Ein binärer Klassifikation ist eine, bei dem es nur zwei Klassen gibt, das heißt $|C| = 2$. Applikationsabhängig werden die beiden Klassen als \emph{Positive} und \emph{Negative}, $1$ und $0$ oder \emph{True} und \emph{False} beschrieben. Eine Klassifikation, bei der ein tatsächliches Positive richtig als Positive vorhergesagt wird, spricht man von einem \emph{True Positive} [TP]. Wird hingegen ein tatsächliches Positive fälschlicherweise als Negative vorhergesagt, spricht man von einem \emph{False-Negative} [FN]. Das System wird entsprechend für die Klassifikation tatsächlicher Negatives angewandt und ergibt. \emph{True-Negatives} [TN] und \emph{False-Positives} [FP]. Die \emph{Confusion Matrix} in Abbildung \ref{img:Confusion-Matrix} gibt eine Übersicht über die vier möglichen Klassifikations-Ergebnisse. \cite[S. 213 - 214]{machine_kubat}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{bilder/Confusion-Matrix02.png}
+	\caption{Confusion-Matrix (nach: \cite[S. 214]{machine_kubat})}
+	\label{img:Confusion-Matrix}
+\end{figure}
+
+Die insgesamte Güte einer Klassifikation wird durch die \emph{Accuracy} nach Formel \ref{eq:accuracy} bestimmt. Eine Accuracy von 100\% bedeutet, dass \emph{alle} Instanzen richtig klassifiziert werden, eine Accuracy von 50\% bedeutet, dass die Hälfte aller Instanzen richtig klassifiziert werden, was der Güte einer rein zufälligen Wahl entspricht. \cite[S. 214]{machine_kubat}
+
+\begin{equation}
+\text{Accuracy} = \frac{TP+TN}{TP+TN+FN+FP}
+\label{eq:accuracy}
+\end{equation}
+
+Die Accuracy beziffert die insgesamte Performance des Klassifikators, gibt jedoch keinen Aufschluss darüber, ob der Klassifikator eher eine Tendenz zur falschen Klassifizierung von Positives oder Negatives hat. Bei einer Datenbank mit der selben Anzahl an Positives und Negatives kann eine Accuracy von 50\% beispielsweise dadurch entstehen, dass \emph{alle} Instanzen als Positives markiert werden, also sowohl die Positives richtigerweise als Positives, aber die Negatives fälschlicherweise ebenfalls als Positives. Im Umgedrehten Fall ergibt die Klassifizierung aller Instanzen als Negatives ebenfalls eine Accuracy von 50\%. In einem dritten Fall irrt sich die Klassifikator gleich oft bei der Einordnung der Negatives und Positives. Die Maße \emph{Sensitivity} und \emph{Specificity} geben Aufschluss über die Güte der Klassifikation hinsichtlich der Positives und Negatives. Die \emph{Sensitivity}, auch bezeichnet als \emph{True-Positive-Rate}, bemisst den Anteil tatsächlicher Positives, die auch als solche erkannt wurden, nach Formel \ref{eq:sensitivity}. Eine Sensitivity von 100\% bedeutet, dass alle Positives durch den Klassifikator erkannt wurden. Die Erkennungsrate der Negatives hat keinen Einfluss auf die Sensitivity. Eine hohe Sensitivity lässt sich somit \glqq einfach\grqq{} erzielen, in dem man \emph{alle} Instanzen immer als Positives klassifiziert. Die Specificity nach Formel \ref{eq:specificity} bestimmt analog zur Sensitivity den Anteil der korrekt als Negatives bestimmten Instanzen. Ein Klassifikator, der alle Instanzen als Positives markiert, hat zwar eine Sensitivity von 100\%, aber eine Specificity von 0\%. Ergeben zwei verschiedene Klassifikationsmodelle sehr ähnliche Accuracies, hilft die Bestimmung der Sensitivity und Specificity bei der Auswahl des für den Anwendugnsfall Adäquteren Klassifikators. So ist beispielsweise bei der Bestimmung von schweren Krankheiten eventuell ein Klassifikator mit höherer Sensitivity wünschbar, um die Wahrscheinlichkeit zu minimieren, dass die entsprechende Krankheit nicht erkannt wird. \cite{sens-and_spec}  \cite[S. 222]{machine_kubat}
+
+\begin{equation}
+\text{Sensitivity} = \frac{TP}{TP+FN}
+\label{eq:sensitivity}
+\end{equation}
+
+\begin{equation}
+\text{Specificity} = \frac{TN}{TN+FP}
+\label{eq:specificity}
+\end{equation}
