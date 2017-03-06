@@ -1,24 +1,73 @@
-\chapter{Voice Activity Detection}
+\chapter{Erkennung der Cry-Units}
 \label{sec:vad}
 
-Das Ziel ist, in einem Audiosignal diejenigen Stellen zu markieren, in denen Stimme enthalten ist. Abbilung \ref{img:vad01} visualisiert ein Beispiel für eine solche Markierung. Zu sehen ist der Zeitbereich eines Audiosignales mit fünf klar erkennbaren Cry-Units. Die rote Linie, die das Signal überspannt, bildet die Zeiteinheiten des Eingangssignales in die binären Kategorien $1 hat{=} $ \emph{stimmhaft} (engl. \emph{voiced}) und $0 hat{=}  $ \emph{Stille} (oder \emph{nicht-stimmhaft}, engl. \emph{not voiced}) ab.
+Der erste notwendige Schritt zur Ableitung einer Pain-Score aus einem Audiosignal ist die Feststellung, ob in dem Signal überhaupt kindliche Lautäußerungen vorhanden sind. Das Ziel, In einem Audiosignal diejenigen Bereiche zu markieren, in denen Stimmaktivität vorhanden ist und daraufhin Beginn und Ende der einzelnen Cry-Units zu festzulegen. Abbildung  \ref{img:vad01} verdeutlicht diese Aufgabe an einem Beispiel: Der obere Graph zeigt in Schwarz ein Audiosignal. Die rote Linie, die das Signal überspannt, zeigt, welche Regionen Stimme enthalten, wobei $1 \hat{=} $ \emph{stimmhaft} (engl. \emph{voiced}) und $0 \hat{=}  $ \emph{nicht stimmhaft} (oder \emph{Stille}, engl. \emph{not voiced}). Das untere Schema zeigt, wie die stimmhaften Signalbereiche zu Cry-Units zusammengefasst wurden.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/vad_introduction01.png}
-	\caption{Markierung stimmhafter Bereiche in einem Audiosignal. Schwarz: Das Eingangssignal $x[\;]$. Rot: Klassifizierung in stimmhaft/Stille. Es sind fünf Cry-Units zu erkennen.}
+	\includegraphics[width=0.7\textwidth]{bilder/vad_introduction02.png}
+	\caption{Markierung stimmhafter Bereiche in einem Audiosignal. Oben Schwarz: Das Eingangssignal $x[\;]$. Oben Rot: Klassifizierung in stimmhaft/Stille. Unten Rot: Die fünf erkannten Cry-Units.}
 	\label{img:vad01}
 \end{figure}
 
-Die Erkennung des Vorhandenseins von Stimme in einem Signal wird als \emph{Voice Activity Detection (VAD)} oder auch \emph{Speech Detection} bezeichnet. Das Ziel ist die Unterscheidung von denjenigen Zeiträumen im Signal, in denen Stimme enthalten ist, von den Zeiträumen ohne Stimme. Die größte Herausforderung für VAD-Algorithmen ist die robuste Erkennung bei Signalen mit Rauschen unbekannter Stärke und Natur. \cite[S. 1]{vad_kola} \cite[S. 1]{vad_Lisboa}
+In Kapitel \ref{sec:vad_new} wird die Voice Activity Detection vorgestellt, das Feststellen des Vorhandseins von Stimme in einem Signal. In Kapitel \ref{sec:marking_cry-units_new} wird besprochen, wie die stimmhaften Signalbereiche zu Cry-Units zusammengefasst werden. In Kapitel \ref{sec:decision_smoothing_new} wird ein Algorithmus vorgestellt, in dem Nachträglich inkorrekt erkannte Anfangs- und Endzeitpunkt von Cry-Units korrigiert werden.
 
-Der Grundlegende Aufbau eines VAD-Algorithmus ist wie folgt.
+\section{Voice Activity Detection}
+\label{sec:vad_new}
+
+\emph{Voice Activity Detection} (kurz \emph{VAD}) oder \emph{Speech Detection} ist bei jeder Art der Sprachverarbeitung von Bedeutung: Im Mobilfunk wird sie beispielsweise eingesetzt, um die Zeitbereiche zu Erkennen, in denen die Teilnehmer sprechen und somit eine Übertragung stattfinden muss. Die größte Herausforderung von VAD-Systemen ist die robuste Erkennung von Stimmaktivität auch bei starkem Hintergrundrauschen. Bis heute wurde keine \glqq Perfekte Lösung\grqq{} des Problems gefunden. \cite[S. 1]{vad_granada} \cite[S. 1]{vad_kola} \cite[S. 1]{vad_Lisboa}
+
+Der Grundlegende Aufbau eines VAD-Algorithmus ist wie folgt. Abbildung \ref{img:vad_pipeline} visualisiert diesen Aufbau.
 \begin{enumerate}
-\item \textbf{Windowing:} Unterteilung des Signals in (einander überlappende) Signalfenster.
-\item \textbf{Extraktion von Eigenschaften} aus den einzelnen Signalfenstern.
-\item \textbf{Entscheidung} über die Präsens oder Abwesenheit von Stimme für jedes Signalfenster auf Grundlage der extrahierten Attribute mit Hilfe von Entscheidungsregeln wie Grenzwerten.
-\item \textbf{Decision-Smoothing}, das nachträgliche Hinzufügen oder Entfernen von Entscheidungen mit Hilfe von kontextuellen Informationen der umliegenden Entschiedungen.\cite[S. 8 - 9]{vad_granada} \cite[S. 1 - 2]{vad_kola}
+	\item \textbf{Windowing: } Unterteilung des Signals in (einander überlappende) Signalfenster.
+	\item \textbf{Extraktion von Eigenschaften} (engl. \emph{Feature-Extraction}) aus jedem Signalfenster.
+	\item \textbf{Entscheidung} (engl. \emph{Decision}) über die Präsens oder Abwesenheit von Stimme für jedes Signalfenster auf Grundlage der extrahierten Eigenschaften
+	\item \textbf{Decision-Smoothing}, das nachträgliche Hinzufügen oder Entfernen von Entscheidungen mit Hilfe von kontextuellen Informationen der umliegenden Entschiedungen.\cite[S. 8 - 9]{vad_granada} \cite[S. 1 - 2]{vad_kola}
 \end{enumerate}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.65\textwidth]{bilder/vad_pipeline03.png}
+	\caption{Aufbau eines VAD-Algorithmus}
+	\label{img:vad_pipeline}
+\end{figure}
+
+
+In Kapitel \ref{sec:methods_vad_new} werden die Methoden genauer Vorgestellt. 
+
+
+\subsection{Methoden}
+\label{sec:methods_vad_new}
+
+\subsection{Windowing}
+
+\subsubsection{Eigenschaften des Zeitbereiches}
+
+\subsubsection{Eigenschaften der Autokorrelation}
+
+\subsubsection{Eigenschaften des Frequenzbereiches}
+
+\subsubsection{Eigenschaften des Cepstrums}
+
+\subsubsection{Entscheidung mit Grenzwert}
+
+\subsection{Simulations-Studie}
+
+\subsubsection{Datenbank}
+
+\subsubsection{Windowing}
+
+\subsection{Konstruktion des Featureraumes}
+
+\subsubsection{Grenzwertfindung durch den C4.5}
+
+\subsection{Ergebnisse}
+
+\section{Markierung der Cry-Units}
+\label{sec:marking_cry-units_new}
+
+\section{Decision Smoothing}
+\label{sec:decision_smoothing_new}
 
 Auch die in dieser Arbeit durchgeführte Voice Activity Detection folgt diesem Schema. Das Windowing wird in Kapitel \ref{sec:windowing}, die Extraktion von Eigenschaften in Kapitel \ref{sec:featExtraction}, die Entscheidung in Kapitel \ref{sec:vad_thresholding} und das Decision-Smoothing in Kapitel \ref{sec:smoothing} beschrieben. Es wurden Ideen verwendet, die von  Moattar et al. \cite{vad_Easy}, Kristjansson et al. \cite{vad_Lisboa}, Waheed et al. \cite{vad_entropy}, Ahmadi et al. \cite{vad_ceps} und Shen et al.\cite{vad_entropie02} vorgestellt wurden.
 
