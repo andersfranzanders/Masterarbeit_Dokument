@@ -1,22 +1,22 @@
 \chapter{Konzept zur Visualisierung von Schmerz Scores aus akustischen Signalen}
 
-In Kapitel \ref{sec:medicalFoundations} wurde vorgestellt, wie die Schmerzdiagnose mit Hilfe von Pain Scales durch medizinisches Fachpersonal durchgeführt wird. Es wurde eine Reihe an Pain Scales vorgestellt und dabei insbesondere der Schmerzindikator \glqq Weinen\grqq{} beleuchtet. Unabhängig von der konkret eingesetzten Pain Scale wird in jedem Fall das Baby für eine bestimme Zeit beobachtet, für jeden Indikator, wie das Weinen oder der Gesichtsausdruck, Punkte vergeben, diese Aufsummiert und aus der Summe der insgesamte Schmerz Score bestimmt. 
+In Kapitel \ref{sec:medicalFoundations} wurde vorgestellt, wie die Schmerzdiagnose bei Neugeborenen mit Hilfe von Pain Scales durch medizinisches Personal durchgeführt wird. Es wurde eine Reihe an Pain Scales vorgestellt und dabei insbesondere der Schmerzindikator \glqq Weinen\grqq{} beleuchtet. Unabhängig von der konkret eingesetzten Pain Scale wird in jedem Fall das Baby für eine bestimme Zeitraum beobachtet, für jeden Indikator, wie das Weinen oder der Gesichtsausdruck, Punkte vergeben, diese Aufsummiert und aus der Summe der insgesamte Schmerz Score bestimmt. 
 
-In Kapitel \ref{sec:cryresearch_foundations} wurde vorgestellt, wie in der klassischen Schreiforschung mit Hilfe von Mitteln der Signalverarbeitung das Weinen von Babys tiefergehend Analysiert wurde. Es wurde die Möglichkeit gezeigt, aus den objektiv messbaren Eigenschaften des Weinens eines Babys Rückschlüsse auf dessen Zustand gemacht werden können.
+In Kapitel \ref{sec:cryresearch_foundations} wurde vorgestellt, wie in der klassischen Schreiforschung mit Hilfe von Methoden der Signalverarbeitung das Weinen von Babys tiefergehend Analysiert wurde. Es wurde gezeigt, dass aus objektiv messbaren Eigenschaften des Weinens eines Babys Rückschlüsse auf dessen Zustand gemacht werden können.
 
 Ziel dieser Arbeit ist der Entwurf eines Systems zur automatisierten Feststellung und Visualisierung von Pain Scores beliebiger Pain Scales mit dem Fokus auf den Schmerzindikator \glqq Weinen\grqq. Das System muss folgenden Anforderungen erfüllen:
 
 \begin{enumerate}
 	\item Das System muss dazu in der Lage sein, aus den akustischen Eigenschaften des Weinens eines Babys den Schmerz Score bezüglich einer Pain Scale abzuleiten.
-	\item Das System muss dazu in der Lage sein, die abgeleiteten Schmerz Scores zu visualiseren.
+	\item Das System muss dazu in der Lage sein, die abgeleiteten Schmerz Scores zu visualisieren.
 	\item Das System muss dazu in der Lage sein, beliebige Pain Scales einzubinden. 
-	\item Die System muss dazu in der Lage sein,  die Analyse auch bei nicht-optimalen akustischen Bedingungen durchzuführen.
+	\item Die System muss dazu in der Lage sein, die Analyse auch bei nicht-optimalen akustischen Bedingungen durchzuführen.
 	\item Das System muss dazu in der Lage sein, die Analyse kontinuierlich durchzuführen.
 \end{enumerate}
 
 Der \textbf{Input} des Systems ist folglich ein Audiosignal, welches kontinuierlich in das System gegeben wird. Der \textbf{Output} ist eine Visualisierung der abgeleiteten Pain Score, welche kontinuierlich erzeugt wird.
 
-In Kapitel \ref{sec:system_literature} wird zunächst ein Überblick über einige Veröffentlichungen gegeben, in denen ebenfalls Konzepte zur Analyse und Auswertung kindlicher Lautäußerungen vorgestellt wurden. In Kapitel \ref{sec:pipeline} wird daraufhin das in dieser Arbeit entworfene Konzept in Form einer Verarbeitungs-Pipeline vorgestellt. Diese Verarbeitungs-Pipeline kombiniert das Vorgehen bei der Schmerzdiagnostik auf Basis der Pain Scales, Methoden der klassischen Schreiforschung sowie einige Ideen nun vorgestellten Veröffentlichungen.
+In Kapitel \ref{sec:system_literature} wird zunächst ein Überblick über einige Veröffentlichungen gegeben, in denen Konzepte zur automatisierten Analyse und Auswertung kindlicher Lautäußerungen vorgestellt wurden. In Kapitel \ref{sec:pipeline} wird daraufhin das in dieser Arbeit entworfene Konzept in Form einer Verarbeitungs-Pipeline vorgestellt. Diese Verarbeitungs-Pipeline kombiniert das Vorgehen bei der Schmerzdiagnostik auf Basis der Pain Scales, Methoden der klassischen Schreiforschung sowie einige Ideen der im folgenden Kapitel vorgestellten Veröffentlichungen.
 
 \section{Literaturüberblick}
 \label{sec:system_literature}
@@ -34,24 +34,23 @@ Zamzi et al.  haben 2016 in der Veröffentlichung \glqq An Approach for Automate
 \section{Verarbeitungs-Pipeline}
 \label{sec:pipeline}
 
-In Kapitel \ref{sec:system_literature} wurden verschiedene Konzepte vorgestellt, deren Zielstellungen ebenfalls die Analyse und Auswertung von Audioaufnahmen kindlicher Lautäußerungen ähnelt. Keines der präsentierten Konzepte eignet sich, um mit nur leichten Anpassungen übernommen werden zu können: Entweder wurden die Verarbeitungsschritte nicht für die kontinuierliche Verarbeitung konzipiert \cite{class_abdulaziz} \cite{comparisonOfLearning} \cite{cry_thesis}, nicht genügen abstrahiert, um für andere Klassifizierungen als die ursprünglich geplanten abgewandelt werden zu können \cite{cohenCry}, oder die Verarbeitungs-Pipeline wurde nicht vorgestellt. \cite{palEmotion} \cite{zamziMultimodal}.
+In Kapitel \ref{sec:system_literature} wurden verschiedene Konzepte vorgestellt, deren Fokus ebenfalls die Analyse und Auswertung von Audioaufnahmen kindlicher Lautäußerungen waren und somit der Aufgabenstellung dieser Arbeit ähneln. Keines der präsentierten Konzepte eignet sich, um mit nur leichten Anpassungen übernommen werden zu können: Entweder wurden die Verarbeitungsschritte nicht für die kontinuierliche Verarbeitung konzipiert \cite{class_abdulaziz} \cite{comparisonOfLearning} \cite{cry_thesis}, nicht genügen abstrahiert, um für andere Klassifizierungen als die ursprünglich geplanten abgewandelt werden zu können \cite{cohenCry}, oder die Verarbeitungs-Pipeline wurde nicht vorgestellt. \cite{palEmotion} \cite{zamziMultimodal}.
 
 In dieser Arbeit wurde die folgende Verarbeitungs-Pipeline entworfen. Sie wird in in Abbildung \ref{img:architecture-overview} visualisiert. 
 
-
 %To Do: Kapitel hinzufügen.
 \begin{enumerate}[leftmargin=*]
-	\item \textbf{Input: } Ein Audiosignal, das möglicherweise kindliche Lautäußerungen enthält. Es wird kontinuierlich hinzugegeben.
+	\item \textbf{Input: } Ein Audiosignal, das möglicherweise kindliche Lautäußerungen enthält. Es wird kontinuierlich in das System gegeben.
 	
 	\item \textbf{Vorverarbeitung} (engl. \emph{Pre-Processing}) des Signals.
 	
-	\item \textbf{Erkennung der Cry-Units}. Zunächst muss festgestellt werden, ob und wo in dem Signal kindliche Lautäußerungen vorhanden sind. Ein Algorithmus zur Feststellung von Stimmaktivität, bezeichnet als Voice Activity Detection, untersucht das Signal und markiert die Cry-Units. Die gefunden Cry-Units bilden die Grundlage aller darauf folgenden Verarbeitungsschritte. Der vorgestellte Algorithmus kombinierte herkömmliche Methoden der Voice Activity Detection mit Ideen, die von Varallyay \cite{cry_thesis} vorgestellt wurden.
+	\item \textbf{Erkennung der Cry-Units}. Zunächst muss festgestellt werden, ob und wo in dem Signal kindliche Lautäußerungen vorhanden sind. Ein Algorithmus zur Feststellung von Stimmaktivität, bezeichnet als Voice Activity Detection, untersucht das Signal und markiert Cry-Units. Die gefunden Cry-Units bilden die Grundlage aller darauf folgenden Verarbeitungsschritte. Der vorgestellte Algorithmus kombinierte herkömmliche Methoden der Voice Activity Detection mit Ideen, die von Varallyay \cite{cry_thesis} vorgestellt wurden.
 	
 	\item \textbf{Segmentierung} (engl \emph{Segmenting}). Eine Pain Score wird nicht aus der Beobachtung einer einzigen, sondern einer Reihe von Cry-Units abgeleitet. In Kapitel \ref{sec:painScores} wurde gezeigt, dass bestimmte Pain Scores die Beobachtung über mehrere Minuten hinweg erfordern. Zu diesem Zweck werden die Cry-Units gruppiert. Da keines der in Kapitel \ref{sec:system_literature} vorgestellten Konzepte Methoden zur Segmentierung einführte, wurde ein eigener Algorithmus für diese Aufgabe entworfen.
 	
-	\item \textbf{Extrahierung von Eigenschaften und Ableitung der Schmerz Score} (engl. \emph{Feature Extraction} und \emph{Prediction of Pain Score}). Für jedes Segment werden Eigenschaften bezüglich des Weinens berechnet, wie zum Beispiel die durchschnittliche Tonhöhe, durchschnittliche Pausenlänge usw. Dieses Vorgehen implementiert Ideen der in Kapitel \ref{sec:cryresearch_foundations} vorgestellten klassischen Schreiforschung. Auf Basis dieser Eigenschaften wird die Pain Score abgeleitet.
+	\item \textbf{Extrahierung von Eigenschaften und Ableitung der Schmerz Score} (engl. \emph{Feature Extraction} und \emph{Prediction of Pain Score}). Für jedes Segment werden Eigenschaften bezüglich des Weinens berechnet, wie zum Beispiel die durchschnittliche Tonhöhe, durchschnittliche Pausenlänge usw. Dabei werden Ideen der in Kapitel \ref{sec:cryresearch_foundations} vorgestellten klassischen Schreiforschung implementiert. Auf Basis dieser Eigenschaften wird die Pain Score abgeleitet.
 	
-	\item \textbf{Output: Visualisierung} (engl. \emph{Visualisation}) der abgeleiteten Schmerz Score. Es werden mehrere Varianten vorgeschlagen, welche die Höhe des Schmerz Score in seinem zeitlichen Verlauf auf Ampelfarben abbildet.
+	\item \textbf{Output: Visualisierung} (engl. \emph{Visualisation}) der abgeleiteten Schmerz Score. Es werden mehrere Varianten vorgeschlagen, bei der die Höhe des Schmerz Score in seinem zeitlichen Verlauf auf Ampelfarben abgebildet wird.
 \end{enumerate}
 
 \begin{figure}[H]

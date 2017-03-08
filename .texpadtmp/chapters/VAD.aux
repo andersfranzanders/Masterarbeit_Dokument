@@ -22,135 +22,120 @@
 \citation{vad_entropie02}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Aufbau eines VAD-Algorithmus\relax }}{32}{figure.caption.25}}
 \newlabel{img:vad_pipeline}{{4.2}{32}{Aufbau eines VAD-Algorithmus\relax }{figure.caption.25}{}}
-\citation{vad_entropy}
-\citation{vad_Easy}
 \citation{vad_ceps}
+\citation{vad_Easy}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Methoden}{33}{subsection.4.1.1}}
 \newlabel{sec:methods_vad_new}{{4.1.1}{33}{Methoden}{subsection.4.1.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Windowing}{33}{subsection.4.1.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Eigenschaften des Zeitbereiches}{33}{section*.26}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Eigenschaften der Autokorrelation}{33}{section*.27}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Eigenschaften des Frequenzbereiches}{33}{section*.28}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Eigenschaften des Cepstrums}{33}{section*.29}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Entscheidung mit Grenzwert}{33}{section*.30}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Simulations-Studie}{33}{subsection.4.1.3}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Datenbank}{33}{section*.31}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Windowing}{33}{section*.32}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Konstruktion des Featureraumes}{33}{subsection.4.1.4}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Grenzwertfindung durch den C4.5}{33}{section*.33}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.5}Ergebnisse}{33}{subsection.4.1.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Markierung der Cry-Units}{33}{section.4.2}}
-\newlabel{sec:marking_cry-units_new}{{4.2}{33}{Markierung der Cry-Units}{section.4.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Decision Smoothing}{33}{section.4.3}}
-\newlabel{sec:decision_smoothing_new}{{4.3}{33}{Decision Smoothing}{section.4.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Windowing}{33}{subsection.4.3.1}}
-\newlabel{sec:windowing}{{4.3.1}{33}{Windowing}{subsection.4.3.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Vorverarbeitung}{33}{section*.26}}
+\newlabel{sec:preprocessing}{{4.1.1}{33}{Vorverarbeitung}{section*.26}{}}
+\newlabel{eq:preprocessedX}{{4.1}{33}{Vorverarbeitung}{equation.4.1.1}{}}
+\newlabel{eq:normalizing}{{4.2}{33}{Vorverarbeitung}{equation.4.1.2}{}}
+\newlabel{eq:THold}{{4.3}{34}{Vorverarbeitung}{equation.4.1.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Ergebnis der Vorverarbeitung. Oben: Das Signal vor der Vorverarbeitung. Unten: Das Signal nach der Vorverarbeitung.\relax }}{34}{figure.caption.27}}
+\newlabel{img:compressing01}{{4.3}{34}{Ergebnis der Vorverarbeitung. Oben: Das Signal vor der Vorverarbeitung. Unten: Das Signal nach der Vorverarbeitung.\relax }{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Windowing}{34}{subsection.4.1.2}}
+\newlabel{sec:windowing}{{4.1.2}{34}{Windowing}{subsection.4.1.2}{}}
+\citation{vad_entropy}
 \citation{vad_Easy}
 \citation{vad_ceps}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Extraktion von Eigenschaften}{34}{subsection.4.3.2}}
-\newlabel{sec:featExtraction}{{4.3.2}{34}{Extraktion von Eigenschaften}{subsection.4.3.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Zeitbereich}{34}{section*.34}}
-\newlabel{sec:timeFeats}{{4.3.2}{34}{Zeitbereich}{section*.34}{}}
-\newlabel{eq:zcr}{{4.1}{34}{Zeitbereich}{equation.4.3.1}{}}
+\citation{vad_Easy}
+\citation{vad_ceps}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Eigenschaften des Zeitbereiches}{35}{section*.28}}
+\newlabel{sec:vad_time_features}{{4.1.2}{35}{Eigenschaften des Zeitbereiches}{section*.28}{}}
+\newlabel{eq:zcr}{{4.4}{35}{Eigenschaften des Zeitbereiches}{equation.4.1.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Eigenschaften der Autokorrelation}{35}{section*.29}}
 \citation{vad_Lisboa}
 \citation{vad_Lisboa}
 \citation{vad_Lisboa}
+\newlabel{eq:ACorr}{{4.5}{36}{Eigenschaften der Autokorrelation}{equation.4.1.5}{}}
+\newlabel{eq:NACorr}{{4.6}{36}{Eigenschaften der Autokorrelation}{equation.4.1.6}{}}
+\newlabel{eq:a-Signal}{{4.7}{36}{Eigenschaften der Autokorrelation}{equation.4.1.7}{}}
+\newlabel{eq:corrpeak}{{4.8}{36}{Eigenschaften der Autokorrelation}{equation.4.1.8}{}}
+\newlabel{eq:corrcount}{{4.9}{36}{Eigenschaften der Autokorrelation}{equation.4.1.9}{}}
 \citation{vad_Lisboa}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Autokorrelation}{35}{section*.35}}
-\newlabel{eq:corrpeak}{{4.2}{35}{Autokorrelation}{equation.4.3.2}{}}
-\newlabel{eq:corrcount}{{4.3}{35}{Autokorrelation}{equation.4.3.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Frequenzbereich}{35}{section*.36}}
+\citation{vad_Lisboa}
+\citation{vad_Lisboa}
 \citation{vad_entropie02}
 \citation{vad_Easy}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Eigenschaften des Frequenzbereiches}{37}{section*.30}}
+\newlabel{eq:norm_spek}{{4.10}{37}{Eigenschaften des Frequenzbereiches}{equation.4.1.10}{}}
+\newlabel{eq:norm_se}{{4.11}{37}{Eigenschaften des Frequenzbereiches}{equation.4.1.11}{}}
+\newlabel{eq:unnnorm_se}{{4.12}{37}{Eigenschaften des Frequenzbereiches}{equation.4.1.12}{}}
+\citation{ricardo_ceps}
+\citation{ricardo_ceps}
+\citation{ricardo_ceps}
+\citation{ricardo_ceps}
+\newlabel{eq:domfreq}{{4.13}{38}{Eigenschaften des Frequenzbereiches}{equation.4.1.13}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Eigenschaften des Cepstrums}{38}{section*.31}}
+\newlabel{sec:vad_ceps_features}{{4.1.2}{38}{Eigenschaften des Cepstrums}{section*.31}{}}
+\newlabel{eq:cepstrum}{{4.14}{38}{Eigenschaften des Cepstrums}{equation.4.1.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Berechnung des Cepstrums. (nach: \cite  [Cepstral Analysis, S. 3]{ricardo_ceps})\relax }}{38}{figure.caption.32}}
+\newlabel{img:cepstrumOverview}{{4.4}{38}{Berechnung des Cepstrums. (nach: \cite [Cepstral Analysis, S. 3]{ricardo_ceps})\relax }{figure.caption.32}{}}
+\citation{ricardo_ceps}
+\citation{ricardo_ceps}
+\citation{ricardo_ceps}
+\citation{ricardo_ceps}
+\citation{cepstrumPitchTranslation}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Aufkommen eines Peaks im oberen Quefrency-Bereich bei stimmhaften Signalfenstern. \cite  [Cepstral Analysis, S. 17]{ricardo_ceps}\relax }}{39}{figure.caption.33}}
+\newlabel{img:cepstrumVoicedPeak}{{4.5}{39}{Aufkommen eines Peaks im oberen Quefrency-Bereich bei stimmhaften Signalfenstern. \cite [Cepstral Analysis, S. 17]{ricardo_ceps}\relax }{figure.caption.33}{}}
+\citation{cepstrumPitchTranslation}
+\citation{cepstrumPitchTranslation}
 \citation{vad_ceps}
 \citation{vad_Lisboa}
-\newlabel{eq:norm_spek}{{4.4}{36}{Frequenzbereich}{equation.4.3.4}{}}
-\newlabel{eq:norm_se}{{4.5}{36}{Frequenzbereich}{equation.4.3.5}{}}
-\newlabel{eq:unnnorm_se}{{4.6}{36}{Frequenzbereich}{equation.4.3.6}{}}
-\newlabel{eq:domfreq}{{4.7}{36}{Frequenzbereich}{equation.4.3.7}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Cepstrum}{36}{section*.37}}
-\newlabel{sec:cepstrum-feature}{{4.3.2}{36}{Cepstrum}{section*.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Feststellung der Grundfrequenz aus dem Cepstrum. \cite  {cepstrumPitchTranslation}\relax }}{40}{figure.caption.34}}
+\newlabel{img:cepstrumPitch}{{4.6}{40}{Feststellung der Grundfrequenz aus dem Cepstrum. \cite {cepstrumPitchTranslation}\relax }{figure.caption.34}{}}
+\newlabel{eq:ceps_maxpeak}{{4.15}{40}{Eigenschaften des Cepstrums}{equation.4.1.15}{}}
+\newlabel{eq:ceps_loc}{{4.16}{40}{Eigenschaften des Cepstrums}{equation.4.1.16}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Differenz-Feature}{41}{section*.35}}
+\newlabel{sec:vad_dif_feature}{{4.1.2}{41}{Differenz-Feature}{section*.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Features, die f\IeC {\"u}r die Voice Activity Detection erprobt wurden.\relax }}{41}{figure.caption.36}}
+\newlabel{img:vadAllFeatures}{{4.7}{41}{Übersicht über alle Features, die für die Voice Activity Detection erprobt wurden.\relax }{figure.caption.36}{}}
 \citation{vad_Easy}
 \citation{vad_entropy}
 \citation{rythmic}
-\newlabel{eq:ceps_maxpeak}{{4.8}{37}{Cepstrum}{equation.4.3.8}{}}
-\newlabel{eq:ceps_loc}{{4.9}{37}{Cepstrum}{equation.4.3.9}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Konstruktion des Feature-Raumes}{37}{section*.39}}
-\newlabel{sec:theFeatureSpace}{{4.3.2}{37}{Konstruktion des Feature-Raumes}{section*.39}{}}
-\newlabel{eq:difFeature}{{4.10}{37}{Konstruktion des Feature-Raumes}{equation.4.3.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Features, die f\IeC {\"u}r die Voice Activity Detection erprobt wurden.\relax }}{38}{figure.caption.38}}
-\newlabel{img:vadAllFeatures}{{4.3}{38}{Übersicht über alle Features, die für die Voice Activity Detection erprobt wurden.\relax }{figure.caption.38}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden. Schwarz: Eingangs-Signal $x[\tmspace  +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }}{39}{figure.caption.40}}
-\newlabel{img:min-signal}{{4.4}{39}{Das RMS-Feature bei verschiedenen Signal/Rausch-Abständen. Schwarz: Eingangs-Signal $x[\;]$. Grün: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }{figure.caption.40}{}}
-\newlabel{eq:featureVektor}{{4.11}{39}{Konstruktion des Feature-Raumes}{equation.4.3.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Thresholding}{39}{subsection.4.3.3}}
-\newlabel{sec:vad_thresholding}{{4.3.3}{39}{Thresholding}{subsection.4.3.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Finden der Grenzwerte}{39}{section*.41}}
-\newlabel{lst:tree01}{{4.1}{39}{Beispiel eines CART-Entscheidungsbaums}{lstlisting.4.1}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}Beispiel eines CART-Entscheidungsbaums}{39}{lstlisting.4.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Thresholding eines Features. Schwarz: Das Eingangssignal $x[\tmspace  +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Grenzwert\relax }}{40}{figure.caption.42}}
-\newlabel{img:thresholded}{{4.5}{40}{Thresholding eines Features. Schwarz: Das Eingangssignal $x[\;]$. Grün: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Grenzwert\relax }{figure.caption.42}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Trainings- und Testdatens\IeC {\"a}tze}{40}{section*.43}}
-\newlabel{sec:databases}{{4.3.3}{40}{Trainings- und Testdatensätze}{section*.43}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Training}{41}{section*.44}}
-\newlabel{sec:training}{{4.3.3}{41}{Training}{section*.44}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Ergebnis}{42}{section*.45}}
-\newlabel{sec:vad_result}{{4.3.3}{42}{Ergebnis}{section*.45}{}}
-\newlabel{eq:cepTree01}{{4.12}{42}{Ergebnis}{equation.4.3.12}{}}
-\newlabel{eq:cepTree02}{{4.13}{42}{Ergebnis}{equation.4.3.13}{}}
-\citation{cry_thesis}
-\citation{vad_entropy}
-\citation{cry_thesis}
-\newlabel{eq:vad-final}{{4.14}{43}{Ergebnis}{equation.4.3.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Markierung der Cry-Units}{43}{subsection.4.3.4}}
-\newlabel{sec:CryUnit}{{4.3.4}{43}{Markierung der Cry-Units}{subsection.4.3.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }}{43}{figure.caption.46}}
-\newlabel{img:cryUnit}{{4.6}{43}{Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }{figure.caption.46}{}}
-\citation{vad_entropy}
-\citation{vad_entropy}
-\citation{vad_entropy}
-\citation{vad_entropy}
-\newlabel{eq:cry-Unit}{{4.15}{44}{Markierung der Cry-Units}{equation.4.3.15}{}}
-\newlabel{eq:cry-Lambda}{{4.16}{44}{Markierung der Cry-Units}{equation.4.3.16}{}}
-\newlabel{eq:cry-distance}{{4.17}{44}{Markierung der Cry-Units}{equation.4.3.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Beziehung zwischen agrenzenden Cry-Units, nach \cite  [S. 2]{vad_entropy}\relax }}{44}{figure.caption.47}}
-\newlabel{img:cryUnit-details}{{4.7}{44}{Beziehung zwischen agrenzenden Cry-Units, nach \cite [S. 2]{vad_entropy}\relax }{figure.caption.47}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Decision Smoothing}{44}{subsection.4.3.5}}
-\newlabel{sec:smoothing}{{4.3.5}{44}{Decision Smoothing}{subsection.4.3.5}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Gruppierung von Signalfenstern zu Cry-Units\relax }}{45}{algorithm.1}}
-\newlabel{alg:cryUnit}{{1}{45}{Gruppierung von Signalfenstern zu Cry-Units\relax }{algorithm.1}{}}
-\citation{cry_thesis}
-\citation{rythmic}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{46}{figure.caption.48}}
-\newlabel{img:beforeSmoothing}{{4.8}{46}{Klassifizierung vor dem Decision Smoothing\relax }{figure.caption.48}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.6}Diskussion der Voice-Activity-Detection}{46}{subsection.4.3.6}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Decision-Smoothing for VAD\relax }}{47}{algorithm.2}}
-\newlabel{alg:decisionSmoothing}{{2}{47}{Decision-Smoothing for VAD\relax }{algorithm.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Klassifikation vor und nach dem Decision Smoothing\relax }}{48}{figure.caption.49}}
-\newlabel{img:after-smoothing}{{4.9}{48}{Klassifikation vor und nach dem Decision Smoothing\relax }{figure.caption.49}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden. Schwarz: Eingangs-Signal $x[\tmspace  +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }}{42}{figure.caption.37}}
+\newlabel{img:min-signal}{{4.8}{42}{Das RMS-Feature bei verschiedenen Signal/Rausch-Abständen. Schwarz: Eingangs-Signal $x[\;]$. Grün: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }{figure.caption.37}{}}
+\citation{vad_Easy}
+\newlabel{eq:difFeature}{{4.17}{43}{Differenz-Feature}{equation.4.1.17}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Entscheidung}{43}{section*.38}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Thresholding eines Features. Schwarz: Das Eingangssignal $x[\tmspace  +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Grenzwert\relax }}{43}{figure.caption.39}}
+\newlabel{img:thresholded}{{4.9}{43}{Thresholding eines Features. Schwarz: Das Eingangssignal $x[\;]$. Grün: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Grenzwert\relax }{figure.caption.39}{}}
+\newlabel{lst:tree01}{{4.1}{44}{Beispiel eines CART-Entscheidungsbaums}{lstlisting.4.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}Beispiel eines CART-Entscheidungsbaums}{44}{lstlisting.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Simulations-Studie}{44}{subsection.4.1.3}}
+\newlabel{sec:vad_study}{{4.1.3}{44}{Simulations-Studie}{subsection.4.1.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Datenbank}{44}{section*.40}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Konstruktion des Featureraumes}{44}{subsection.4.1.4}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Grenzwertfindung durch den C4.5}{44}{section*.41}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.5}Ergebnisse}{44}{subsection.4.1.5}}
+\newlabel{sec:vad_results}{{4.1.5}{44}{Ergebnisse}{subsection.4.1.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Markierung der Cry-Units}{44}{section.4.2}}
+\newlabel{sec:marking_cry-units_new}{{4.2}{44}{Markierung der Cry-Units}{section.4.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Decision Smoothing}{44}{section.4.3}}
+\newlabel{sec:decision_smoothing_new}{{4.3}{44}{Decision Smoothing}{section.4.3}{}}
 \@setckpt{chapters/VAD}{
-\setcounter{page}{49}
-\setcounter{equation}{17}
-\setcounter{enumi}{3}
+\setcounter{page}{45}
+\setcounter{equation}{18}
+\setcounter{enumi}{5}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
-\setcounter{footnote}{4}
+\setcounter{footnote}{1}
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{4}
 \setcounter{section}{3}
-\setcounter{subsection}{6}
+\setcounter{subsection}{0}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
 \setcounter{figure}{9}
 \setcounter{table}{0}
-\setcounter{Item}{32}
-\setcounter{Hfootnote}{6}
-\setcounter{bookmark@seq@number}{35}
+\setcounter{Item}{30}
+\setcounter{Hfootnote}{3}
+\setcounter{bookmark@seq@number}{29}
 \setcounter{parentequation}{0}
-\setcounter{ALG@line}{26}
+\setcounter{ALG@line}{0}
 \setcounter{ALG@rem}{0}
 \setcounter{ALG@nested}{0}
 \setcounter{ALG@Lnr}{2}
@@ -158,7 +143,7 @@
 \setcounter{ALG@storecount}{0}
 \setcounter{ALG@tmpcounter}{0}
 \setcounter{float@type}{16}
-\setcounter{algorithm}{2}
+\setcounter{algorithm}{0}
 \setcounter{NAT@ctr}{0}
 \setcounter{LT@tables}{1}
 \setcounter{LT@chunks}{2}
@@ -167,6 +152,6 @@
 \setcounter{@ppsavesec}{0}
 \setcounter{@ppsaveapp}{0}
 \setcounter{ContinuedFloat}{0}
-\setcounter{section@level}{2}
+\setcounter{section@level}{1}
 \setcounter{lstlisting}{1}
 }

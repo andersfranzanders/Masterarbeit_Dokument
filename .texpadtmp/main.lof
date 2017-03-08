@@ -23,15 +23,15 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Markierung stimmhafter Bereiche in einem Audiosignal. Oben Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Oben Rot: Klassifizierung in stimmhaft/Stille. Unten Rot: Die f\IeC {\"u}nf erkannten Cry-Units.\relax }}{31}{figure.caption.24}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Aufbau eines VAD-Algorithmus\relax }}{32}{figure.caption.25}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Features, die f\IeC {\"u}r die Voice Activity Detection erprobt wurden.\relax }}{38}{figure.caption.38}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden. Schwarz: Eingangs-Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }}{39}{figure.caption.40}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Thresholding eines Features. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Grenzwert\relax }}{40}{figure.caption.42}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Zusammenfassung klassifizierter Signalfenster zu Cry-Units\relax }}{43}{figure.caption.46}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Beziehung zwischen agrenzenden Cry-Units, nach \cite [S. 2]{vad_entropy}\relax }}{44}{figure.caption.47}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{46}{figure.caption.48}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Klassifikation vor und nach dem Decision Smoothing\relax }}{48}{figure.caption.49}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Ergebnis der Vorverarbeitung. Oben: Das Signal vor der Vorverarbeitung. Unten: Das Signal nach der Vorverarbeitung.\relax }}{34}{figure.caption.27}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Berechnung des Cepstrums. (nach: \cite [Cepstral Analysis, S. 3]{ricardo_ceps})\relax }}{38}{figure.caption.32}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Aufkommen eines Peaks im oberen Quefrency-Bereich bei stimmhaften Signalfenstern. \cite [Cepstral Analysis, S. 17]{ricardo_ceps}\relax }}{39}{figure.caption.33}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Feststellung der Grundfrequenz aus dem Cepstrum. \cite {cepstrumPitchTranslation}\relax }}{40}{figure.caption.34}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Features, die f\IeC {\"u}r die Voice Activity Detection erprobt wurden.\relax }}{41}{figure.caption.36}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden. Schwarz: Eingangs-Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }}{42}{figure.caption.37}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Thresholding eines Features. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Grenzwert\relax }}{43}{figure.caption.39}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{49}{figure.caption.50}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Ergebnis der Segmentierung mit einem Grenzwert von $t_s = \SI {6}{\second }$\relax }}{51}{figure.caption.51}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces M\IeC {\"o}gliche Segmentierungen eines Signals\relax }}{45}{figure.caption.42}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Ergebnis der Segmentierung mit einem Grenzwert von $t_s = \SI {6}{\second }$\relax }}{47}{figure.caption.43}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{66}{figure.caption.58}
+\contentsline {figure}{\numberline {.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivity, Specificity und Accuracy der beiden VAD-Modelle\relax }}{62}{figure.caption.50}
