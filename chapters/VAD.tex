@@ -89,7 +89,7 @@ Diese Vorverarbeitung eignet sich nicht für ein kontinuierliches System, da Sam
 	\item Die Initialisierung des Kompressor mit \grqq sanften Werten\grqq , wie zum Beispiel $\theta = \rho = 0.7$ und $\maxi\{x[\;] = 0.9\}$. Diese Parameter können nach der Beendigung eines Segmentes (Siehe Kapitel \ref{sec:segmenting}) auf Basis des RMS-Wertes des Segmentes aktualisiert und für die Vorverarbeitung der zukünftigen Werte eingesetzt werden.
 \end{itemize}
 
-\subsection{Windowing}
+\subsubsection{Windowing}
 \label{sec:windowing}
 
 Angenommen, man führt die Voice Activity Detection für das Signal $x[\;]$ durch und kommt zu dem Schluss, dass in dem Signal (teilweise) Stimme enthalten ist. Ist das Signal mehrere Minuten oder sogar Stunden lang, ist allein aus der Entscheidung nicht ersichtlich, in welchen Zeitbereichen genau Stimme enthalten ist, und in welchen nicht. Um die zeitliche \glqq Auflösung\grqq{} zu erhöhen, wird das Signal in kürzere Zeitfenster zerlegt.
@@ -276,7 +276,7 @@ In dieser Arbeit wurde $t = \SI{5}{\second}$ festgelegt. Es ist zu beachten, das
 
 \subsubsection{Entscheidung}
 
-Die einfachste Variante zur Entscheidung, ob ein Signalfenster $x_i[\;]$ stimmhaft ist, ist, eines der vorgestellten Features als Entscheidungsgrundlage zu wählen und einen festen Grenzwert $\theta$ festzulegen, bei dessen Über- oder Unterschreitung das Fenster als Stimmhaft klassifiziert wird. Die Entscheidung lässt sich als Klassifizierungsfunktion $C$, welche ein Signalfenster abbildet auf $Y = \{ 1 \; \hat{=} \; \text{stimmhaft}, 0 \; \hat{=} \; \text{nicht stimmhaft}\}$, das heißt $C(x[\;]) \mapsto \{1,0\}$. Die Klassifzierungsfunktion nimmt dann die folgende Form an:
+Die einfachste Variante, um zu Entscheiden, ob ein Signalfenster $x_i[\;]$ stimmhaft ist, ist, eines der vorgestellten Features als Entscheidungsgrundlage zu wählen und einen festen Grenzwert $\theta$ festzulegen, bei dessen Über- oder Unterschreitung das Fenster als stimmhaft klassifiziert wird. Die Entscheidung lässt sich als Klassifizierungsfunktion $C$ definieren, welche ein Signalfenster abbildet auf $Y = \{ 1 \; \hat{=} \; \text{stimmhaft}, 0 \; \hat{=} \; \text{nicht stimmhaft}\}$, das heißt $C(x[\;]) \mapsto \{1,0\}$. Die Klassifizierungsfunktion nimmt dann die folgende Form an:
 
 \begin{equation}
 	C(x_i[\;]) = 
@@ -295,9 +295,9 @@ Die einfachste Variante zur Entscheidung, ob ein Signalfenster $x_i[\;]$ stimmha
 	\label{img:thresholded}
 \end{figure}
 
-Die Frage ist, wie man diesen Grenzwert findet. Einige Veröffentlichungen, so wie die von Moattar et al. \cite{vad_Easy} empfehlen, den Grenzwert experimentell festzustellen. In dieser Arbeit wurde sich für den Ansatz einer automatisierten, datengetriebenen Suche der Grenzwerte mit Hilfe des in Kapitel \ref{sec:id3} vorgestellten \emph{C4.5}-Algorithmus entschieden. Der Grundgedanke ist wie folgt: Angenommen, man hat einen Trainingsdatensatz zur Verfügung, bestehend aus einer Menge an Signalen mit Aufnahmen von kindlichen Lautäußerungen, in denen manuell die stimmhaften Signalabschnitte markiert wurden. Diese Signale zerlegt man nach den besprochenen Methoden in kürzere Signalfenster und berechnet für jedes Signalfenster das Feature, dessen Grenzwert man sucht. Jedem Signalfenster versieht man außerdem mit dem Klassenlabel $y \in Y$ auf Basis der manuellen Markierungen. Ein \emph{Signalfenster} $x_i[\;]$ wird so zu einer \emph{Instanz} $(\text{Feat}(x_i[\;]), y_i)$. Nun kann der \emph{C4.5}-Algorithmus verwendet werden, um für ein Feature den Grenzwert zu finden, der für diese Datenbasis die Klassifizierung mit der höchsten Genauigkeit vornimmt. Voraussetzung dafür ist, dass der \emph{C4.5}-Algorithmus gezwungen wird, einen Entscheidungsbaum mit einer maximalen Tiefe von $1$ zu erzeugen, damit auch nur ein Grenzwert gesucht wird. Ist das Feature, für das der Grenzwert gesucht wird, ein Differenz-Feauture (siehe Kapitel \ref{sec:vad_dif_feature}), so lässt sich dieser Grenzwert als ein adaptiver Grenzwert interpretieren, der sich an den aktuellen SNR anpasst.
+Die Frage ist, wie man diesen Grenzwert findet. In einigen Veröffentlichungen, so wie der von Moattar et al. \cite{vad_Easy} wird empfohlen, den Grenzwert experimentell festzustellen. In dieser Arbeit wurde sich für den Ansatz einer automatisierten, datengetriebenen Suche der Grenzwerte mit Hilfe des in Kapitel \ref{sec:id3} vorgestellten \emph{C4.5}-Algorithmus entschieden. Der Grundgedanke ist wie folgt: Angenommen, man hat einen Trainingsdatensatz zur Verfügung, bestehend aus einer Menge an Signalen mit Aufnahmen von kindlichen Lautäußerungen, in denen manuell die stimmhaften Signalabschnitte markiert wurden. Diese Signale zerlegt man nach den besprochenen Methoden in kürzere Signalfenster und berechnet für jedes Signalfenster das Feature, dessen Grenzwert man sucht. Jedem Signalfenster versieht man außerdem mit dem Klassenlabel $y \in Y$ auf Basis der manuellen Markierungen. Ein \emph{Signalfenster} $x_i[\;]$ wird so zu einem \emph{Example} $e_i = (\text{Feat}(x_i[\;]), y_i)$. Nun kann der \emph{C4.5}-Algorithmus verwendet werden, um für das Feature den Grenzwert zu finden, der für diese Datenbasis die Klassifizierung mit der höchsten Genauigkeit vornimmt. Voraussetzung dafür ist, dass der \emph{C4.5}-Algorithmus gezwungen wird, einen Entscheidungsbaum mit einer maximalen Tiefe von $1$ zu erzeugen, damit auch nur ein Grenzwert gesucht wird. Ist das Feature, für das der Grenzwert gesucht wird, ein Differenz-Feauture (siehe Kapitel \ref{sec:vad_dif_feature}), so lässt sich dieser Grenzwert als ein adaptiver Grenzwert interpretieren, der sich an den aktuellen SNR anpasst.
 
-Die Verwendung des \emph{C4.5}-Algorithmus bringt die Möglichkeit mit sich, eine beliebige Menge an Features in die Klassifizierung mit einzubeziehen. Die Klassifizierung muss also nicht zwingend auf Grundlage nur eines Attributes geschehen. Angenommen, es werden die Features Ceps$_{mag}$ und der RMS-Wert für jedes Signalfenster berechnet. Der \emph{C4.5}-Algorithmus würde nun für einen Trainingsdatensatz einen Entscheidungsbaum konstruieren, bei dem durch das hierarchische Setzen von Grenzwerten die Klassifikation vorgenommen wird. Listing \ref{lst:tree01} zeigt ein Beispiel für eine so möglicherweise resultierende Klassifzierungsfunktion.
+Die Verwendung des \emph{C4.5}-Algorithmus bringt die Möglichkeit mit sich, eine beliebige Menge an Features in die Klassifizierung mit einzubeziehen. Die Klassifizierung muss also nicht zwingend auf Grundlage nur eines Attributes geschehen. Angenommen, es werden die beiden Features Ceps$_{mag}$ und der RMS-Wert für jedes Signalfenster berechnet. Der \emph{C4.5}-Algorithmus würde nun für einen Trainingsdatensatz einen Entscheidungsbaum konstruieren, bei dem durch das hierarchische Setzen von Grenzwerten die Klassifikation vorgenommen wird. Listing \ref{lst:tree01} zeigt ein Beispiel für eine so resultierende, fiktive Klassifizierungsfunktion.
 
 \begin{lstlisting}[frame=single,mathescape=true,basicstyle=\footnotesize,language=Java,label=lst:tree01,caption=Beispiel eines CART-Entscheidungsbaums,linewidth=1\textwidth]
 if Ceps$_{mag}$($x_i[\;]$) > 0.2
@@ -309,26 +309,292 @@ if Ceps$_{mag}$($x_i[\;]$) > 0.2
 |    C($x_i[\;]$) = 1
 \end{lstlisting}
 
-Wird dem \emph{C4.5}-Algorithmus eine größere Menge an Attributen zur Verfügung gestellt, auf deren Basis der Klassifikator entworfen wird, wird der Entscheidungsbaum implizit zeigen, welche Features für die VAD besser geeignet sind, da sie höher im Entscheidungsbaum stehen werden. Es besteht jedoch immernoch die Gefahr, dass der Klassifikator in ein lokales Maximum gelaufen ist und eine suboptimale Auswahl an Features durch den Algorithmus getroffen wurde. Außerdem besteht die Gefahr von Overfitting, insofern Entscheidungsbäume mit beliebiger Tiefe zugelassen werden.
+Wird dem \emph{C4.5}-Algorithmus eine größere Menge an Attributen zur Verfügung gestellt, auf deren Basis der Klassifikator entworfen wird, wird der Entscheidungsbaum implizit zeigen, welche Features für die VAD besser geeignet sind, da sie höher im Entscheidungsbaum stehen werden. Es besteht jedoch die Gefahr, dass der Klassifikator in ein lokales Maximum gelaufen ist und eine suboptimale Auswahl an Features durch den Algorithmus getroffen wurde. Außerdem besteht die Gefahr von Overfitting, insofern Entscheidungsbäume mit beliebiger Tiefe zugelassen werden.
 
 \subsection{Simulations-Studie}
 \label{sec:vad_study}
 
-\subsubsection{Datenbank}
+In Kapitel \ref{sec:methods_vad_new} wurde eine Übersicht über die Methoden gegeben, die in dieser Arbeit zur Voice Activity Detection erprobt und/oder eingesetzt wurden. Neben Methoden zur Vorverarbeitung und zum Windowing wurde eine Reihe an Features vorgestellt, die für ein Signalfenster als Entscheidungsgrundlage für die Erkennung von Stimme dienen können. Schlussendlich wurde argumentiert, wie der \emph{C4.5}-Algorithmus genutzt werden kann, um einen Klassifikator zu entwerfen, der die Entscheidung über das Vorhandensein von Stimme in einem Signalfenster auf Grundlage einer Menge von Features fällt. Dafür wird ein Datensatz zum Training des \emph{C4.5}-Algorithmus benötigt.
 
-\subsection{Konstruktion des Featureraumes}
+Das Ziel ist es nun, auf Grundlage dieser Methode den tatsächlichen Klassifikator zu finden. Der Klassifikator soll dabei die folgenden Bedingungen erfüllen:
 
-\subsubsection{Grenzwertfindung durch den C4.5}
+\begin{itemize}
+\item Der Klassifikator soll eine möglichst kleine Anzahl an Features verwenden, da es zu aufwendig ist, alle vorgestellten Features nur für die VAD in einem kontinuierlichen System zu berechnen.
+\item Der Klassifikator soll eine möglichst hohe Genauigkeit erzielen, unabhängig von Stärke und Qualität des Hintergrundrauschens.
+\end{itemize}
 
-\subsection{Ergebnisse}
+Das Vorgehen zum finden des Klassifikators war wie folgt:
+\begin{enumerate}
+\item Es wurde ein Menge an Trainingsdatensätzen erstellt, indem ...
+	\begin{enumerate}[label*=\arabic*.]
+	\item ... in einer Menge an Audioaufnahmen weinender Babys manuell die stimmhaften Signalabschnitte markiert wurden,
+	\item ... die Signale vorverarbeitet, in Signalfenster zerlegt und für jedes Signalfenster alle vorgestellten Features berechnet wurden,
+	\item ... woraus Datensätze erzeugt wurden, wobei jeder Datensatz nur eine bestimmte Untermenge der Features zur Verfügung gestellt bekam.
+	\end{enumerate}
+\item Auf Basis jedes Datensatzes wurde mit Hilfe des \emph{C4.5}-Algorithmus ein Klassifikator erzeugt.
+\item Jeder Klassifikator wurde bezüglich seiner Genauigkeit gegen eine Menge an Trainingsdatensätze unterschiedlicher Signal/Rausch-Abstände evaluiert.
+\item Schlussendlich wurde sich für einen Klassifikator auf Grundlage der Evaluationsergebnisse entschieden.
+\end{enumerate}
+
+In Kapitel \ref{sec:vad_database} wird die Erstellung des Datensatzes erläutert. In Kapitel \ref{sec:vad_training} wird das Vorgehen beim Training des \emph{C4.5}-Algorithmus ausgeführt, und in Kapitel \ref{sec:vad_results} die Ergebnisse ausgewertet.
+
+\subsubsection{Erstellung der Datensätze}
+\label{sec:vad_database}
+
+Der zeitliche Rahmen dieser Arbeit ermöglichte es nicht, selber Audioaufnahme von Babys zu machen. Daher wurden sechs Audioaufnahmen mit dem Weinen verschiedener Babies unterschiedlicher Qualität und Intensität von der freien Online-Sound-Bibliothek \url{https://www.freesound.org/} heruntergeladen und zu Segmenten \`{a} \SI{10}{\second} beschnitten. Es handelt sich um weitestgehend rauschfreie Aufnahmen, die von verschiedenen Babys stammen. In den Audiosignalen wurden manuell die Zeitbereiche markiert, welche Stimme enthalten.\footnote{Es wurden \emph{keine} Geräusche markiert, bei denen es sich offensichtlich um Einatmungs-Geräusche handelt. Geräusche, bei denen nur Anhand der Aufnahme nicht mit Sicherheit festgestellt werden konnte, ob es sich um Einatmungs- oder Ausatmungsgeräusche handelt, wurden als Stimme markiert. Die Begründung liegt darin, dass nach Varallyay \cite{cry_thesis} bei der Einatmung entstehenden Geräusche keine verwertbare Information enthalten. }
+
+Weiterhin wurden drei verschiedene Rauschsignale heruntergeladen. Es handelt sich um \glqq realistische\grqq{} Atmosphären von Krankenhäusern. Jedes der sechs Audioaufnahmen der Babys wurde mit jedem der drei Rauschsignale überlagert, einmal mit einem Signal/Rausch-Abstand von \SI{50}{\decibel} (\glqq fast unhörbares Rauschen\grqq), und einmal mit einem Signal/Rausch-Abstand von \SI{3}{\decibel} (\glqq starkes Rauschen\grqq). Außerdem wurde ein siebte Aufnahme eines Babys heruntergeladen, welches mit einem vierten Rauschsignal mit einem SNR von \SI{7}{\decibel} überlagert wurde. Dieses Signal spielte eine Sonderrolle, da es nur zur Verifikation verwendet wurde. 
+
+So wurden vier Mengen an Audiosignalen $\boldmath{A_{\text{SNR}}}$ erzeugt:
+
+\begin{description}
+	\item[$\boldmath{A_{\SI{50}{\decibel}}}$] enthält $3 \cdot 6 = 18$ Audiosignale, wobei jedes der sechs Baby-Aufnahmen mit jedem der drei Rauschsignale bei einem Signal/Rausch-Abstand von \textbf{\SI{50}{\decibel}} überlagert wurde.
+
+	\item[$\boldmath{A_{\SI{3}{\decibel}}}$] enthält $3 \cdot 6 = 18$ Audiosignale, wobei jedes der sechs Baby-Aufnahmen mit jedem der drei Rauschsignale bei einem Signal/Rausch-Abstand von \textbf{\SI{3}{\decibel}} überlagert wurde.
+	
+	\item[$\boldmath{A_{50+\SI{3}{\decibel}}}$] $ = \{ A_{\SI{50}{\decibel}} \cup  A_{\SI{3}{\decibel}}\} = 32$ Audiosignale
+	
+	\item[$\boldmath{A_{\SI{7}{\decibel}*}}$] enthält ein Audiosignal, bei dem eine siebte Aufnahme eines Babys mit einem vierten Rauschsignal bei einem Signal/Rausch-Abstand von \textbf{\SI{7}{\decibel}} überlagert wurde
+	
+\end{description}
+
+Aus diesen Audiosignalen wurden die tatsächlichen Datensätze $\boldmath{D_{\text{SNR,Feats}}}$ nach dem folgenden Vorgehen erzeugt:
+
+\begin{enumerate}
+\item Jedes der Signale wurde nach dein Kapitel \ref{sec:preprocessing} vorgestellten Methoden vorverarbeitet und in Signalfenster \`{a} \SI{25}{\milli\second} zerlegt.
+\item Jedes Signalfenster $x_i[\;]$ wurde zu ein Example $e_i$ gewandelt, in dem eine bestimmte Untermenge der vorgestellten Features für das Signalfenster berechnet wurde. Tabelle \ref{tab:vad_feat_subsets} gibt eine Übersicht über die insgesamt 9 Untermengen. Die ersten vier Untermengen beinhalten jeweils die Features, die sich durch die jeweilige Methoden erzeugen lassen. Die nächsten fünf Untermengen enthalten jede mögliche paarweise Kombination der ersten vier Untermengen, mit Ausnahme des Cepstrum+Autokorrelation, da die Features dieser Bereiche am rechenaufwendigsten sind. Jedem Example wurde das entsprechende Klassenlabel beigefügt.
+
+\begin{table}[h]
+\centering
+\caption{Übersicht über die gebildeten Feature-Untermengen}
+\label{tab:vad_feat_subsets}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\multicolumn{1}{c}{Name} & verwendete Features                                                              \\ \midrule
+Zeit                     & RMS, Diff(RMS), ZCR, Diff(-ZCR)                                                  \\
+Spektrum                 & SEnt$_u$, Diff(SEnt$_u$), SEnt$_n$, Diff(-SEnt$_n$), $f_{dom}$, Diff(f\_\{dom\}) \\
+Autokorr.                & aMax, Diff(aMax), aCount, Diff(-aCount)                                          \\
+Cepstrum                 & Ceps$_{mag}$, Diff(Ceps$_{mag}$), Ceps$_{loc}$                                   \\
+Zeit+Spektrum            & RMS, \ldots , SEnt$_u$, \ldots                                                   \\
+Zeit+Autokorr.           & RMS, \ldots , aMax, \ldots                                                       \\
+Zeit+Cepstrum            & RMS, \ldots , Ceps$_{mag}$, \ldots                                               \\
+Spek.+Autokorr.          & SEnt$_u$, \ldots , aMax , \ldots                                                 \\
+Spek.+Cepstrum           & SEnt$_u$, \ldots, Ceps$_{mag}$ ,\ldots                                           \\ \bottomrule
+\end{tabular}
+\end{table}
+\item Alle Examples, die aus der selben Signalmenge $\boldmath{A_{\text{SNR}}}$ stammen und die selbe Feature-Untermenge teilen, werden in einem Datensatz $\boldmath{D_{\text{SNR,Feats}}}$ zusammengefasst. Beispielsweise enthält der Datensatz $\boldmath{D_{\SI{50}{\decibel},\text{Zeit}}}$ alle Examples, die auf Grundlage der Signalmenge mit einem Signal/Rausch-Abstand von \SI{50}{\decibel} unter Verwendung der in Tabelle \ref{tab:vad_feat_subsets} aufgelisteten Features des Zeitbereiches erzeugt wurden.
+\item Da in allen Datensätzen rund dreimal mehr Positives (das heisst, Examples aus stimmhaften Signalfenstern) enthalten waren als Negatives, wurde jedes in einem Datensatz enthaltene Negative dreimal eingefügt. So wurde ein ausgewogenes Verhältnis an Positives und Negatives gewährleistet.
+\end{enumerate}
+
+Auf diese Art und Weise wurden aus den vier Signalmengen $\boldmath{A_{\SI{50}{\decibel}}}, \ldots , \boldmath{A_{\SI{7}{\decibel}*}}$ und den 9 Feature-Untermengen insgesamt $4 \cdot 9 = 36$ \emph{Trainingsdatensätze} $\boldmath{D_{\text{SNR,Feats}}}$ gebildet. Wird einer dieser Datensätze als Testdatensatz verwendet, so sind die Features des Datensatzes unerheblich, da nur die Informationen der Klassenlabels beim Testing benötigt werden. Ein Testdatensatz $\boldmath{D_{\text{SNR}}}$ kann also erzeugt werden, in dem bei einem beliebigen Trainingsdatensatz mit dem Entsprechenden SNR die Featureinformationen ignoriert werden.
+
+\subsubsection{Training und Evaluation}
+\label{sec:vad_training}
+
+Das Ziel ist es nun, auf Basis der Datensätze durch den \emph{C4.5}-Algorithmus denjenigen Klassifikator zu finden, der für sowohl niedrige als auch hohe SNRs eine möglichst hohe Klassifikationsgenauigkeit erzielt. Es ist beispielsweise denkbar, dass ein Klassifikator, welcher auf Basis eines Datensatzes mit niedrigem SNR erzeugt wurde, sich nicht gut zur Klassifizierung hoher SNRs eignet, jedoch ein auf Basis niedriger SNRs entworfener Klassifikator ebenfalls eine zufriedenstellende Genauigkeit bezüglich hoher SNRs gewährleistet.
+
+Um systematisch den besten Entscheidungsbaum zu erzielen, wurde auf Basis jedes Trainingsdatensatzes, mit Ausnahme der $D_{\SI{7}{\decibel}*}$-Datensätze, durch den \emph{C4.5}-Algorithmus ein Klassifikator erzeugt. So wurden insgesamt $3 \cdot 9 = 27$ Klassifikatoren entworfen. Jeder Klassifikator wurde evaluiert, indem jeweils die Klassifikationsgenauigkeit für jeden der drei Testdatensätze $D_{\SI{3}{\decibel}}$, $D_{\SI{50}{\decibel}}$ und $D_{\SI{7}{\decibel}*}$ ermittelt wurde. Der $D_{\SI{7}{\decibel*}}$ erfüllt dabei eine Sonderfunktion, da er nicht zum Training verwendet wurde und somit der Kontrolle bezüglich Overfitting dient. Der Stern bei der Bezeichnung des Datensatzes verdeutlicht diese Sonderrolle.
+
+Die Implementierung, die für den \emph{C4.5}-Algorithmus verwendet wurde, ist der \emph{REPTree}\footnote{Dokumentation von REPTree: \url{http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/REPTree.html}} der Open Source Data-Mining-Bibliothek \emph{Weka}\footnote{Download von WEKA: \url{http://www.cs.waikato.ac.nz/ml/weka/}}. Die Implementierung hat den Vorteil, dass die maximale Tiefe des Entscheidungsbaumes festlegbar ist und somit die Komplexität des Baumes begrenzt werden kann, um Overfitting zu vermeiden. Die maximale Tiefe des REPTree wurde auf 2 gesetzt. 
+
+\subsubsection{Ergebnisse}
 \label{sec:vad_results}
+
+Die Evaluationsergebnisse sind in Tabelle \ref{tab:reptree_results} zu sehen. Für jeden Trainingsdatensatz wird die Genauigkeit des jeweiligen Klassifikators für jeden der drei Testdatensätze angegeben. Außerdem wurde der Durchschnittswert aller drei Genauigkeiten berechnet.
+
+Der Feauture-Bereich, welche zu den höchsten Klassifikationsgenauigkeiten führten, ist das Cepstrum. Das einzige Feature dieses Bereiches, welches in Klassifikationsbäume eingebaut wurde, war das Diff(Ceps\textsubscript{mag})-Feature. Die Entscheidungsbäume, die mit dem Diff(Ceps\textsubscript{mag})-Feature entworfen wurden, erreichten eine über die drei Testdatensätze gemittelte Genauigkeit von mindestens 91,45\%. Der nächstbeste Klassifikator mit einer gemittelten Accuracy von 86,96\% wurde unter Verwendung der Features des Zeitbereiches und der Autokorrelation auf dem Datensatz $D_{50+\SI{3}{\decibel}}$ entworfen. Sobald das Cepstrum in Verbindung mit den Features anderer Bereiche verwendet wurden, wurde das Diff(Ceps\textsubscript{mag})-Feature vom \emph{C4.5}-Algorithmus bevorzugt und die Features der anderen Bereiche nicht mehr in die Entscheidungsbäume mit eingebaut.
+
+Auf Basis der Datensätze D\textsubscript{\SI{3}{\decibel},Ceps}, D\textsubscript{\SI{3}{\decibel},Zeit+Ceps}, D\textsubscript{\SI{3}{\decibel},Freq+Ceps}, D\textsubscript{50+\SI{3}{\decibel},Ceps}, \\ D\textsubscript{50+\SI{3}{\decibel},Zeit+Ceps} sowie D\textsubscript{50+\SI{3}{\decibel},Freq+Ceps} wurde der selbe Klassifikator erzeugt, der in Gleichung \ref{eq:cepTree01} gezeigt wird. Wie zu sehen ist, handelt es sich um einen einfachen Grenzwert des \emph{Diff(Ceps\textsubscript{mag})}-Features, da trotz der höchst möglichen Baumtiefe von 2 nur eine Tiefe von 1 genutzt wurde.
+
+\begin{equation}
+C(x_i[\;]) = \begin{cases}
+1, \quad \text{wenn } Diff(Ceps_{mag}(c_i[\;])) > 0.02, \\
+0 \quad \text{sonst}
+\end{cases}
+\label{eq:cepTree01}
+\end{equation}
+
+
+Auf Basis der Datensätze D\textsubscript{\SI{50}{\decibel},Ceps} und D\textsubscript{\SI{50}{\decibel},Zeit+Ceps} wurde der Klassifikator nach Gleichung \ref{eq:cepTree02} erzeugt. Er unterscheidet sich von dem Klassifikator aus Gleichung \ref{eq:cepTree01} nur durch die Höhe des Grenzwertes.
+
+\begin{equation}
+C(x_i[\;]) = \begin{cases}
+1, \quad \text{wenn } Diff(Ceps_{mag}(c_i[\;])) > 0.03, \\
+0 \quad \text{sonst}
+\end{cases}
+\label{eq:cepTree02}
+\end{equation}
+
+Da der Klassifikator aus Gleichung \ref{eq:cepTree01} eine durchschnittliche Genaugikeit von 92,22\% und der Klassifikator aus Gleichung \ref{eq:cepTree02} eine unwesentlich geringere Genauigkeit von 91,45\% erzielte, wurden für beide Modelle die Spezifität und Sensitivität berechnet, um eine Entscheidung für eines der beiden Modelle fällen zu können. Dazu wurden die Signalmengen A\textsubscript{\SI{3}{\decibel}}, A\textsubscript{\SI{50}{\decibel}} und A\textsubscript{\SI{7}{\decibel}*} in Frames \`{a} 100 Windows zerlegt und für jedes Zeitfenster die Sensitivität, Spezifität und Genauigkeit bezüglich der beiden Klassifikatoren berechnet. Die Ergebnisse werden als Boxplots in Abbildung \ref{img:boxplots} dargestellt. Die Modelle unterscheiden sich am stärksten hinsichtlich der Datensätze mit \SI{3}{\decibel} und \SI{7}{\decibel}. Der Klassifikator mit dem Grenzwert von 0.03 erzielt in beiden Fällen eine höhere Spezifität, aber geringere Sensitivität als das Modell mit dem Grenzwert von 0.02. 
+
+Es wurde sich für das Modell für mit einem Grenzwert von 0.02 entschieden, da durch die höhere Sensitivtät mehr Cry-Units erkannt werden, die in späteren Verarbeitungsschritten immernoch als False-Positives erkannt und verworfen werden können. Einmal im Prozess der VAD als Stimmlos markierte Fenster werden jedoch nicht weiter verarbeitet und gehen somit \glqq verloren\grqq. Die finale Klassifizierungsfunktion eines Signalfensters zur Voice Activity Detection ist somit die, die in Gleichung \ref{eq:cepTree01} abgebildet wird.
+
 
 \section{Markierung der Cry-Units}
 \label{sec:marking_cry-units_new}
 
+In Kapitel \ref{sec:vad_new} wurde die Voice Activity Detection besprochen. Das Ergebnis der Untersuchung war eine Klassifizierungsfunktion, die ein Signalfenster als \emph{stimmhaft} oder \emph{nicht stimmhaft} markiert. Varallyay \cite[S. 16 - 17]{cry_thesis} stellt die Idee vor, auf Grundlage des Ergebnisses der Voice Activity Detection die Anfangs- und Endzeitpunkte der Cry-Units zu markieren.\footnote{\glqq Cry-Units \grqq{} werden von Varallyay als \glqq Cry-Segmente \grqq{} bezeichnet.} Das genaue Vorgehen konnte jedoch nicht eingesehen werden, da der Autor keine Zugriffsrechte auf die Publikation erhielt.
+
+Waheed et al \cite{vad_entropy} stellen die Idee vor, zusammenhängende und ununterbrochene Ketten als \emph{stimmhaft} klassifizierter Signalfenster zu \emph{Stimm-Segmenten} zusammenzufassen. Dieser Ansatz wird übernommen, wobei ein Stimmsegment im Kontext dieser Arbeit einer \emph{Cry-Units} entspricht. Möglicherweise ist dies der Ansatz, den auch  Varallyay \cite[S. 16 - 17]{cry_thesis} gewählt hat. Abbildung \ref{img:cryUnit} veranschaulicht diese Gruppierung. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/cry-Unit02.png}
+	\caption{Zusammenfassung klassifizierter Signalfenster zu Cry-Units}
+	\label{img:cryUnit}
+\end{figure}
+
+Formel \ref{eq:cry-Unit} gibt die Definition des Datentypes \emph{Cry-Unit} [$CU$]. Eine Cry-Unit wird definiert durch den Anfangszeitpunkt $start$, einen Endzeitpunkt $end$ und der Liste seiner Signalfenster $windows = [x_0[\;], \ldots, x_n][\;]$.
+
+\begin{equation}
+CU = (windows = \big[x_0[\;] ,\ldots, x_n[\;] \big], start \in Zeit, end \in Zeit)
+\label{eq:cry-Unit}
+\end{equation}
+
+Die Dauer eine Cry-Unit $cu \in CU$ wird nach Formel \ref{eq:cry-Lambda} berechnet und mit $\lambda$ bezeichnet. Die zeitliche Dauer der Pause zwischen zwei Cry-Units d($cu_i, cu_j$), wird nach Formel \ref{eq:cry-distance} berechnet. Diese Zusammenhänge werden in Abbildung \ref{img:cryUnit-details} visualisiert.\cite[S. 2]{vad_entropy}
+
+\begin{equation}
+\lambda (cu) = cu.end - cu.start
+\label{eq:cry-Lambda}
+\end{equation}
+
+\begin{equation}
+\text{d}(cu_i, cu_j) = cu_j.start - cu_i.end
+\label{eq:cry-distance}
+\end{equation}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/newSmoothing05.png}
+	\caption{Beziehung zwischen agrenzenden Cry-Units, nach \cite[S. 2]{vad_entropy}}
+	\label{img:cryUnit-details}
+\end{figure}
+
+Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie auf Basis der Liste aller Signalfenster eines Signals $X_{all} = [x_0[\;] ,\ldots, x_m[\;]]$ die Liste der Cry-Units $CU_{all}$ generiert wird. Die Funktion $C(x[\;])$ ist die Klassifikations-Funktion der Signalfenster in Stille/Stimme nach Gleichung \ref{eq:vad-final}. Die Funktion getTimeOf$(x_i[\;])$ liefert die Anfangszeitpunkt des Signalfensters $x_i[\;]$.
+
+\begin{algorithm}[h]
+	\caption{Gruppierung von Signalfenstern zu Cry-Units}
+	\label{alg:cryUnit}
+	\begin{algorithmic}[1]
+		\Function{turnWindowsIntoCryUnits}{$X_{all}$}
+		\State $ CU_{all} \gets [\;]$
+		\State $ cu\gets ([\;],0,0)$
+		\For{\textbf{all} $x_i[\;] \in X_{all}$}
+				\State $ c \gets C(x_i[\;])$
+				\State \Comment Start of Cry-Unit
+				\If {$c == 1 \wedge \text{isEmpty}(cu.windows)$}
+						\State $cu\gets ([\;],0,0)$
+						\State $cu.start \gets \text{getTimeOf}(x_i[\;])$
+						\State $cu.windows \gets [cu.windows, x_i[\;]]$
+				\EndIf
+				\State \Comment Inside Cry-Unit
+				\If {$c == 1 \wedge \text{ ! isEmpty}(cu.windows)$}
+						\State $cu.windows \gets [cu.windows, x_i[\;]]$
+				\EndIf
+				\State \Comment End of Cry-Unit
+				\If {$c == 0 \wedge \text{ ! isEmpty}(cu.windows)$}
+						\State $cu.end \gets  getTimeOf(x_i[\;])$
+						\State $CU \gets [CU, cu]$
+						\State $cu.windows \gets [\;]$
+				\EndIf
+		\EndFor
+		
+		\State \Comment End last Cry-Unit by force if still open.
+		\If {$\text{ ! isEmpty}(cu.windows) == 0$}
+		\State $cu.end \gets  getTimeOf(X_{windows}[end])$
+		\State $CU_{all} \gets [CU_{all}, cu]$
+		\EndIf
+		
+		\Return $CU_{all}$
+		
+		\EndFunction
+		
+	\end{algorithmic}
+\end{algorithm}
+
 \section{Decision Smoothing}
 \label{sec:decision_smoothing_new}
 
+
+Abbildung \ref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal-Rausch-Abstand von \SI{3}{\decibel}, bei dem die Voice Activity Detection durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifiikation und die grüne Linie die prognostizierte Klassifikation. Es ist zu sehen, dass einige False-Negatives und prongnostiziert wurden. Im folgenden werden drei charakteristische Arten falscher Klassifikationen näher erläutert:
+
+\begin{description}
+	\item [False Negatives nach (a): ] Eine korrekt erkannte, längere Cry-Unit wird zu früh beendet. Oft werden kurz nach dem Ende einer längeren Cry-Unit sehr kurze Cry-Units erkannt, die eigentlich noch zu der längeren, vorhergehenden Cry-Unit gehören.
+	\item [False Positives nach (b): ] Kurze Cry-Units werden in eigentlichen Stille-Bereichen erkannt.
+	\item [False Negatives nach (c): ] Eine Cry-Unit zerfällt in zwei Cry-Units, da kurze Signalfenster in der Mitte als Stille erkannt wurden.
+\end{description}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{bilder/smoothing02.png}
+	\caption{Klassifizierung vor dem Decision Smoothing}
+	\label{img:beforeSmoothing}
+\end{figure}
+
+Im Process des \textbf{Decision Smoothing} werden kontextuelle Informationen genutzt, um nachträglich False-Positives und False-Negatives zu entfernen. Es werden dazu die von Waheed et al \cite{vad_entropy} präsentierten Ideen verwendet. Es werden zwei Parameter eingeführt: $\lambda_{min}$, die Mindestlänge einer akzeptierten Cry-Unit, und d$_{min}$, die Mindestlänge eines akzeptierten Stille-Segmentes. Das Decision-Smoothing wird nach den folgenden Entscheidungsregeln durchgeführt:
+
+\pagebreak
+\noindent\rule{\linewidth}{0.3pt}
+\begin{itemize}
+	\item ist $\lambda (cu_{i}) \leq \lambda_{min}$ ?
+	\begin{itemize}
+		\item wenn $\lambda (cu_{i-1}) > \lambda_{min}$ und $d (cu_{i-1}, cu_{i}) \leq d_{min}$, dann vereinige $cu_{i}$ mit $cu_{i-1}$ . $\Longrightarrow$ behebt False-Negatives des Types (a)
+		\item ansonsten entferne $cu_i \Longrightarrow$ behebt False-Negatives des Types (b)
+	\end{itemize}
+	\item wenn $\lambda (cu_{i}) > \lambda_{min}$ und $d (cu_{i-1}, cu_{i}) \leq d_{min}$, dann vereinige $cu_{i}$ mit $cu_{i-1}$ . $\Rightarrow$ behebt False-Negatives des Types (c)
+\end{itemize}
+\noindent\rule{\linewidth}{0.3pt}
+
+Die Entscheidungsregeln greifen nur auf die letzten beiden erkannten Cry-Units zu, um eine kontinuierliche Analyse zu gewährleisten. Bei einer kontinuierlichen Analyse wird die Auswertung um die Zeitdauer einer Cry-Unit verzögert, da die Entscheidungsregeln erst nach Beendigung einer Cry-Unit abgefragt werden können. Bei einer offline-Analyse können die Entscheidungsregeln vereinfacht werden, da die False-Negatives nach Typ (a) und (c) mit der selben Regel abgefragt werden können. Algorithmus \ref{alg:decisionSmoothing} zeigt in Pseudo-Code, wie das Decision-Smoothing durchgeführt wird. Input der Funktion ist die Liste aller Cry-Units $CU_{all} = [cu_0 , \ldots , cu_n]$, die durch Algorithmus \ref{alg:cryUnit} entstanden ist, sowie die Grenzwerte $\lambda_{min}, d_{min}$. Der Output der Funktion ist die Liste aller Cry-Units nach dem Decision-Smoothing $CU_{smoothed}$.
+
+\begin{algorithm}[h]
+	\caption{Decision-Smoothing for VAD}
+	\label{alg:decisionSmoothing}
+	\begin{algorithmic}[1]
+		\Function{decisionSmoothing}{$CU_{all}, \lambda_{min}, d_{min}$}
+		\State $CU_{smoothed} \gets[CU_{all}[0]] $
+		\State \Comment start for-loop at the \emph{second} cry-Unit!
+		\For{ $i = 1 , \ldots , length(CU_{all}) - 1$}
+			\State $cu_i \gets CU_{all}[i]$
+			\State $cu_{i-1} \gets CU_{smoothed}[end]$
+			\If{$\lambda(cu_i) > \lambda_{min}$}
+			\State \Comment Accept Cry-Unit
+			\If{d$(cu_{i-1},cu_{i}) > d_{min}$}
+					\State $CU_{smoothed} \gets [CU_{smoothed}, cu_i] $
+			\Else
+					\State \Comment Erase False-Negative Type (c)
+					\State $cu_i \gets \text{vereinige}(cu_i, cu_{i-1})$
+					\State $CU_{smoothed} \gets [CU_{smoothed}[1:end-1], cu_i] $
+			\EndIf
+			\Else
+			\State \Comment Erase False-Negative Type (a)
+			\If{$d(cu_{i-1},cu_{i}) \leq d_{min}$ }
+			\State $cu_i \gets \text{vereinige}(cu_i, cu_{i-1})$
+			\State $CU_{smoothed} \gets [CU_{smoothed}[0:end-1], cu_i] $
+			\Else
+			\State \Comment Don't accept $cu_i$. Erases False-Positives (b)
+			\EndIf
+			\EndIf
+		\EndFor
+		
+		\Return $CU_{smoothed}$
+		\EndFunction
+		
+	\end{algorithmic}
+\end{algorithm}
+
+Abbildung \ref{img:after-smoothing} zeigt das Beispielsignal vor und nach dem Decision-Smoothing. In verschiedenen Veröffentlichungen wurden unterschiedliche Mindestlängen von Cry-Units festgestellt. Varallyay \cite[S. 8]{cry_thesis} hat beispielsweise eine Mindestlänge von \SI{250}{\milli\second} gemessen. Der geringste Wert, der nach dem Wissen des Autors in einer Veröffentlichung genannt wurde, stammt von Zeskind et al \cite[S. 325]{rythmic} und beträgt  \SI{60}{\milli\second}, welcher für $\lambda_{min}$ übernommen wurde. Es konnten hingegen keine Werte über die geringste festgestellte Pause zwischen zwei Cry-Units gefunden werden. Der Wert wurde daher auf Basis des verwendeten Trainings-Datensatzes ebenfalls mit $d_{min} = \SI{60}{\milli\second}$ bestimmt. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilder/smoothing04.png}
+	\caption{Klassifikation vor und nach dem Decision Smoothing}
+	\label{img:after-smoothing}
+\end{figure}
+
+\subsection{Diskussion der Voice-Activity-Detection}
+
+In diesem Kapitel wurden verschiedene Methoden der Voice Activity Detection vorgestellt, verglichen und evaluiert, wobei eine Voice Activity Detection auf Basis des Cepstrums die besten Ergebnisse erzielte. Unabhängig von den konkret verglichenen Features werden in dieser grundlegenden Herangehensweise zur Voice Activity Detection kontextuelle Informationen in Bezug auf den zeitlichen Verlauf der Stimme jedoch nur in einem geringen Maße beim Decision-Smoothing verwertet. Schlussendlich markiert der VAD-Algorithmus eine Reihe von kurzen Signalfenstern genau dann als zusammenhängende Cry-Unit, wenn jedes Signalfenster für sich betrachtet als Lautäußerung eines Babies klassifiziert wurde. Ob jedoch die Reihenfolge der in den Signalfenstern enthaltenen Lautäußerungen Sinn macht, wird nicht betrachtet. Schneidet man beispielsweise wenige Sekunden aus der Mitte einer längeren Cry-Unit aus und konkateniert dieses Sample viele Male, um eine synthetische, längere Cry-Unit zu erzeugen, klingt das Ergebnis für den Menschen stark unnatürlich, wird von dem hier vorgestellten VAD-Algorithmus jedoch trotzdem als valide Cry-Unit markiert. Das Cepstrum als Feature mit der höchsten Accuracy ist somit so zu bewerten, dass es vor allem im geringen Maße kontextuell Informationen benötigt, um eine Entscheidung über das vorahndensein von Stimme zu fällen. Zukünftige Forschungen könnnen an diesem Punkt ansetzen, um die Accuracy der VAD zu erhöhen.
 
 
 

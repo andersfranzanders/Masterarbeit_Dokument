@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  8 MAR 2017 19:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  9 MAR 2017 18:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2046,10 +2046,6 @@ File: bilder/compressing01.png Graphic file (type png)
 Package pdftex.def Info: bilder/compressing01.png used on input line 81.
 (pdftex.def)             Requested size: 298.75264pt x 152.20865pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 92.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 92.
-Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 97.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 97.
@@ -2087,7 +2083,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 187.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 187.
- [37] <bilder/cepstrum04.png, id=931, 508.90125pt x 783.92876pt>
+ [37] <bilder/cepstrum04.png, id=932, 508.90125pt x 783.92876pt>
 File: bilder/cepstrum04.png Graphic file (type png)
  <use bilder/cepstrum04.png>
 Package pdftex.def Info: bilder/cepstrum04.png used on input line 202.
@@ -2100,7 +2096,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 208.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 208.
- [38 <./bilder/cepstrum04.png>] <bilder/cepstrum05.png, id=945, 842.14626pt x 876.27374pt>
+ [38 <./bilder/cepstrum04.png>] <bilder/cepstrum05.png, id=946, 842.14626pt x 876.27374pt>
 File: bilder/cepstrum05.png Graphic file (type png)
  <use bilder/cepstrum05.png>
 Package pdftex.def Info: bilder/cepstrum05.png used on input line 213.
@@ -2113,7 +2109,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 221.
- [39 <./bilder/cepstrum05.png>] <bilder/cepstrumPitch.png, id=957, 426.59375pt x 430.60875pt>
+ [39 <./bilder/cepstrum05.png>] <bilder/cepstrumPitch.png, id=958, 426.59375pt x 430.60875pt>
 File: bilder/cepstrumPitch.png Graphic file (type png)
  <use bilder/cepstrumPitch.png>
 Package pdftex.def Info: bilder/cepstrumPitch.png used on input line 224.
@@ -2126,7 +2122,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 249.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 249.
- [40 <./bilder/cepstrumPitch.png>] <bilder/allFeatures01.png, id=978, 534.99875pt x 691.58376pt>
+ [40 <./bilder/cepstrumPitch.png>] <bilder/allFeatures01.png, id=979, 534.99875pt x 691.58376pt>
 File: bilder/allFeatures01.png Graphic file (type png)
  <use bilder/allFeatures01.png>
 Package pdftex.def Info: bilder/allFeatures01.png used on input line 252.
@@ -2139,7 +2135,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 258.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 258.
- [41 <./bilder/allFeatures01.png>] <bilder/rms_diff.png, id=986, 921.4425pt x 781.92125pt>
+ [41 <./bilder/allFeatures01.png>] <bilder/rms_diff.png, id=987, 921.4425pt x 781.92125pt>
 File: bilder/rms_diff.png Graphic file (type png)
  <use bilder/rms_diff.png>
 Package pdftex.def Info: bilder/rms_diff.png used on input line 261.
@@ -2152,7 +2148,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 273.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 273.
- [42 <./bilder/rms_diff.png>] <bilder/thresholded02.png, id=999, 1363.0925pt x 447.6725pt>
+ [42 <./bilder/rms_diff.png>] <bilder/thresholded02.png, id=1000, 1363.0925pt x 447.6725pt>
 File: bilder/thresholded02.png Graphic file (type png)
  <use bilder/thresholded02.png>
 Package pdftex.def Info: bilder/thresholded02.png used on input line 293.
@@ -2174,31 +2170,226 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 314.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 319.
+(babel)             in language  on input line 324.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 319.
+(babel)             in language  on input line 324.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 323.
+(babel)             in language  on input line 324.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 323.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 326.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 326.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 329.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 329.
-)
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 91.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 91.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 91.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 91.
+(babel)             in language  on input line 324.
  [44]
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 348.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 348.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 351.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 351.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 353.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 353.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 355.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 355.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 355.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 355.
+[45]
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 355.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 355.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 357.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 357.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 361.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 361.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 385.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 385.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 385.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 385.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 385.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 385.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 389.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 389.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 389.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 389.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 389.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 389.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 389.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 389.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 391.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 391.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 391.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 391.
+[46]
+Underfull \hbox (badness 1540) in paragraph at lines 398--398
+[][][]\T1/cmr/m/n/9 (+20) Dokumentation von REP-Tree: []$\T1/cmtt/m/n/9 http : / / weka . sourceforge . net / doc . dev / weka / classifiers / trees /
+ []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 415.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 415.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 415.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 415.
+[47]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 433.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 433.
+ <bilder/cry-Unit02.png, id=1094, 897.3525pt x 619.31375pt>
+File: bilder/cry-Unit02.png Graphic file (type png)
+ <use bilder/cry-Unit02.png>
+Package pdftex.def Info: bilder/cry-Unit02.png used on input line 442.
+(pdftex.def)             Requested size: 256.07741pt x 176.73305pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 452.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 452.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 452.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 452.
+[48] <bilder/newSmoothing05.png, id=1107, 1035.87pt x 294.09875pt>
+File: bilder/newSmoothing05.png Graphic file (type png)
+ <use bilder/newSmoothing05.png>
+Package pdftex.def Info: bilder/newSmoothing05.png used on input line 468.
+(pdftex.def)             Requested size: 341.43437pt x 96.9362pt.
+
+
+LaTeX Warning: Reference `eq:vad-final' on page 49 undefined on input line 473.
+
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 476.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 515.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 515.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 520.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 520.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 520.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 520.
+[49 <./bilder/cry-Unit02.png> <./bilder/newSmoothing05.png>] <bilder/smoothing02.png, id=1122, 482.80376pt x 170.6375pt>
+File: bilder/smoothing02.png Graphic file (type png)
+ <use bilder/smoothing02.png>
+Package pdftex.def Info: bilder/smoothing02.png used on input line 529.
+(pdftex.def)             Requested size: 298.75264pt x 105.59105pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 535.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 535.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 535.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 535.
+[50]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 537.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 537.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 537.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 537.
+ [51 <./bilder/smoothing02.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<bilder/smoothing04.png, id=1140, 470.75874pt x 250.9375pt>
+File: bilder/smoothing04.png Graphic file (type png)
+ <use bilder/smoothing04.png>
+Package pdftex.def Info: bilder/smoothing04.png used on input line 590.
+(pdftex.def)             Requested size: 256.07741pt x 136.50359pt.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 595.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 595.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 598.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 598.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 598.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 598.
+ [52 <./bilder/smoothing04.png>])
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 91.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 91.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 91.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 91.
+ [53]
 \openout2 = `chapters/Deduction.aux'.
 
  (./chapters/Deduction.tex
@@ -2211,7 +2402,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 3.
-<bilder/segmentierung07.png, id=1030, 974.64125pt x 365.365pt>
+<bilder/segmentierung07.png, id=1152, 974.64125pt x 365.365pt>
 File: bilder/segmentierung07.png Graphic file (type png)
  <use bilder/segmentierung07.png>
 Package pdftex.def Info: bilder/segmentierung07.png used on input line 9.
@@ -2224,15 +2415,11 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 25.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 25.
- [45
+ [54
 
 
 
  <./bilder/segmentierung07.png>]
-
-LaTeX Warning: Reference `alg:decisionSmoothing' on page 46 undefined on input line 50.
-
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 53.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 75.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2241,7 +2428,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 75.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 75.
-[46] <bilder/segmentierung06.png, id=1054, 1174.3875pt x 677.53125pt>
+ [55] <bilder/segmentierung06.png, id=1177, 1174.3875pt x 677.53125pt>
 File: bilder/segmentierung06.png Graphic file (type png)
  <use bilder/segmentierung06.png>
 Package pdftex.def Info: bilder/segmentierung06.png used on input line 79.
@@ -2254,17 +2441,17 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 86.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 86.
- [47 <./bilder/segmentierung06.png>]
+ [56 <./bilder/segmentierung06.png>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 86.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 86.
 
 
-LaTeX Warning: Reference `sec:regression' on page 48 undefined on input line 96.
+LaTeX Warning: Reference `sec:regression' on page 57 undefined on input line 96.
 
 
-LaTeX Warning: Reference `sec:multipleRegression' on page 48 undefined on input line 101.
+LaTeX Warning: Reference `sec:multipleRegression' on page 57 undefined on input line 101.
 
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 107.
@@ -2274,9 +2461,9 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 107.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 107.
-[48]
+[57]
 
-LaTeX Warning: Reference `sec:classification' on page 49 undefined on input line 111.
+LaTeX Warning: Reference `sec:classification' on page 58 undefined on input line 111.
 
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 124.
@@ -2286,7 +2473,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 124.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 124.
-[49]
+[58]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 126.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2299,9 +2486,9 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 158.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 158.
- [50]
+ [59]
 
-LaTeX Warning: Reference `sec:CryUnit' on page 51 undefined on input line 183.
+LaTeX Warning: Reference `sec:CryUnit' on page 60 undefined on input line 183.
 
 
 Overfull \hbox (4.25414pt too wide) in paragraph at lines 193--194
@@ -2316,9 +2503,9 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 214.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 214.
-[51]
+[60]
 
-LaTeX Warning: Reference `sec:cepstrum-feature' on page 52 undefined on input line 237.
+LaTeX Warning: Reference `sec:cepstrum-feature' on page 61 undefined on input line 237.
 
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 251.
@@ -2328,7 +2515,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 251.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 251.
-[52]
+[61]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 265.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2341,7 +2528,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 277.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 277.
- [53])
+ [62])
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 92.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2350,7 +2537,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 92.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 92.
- [54]
+ [63]
 chapter 6.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 95.
@@ -2365,7 +2552,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
- [55
+ [64
 
 
 ]
@@ -2406,7 +2593,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 89.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 89.
-[56
+[65
 
 ]
 Underfull \hbox (badness 1990) in paragraph at lines 103--107
@@ -2436,7 +2623,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 187.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 187.
-[57]
+[66]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 292.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2445,7 +2632,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 292.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 292.
- [58]
+ [67]
 Underfull \hbox (badness 7291) in paragraph at lines 294--300
 \T1/cmr/m/n/10.95 (+20) FLACC: A Be-ha-vi-oral Sca-le for Sco-ring Post-ope-ra-ti-ve Pain in Young
  []
@@ -2494,7 +2681,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 100.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 100.
- [59]
+ [68]
 \openout2 = `chapters/Anhang.aux'.
 
  (./chapters/Anhang.tex
@@ -2510,11 +2697,11 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 2.
- [60
+ [69
 
 
 
-] <bilder/all_boxplots.png, id=1258, 1013.7875pt x 261.97874pt>
+] <bilder/all_boxplots.png, id=1381, 1013.7875pt x 261.97874pt>
 File: bilder/all_boxplots.png Graphic file (type png)
  <use bilder/all_boxplots.png>
 Package pdftex.def Info: bilder/all_boxplots.png used on input line 26.
@@ -2531,7 +2718,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 31.
-[61
+[70
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
@@ -2542,7 +2729,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 31.
- [62 <./bilder/all_boxplots.png>])
+ [71 <./bilder/all_boxplots.png>])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
  (/Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/main.aux (/Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/chapters/Foundations.aux) (/Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/chapters/Konzept.aux) (/Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/chapters/VAD.aux) (/Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/chapters/Deduction.aux) (/Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/chapters/Anhang.aux))
@@ -2557,19 +2744,19 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
- 27473 strings out of 493014
- 496371 string characters out of 6133351
- 690611 words of memory out of 5000000
- 30033 multiletter control sequences out of 15000+600000
- 41558 words of font info for 222 fonts, out of 8000000 for 9000
+ 27606 strings out of 493014
+ 498331 string characters out of 6133351
+ 691480 words of memory out of 5000000
+ 30098 multiletter control sequences out of 15000+600000
+ 48226 words of font info for 243 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  45i,17n,66p,10377b,1192s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2016/texmf-dist/fo
-nts/type1/public/cm-super/sfti0800.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on "/Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/main.pdf" (67 pages, 3484340 bytes).
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2016
+/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on "/Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/main.pdf" (76 pages, 3724619 bytes).
 PDF statistics:
- 1433 PDF objects out of 1440 (max. 8388607)
- 1239 compressed objects within 13 object streams
- 319 named destinations out of 1000 (max. 500000)
- 40887 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 1577 PDF objects out of 1728 (max. 8388607)
+ 1359 compressed objects within 14 object streams
+ 355 named destinations out of 1000 (max. 500000)
+ 44987 words of extra memory for PDF output out of 51595 (max. 10000000)
 

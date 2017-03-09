@@ -23,25 +23,25 @@
 \contentsline {section}{\numberline {4.1}Voice Activity Detection}{31}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Methoden}{33}{subsection.4.1.1}
 \contentsline {subsubsection}{\nonumberline Vorverarbeitung}{33}{section*.26}
-\contentsline {subsection}{\numberline {4.1.2}Windowing}{34}{subsection.4.1.2}
-\contentsline {subsubsection}{\nonumberline Eigenschaften des Zeitbereiches}{35}{section*.28}
-\contentsline {subsubsection}{\nonumberline Eigenschaften der Autokorrelation}{35}{section*.29}
-\contentsline {subsubsection}{\nonumberline Eigenschaften des Frequenzbereiches}{37}{section*.30}
-\contentsline {subsubsection}{\nonumberline Eigenschaften des Cepstrums}{38}{section*.31}
-\contentsline {subsubsection}{\nonumberline Differenz-Feature}{41}{section*.35}
-\contentsline {subsubsection}{\nonumberline Entscheidung}{43}{section*.38}
-\contentsline {subsection}{\numberline {4.1.3}Simulations-Studie}{44}{subsection.4.1.3}
-\contentsline {subsubsection}{\nonumberline Datenbank}{44}{section*.40}
-\contentsline {subsection}{\numberline {4.1.4}Konstruktion des Featureraumes}{44}{subsection.4.1.4}
-\contentsline {subsubsection}{\nonumberline Grenzwertfindung durch den C4.5}{44}{section*.41}
-\contentsline {subsection}{\numberline {4.1.5}Ergebnisse}{44}{subsection.4.1.5}
-\contentsline {section}{\numberline {4.2}Markierung der Cry-Units}{44}{section.4.2}
-\contentsline {section}{\numberline {4.3}Decision Smoothing}{44}{section.4.3}
-\contentsline {chapter}{\numberline {5}Methoden zur Ableitung der Schmerz Score}{45}{chapter.5}
-\contentsline {section}{\numberline {5.1}Segmentierung}{45}{section.5.1}
-\contentsline {section}{\numberline {5.2}Feature-Extraktion und Ableitung der Schmerzscore}{48}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Extrahierung von Eigenschaften}{50}{subsection.5.2.1}
-\contentsline {subsubsection}{\nonumberline Features des Zeitbereiches}{50}{section*.44}
-\contentsline {subsection}{\numberline {5.2.2}Ableitung der Pain-Score}{53}{subsection.5.2.2}
-\contentsline {chapter}{\numberline {6}Zusammenfassung}{55}{chapter.6}
-\contentsline {chapter}{Appendices}{60}{section*.48}
+\contentsline {subsubsection}{\nonumberline Windowing}{34}{section*.28}
+\contentsline {subsubsection}{\nonumberline Eigenschaften des Zeitbereiches}{35}{section*.29}
+\contentsline {subsubsection}{\nonumberline Eigenschaften der Autokorrelation}{35}{section*.30}
+\contentsline {subsubsection}{\nonumberline Eigenschaften des Frequenzbereiches}{37}{section*.31}
+\contentsline {subsubsection}{\nonumberline Eigenschaften des Cepstrums}{38}{section*.32}
+\contentsline {subsubsection}{\nonumberline Differenz-Feature}{41}{section*.36}
+\contentsline {subsubsection}{\nonumberline Entscheidung}{43}{section*.39}
+\contentsline {subsection}{\numberline {4.1.2}Simulations-Studie}{44}{subsection.4.1.2}
+\contentsline {subsubsection}{\nonumberline Erstellung der Datens\IeC {\"a}tze}{45}{section*.41}
+\contentsline {subsubsection}{\nonumberline Training und Evaluation}{47}{section*.43}
+\contentsline {subsubsection}{\nonumberline Ergebnisse}{47}{section*.44}
+\contentsline {section}{\numberline {4.2}Markierung der Cry-Units}{48}{section.4.2}
+\contentsline {section}{\numberline {4.3}Decision Smoothing}{50}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Diskussion der Voice-Activity-Detection}{52}{subsection.4.3.1}
+\contentsline {chapter}{\numberline {5}Methoden zur Ableitung der Schmerz Score}{54}{chapter.5}
+\contentsline {section}{\numberline {5.1}Segmentierung}{54}{section.5.1}
+\contentsline {section}{\numberline {5.2}Feature-Extraktion und Ableitung der Schmerzscore}{57}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Extrahierung von Eigenschaften}{59}{subsection.5.2.1}
+\contentsline {subsubsection}{\nonumberline Features des Zeitbereiches}{59}{section*.51}
+\contentsline {subsection}{\numberline {5.2.2}Ableitung der Pain-Score}{62}{subsection.5.2.2}
+\contentsline {chapter}{\numberline {6}Zusammenfassung}{64}{chapter.6}
+\contentsline {chapter}{Appendices}{69}{section*.55}
