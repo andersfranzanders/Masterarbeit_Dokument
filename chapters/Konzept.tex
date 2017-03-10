@@ -42,8 +42,6 @@ In dieser Arbeit wurde die folgende Verarbeitungs-Pipeline entworfen. Sie wird i
 \begin{enumerate}[leftmargin=*]
 	\item \textbf{Input: } Ein Audiosignal, das möglicherweise kindliche Lautäußerungen enthält. Es wird kontinuierlich in das System gegeben.
 	
-	\item \textbf{Vorverarbeitung} (engl. \emph{Pre-Processing}) des Signals.
-	
 	\item \textbf{Erkennung der Cry-Units}. Zunächst muss festgestellt werden, ob und wo in dem Signal kindliche Lautäußerungen vorhanden sind. Ein Algorithmus zur Feststellung von Stimmaktivität, bezeichnet als Voice Activity Detection, untersucht das Signal und markiert Cry-Units. Die gefunden Cry-Units bilden die Grundlage aller darauf folgenden Verarbeitungsschritte. Der vorgestellte Algorithmus kombinierte herkömmliche Methoden der Voice Activity Detection mit Ideen, die von Varallyay \cite{cry_thesis} vorgestellt wurden.
 	
 	\item \textbf{Segmentierung} (engl \emph{Segmenting}). Eine Pain Score wird nicht aus der Beobachtung einer einzigen, sondern einer Reihe von Cry-Units abgeleitet. In Kapitel \ref{sec:painScores} wurde gezeigt, dass bestimmte Pain Scores die Beobachtung über mehrere Minuten hinweg erfordern. Zu diesem Zweck werden die Cry-Units gruppiert. Da keines der in Kapitel \ref{sec:system_literature} vorgestellten Konzepte Methoden zur Segmentierung einführte, wurde ein eigener Algorithmus für diese Aufgabe entworfen.
@@ -55,7 +53,7 @@ In dieser Arbeit wurde die folgende Verarbeitungs-Pipeline entworfen. Sie wird i
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{bilder/pipeline01.png}
+	\includegraphics[width=0.75\textwidth]{bilder/konzept02.png}
 	\caption{Überblick über die Verarbeitungs-Pipeline dieser Arbeit}
 	\label{img:architecture-overview}
 \end{figure}

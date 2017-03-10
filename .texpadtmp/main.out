@@ -25,10 +25,10 @@
 \BOOKMARK [1][-]{section.4.2}{Markierung der Cry-Units}{chapter.4}% 25
 \BOOKMARK [1][-]{section.4.3}{Decision Smoothing}{chapter.4}% 26
 \BOOKMARK [2][-]{subsection.4.3.1}{Diskussion der Voice-Activity-Detection}{section.4.3}% 27
-\BOOKMARK [0][-]{chapter.5}{Methoden zur Ableitung der Schmerz Score}{}% 28
+\BOOKMARK [0][-]{chapter.5}{Ableitung der Schmerz Score}{}% 28
 \BOOKMARK [1][-]{section.5.1}{Segmentierung}{chapter.5}% 29
-\BOOKMARK [1][-]{section.5.2}{Feature-Extraktion und Ableitung der Schmerzscore}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.2}{Extrahierung von Eigenschaften und Ableitung der Schmerzscore}{chapter.5}% 30
 \BOOKMARK [2][-]{subsection.5.2.1}{Extrahierung von Eigenschaften}{section.5.2}% 31
 \BOOKMARK [2][-]{subsection.5.2.2}{Ableitung der Pain-Score}{section.5.2}% 32
 \BOOKMARK [0][-]{chapter.6}{Zusammenfassung}{}% 33
-\BOOKMARK [0][-]{section*.55}{Appendices}{}% 34
+\BOOKMARK [0][-]{section*.54}{Appendices}{}% 34

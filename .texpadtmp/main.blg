@@ -1,6 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2016)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/main.aux
+A level-1 auxiliary file: chapters/title_page_1.aux
 A level-1 auxiliary file: chapters/Foundations.aux
 A level-1 auxiliary file: chapters/Konzept.aux
 A level-1 auxiliary file: chapters/VAD.aux
@@ -67,7 +68,7 @@ Too many commas in name 1 of "Monique van Dijk, Josien de Boer, Hans M Koot, Dic
 while executing---line 1090 of file plain.bst
 You've used 53 entries,
             2118 wiz_defined-function locations,
-            826 strings with 15578 characters,
+            827 strings with 15603 characters,
 and the built_in function-call counts, 13720 in all, are:
 = -- 1382
 > -- 443
