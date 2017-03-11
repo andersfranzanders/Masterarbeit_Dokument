@@ -1,9 +1,9 @@
 \chapter{Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}
+\label{sec:foundations}
 
 Das Ziel dieses Kapitels ist es, wichtig Grundlagen zum Verständnis der Schmerzbewertung bei Neugeborenen auf Basis akustischer Signale zu legen. Dazu wird in Kapitel \ref{sec:medicalFoundations} zunächst erläutert, wie die Schmerzbewertung aus Sicht medizinischer Fachkräfte im klinischen Alltag durchgeführt wird. Der Fokus liegt dabei insbesondere auf der Ableitung des Schmerzgrades aus dem Weinen des Babys. Um die Stimme des Babys automatisiert analysieren zu können, werden Methoden der Signalverarbeitung verwendet. Daher werden in  Kapitel \ref{sec:signal_foundations} Grundlagen zur akustischen Modellierung der menschlichen Stimme erläutert. In Kapitel \ref{sec:cryresearch_foundations} wird eine Einführung in die \glqq klassische Schreiforschung\grqq{} gegeben. Dabei handelt es sich um Wissenschaftsgebiet, bei dem Methoden der Signalverarbeitung verwendet werden, um tiefergehende Analysen des Weinens Neugeborener durchzuführen. Da sich das in dieser Arbeit vorgestellte Konzept als Erweiterung der klassischen Methoden versteht, ist ein Verständnis dieses Wissenschaftsgebietes unerlässlich. In Kapitel \ref{sec:learning} werden Grundlagen des überwachten maschinellen Lernens erläutert, da diese bei der Spracherkennung ausgiebigen Einsatz erfahren. 
 
 \section{Schmerz und Weinen bei Neugeborenen aus medizinischer Sicht}
-
 \label{sec:medicalFoundations} 
 
 Schmerz wird definiert als eine \glqq ein unangenehmes Sinnes- oder Gefühlserlebnis, das mit tatsächlicher oder potenzieller Gewebeschädigung einhergeht\grqq{}.\cite[S. 438]{PainAssessment01} Abseits von dieser theoretischen Definition hat der Mensch ein intuitives Verständnis für Schmerz, da jeder ihn in seine Leben mindestens Einmal erfahren musste. In der ersten Hälfte des 20ten Jahrhunderts war die vorherrschende Meinung, dass Neugeborene keinen Schmerz empfinden können. Beispielsweise bekamen sie nach Operationen keine Schmerzmittel verabreicht. Der aktuelle Stand der Forschung besagt, dass Neugeborene im selben Maße wie Erwachsene Schmerz empfinden können. Die freien Nervenenden, die in der Lage sind, physische Schäden am Körper festzustellen, sind bei Neugeborenen ebenso wie bei Erwachsenen über den Körper verteilt. Die hormonelle Reaktion ist ebenfalls vergleichbar. \cite[S. 402]{PainAssessment03} \cite[S. 438]{PainAssessment01}
@@ -197,7 +197,7 @@ Im folgenden wird ein Überblick über häufig berechnete Merkmale von Signalen 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/sigStats02.png}
+	\includegraphics[width=0.9\textwidth]{bilder/sigStats02.png}
 	\caption{Statistische Merkmale eines Beispielsignals über dem Intervall [50,200]}
 	\label{img:sigStats}
 \end{figure}
@@ -249,7 +249,7 @@ Abbildung \ref{img:stft01} visualisiert die Transformation in den Frequenzbereic
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{bilder/stft01.png}
+	\includegraphics[width=1\textwidth]{bilder/stft01.png}
 	\caption{Ein 1.8-Sekunden langes Signal. Oben: Der Zeitbereich mit drei klar erkennbaren Events. Unten: Das Frequenz-Spectrum des gesamten Signals mit logarithmisierten Achsen.}
 	\label{img:stft01}
 \end{figure}
@@ -279,7 +279,7 @@ w[\;] := \quad \mathop{\forall}_{n = 0}^{M-1} :\ w[n] = 0.54 - 0.46 \cos(\frac{2
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.4\textwidth]{bilder/hamming01.png}
+	\includegraphics[width=0.5\textwidth]{bilder/hamming01.png}
 	\caption{Das Hamming-Window}
 	\label{img:hamming}
 \end{figure}

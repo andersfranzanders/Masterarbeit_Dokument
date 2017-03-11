@@ -2,10 +2,13 @@ This is BibTeX, Version 0.99d (TeX Live 2016)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/main.aux
 A level-1 auxiliary file: chapters/title_page_1.aux
+A level-1 auxiliary file: chapters/Erklaerung.aux
+A level-1 auxiliary file: chapters/Introduction.aux
 A level-1 auxiliary file: chapters/Foundations.aux
 A level-1 auxiliary file: chapters/Konzept.aux
 A level-1 auxiliary file: chapters/VAD.aux
 A level-1 auxiliary file: chapters/Deduction.aux
+A level-1 auxiliary file: chapters/Visualisation.aux
 The style file: plain.bst
 A level-1 auxiliary file: chapters/Anhang.aux
 Database file #1: ../references.bib
@@ -31,15 +34,15 @@ Repeated entry---line 502 of file ../references.bib
  : @book{sprachverarbeitung
  :                         ,
 I'm skipping whatever remains of this entry
-Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi,Yu Sun and Terri Ashmeade" for entry overview
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi,Yu Sun and Terri Ashmeade" for entry overview
-while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Ivan Hand, Lawrence Noble, Donna Geiss, Laura Wozniak \& Charles Hall" for entry covers
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Monique van Dijk, Josien de Boer, Hans M Koot, Dick Tibboel, Jan Passchier \& Hugo Duivenvoorden" for entry comfort
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Monique van Dijk, Josien de Boer, Hans M Koot, Dick Tibboel, Jan Passchier \& Hugo Duivenvoorden" for entry comfort
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi,Yu Sun and Terri Ashmeade" for entry overview
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi,Yu Sun and Terri Ashmeade" for entry overview
 while executing---line 1049 of file plain.bst
 Name 1 in "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi, Terri Ashmeade, and Yu Sun" has a comma at the end for entry zamziMultimodal
 while executing---line 1049 of file plain.bst
@@ -68,7 +71,7 @@ Too many commas in name 1 of "Monique van Dijk, Josien de Boer, Hans M Koot, Dic
 while executing---line 1090 of file plain.bst
 You've used 53 entries,
             2118 wiz_defined-function locations,
-            827 strings with 15603 characters,
+            830 strings with 15677 characters,
 and the built_in function-call counts, 13720 in all, are:
 = -- 1382
 > -- 443

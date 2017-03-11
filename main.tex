@@ -1,4 +1,4 @@
-\documentclass{scrreprt}
+\documentclass[numbers=noenddot]{scrreprt}
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \setlength{\parskip}{5.5pt}
@@ -15,6 +15,7 @@
 \usepackage{color}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{fancyhdr}
+%\usepackage{scrlayer-scrpage}
 \usepackage{amsfonts}
 \usepackage{booktabs}
 \usepackage{siunitx}
@@ -37,8 +38,6 @@
 \DeclareMathOperator*{\mediani}{median}
 \DeclareMathOperator{\ReX}{ReX}
 \DeclareMathOperator{\ImX}{ImX}
-
-
 
 % design
 
@@ -66,33 +65,27 @@
 \begin{document}
 
 \include{chapters/title_page_1}
-	
-%\setlength{\abovedisplayskip}{0pt plus 2pt minus 2pt}
-%\setlength{\belowdisplayskip}{10pt plus 2pt minus 2pt}
-%\setlength{\abovedisplayshortskip}{-5pt plus 2pt minus 2pt}
-%\setlength{\belowdisplayshortskip}{10pt plus 2pt minus 2pt} 
-
-%\setlength{\intextsep}{10mm plus 1mm minus 5mm}
-
-%\maketitle
+\newpage\null\thispagestyle{empty}\newpage	
 
 \pagenumbering{Roman} 
-
-\chapter*{Abstract}
-
+\include{chapters/Erklaerung}
 \tableofcontents
 \listoffigures
-
-
-\chapter{Einleitung}
-
-\pagenumbering{arabic} 
-
+\listoftables
+\pagebreak
+%\begingroup
+%   \let\clearpage\relax        % report
+%   \tableofcontents
+%   \listoftables
+%   \listoffigures
+%\endgroup
+\pagenumbering{arabic}
+\include{chapters/Introduction} 
 \include{chapters/Foundations}
 \include{chapters/Konzept}
 \include{chapters/VAD}
 \include{chapters/Deduction}
-%\include{chapters/Visualisation}
+\include{chapters/Visualisation}
 
 \chapter{Zusammenfassung}
 

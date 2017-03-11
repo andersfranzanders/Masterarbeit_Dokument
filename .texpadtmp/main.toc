@@ -1,47 +1,49 @@
 \select@language {ngerman}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}{2}{chapter.2}
-\contentsline {section}{\numberline {2.1}Schmerz und Weinen bei Neugeborenen aus medizinischer Sicht}{2}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Pain Scales}{2}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Weinen bei Neugeborenen}{5}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}Signalverarbeitung}{6}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Grundlegende Definitionen}{7}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Statistische Merkmale}{7}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Fehlersignale}{8}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Kurzzeit-Fourier-Transformation}{9}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Akustische Modellierung der menschlichen Stimme}{11}{subsection.2.2.5}
-\contentsline {section}{\numberline {2.3}Schreiforschung}{16}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Phyisio-Akustische Modellierung des Weinens}{17}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Diskussion}{19}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Klassifizierung und Regression}{20}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}ID3 und C4.5}{22}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{25}{subsection.2.4.2}
-\contentsline {chapter}{\numberline {3}Konzept zur Visualisierung von Schmerz Scores aus akustischen Signalen}{27}{chapter.3}
-\contentsline {section}{\numberline {3.1}Literatur\IeC {\"u}berblick}{28}{section.3.1}
-\contentsline {section}{\numberline {3.2}Verarbeitungs-Pipeline}{29}{section.3.2}
-\contentsline {chapter}{\numberline {4}Erkennung der Cry-Units}{31}{chapter.4}
-\contentsline {section}{\numberline {4.1}Voice Activity Detection}{31}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Methoden}{33}{subsection.4.1.1}
-\contentsline {subsubsection}{\nonumberline Vorverarbeitung}{33}{section*.26}
-\contentsline {subsubsection}{\nonumberline Windowing}{34}{section*.28}
-\contentsline {subsubsection}{\nonumberline Eigenschaften des Zeitbereiches}{35}{section*.29}
-\contentsline {subsubsection}{\nonumberline Eigenschaften der Autokorrelation}{35}{section*.30}
-\contentsline {subsubsection}{\nonumberline Eigenschaften des Frequenzbereiches}{37}{section*.31}
-\contentsline {subsubsection}{\nonumberline Eigenschaften des Cepstrums}{38}{section*.32}
-\contentsline {subsubsection}{\nonumberline Differenz-Feature}{41}{section*.36}
-\contentsline {subsubsection}{\nonumberline Entscheidung}{43}{section*.39}
-\contentsline {subsection}{\numberline {4.1.2}Simulations-Studie}{44}{subsection.4.1.2}
-\contentsline {subsubsection}{\nonumberline Erstellung der Datens\IeC {\"a}tze}{45}{section*.41}
-\contentsline {subsubsection}{\nonumberline Training und Evaluation}{47}{section*.43}
-\contentsline {subsubsection}{\nonumberline Ergebnisse}{47}{section*.44}
-\contentsline {section}{\numberline {4.2}Markierung der Cry-Units}{48}{section.4.2}
-\contentsline {section}{\numberline {4.3}Decision Smoothing}{50}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Diskussion der Voice-Activity-Detection}{52}{subsection.4.3.1}
-\contentsline {chapter}{\numberline {5}Ableitung der Schmerz Score}{54}{chapter.5}
-\contentsline {section}{\numberline {5.1}Segmentierung}{54}{section.5.1}
+\contentsline {chapter}{\numberline {2}Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Schmerz und Weinen bei Neugeborenen aus medizinischer Sicht}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Pain Scales}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Weinen bei Neugeborenen}{6}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Signalverarbeitung}{7}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Grundlegende Definitionen}{8}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Statistische Merkmale}{8}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Fehlersignale}{9}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Kurzzeit-Fourier-Transformation}{10}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Akustische Modellierung der menschlichen Stimme}{12}{subsection.2.2.5}
+\contentsline {section}{\numberline {2.3}Schreiforschung}{17}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Phyisio-Akustische Modellierung des Weinens}{18}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Diskussion}{20}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Klassifizierung und Regression}{21}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}ID3 und C4.5}{23}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{26}{subsection.2.4.2}
+\contentsline {chapter}{\numberline {3}Konzept zur Visualisierung von Schmerz Scores aus akustischen Signalen}{28}{chapter.3}
+\contentsline {section}{\numberline {3.1}Literatur\IeC {\"u}berblick}{29}{section.3.1}
+\contentsline {section}{\numberline {3.2}Verarbeitungs-Pipeline}{30}{section.3.2}
+\contentsline {chapter}{\numberline {4}Erkennung der Cry-Units}{32}{chapter.4}
+\contentsline {section}{\numberline {4.1}Voice Activity Detection}{32}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Methoden}{34}{subsection.4.1.1}
+\contentsline {subsubsection}{\nonumberline Vorverarbeitung}{34}{section*.27}
+\contentsline {subsubsection}{\nonumberline Windowing}{35}{section*.29}
+\contentsline {subsubsection}{\nonumberline Eigenschaften des Zeitbereiches}{36}{section*.30}
+\contentsline {subsubsection}{\nonumberline Eigenschaften der Autokorrelation}{36}{section*.31}
+\contentsline {subsubsection}{\nonumberline Eigenschaften des Frequenzbereiches}{38}{section*.32}
+\contentsline {subsubsection}{\nonumberline Eigenschaften des Cepstrums}{39}{section*.33}
+\contentsline {subsubsection}{\nonumberline Differenz-Feature}{42}{section*.37}
+\contentsline {subsubsection}{\nonumberline Entscheidung}{44}{section*.40}
+\contentsline {subsection}{\numberline {4.1.2}Simulations-Studie}{45}{subsection.4.1.2}
+\contentsline {subsubsection}{\nonumberline Erstellung der Datens\IeC {\"a}tze}{46}{section*.42}
+\contentsline {subsubsection}{\nonumberline Training und Evaluation}{48}{section*.44}
+\contentsline {subsubsection}{\nonumberline Ergebnisse}{48}{section*.45}
+\contentsline {section}{\numberline {4.2}Markierung der Cry-Units}{49}{section.4.2}
+\contentsline {section}{\numberline {4.3}Decision Smoothing}{51}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Diskussion der Voice-Activity-Detection}{53}{subsection.4.3.1}
+\contentsline {chapter}{\numberline {5}Ableitung der Schmerz Score}{55}{chapter.5}
+\contentsline {section}{\numberline {5.1}Segmentierung}{55}{section.5.1}
 \contentsline {section}{\numberline {5.2}Extrahierung von Eigenschaften und Ableitung der Schmerzscore}{57}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Extrahierung von Eigenschaften}{59}{subsection.5.2.1}
-\contentsline {subsubsection}{\nonumberline Features des Zeitbereiches}{59}{section*.50}
-\contentsline {subsection}{\numberline {5.2.2}Ableitung der Pain-Score}{62}{subsection.5.2.2}
-\contentsline {chapter}{\numberline {6}Zusammenfassung}{64}{chapter.6}
-\contentsline {chapter}{Appendices}{69}{section*.54}
+\contentsline {subsubsection}{\nonumberline Features des Zeitbereiches}{60}{section*.51}
+\contentsline {subsection}{\numberline {5.2.2}Ableitung der Pain-Score}{63}{subsection.5.2.2}
+\contentsline {chapter}{\numberline {6}Visualisierung}{66}{chapter.6}
+\contentsline {chapter}{\numberline {7}Zusammenfassung}{67}{chapter.7}
+\contentsline {chapter}{Appendices}{72}{section*.55}
+\contentsline {chapter}{\numberline {A}Auswertungsdetails VAD}{73}{Anhang.1.A}
