@@ -4,9 +4,6 @@ The top-level auxiliary file: /Users/franzanders/Documents/HTWK/Master/5. Semest
 A level-1 auxiliary file: chapters/title_page_1.aux
 A level-1 auxiliary file: chapters/Erklaerung.aux
 A level-1 auxiliary file: chapters/Introduction.aux
-A level-1 auxiliary file: chapters/Foundations.aux
-A level-1 auxiliary file: chapters/Konzept.aux
-A level-1 auxiliary file: chapters/VAD.aux
 A level-1 auxiliary file: chapters/Deduction.aux
 A level-1 auxiliary file: chapters/Visualisation.aux
 The style file: plain.bst
@@ -30,84 +27,45 @@ I was expecting a `,' or a `}'---line 458 of file ../references.bib
  :  note=     "Online erhältlich unter: \url{http://www.eecs.umich.edu/courses/eecs206/archive/spring02/notes.dir/filters1.pdf}, \url{http://www.eecs.umich.edu/courses/eecs206/archive/spring02/notes.dir/filters2.pdf}" 
  :                                                                                                                                                                                                                         und \url{http://www.eecs.umich.edu/courses/eecs206/archive/spring02/notes.dir/filters3.pdf}"
 I'm skipping whatever remains of this entry
-Repeated entry---line 502 of file ../references.bib
- : @book{sprachverarbeitung
- :                         ,
-I'm skipping whatever remains of this entry
-Too many commas in name 1 of "Ivan Hand, Lawrence Noble, Donna Geiss, Laura Wozniak \& Charles Hall" for entry covers
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Monique van Dijk, Josien de Boer, Hans M Koot, Dick Tibboel, Jan Passchier \& Hugo Duivenvoorden" for entry comfort
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Monique van Dijk, Josien de Boer, Hans M Koot, Dick Tibboel, Jan Passchier \& Hugo Duivenvoorden" for entry comfort
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi,Yu Sun and Terri Ashmeade" for entry overview
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi,Yu Sun and Terri Ashmeade" for entry overview
-while executing---line 1049 of file plain.bst
-Name 1 in "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi, Terri Ashmeade, and Yu Sun" has a comma at the end for entry zamziMultimodal
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi, Terri Ashmeade, and Yu Sun" for entry zamziMultimodal
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi, Terri Ashmeade, and Yu Sun" for entry zamziMultimodal
-while executing---line 1049 of file plain.bst
-Warning--empty journal in benade
-Name 1 in "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi, Terri Ashmeade, and Yu Sun" has a comma at the end for entry zamziMultimodal
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi, Terri Ashmeade, and Yu Sun" for entry zamziMultimodal
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi, Terri Ashmeade, and Yu Sun" for entry zamziMultimodal
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi,Yu Sun and Terri Ashmeade" for entry overview
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "Ghada Zamzmi, Chih-Yun Pai, Dmitry Goldgof, Rangachar Kasturi,Yu Sun and Terri Ashmeade" for entry overview
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "Ivan Hand, Lawrence Noble, Donna Geiss, Laura Wozniak \& Charles Hall" for entry covers
-while executing---line 1090 of file plain.bst
-Warning--empty journal in vad_entropie02
-Warning--empty booktitle in vad_Easy
-Too many commas in name 1 of "Monique van Dijk, Josien de Boer, Hans M Koot, Dick Tibboel, Jan Passchier \& Hugo Duivenvoorden" for entry comfort
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "Monique van Dijk, Josien de Boer, Hans M Koot, Dick Tibboel, Jan Passchier \& Hugo Duivenvoorden" for entry comfort
-while executing---line 1090 of file plain.bst
-You've used 53 entries,
+You've used 8 entries,
             2118 wiz_defined-function locations,
-            830 strings with 15677 characters,
-and the built_in function-call counts, 13720 in all, are:
-= -- 1382
-> -- 443
-< -- 5
-+ -- 187
-- -- 130
-* -- 710
-:= -- 2345
-add.period$ -- 194
-call.type$ -- 53
-change.case$ -- 211
+            568 strings with 6161 characters,
+and the built_in function-call counts, 2495 in all, are:
+= -- 268
+> -- 80
+< -- 2
++ -- 32
+- -- 24
+* -- 157
+:= -- 422
+add.period$ -- 33
+call.type$ -- 8
+change.case$ -- 35
 chr.to.int$ -- 0
-cite$ -- 56
-duplicate$ -- 605
-empty$ -- 1249
-format.name$ -- 130
-if$ -- 2913
+cite$ -- 8
+duplicate$ -- 102
+empty$ -- 209
+format.name$ -- 24
+if$ -- 527
 int.to.chr$ -- 0
-int.to.str$ -- 53
-missing$ -- 56
-newline$ -- 299
-num.names$ -- 104
-pop$ -- 272
+int.to.str$ -- 8
+missing$ -- 7
+newline$ -- 50
+num.names$ -- 16
+pop$ -- 24
 preamble$ -- 1
-purify$ -- 172
+purify$ -- 28
 quote$ -- 0
-skip$ -- 396
+skip$ -- 70
 stack$ -- 0
-substring$ -- 664
-swap$ -- 82
-text.length$ -- 5
+substring$ -- 166
+swap$ -- 19
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 188
-warning$ -- 3
-while$ -- 137
-width$ -- 55
-write$ -- 620
-(There were 21 error messages)
+type$ -- 32
+warning$ -- 0
+while$ -- 27
+width$ -- 9
+write$ -- 105
+(There were 4 error messages)

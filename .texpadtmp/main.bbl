@@ -1,34 +1,4 @@
-\begin{thebibliography}{10}
-
-\bibitem{sprachverarbeitung}
-Tobias~Kaufmann Beat~Pfister.
-\newblock {\em Sprachverarbeitung}.
-\newblock Springer, Berlin, 2008.
-
-\bibitem{benade}
-Arthur~H Benade.
-\newblock {Fundamentals of Musical Acoustics}.
-\newblock 1976.
-
-\bibitem{cries}
-Judy Bildner.
-\newblock {\em {CRIES Instrument Assessment Tool of Pain in Neonates}}.
-\newblock City of Hope Pain, 1997.
-\newblock Online unter \url{http://prc.coh.org/pdf/CRIES.pdf}.
-
-\bibitem{stft}
-Richard Brown.
-\newblock The short time fourier transform, 2014.
-\newblock Online erhältlich unter:
-  \url{http://spinlab.wpi.edu/courses/ece503_2014/12-6stft.pdf}.
-
-\bibitem{dan}
-R~Sisto \& Giuseppe~Buonocore Carlo~Bellieni, Franco~Bagnoli.
-\newblock {Cry features reflect pain intensity in term newborns: An alarm
-  threshold}.
-\newblock {\em Pediatric Research}, 5:142--146, 1.
-\newblock Online unter
-  \url{https://www.researchgate.net/publication/297827342_Cry_features_reflect_pain_intensity_in_term_newborns_An_alarm_threshold}.
+\begin{thebibliography}{1}
 
 \bibitem{cohenCry}
 Rami Cohen and Yizhar Lavner.
@@ -38,27 +8,6 @@ Rami Cohen and Yizhar Lavner.
 \newblock Online unter
   \url{https://www.researchgate.net/publication/261116332_Infant_cry_analysis_and_detection}.
 
-\bibitem{learning_cart_dobra}
-Alin Dobra.
-\newblock Introduction to classification and regression, 2005.
-\newblock Online erhältlich unter:
-  \url{https://www.cise.ufl.edu/~adobra/datamining/classif-intro.pdf}.
-
-\bibitem{cryisnoise}
-H.~Hollien \& T~Murry E~Müller.
-\newblock {Perceptual responses to infant crying: identification of cry types}.
-\newblock {\em Journal of Child Language}, 1(1):89--95, 1974.
-\newblock Online unter
-  \url{https://www.cambridge.org/core/journals/journal-of-child-language/article/perceptual-responses-to-infant-crying-identification-of-cry-types/4F0F8088116FCE381851D8D560697A5F}.
-
-\bibitem{bpsn}
-Jan~Hamers Eva~Cignac, Romano~Mueller and Peter Gessler.
-\newblock {Pain assessment in the neonate using the Bernese Pain Scale for
-  Neonates}.
-\newblock {\em Early Human Development}, 78(2):125--131, 2004.
-\newblock Online unter
-  \url{https://www.researchgate.net/publication/8485535_Pain_assessment_in_the_Neonate_using_the_Bernese_Pain_Scale_for_Neonates}.
-
 \bibitem{threeCryTypes}
 Barbara Fuller.
 \newblock {Acoustic Discrimination of three Cry Types}.
@@ -66,108 +15,11 @@ Barbara Fuller.
 \newblock Online erhältlich unter:
   \url{https://www.researchgate.net/publication/21125005_Acoustic_Discrimination_of_Three_Types_of_Infant_Cries}.
 
-\bibitem{statistical_learning}
-Trevor~Hastie Gareth~James, Daniela~Witten and Robert Tibshirani.
-\newblock {\em An Introduction to Statistical Learning}.
-\newblock Springer, 2013.
-
-\bibitem{zamziMultimodal}
-Dmitry Goldgof Rangachar Kasturi Terri~Ashmeade Ghada~Zamzmi, Chih-Yun~Pai and
-  Yu~Sun.
-\newblock {An Approach for Automated Multimodal Analysis of Infants' Pain}.
-\newblock In {\em 23rd International Conference on Pattern Recognition},
-  Cancun, Mexico, 2016.
-
-\bibitem{overview}
-Dmitry Goldgof Rangachar Kasturi Yu~Sun Ghada~Zamzmi, Chih-Yun~Pai and Terri
-  Ashmeade.
-\newblock {Machine-based Multimodal Pain Assessment Tool for Infants: A
-  Review}, 2016.
-\newblock Online unter
-  \url{https://arxiv.org/ftp/arxiv/papers/1607/1607.00331.pdf}.
-
-\bibitem{ricardo_ceps}
-Ricardo Gutierrez-Osuna.
-\newblock {Introduction to Speech Processing}.
-\newblock Online unter \url{http://courses.cs.tamu.edu/rgutier/csce689_s11/}.
-
-\bibitem{nips}
-Health Facts For You.
-\newblock {\em {Using Pediatric Pain Scales Neonatal Infant Pain Scale
-  (NIPS)}}, 2014.
-\newblock Online unter
-  \url{https://www.uwhealth.org/healthfacts/parenting/7711.pdf} und unter
-  \url{https://com-jax-emergency-pami.sites.medinfo.ufl.edu/files/2015/02/Neonatal-Infant-Pain-Scale-NIPS-pain-scale.pdf}.
-
-\bibitem{pat}
-Hodgkinson.
-\newblock {Neonatal Pain Assessment Tool}, 2012.
-\newblock Online unter
-  \url{http://www.rch.org.au/rchcpg/hospital_clinical_guideline_index/Neonatal_Pain_Assessment/#The%20Pain%20Assessment%20Tool}.
-
-\bibitem{cryModel}
-Michael J~Corwin Howard L~Golub.
-\newblock {A Physioacoustic Model of the Infant Cry}.
-\newblock In {\em {Infant Crying - Theoretical and Research Perspectives}},
-  chapter~3, pages 59 -- 82. Plenung, 1985.
-
 \bibitem{PainAssessment03}
 Bonnie~Stevens Huda Huijer Abu-Saad, Gerrie~Bours and Jan Hamers.
 \newblock {Assessment of pain in Neonates}.
 \newblock {\em Seminars in Perinatology}, 2(5):402--416, 1998.
 \newblock Online unter \url{https://www.ncbi.nlm.nih.gov/pubmed/9820565}.
-
-\bibitem{covers}
-Donna Geiss Laura Wozniak \& Charles~Hall Ivan~Hand, Lawrence~Noble.
-\newblock {COVERS Neonatal Pain Scale: Development and Validation}.
-\newblock {\em International Journal of Pediatrics}, 2010, 2010.
-\newblock Online unter
-  \url{https://www.hindawi.com/journals/ijpedi/2010/496719/}.
-
-\bibitem{vad_granada}
-J~Gorriz \& J~Segura J~Ramorez.
-\newblock {Voice Activity Detection. Fundamentals and Speech Recognition System
-  Robustness}.
-\newblock {\em Robust Speech Recongnition and Understanding}, page 460, 2007.
-\newblock Online unter
-  \url{http://cdn.intechopen.com/pdfs/104/InTech-Voice_activity_detection_fundamentals_and_speech_recognition_system_robustness.pdf}.
-
-\bibitem{vad_entropie02}
-Jeih-weih Hung \& Lin-shan~Lee Jia-lin Shen.
-\newblock {Robust Entropy-based Endpoint Detection for Speech Recognition in
-  Noisy Environments}.
-\newblock 1998.
-\newblock Online unter
-  \url{https://www.researchgate.net/publication/221489354_Robust_entropy-based_endpoint_detection_for_speech_recognition_in_noisy_environments}.
-
-\bibitem{vad_kola}
-Carol Espy-Wilson \& Tarun~Pruthi Jonathan~Kola.
-\newblock {Voice Activity Detection}.
-\newblock {\em MERIT BIEN}, 2011.
-\newblock Online unter
-  \url{http://www.ece.umd.edu/merit/archives/merit2011/merit_fair11_reports/report_Kola.pdf}.
-
-\bibitem{PainAssessment02}
-Bonnie J.~Stevens K.~J. S.~Anand and Patrick~J. McGrath.
-\newblock {\em {Pain in Neonates and Infants}}.
-\newblock Elsevier, 2007.
-
-\bibitem{vad_entropy}
-Kim Weaver \& Fathi M.~Salam Khurram~Waheed.
-\newblock {A robust Algorithm for detecting speech segments using an entropic
-  contrast}.
-\newblock {\em IEEE}, 2003.
-\newblock Online unter \url{http://ieeexplore.ieee.org/document/1187039/}.
-
-\bibitem{machine_kubat}
-Miroslav Kubat.
-\newblock {\em An Introduction to Machine Learning}.
-\newblock Springer, 2015.
-
-\bibitem{crygroup}
-Barry Lester and Zachariah Boukydis.
-\newblock {\em Infant Crying: Theoretical and Research Perspectives}.
-\newblock Springer, 1985.
 
 \bibitem{parentalPerception}
 A.~Rebecca~Neal Linda L.~LaGasse and Barry~M. Lester.
@@ -176,69 +28,6 @@ A.~Rebecca~Neal Linda L.~LaGasse and Barry~M. Lester.
 \newblock {\em Mental retardation and developmental disabilities},
   11(1):83--93, 2005.
 \newblock Online unter \url{https://www.ncbi.nlm.nih.gov/pubmed/15856439}.
-
-\bibitem{sens-and_spec}
-Tze-Wey Loong.
-\newblock {Understanding sensitivity and specificity with the right side of the
-  brain}.
-\newblock {\em BMJ}, 327(7417), 2003.
-\newblock Online unter
-  \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC200804/}.
-
-\bibitem{speechProduction}
-Michael Lutter.
-\newblock Speech production, 2015.
-\newblock Online erhältlich unter:
-  \url{http://recognize-speech.com/speech/speech-production}.
-
-\bibitem{vad_Easy}
-M~M~Homayounpour M~H~Moattar.
-\newblock {A simple but efficient real-time Voice Activity Detection
-  Algorithm}.
-\newblock Signal Processing Conference, IEEE, August 2009.
-\newblock Online unter
-  \url{http://ieeexplore.ieee.org/document/7077834/?arnumber=7077834&tag=1}.
-
-\bibitem{speechAcoustics}
-Robert Mannell.
-\newblock Acoustic theory of speech production, 2015.
-\newblock Online erhältlich unter:
-  \url{http://clas.mq.edu.au/speech/acoustics/frequency/acoustic_theory.html}.
-
-\bibitem{machine_marsland}
-Stephen Marsland.
-\newblock {\em Machine Learning - An Algorithmic Perspective}.
-\newblock Chapman \& Hall / CRC, 2009.
-
-\bibitem{machine_mitchell}
-Tom~M Mitchell.
-\newblock {\em Machine Learning}.
-\newblock WCB McGraw-Hill, 1997.
-
-\bibitem{comfort}
-Hans M Koot Dick Tibboel Jan Passchier \& Hugo~Duivenvoorden Monique~van Dijk,
-  Josien de~Boer.
-\newblock {The reliability and validity of the COMFORT scale as a postoperative
-  pain instrument in 0 to 3-year-old infants}.
-\newblock {\em Pain}, 84(2):367–--377, 2000.
-\newblock Online unter
-  \url{http://www.sciencedirect.com/science/article/pii/S0304395999002390} und
-  unter.
-
-\bibitem{painInNeonates}
-Sinno~Simons Monique~van Dijk and Dick Tibboel.
-\newblock {Pain assessment in neonates}.
-\newblock {\em Paediatric and Perinatal Drug Therapy}, 6(2):97--103, 2004.
-\newblock Online unter
-  \url{http://www.sciencedirect.com/science/article/pii/S0304395999002390}.
-
-\bibitem{dspMichigan}
-D~L Neuhoff.
-\newblock {\em Signal and Systems I - EECS 206 Laboratory}.
-\newblock The University of Michigan, 2002.
-\newblock Online erhältlich unter:
-  \url{http://www.eecs.umich.edu/courses/eecs206/archive/spring02/} abgerufen
-  am 11. Januar 2016.
 
 \bibitem{25years}
 Katarina~Michelsson Ole Wasz-Hockert and John Lind.
@@ -252,88 +41,11 @@ J~L~Mathew P~J~Mathew.
 \newblock {\em Postgrad Med J}, 79:438--443, 2003.
 \newblock Online unter \url{http://pmj.bmj.com/content/79/934/438.full}.
 
-\bibitem{npass}
-Steven~Creech Patricia~Hummel, Mary~Puchalski and Marc Weiss.
-\newblock {N-PASS: Neonatal Pain, Agitation and Sedation Scale – Reliability
-  and Validity}.
-\newblock {\em Pediatrics/Neonatology}, 2(6), 2004.
-\newblock Online unter \url{http://www.anestesiarianimazione.com/2004/06c.asp}.
-
 \bibitem{rythmic}
 Susan Parker-Price \& Ronald~Barr Philip~Zeskind.
 \newblock {Rythmic organization of the Sound of Infant Cry}.
 \newblock {\em Dev Psychobiol}, 26(6):321--333, 1993.
 \newblock Online unter \url{https://www.ncbi.nlm.nih.gov/pubmed/8119482}.
-
-\bibitem{palEmotion}
-Ananth N.~Iyer Pritam~Pal and Robert~E. Yantorno.
-\newblock {Emotion detection from infant facial experessions and cries}.
-\newblock In {\em Acoustics, Speech and Signal Processing}. IEEE, 2006.
-
-\bibitem{lod}
-R~Ward \& C~Laszlo Qiaobing~Xie.
-\newblock {Automatic Assessment of Infants Levels-of-Distress from the Cry
-  Signals}.
-\newblock {\em IEEE Transanctions on Speech and Audio Processing},
-  4(4):253--265, 1996.
-\newblock Online unter \url{http://ieeexplore.ieee.org/document/506929/}.
-
-\bibitem{signal}
-Brian Hopkins \& James~Green Ronald~Barr.
-\newblock {\em {Crying as a Sign, a Symptom, and a Signal}}.
-\newblock Mac Keith Press, 2000.
-
-\bibitem{cepstrumPitchTranslation}
-Juan Ignacio Godino-Llorente Ruben~Fraile.
-\newblock {Cepstral peak prominence: A comprehensive analysis}.
-\newblock {\em Biomedical Signal Processing and Control}, 14(1):42--54, 2014.
-\newblock Online unter
-  \url{https://www.researchgate.net/publication/264084923_Cepstral_peak_prominence_A_comprehensive_analysis}.
-
-\bibitem{flacc}
-J~R Shayevitz \& Shobha~Malviya Sandra~Merkel, Terri Voepel-Lewis.
-\newblock {The FLACC: A Behavioral Scale for Scoring Postoperative Pain in
-  Young Children}.
-\newblock {\em Pediatric Nursing}, 23(3):293--7, 1996.
-\newblock Online unter
-  \url{https://www.researchgate.net/publication/13998379_The_FLACC_A_Behavioral_Scale_for_Scoring_Postoperative_Pain_in_Young_Children}.
-
-\bibitem{vad_ceps}
-Andreas~Spanias Sassan~Ahmadi.
-\newblock {Cepstrum-Based Pitch Detection Using a New Statistical V/UV
-  Classification Algorithm}.
-\newblock {\em IEEE Transactions on Speech and Audio Detection}, 7(3):333--338,
-  1999.
-\newblock Online unter \url{http://ieeexplore.ieee.org/document/759042/}.
-
-\bibitem{juliusSmith}
-Julius Smith.
-\newblock {\em {Spectral Audio Signal Processing}}.
-\newblock Center for Computer Research in Music and Acoustics (CCRMA), 1993.
-\newblock Online unter
-  \url{https://www.dsprelated.com/freebooks/sasp/Short_Time_Fourier_Transform.html}.
-
-\bibitem{dspGuide}
-Steven~W. Smith.
-\newblock {\em The Scientist and Engineer's Guide to Digital Signal
-  Processing}.
-\newblock California Technical Publishing, 1999.
-\newblock Online erhältlich unter: \url{http://www.dspguide.com/pdfbook.htm}.
-
-\bibitem{comparisonOfLearning}
-Henning Reetz \& Carla~Wegener Tanja~Fuhr.
-\newblock {Comparison of Supervised-learning Models for Infant Cry
-  Classification}.
-\newblock {\em InternatIonAl Journal of HealtH Professions}, 2015.
-\newblock Online unter
-  \url{https://www.degruyter.com/view/j/ijhp.2015.2.issue-1/ijhp-2015-0005/ijhp-2015-0005.xml}.
-
-\bibitem{vad_Lisboa}
-Sabine Deligne \& Peder~Olsen Trausti~Kristjansson.
-\newblock {Voicing Features for Robust Speech Detection}.
-\newblock In {\em Interspeech Lisboa}, September 2005.
-\newblock Online unter
-  \url{http://papers.traustikristjansson.info/wp-content/uploads/2011/07/KristjanssonRobustVoicingEurospeech2005.pdf}.
 
 \bibitem{cry_thesis}
 Gyorgy~Ivan Varallyay.
@@ -341,17 +53,5 @@ Gyorgy~Ivan Varallyay.
 \newblock PhD thesis, Budapest University of Technology and Economics, 2009.
 \newblock Online erhältlich unter:
   \url{https://pdfs.semanticscholar.org/5c38/b368dc71d67cbfabc3077a50536b086d8eec.pdf}.
-
-\bibitem{wolff}
-P~H Wolff.
-\newblock {The role fo biological rhythms in early psychological development}.
-\newblock {\em Bulletin of the Menninger Clinic}, 31(1):197--218, 1967.
-
-\bibitem{class_abdulaziz}
-Syed~Ahmad Yousra~Abdulaziz, Sharrifah~Mumtazah.
-\newblock {Infant Cry Recognition System: A Comparison of System Performance
-  based on Mel Frequency and Linear Prediction Coefficients}.
-\newblock In {\em Information Retrieval \& Knowledge Management}, 2010.
-\newblock Online unter \url{http://ieeexplore.ieee.org/document/5466907/}.
 
 \end{thebibliography}
