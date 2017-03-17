@@ -1,9 +1,14 @@
 \select@language {ngerman}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Fiktive Pain Scale\relax }}{13}{table.caption.11}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Neonatal Infant Pain Scale (NIPS) \cite {nips}\relax }}{4}{table.caption.5}
+\contentsline {table}{\numberline {2.2}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber Pain-Scales. \cite [S. 98 ]{painInNeonates} \cite {flacc} \cite {npass} \cite {bpsn} \cite {cries} \cite {covers} \cite {pat} \cite {dan} \cite {comfort} \cite {bpsn} \relax }}{6}{table.2.2}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Beispieldatensatz D f\IeC {\"u}r die Kassfikation mit ID3\relax }}{23}{table.caption.20}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Fiktive Pain Scales zur Erl\IeC {\"a}uterung der Visualisierung\relax }}{16}{table.caption.14}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Fiktive Pain Scale\relax }}{38}{table.caption.30}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Fiktive Pain Scales zur Erl\IeC {\"a}uterung der Visualisierung\relax }}{41}{table.caption.33}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Fixpunkte als Basis der Farbpaletten\relax }}{44}{table.caption.35}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Klassifikationsgenauigkeiten der durch den REPTree entworfenen Modelle\relax }}{20}{table.caption.17}
+\contentsline {table}{\numberline {A.1}{\ignorespaces Klassifikationsgenauigkeiten der durch den REPTree entworfenen Modelle\relax }}{50}{table.caption.39}

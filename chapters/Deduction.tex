@@ -276,7 +276,7 @@ Das vorgestellte Prinzip wird daher erweitert, indem ein Aktualisierungsinterval
  \item Die feste Bindung des Aktualisierungsintervalls an die verwendete Pain Scale. Die CRIES-Scale ist beispielsweise für das post-operative Monitoring gedacht und benötigt somit möglicherweise weniger häufige Aktualisierungen als der DAN, welcher zur Schmerzdiagnostik während einer Operation eingesetzt werden kann (siehe Tabelle \ref{tab:painscores}). Da die Pain Scales nicht für die kontinuierliche Schmerzdiagnostik ausgelegt sind, lässt sich aus den für einige Pain Scales eventuell vorgeschriebenen Beobachtungsintervallen kein Aktualisierungsintevall für ein kontinuierliches System argumentieren.
  \end{itemize}
  
- Wenn $t_{act}$ als zeitlicher Wert definiert wird, kann es passieren, dass eine Aktualisierung in einem offenen Segment durchgeführt wird, während gerade eine neue Cry-Unit markiert wird und noch nicht abgeschlossen wurde. Da die Funktion $PS_{Scale}: cs \mapsto \mathbb{N}$ nur für Cry-Segmente definiert wurde, die vollständige Cry-Units enthalten, wird diese \glqq halbe Cry-Unit\grqq{} nicht mit zur Ableitung der Pain Score verwendet. Der Hintergrund für diese Entscheidung ist, dass bestimmte Funktionen zum Ableiten der Features für das Segment ansonsten fehlerhafte Ergebnisse liefern können. Die Funktion $PS$ wird folglich auf das \emph{Subsegment} $cs_{sub}$ angewandt, welches alle Cry-Units des möglicherweise noch offenen Segmentes $cs$ beinhaltet, die zum Aktualisierungszeitpunkt $t$ vollständig beendet wurden. Der Endzeitpunkt des Subsegmentes wird, wie bei herkömmlichen Segmenten, auf den Endzeitpunkt der letzten vollständigen Cry-Unit im Subsegment gelegt.
+ Wenn $t_{act}$ als zeitlicher Wert definiert wird, kann es passieren, dass eine Aktualisierung in einem offenen Segment durchgeführt wird, während gerade eine neue Cry-Unit markiert wird und noch nicht abgeschlossen wurde. Da die Funktion $PS_{Scale}: cs \mapsto \mathbb{N}$ nur für Cry-Segmente definiert wurde, die vollständige Cry-Units enthalten, wird diese \glqq halbe Cry-Unit\grqq{} nicht mit zur Ableitung der Pain Score verwendet. Der Hintergrund für diese Entscheidung ist, dass bestimmte Funktionen zum Ableiten der Features für das Segment ansonsten fehlerhafte Ergebnisse liefern können. Die Funktion $PS$ wird folglich auf das \emph{Subsegment} $cs_{sub}$ angewandt, welches alle Cry-Units des möglicherweise noch offenen Segmentes $cs$ beinhaltet, die zum Aktualisierungszeitpunkt $t$ vollständig begonnen und beendet wurden. Der Endzeitpunkt des Subsegmentes wird, wie bei herkömmlichen Segmenten, auf den Endzeitpunkt der letzten vollständigen Cry-Unit im Subsegment gelegt.
   
  \subsubsection{Beobachtungszeitraum}
 
@@ -293,45 +293,48 @@ Der Beobachtungszeitraum $t_{obs}$ schränkt somit die Länge des Subsegmentes $
 
 \textbf{Beispiel} \noindent\rule{0.83\linewidth}{0.3pt}\\
 
-Die in diesem Kapitel vorgestellten Methoden zur Ableitung von Pain Scores werden anhand eines Beispiels verdeutlicht. Tabelle \ref{tab:fiction_scale} definiert eine fiktive Pain Scale. Es werden sowohl die subjektiv beschreibenden Kriterien angegeben, als auch die objektiv messbaren Kriterien, die mit einer der in Kapitel \ref{sec:deduction} beschriebenen Strategien gefunden wurden. In diesem Fall hängt die Pain Score von der Durchschnittslänge der Cry-Units des Segmentes $mean_{cu}(cs)$ ab (giehe Gleichung \ref{eq:featuresOfCryUnits}).
+Die in diesem Kapitel vorgestellten Methoden zur Ableitung von Pain Scores werden anhand eines Beispiels verdeutlicht. Tabelle \ref{tab:fiction_scale} definiert eine fiktive Pain Scale. Es werden die für Pain Scales typischen, subjektiv behafteten Worte zum Scoring verwendet.
+Es werden sowohl die subjektiv beschreibenden Kriterien angegeben, als auch die objektiv messbaren Kriterien, die mit einer  gefunden wurden. In diesem Fall hängt die Pain Score von der Durchschnittslänge der Cry-Units des Segmentes $mean_{cu}(cs)$ ab (giehe Gleichung \ref{eq:featuresOfCryUnits}).
 
 \begin{table}[h]
 \centering
 \caption{Fiktive Pain Scale}
 \label{tab:fiction_scale}
-\begin{tabular}{@{}lllll@{}}
+\begin{tabular}{@{}llll@{}}
 \toprule
-Name                             &              & 0 Pointe          & 1 Punkte                          & 2 Punkte                          \\ \midrule
-\multirow{2}{*}{\glqq Fiction Scale\grqq} & Subj. Krit.: & Kein Weinen       & normales Weinen                   & energisches Weinen                \\
-                                 & Obj. Krit.:  & Außerhalb Segment & $mean_{cu}(cs) < \SI{1}{\second}$ & $mean_{cu}(cs) \geq \SI{1}{\second}$ \\ \bottomrule 
+              & 0 Punkte    & 1 Punkt         & 2 Punkte       \\ \midrule
+Fiction Scale & kein oder sehr wenig Weinen & normales Weinen & starkes Weinen \\ \bottomrule
 \end{tabular}
 \end{table}
 
-Gleichung \ref{eq:ps_fiction} definiert die Funktion $PS_{Fiction}$ dieser Pain Scale.
+Mit Hilfe der in Kapitel \ref{sec:deduction} beschriebenen Strategien wurde die Funktion $PS_{Fiction}$ ermittelt, definiert in Gleichung \ref{eq:ps_fiction}, welche die Ableitung des Schmerz Score für eine Cry-Segment mit Hilfe objektiv messbarer Features erlaubt.
 
 \begin{equation}
 PS_{Fiction}(cs) = \begin{cases}
+ 0 \quad ,  \text{wenn } mean_{cu}(cs) < \SI{0.3}{\second} \\
  1 \quad ,  \text{wenn } mean_{cu}(cs) < \SI{1}{\second} \\
- 2 \quad ,  \text{sonst }
+ 2 \quad ,  \text{wenn } mean_{cu}(cs) \geq \SI{1}{\second}
  \end{cases}	
  \label{eq:ps_fiction}
 \end{equation}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{bilder/regression_score_example04.png}
+	\caption{Beispiel für die Ableitung von Pain Scores für ein Signal nach einer fiktiven Pain Scale ohne Beobachtungszeitraum oder Aktualisierungsintervall}
+	\label{img:regression_score_example02}
+\end{figure}
 
-Abbildung \ref{img:regression_score_example01} zeigt ein Beispielsignal, für das Pain Scores nach dieser Pain Scale abgeleitet werden. In dem Signal werden die stimmhaften Signalbereiche schwarz und das Hintergrundrauschen grau dargestellt. Es sind insgesamt 10 Cry-Units zu erkennen. Die ersten fünf Cry-Units haben jeweils eine Länge von \SI{2.25}{\second}, die letzten fünf Cry-Units eine jeweilige Länge von \SI{0.75}{\second}. Das Signal wurde nach der in Kapitel \ref{sec:segmenting} beschriebenen Methode segmentiert mit $t_s = \SI{5}{\second}$ und so alle 10 Cry-Units zu einem Segment zusammengefasst. Das Segment erstreckt sich von Sekunde $10$ bis Sekunde $37.5$. Für die Bereiche, die außerhalb des Segmentes liegen, wird implizit eine Pain Score von 0 festgelegt. Für das Segment wurde eine durchschnittliche Länge der Cry-Units von $mean_{cu}(cs) = \SI{1.5}{\second}$ gemessen und dem zufolge eine Pain Score von 2 abgeleitet. In diesem Fall wurde ohne Beobachtungs- und Aktualisierungsintervall gearbeitet. Wäre die Analyse also kontinuierlich vorgenommen worden, so wäre nach Feststellung der ersten Cry-Unit das Segment eröffnet, nach Überschreitung der maximal zulässigen Stille von $t_s = \SI{5}{\second}$ nach der 10. Cry-Unit das Segment geschlossen, und daraufhin $PS_{Fiction}(cs) = 2$ berechnet worden.
+
+Abbildung \ref{img:regression_score_example01} zeigt ein Beispielsignal, für das Pain Scores nach dieser Pain Scale abgeleitet werden. In dem Signal werden die stimmhaften Signalbereiche schwarz und das Hintergrundrauschen grau dargestellt. Es sind insgesamt 10 Cry-Units zu erkennen. Die ersten fünf Cry-Units haben jeweils eine Länge von \SI{2.25}{\second}, die letzten fünf Cry-Units eine jeweilige Länge von \SI{0.75}{\second}. Das Signal wurde nach der in Kapitel \ref{sec:segmenting} beschriebenen Methode segmentiert mit $t_s = \SI{5}{\second}$ und so alle 10 Cry-Units zu einem Segment zusammengefasst. Das Segment erstreckt sich von Sekunde $10$ bis Sekunde $37.5$. Für das Segment wurde eine durchschnittliche Länge der Cry-Units von $mean_{cu}(cs) = \SI{1.5}{\second}$ gemessen und dem zufolge eine Pain Score von 2 abgeleitet. In diesem Fall wurde ohne Beobachtungs- und Aktualisierungsintervall gearbeitet. Wäre die Analyse also kontinuierlich vorgenommen worden, so wäre nach Feststellung der ersten Cry-Unit das Segment eröffnet, nach Überschreitung der maximal zulässigen Stille von $t_s = \SI{5}{\second}$ nach der 10. Cry-Unit das Segment geschlossen, und daraufhin $PS_{Fiction}(cs) = 2$ berechnet worden.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/regression_score_example01.png}
-	\caption{Beispiel für die Ableitung von Pain Scores für ein Signal nach einer fiktiven Pain Scale ohne Beobachtungszeitraum oder Aktualisierungsintervall}
-	\label{img:regression_score_example01}
+	\includegraphics[width=1\textwidth]{bilder/regression_score_example05.png}
+	\caption{Beispiel für die Ableitung von Pain Scores für ein Signal nach einer fiktiven Pain Scale mit $t_{act} = \SI{7.5}{\second}$ und $t_{obs} = \SI{15}{\second}$}
+	\label{img:regression_score_example02}
 \end{figure}
 
 Abbildung \ref{img:regression_score_example03} zeigt die Ableitung der Schmerz Scores, wenn zusätzlich ein Aktualisierungsintervall von \SI{7.5}{\second} und ein Beobachtungszeitraum von \SI{15}{\second} gewählt wird. Nach dem das Segment durch die Cry-Unit an Sekunde 10 eröffnet wurde, werden Aktualisierungen zu den Zeitpunkten $t = \SI{17.5}{\second}, \SI{25}{\second}, \SI{32.5}{\second}$ und \SI{40}{\second} durchgeführt, verdeutlicht durch die kleinen, roten Pfeile in der Abbildung. Wie zu sehen ist, wird bei jeder Aktualisierung innerhalb des Beobachtungszeitraumes ein Subsegment gebildet, für das Subsegment die Features errechnet und die Pain Score abgeleitet. Der Anfangszeitpunkt jedes Subsegmentes ist der Anfang der erste Cry-Unit innerhalb des jeweiligen Beobachtungszeitraums, und das Ende des Subsegmentes das Ende letzten Cry-Unit im jeweiligen Beobachtungszeitraum. Beispielsweise erstreckt sich das bei der 3. Aktualisierung der Beobachtungszeitraum von $17.5 - \SI{32.5}{\second}$, das Subsegment jedoch von $19 - \SI{32}{\second}$ aufgrund der Lage der Cry-Units. Durch die Verwendung des Beobachtungs- und Aktualisierungsintervalls wird erkennbar, dass in diesem Beispiel der Schmerzgrad innerhalb des Segmentes nach hinten hin abnimmt.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{bilder/regression_score_example03.png}
-	\caption{Beispiel für die Ableitung von Pain Scores für ein Signal nach einer fiktiven Pain Scale mit $t_{act} = \SI{7.5}{\second}$ und $t_{obs} = \SI{15}{\second}$}
-	\label{img:regression_score_example03}
-\end{figure}
+
