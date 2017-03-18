@@ -10,6 +10,12 @@ Arthur~H Benade.
 \newblock {Fundamentals of Musical Acoustics}.
 \newblock 1976.
 
+\bibitem{bigman}
+Alex Bigman.
+\newblock 6 principles of visual hierarchy for designers, 2014.
+\newblock Online erhältlich unter:
+  \url{https://en.99designs.de/blog/tips/6-principles-of-visual-hierarchy/}.
+
 \bibitem{cries}
 Judy Bildner.
 \newblock {\em {CRIES Instrument Assessment Tool of Pain in Neonates}}.
@@ -117,6 +123,12 @@ Donna Geiss Laura Wozniak \& Charles~Hall Ivan~Hand, Lawrence~Noble.
 \newblock Online unter
   \url{https://www.hindawi.com/journals/ijpedi/2010/496719/}.
 
+\bibitem{johnstone}
+David Johnstone.
+\newblock Lch and lab colour and gradient picker, 2014.
+\newblock Online erhältlich unter:
+  \url{https://en.99designs.de/blog/tips/6-principles-of-visual-hierarchy/}.
+
 \bibitem{PainAssessment02}
 Bonnie J.~Stevens K.~J. S.~Anand and Patrick~J. McGrath.
 \newblock {\em {Pain in Neonates and Infants}}.
@@ -164,6 +176,13 @@ Robert Mannell.
 Stephen Marsland.
 \newblock {\em Machine Learning - An Algorithmic Perspective}.
 \newblock Chapman \& Hall / CRC, 2009.
+
+\bibitem{palettes}
+Jarke J van~Wijk Martijn~Wijffelaars, Roel~Vliegen and Erik-Jan van~der Linden.
+\newblock {Generating Color Palettes using Intuitive Parameters}.
+\newblock {\em Computer Graphics Forum}, 40(3):743--750, 2008.
+\newblock Online erhältlich unter:
+  \url{http://onlinelibrary.wiley.com/doi/10.1111/j.1467-8659.2008.01203.x/abstract}.
 
 \bibitem{machine_mitchell}
 Tom~M Mitchell.

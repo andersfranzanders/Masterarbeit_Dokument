@@ -24,7 +24,7 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Beispiel f\IeC {\"u}r die Ableitung von Pain Scores f\IeC {\"u}r ein Signal nach einer fiktiven Pain Scale mit $t_{act} = \SI {7.5}{\second }$ und $t_{obs} = \SI {15}{\second }$\relax }}{39}{figure.caption.32}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Oben: Ein Beispielsignal, sowie zwei Segmente, die mit $t_s = \SI {10}{\second }$ gefunden wurden. Darunter: Pain Scores, die f\IeC {\"u}r die beiden Segmente berechnet wurden. Darunter: Schematische Darstellung des Signals als Regionen. Unten: Scores der Regionen.\relax }}{42}{figure.caption.34}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Erstellte Farbpaletten mit 2, 3, 4 und 5 Farben inklusive der zugeh\IeC {\"o}rigen RGB-Koordinaten im Hex-Code.\relax }}{44}{figure.caption.36}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Erstellte Farbpaletten mit zwei bis sieben Farben inklusive der zugeh\IeC {\"o}rigen RGB-Koordinaten im Hex-Code.\relax }}{44}{figure.caption.36}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivit\IeC {\"a}t, Spezifit\IeC {\"a}t und Genauigkeit der beiden besten Modelle\relax }}{51}{figure.caption.40}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivit\IeC {\"a}t, Spezifit\IeC {\"a}t und Genauigkeit der beiden besten Modelle\relax }}{53}{figure.caption.41}

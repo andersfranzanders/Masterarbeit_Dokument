@@ -53,45 +53,45 @@ Too many commas in name 1 of "Monique van Dijk, Josien de Boer, Hans M Koot, Dic
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Monique van Dijk, Josien de Boer, Hans M Koot, Dick Tibboel, Jan Passchier \& Hugo Duivenvoorden" for entry comfort
 while executing---line 1090 of file plain.bst
-You've used 41 entries,
+You've used 44 entries,
             2118 wiz_defined-function locations,
-            757 strings with 12556 characters,
-and the built_in function-call counts, 10685 in all, are:
-= -- 1078
-> -- 347
+            771 strings with 13070 characters,
+and the built_in function-call counts, 11439 in all, are:
+= -- 1153
+> -- 374
 < -- 4
-+ -- 147
-- -- 102
-* -- 566
-:= -- 1817
-add.period$ -- 147
-call.type$ -- 41
-change.case$ -- 161
++ -- 158
+- -- 110
+* -- 604
+:= -- 1942
+add.period$ -- 157
+call.type$ -- 44
+change.case$ -- 174
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 456
-empty$ -- 970
-format.name$ -- 102
-if$ -- 2265
+cite$ -- 45
+duplicate$ -- 481
+empty$ -- 1041
+format.name$ -- 110
+if$ -- 2425
 int.to.chr$ -- 0
-int.to.str$ -- 41
-missing$ -- 44
-newline$ -- 229
-num.names$ -- 80
-pop$ -- 214
+int.to.str$ -- 44
+missing$ -- 45
+newline$ -- 245
+num.names$ -- 86
+pop$ -- 234
 preamble$ -- 1
-purify$ -- 134
+purify$ -- 144
 quote$ -- 0
-skip$ -- 306
+skip$ -- 328
 stack$ -- 0
-substring$ -- 558
-swap$ -- 61
+substring$ -- 598
+swap$ -- 64
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 140
+type$ -- 152
 warning$ -- 1
-while$ -- 109
-width$ -- 43
-write$ -- 475
+while$ -- 117
+width$ -- 46
+write$ -- 508
 (There were 15 error messages)

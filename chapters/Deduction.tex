@@ -258,7 +258,7 @@ Bei allen vorgestellten Features handelt es sich, nach dem Vorbild der in Kapite
 \subsection{Ableitung der Pain-Score}
 \label{sec:regressionPainScore}
 
-Mathematisch wird das Ableitung einer Pain Score als Funktion $PS_{Scale}: cs \mapsto \mathbb{N}$ definiert, welche eine Cry-Segment $cs$ unter Verwendung der Pain-\emph{Scale} auf einen Pain-Score $\mathbb{N}$ abbildet. Der konkrete Inhalt der Funktion ist für die entsprechende Pain Scale mit dem in diesem Kapitel beschriebenen Vorgehen zu ermitteln. Die Ableitung genau einer Pain Score für ein Cry-Segment stellt den einfachsten Fall dar. Dies ist für bestimmte Anwendungsfälle eventuell nicht ausreichend: 
+Mathematisch wird die Ableitung einer Pain Score als Funktion $PS_{Scale}: CS \mapsto S_{Scale}$ definiert, welche eine Cry-Segment $cs \in CS$ unter Verwendung der Pain-\emph{Scale} auf einen Pain Score $s \in S_{Scale}$ abbildet. Die Menge der Pain Scores $S_{Scale}$ ist abhängig von der verwendeten Pain Scale. Es ist zu beachten, das selbst, wenn zwei Pain Scales einen Score von 2 enthalten, diese 2 \emph{nicht} zwingendermaßen auf den selben Schmerzgrad hinweist. Der konkrete Inhalt der Funktion ist für die entsprechende Pain Scale mit dem in diesem Kapitel beschriebenen Vorgehen zu ermitteln. Die Ableitung genau einer Pain Score für ein Cry-Segment stellt den einfachsten Fall dar. Dies ist für bestimmte Anwendungsfälle eventuell nicht ausreichend: 
 \begin{enumerate}
 \item Die Score kann erst nach der Beendigung eines Segmentes abgeleitet werden, was für einigen Kontexte möglicherweise zu spät ist. Besonders die Schmerzdiagnostik während Schmerzverursachenden Prozeduren kann das häufigere \glqq Aktualisieren\grqq der Schmerzscore notwendig machen.
 \item Falls der Schmerz innerhalb eines Segmentes stark ab- oder zunimmt, ist dieser Verlauf nicht erkennbar. Es würde lediglich der \glqq durchschnittliche Schmerz\grqq{} des Segmentes abgeleitet werden.
@@ -294,7 +294,6 @@ Der Beobachtungszeitraum $t_{obs}$ schränkt somit die Länge des Subsegmentes $
 \textbf{Beispiel} \noindent\rule{0.83\linewidth}{0.3pt}\\
 
 Die in diesem Kapitel vorgestellten Methoden zur Ableitung von Pain Scores werden anhand eines Beispiels verdeutlicht. Tabelle \ref{tab:fiction_scale} definiert eine fiktive Pain Scale. Es werden die für Pain Scales typischen, subjektiv behafteten Worte zum Scoring verwendet.
-Es werden sowohl die subjektiv beschreibenden Kriterien angegeben, als auch die objektiv messbaren Kriterien, die mit einer  gefunden wurden. In diesem Fall hängt die Pain Score von der Durchschnittslänge der Cry-Units des Segmentes $mean_{cu}(cs)$ ab (giehe Gleichung \ref{eq:featuresOfCryUnits}).
 
 \begin{table}[h]
 \centering
@@ -307,7 +306,7 @@ Fiction Scale & kein oder sehr wenig Weinen & normales Weinen & starkes Weinen \
 \end{tabular}
 \end{table}
 
-Mit Hilfe der in Kapitel \ref{sec:deduction} beschriebenen Strategien wurde die Funktion $PS_{Fiction}$ ermittelt, definiert in Gleichung \ref{eq:ps_fiction}, welche die Ableitung des Schmerz Score für eine Cry-Segment mit Hilfe objektiv messbarer Features erlaubt.
+Mit Hilfe der in Kapitel \ref{sec:deduction} beschriebenen Strategien wurde die Funktion $PS_{Fiction}: CS \mapsto \{0,1,2\}$ ermittelt, definiert in Gleichung \ref{eq:ps_fiction}. Sie erlaubt die Ableitung des Schmerz Score für eine Cry-Segment mit Hilfe objektiv messbarer Features.
 
 \begin{equation}
 PS_{Fiction}(cs) = \begin{cases}
