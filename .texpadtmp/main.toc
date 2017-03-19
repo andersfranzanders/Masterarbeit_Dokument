@@ -1,30 +1,14 @@
 \select@language {ngerman}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Schmerz und Weinen bei Neugeborenen aus medizinischer Sicht}{3}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Pain Scales}{3}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Weinen bei Neugeborenen}{6}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}Signalverarbeitung}{7}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Grundlegende Definitionen}{8}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Statistische Merkmale}{8}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Fehlersignale}{9}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Kurzzeit-Fourier-Transformation}{10}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Akustische Modellierung der menschlichen Stimme}{12}{subsection.2.2.5}
-\contentsline {section}{\numberline {2.3}Schreiforschung}{17}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Phyisio-Akustische Modellierung des Weinens}{18}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Diskussion}{20}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Klassifizierung und Regression}{21}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}ID3 und C4.5}{23}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{26}{subsection.2.4.2}
-\contentsline {chapter}{\numberline {3}Ableitung der Schmerz Score}{28}{chapter.3}
-\contentsline {section}{\numberline {3.1}Segmentierung}{28}{section.3.1}
-\contentsline {section}{\numberline {3.2}Extrahierung von Eigenschaften und Ableitung der Schmerzscore}{31}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Extrahierung von Eigenschaften}{33}{subsection.3.2.1}
-\contentsline {subsubsection}{\nonumberline Features des Zeitbereiches}{33}{section*.25}
-\contentsline {subsection}{\numberline {3.2.2}Ableitung der Pain-Score}{36}{subsection.3.2.2}
-\contentsline {subsubsection}{\nonumberline Aktualisierungsintervall}{37}{section*.28}
-\contentsline {subsubsection}{\nonumberline Beobachtungszeitraum}{38}{section*.29}
-\contentsline {chapter}{\numberline {4}Visualisierung}{41}{chapter.4}
-\contentsline {chapter}{\numberline {5}Zusammenfassung}{46}{chapter.5}
-\contentsline {chapter}{Appendices}{51}{section*.39}
-\contentsline {chapter}{\numberline {A}Auswertungsdetails VAD}{52}{Anhang.1.A}
+\contentsline {chapter}{\numberline {2}Ableitung der Schmerz Score}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Segmentierung}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Extrahierung von Eigenschaften und Ableitung der Schmerzscore}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Extrahierung von Eigenschaften}{8}{subsection.2.2.1}
+\contentsline {subsubsection}{\nonumberline Features des Zeitbereiches}{8}{section*.6}
+\contentsline {subsection}{\numberline {2.2.2}Ableitung der Pain-Score}{11}{subsection.2.2.2}
+\contentsline {subsubsection}{\nonumberline Aktualisierungsintervall}{12}{section*.9}
+\contentsline {subsubsection}{\nonumberline Beobachtungszeitraum}{13}{section*.10}
+\contentsline {chapter}{\numberline {3}Visualisierung}{16}{chapter.3}
+\contentsline {chapter}{\numberline {4}Zusammenfassung}{23}{chapter.4}
+\contentsline {chapter}{Appendices}{25}{section*.24}
+\contentsline {chapter}{\numberline {A}Auswertungsdetails VAD}{26}{Anhang.1.A}
