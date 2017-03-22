@@ -1,16 +1,50 @@
 \select@language {ngerman}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Beispiel f\IeC {\"u}r eine Segmentierung mit einem Grenzwert von $t_s = \SI {6}{\second }$\relax }}{5}{figure.caption.5}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Beispiel f\IeC {\"u}r die Ableitung von Pain Scores f\IeC {\"u}r ein Signal nach einer fiktiven Pain Scale ohne Beobachtungszeitraum oder Aktualisierungsintervall\relax }}{14}{figure.caption.12}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Beispiel f\IeC {\"u}r die Ableitung von Pain Scores f\IeC {\"u}r ein Signal nach einer fiktiven Pain Scale mit $t_{act} = \SI {7.5}{\second }$ und $t_{obs} = \SI {15}{\second }$\relax }}{14}{figure.caption.13}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Statistische Merkmale eines Beispielsignals \IeC {\"u}ber dem Intervall [50,200]\relax }}{9}{figure.caption.6}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Ein 1.8-Sekunden langes Signal. Oben: Der Zeitbereich mit drei klar erkennbaren Events. Unten: Das Frequenz-Spectrum des gesamten Signals mit logarithmisierten Achsen.\relax }}{11}{figure.caption.7}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Windowing: Die Zerlegung eines Signals in k\IeC {\"u}rzere Fenster.\relax }}{11}{figure.caption.8}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Das Hamming-Window\relax }}{12}{figure.caption.9}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces STFT des Beispiel-Signals aus Abbildung \ref {img:siganlWindows}\relax }}{12}{figure.caption.10}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber die Organe der Spracherzeugung. Lung = Lunge, Vocal Chords = Stimmb\IeC {\"a}nder, Pharynx = Rachen, Velum = Halsz\IeC {\"a}pfchen, Mouth Cavity = Mundraum, Nasal Cavity = Nasenraum \cite {speechProduction}\relax }}{13}{figure.caption.11}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber das Source-Filter-Model \cite [nach Source estimation, S. 17]{ricardo_ceps}\relax }}{14}{figure.caption.12}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Zeitbereiche der periodischen und der turbulenten Quelle \cite [Source]{speechAcoustics}\relax }}{14}{figure.caption.13}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Betrachtung der Frequenzbereiche des Source-Filter-Model (nach: \cite [Source Estimation, S. 3]{ricardo_ceps})\relax }}{15}{figure.caption.14}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Grundfrequenz und harmonische Obert\IeC {\"o}ne eines periodischen Sprachsignals.\relax }}{16}{figure.caption.15}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Formanten im Sprach-Signal (nach: \cite {benade})\relax }}{16}{figure.caption.16}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Spektogramm einer Audioaufnahme eines Babys. Rot $\mathaccentV {hat}05E{=}$ hohen Amplituden, Blau $\mathaccentV {hat}05E{=}$ niedrigen Amplituden. Oben: Zeitbereich. Mitte: Spektogramm mit einer Fensterl\IeC {\"a}nge von $\SI {185}{\milli \second }$(8192-Sample DFT). Unten: Spektogramm mit einer Fensterl\IeC {\"a}nge von $\SI {5}{\milli \second }$(265-Sample DFT)\relax }}{17}{figure.caption.17}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{19}{figure.caption.18}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces (1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite [S. 142]{signal}\relax }}{20}{figure.caption.19}
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Entscheidungsbaum, der durch den ID3-Algorithmus f\IeC {\"u}r den Datensatz aus Beispiel \ref {tab:id3_example} erzeugt wurde.\relax }}{24}{figure.caption.21}
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Aufspaltung einer kontinuierlichen Variable im Entscheidungsbaum\relax }}{26}{figure.caption.22}
+\contentsline {figure}{\numberline {2.17}{\ignorespaces Confusion-Matrix (nach: \cite [S. 214]{machine_kubat})\relax }}{27}{figure.caption.23}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Oben: Ein Beispielsignal mit zwei Segmenten, die mit $t_s = \SI {10}{\second }$ gefunden wurden. Darunter: Pain Scores, die f\IeC {\"u}r die beiden Segmente berechnet wurden. Darunter: Schematische Darstellung des Signals als Regionen. Unten: Scores der Regionen.\relax }}{17}{figure.caption.15}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Erstellte Farbpaletten mit zwei bis sieben Farben inklusive der zugeh\IeC {\"o}rigen RGB-Koordinaten im Hex-Code.\relax }}{19}{figure.caption.17}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Visualisierung der \glqq Length-Scale\grqq {} und der \glqq Min-Scale\grqq {} f\IeC {\"u}r das Beispielsignal. \relax }}{20}{figure.caption.19}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Oben: Beispielsignal mit zwei Segmenten. Unten: \IeC {\"U}berlappende Regionen, eingef\IeC {\"a}rbt nach dem Farbschema der Min-Scale.\relax }}{21}{figure.caption.20}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Visualisierung der Schmerzdiangostik mit der Min-Scale bei Aktualisierungen. Die aktuellere Region wird \emph {\IeC {\"u}ber} \IeC {\"a}ltere Regionen gelegt.\relax }}{22}{figure.caption.21}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Visualisierung der Schmerzdiangostik mit der Min-Scale bei Aktualisierungen. Die aktuellere Region wird \emph {unter} \IeC {\"a}ltere Regionen gelegt.\relax }}{22}{figure.caption.22}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die Verarbeitungs-Pipeline dieser Arbeit\relax }}{32}{figure.caption.24}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Markierung stimmhafter Bereiche in einem Audiosignal. Oben Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Oben Rot: Klassifizierung in stimmhaft/Stille. Unten Rot: Die f\IeC {\"u}nf erkannten Cry-Units.\relax }}{33}{figure.caption.25}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Aufbau eines VAD-Algorithmus\relax }}{34}{figure.caption.26}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Ergebnis der Vorverarbeitung. Oben: Das Signal vor der Vorverarbeitung. Unten: Das Signal nach der Vorverarbeitung.\relax }}{36}{figure.caption.28}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Berechnung des Cepstrums. (nach: \cite [Cepstral Analysis, S. 3]{ricardo_ceps})\relax }}{40}{figure.caption.34}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Aufkommen eines Peaks im oberen Quefrency-Bereich bei stimmhaften Signalfenstern. \cite [Cepstral Analysis, S. 17]{ricardo_ceps}\relax }}{41}{figure.caption.35}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Feststellung der Grundfrequenz aus dem Cepstrum. \cite {cepstrumPitchTranslation}\relax }}{42}{figure.caption.36}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Features, die f\IeC {\"u}r die Voice Activity Detection erprobt wurden.\relax }}{43}{figure.caption.38}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden. Schwarz: Eingangs-Signal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: Feature-Wert.\relax }}{44}{figure.caption.39}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Thresholding eines Features. Schwarz: Das Eingangssignal $x[\tmspace +\thickmuskip {.2777em}]$. Gr\IeC {\"u}n: Klassifizierung in Stimmhaft/Stille. Rot: RMS-Feature. Orange: Grenzwert\relax }}{45}{figure.caption.41}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Zusammenfassung als stimmhaft klassifizierter Signalfenster zu Cry-Units\relax }}{51}{figure.caption.46}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Beziehung zwischen agrenzenden Cry-Units, nach \cite [S. 2]{vad_entropy}\relax }}{51}{figure.caption.47}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Klassifizierung vor dem Decision Smoothing\relax }}{53}{figure.caption.48}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Oben: Klassifikation vor und nach dem Decision-Smoothing. Unten: Klassifikation nach dem Decision-Smoothing.\relax }}{54}{figure.caption.49}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Beispiel f\IeC {\"u}r eine Segmentierung mit einem Grenzwert von $t_s = \SI {6}{\second }$\relax }}{57}{figure.caption.50}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Beispiel f\IeC {\"u}r die Ableitung von Pain Scores f\IeC {\"u}r ein Signal nach einer fiktiven Pain Scale ohne Beobachtungszeitraum oder Aktualisierungsintervall\relax }}{66}{figure.caption.57}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Beispiel f\IeC {\"u}r die Ableitung von Pain Scores f\IeC {\"u}r ein Signal nach einer fiktiven Pain Scale mit $t_{act} = \SI {7.5}{\second }$ und $t_{obs} = \SI {15}{\second }$\relax }}{67}{figure.caption.58}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Oben: Ein Beispielsignal mit zwei Segmenten, die mit $t_s = \SI {10}{\second }$ gefunden wurden. Darunter: Pain Scores, die f\IeC {\"u}r die beiden Segmente berechnet wurden. Darunter: Schematische Darstellung des Signals als Regionen. Unten: Scores der Regionen.\relax }}{69}{figure.caption.60}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Erstellte Farbpaletten mit zwei bis sieben Farben inklusive der zugeh\IeC {\"o}rigen RGB-Koordinaten als Hex-Code.\relax }}{71}{figure.caption.62}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Visualisierung der \emph {Length-Scale} und der \emph {Min-Scale} f\IeC {\"u}r das Beispielsignal. \relax }}{72}{figure.caption.64}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Oben: Beispielsignal mit zwei Segmenten. Unten: \IeC {\"U}berlappende Regionen, eingef\IeC {\"a}rbt nach dem Farbschema der \emph {Min-Scale}.\relax }}{73}{figure.caption.65}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Visualisierung der Min-Scale bei Aktualisierungen. Die jeweils \glqq aktuellere\grqq {} Region \IeC {\"u}berlagert die jeweils \glqq \IeC {\"a}ltere\grqq {}. Oben: Visualisierung zum Aktualisierungszeitpunkt $t=\SI {146}{\second }$. Unten: Visualisierung zum Aktualisierungszeitpunkt $t=\SI {166}{\second }$.\relax }}{74}{figure.caption.66}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Visualisierung der Min-Scale bei Aktualisierungen. Die jeweils \glqq \IeC {\"a}ltere\grqq {} Region \IeC {\"u}berlagert die jeweils \glqq aktuellere\grqq {}.\relax }}{74}{figure.caption.67}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivit\IeC {\"a}t, Spezifit\IeC {\"a}t und Genauigkeit der beiden besten Modelle\relax }}{27}{figure.caption.26}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivit\IeC {\"a}t, Spezifit\IeC {\"a}t und Genauigkeit der beiden besten Modelle\relax }}{85}{figure.caption.71}

@@ -4,68 +4,77 @@ The top-level auxiliary file: /Users/franzanders/Documents/HTWK/Master/5. Semest
 A level-1 auxiliary file: chapters/title_page_1.aux
 A level-1 auxiliary file: chapters/Erklaerung.aux
 A level-1 auxiliary file: chapters/Introduction.aux
+A level-1 auxiliary file: chapters/Foundations.aux
+A level-1 auxiliary file: chapters/Konzept.aux
+A level-1 auxiliary file: chapters/VAD.aux
 A level-1 auxiliary file: chapters/Deduction.aux
 A level-1 auxiliary file: chapters/Visualisation.aux
-The style file: plain.bst
+A level-1 auxiliary file: chapters/Conclusion.aux
+The style file: alphadin.bst
 A level-1 auxiliary file: chapters/Anhang.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: ../references.bib
-I was expecting a `,' or a `}'---line 360 of file ../references.bib
- :  
- :  note =    "Online unter \url{http://rpal.cse.usf.edu/products/icpr_2016.pdf}"
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 369 of file ../references.bib
- :  
- :  note =    "Online unter \url{http://ieeexplore.ieee.org/document/1660444/}"
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Repeated entry---line 411 of file ../references.bib
- : @article{rythmic
- :                 ,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 458 of file ../references.bib
- :  note=     "Online erhältlich unter: \url{http://www.eecs.umich.edu/courses/eecs206/archive/spring02/notes.dir/filters1.pdf}, \url{http://www.eecs.umich.edu/courses/eecs206/archive/spring02/notes.dir/filters2.pdf}" 
- :                                                                                                                                                                                                                         und \url{http://www.eecs.umich.edu/courses/eecs206/archive/spring02/notes.dir/filters3.pdf}"
-I'm skipping whatever remains of this entry
-You've used 11 entries,
-            2118 wiz_defined-function locations,
-            584 strings with 6683 characters,
-and the built_in function-call counts, 3251 in all, are:
-= -- 343
-> -- 107
-< -- 2
-+ -- 43
-- -- 32
-* -- 195
-:= -- 549
-add.period$ -- 43
-call.type$ -- 11
-change.case$ -- 48
-chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 127
-empty$ -- 280
-format.name$ -- 32
-if$ -- 687
-int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 8
-newline$ -- 66
-num.names$ -- 22
-pop$ -- 44
+Warning--empty pages in class_abdulaziz
+Warning--empty pages in cohenCry
+Warning--empty pages in vad_Lisboa
+Warning--empty number in vad_kola
+Warning--empty booktitle in vad_Easy
+Warning--empty pages in vad_Easy
+Warning--empty pages in palEmotion
+Warning--empty pages in vad_granada
+Warning--empty edition in pat
+`address' is a missing field, not a string, for entry pat
+while executing---line 2205 of file alphadin.bst
+Warning--empty pages in vad_entropie02
+Warning--empty edition in nips
+`address' is a missing field, not a string, for entry nips
+while executing---line 2205 of file alphadin.bst
+Warning--empty pages in vad_entropy
+Warning--there's an address but no publisher in zamziMultimodal
+Warning--empty pages in zamziMultimodal
+You've used 56 entries,
+            4793 wiz_defined-function locations,
+            1245 strings with 20045 characters,
+and the built_in function-call counts, 35814 in all, are:
+= -- 3783
+> -- 1085
+< -- 1134
++ -- 1334
+- -- 420
+* -- 2406
+:= -- 6262
+add.period$ -- 57
+call.type$ -- 56
+change.case$ -- 304
+chr.to.int$ -- 55
+cite$ -- 70
+duplicate$ -- 1029
+empty$ -- 2368
+format.name$ -- 713
+if$ -- 6948
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 218
+newline$ -- 337
+num.names$ -- 163
+pop$ -- 397
 preamble$ -- 1
-purify$ -- 38
+purify$ -- 416
 quote$ -- 0
-skip$ -- 91
+skip$ -- 2033
 stack$ -- 0
-substring$ -- 206
-swap$ -- 22
-text.length$ -- 2
-text.prefix$ -- 0
+substring$ -- 2159
+swap$ -- 235
+text.length$ -- 177
+text.prefix$ -- 19
 top$ -- 0
-type$ -- 44
-warning$ -- 0
-while$ -- 35
-width$ -- 13
-write$ -- 138
-(There were 4 error messages)
+type$ -- 489
+warning$ -- 14
+while$ -- 317
+width$ -- 60
+write$ -- 753
+(There were 2 error messages)

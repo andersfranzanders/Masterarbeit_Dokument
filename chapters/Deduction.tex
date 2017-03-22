@@ -267,6 +267,7 @@ Mathematisch wird die Ableitung einer Pain Score als Funktion $PS_{Scale}: CS \m
 Das vorgestellte Prinzip wird daher erweitert, indem ein Aktualisierungsintervall $t_{act}$ und Beobachtungszeitraume $t_{obs}$ eingeführt wird.
 
 \subsubsection{Aktualisierungsintervall}
+\label{sec:actualization}
 
  Die Grundlegende Idee des Aktualisierungsintervalls ist, bei einem momentan offenen Segment in regelmäßigen Abständen die Features abzufragen und direkt die Pain Score abzuleiten, um Zwischenergebnisse zu erhalten. Der am häufigsten umsetzbare Fall ist, ein Aktualisierung nach jeder neu dem Segment hinzugefügten Cry-Unit vorzunehmen. Der am wenigsten häufige Fall ist der bereits genannte, die Aktualisierung erst bei Beendigung eines Segmentes durchzuführen. Eine offensichtliche Variante zur Festlegung von $t_{act}$ ist die Bestimmung eines zeitlichen Wertes. Ein $t_{act}$ von beispielsweise \SI{10}{\second} würden bedeuten, dass alle 10 Sekunden ein neuer Pain Score für ein Segment berechnet wird. Die Beendigung eines Segmentes würde in jedem Fall eine Ableitung der Pain Score auslösen und einen \glqq erzwungenen Aktualisierungszeitpunkt\grqq{} darstellen. Die folgenden Möglichkeiten zur Festlegung von $t_{act}$ sind denkbar:
  

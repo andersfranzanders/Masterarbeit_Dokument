@@ -589,10 +589,5 @@ In verschiedenen Veröffentlichungen wurden unterschiedliche Mindestlängen von 
 	\label{img:after-smoothing}
 \end{figure}
 
-\subsection{Diskussion der Voice-Activity-Detection}
-
-In diesem Kapitel wurden verschiedene Methoden der Voice Activity Detection vorgestellt und evaluiert, wobei eine Voice Activity Detection auf Basis des Cepstrums die besten Ergebnisse erzielte. Mit Ausnahme des Decision-Smoothing werden bei diesem Ansatz jedoch keine Informationen bezüglich des zeitlichen Verlaufes mit einbezogen, da die Entscheidung über das Vorhandensein von Stimme isoliert für jedes Signalfenster gefällt wird. Schlussendlich markiert der VAD-Algorithmus eine Reihe von kurzen Signalfenstern genau dann als zusammenhängende Cry-Unit, wenn jedes Signalfenster für sich betrachtet als Lautäußerung eines Babies klassifiziert wurde. Ob jedoch die Reihenfolge der in den Signalfenstern enthaltenen Lautäußerungen Sinn macht, wird nicht betrachtet. Schneidet man beispielsweise wenige Sekunden aus der Mitte einer längeren Cry-Unit aus und konkateniert dieses Sample viele male, um eine längere Cry-Unit zu erzeugen, klingt das Ergebnis für den Menschen stark unnatürlich, wird von dem hier vorgestellten VAD-Algorithmus jedoch trotzdem als valide Cry-Unit markiert. Das Cepstrum als Feature mit der höchsten Klassifikationsgenauigkeit ist somit so zu bewerten, dass es vor allem im geringen Maße kontextuell Informationen benötigt, um eine Entscheidung über das Vorahndensein von Stimme zu fällen. Zukünftige Forschungen können an diesem Punkt ansetzen, um die Genauigkeit der VAD zu erhöhen.
-
-
 
 

@@ -1,10 +1,35 @@
 \BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
-\BOOKMARK [0][-]{chapter.2}{Ableitung der Schmerz Score}{}% 2
-\BOOKMARK [1][-]{section.2.1}{Segmentierung}{chapter.2}% 3
-\BOOKMARK [1][-]{section.2.2}{Extrahierung von Eigenschaften und Ableitung der Schmerzscore}{chapter.2}% 4
-\BOOKMARK [2][-]{subsection.2.2.1}{Extrahierung von Eigenschaften}{section.2.2}% 5
-\BOOKMARK [2][-]{subsection.2.2.2}{Ableitung der Pain-Score}{section.2.2}% 6
-\BOOKMARK [0][-]{chapter.3}{Visualisierung}{}% 7
-\BOOKMARK [0][-]{chapter.4}{Zusammenfassung}{}% 8
-\BOOKMARK [0][-]{section*.24}{Appendices}{}% 9
-\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 10
+\BOOKMARK [0][-]{chapter.2}{Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Schmerz und Weinen bei Neugeborenen aus medizinischer Sicht}{chapter.2}% 3
+\BOOKMARK [2][-]{subsection.2.1.1}{Pain Scales}{section.2.1}% 4
+\BOOKMARK [2][-]{subsection.2.1.2}{Weinen bei Neugeborenen}{section.2.1}% 5
+\BOOKMARK [1][-]{section.2.2}{Signalverarbeitung}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.2.1}{Grundlegende Definitionen}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.2}{Statistische Merkmale}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.3}{Fehlersignale}{section.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.4}{Kurzzeit-Fourier-Transformation}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.5}{Akustische Modellierung der menschlichen Stimme}{section.2.2}% 11
+\BOOKMARK [1][-]{section.2.3}{Schreiforschung}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.3.1}{Phyisio-Akustische Modellierung des Weinens}{section.2.3}% 13
+\BOOKMARK [2][-]{subsection.2.3.2}{Diskussion}{section.2.3}% 14
+\BOOKMARK [1][-]{section.2.4}{Klassifizierung und Regression}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.4.1}{ID3 und C4.5}{section.2.4}% 16
+\BOOKMARK [2][-]{subsection.2.4.2}{G\374tema\337e bin\344rer Klassifikatoren}{section.2.4}% 17
+\BOOKMARK [0][-]{chapter.3}{Konzept zur Visualisierung von Schmerz Scores aus akustischen Signalen}{}% 18
+\BOOKMARK [1][-]{section.3.1}{Literatur\374berblick}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.2}{Verarbeitungs-Pipeline}{chapter.3}% 20
+\BOOKMARK [0][-]{chapter.4}{Erkennung der Cry-Units}{}% 21
+\BOOKMARK [1][-]{section.4.1}{Voice Activity Detection}{chapter.4}% 22
+\BOOKMARK [2][-]{subsection.4.1.1}{Methoden}{section.4.1}% 23
+\BOOKMARK [2][-]{subsection.4.1.2}{Simulations-Studie}{section.4.1}% 24
+\BOOKMARK [1][-]{section.4.2}{Markierung der Cry-Units}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.3}{Decision Smoothing}{chapter.4}% 26
+\BOOKMARK [0][-]{chapter.5}{Ableitung der Schmerz Score}{}% 27
+\BOOKMARK [1][-]{section.5.1}{Segmentierung}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.2}{Extrahierung von Eigenschaften und Ableitung der Schmerzscore}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection.5.2.1}{Extrahierung von Eigenschaften}{section.5.2}% 30
+\BOOKMARK [2][-]{subsection.5.2.2}{Ableitung der Pain-Score}{section.5.2}% 31
+\BOOKMARK [0][-]{chapter.6}{Visualisierung}{}% 32
+\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 33
+\BOOKMARK [0][-]{section*.69}{Appendices}{}% 34
+\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 35

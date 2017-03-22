@@ -1,11 +1,18 @@
 \select@language {ngerman}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Fiktive Pain Scale\relax }}{13}{table.caption.11}
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Fiktive Pain Scales zur Erl\IeC {\"a}uterung der Visualisierung\relax }}{16}{table.caption.14}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Fixpunkte als Basis der Farbpaletten\relax }}{19}{table.caption.16}
-\contentsline {table}{\numberline {3.3}{\ignorespaces Definition der Farbschemen zur Visualisierung der Pain Scales. Die Farbwerte werden als Hexadezimal-Codes f\IeC {\"u}r den RGB-Farbraum angegeben. \relax }}{20}{table.caption.18}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Neonatal Infant Pain Scale (NIPS) \cite {nips}\relax }}{4}{table.caption.5}
+\contentsline {table}{\numberline {2.2}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber Pain-Scales. \cite [S. 98 ]{painInNeonates} \cite {flacc} \cite {npass} \cite {bpsn} \cite {cries} \cite {covers} \cite {pat} \cite {dan} \cite {comfort} \cite {bpsn} \relax }}{6}{table.2.2}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Beispieldatensatz D f\IeC {\"u}r die Kassfikation mit ID3\relax }}{23}{table.caption.20}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Klassifikationsgenauigkeiten der durch den REPTree entworfenen Modelle\relax }}{26}{table.caption.25}
+\contentsline {table}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber die gebildeten Feature-Untermengen\relax }}{48}{table.caption.43}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Fiktive Pain Scale\relax }}{66}{table.caption.56}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Fiktive Pain Scales zur Erl\IeC {\"a}uterung der Visualisierung\relax }}{68}{table.caption.59}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Fixpunkte als Basis der Farbpaletten\relax }}{71}{table.caption.61}
+\contentsline {table}{\numberline {6.3}{\ignorespaces Definition der Farbschemen zur Visualisierung der Pain Scales. Die Farbwerte werden als Hexadezimal-Codes f\IeC {\"u}r den RGB-Farbraum angegeben.\relax }}{72}{table.caption.63}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Klassifikationsgenauigkeiten der durch den REPTree entworfenen Modelle\relax }}{84}{table.caption.70}

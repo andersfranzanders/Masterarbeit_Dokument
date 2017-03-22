@@ -73,7 +73,7 @@ Das Kriterium der Gleichabständigkeit legt die Verwendung des \emph{CIELAB}-Rau
 
 Zur Zusammenstellung der konkreten Farbpaletten wird das Unterstützungwertkzeug \glqq Lch and Lab colour and gradient picker\grqq{} von David Johnstone verwendet.\footnote{Online unter: \url{http://davidjohnstone.net/pages/lch-lab-colour-gradient-picker}} Das Tool erlaubt die Wahl von $n$ Farben LCH-Raum, welche im folgenden als \glqq Fixpunkte\grqq bezeichnet werden. Diese werden ihrer Reihenfolge nach als Eckpunkte eines Pfades durch den Farbraum definiert. Auf Basis dieses Pfades generiert das Tool eine Farbpalette mit $m$ Farben. Ist $n = m$, so entspricht die Farbpalette den definierten Fixpunkten. Ist $m > n$, so findet das Tool die Zwischenfarben durch lineare Interpolation auf den Pfadkanten.
 
-Ein \glqq reines Rot\grqq, codiert im RGB-Raum mit $[255,0,0]$, hat im LCH-Raum die Koordinaten $[53,105,40]$. \glqq Reines Grün\grqq{} hat die Koordinaten RGB $=[0,255,0]$, was LCH $= [88,120,136]$ entspricht. Das \glqq leicht rötliche Gelb\grqq wird definiert mit RGB $=[255,240,0] \hat{=}$LCH $= [93,93,99]$. Diese Farben haben im LCH Raum eine unterschiedliche Buntheit, weshalb sie in einer Farbpalette eine unterschiedliche Wichtigkeit suggerieren würden.\cite{bigman} Daher wurde die Buntheit aller drei Fixpunkte auf den niedrigsten der drei Werte, $93$, gesetzt. Die tatsächlichen Parameter der drei Fixpunkte \emph{Rot}, \emph{Gelb} und \emph{Grün} sind Tabelle \ref{tab:fixpoints} zu entnehmen. 
+Ein \glqq reines Rot\grqq, codiert im RGB-Raum mit $[255,0,0]$, hat im LCH-Raum die Koordinaten $[53,105,40]$. \glqq Reines Grün\grqq{} hat die Koordinaten RGB $=[0,255,0]$, was LCH $= [88,120,136]$ entspricht. Das \glqq leicht rötliche Gelb\grqq{} wird definiert mit RGB $=[255,240,0] \hat{=}$ LCH $= [93,93,99]$. Diese Farben haben im LCH Raum eine unterschiedliche Buntheit, weshalb sie in einer Farbpalette eine unterschiedliche Wichtigkeit suggerieren würden.\cite{bigman} Daher wurde die Buntheit aller drei Fixpunkte auf den niedrigsten der drei Werte, $93$, gesetzt. Die konkreten Parameter der drei Fixpunkte \emph{Rot}, \emph{Gelb} und \emph{Grün} sind Tabelle \ref{tab:fixpoints} zu entnehmen. 
 
 \begin{table}[h]
 \centering
@@ -88,70 +88,73 @@ Grün  & 88     & 93    & 136    \\ \bottomrule
 \end{tabular}
 \end{table}
 
-Abbildung \ref{fig:color-swatches} zeigt die Farbpaletten, die mit Hilfe des Tools für zwei bis sieben Farben auf Basis dieser Fixpunkte erstellt wurden. Bei der Farbpalette mit ungerader Farbanzahl befinden sich die Fixpunkte an der ersten, letzten und mittleren Position, während die zusätzlichen Farben durch Interpolation erzeugt wurden. Bei den Farbpaletten mit gerader Farbanzahl wird der mittlere Fixpunkt, das Gelb, vom Tool entfernt.
+Abbildung \ref{fig:color-swatches} zeigt die Farbpaletten $\text{Swatch}_2, \ldots, \text{Swatch}_7$, die mit Hilfe des Tools für zwei bis sieben Farben auf Basis dieser Fixpunkte erstellt wurden. Bei der Farbpalette mit ungerader Farbanzahl befinden sich die Fixpunkte an der ersten, mittleren und letzten Position, während die zusätzlichen Farben durch Interpolation erzeugt wurden. Bei den Farbpaletten mit gerader Farbanzahl wurde der mittlere Fixpunkt, das Gelb, vom Tool entfernt.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.75\textwidth]{bilder/colorpics.png}
-	\caption{Erstellte Farbpaletten mit zwei bis sieben Farben inklusive der zugehörigen RGB-Koordinaten im Hex-Code.}
+	\caption{Erstellte Farbpaletten mit zwei bis sieben Farben inklusive der zugehörigen RGB-Koordinaten als Hex-Code.}
 	\label{fig:color-swatches}
 \end{figure}
 
-Auf Basis die Farbpaletten wurden die Farbschemen $L_{n}: S_{Scale} \mapsto P_{Scale}$ definiert, abgebildet in Tabelle \ref{tab:color_shemes}. Es gilt $n = |S_{Scale}|$. Die Wahl des Farbschemas zur Visualisierung einer Pain Scale richtet sich also allein nach der jeweiligen Anzahl definierter Pain Scores, also $F_{Scale} = L_{|S_{Scale}|}$. Soll also beispielsweise die \glqq Length-Scale\grqq{} visualisiert werden, so wird das Farbschema $F_{\text{Length-Scale}} = L_3$ verwendet. Ein Pain Score von $s = 0$ wird durch das Grün mit den RGB-Kooridaten $\#6efa56$ codiert, 1 durch \#6efa56 und 2 durch \#6efa56.
+Auf Basis die Farbpaletten wurden die Farbschemen $L_{n}: S_{Scale} \mapsto P_{Scale}$ definiert, abgebildet in Tabelle \ref{tab:color_shemes}. Es gilt $F_{Scale} = L_{|S_{Scale}|}$. Die Wahl des Farbschemas zur Visualisierung einer Pain Scale richtet sich somit allein nach der jeweiligen Anzahl definierter Pain Scores. Soll also beispielsweise die \glqq Length-Scale\grqq{} visualisiert werden, so wird das Farbschema $F_{\text{Length-Scale}} = L_3$ verwendet. Ein Pain Score von $s = 0$ wird durch das Grün mit den RGB-Koordinaten $\#6efa56$ codiert, 1 durch \#6efa56 und 2 durch \#6efa56.
 
-Es wurden keine Farbschemen für $n<1$ definiert, da eine Pain Scale mit nur einer Score nicht sinnvoll ist, sowie keine Farbpaletten mit $n>7$, da keine der in Kapitel \ref{sec:painScores} gelisteten Pain Scales mehr als 7 Scores verwendet. Die Farbpaletten der Schemen $S_2, S_3, S_5$ und $S_7$ wurden direkt aus den Farbpaletten mit der jeweiligen Anzahl an Farben übernommen, die mit Hilfe des Tools von David Johnstone erzeugt wurden (Siehe Abbildung \ref{fig:color-swatches}). Die durch das Tool erzeugten Farbpalette mit vier und sechs Farben wurde nicht für die Schemen $S_3$ und $S_6$ übernommen, da in ihr der Gelbe Fixpunkt nicht enthalten war. Stattdessen wurden die jeweils nächst höheren Farbpaletten unter Auslassung des ersten Grüns verwendet. 
+Es wurden keine Farbschemen für $n<1$ definiert, da eine Pain Scale mit nur einer Score nicht sinnvoll ist, sowie keine Farbschemen mit $n>7$, da keine der in Kapitel \ref{sec:painScores} beschriebenen Pain Scales mehr als 7 Scores verwendet. Für die Farbpaletten der Schemen $S_2, S_3, S_5$ und $S_7$ wurden die jeweiligen Farbpaletten $\text{Swatch}_2, \text{Swatch}_3,\text{Swatch}_5$ und $\text{Swatch}_7$ unverändert übernommen (siehe Abbildung \ref{fig:color-swatches}). Die Farbpaletten $\text{Swatch}_4$ und $\text{Swatch}_6$ wurde hingegen nicht für die Schemen $S_4$ und $S_6$ übernommen, da in ihnen der Gelbe Fixpunkt nicht enthalten war. Für diese beiden Schemen wurden stattdessen die Farbpaletten $\text{Swatch}_5$ und $\text{Swatch}_7$ unter Auslassung des zweiten Grüns verwendet.
 
 \begin{table}[h]
 \centering
-\caption{Definition der Farbschemen zur Visualisierung der Pain Scales. Die Farbwerte werden als Hexadezimal-Codes für den RGB-Farbraum angegeben. }
+\caption{Definition der Farbschemen zur Visualisierung der Pain Scales. Die Farbwerte werden als Hexadezimal-Codes für den RGB-Farbraum angegeben.}
 \label{tab:color_shemes}
 \begin{tabular}{@{}clllllll@{}}
 \toprule
               $s=$         & $0$                                                     & $1$                                                     & $2$                                                     & $3$                                                     & $4$                                                     & $5$                                                     & $6$                                                     \\ \midrule
 \multicolumn{1}{l|}{$L_2(s) = $} & \multicolumn{1}{l|}{\cellcolor[HTML]{6EFA56}\#6efa56} & \multicolumn{1}{l|}{\cellcolor[HTML]{F32D16}\#f32d16} &                                                       &                                                       &                                                       &                                                       &                                                       \\ \cmidrule(lr){2-4}
 \multicolumn{1}{l|}{$L_3(s) = $} & \multicolumn{1}{l|}{\cellcolor[HTML]{6EFA56}\#6efa56} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFF000}\#fff000} & \multicolumn{1}{l|}{\cellcolor[HTML]{F32D16}\#f32d16} &                                                       &                                                       &                                                       &                                                       \\ \cmidrule(lr){2-5}
-\multicolumn{1}{l|}{$L_4(s) = $} & \multicolumn{1}{l|}{\cellcolor[HTML]{B6F52B}\#bff729} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFF000}\#fff000} & \multicolumn{1}{l|}{\cellcolor[HTML]{F98E0B}\#ff9900} & \multicolumn{1}{l|}{\cellcolor[HTML]{F32D16}\#f32d16} &       &                                                       &                                                       \\ \cmidrule(lr){2-6}
+\multicolumn{1}{l|}{$L_4(s) = $} & \multicolumn{1}{l|}{\cellcolor[HTML]{6EFA56}\#6efa56} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFF000}\#fff000} & \multicolumn{1}{l|}{\cellcolor[HTML]{F98E0B}\#ff9900} & \multicolumn{1}{l|}{\cellcolor[HTML]{F32D16}\#f32d16} &       &                                                       &                                                       \\ \cmidrule(lr){2-6}
 \multicolumn{1}{l|}{$L_5(s) = $} & \multicolumn{1}{l|}{\cellcolor[HTML]{6EFA56}\#6efa56} & \multicolumn{1}{l|}{\cellcolor[HTML]{BFF729}\#bff729} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFF000}\#fff000} & \multicolumn{1}{l|}{\cellcolor[HTML]{F98E0B}\#ff9900} & \multicolumn{1}{l|}{\cellcolor[HTML]{F32D16}\#f32d16} &                                                       &                                                       \\ \cmidrule(lr){2-7}
-\multicolumn{1}{l|}{$L_6(s) = $} & \multicolumn{1}{l|}{\cellcolor[HTML]{A7F938}\#a7f938} & \multicolumn{1}{l|}{\cellcolor[HTML]{D5F519}\#d5f519} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFF000}\#fff000} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFB700}\#ffb700} & \multicolumn{1}{l|}{\cellcolor[HTML]{FF7A00}\#ff7a00} & \multicolumn{1}{l|}{\cellcolor[HTML]{F32D16}\#f32d16} &                                                       \\ \cmidrule(l){2-8} 
+\multicolumn{1}{l|}{$L_6(s) = $} & \multicolumn{1}{l|}{\cellcolor[HTML]{6EFA56}\#6efa56} & \multicolumn{1}{l|}{\cellcolor[HTML]{D5F519}\#d5f519} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFF000}\#fff000} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFB700}\#ffb700} & \multicolumn{1}{l|}{\cellcolor[HTML]{FF7A00}\#ff7a00} & \multicolumn{1}{l|}{\cellcolor[HTML]{F32D16}\#f32d16} &                                                       \\ \cmidrule(l){2-8} 
 \multicolumn{1}{l|}{$L_7(s) = $} & \multicolumn{1}{l|}{\cellcolor[HTML]{6EFA56}\#6efa56} & \multicolumn{1}{l|}{\cellcolor[HTML]{A7F938}\#a7f938} & \multicolumn{1}{l|}{\cellcolor[HTML]{D5F519}\#d5f519} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFF000}\#fff000} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFB700}\#ffb700} & \multicolumn{1}{l|}{\cellcolor[HTML]{FF7A00}\#ff7a00} & \multicolumn{1}{l|}{\cellcolor[HTML]{F32D16}\#f32d16} \\ \bottomrule
 \end{tabular}
 \end{table}
 
-Abbildung \ref{fig:viz_without_t_01} zeigt die Visualisierung der Schmerzdiagnostik für das Beispielsignal mit der \glqq Length-Scale\grqq{} und der \glqq Min-Scale\grqq{}, die durch das Einfärben der in Abbildung \ref{img:visualisation_example_01} erläuterten Regionen entsteht. Wie bereits erläutert, verwendet die \glqq Length-Scale\grqq{} das Farbschema $L_3$. Die \glqq Min-Scale\grqq{} definiert insgesamt 4 Scores und verwendet somit das Farbschema $L_4$.
+Abbildung \ref{fig:viz_without_t_01} zeigt die daraus resultierende Visualisierung der \emph{Length-Scale} und der\emph{Min-Scale}, angewandt auf das Beispielsignal. Wie bereits erläutert, verwendet die \emph{Length-Scale} zur Einfärbung der Regionen das Farbschema $L_3$. Die \emph{Min-Scale} definiert insgesamt 4 Scores und verwendet somit das Farbschema $L_4$.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/viz_without_t_02.png}
-	\caption{Visualisierung der \glqq Length-Scale\grqq{} und der \glqq Min-Scale\grqq{} für das Beispielsignal. }
+	\includegraphics[width=1\textwidth]{bilder/viz_without_t_04.png}
+	\caption{Visualisierung der \emph{Length-Scale} und der \emph{Min-Scale} für das Beispielsignal. }
 	\label{fig:viz_without_t_01}
 \end{figure}
 
-Da in diesem Beispiel kein Aktualisierungsintervall eingesetzt wurde, gibt es keine überlappenden Regionen. Abbildung \ref{fig:viz_multiple_regions} veranschaulicht, wie durch die Verwendung eines Aktualisierungsintervalls überlappende Regionen entstehen. Oben in der Abbildung ist das Beispielsignal zu sehen, welches mit $t_s = \SI{10}{\second}$ segmentiert wurde. Es wurde ein Aktualisierungsintervall von  $t_{act} = \SI{20}{\second}$ und $t_{obs} = \infty$ verwendet. Die Aktualisierungszeitpunkte sind durch kleine Pfeilge angegeben. Unten sind die aus den Subsegmenten entstandenen, einander überlappenden Regionen abgebildet. Für jede Region wir der Score angegeben, der sich nach der Diagnostik der Min-Scale ergibt, sowie jede Region nach dem Schema $L_4$ eingefärbt.
+Wird das Signal kontinuierlich eingelesen, erfolgt die Einfärbung einer Region mit einem Cry-Segment erst, wenn das entsprechende Segment abgeschlossen wurde, da erst dann der Pain Score dieser Region festgestellt wird. Die Einfärbung einer Region ohne zugehöriges Cry-Segment kann bereits geschehen, noch bevor ein neues Segment beginnt, da hier der Pain Score von 0 in jedem Fall feststeht. Wird also das Beispielsignal in Abbildung \ref{fig:viz_without_t_01} kontinuierlich weiter eingelesen, so wird der Visualisierungsbalken ebenso kontinuierlich fortgesetzt und dabei grün eingefärbt, bis der Beginn eines neuen Cry-Segmentes festgestellt wird. Der Visualisierungsbalken wird daraufhin so lange nicht weiter fortgesetzt und \glqq wartet\grqq , bis das Segment abgeschlossen wird, die neue Region für das Segment dem Balken hinzugefügt und dem Score entsprechend eingefärbt wird.
+ 
+Die Visualisierung von \glqq Zwischenergebnissen\grqq{} bezüglich der Pain Score von Cry-Segmenten lässt sich mit Hilfe des in Kapitel \ref{sec:actulization} vorgestellten Aktualisierungsintervalls $t_{act}$ umsetzen. Die so entstehenden Subsegmente führen zu einander überlappenden Regionen, wie Abbildung \ref{fig:viz_multiple_regions} veranschaulicht. Oben in der Abbildung ist das Beispielsignal zu sehen, welches mit $t_s = \SI{10}{\second}$ segmentiert wurde. Es wurde ein Aktualisierungsintervall von  $t_{act} = \SI{20}{\second}$ und ein Beobachtungszeitraum von $t_{obs} = \infty$ verwendet. Die Aktualisierungszeitpunkte werden durch kleine Pfeile angezeigt. Die letzte Aktualisierung jedes Segmentes wird durch die jeweilige Beendigung eingeleitet. Unten werden die aus den Subsegmenten entstandenen, einander überlappenden Regionen abgebildet. Für jede Region wir der Score angegeben, der sich nach \emph{Min-Scale} ergibt. Die Regionen werden nach dem Schema $L_4$ eingefärbt.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/viz-multiple-regions.png}
-	\caption{Oben: Beispielsignal mit zwei Segmenten. Unten: Überlappende Regionen, eingefärbt nach dem Farbschema der Min-Scale.}
+	\caption{Oben: Beispielsignal mit zwei Segmenten. Unten: Überlappende Regionen, eingefärbt nach dem Farbschema der \emph{Min-Scale}.}
 	\label{fig:viz_multiple_regions}
 \end{figure}
 
-Die Darstellung aus Abbildung \ref{fig:viz_multiple_regions} dient nur der Veranschaulichung des Prinzips der überlappenden Regionen, eignet sich aber nicht für eine tatsächliche Visualisierung. Es werden zwei Möglichkeiten zur Visualisierung einander überlappender Regionen vorgeschlagen:
+Es werden zwei Möglichkeiten zur Visualisierung einander überlappender Regionen vorgeschlagen:
+
 \begin{itemize}
-\item Die Region mit dem späteren Endzeitpunkt wird \glqq auf\grqq{} die Regionen mit einem früheren Endzeitpunkt gelegt. So wird der aktuell diagnostizierte Score wird in den Vordergrund gestellt, der zeitliche Verlauf der abgeleiteten Schmerz Scores geht jedoch verloren. Abbildung \ref{fig:viz_act_over} zeigt dieses Prinzip an einem Beispiel. In diesem Fall wurde das Beispielsignal erst bis zu Sekunde $146$ eingelesen, das zweite Segment ist noch geöffnet. Bei der Aktualisierung zum Zeitpunkt $t=\SI{146}{\second}$ wird nach der Min-Scale ein Score von 3 abgeleitet und die Region dementsprechend rot eingefärbt. Das Signal wird nun weiter eingelesen. Bei der nächsten Aktualisierung bei $t=\SI{166}{\second}$ wird ein Score von 1 abgeleitet und die so gelb gefärbte Region \glqq auf\grqq die rot gefärbte Region gelegt.
+\item Die jeweils \glqq aktuellere\grqq{} Region, also diejenige mit dem jeweils \emph{späteren} Endzeitpunkt, überlagert die jeweils \glqq ältere\grqq{} Region, also diejenige mit dem jeweils \emph{früheren} Endzeitpunkt. So wird der jeweils aktuellere Score in den Vordergrund gestellt. Die Historie der abgeleiteten Scores geht jedoch in der Visualisierung verloren. Abbildung \ref{fig:viz_act_over} verdeutlicht dieses Prinzip an einem Beispiel. Das Beispielsignal wurde hier erst bis zu Sekunde $146$ eingelesen, das zweite Segment ist noch geöffnet. Bei der Aktualisierung zum Zeitpunkt $t=\SI{146}{\second}$ wird nach der Min-Scale ein Score von 3 abgeleitet und die Region dementsprechend rot eingefärbt. Das Signal wird nun weiter eingelesen. Bei der nächsten Aktualisierung bei $t=\SI{166}{\second}$ wird ein Score von 1 abgeleitet. Die gelb gefärbte Region überlagert die rot gefärbte Region.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/viz_act_over.png}
-	\caption{Visualisierung der Schmerzdiangostik mit der Min-Scale bei Aktualisierungen. Die aktuellere Region wird \emph{über} ältere Regionen gelegt.}
+	\includegraphics[width=0.7\textwidth]{bilder/viz_act_over_02.png}
+	\caption{Visualisierung der Min-Scale bei Aktualisierungen. Die jeweils \glqq aktuellere\grqq{} Region überlagert die jeweils \glqq ältere\grqq{}. Oben: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{146}{\second}$. Unten: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{166}{\second}$.}
 	\label{fig:viz_act_over}
 \end{figure}
 
-\item Die Region mit dem späteren Endzeitpunkt wird \glqq unter\grqq{} die Regionen mit einem früheren Endzeitpunkt gelegt. So wird der zeitliche Verlauf des diagnostizierten Schmerzes in den Vordergrund gestellt. Abbildung \ref{fig:viz_act_under} zeigt die Visualisierung der Schmerzdiagonstik mit der Min-Scale nach diesem Prinzip. Wie zu sehen ist, bleibt auch nach Aktualisierung der Schmerzscore des zweiten Segmentes auf 1 erkennbar, dass bei der früheren Aktualisierung ein Score von 3 abgeleitet wurde.
+\item Der entgegengesetzte Fall: Die Region mit dem jeweils \emph{früheren} Endzeitpunkt überlagert die Regionen mit dem jeweils \emph{späteren} Endzeitpunkt. So wird die Historie der abgeleiteten Scores in der Visualisierung erkennbar. Abbildung \ref{fig:viz_act_under} zeigt die Visualisierung der Min-Scale für das Beispielsignal nach diesem Prinzip. Wie zu sehen ist, bleibt auch nach Aktualisierung des Scores des zweiten Segmentes auf 1 erkennbar, dass bei früheren Aktualisierungen ein Score von 3 abgeleitet wurde.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/viz_act_under.png}
-	\caption{Visualisierung der Schmerzdiangostik mit der Min-Scale bei Aktualisierungen. Die aktuellere Region wird \emph{unter} ältere Regionen gelegt.}
+	\includegraphics[width=1\textwidth]{bilder/viz_act_under_02.png}
+	\caption{Visualisierung der Min-Scale bei Aktualisierungen. Die jeweils \glqq ältere\grqq{} Region überlagert die jeweils \glqq aktuellere\grqq{}.}
 	\label{fig:viz_act_under}
 \end{figure}
  

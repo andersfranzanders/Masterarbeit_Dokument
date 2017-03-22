@@ -1,4 +1,4 @@
-\documentclass[numbers=noenddot]{scrreprt}
+\documentclass[numbers=noenddot, enabledeprecatedfontcommands]{scrreprt}
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \setlength{\parskip}{5.5pt}
@@ -8,7 +8,9 @@
 \usepackage{mathtools}
 \usepackage{algpseudocode}
 \usepackage{algorithm}
-\usepackage{natbib}
+\usepackage[square,sort,comma,numbers]{natbib}
+%\usepackage{biblatex}
+%\usepackage{bibtex}
 \usepackage{graphicx}
 \usepackage[normalem]{ulem}
 \usepackage{soul}
@@ -81,15 +83,15 @@
 %\endgroup
 \pagenumbering{arabic}
 \include{chapters/Introduction} 
-%\include{chapters/Foundations}
-%\include{chapters/Konzept}
-%\include{chapters/VAD}
+\include{chapters/Foundations}
+\include{chapters/Konzept}
+\include{chapters/VAD}
 \include{chapters/Deduction}
 \include{chapters/Visualisation}
+\include{chapters/Conclusion}
 
-\chapter{Zusammenfassung}
-
-\bibliographystyle{plain}
+%\bibliographystyle{dinat}
+\bibliographystyle{alphadin}
 \bibliography{references}
 
 \include{chapters/Anhang}
