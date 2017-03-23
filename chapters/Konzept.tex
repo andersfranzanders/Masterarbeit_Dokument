@@ -1,9 +1,11 @@
-\chapter{Konzept zur Visualisierung von Schmerz Scores aus akustischen Signalen}
+\chapter{Konzept zur automatisierten Schmerzbewertung anhand akustischer Signale}
 \label{sec:concept}
 
 In Kapitel \ref{sec:medicalFoundations} wurde vorgestellt, wie die Schmerzdiagnose bei Neugeborenen mit Hilfe von Pain Scales durch medizinisches Personal durchgeführt wird. Es wurde eine Reihe an Pain Scales vorgestellt und dabei insbesondere der Schmerzindikator \glqq Weinen\grqq{} beleuchtet. Unabhängig von der konkret eingesetzten Pain Scale wird in jedem Fall das Baby für eine bestimme Zeitraum beobachtet, für jeden Indikator, wie das Weinen oder der Gesichtsausdruck, Punkte vergeben, diese Aufsummiert und aus der Summe der insgesamte Schmerz Score bestimmt. 
 
 In Kapitel \ref{sec:cryresearch_foundations} wurde vorgestellt, wie in der klassischen Schreiforschung mit Hilfe von Methoden der Signalverarbeitung das Weinen von Babys tiefergehend Analysiert wurde. Es wurde gezeigt, dass aus objektiv messbaren Eigenschaften des Weinens eines Babys Rückschlüsse auf dessen Zustand gemacht werden können.
+
+\section{Anforderungen an das Konzept}
 
 Ziel dieser Arbeit ist der Entwurf eines Systems zur automatisierten Feststellung und Visualisierung von Pain Scores beliebiger Pain Scales mit dem Fokus auf den Schmerzindikator \glqq Weinen\grqq. Das System muss folgenden Anforderungen erfüllen:
 
@@ -32,7 +34,7 @@ Pal et al.  haben 2006 in der Veröffentlichung \glqq Emotion detection from inf
 
 Zamzi et al.  haben 2016 in der Veröffentlichung \glqq An Approach for Automated Multimodal Analysis of Infants' Pain\grqq{} \cite{zamziMultimodal} ein System zur automatisierten und kontinuierlichen multimodalen Analyse von Neugeborenen zur Ableitung des Schmerzes vorgestellt. Das System trägt den Namen \emph{MPAS}. Der Schmerzgrad wird aus den Analyseergebnissen der monomodalen Schmerzindikatoren für \emph{Gesichtsausdruck, Körperbewegung, Vitalfunktionen und Weinen} errechnet. Das System kommt der Aufgabenstellung dieser Masterarbeit am nächsten, da es ebenfalls um die Ableitung von Schmerz in einem multimodalen Verbund geht. Der Schmerz wurde hier \glqq direkt\grqq{} abgeleitet, ohne den Weg über Pain Scales zu wählen. Während in der Veröffentlichung die Analyse der ersten drei genannten Schmerzindikatoren angekündigt wurde, wurden daraufhin die Methoden zur Analyse der akustischen Signale \emph{nicht} erläutert. Auch die ersten Validierungsergebnisse beziehen sich nur auf den Gesichtsausdruck, die Körperbewegung und die Vitalfunktionen. Es ist nicht klar, ob die Miteinbeziehung akustischer Signale fallen gelassen wurde. Die Ausführungen konzentrieren sich dazu vermehrt auf die Methoden zur Kombination der Auswertungsergebnisse der monomodalen Schmerzindikatoren.
 
-\section{Verarbeitungs-Pipeline}
+\section{Überblick über die Verarbeitungsschritte}
 \label{sec:pipeline}
 
 In Kapitel \ref{sec:system_literature} wurden verschiedene Konzepte vorgestellt, deren Fokus ebenfalls die Analyse und Auswertung von Audioaufnahmen kindlicher Lautäußerungen waren und somit der Aufgabenstellung dieser Arbeit ähneln. Keines der präsentierten Konzepte eignet sich, um mit nur leichten Anpassungen übernommen werden zu können: Entweder wurden die Verarbeitungsschritte nicht für die kontinuierliche Verarbeitung konzipiert \cite{class_abdulaziz} \cite{comparisonOfLearning} \cite{cry_thesis}, nicht genügen abstrahiert, um für andere Klassifizierungen als die ursprünglich geplanten abgewandelt werden zu können \cite{cohenCry}, oder die Verarbeitungs-Pipeline wurde nicht vorgestellt. \cite{palEmotion} \cite{zamziMultimodal}.
@@ -58,3 +60,5 @@ In dieser Arbeit wurde die folgende Verarbeitungs-Pipeline entworfen. Sie wird i
 	\caption{Überblick über die Verarbeitungs-Pipeline dieser Arbeit}
 	\label{img:architecture-overview}
 \end{figure}
+
+\subsection{Automatisierte Schmerzbewertung im multimodalen Verbund}

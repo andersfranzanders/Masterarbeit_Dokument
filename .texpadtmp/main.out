@@ -1,35 +1,40 @@
 \BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
-\BOOKMARK [0][-]{chapter.2}{Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}{}% 2
-\BOOKMARK [1][-]{section.2.1}{Schmerz und Weinen bei Neugeborenen aus medizinischer Sicht}{chapter.2}% 3
-\BOOKMARK [2][-]{subsection.2.1.1}{Pain Scales}{section.2.1}% 4
-\BOOKMARK [2][-]{subsection.2.1.2}{Weinen bei Neugeborenen}{section.2.1}% 5
-\BOOKMARK [1][-]{section.2.2}{Signalverarbeitung}{chapter.2}% 6
-\BOOKMARK [2][-]{subsection.2.2.1}{Grundlegende Definitionen}{section.2.2}% 7
-\BOOKMARK [2][-]{subsection.2.2.2}{Statistische Merkmale}{section.2.2}% 8
-\BOOKMARK [2][-]{subsection.2.2.3}{Fehlersignale}{section.2.2}% 9
-\BOOKMARK [2][-]{subsection.2.2.4}{Kurzzeit-Fourier-Transformation}{section.2.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.5}{Akustische Modellierung der menschlichen Stimme}{section.2.2}% 11
-\BOOKMARK [1][-]{section.2.3}{Schreiforschung}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.3.1}{Phyisio-Akustische Modellierung des Weinens}{section.2.3}% 13
-\BOOKMARK [2][-]{subsection.2.3.2}{Diskussion}{section.2.3}% 14
-\BOOKMARK [1][-]{section.2.4}{Klassifizierung und Regression}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.4.1}{ID3 und C4.5}{section.2.4}% 16
-\BOOKMARK [2][-]{subsection.2.4.2}{G\374tema\337e bin\344rer Klassifikatoren}{section.2.4}% 17
-\BOOKMARK [0][-]{chapter.3}{Konzept zur Visualisierung von Schmerz Scores aus akustischen Signalen}{}% 18
-\BOOKMARK [1][-]{section.3.1}{Literatur\374berblick}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.2}{Verarbeitungs-Pipeline}{chapter.3}% 20
-\BOOKMARK [0][-]{chapter.4}{Erkennung der Cry-Units}{}% 21
-\BOOKMARK [1][-]{section.4.1}{Voice Activity Detection}{chapter.4}% 22
-\BOOKMARK [2][-]{subsection.4.1.1}{Methoden}{section.4.1}% 23
-\BOOKMARK [2][-]{subsection.4.1.2}{Simulations-Studie}{section.4.1}% 24
-\BOOKMARK [1][-]{section.4.2}{Markierung der Cry-Units}{chapter.4}% 25
-\BOOKMARK [1][-]{section.4.3}{Decision Smoothing}{chapter.4}% 26
-\BOOKMARK [0][-]{chapter.5}{Ableitung der Schmerz Score}{}% 27
-\BOOKMARK [1][-]{section.5.1}{Segmentierung}{chapter.5}% 28
-\BOOKMARK [1][-]{section.5.2}{Extrahierung von Eigenschaften und Ableitung der Schmerzscore}{chapter.5}% 29
-\BOOKMARK [2][-]{subsection.5.2.1}{Extrahierung von Eigenschaften}{section.5.2}% 30
-\BOOKMARK [2][-]{subsection.5.2.2}{Ableitung der Pain-Score}{section.5.2}% 31
-\BOOKMARK [0][-]{chapter.6}{Visualisierung}{}% 32
-\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 33
-\BOOKMARK [0][-]{section*.69}{Appendices}{}% 34
-\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 35
+\BOOKMARK [1][-]{section.1.1}{Aufbau der Arbeit}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Fokus der Arbeit}{chapter.1}% 3
+\BOOKMARK [0][-]{chapter.2}{Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}{}% 4
+\BOOKMARK [1][-]{section.2.1}{Grundlagen der Verarbeitung akustischer Signale}{chapter.2}% 5
+\BOOKMARK [2][-]{subsection.2.1.1}{Grundlegende Definitionen}{section.2.1}% 6
+\BOOKMARK [2][-]{subsection.2.1.2}{Statistische Merkmale von Signalen}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.3}{Fehlersignale}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.4}{Kurzzeit-Fourier-Transformation}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.5}{Akustische Modellierung der menschlichen Stimme}{section.2.1}% 10
+\BOOKMARK [1][-]{section.2.2}{Schmerz und Weinen bei Neugeborenen}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.1}{Schmerz-Scales als Instrument zur Schmerzbewertung}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.2}{Weinen als Indikator f\374r Schmerz}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.3}{Phyisio-Akustische Modellierung des Weinens}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.4}{Diskussion}{section.2.2}% 15
+\BOOKMARK [1][-]{section.2.3}{Automatisierte Klassifizierung und Bewertung}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.3.1}{Klassifizierung mit den Algorithmen ID3 und C4.5}{section.2.3}% 17
+\BOOKMARK [2][-]{subsection.2.3.2}{G\374tema\337e bin\344rer Klassifikatoren}{section.2.3}% 18
+\BOOKMARK [0][-]{chapter.3}{Konzept zur automatisierten Schmerzbewertung anhand akustischer Signale}{}% 19
+\BOOKMARK [1][-]{section.3.1}{Anforderungen an das Konzept}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.2}{Literatur\374berblick}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.3}{\334berblick \374ber die Verarbeitungsschritte}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.3.1}{Automatisierte Schmerzbewertung im multimodalen Verbund}{section.3.3}% 23
+\BOOKMARK [0][-]{chapter.4}{Detektion von Schreiger\344uschen in Audiosignalen}{}% 24
+\BOOKMARK [1][-]{section.4.1}{Automatisierte Erkennung von Stimmaktivit\344t in Signalen}{chapter.4}% 25
+\BOOKMARK [2][-]{subsection.4.1.1}{Methoden}{section.4.1}% 26
+\BOOKMARK [2][-]{subsection.4.1.2}{Simulationsstudie}{section.4.1}% 27
+\BOOKMARK [1][-]{section.4.2}{Zusammenfassung stimmhafter Signalbereiche zu Schreieinheiten}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.3}{Entscheidungsgl\344ttung}{chapter.4}% 29
+\BOOKMARK [0][-]{chapter.5}{Automatisierte Schmerzbewertung anhand von Schreiger\344uschen}{}% 30
+\BOOKMARK [1][-]{section.5.1}{Zusammenfassung von Schreiger\344uschen zu Segmenten}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.2}{Methoden zur Ableitung des Schmerz-Score aus Segmenten}{chapter.5}% 32
+\BOOKMARK [2][-]{subsection.5.2.1}{Extrahierung von Eigenschaften als Grundlage zur Schmerzbewertung}{section.5.2}% 33
+\BOOKMARK [2][-]{subsection.5.2.2}{Schmerzverlauf innerhalb von Segmenten}{section.5.2}% 34
+\BOOKMARK [0][-]{chapter.6}{Visualisierung der Schmerzbewertung}{}% 35
+\BOOKMARK [1][-]{section.6.1}{Visualierungskonzept}{chapter.6}% 36
+\BOOKMARK [1][-]{section.6.2}{Ergebnis der Visualisierung}{chapter.6}% 37
+\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 38
+\BOOKMARK [0][-]{section*.68}{Appendices}{}% 39
+\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 40

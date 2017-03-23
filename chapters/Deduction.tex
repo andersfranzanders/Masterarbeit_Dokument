@@ -1,4 +1,4 @@
-\chapter{Ableitung der Schmerz Score}
+\chapter{Automatisierte Schmerzbewertung anhand von Schreigeräuschen}
 \label{sec:deduction}
 
 In Kapitel \ref{sec:marking_cry-units_new} wurden Methoden vorgestellt, durch die einem Audiosignal die Cry-Units erkannt und markiert werden. Diese Cry-Units bilden den Ausgangspunkt, um eine Schmerz Score ableiten zu können. 
@@ -6,7 +6,7 @@ In Kapitel \ref{sec:marking_cry-units_new} wurden Methoden vorgestellt, durch di
 Wie in Kapitel \ref{sec:painScores} erläutert wurde, wird eine Schmerz Score typischerweise nicht aus den Informationen einer einzelnen Cry-Unit, sondern aus Gruppen mehrerer Cry-Units innerhalb eines längeren Beobachtungszeitraumes geschlossen. Dafür ist es zunächst notwendig, diejenigen Cry-Units zu identifizieren, die gemeinsam einem schmerzversuchanden Stimulus zugeordnet werden können. Diese Gruppierung von Cry-Units wird in dieser Arbeit als \emph{Segmentierung} bezeichnet und in Kapitel \ref{sec:segmenting} vorgestellt. Die so entstandenen Segmente bilden die Basis zur Ableitung von Schmerz Scores, welche in Kapitel \ref{sec:marking_cry-units_new} diskutiert wird.
 
 
-\section{Segmentierung}
+\section{Zusammenfassung von Schreigeräuschen zu Segmenten}
 \label{sec:segmenting}
 
 Wie in Kapitel \ref{sec:painScores} erläutert wurde, wird die Schmerzdiagnose für Post-Operativen Schmerz mit Pain Scales typischerweise umgesetzt, indem das Baby in bestimmten Intervallen besucht und für einen festgelegten Zeitraum beobachtet wird, worauf den Schmerzgrad für einen bestimmten Zeitpunkt diagnostiziert wird. So empfiehlt die Pain Scale PAT, das Baby alle 30 Minuten zu besuchen und für 15 bis 30 Sekunden zu beobachten. Für viele Pain Scales konnten diese  Beobachtungsintervalle und Zeiträume nicht in Erfahrung gebracht werden. 
@@ -78,7 +78,7 @@ Das hier vorgestellte Vorgehen wurde absichtlich möglichst einfach gehalten, da
 	\label{img:segmenting06}
 \end{figure}
 
-\section{Extrahierung von Eigenschaften und Ableitung der Schmerzscore}
+\section{Methoden zur Ableitung des Schmerz-Score aus Segmenten}
 \label{sec:overviewPainRegression}
 
 Das Ergebnis der Segmentierung ist eine Liste an Cry-Segmenten $cs_0,  \ldots , c_n$. Diese Cry-Segmente bilden nun die Basis für die Ableitung der Pain Score. Die medizinische Fachkraft, die das System verwendet, muss dabei zuerst die Wahl treffen, welche Pain Scale verwendet werden soll. Das einfachste denkbare Vorgehen ist die Ableitung genau einer Pain Score aus den globalen Eigenschaften eines Segmentes, wobei diese Ableitung erst vollzogen werden kann, sobald ein Segment abgeschlossen wurde und alle Informationen für dieses Segment vorliegen. Es wird also jedem Segment genau eine Pain Score zugewiesen. Das Vorgehen wird am Beispiel der NIPS aus Tabelle \ref{tab:nips} verdeutlicht: Dabei steht die Abwesenheit von Weinen für null Punkte, \glqq mumbling\grqq{} (murmeln) für einen Punkt und \glqq vigorous\grqq{} (energisch) für zwei Punkte. Bei Abwesenheit von Lautäußerungen, also der Zeitraum zwischen den Segmenten, werden also keine Punkte = null Punkte vergeben. Ein Segment, dessen Qualität insgesamt als \glqq murmelnd\grqq{} bewertet wird, erhält einen Punkt, und ein Segment, welches als insgesamt als \glqq energisch\grqq{} bewertet wird, zwei Punkte. Das Problem ist offensichtlich: \glqq murmelnd\grqq{} und \glqq energisch\grqq{} sind subjektiv behaftete Begriffe und lassen sich nicht ohne weiteres aus den Eigenschaften eines Segmentes feststellen. 
@@ -118,7 +118,7 @@ Der Vorteil dieser Methode ist, dass auch zum Zeitpunkt der Erstellung der Testd
 
 In jedem Fall werden medizinische Fachkräfte benötigt, um das Labeling der Cry-Segmente durchzuführen, was aus Zeitgründen im Rahmen dieser Arbeit nicht möglich ist. Die Aquise von Audioaufnahmen von Babys sowie das Labeling der Aufanhmen erfodern nicht nur Zeit, sondern das Fachwissen über das Führen und die Auswerten von Interviews.
 
-\subsection{Extrahierung von Eigenschaften}
+\subsection{Extrahierung von Eigenschaften als Grundlage zur Schmerzbewertung}
 \label{sec:segmentFeatures}
 
 Im vergangenen Kapitel wurde erläutert, dass die Basis für die Ableitung einer Pain Score für ein Segment die Extraktion von \glqq so vielen Features wie möglich\grqq{} ist. In diesem Kapitel wird präzisiert, welche Features gemeint sind.  Varallyay \cite[S. 16 - 17]{cry_thesis} schlug vor, drei Kategorien an Features zu betrachten: 1.) Features des Zeitbereichs, 2.) Features der Frequenzbereichs, und 3.) Melodie-bezogene Attribute. Diese Kategorisierung wurde für diese Arbeit übernommen.
@@ -255,7 +255,7 @@ Alle weiteren Features, die in Kapitel \ref{sec:acousticModel} vorgestellt wurde
 
 Bei allen vorgestellten Features handelt es sich, nach dem Vorbild der in Kapitel \ref{sec:acousticModel} vorgestellten Features der klassischen Schreiforschung, um solche, bei denen die Reihenfolge der Cry-Units nicht mit in Betracht gezogen wird. Angenommen, ein Segment besteht aus $n$ Cry-Units, wobei genau eine hälfte der  Cry-Units kurz und die andere hälfte der Cry-Units lang ist. Das $\text{stats}_{cu}(cs)$-Feature wird bezüglich des Durchschnittes, Minimum, Maximum etc. die selben Werte berechnen, unabhängig davon, ob sich die kurzen Cry-Units allesamt am Beginn des Segmentes, am Ende des Segmentes oder mit den langen Cry-Units durchmischt befinden. Bei der anschließenden Nutzung der Features zu Regression/Klassifizierung wird sich zeigen, wie sehr sich diese Features zur Ableitung von Pain-Scores eignen. Stellt sich heraus, dass sich die Features nicht eignen, ist es eventuell notwendig, neue Features zu definieren, die die Position der Cry-Units mit in Betracht ziehen.
 
-\subsection{Ableitung der Pain-Score}
+\subsection{Schmerzverlauf innerhalb von Segmenten}
 \label{sec:regressionPainScore}
 
 Mathematisch wird die Ableitung einer Pain Score als Funktion $PS_{Scale}: CS \mapsto S_{Scale}$ definiert, welche eine Cry-Segment $cs \in CS$ unter Verwendung der Pain-\emph{Scale} auf einen Pain Score $s \in S_{Scale}$ abbildet. Die Menge der Pain Scores $S_{Scale}$ ist abhängig von der verwendeten Pain Scale. Es ist zu beachten, das selbst, wenn zwei Pain Scales einen Score von 2 enthalten, diese 2 \emph{nicht} zwingendermaßen auf den selben Schmerzgrad hinweist. Der konkrete Inhalt der Funktion ist für die entsprechende Pain Scale mit dem in diesem Kapitel beschriebenen Vorgehen zu ermitteln. Die Ableitung genau einer Pain Score für ein Cry-Segment stellt den einfachsten Fall dar. Dies ist für bestimmte Anwendungsfälle eventuell nicht ausreichend: 

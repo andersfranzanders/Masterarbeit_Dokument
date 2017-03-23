@@ -1,4 +1,4 @@
-\chapter{Erkennung der Cry-Units}
+\chapter{Detektion von Schreigeräuschen in Audiosignalen}
 \label{sec:vad}
 
 Der erste notwendige Schritt zur Ableitung einer Pain Score aus einem Audiosignal ist die Feststellung, ob in dem Signal überhaupt kindliche Lautäußerungen vorhanden sind. Das Ziel ist, in einem Audiosignal diejenigen Bereiche zu markieren, in denen Stimmaktivität vorhanden ist und daraufhin Beginn und Ende der einzelnen Cry-Units zu festzulegen. Abbildung  \ref{img:vad01} verdeutlicht diese Aufgabe an einem Beispiel: Der obere Graph zeigt in Schwarz ein Audiosignal. Die rote Linie, die das Signal überspannt, zeigt, welche Regionen Stimme enthalten, wobei $1 \hat{=} $ \emph{stimmhaft} (engl. \emph{voiced}) und $0 \hat{=}  $ \emph{nicht stimmhaft} (oder \emph{Stille}, engl. \emph{not voiced}). Das untere Schema zeigt, wie die stimmhaften Signalbereiche zu Cry-Units zusammengefasst wurden.
@@ -12,7 +12,7 @@ Der erste notwendige Schritt zur Ableitung einer Pain Score aus einem Audiosigna
 
 In Kapitel \ref{sec:vad_new} wird die Voice Activity Detection vorgestellt, das Feststellen des Vorhandenseins von Stimme in einem Signal. In Kapitel \ref{sec:marking_cry-units_new} wird besprochen, wie die stimmhaften Signalbereiche zu Cry-Units zusammengefasst werden. In Kapitel \ref{sec:decision_smoothing_new} wird ein Algorithmus vorgestellt, in dem Nachträglich inkorrekt erkannte Anfangs- und Endzeitpunkt von Cry-Units korrigiert werden.
 
-\section{Voice Activity Detection}
+\section{Automatisierte Erkennung von Stimmaktivität in Signalen}
 \label{sec:vad_new}
 
 \emph{Voice Activity Detection} (kurz \emph{VAD}) oder \emph{Speech Detection} ist bei jeder Art der Sprachverarbeitung von Bedeutung: Im Mobilfunk wird sie beispielsweise eingesetzt, um die Zeitbereiche zu Erkennen, in denen die Teilnehmer sprechen und somit eine Übertragung stattfinden muss. Die größte Herausforderung von VAD-Systemen ist die robuste Erkennung von Stimmaktivität auch bei starkem Hintergrundrauschen. Bis heute wurde keine \glqq perfekte Lösung\grqq{} des Problems gefunden. \cite[S. 1]{vad_granada} \cite[S. 1]{vad_kola} \cite[S. 1]{vad_Lisboa}
@@ -311,7 +311,7 @@ if Ceps$_{mag}$($x_i[\;]$) > 0.2
 
 Wird dem \emph{C4.5}-Algorithmus eine größere Menge an Attributen zur Verfügung gestellt, auf deren Basis der Klassifikator entworfen wird, wird der Entscheidungsbaum implizit zeigen, welche Features für die VAD besser geeignet sind, da sie höher im Entscheidungsbaum stehen werden. Es besteht jedoch die Gefahr, dass der Klassifikator in ein lokales Maximum gelaufen ist und eine suboptimale Auswahl an Features durch den Algorithmus getroffen wurde. Außerdem besteht die Gefahr von Overfitting, insofern Entscheidungsbäume mit beliebiger Tiefe zugelassen werden.
 
-\subsection{Simulations-Studie}
+\subsection{Simulationsstudie}
 \label{sec:vad_study}
 
 In Kapitel \ref{sec:methods_vad_new} wurde eine Übersicht über die Methoden gegeben, die in dieser Arbeit zur Voice Activity Detection erprobt und/oder eingesetzt wurden. Neben Methoden zur Vorverarbeitung und zum Windowing wurde eine Reihe an Features vorgestellt, die für ein Signalfenster als Entscheidungsgrundlage für die Erkennung von Stimme dienen können. Schlussendlich wurde argumentiert, wie der \emph{C4.5}-Algorithmus genutzt werden kann, um einen Klassifikator zu entwerfen, der die Entscheidung über das Vorhandensein von Stimme in einem Signalfenster auf Grundlage einer Menge von Features fällt. Dafür wird ein Datensatz zum Training des \emph{C4.5}-Algorithmus benötigt.
@@ -429,7 +429,7 @@ Da der Klassifikator aus Gleichung \ref{eq:cepTree01} eine durchschnittliche Gen
 
 Es wurde sich für das Modell für mit einem Grenzwert von 0.02 entschieden, da durch die höhere Sensitivtät mehr Cry-Units erkannt werden, die in späteren Verarbeitungsschritten immernoch als False-Positives erkannt und verworfen werden können. Einmal im Prozess der VAD als Stimmlos markierte Fenster werden jedoch nicht weiter verarbeitet und gehen somit \glqq verloren\grqq. Die finale Klassifizierungsfunktion eines Signalfensters zur Voice Activity Detection ist somit die, die in Gleichung \ref{eq:cepTree01} abgebildet wird.
 
-\section{Markierung der Cry-Units}
+\section{Zusammenfassung stimmhafter Signalbereiche zu Schreieinheiten}
 \label{sec:marking_cry-units_new}
 
 In Kapitel \ref{sec:vad_new} wurde die Voice Activity Detection besprochen. Das Ergebnis der Untersuchung war eine Klassifizierungsfunktion, die ein Signalfenster $x_i[\;]$ als \emph{stimmhaft} oder \emph{nicht stimmhaft} markiert. Varallyay \cite[S. 16 - 17]{cry_thesis} stellt die Idee vor, auf Grundlage des Ergebnisses der Voice Activity Detection die Anfangs- und Endzeitpunkte der Cry-Units zu markieren.\footnote{\glqq Cry-Units \grqq{} werden von Varallyay als \glqq Cry-Segmente \grqq{} bezeichnet.} Das genaue Vorgehen konnte jedoch nicht eingesehen werden, da der Autor keine Zugriffsrechte auf die Publikation erhielt.
@@ -511,7 +511,7 @@ Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie auf Basis der Liste alle
 	\end{algorithmic}
 \end{algorithm}
 
-\section{Decision Smoothing}
+\section{Entscheidungsglättung}
 \label{sec:decision_smoothing_new}
 
 Abbildung \ref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal-Rausch-Abstand von \SI{3}{\decibel}, bei dem die Voice Activity Detection durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifikation und die grüne Linie die prognostizierte Klassifikation. Es ist zu sehen, dass einige False-Negatives sowie False-Positives prognostiziert wurden. Im folgenden werden drei charakteristische Varianten falsch prognostizierter Klassifikationen näher erläutert:

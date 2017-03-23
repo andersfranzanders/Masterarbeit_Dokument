@@ -1,31 +1,112 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\citation{PainAssessment01}
-\citation{PainAssessment03}
-\citation{PainAssessment01}
-\citation{PainAssessment01}
+\citation{dspGuide}
+\citation{dspGuide}
+\citation{dspMichigan}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}{3}{chapter.2}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
 \newlabel{sec:foundations}{{2}{3}{Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}{chapter.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}Schmerz und Weinen bei Neugeborenen aus medizinischer Sicht}{3}{section.2.1}}
-\newlabel{sec:medicalFoundations}{{2.1}{3}{Schmerz und Weinen bei Neugeborenen aus medizinischer Sicht}{section.2.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Pain Scales}{3}{subsection.2.1.1}}
-\newlabel{sec:painScores}{{2.1.1}{3}{Pain Scales}{subsection.2.1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Grundlagen der Verarbeitung akustischer Signale}{3}{section.2.1}}
+\newlabel{sec:signal_foundations}{{2.1}{3}{Grundlagen der Verarbeitung akustischer Signale}{section.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Grundlegende Definitionen}{3}{subsection.2.1.1}}
+\citation{dspMichigan}
+\citation{dspMichigan}
+\newlabel{eq:support}{{2.1}{4}{Grundlegende Definitionen}{equation.2.1.1}{}}
+\newlabel{eq:duration}{{2.2}{4}{Grundlegende Definitionen}{equation.2.1.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Statistische Merkmale von Signalen}{4}{subsection.2.1.2}}
+\newlabel{eq:maxAndMin}{{2.3}{4}{Statistische Merkmale von Signalen}{equation.2.1.3}{}}
+\newlabel{eq:avg}{{2.4}{4}{Statistische Merkmale von Signalen}{equation.2.1.4}{}}
+\newlabel{eq:msv}{{2.5}{4}{Statistische Merkmale von Signalen}{equation.2.1.5}{}}
+\newlabel{eq:rms}{{2.6}{4}{Statistische Merkmale von Signalen}{equation.2.1.6}{}}
+\citation{dspGuide}
+\citation{sprachverarbeitung}
+\newlabel{eq:energy}{{2.7}{5}{Statistische Merkmale von Signalen}{equation.2.1.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.3}Fehlersignale}{5}{subsection.2.1.3}}
+\newlabel{eq:sigErrorAddition}{{2.8}{5}{Fehlersignale}{equation.2.1.8}{}}
+\newlabel{eq:snrPre}{{2.9}{5}{Fehlersignale}{equation.2.1.9}{}}
+\newlabel{eq:snrDb}{{2.10}{5}{Fehlersignale}{equation.2.1.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.4}Kurzzeit-Fourier-Transformation}{5}{subsection.2.1.4}}
+\newlabel{sec:stft}{{2.1.4}{5}{Kurzzeit-Fourier-Transformation}{subsection.2.1.4}{}}
+\newlabel{eq:complexDFTpolar}{{2.11}{5}{Kurzzeit-Fourier-Transformation}{equation.2.1.11}{}}
+\citation{juliusSmith}
+\citation{sprachverarbeitung}
+\citation{dspGuide}
+\newlabel{eq:spectrum}{{2.12}{6}{Kurzzeit-Fourier-Transformation}{equation.2.1.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Beispiel f\IeC {\"u}r die DFT}}{6}{figure.caption.5}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{img:stft01}{{2.1}{6}{Beispiel für die DFT}{figure.caption.5}{}}
+\newlabel{eq:signal-Window}{{2.13}{6}{Kurzzeit-Fourier-Transformation}{equation.2.1.13}{}}
+\citation{sprachverarbeitung}
+\citation{stft}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Windowing: Die Zerlegung eines Signals in k\IeC {\"u}rzere Fenster.\relax }}{7}{figure.caption.6}}
+\newlabel{img:siganlWindows}{{2.2}{7}{Windowing: Die Zerlegung eines Signals in kürzere Fenster.\relax }{figure.caption.6}{}}
+\newlabel{eq:hammingWindow}{{2.14}{7}{Kurzzeit-Fourier-Transformation}{equation.2.1.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Das Hamming-Window\relax }}{7}{figure.caption.7}}
+\newlabel{img:hamming}{{2.3}{7}{Das Hamming-Window\relax }{figure.caption.7}{}}
+\newlabel{eq:stft}{{2.15}{7}{Kurzzeit-Fourier-Transformation}{equation.2.1.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.5}Akustische Modellierung der menschlichen Stimme}{7}{subsection.2.1.5}}
+\newlabel{sec:theVoice}{{2.1.5}{7}{Akustische Modellierung der menschlichen Stimme}{subsection.2.1.5}{}}
+\citation{cryModel}
+\citation{sprachverarbeitung}
+\citation{speechProduction}
+\citation{speechProduction}
+\citation{cryModel}
+\citation{speechProduction}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces STFT des Beispielsignals aus Abbildung \ref  {img:siganlWindows}\relax }}{8}{figure.caption.8}}
+\newlabel{img:stft02}{{2.4}{8}{STFT des Beispielsignals aus Abbildung \ref {img:siganlWindows}\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber die Organe des Sprechapparates}}{8}{figure.caption.9}}
+\newlabel{img:schematicVocalOrgans}{{2.5}{8}{Schematische Übersicht über die Organe des Sprechapparates}{figure.caption.9}{}}
+\citation{ricardo_ceps}
+\citation{ricardo_ceps}
+\citation{speechAcoustics}
+\citation{speechAcoustics}
+\citation{speechAcoustics}
+\citation{ricardo_ceps}
+\citation{speechAcoustics}
+\newlabel{eq:source-Filter-Model}{{2.16}{9}{Akustische Modellierung der menschlichen Stimme}{equation.2.1.16}{}}
+\newlabel{eq:source-Filter-Model2}{{2.17}{9}{Akustische Modellierung der menschlichen Stimme}{equation.2.1.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber das Source-Filter-Modell}}{9}{figure.caption.10}}
+\newlabel{img:source-filter-model}{{2.6}{9}{Schematische Übersicht über das Source-Filter-Modell}{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Zeitbereiche der periodischen und der turbulenten Quelle}}{9}{figure.caption.11}}
+\newlabel{img:glottalSource}{{2.7}{9}{Zeitbereiche der periodischen und der turbulenten Quelle}{figure.caption.11}{}}
+\citation{ricardo_ceps}
+\citation{ricardo_ceps}
+\citation{sprachverarbeitung}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Betrachtung der Frequenzbereiche des Source-Filter-Modell}}{10}{figure.caption.12}}
+\newlabel{img:sourceFilerSpectra}{{2.8}{10}{Betrachtung der Frequenzbereiche des Source-Filter-Modell}{figure.caption.12}{}}
+\citation{sprachverarbeitung}
+\citation{benade}
+\citation{benade}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Grundfrequenz und harmonische Obert\IeC {\"o}ne eines periodischen Sprachsignals.\relax }}{11}{figure.caption.13}}
+\newlabel{img:pitchPeaks}{{2.9}{11}{Grundfrequenz und harmonische Obertöne eines periodischen Sprachsignals.\relax }{figure.caption.13}{}}
+\citation{sprachverarbeitung}
+\citation{speechAcoustics}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Formanten im Sprach-Signal (nach: \cite  {benade})\relax }}{12}{figure.caption.14}}
+\newlabel{img:formants}{{2.10}{12}{Formanten im Sprach-Signal (nach: \cite {benade})\relax }{figure.caption.14}{}}
+\citation{PainAssessment01}
+\citation{PainAssessment03}
+\citation{PainAssessment01}
+\citation{PainAssessment01}
 \citation{PainAssessment01}
 \citation{overview}
 \citation{PainAssessment01}
 \citation{PainAssessment02}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Spektogramm einer Audioaufnahme eines Babys. Rot $\mathaccentV {hat}05E{=}$ hohen Amplituden, Blau $\mathaccentV {hat}05E{=}$ niedrigen Amplituden. Oben: Zeitbereich. Mitte: Spektogramm mit einer Fensterl\IeC {\"a}nge von $\SI {185}{\milli \second }$(8192-Sample DFT). Unten: Spektogramm mit einer Fensterl\IeC {\"a}nge von $\SI {5}{\milli \second }$(265-Sample DFT)\relax }}{13}{figure.caption.15}}
+\newlabel{img:spectoExample}{{2.11}{13}{Spektogramm einer Audioaufnahme eines Babys. Rot $\hat {=}$ hohen Amplituden, Blau $\hat {=}$ niedrigen Amplituden. Oben: Zeitbereich. Mitte: Spektogramm mit einer Fensterlänge von $\SI {185}{\milli \second }$(8192-Sample DFT). Unten: Spektogramm mit einer Fensterlänge von $\SI {5}{\milli \second }$(265-Sample DFT)\relax }{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Schmerz und Weinen bei Neugeborenen}{13}{section.2.2}}
+\newlabel{sec:medicalFoundations}{{2.2}{13}{Schmerz und Weinen bei Neugeborenen}{section.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Schmerz-Scales als Instrument zur Schmerzbewertung}{13}{subsection.2.2.1}}
+\newlabel{sec:painScores}{{2.2.1}{13}{Schmerz-Scales als Instrument zur Schmerzbewertung}{subsection.2.2.1}{}}
 \citation{nips}
 \citation{painInNeonates}
 \citation{nips}
 \citation{nips}
 \citation{painInNeonates}
-\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Neonatal Infant Pain Scale (NIPS) \cite  {nips}\relax }}{4}{table.caption.5}}
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:nips}{{2.1}{4}{Neonatal Infant Pain Scale (NIPS) \cite {nips}\relax }{table.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Neonatal Infant Pain Scale (NIPS) \cite  {nips}\relax }}{14}{table.caption.16}}
+\newlabel{tab:nips}{{2.1}{14}{Neonatal Infant Pain Scale (NIPS) \cite {nips}\relax }{table.caption.16}{}}
 \citation{painInNeonates}
 \citation{flacc}
 \citation{npass}
@@ -55,177 +136,91 @@
 \citation{crygroup}
 \citation{cryisnoise}
 \citation{signal}
-\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber Pain-Scales. \cite  [S. 98 ]{painInNeonates} \cite  {flacc} \cite  {npass} \cite  {bpsn} \cite  {cries} \cite  {covers} \cite  {pat} \cite  {dan} \cite  {comfort} \cite  {bpsn} \relax }}{6}{table.2.2}}
-\newlabel{tab:painscores}{{2.2}{6}{Übersicht über Pain-Scales. \cite [S. 98 ]{painInNeonates} \cite {flacc} \cite {npass} \cite {bpsn} \cite {cries} \cite {covers} \cite {pat} \cite {dan} \cite {comfort} \cite {bpsn} \relax }{table.2.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Weinen bei Neugeborenen}{6}{subsection.2.1.2}}
-\newlabel{sec:foundations_cryingMeta}{{2.1.2}{6}{Weinen bei Neugeborenen}{subsection.2.1.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber Pain-Scales. \cite  [S. 98 ]{painInNeonates} \cite  {flacc} \cite  {npass} \cite  {bpsn} \cite  {cries} \cite  {covers} \cite  {pat} \cite  {dan} \cite  {comfort} \cite  {bpsn} \relax }}{16}{table.2.2}}
+\newlabel{tab:painscores}{{2.2}{16}{Übersicht über Pain-Scales. \cite [S. 98 ]{painInNeonates} \cite {flacc} \cite {npass} \cite {bpsn} \cite {cries} \cite {covers} \cite {pat} \cite {dan} \cite {comfort} \cite {bpsn} \relax }{table.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Weinen als Indikator f\IeC {\"u}r Schmerz}{16}{subsection.2.2.2}}
+\newlabel{sec:foundations_cryingMeta}{{2.2.2}{16}{Weinen als Indikator für Schmerz}{subsection.2.2.2}{}}
 \citation{signal}
 \citation{lod}
 \citation{dan}
 \citation{lod}
-\citation{dspGuide}
-\citation{dspGuide}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Signalverarbeitung}{7}{section.2.2}}
-\newlabel{sec:signal_foundations}{{2.2}{7}{Signalverarbeitung}{section.2.2}{}}
-\citation{dspMichigan}
-\citation{dspMichigan}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Grundlegende Definitionen}{8}{subsection.2.2.1}}
-\newlabel{eq:time-disc-signal}{{2.1}{8}{Grundlegende Definitionen}{equation.2.2.1}{}}
-\newlabel{eq:support}{{2.2}{8}{Grundlegende Definitionen}{equation.2.2.2}{}}
-\newlabel{eq:duration}{{2.3}{8}{Grundlegende Definitionen}{equation.2.2.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Statistische Merkmale}{8}{subsection.2.2.2}}
-\newlabel{eq:maxAndMin}{{2.4}{8}{Statistische Merkmale}{equation.2.2.4}{}}
-\newlabel{eq:avg}{{2.5}{8}{Statistische Merkmale}{equation.2.2.5}{}}
-\citation{dspMichigan}
-\newlabel{eq:msv}{{2.6}{9}{Statistische Merkmale}{equation.2.2.6}{}}
-\newlabel{eq:rms}{{2.7}{9}{Statistische Merkmale}{equation.2.2.7}{}}
-\newlabel{eq:energy}{{2.8}{9}{Statistische Merkmale}{equation.2.2.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Statistische Merkmale eines Beispielsignals \IeC {\"u}ber dem Intervall [50,200]\relax }}{9}{figure.caption.6}}
-\newlabel{img:sigStats}{{2.1}{9}{Statistische Merkmale eines Beispielsignals über dem Intervall [50,200]\relax }{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Fehlersignale}{9}{subsection.2.2.3}}
-\newlabel{eq:sigErrorAddition}{{2.9}{9}{Fehlersignale}{equation.2.2.9}{}}
-\citation{dspGuide}
-\citation{sprachverarbeitung}
-\citation{juliusSmith}
-\newlabel{eq:snrPre}{{2.10}{10}{Fehlersignale}{equation.2.2.10}{}}
-\newlabel{eq:snrDb}{{2.11}{10}{Fehlersignale}{equation.2.2.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Kurzzeit-Fourier-Transformation}{10}{subsection.2.2.4}}
-\newlabel{sec:stft}{{2.2.4}{10}{Kurzzeit-Fourier-Transformation}{subsection.2.2.4}{}}
-\newlabel{eq:complexDFTpolar}{{2.12}{10}{Kurzzeit-Fourier-Transformation}{equation.2.2.12}{}}
-\newlabel{eq:spectrum}{{2.13}{10}{Kurzzeit-Fourier-Transformation}{equation.2.2.13}{}}
-\citation{sprachverarbeitung}
-\citation{dspGuide}
-\citation{sprachverarbeitung}
-\citation{stft}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Ein 1.8-Sekunden langes Signal. Oben: Der Zeitbereich mit drei klar erkennbaren Events. Unten: Das Frequenz-Spectrum des gesamten Signals mit logarithmisierten Achsen.\relax }}{11}{figure.caption.7}}
-\newlabel{img:stft01}{{2.2}{11}{Ein 1.8-Sekunden langes Signal. Oben: Der Zeitbereich mit drei klar erkennbaren Events. Unten: Das Frequenz-Spectrum des gesamten Signals mit logarithmisierten Achsen.\relax }{figure.caption.7}{}}
-\newlabel{eq:signal-Window}{{2.14}{11}{Kurzzeit-Fourier-Transformation}{equation.2.2.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Windowing: Die Zerlegung eines Signals in k\IeC {\"u}rzere Fenster.\relax }}{11}{figure.caption.8}}
-\newlabel{img:siganlWindows}{{2.3}{11}{Windowing: Die Zerlegung eines Signals in kürzere Fenster.\relax }{figure.caption.8}{}}
-\newlabel{eq:hammingWindow}{{2.15}{11}{Kurzzeit-Fourier-Transformation}{equation.2.2.15}{}}
-\citation{cryModel}
-\citation{sprachverarbeitung}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Das Hamming-Window\relax }}{12}{figure.caption.9}}
-\newlabel{img:hamming}{{2.4}{12}{Das Hamming-Window\relax }{figure.caption.9}{}}
-\newlabel{eq:stft}{{2.16}{12}{Kurzzeit-Fourier-Transformation}{equation.2.2.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces STFT des Beispiel-Signals aus Abbildung \ref  {img:siganlWindows}\relax }}{12}{figure.caption.10}}
-\newlabel{img:stft02}{{2.5}{12}{STFT des Beispiel-Signals aus Abbildung \ref {img:siganlWindows}\relax }{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.5}Akustische Modellierung der menschlichen Stimme}{12}{subsection.2.2.5}}
-\newlabel{sec:theVoice}{{2.2.5}{12}{Akustische Modellierung der menschlichen Stimme}{subsection.2.2.5}{}}
-\citation{speechProduction}
-\citation{speechProduction}
-\citation{cryModel}
-\citation{speechProduction}
-\citation{ricardo_ceps}
-\citation{ricardo_ceps}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber die Organe der Spracherzeugung. Lung = Lunge, Vocal Chords = Stimmb\IeC {\"a}nder, Pharynx = Rachen, Velum = Halsz\IeC {\"a}pfchen, Mouth Cavity = Mundraum, Nasal Cavity = Nasenraum \cite  {speechProduction}\relax }}{13}{figure.caption.11}}
-\newlabel{img:schematicVocalOrgans}{{2.6}{13}{Schematische Übersicht über die Organe der Spracherzeugung. Lung = Lunge, Vocal Chords = Stimmbänder, Pharynx = Rachen, Velum = Halszäpfchen, Mouth Cavity = Mundraum, Nasal Cavity = Nasenraum \cite {speechProduction}\relax }{figure.caption.11}{}}
-\newlabel{eq:source-Filter-Model}{{2.17}{13}{Akustische Modellierung der menschlichen Stimme}{equation.2.2.17}{}}
-\newlabel{eq:source-Filter-Model2}{{2.18}{13}{Akustische Modellierung der menschlichen Stimme}{equation.2.2.18}{}}
-\citation{speechAcoustics}
-\citation{speechAcoustics}
-\citation{speechAcoustics}
-\citation{ricardo_ceps}
-\citation{speechAcoustics}
-\citation{ricardo_ceps}
-\citation{ricardo_ceps}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber das Source-Filter-Model \cite  [nach Source estimation, S. 17]{ricardo_ceps}\relax }}{14}{figure.caption.12}}
-\newlabel{img:source-filter-model}{{2.7}{14}{Schematische Übersicht über das Source-Filter-Model \cite [nach Source estimation, S. 17]{ricardo_ceps}\relax }{figure.caption.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Zeitbereiche der periodischen und der turbulenten Quelle \cite  [Source]{speechAcoustics}\relax }}{14}{figure.caption.13}}
-\newlabel{img:glottalSource}{{2.8}{14}{Zeitbereiche der periodischen und der turbulenten Quelle \cite [Source]{speechAcoustics}\relax }{figure.caption.13}{}}
-\citation{sprachverarbeitung}
-\citation{sprachverarbeitung}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Betrachtung der Frequenzbereiche des Source-Filter-Model (nach: \cite  [Source Estimation, S. 3]{ricardo_ceps})\relax }}{15}{figure.caption.14}}
-\newlabel{img:sourceFilerSpectra}{{2.9}{15}{Betrachtung der Frequenzbereiche des Source-Filter-Model (nach: \cite [Source Estimation, S. 3]{ricardo_ceps})\relax }{figure.caption.14}{}}
-\citation{benade}
-\citation{benade}
-\citation{sprachverarbeitung}
-\citation{speechAcoustics}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Grundfrequenz und harmonische Obert\IeC {\"o}ne eines periodischen Sprachsignals.\relax }}{16}{figure.caption.15}}
-\newlabel{img:pitchPeaks}{{2.10}{16}{Grundfrequenz und harmonische Obertöne eines periodischen Sprachsignals.\relax }{figure.caption.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Formanten im Sprach-Signal (nach: \cite  {benade})\relax }}{16}{figure.caption.16}}
-\newlabel{img:formants}{{2.11}{16}{Formanten im Sprach-Signal (nach: \cite {benade})\relax }{figure.caption.16}{}}
 \citation{crygroup}
 \citation{signal}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.12}{\ignorespaces Spektogramm einer Audioaufnahme eines Babys. Rot $\mathaccentV {hat}05E{=}$ hohen Amplituden, Blau $\mathaccentV {hat}05E{=}$ niedrigen Amplituden. Oben: Zeitbereich. Mitte: Spektogramm mit einer Fensterl\IeC {\"a}nge von $\SI {185}{\milli \second }$(8192-Sample DFT). Unten: Spektogramm mit einer Fensterl\IeC {\"a}nge von $\SI {5}{\milli \second }$(265-Sample DFT)\relax }}{17}{figure.caption.17}}
-\newlabel{img:spectoExample}{{2.12}{17}{Spektogramm einer Audioaufnahme eines Babys. Rot $\hat {=}$ hohen Amplituden, Blau $\hat {=}$ niedrigen Amplituden. Oben: Zeitbereich. Mitte: Spektogramm mit einer Fensterlänge von $\SI {185}{\milli \second }$(8192-Sample DFT). Unten: Spektogramm mit einer Fensterlänge von $\SI {5}{\milli \second }$(265-Sample DFT)\relax }{figure.caption.17}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Schreiforschung}{17}{section.2.3}}
-\newlabel{sec:cryresearch_foundations}{{2.3}{17}{Schreiforschung}{section.2.3}{}}
 \citation{cryModel}
 \citation{rythmic}
 \citation{wolff}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Phyisio-Akustische Modellierung des Weinens}{17}{subsection.2.2.3}}
+\newlabel{sec:acousticModel}{{2.2.3}{17}{Phyisio-Akustische Modellierung des Weinens}{subsection.2.2.3}{}}
 \citation{rythmic}
 \citation{cryModel}
 \citation{rythmic}
 \citation{cryModel}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Phyisio-Akustische Modellierung des Weinens}{18}{subsection.2.3.1}}
-\newlabel{sec:acousticModel}{{2.3.1}{18}{Phyisio-Akustische Modellierung des Weinens}{subsection.2.3.1}{}}
 \citation{cryModel}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.12}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{18}{figure.caption.17}}
+\newlabel{img:cryVocabulary}{{2.12}{18}{Veranschaulichung des Grundvokabulars\relax }{figure.caption.17}{}}
 \citation{parentalPerception}
 \citation{threeCryTypes}
 \citation{cryModel}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.13}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{19}{figure.caption.18}}
-\newlabel{img:cryVocabulary}{{2.13}{19}{Veranschaulichung des Grundvokabulars\relax }{figure.caption.18}{}}
 \citation{signal}
 \citation{signal}
 \citation{parentalPerception}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.14}{\ignorespaces (1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite  [S. 142]{signal}\relax }}{20}{figure.caption.19}}
-\newlabel{img:cryMelodies}{{2.14}{20}{(1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite [S. 142]{signal}\relax }{figure.caption.19}{}}
 \citation{parentalPerception}
 \citation{signal}
 \citation{cryModel}
 \citation{rythmic}
 \citation{parentalPerception}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.13}{\ignorespaces (1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite  [S. 142]{signal}\relax }}{20}{figure.caption.18}}
+\newlabel{img:cryMelodies}{{2.13}{20}{(1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite [S. 142]{signal}\relax }{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.4}Diskussion}{20}{subsection.2.2.4}}
+\newlabel{sec:cryDiscussion}{{2.2.4}{20}{Diskussion}{subsection.2.2.4}{}}
 \citation{parentalPerception}
 \citation{cryModel}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Diskussion}{21}{subsection.2.3.2}}
-\newlabel{sec:cryDiscussion}{{2.3.2}{21}{Diskussion}{subsection.2.3.2}{}}
 \citation{machine_marsland}
 \citation{machine_marsland}
 \citation{learning_cart_dobra}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Automatisierte Klassifizierung und Bewertung}{21}{section.2.3}}
+\newlabel{sec:learning}{{2.3}{21}{Automatisierte Klassifizierung und Bewertung}{section.2.3}{}}
 \citation{statistical_learning}
 \citation{learning_cart_dobra}
 \citation{machine_marsland}
 \citation{statistical_learning}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Klassifizierung und Regression}{22}{section.2.4}}
-\newlabel{sec:learning}{{2.4}{22}{Klassifizierung und Regression}{section.2.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Klassifizierung mit den Algorithmen ID3 und C4.5}{22}{subsection.2.3.1}}
+\newlabel{sec:id3}{{2.3.1}{22}{Klassifizierung mit den Algorithmen ID3 und C4.5}{subsection.2.3.1}{}}
 \citation{machine_marsland}
 \citation{machine_marsland}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}ID3 und C4.5}{23}{subsection.2.4.1}}
-\newlabel{sec:id3}{{2.4.1}{23}{ID3 und C4.5}{subsection.2.4.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Beispieldatensatz D f\IeC {\"u}r die Kassfikation mit ID3\relax }}{23}{table.caption.20}}
-\newlabel{tab:id3_example}{{2.3}{23}{Beispieldatensatz D für die Kassfikation mit ID3\relax }{table.caption.20}{}}
 \citation{machine_mitchell}
+\@writefile{lot}{\contentsline {table}{\numberline {2.3}{\ignorespaces Beispieldatensatz D f\IeC {\"u}r die Kassfikation mit ID3\relax }}{23}{table.caption.19}}
+\newlabel{tab:id3_example}{{2.3}{23}{Beispieldatensatz D für die Kassfikation mit ID3\relax }{table.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.14}{\ignorespaces Entscheidungsbaum, der durch den ID3-Algorithmus f\IeC {\"u}r den Datensatz aus Beispiel \ref  {tab:id3_example} erzeugt wurde.\relax }}{23}{figure.caption.20}}
+\newlabel{img:id3tree}{{2.14}{23}{Entscheidungsbaum, der durch den ID3-Algorithmus für den Datensatz aus Beispiel \ref {tab:id3_example} erzeugt wurde.\relax }{figure.caption.20}{}}
 \citation{machine_marsland}
 \citation{machine_marsland}
 \citation{machine_marsland}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.15}{\ignorespaces Entscheidungsbaum, der durch den ID3-Algorithmus f\IeC {\"u}r den Datensatz aus Beispiel \ref  {tab:id3_example} erzeugt wurde.\relax }}{24}{figure.caption.21}}
-\newlabel{img:id3tree}{{2.15}{24}{Entscheidungsbaum, der durch den ID3-Algorithmus für den Datensatz aus Beispiel \ref {tab:id3_example} erzeugt wurde.\relax }{figure.caption.21}{}}
-\newlabel{eq:entropy}{{2.19}{24}{ID3 und C4.5}{equation.2.4.19}{}}
-\newlabel{eq:informationGain}{{2.20}{24}{ID3 und C4.5}{equation.2.4.20}{}}
+\newlabel{eq:entropy}{{2.18}{24}{Klassifizierung mit den Algorithmen ID3 und C4.5}{equation.2.3.18}{}}
+\newlabel{eq:informationGain}{{2.19}{24}{Klassifizierung mit den Algorithmen ID3 und C4.5}{equation.2.3.19}{}}
 \citation{machine_mitchell}
 \citation{machine_mitchell}
 \citation{machine_mitchell}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.15}{\ignorespaces Aufspaltung einer kontinuierlichen Variable im Entscheidungsbaum\relax }}{25}{figure.caption.21}}
+\newlabel{img:continuos_variable}{{2.15}{25}{Aufspaltung einer kontinuierlichen Variable im Entscheidungsbaum\relax }{figure.caption.21}{}}
 \citation{machine_mitchell}
-\citation{machine_kubat}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.16}{\ignorespaces Aufspaltung einer kontinuierlichen Variable im Entscheidungsbaum\relax }}{26}{figure.caption.22}}
-\newlabel{img:continuos_variable}{{2.16}{26}{Aufspaltung einer kontinuierlichen Variable im Entscheidungsbaum\relax }{figure.caption.22}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{26}{subsection.2.4.2}}
-\newlabel{sec:howGoodIsMyClassifier}{{2.4.2}{26}{Gütemaße binärer Klassifikatoren}{subsection.2.4.2}{}}
 \citation{machine_kubat}
 \citation{machine_kubat}
 \citation{machine_kubat}
+\citation{machine_kubat}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{26}{subsection.2.3.2}}
+\newlabel{sec:howGoodIsMyClassifier}{{2.3.2}{26}{Gütemaße binärer Klassifikatoren}{subsection.2.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.16}{\ignorespaces Confusion-Matrix (nach: \cite  [S. 214]{machine_kubat})\relax }}{26}{figure.caption.22}}
+\newlabel{img:Confusion-Matrix}{{2.16}{26}{Confusion-Matrix (nach: \cite [S. 214]{machine_kubat})\relax }{figure.caption.22}{}}
+\newlabel{eq:accuracy}{{2.20}{26}{Gütemaße binärer Klassifikatoren}{equation.2.3.20}{}}
 \citation{machine_kubat}
 \citation{sens-and_spec}
 \citation{machine_kubat}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.17}{\ignorespaces Confusion-Matrix (nach: \cite  [S. 214]{machine_kubat})\relax }}{27}{figure.caption.23}}
-\newlabel{img:Confusion-Matrix}{{2.17}{27}{Confusion-Matrix (nach: \cite [S. 214]{machine_kubat})\relax }{figure.caption.23}{}}
-\newlabel{eq:accuracy}{{2.21}{27}{Gütemaße binärer Klassifikatoren}{equation.2.4.21}{}}
-\newlabel{eq:sensitivity}{{2.22}{27}{Gütemaße binärer Klassifikatoren}{equation.2.4.22}{}}
-\newlabel{eq:specificity}{{2.23}{27}{Gütemaße binärer Klassifikatoren}{equation.2.4.23}{}}
+\newlabel{eq:sensitivity}{{2.21}{27}{Gütemaße binärer Klassifikatoren}{equation.2.3.21}{}}
+\newlabel{eq:specificity}{{2.22}{27}{Gütemaße binärer Klassifikatoren}{equation.2.3.22}{}}
 \@setckpt{chapters/Foundations}{
-\setcounter{page}{29}
-\setcounter{equation}{23}
+\setcounter{page}{28}
+\setcounter{equation}{22}
 \setcounter{enumi}{4}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
@@ -234,16 +229,16 @@
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{2}
-\setcounter{section}{4}
+\setcounter{section}{3}
 \setcounter{subsection}{2}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{17}
+\setcounter{figure}{16}
 \setcounter{table}{3}
 \setcounter{Item}{14}
 \setcounter{Hfootnote}{2}
-\setcounter{bookmark@seq@number}{17}
+\setcounter{bookmark@seq@number}{18}
 \setcounter{parentequation}{0}
 \setcounter{ALG@line}{0}
 \setcounter{ALG@rem}{0}
