@@ -12,29 +12,28 @@
 \BOOKMARK [2][-]{subsection.2.2.1}{Schmerz-Scales als Instrument zur Schmerzbewertung}{section.2.2}% 12
 \BOOKMARK [2][-]{subsection.2.2.2}{Weinen als Indikator f\374r Schmerz}{section.2.2}% 13
 \BOOKMARK [2][-]{subsection.2.2.3}{Phyisio-Akustische Modellierung des Weinens}{section.2.2}% 14
-\BOOKMARK [2][-]{subsection.2.2.4}{Diskussion}{section.2.2}% 15
-\BOOKMARK [1][-]{section.2.3}{Automatisierte Klassifizierung und Bewertung}{chapter.2}% 16
-\BOOKMARK [2][-]{subsection.2.3.1}{Klassifizierung mit den Algorithmen ID3 und C4.5}{section.2.3}% 17
-\BOOKMARK [2][-]{subsection.2.3.2}{G\374tema\337e bin\344rer Klassifikatoren}{section.2.3}% 18
-\BOOKMARK [0][-]{chapter.3}{Konzept zur automatisierten Schmerzbewertung anhand akustischer Signale}{}% 19
-\BOOKMARK [1][-]{section.3.1}{Anforderungen an das Konzept}{chapter.3}% 20
-\BOOKMARK [1][-]{section.3.2}{Literatur\374berblick}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.3}{\334berblick \374ber die Verarbeitungsschritte}{chapter.3}% 22
-\BOOKMARK [2][-]{subsection.3.3.1}{Automatisierte Schmerzbewertung im multimodalen Verbund}{section.3.3}% 23
-\BOOKMARK [0][-]{chapter.4}{Detektion von Schreiger\344uschen in Audiosignalen}{}% 24
-\BOOKMARK [1][-]{section.4.1}{Automatisierte Erkennung von Stimmaktivit\344t in Signalen}{chapter.4}% 25
-\BOOKMARK [2][-]{subsection.4.1.1}{Methoden}{section.4.1}% 26
-\BOOKMARK [2][-]{subsection.4.1.2}{Simulationsstudie}{section.4.1}% 27
-\BOOKMARK [1][-]{section.4.2}{Zusammenfassung stimmhafter Signalbereiche zu Schreieinheiten}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.3}{Entscheidungsgl\344ttung}{chapter.4}% 29
-\BOOKMARK [0][-]{chapter.5}{Automatisierte Schmerzbewertung anhand von Schreiger\344uschen}{}% 30
-\BOOKMARK [1][-]{section.5.1}{Zusammenfassung von Schreiger\344uschen zu Segmenten}{chapter.5}% 31
-\BOOKMARK [1][-]{section.5.2}{Methoden zur Ableitung des Schmerz-Score aus Segmenten}{chapter.5}% 32
-\BOOKMARK [2][-]{subsection.5.2.1}{Extrahierung von Eigenschaften als Grundlage zur Schmerzbewertung}{section.5.2}% 33
-\BOOKMARK [2][-]{subsection.5.2.2}{Schmerzverlauf innerhalb von Segmenten}{section.5.2}% 34
-\BOOKMARK [0][-]{chapter.6}{Visualisierung der Schmerzbewertung}{}% 35
-\BOOKMARK [1][-]{section.6.1}{Visualierungskonzept}{chapter.6}% 36
-\BOOKMARK [1][-]{section.6.2}{Ergebnis der Visualisierung}{chapter.6}% 37
-\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 38
-\BOOKMARK [0][-]{section*.68}{Appendices}{}% 39
-\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 40
+\BOOKMARK [1][-]{section.2.3}{Automatisierte Klassifizierung und Bewertung}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.3.1}{Klassifizierung mit den Algorithmen ID3 und C4.5}{section.2.3}% 16
+\BOOKMARK [2][-]{subsection.2.3.2}{G\374tema\337e bin\344rer Klassifikatoren}{section.2.3}% 17
+\BOOKMARK [0][-]{chapter.3}{Konzept zur automatisierten Schmerzbewertung anhand akustischer Signale}{}% 18
+\BOOKMARK [1][-]{section.3.1}{Anforderungen an das Konzept}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.2}{Literatur\374berblick}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.3}{\334berblick \374ber die Verarbeitungsschritte}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.3.1}{Automatisierte Schmerzbewertung im multimodalen Verbund}{section.3.3}% 22
+\BOOKMARK [0][-]{chapter.4}{Detektion von Schreiger\344uschen in Audiosignalen}{}% 23
+\BOOKMARK [1][-]{section.4.1}{Automatisierte Erkennung von Stimmaktivit\344t in Signalen}{chapter.4}% 24
+\BOOKMARK [2][-]{subsection.4.1.1}{Methoden}{section.4.1}% 25
+\BOOKMARK [2][-]{subsection.4.1.2}{Simulationsstudie}{section.4.1}% 26
+\BOOKMARK [1][-]{section.4.2}{Zusammenfassung stimmhafter Signalbereiche zu Schreieinheiten}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.3}{Entscheidungsgl\344ttung}{chapter.4}% 28
+\BOOKMARK [0][-]{chapter.5}{Automatisierte Schmerzbewertung anhand von Schreiger\344uschen}{}% 29
+\BOOKMARK [1][-]{section.5.1}{Zusammenfassung von Schreiger\344uschen zu Segmenten}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.2}{Methoden zur Ableitung des Schmerz-Score aus Segmenten}{chapter.5}% 31
+\BOOKMARK [2][-]{subsection.5.2.1}{Extrahierung von Eigenschaften als Grundlage zur Schmerzbewertung}{section.5.2}% 32
+\BOOKMARK [2][-]{subsection.5.2.2}{Schmerzverlauf innerhalb von Segmenten}{section.5.2}% 33
+\BOOKMARK [0][-]{chapter.6}{Visualisierung der Schmerzbewertung}{}% 34
+\BOOKMARK [1][-]{section.6.1}{Visualierungskonzept}{chapter.6}% 35
+\BOOKMARK [1][-]{section.6.2}{Ergebnis der Visualisierung}{chapter.6}% 36
+\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 37
+\BOOKMARK [0][-]{section*.68}{Appendices}{}% 38
+\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 39

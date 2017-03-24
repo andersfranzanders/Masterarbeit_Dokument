@@ -10,10 +10,10 @@
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Zeitbereiche der periodischen und der turbulenten Quelle}}{9}{figure.caption.11}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Betrachtung der Frequenzbereiche des Source-Filter-Modell}}{10}{figure.caption.12}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Grundfrequenz und harmonische Obert\IeC {\"o}ne eines periodischen Sprachsignals\relax }}{11}{figure.caption.13}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces ormanten im Sprach-Signal}}{12}{figure.caption.14}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Formanten im Sprach-Signal}}{12}{figure.caption.14}
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Spektogramm einer Audioaufnahme eines Babys}}{13}{figure.caption.15}
 \contentsline {figure}{\numberline {2.12}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{18}{figure.caption.17}
-\contentsline {figure}{\numberline {2.13}{\ignorespaces (1) Pitch of Shift (2) Maximale Grundfrequenz (3) Minimum der Grundfrequenz (4) Biphonation (5) Double Harmonic Break (6) Vibrato (7) Glide (8) Furcation \cite [S. 142]{signal}\relax }}{19}{figure.caption.18}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Schematisches Spektogramm eines beispielhaften Weinens}}{20}{figure.caption.18}
 \contentsline {figure}{\numberline {2.14}{\ignorespaces Entscheidungsbaum, der durch den ID3-Algorithmus f\IeC {\"u}r den Datensatz aus Beispiel \ref {tab:id3_example} erzeugt wurde.\relax }}{23}{figure.caption.20}
 \contentsline {figure}{\numberline {2.15}{\ignorespaces Aufspaltung einer kontinuierlichen Variable im Entscheidungsbaum\relax }}{25}{figure.caption.21}
 \contentsline {figure}{\numberline {2.16}{\ignorespaces Confusion-Matrix (nach: \cite [S. 214]{machine_kubat})\relax }}{26}{figure.caption.22}

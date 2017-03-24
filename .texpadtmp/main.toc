@@ -13,7 +13,6 @@
 \contentsline {subsection}{\numberline {2.2.1}Schmerz-Scales als Instrument zur Schmerzbewertung}{13}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Weinen als Indikator f\IeC {\"u}r Schmerz}{16}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Phyisio-Akustische Modellierung des Weinens}{17}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Diskussion}{20}{subsection.2.2.4}
 \contentsline {section}{\numberline {2.3}Automatisierte Klassifizierung und Bewertung}{21}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Klassifizierung mit den Algorithmen ID3 und C4.5}{22}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{26}{subsection.2.3.2}

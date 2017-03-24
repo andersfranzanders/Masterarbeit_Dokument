@@ -123,6 +123,14 @@
   \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.624.3471&rep=rep1&type=pdf},
   abgerufen am 22.03.2017
 
+\bibitem[EH09]{ordinalClassification}
+\textsc{Eibe}, Frank ; \textsc{Hall}, Mark:
+\newblock \emph{{A Simple Approach to Ordinal Classification}}.
+\newblock Department of Computer Science University of Waikato, 2009. --
+\newblock Online unter
+  \url{http://ttic.uchicago.edu/~nati/Publications/RennieSrebroIJCAI05.pdf},
+  abgerufen am 22.03.2017
+
 \bibitem[FGL14]{cepstrumPitchTranslation}
 \textsc{Fraile}, Ruben ; \textsc{Godino-Llorente}, Juan~I.:
 \newblock {Cepstral peak prominence: A comprehensive analysis}.
@@ -374,6 +382,14 @@
 \newblock California Technical Publishing, 1999. --
 \newblock Online erhältlich unter: \url{http://www.dspguide.com/pdfbook.htm},
   abgerufen am 11. Januar 2016
+
+\bibitem[Sti09]{aboutKids}
+\textsc{Stinson}, Jennifer:
+\newblock \emph{{Tools For Measuring Pain}}.
+\newblock About Kids Health, 2009. --
+\newblock Online unter
+  \url{http://www.aboutkidshealth.ca/En/ResourceCentres/Pain/PainAssessment/MeasurementofPain/Pages/Tools-For-Measuring-Pain.aspx},
+  abgerufen am 22.03.2017
 
 \bibitem[UW 14]{nips}
 \textsc{UW Health} (Hrsg.):
