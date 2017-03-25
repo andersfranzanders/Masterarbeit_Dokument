@@ -17,10 +17,9 @@
 \contentsline {subsection}{\numberline {2.3.1}Klassifizierung mit den Algorithmen ID3 und C4.5}{22}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{26}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Konzept zur automatisierten Schmerzbewertung anhand akustischer Signale}{28}{chapter.3}
-\contentsline {section}{\numberline {3.1}Anforderungen an das Konzept}{28}{section.3.1}
-\contentsline {section}{\numberline {3.2}Literatur\IeC {\"u}berblick}{29}{section.3.2}
-\contentsline {section}{\numberline {3.3}\IeC {\"U}berblick \IeC {\"u}ber die Verarbeitungsschritte}{30}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Automatisierte Schmerzbewertung im multimodalen Verbund}{32}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.1}Literatur\IeC {\"u}berblick}{28}{section.3.1}
+\contentsline {section}{\numberline {3.2}\IeC {\"U}berblick \IeC {\"u}ber die Verarbeitungsschritte}{30}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Automatisierte Visualisierung der Schmerzbewertung im multimodalen Verbund}{31}{subsection.3.2.1}
 \contentsline {chapter}{\numberline {4}Detektion von Schreiger\IeC {\"a}uschen in Audiosignalen}{33}{chapter.4}
 \contentsline {section}{\numberline {4.1}Automatisierte Erkennung von Stimmaktivit\IeC {\"a}t in Signalen}{33}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Methoden}{35}{subsection.4.1.1}
