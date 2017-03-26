@@ -1,35 +1,35 @@
 \chapter{Detektion von Schreigeräuschen in Audiosignalen}
 \label{sec:vad}
 
-Der erste notwendige Schritt zur Ableitung einer Pain Score aus einem Audiosignal ist die Feststellung, ob in dem Signal überhaupt kindliche Lautäußerungen vorhanden sind. Das Ziel ist, in einem Audiosignal diejenigen Bereiche zu markieren, in denen Stimmaktivität vorhanden ist und daraufhin Beginn und Ende der einzelnen Cry-Units zu festzulegen. Abbildung  \ref{img:vad01} verdeutlicht diese Aufgabe an einem Beispiel: Der obere Graph zeigt in Schwarz ein Audiosignal. Die rote Linie, die das Signal überspannt, zeigt, welche Regionen Stimme enthalten, wobei $1 \hat{=} $ \emph{stimmhaft} (engl. \emph{voiced}) und $0 \hat{=}  $ \emph{nicht stimmhaft} (oder \emph{Stille}, engl. \emph{not voiced}). Das untere Schema zeigt, wie die stimmhaften Signalbereiche zu Cry-Units zusammengefasst wurden.
+Der erste notwendige Schritt zur Schmerzdiagnostik auf Basis eines Audiosignals ist die Feststellung, ob in dem Signal überhaupt kindliche Lautäußerungen vorhanden sind. Das Ziel ist, in einem Audiosignal diejenigen Bereiche zu markieren, in denen Stimmaktivität vorhanden ist und daraufhin die Anfangs- und Endzeitpunkte  der Schreieinheiten zu bestimmen. Abbildung  \ref{img:vad01} verdeutlicht diese Aufgabe an einem Beispiel: Der obere Graph zeigt in Schwarz ein Audiosignal. Die rote Linie, die das Signal überspannt, zeigt, welche Regionen Stimme enthalten, wobei $1 \: \hat{=} $ \emph{stimmhaft} (engl. \emph{voiced}) und $0 \: \hat{=}  $ \emph{nicht stimmhaft} (engl. \emph{not voiced}, in diesem Zusammenhang auch bezeichnet als \emph{Stille}). Das untere Schema zeigt, wie die stimmhaften Signalbereiche zu Schreieinheiten zusammengefasst werden.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{bilder/vad_introduction02.png}
-	\caption{Markierung stimmhafter Bereiche in einem Audiosignal. Oben Schwarz: Das Eingangssignal $x[\;]$. Oben Rot: Klassifizierung in stimmhaft/Stille. Unten Rot: Die fünf erkannten Cry-Units.}
+	\caption[Markierung stimmhafter Bereiche in einem Audiosignal]{Markierung stimmhafter Bereiche in einem Audiosignal. Oben Schwarz: Das Eingangssignal $x[\;]$. Oben Rot: Klassifizierung in stimmhaft/Stille. Unten Rot: Fünf erkannte Schreieinheiten $cu_1 , \ldots , cu_5$.}
 	\label{img:vad01}
 \end{figure}
 
-In Kapitel \ref{sec:vad_new} wird die Voice Activity Detection vorgestellt, das Feststellen des Vorhandenseins von Stimme in einem Signal. In Kapitel \ref{sec:marking_cry-units_new} wird besprochen, wie die stimmhaften Signalbereiche zu Cry-Units zusammengefasst werden. In Kapitel \ref{sec:decision_smoothing_new} wird ein Algorithmus vorgestellt, in dem Nachträglich inkorrekt erkannte Anfangs- und Endzeitpunkt von Cry-Units korrigiert werden.
+In Kapitel \ref{sec:vad_new} wird die \emph{Voice Activity Detection} vorgestellt. In Kapitel \ref{sec:marking_cry-units_new} wird besprochen, wie stimmhafte Signalbereiche zu Schreieinheiten zusammengefasst werden. In Kapitel \ref{sec:decision_smoothing_new} wird ein Algorithmus vorgestellt, in dem inkorrekt erkannte Anfangs- und Endzeitpunkt von Schreieinheiten nachträglich korrigiert werden.
 
 \section{Automatisierte Erkennung von Stimmaktivität in Signalen}
 \label{sec:vad_new}
 
-\emph{Voice Activity Detection} (kurz \emph{VAD}) oder \emph{Speech Detection} ist bei jeder Art der Sprachverarbeitung von Bedeutung: Im Mobilfunk wird sie beispielsweise eingesetzt, um die Zeitbereiche zu Erkennen, in denen die Teilnehmer sprechen und somit eine Übertragung stattfinden muss. Die größte Herausforderung von VAD-Systemen ist die robuste Erkennung von Stimmaktivität auch bei starkem Hintergrundrauschen. Bis heute wurde keine \glqq perfekte Lösung\grqq{} des Problems gefunden. \cite[S. 1]{vad_granada} \cite[S. 1]{vad_kola} \cite[S. 1]{vad_Lisboa}
+\emph{Voice Activity Detection} (kurz \emph{VAD}) oder \emph{Speech Detection}, die Feststellung des Vorhandenseins von Stimme in Signalbereichen, ist bei jeder Art der Sprachverarbeitung von Bedeutung: Im Mobilfunk wird sie beispielsweise eingesetzt, um die Zeitbereiche zu Erkennen, in denen Teilnehmer nicht sprechen und somit keine Übertragung stattfinden muss. Die größte Herausforderung von VAD-Systemen ist die robuste Erkennung von Stimmaktivität auch bei starkem Hintergrundrauschen. Bis heute wurde keine fehlerfreie Lösung des Problems gefunden. \cite[S. 1]{vad_granada} \cite[S. 1]{vad_kola} \cite[S. 1]{vad_Lisboa}
 
 Der Grundlegende Aufbau eines VAD-Algorithmus ist wie folgt. Abbildung \ref{img:vad_pipeline} visualisiert diesen Aufbau.
 \begin{enumerate}
-	\item \textbf{Vorverarbeitung} (engl. Pre-Proccessing) des Signals.
+	\item \textbf{Vorverarbeitung} (engl. \emph{Pre-Proccessing}) des Signals.
 	\item \textbf{Windowing: } Unterteilung des Signals in (einander überlappende) Signalfenster.
-	\item \textbf{Extraktion von Eigenschaften} (engl. \emph{Feature-Extraction}) aus jedem Signalfenster.
-	\item \textbf{Entscheidung} (engl. \emph{Decision}) über die Präsens oder Abwesenheit von Stimme für jedes Signalfenster auf Grundlage der extrahierten Eigenschaften
-	\item \textbf{Decision-Smoothing}, das nachträgliche Hinzufügen oder Entfernen von Entscheidungen mit Hilfe kontextueller Informationen der umliegenden Entscheidungen.\cite[S. 8 - 9]{vad_granada} \cite[S. 1 - 2]{vad_kola}
+	\item \textbf{Extraktion von Eigenschaften} (engl. \emph{Feature-Extraction}) für jedes Signalfenster.
+	\item \textbf{Entscheidung} (engl. \emph{Decision}) über die Präsens oder Abwesenheit von Stimme für jedes Signalfenster auf Grundlage der extrahierten Eigenschaften.
+	\item \textbf{Entscheidungs-Glättung} (engl. \emph{Decision-Smoothing}), das nachträgliche Hinzufügen oder Entfernen von Entscheidungen mit Hilfe kontextueller Informationen der umliegenden Entscheidungen.\cite[S. 8 - 9]{vad_granada} \cite[S. 1 - 2]{vad_kola}
 \end{enumerate}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.65\textwidth]{bilder/vad_pipeline03.png}
-	\caption{Aufbau eines VAD-Algorithmus}
+	\caption[Aufbau eines VAD-Algorithmus]{Aufbau eines VAD-Algorithmus (nach: \cite[S. 8]{vad_granada})}
 	\label{img:vad_pipeline}
 \end{figure}
 
@@ -44,11 +44,11 @@ Die in diesem Kapitel vorgestellten Methoden kombinieren Ideen, die von Moattar 
 \subsubsection{Vorverarbeitung}
 \label{sec:preprocessing}
 
-Bei der Vorverarbeitung wird das Signal so manipuliert, dass Störeinflüsse auf die darauf folgenden Verarbeitungsschritte minimiert werden. Welche Vorverarbeitung durchgeführt wird, ist Abhängig von der konkreten Aufgabenstellung. Dieser Schritt ist für die VAD optional. So setzten beispielsweise Ahmadi et al. \cite{vad_ceps} einen Bandpassfilter bei der Vorverarbeitung ein, während Moattar et al. \cite{vad_Easy} keine Vorverarbeitung anwendeten. 
+Bei der Vorverarbeitung werden Störeinflüsse auf das Signal minimiert, um die nachfolgenden Verarbeitungsschritte zu erleichtern. Welche Vorverarbeitung durchgeführt wird, ist abhängig von der konkreten Aufgabenstellung. Dieser Schritt ist für die VAD optional. So setzten beispielsweise Ahmadi et al. \cite{vad_ceps} einen Bandpassfilter bei der Vorverarbeitung ein, während Moattar et al. \cite{vad_Easy} keine Vorverarbeitung anwendeten. 
 
-In dieser Arbeit sich für eine Vorverarbeitung entschieden, bei der das Signal hinsichtlich seiner Dynamik im Zeitbereich eingeschränkt wird. Dies ist ein typischer Vorverarbeitungsschritt bei Sprachaufnahmen. So wird vermieden, dass ein Signal eventuell zu leise ist, damit überhaupt Etwas darin erkannt werden kann. Einer der hauptsächlichen Gründe, warum ein Signal eine niedrige durchschnittliche Energie aufweisen kann, obwohl es maximal ausgesteuert wurde, sind sehr kurze Pegelspitzen, deren Pegel weit über dem Durchschnittspegel liegen und so eine weitere Erhöhung der Lautstärke verhindern. Da die Audiosignale, die in der in Kapitel \ref{sec:vad_study} vorgestellten Simulationsstudie verwendet wurden, aus inhomogenen Quellen stammen und sehr unterschiedliche Lautstärken hatten, wurde so eine Angleichung der Signalenergien gewährleistet.
+In dieser Arbeit wurde sich für eine Vorverarbeitung entschieden, bei der das Signal hinsichtlich seiner Dynamik im Zeitbereich eingeschränkt wird. Dies ist ein typischer Vorverarbeitungsschritt bei Sprachaufnahmen. So wird vermieden, dass die durchschnittliche Energie des Signals für eine Erkennung der Stimmaktivität zu niedrig ist. Ein Grund für eine niedrige durchschnittliche Energie des Signals trotz maximaler Aussteuerung sind sehr kurze Pegelspitzen, deren Pegel weit über dem Durchschnittspegel liegen und so eine weitere Erhöhung der Lautstärke verhindern.
 
-Die Dynamikeinschränkung wurde mit Hilfe eines Audio-Kompressors umgesetzt. Dieser verringert Signalspitzen, die über einen festgelegten \emph{Schwellwert} (engl. \emph{Threshold}) $\theta$ liegen, um ein festgelegtes \emph{Verhältnis} (engl. \emph{Ratio)} $\rho$. Ein Schwellwert von $\theta = 0.3$ mit einem Verhältnis von $\rho = 0.5$ bedeutet beispielsweise, dass alle Signalspitzen, die den Wert 0.3 über-, oder $-0.3$ unterschreiten, um 50\% verringert werden. Der Wert eines Samples nach der Kompression $x_{comp}[n]$ ergibt sich somit nach Gleichung \ref{eq:preprocessedX}.
+Die Dynamikeinschränkung wurde mit Hilfe eines Audio-Kompressors umgesetzt. Dieser verringert Signalspitzen, die über einen festgelegten \emph{Schwellwert} (engl. \emph{Threshold}) $\theta$ liegen, um ein festgelegtes \emph{Verhältnis} (engl. \emph{Ratio)} $\rho$. Ein Schwellwert von $\theta = 0.3$ mit einem Verhältnis von $\rho = 0.5$ bedeutet beispielsweise, dass alle Signalspitzen, die den Wert 0.3 über-, oder $-0.3$ unterschreiten, um 50\% verringert werden. Der Wert eines Samples nach der Kompression $x_{comp}[n]$ ergibt sich nach Gleichung \ref{eq:preprocessedX}.
 
 \begin{equation}
 \text{comp}(x[n], \theta, \rho) =
@@ -63,47 +63,47 @@ x[n] \quad \text{sonst}
 Die Amplituden hoher Signalspitzen werden so verringert, wodurch Headroom gewonnen wird, welcher anschließend bei der gleichmäßigen Erhöhung aller Amplituden zur Erhöhung der insgesamten Energie genutzt werden kann. Diese Erhöhung kann beispielsweise durch eine Normalisierung nach Gleichung \ref{eq:normalizing} durchgeführt werden.
 
 \begin{equation}
-\text{normalize}(x[n]) = \frac{x[n]}{\maxi\{x[\;]\}}
+\text{normalize}(x_{comp}[n]) = \frac{x_{comp}[n]}{\maxi\{|x_{comp}[\;]|\}}
 \label{eq:normalizing}
 \end{equation}
 
-Bei dem Kompressor, der in dieser Verarbeitungs-Pipeline zur Vorverarbeitung verwendet wird, werden Threshold und Ratio nach Formel \ref{eq:THold} als Funktion des RMS-Wertes des Signals berechnet. Der Parameter $r_a$ gibt den Ziel-RMS-Wert an. Der RMS-Wert wird nach Formel \ref{eq:rms} berechnet.
+Bei dem Kompressor, der in dieser Verarbeitungs-Pipeline zur Vorverarbeitung eingesetzt wurde, wurden Threshold und Ratio nach Formel \ref{eq:THold} als Funktion des RMS-Wertes des Signals berechnet. Der Parameter $r_a$ gibt einen beliebigen Ziel-RMS-Wert an.
 
 \begin{equation}
 \theta(x[\;]) = \rho(x[\;])  = \bigg[\frac{\text{RMS}(x[\;])}{r_a}\bigg]^{2}
 \label{eq:THold}
 \end{equation}
 
-Die Vorverarbeitung wurde durchgeführt, indem 1.) die Kompression mit den Parametern nach Gleichung \ref{eq:THold} und 2.) die Normalisierung nach Gleichung \ref{eq:THold} durchgeführt wurde. Abbildung \ref{img:compressing01} zeigt ein Signal vor und nach der Vorverarbeitung nach diesem Prinzip. Um eine zu große Beeinflussung des Signals zu vermeiden, wurde ein Minimalwert für Threshold und Ratio von $0.4$ festgelegt.
+Die Vorverarbeitung wurde durchgeführt, indem 1.) die Kompression mit den Parametern nach Gleichung \ref{eq:preprocessedX} und 2.) die Normalisierung nach Gleichung \ref{eq:normalizing} durchgeführt wurde. Abbildung \ref{img:compressing01} zeigt ein Signal vor und nach der Vorverarbeitung nach diesem Prinzip. Um eine zu große Beeinflussung des Signals zu vermeiden, wurde ein Minimalwert für Threshold und Ratio von $0.4$ festgelegt.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{bilder/compressing01.png}
-	\caption{Ergebnis der Vorverarbeitung. Oben: Das Signal vor der Vorverarbeitung. Unten: Das Signal nach der Vorverarbeitung.}
+	\caption[Vorverarbeitung der Voice Activity Detection]{Vorverarbeitung der Voice Activity Detection. Oben: Das Signal vor der Vorverarbeitung. Unten: Das Signal nach der Vorverarbeitung.}
 	\label{img:compressing01}
 \end{figure}
 
-Diese Vorverarbeitung eignet sich nicht für ein kontinuierliches System, da Samples zur Berechnung des RMS-Wertes mit einbezogen werden, die zu einem Berechnungszeitpunkt in der Zukunft liegen. Das Hauptziel dieser Vorverarbeitung war die Herstellung ähnlicher Energieverhältnisse bei den Signalen, die in der Simulationsstudien in Kapitel \ref{sec:vad_study} verwendet wurden. Damit diese Vorverarbeitung in einem kontinuierlichen System eingesetzt werden kann, wird die folgende Abwandlung vorgeschlagen:
+Diese Vorverarbeitung eignet sich nicht für ein kontinuierliches System, da Samples zur Berechnung des RMS-Wertes mit einbezogen werden, die zu einem Berechnungszeitpunkt in der Zukunft liegen. Das Hauptziel dieser Vorverarbeitung war die Gewährleistung ähnlicher Energieverhältnisse bei den Signalen des Trainingsdatensatzes, der in der Simulationsstudien in Kapitel \ref{sec:vad_study} verwendet wurde. Das folgende Vorgehen für den Einsatz der Vorverarbeitung in einem kontinuierlichen System wird vorgeschlagen:
 \begin{itemize}
-	\item Komplettes Überspringen der Vorverarbeitung, in dem mit Hilfe eines manuell einstellbaren Lautstärkereglers eine ausreichende Signalenergie gewährleistet wird. Würde man beispielsweise anstelle der Analyse des Audiosignals das Gesicht des Neugeborenen mit einer Kamera untersuchen, würde man ebenfalls eine ausreichende Bildhelligkeit voraussetzen.
-	\item Die Initialisierung des Kompressor mit \grqq sanften Werten\grqq , wie zum Beispiel $\theta = \rho = 0.7$ und $\maxi\{x[\;] = 0.9\}$. Diese Parameter können nach der Beendigung eines Segmentes (Siehe Kapitel \ref{sec:segmenting}) auf Basis des RMS-Wertes des Segmentes aktualisiert und für die Vorverarbeitung der zukünftigen Werte eingesetzt werden.
+	\item Komplettes Überspringen der Vorverarbeitung, in dem mit Hilfe eines manuell einstellbaren Lautstärkereglers eine ausreichende Signalenergie gewährleistet wird. Würde man beispielsweise anstelle der Analyse des Audiosignals das Gesicht des Neugeborenen mit einer Kamera untersuchen, würde ebenfalls eine ausreichende Bildhelligkeit vorausgesetzt werden.
+	\item Die Initialisierung des Kompressor mit \grqq sanften Werten\grqq , wie zum Beispiel $\theta = \rho = 0.7$. Diese Parameter können nach der Beendigung eines Segmentes (Siehe Kapitel \ref{sec:segmenting}) auf Basis des RMS-Wertes des Segmentes aktualisiert und für die Vorverarbeitung der zukünftigen Werte eingesetzt werden.
 \end{itemize}
 
 \subsubsection{Windowing}
 \label{sec:windowing}
 
-Angenommen, man führt die Voice Activity Detection für das Signal $x[\;]$ durch und kommt zu dem Schluss, dass in dem Signal (teilweise) Stimme enthalten ist. Ist das Signal mehrere Minuten oder sogar Stunden lang, ist allein aus der Entscheidung nicht ersichtlich, in welchen Zeitbereichen genau Stimme enthalten ist, und in welchen nicht. Um die zeitliche \glqq Auflösung\grqq{} zu erhöhen, wird das Signal in kürzere Zeitfenster zerlegt.
+Angenommen, man führt die Voice Activity Detection für das Signal $x[\;]$ durch und kommt zu dem Schluss, dass in dem Signal (teilweise) Stimme enthalten ist. Ist das Signal mehrere Minuten oder sogar Stunden lang, ist allein aus diesem Schluss nicht ersichtlich, in welchen Zeitbereichen genau Stimme enthalten ist, und in welchen nicht. Um die zeitliche Auflösung zu erhöhen, wird das Signal in kürzere Zeitfenster zerlegt.
 
 Nach der Vorverarbeitung wird diese Zerlegung mit Hilfe der in Kapitel \ref{sec:stft} als \emph{Windowing} bezeichneten Methode durchgeführt. Das Signal $x[\;]$ wird nach Gleichung \ref{eq:signal-Window} in die Signalfenster $x_0[\;] , \ldots , x_m[\;]$ aufgeteilt. Die Zeitfenster werden zunächst im Zeitbereich belassen. Es wurde sich für die von Waheed et al. \cite{vad_entropy} vorgeschlagene Fensterlänge von \SI{25}{\milli\second} entschieden, als Kompromiss zwischen den von Moattar et al. \cite{vad_Easy} empfohlenen \SI{10}{\milli\second} und den von Ahmadi et al. \cite{vad_ceps} empfohlenen \SI{40}{\milli\second}. Die Fenster überlappen einander um 50\%, das heißt \SI{12.5}{\milli\second}.
 
-Die Entscheidung über das Vorhandensein von Stimme wird \emph{einzeln} für jedes der Signalfenster $x_0[\;] , \ldots , x_m[\;]$ durchgeführt. Grundlage für die Entscheidung ist eine Menge an Features, die für das jeweilige Signalfenster $x_i[\;]$ berechnet wird. Die Erforschung geeigneter Features ist eines der primären Forschungsgegenstände der VAD. In den folgenden Kapiteln \ref{sec:vad_time_features} bis \ref{sec:vad_ceps_features} wird eine Reihe an Features vorgestellt, die in dieser Arbeit zur VAD erprobt wurden. Jedes der in diesen Kapiteln besprochenen Features kann für ein Signalfenster $x_i[\;]$ \`{a} \SI{25}{\milli\second} berechnet werden und als Grundlage für eine Entscheidung dienen. Die Evaluation, welche Eigenschaften sich am besten zur Feststellung von Stimme im speziellen Fall von Neugeborenen eignen, folgt in Kapitel \ref{sec:vad_study}
+Die Entscheidung über das Vorhandensein von Stimme wird \emph{einzeln} für jedes der Signalfenster $x_0[\;] , \ldots , x_m[\;]$ durchgeführt. Grundlage für die Entscheidung ist eine Menge an Attributen, die für das jeweilige Signalfenster $x_i[\;]$ berechnet wird. Die Ermittlung und Evaluation geeigneter Attribute ist einer der primären Forschungsbereiche der VAD. In den folgenden Kapiteln wird eine Reihe an Features vorgestellt, die in dieser Arbeit zur VAD erprobt wurden. Jedes der in diesen Kapiteln besprochenen Attribute kann für ein Signalfenster $x_i[\;]$ \`{a} \SI{25}{\milli\second} berechnet werden und als Grundlage für eine Entscheidung dienen. Die Evaluation, welche Attribute sich am besten als Entscheidungsgrundlage für einen Klassifikator zur Feststellung von Stimme im speziellen Fall von Neugeborenen eignen, folgt in Kapitel \ref{sec:vad_study}.
 
 \subsubsection{Eigenschaften des Zeitbereiches}
 \label{sec:vad_time_features}
 
-Im Zeitbereich wurden die beiden Eigenschaften\emph{Root Mean Square} [\emph{RMS}] und \emph{Zero Crossing Rate} [\emph{ZCR}] erprobt.
+Im Zeitbereich wurden die beiden Eigenschaften \emph{Root Mean Square} [\emph{RMS}] und \emph{Zero Crossing Rate} [\emph{ZCR}] erprobt.
 
-Moattar et al. \cite{vad_Easy} bezeichnen den Energiegehalt eines Signals als das für die VAD am häufigsten angewandte Attribut. Der RMS-Wert als Feature für ein Signalfenster wurde nach Gleichung \ref{eq:rms} berechnet. Hintergrund ist, dass der Energiegehalt eines Stimmsignals typischerweise höher ist als der des Hintergrundrauschens. Bei geringem Signal/Rausch-Abständen ist diese Bedingung jedoch nicht immer gegeben. Als zweites Attribut des Zeitbereiches wurde die \emph{Zero Crossing Rate} berechnet. Die ZCR nach Formel \ref{eq:zcr} gibt an, wie häufig ein Vorzeichenwechsel im Signal vorkommt. Eine höhere ZCR weist auf ein stimmloses Signal hin, da Rauschen typischerweise eine höhere ZCR als stimmhafte Signale aufweist. Problematisch ist dieses Kriterium bei Signalen, bei denen kein Hintergrundrauschen vorliegt, da sich dort eine ZCR von 0 ergibt.\cite{vad_ceps} Um den Wert in Relation zur Fensterlänge setzen zu können, wurde weiterhin die ZCR durch die Anzahl der Samples eines Signalfensters $N$ geteilt.
+Moattar et al. \cite{vad_Easy} bezeichnen den Energiegehalt eines Signals als das für die VAD am häufigsten angewandte Attribut. Der RMS-Wert als Feature für ein Signalfenster wird nach Gleichung \ref{eq:rms} berechnet. Hintergrund ist, dass der Energiegehalt eines Stimmsignals typischerweise höher ist als der des Hintergrundrauschens. Bei geringem Signal/Rausch-Abständen ist diese Bedingung jedoch nicht immer erfüllt. Als zweites Attribut des Zeitbereiches wurde die \emph{Zero Crossing Rate} berechnet nach Formel Formel \ref{eq:zcr} berechnet. Dieses Feature gibt an, wie häufig ein Vorzeichenwechsel im Signal vorkommt. Stimmlose Signalbereiche haben typischerweise einen höhere ZCR als stimmhafte Signalbereiche. Problematisch ist dieses Kriterium bei Signalen, bei denen kein Hintergrundrauschen vorliegt, da sich dort eine ZCR von 0 ergibt.\cite{vad_ceps} Um den Wert in Relation zur Fensterlänge setzen zu können, wurde weiterhin die ZCR durch die Anzahl der Samples eines Signalfensters $N$ geteilt.
 
 \begin{equation}
 \text{ZCR}(x_i[\;]) = \sum_{0}^{N-1}|\text{sng}(x_i[n])-\text{sng}(x_i[n-1])|
@@ -112,51 +112,50 @@ Moattar et al. \cite{vad_Easy} bezeichnen den Energiegehalt eines Signals als da
 
 \subsubsection{Eigenschaften der Autokorrelation}
 
-Neben den in Kapitel \ref{sec:vad_time_features} genannten \glqq einfachen\grqq{} Attributen des Zeitbereiches wurde die Autokorrelation zur VAD erprobt. Die Autokorrelation eignet sich, um Periodizität in einem Signal nachzuweisen. Wie in Kapitel \ref{sec:theVoice} ausgeführt, weisen stimmhafte Signale eine tendenziell stärkeres periodisches Verhalten als das Hintergrundrauschen auf. 
+Neben dem RMS-Wert und der ZCR wurde die Autokorrelation zur VAD erprobt. Die Autokorrelation eignet sich, um Periodizität in einem Signal nachzuweisen. Wie in Kapitel \ref{sec:theVoice} erläutert, weisen stimmhafte Signale ein tendenziell stärker periodisches Verhalten als das Hintergrundrauschen auf. 
 
-Bei der Autokorrelation wird ein Signal mit einer verzögerten Variante von sich selber korreliert. Gleichung \ref{eq:ACorr} definiert die Autokorrelation des $N$-Sample langen Signalfensters $x_i[\;]$, verzögert um das Lag $k$.
+Bei der Autokorrelation wird ein Signal mit einer verzögerten Variante von sich selber korreliert. Gleichung \ref{eq:ACorr} definiert die Autokorrelation des $N$-Sample langen Signalfensters $x_i[\;]$, verzögert um einen als \emph{Lag} bezeichneten Wert $k$.
 
 \begin{equation}
 \text{A-Corr}_k(x[\;]) = \sum_{n=k}^{N} x[n-k] \cdot x[n]
 \label{eq:ACorr}
 \end{equation}
 
-Da der Autokorrelationswert neben der Periodizität von der Signalenergie abhängig ist, ist eine Normalisierung des Wertes wünschenswert. Es gibt verschiedene Varianten dieser Normalisierung. Gleichung \ref{eq:NACorr} definiert die \glqq normalisierte Autokorrelation\grqq{}, bei der der Autokorrelationswert durch die RMS-Werte des verzögerten und unverzögerten Signals normalisiert wird.\cite{vad_Lisboa}
+Da der Autokorrelationswert neben der Stärke der Periodizität von der Signalenergie abhängig ist, ist eine Normalisierung des Wertes wünschenswert. Es gibt verschiedene Varianten dieser Normalisierung. Gleichung \ref{eq:NACorr} definiert die \glqq normalisierte Autokorrelation\grqq{}, bei der der Autokorrelationswert durch die RMS-Werte des verzögerten und des unverzögerten Signals normalisiert wird. Ein hoher Wert der normalisierten Autokorrelation mit der Verzögerung $k$ spricht für eine ausgeprägte Periodizität des Signals mit der Frequenz $f =  f_s / k $.\cite{vad_Lisboa}
 
 \begin{equation}
 \text{NA-Corr}_k(x[\;]) = \frac{\sum_{n=k}^{N} x[n-k] \cdot x[n]}{ \sqrt{\sum_{n=1}^{N-k}  x[n]^2}  \cdot  \sqrt{\sum_{n=k}^{N}  x[n]^2} }
 \label{eq:NACorr}
 \end{equation}
 
-Das Autokorrelations-Signal $a[\;]$ wird erstellt, indem die normalisierte Autokorrelation für verschiedene $k = k_{min} , \ldots , k_{max}$ angewandt wird, wie Gleichung \ref{eq:a-Signal} definiert. 
+%Das Autokorrelations-Signal $a[\;]$ wird erstellt, indem die normalisierte Autokorrelation für verschiedene $k = k_{min} , \ldots , k_{max}$ angewandt wird, wie Gleichung \ref{eq:a-Signal} definiert. 
+
+%\begin{equation}
+%a[\;] := \quad \mathop{\forall}_{k = k_{min}}^{k_{max}} :\ a[k] = \text{NA-Corr}_k(x[\;]) 
+%\label{eq:a-Signal}
+%\end{equation}
+
+In Bezug auf die VAD wurde die Autokorrelation als Methode genutzt, um die beiden Attribute \emph{höchste Autokorrelationsspitze} [\emph{aMax}] und \emph{Anzahl der Autokorrelationsspitzen} [\emph{aCount}] zu berechnen. Beide Eigenschaften wurden von Kristjansson et al. \cite[S. 1 - 2]{vad_Lisboa} zur VAD beschrieben. Die \emph{höchste Autokorrelationsspitze} wird in Formel \ref{eq:corrpeak} definiert und bestimmt die höchste Magnitude der normalisierten Autokorrelation für die Verzögerungswerte $k_{min} , \ldots , k_{max}$. Ein stimmhaftes Signal hat aufgrund seiner Periodizität erwartungsgemäß einen höheren [\emph{aMax}]-Wert als Rauschen.
 
 \begin{equation}
-a[\;] := \quad \mathop{\forall}_{k = k_{min}}^{k_{max}} :\ a[k] = \text{NA-Corr}_k(x[\;]) 
-\label{eq:a-Signal}
-\end{equation}
-
-Ein hoher Wert des Signals $a[\;]$ an der Position $k$ spricht für eine ausgeprägte Periodizität des Signals mit der Frequenz $f =  f_s / k $. Es ist üblich, den Bereich $[k_{min},k_{max}]$ so einzuschränken, dass die Autokorrelation nur für den Frequenz-Raum durchgeführt wird, in dem man Periodizität erwartet.\cite{vad_Lisboa}
-
-In Bezug auf die VAD wurde die Autokorrelation wird als Methode genutzt, um die beiden Attribute \emph{höchste Autokorrelationsspitze} [\emph{aMax}] und \emph{Anzahl der Autokorrelationsspitzen} [\emph{aCount}] zu berechnen. Beide Eigenschaften wurden von Kristjansson et al. \cite[S. 1 - 2]{vad_Lisboa} zur VAD beschrieben. Die \emph{höchste Autokorrelationsspitze} wird in Formel \ref{eq:corrpeak} definiert und bestimmt die höchste Magnitude im Autokorrelationssignal. Ein stimmhaftes Signal hat aufgrund seiner Periodizität erwartungsgemäß einen höheren [\emph{aMax}]-Wert als Rauschen.
-
-\begin{equation}
-\text{aMax}(x_i[\;]) = \max_{k}\text{mag}\{\text{NA-Corr}_k(x_i[\;])\}
+\text{aMax}(x_i[\;]) = \maxmagi_{k = k_{min} \: \ldots \: k_{max}}\{\text{NA-Corr}_k(x_i[\;])\}
 \label{eq:corrpeak}
 \end{equation}
 
-Die \emph{Anzahl der Autokorrelationsspitzen} wird nach Formel \ref{eq:corrcount} berechnet. Das Feature gibt an, wie viele Signalspitzen im Autokorrelationssignal enthalten sind. Rauschen erzeugt höhere [\emph{aCount}]-Wert als stimmhafte Signale, bedingt durch die vielen zufällig entstehenden Periodizitäten.
+Die \emph{Anzahl der Autokorrelationsspitzen} wird nach Formel \ref{eq:corrcount} berechnet. Das Feature gibt an, wie viele Signalspitzen im Autokorrelationssignal enthalten sind. Rauschen erzeugt höhere [\emph{aCount}]-Wert als stimmhafte Signale, bedingt durch die vielen zufällig verteilten Periodizitäten.\cite[S. 1 - 2]{vad_Lisboa}
+
 \begin{equation}
-\text{aCount}(x_i[\;]) = \counti_{k}\text{mag}\{\text{NA-Corr}_k(x_i[\;])\}
+\text{aCount}(x_i[\;]) = \counti_{k = k_{min} \: \ldots \: k_{max}}\{\text{NA-Corr}_k(x_i[\;])\}
 \label{eq:corrcount}
 \end{equation}
 
-Aus Kapitel \ref{sec:acousticModel} ging hervor, dass die Grundfrequenz der Stimme von Neugeborenen zwischen $250$ und $\SI{2000}{\hertz}$ liegt, weshalb auch nur in Lags dieses Bereichs bei der Berechnung beider Features verwendet wurden.
+Das Verzögerungsintervall $k_{min} , \ldots , k_{max}$ wurde so gewählt, dass Periodizitäten nur in dem Bereich gesucht wurden, der für die Grundfrequenz von Babystimmen in Frage kommt. Aus Kapitel \ref{sec:acousticModel} ging hervor, dass diese Grundfrequenz für Babys zwischen $250$ und $\SI{2000}{\hertz}$ liegt.
 
 \subsubsection{Eigenschaften des Frequenzbereiches}
 
-Aus dem Frequenzbereich wurden die drei Eigenschaften \emph{unnormalisierte spektrale Entropie} [$SEnt_{u}$], \emph{normalisierte spektrale Entropie}  [$SEnt_{n}$] und \emph{dominanteste Frequenzkomponenten} [$f_{dom}$] erprobt.
+Aus dem Frequenzbereich wurden die drei Eigenschaften \emph{unnormalisierte spektrale Entropie} [$SEnt_{u}$], \emph{normalisierte spektrale Entropie}  [$SEnt_{n}$] und \emph{dominanteste Frequenzkomponenten} [$f_{dom}$] erprobt.\cite{vad_Lisboa}
 
-Als Vorbereitungsschritt muss das Signalfenster des Zeitbereiches $x_i[\;]$ in den Frequenzbereich $X_i[\;]$ transformiert werden. Die Berechnungsvorschrift ist $X_i[\;] = \text{DFT}\{(w[\;] \cdot x_i[\;])\}$. Wird diese Transformation für alle Signalfenster $x_0[\;], \ldots, x_m[\;]$ eines Signals durchgeführt, entspricht dies der in Kapitel \ref{sec:stft} vorgestellten Short Time Fourier Transformation. Es wurde eine $2048$ Punkte Lange FFT und eine Hamming-Window als Fensterfunktion $w[\;]$ verwendet.
+Als Vorbereitungsschritt muss das Signalfenster des Zeitbereiches $x_i[\;]$ in den Frequenzbereich $X_i[\;]$ transformiert werden. Die Berechnungsvorschrift ist $X_i[\;] = \text{DFT}\{(w[\;] \cdot x_i[\;])\}$. Wird diese Transformation für alle Signalfenster $x_0[\;], \ldots, x_m[\;]$ durchgeführt, entspricht dies der in Kapitel \ref{sec:stft} vorgestellten Short Time Fourier Transformation des ursprünglichen Eingangssignals $x[\;]$. Es wurde eine $2048$ Punkte Lange FFT und eine Hamming-Window als Fensterfunktion $w[\;]$ verwendet.
 
 Kristjansson et al. \cite[S. 2]{vad_Lisboa} haben die \emph{spektrale Entropie} zur Voice Activity Detection beschrieben. Dabei wird das Spektrum des Frequenzfensters $X_i[\;]$ als Wahrscheinlichkeitsverteilung betrachtet. Die Entropie als Maß zur \glqq Unreinheit\grqq{} wurde in Kapitel \ref{sec:id3} erläutert. Die \emph{normalisierte spektrale Entropie} wird nach der Formel \ref{eq:norm_se} berechnet. Das Signal $px_i[\;]$ ergibt sich durch die Normalisierung des $N$-Punkte langen Spektrums nach Formel. Bei der normalisierten spektralen Entropie ist zu erwarten, dass Frequenzfenster ohne Stimme einen höheren Wert aufweisen als Fenster mit Stimme.\ref{eq:norm_spek}. 
 
@@ -397,7 +396,7 @@ Um systematisch den besten Entscheidungsbaum zu erzielen, wurde auf Basis jedes 
 
 Die Implementierung, die für den \emph{C4.5}-Algorithmus verwendet wurde, ist der \emph{REPTree}\footnote{Dokumentation von REPTree: \url{http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/REPTree.html}} der Open Source Data-Mining-Bibliothek \emph{Weka}\footnote{Download von WEKA: \url{http://www.cs.waikato.ac.nz/ml/weka/}}. Die Implementierung hat den Vorteil, dass die maximale Tiefe des Entscheidungsbaumes festlegbar ist und somit die Komplexität des Baumes begrenzt werden kann, um Overfitting zu vermeiden. Die maximale Tiefe des REPTree wurde auf 2 gesetzt. 
 
-\subsubsection{Ergebnisse}
+\subsection{Ergebnisse}
 \label{sec:vad_results}
 
 Die Evaluationsergebnisse sind in Tabelle \ref{tab:reptree_results} zu sehen. Für jeden Trainingsdatensatz wird die Genauigkeit des jeweiligen Klassifikators für jeden der drei Testdatensätze angegeben. Außerdem wurde der Durchschnittswert aller drei Genauigkeiten berechnet.
