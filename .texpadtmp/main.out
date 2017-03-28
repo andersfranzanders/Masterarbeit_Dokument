@@ -22,7 +22,7 @@
 \BOOKMARK [0][-]{chapter.4}{Detektion von Schreiger\344uschen in Audiosignalen}{}% 22
 \BOOKMARK [1][-]{section.4.1}{Automatisierte Erkennung von Stimmaktivit\344t in Signalen}{chapter.4}% 23
 \BOOKMARK [2][-]{subsection.4.1.1}{Methoden}{section.4.1}% 24
-\BOOKMARK [2][-]{subsection.4.1.2}{Simulationsstudie}{section.4.1}% 25
+\BOOKMARK [2][-]{subsection.4.1.2}{Simulationsstudie zur Festlegung des Klassifikators}{section.4.1}% 25
 \BOOKMARK [2][-]{subsection.4.1.3}{Ergebnisse}{section.4.1}% 26
 \BOOKMARK [1][-]{section.4.2}{Zusammenfassung stimmhafter Signalbereiche zu Schreieinheiten}{chapter.4}% 27
 \BOOKMARK [1][-]{section.4.3}{Entscheidungsgl\344ttung}{chapter.4}% 28
@@ -35,5 +35,5 @@
 \BOOKMARK [1][-]{section.6.1}{Visualierungskonzept}{chapter.6}% 35
 \BOOKMARK [1][-]{section.6.2}{Ergebnis der Visualisierung}{chapter.6}% 36
 \BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 37
-\BOOKMARK [0][-]{section*.68}{Appendices}{}% 38
+\BOOKMARK [0][-]{section*.55}{Appendices}{}% 38
 \BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 39
