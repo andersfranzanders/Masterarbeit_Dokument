@@ -1,35 +1,37 @@
 \chapter{Automatisierte Schmerzbewertung anhand von Schreigeräuschen}
 \label{sec:deduction}
 
-In Kapitel \ref{sec:marking_cry-units_new} wurden Methoden vorgestellt, durch die einem Audiosignal die Cry-Units erkannt und markiert werden. Diese Cry-Units bilden den Ausgangspunkt, um eine Schmerz Score ableiten zu können. 
+In dem vergangenen Kapitel \ref{sec:vad} wurden Methoden zur automatisierten Detektion von Schreigeräuschen in Audiosignalen vorgestellt. Dabei wurde erläutert, wie detektierte Schreigeräusche zu Schreieinheiten zusammengefasst werden. Das Ziel dieses Kapitels ist die Erläuterung der Konzepte, die zum Schmerz-Scoring auf Basis der Schreieinheiten entworfen wurden.
 
-Wie in Kapitel \ref{sec:painScores} erläutert wurde, wird eine Schmerz Score typischerweise nicht aus den Informationen einer einzelnen Cry-Unit, sondern aus Gruppen mehrerer Cry-Units innerhalb eines längeren Beobachtungszeitraumes geschlossen. Dafür ist es zunächst notwendig, diejenigen Cry-Units zu identifizieren, die gemeinsam einem schmerzversuchanden Stimulus zugeordnet werden können. Diese Gruppierung von Cry-Units wird in dieser Arbeit als \emph{Segmentierung} bezeichnet und in Kapitel \ref{sec:segmenting} vorgestellt. Die so entstandenen Segmente bilden die Basis zur Ableitung von Schmerz Scores, welche in Kapitel \ref{sec:marking_cry-units_new} diskutiert wird.
-
+Die Schmerzbewertung des Weinens erfolgt typischerweise nicht aus der Beobachtung einer einzelnen Schreieinheiten, sondern aus einer Menge mehrerer Schreieinheiten innerhalb eines Beobachtungszeitraumes. Daher ist es zunächst notwendig, erkannte Schreieinheiten so zu gruppieren, das sie gemeinsam einer Schmerzepisode zugeordnet werden können. Diese \emph{Segmentierung} wird in Kapitel \ref{sec:segmenting} vorgestellt. Die Segmente bilden die Basis für die Schmerzbewertung des Weinens. Die Möglichkeiten zur Berechnung eines Schmerz-Score anhand objektiv messbarer Eigenschaften der akustischen Informationen werden in \ref{sec:marking_cry-units_new} diskutiert.
 
 \section{Zusammenfassung von Schreigeräuschen zu Segmenten}
 \label{sec:segmenting}
 
-Wie in Kapitel \ref{sec:painScores} erläutert wurde, wird die Schmerzdiagnose für Post-Operativen Schmerz mit Pain Scales typischerweise umgesetzt, indem das Baby in bestimmten Intervallen besucht und für einen festgelegten Zeitraum beobachtet wird, worauf den Schmerzgrad für einen bestimmten Zeitpunkt diagnostiziert wird. So empfiehlt die Pain Scale PAT, das Baby alle 30 Minuten zu besuchen und für 15 bis 30 Sekunden zu beobachten. Für viele Pain Scales konnten diese  Beobachtungsintervalle und Zeiträume nicht in Erfahrung gebracht werden. 
+Wie in Kapitel \ref{sec:painScores} erläutert wurde, wird die Schmerzdiagnose bei einem stetigen Monitoring typischerweise umgesetzt, indem das Baby in bestimmten Intervallen überprüft und dabei für einen festgelegten Zeitraum beobachtet wird. Bei einer solchen Visite werden die Scores für die einzelnen Schmerzindikatoren festgelegt und letztendlich der Schmerzgrad für den jeweiligen Diagnosezeitpunkt bestimmt. So empfiehlt die Schmerz-Scale PAT, das Baby alle 30 Minuten zu überprüfen und für 15 bis 30 Sekunden zu beobachten. Einige Schmerz-Scales geben keine Empfehlungen für das Beobachtungsintervall und -zeitraum. 
 
-Dieses Vorgehen der Schmerzdiagnose nur zu festgelegten Zeitintervallen macht keinen Sinn für ein kontinuierliches System, da es den Vorteil der Kontinuierlichkeit eliminieren würde. Die Frage ist also, wann eine medizinische Fachkraft den Anfangszeitpunkt einer Schmerzdiagnose festlegen würde, würde es das entsprechende Baby rund um die Uhr beobachten, und nicht nur eine Visite zu festgelegten Zeitpunkten durchführen. Die logisch nächstliegende Antwort ist, die Schmerzdiagnose genau dann zu starten, wenn das Baby anfängt, zu schreien. 
+Es ist nicht sinnvoll, dieses Prinzip der Schmerzdiagnose zu festgelegten Visiteintervallen für ein automatisiertes und kontinuierliches System zu übernehmen, da es den Vorteil der Kontinuierlichkeit eliminieren würde. Die Frage ist somit, wie eine medizinische Fachkraft das Aufkommen von Schmerz registrieren und den Anfangszeitpunkt der jeweiligen Schmerzdiagnose festlegen würde, würde es das entsprechende Baby kontinuierlich überwachen. Dabei muss bedacht werden, dass eine solche medizinische Fachkraft, so wie das in dieser Arbeit entworfene Systemkonzept, nur die akustischen Informationen zur Verfügung hätte. Die nächst liegende Antwort ist, die Schmerzdiagnose genau dann zu starten, wenn das Baby anfängt, zu weinen. So lange das Baby nicht weint, kann zumindest in Bezug auf diesen Schmerzindikator davon ausgegangen werden, dass kein Schmerz vorliegt (siehe Kapitel \ref{sec:medicalFoundations}).
 
-Die nächste Frage ist, wann man die Beobachtung wieder beendet und eine Schmerz Score für den beobachteten Zeitraum festlegt. Da einige Pain Scales aus Tabelle \ref{tab:painscores} Beobachtungszeiträume angeben, kann argumentiert werden, dass die Beobachtung direkt nach dem für die jeweilige Scale angegebenen Zeitraum beendet werden und eine Pain Score abgeleitet werden kann, auch, wenn das Baby weiterhin schreit. Dabei stellt sich die Frage, welche Zeiträume man für die Pain Scales festlegt, die keinen selber keinen vorschreiben. Die zweite Frage ist, ob eine Vorzeitige Beendigung der Beobachtung überhaupt sinnvoll ist, wenn ein automatisierte System zur Verfügung steht und der Beobachter somit \glqq unendlich viel Zeit hat\grqq . Daher wird an dieser Stelle zuerst die grundlegendere Frage gestellt: Was ist der längste sinnvolle Zeitraum, für den eine Pain Score abgeleitet werden kann? Die nächstliegende Antwort ist: Dann, wenn das Kind aufhört, zu schreien.
+Die nächste Frage ist, zu welchem Zeitpunkt die Schmerzdiagnose für die jeweilige Schmerzepisode wieder beendet und ein Schmerz-Score festlegt wird. Da einige Schmerz-Scales aus Tabelle \ref{tab:painscores} Beobachtungszeiträume vorgeben, kann argumentiert werden, dass ein Schmerz-Score direkt nach Beendigung des jeweils angegebenen Beobachtungszeitraums vergeben werden kann, auch, wenn das Baby weiterhin schreit. Problematisch wären in diesem Fall die Schmerz-Scales, die keine Beobachtungszeiträume vorgeben. Fraglich ist weiterhin, ob eine Vorzeitige Beendigung der Schmerzdiagnose überhaupt sinnvoll ist, wenn ein automatisiertes System zur ständigen Überwachung genau eines Babys vorgesehen ist. Was wäre also der späteste, sinnvolle Zeitpunkt, um nach dem Beginn einer Schmerzepisode einen Schmerz-Score festzulegen und die Diagnose zu beenden? Die nächst liegende Antwort ist: Dann, wenn das Baby wieder aufhört, zu schreien.
 
-Auf Basis dieser Argumentation wurde das folgende Vorgehen zur kontinuierlichen Segmentierung entwickelt: Wenn das Baby keine Äußerungen von sich gibt, weil es beispielsweise schläft, wird keine Cry-Unit festgestellt, und somit existiert auch momentan kein offenes Segment. Fängt das Baby an, einen Laut von sich zu geben, also eine Cry-Unit zu produzieren, wird ein neues Segment eröffnet und die Cry-Unit diesem Segment hinzugefügt. Weitere Cry-Units werden so lange diesem Segment hinzugefügt, wie die Dauer der Stille nach einer Cry-Unit einen festgelegten Grenzwert $t_{s}$ nicht überschreitet. Ein Cry-Segment wird dann geschlossen, wenn das Baby für einen festgelegten Zeitraum keine Laute mehr von sich gibt, also \glqq aufhört, zu weinen\grqq{}. Das Endzeitpunkt des Segmentes wird als der Endzeitpunkt der letzten Cry-Unit des Segmentes festgelegt.
+Auf Basis dieser Argumentation wurde das folgende Vorgehen zur kontinuierlichen Segmentierung entwickelt. Schreieinheiten, die zu einer Schmerzepisode gehören, sollen zu einem \emph{Schrei-Segment} gruppiert werden. So lange das Baby keine Äußerungen von sich gibt, weil es beispielsweise schläft, wird keine Schreieinheit in dem Audiosignal festgestellt, womit für diesen Zeitbereich auch kein Segment existiert. Fängt das Baby an, einen Laut von sich zu geben, welcher vom System als Schreieinheit detektiert wird, wird ein neues Segment eröffnet und die Schreieinheit diesem Segment hinzugefügt. Weitere Schreieinheiten werden so lange diesem Segment hinzugefügt, wie die Dauer der Stille nach einer Schreieinheit einen festgelegten Grenzwert $t_{s}$ nicht überschreitet. Ein Schrei-Segment wird dann geschlossen, wenn das Baby für einen festgelegten Zeitraum keine Laute mehr von sich gibt, also \glqq aufhört, zu weinen\grqq{}. Das Endzeitpunkt des Segmentes wird als der Endzeitpunkt der letzten Schreieinheit des Segmentes festgelegt.
 
-Formel \ref{eq:cry-segment}  definiert ein \emph{Cry-Segment} [$CS$] als Datentyp. Ein Cry-Segment ist eine Liste von Cry-Units. Alle Cry-Units erfüllen die Nebenbedingung \ref{eq:cry-segment-nb}, das heißt, dass die Distanzen aller benachbarter Cry-Units eines Cry-Segments unterhalb des Grenzwertes $t_{s}$ liegen.
+Formel \ref{eq:cry-segment} definiert ein \emph{Schrei-Segment} (engl. \emph{Cry-Segment}) [$CS$] als Liste, die Schreieinheiten beinhaltet. Die Indexierung eines Schreisegmentes beginnt bei $0$. Ein Schreisegment beinhaltet $N$ Schreieinheiten. Der Index der letzten Schreieinheit eines Segments ist somit $N-1$.
 
 \begin{equation}
-CS = [cu_0 ,  \ldots,  cu_n]
+CS = [cu_0 ,  \ldots,  cu_{N-1}]
 \label{eq:cry-segment}
 \end{equation}
 
+Alle Schreieinheiten eines Schrei-Segments erfüllen die Nebenbedingung \ref{eq:cry-segment-nb}, das heißt, dass die Distanzen aller benachbarter Schreieinheiten eines Segments unterhalb des Grenzwertes $t_{s}$ liegen.
+
+
 \begin{equation}
-\forall cs \in CS: \forall i = 0 \ldots length(cs)-2 : d(cs[i], cs[i+1]) < t_{s}
+\forall cs \in CS: \forall i = 0 , \ldots , N-2 : d(cs[i], cs[i+1]) < t_{s}
 \label{eq:cry-segment-nb}
 \end{equation}
 
-Der Start-Zeitpunkt eines Cry-Segments wird nach Formel \ref{eq:cry-segment-start} als der Startzeitpunkt der ersten Cry-Unit des Segments definiert. Das Ende eines Segmentes wird definiert als der Endzeitpunkt der letzten Cry-Unit nach Gleichung \ref{eq:cry-segment-end}.
+Der Startzeitpunkt eines Schrei-Segments wird nach Formel \ref{eq:cry-segment-start} als der Startzeitpunkt der ersten Schreieinheit des Segments definiert. Der Endzeitpunkt eines Segmentes wird definiert als der Endzeitpunkt der letzten Schreieinheit des Segments nach Gleichung \ref{eq:cry-segment-end}.
 
 \begin{equation}
 start(cs) = cs[0].start
@@ -37,14 +39,16 @@ start(cs) = cs[0].start
 \end{equation}
 
 \begin{equation}
-end(cs) = cs[n].end
+end(cs) = cs[N-1].end
 \label{eq:cry-segment-end}
 \end{equation}
 
-Algorithmus \ref{alg:crySegment} zeigt einen Pseudocode, wie die Segmentierung nach dem beschriebenen Prinzipien offline durchgeführt wird. Input des Algorithmus ist die Liste aller Cry-Units $CU_{all} = [cu_0 ,\ldots, cu_m]$, die durch das Decision-Smoothing nach Algorithmus \ref{alg:decisionSmoothing} entstanden ist. Das Ergebnis des Algorithmus ist die Liste $CS_{all}$, die alle gefundene Cry-Segmente  $[cs_0 , \ldots ,  cs_n]$ enthält. Der Algorithmus eignet sich nicht für eine Online-Segmentierung, da das Ende eines Segmentes erst bei Beginn eines neuen Segmentes festgestellt wird, wobei beliebig viel Zeit zwischen den Beiden Segmenten liegen kann. Wurde beispielsweise $t_{s} = \SI{1}{\minute}$ festgelegt, und die Pause zwischen zwei Segmenten beträgt eine Stunden, so wäre das Ende des ersten Segmentes 59 Minuten zu spät festgestellt worden. Bei einer online durchgeführten Segmentierung empfiehlt es sich, die Dauer der Stelle nach jeder neu erkannten Cry-Unit kontinuierlich zu Messen und ein Segment sofort zu beenden, wenn ein Stillezeitraum den Grenzwert $t_s$ überschreitet.
+Algorithmus \ref{alg:crySegment} zeigt einen Pseudocode zur Offline-Segmentierung nach dem vorgestellten Prinzip. Input des Algorithmus ist eine Liste aller Schreieinheiten $CU_{all}$, die nach dem Decision-Smoothing nach Algorithmus \ref{alg:decisionSmoothing} entstanden ist. Der Output des Algorithmus ist eine Liste $CS_{all}$, die alle gefundene Schreisegmente  $[cs_0 , \ldots ,  cs_n]$ enthält. Abbildung \ref{img:segmenting06} zeigt eine nach diesem Vorgehen durchgeführte Segmentierung anhand eines Beispiels.
+
+Der Algorithmus eignet sich nicht für eine Online-Segmentierung, da das Ende eines Segmentes erst bei Beginn eines neuen Segmentes festgestellt wird, wobei beliebig viel Zeit zwischen den benachbarten Segmenten liegen kann. Wurde beispielsweise $t_{s} = \SI{1}{\minute}$ festgelegt, und die Pause zwischen zwei benachbarten Segmenten beträgt eine Stunde, so wäre das Ende des ersten Segmentes 59 Minuten zu spät festgestellt worden. Bei einer online durchgeführten Segmentierung empfiehlt es sich, die Dauer der Stille nach jeder neu erkannten Schreieinheit kontinuierlich zu messen und ein Segment sofort zu beenden, wenn ein Stillezeitraum den Grenzwert $t_s$ überschreitet.
 
 \begin{algorithm}[h]
-	\caption{Gruppierung von Cry-Units zu Cry-Segments}
+	\caption{Gruppierung von Schreieinheiten zu Schrei-Segmenten}
 	\label{alg:crySegment}
 	\begin{algorithmic}[1]
 		\Function{segmentCryUnits}{$CU_{all}, t_{s}$}
@@ -67,14 +71,13 @@ Algorithmus \ref{alg:crySegment} zeigt einen Pseudocode, wie die Segmentierung n
 	\end{algorithmic}
 \end{algorithm}
 
-Abbildung \ref{img:segmenting06} zeigt die nach dieser Methode durchgeführte Segmentierung anhand eines Beispiels.
 
-Das hier vorgestellte Vorgehen wurde absichtlich möglichst einfach gehalten, damit der Sinn des Parameters $t_{s}$ leicht ersichtlich ist und somit von der medizinischen Fachkraft selbständig festgelegt werden kann. Schlussendlich ist eines der Hauptziele dieser Segmentierung, unnötige Berechnungen von Schmerz-Scores in den nachfolgenden Schritten zu vermeiden, so lange keine Cry-Units vorliegen. Das Ende eines Segmentes ist außerdem ein günstiger Zeitpunkt, um die Parameter des Kompressors im Pre-Processing auf Basis des RMS-Wertes des Segmentes zu aktualisieren (siehe Kapitel \ref{sec:preprocessing}). Trotz der Trivialität dieser laufenden Segmentierung liegt hier ein wichtiger Unterschied im Gegensatz zu vergleichbaren Systemen, wie zum Beispiel das von Cohen et al. \cite{cohenCry}, bei dem die Entscheidung über Cry/not-Cry für Segmente mit einer festen Fenstergröße von 10 Sekunden vorgenommen wird. 
+Das hier vorgestellte Segmentierungsverfahren wurde bewusst möglichst einfach gehalten, damit die Bedeutung des Parameters $t_{s}$ leicht ersichtlich ist und somit von der medizinischen Fachkraft selbständig festgelegt werden kann. Schlussendlich ist eines der Ziele dieser Segmentierung, unnötige Berechnungen von Schmerz-Scores in den nachfolgenden Schritten zu vermeiden, so lange das Baby keine Laute von sich gibt. Das Ende eines Segmentes ist weiterhin ein geeigneter Zeitpunkt, um die Parameter des Kompressors der Vorverarbeitungsstufe auf Basis des RMS-Wertes des Segmentes zu aktualisieren (siehe Kapitel \ref{sec:preprocessing}).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/segmentierung06.png}
-	\caption{Beispiel für eine Segmentierung mit einem Grenzwert von $t_s = \SI{6}{\second}$}
+	\caption[Beispiel für eine Segmentierung]{Beispiel für eine Segmentierung mit einem Grenzwert von $t_s = \SI{6}{\second}$}
 	\label{img:segmenting06}
 \end{figure}
 

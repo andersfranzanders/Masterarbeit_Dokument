@@ -221,7 +221,7 @@ Abbildung \ref{img:cepstrumPitch} verdeutlicht, wie eine Periode von $T_0$ im Ze
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{bilder/cepstrumPitch.png}
-	\caption{Feststellung der Grundfrequenz aus dem Cepstrum. \cite[S. 5]{cepstrumPitchTranslation}}
+	\caption[Feststellung der Grundfrequenz aus dem Cepstrum]{Feststellung der Grundfrequenz aus dem Cepstrum \cite[S. 5]{cepstrumPitchTranslation}}
 	\label{img:cepstrumPitch}
 \end{figure}
 
@@ -249,7 +249,7 @@ Abbildung \ref{img:vadAllFeatures} visualisiert alle Attribute, die in den voran
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{bilder/allFeatures01.png}
-	\caption[Übersicht über alle Attribute, die für die Voice Activity Detection erprobt wurden]{Übersicht über alle Attribute, die für die Voice Activity Detection erprobt wurden.}
+	\caption[Übersicht über alle Attribute, die für die VAD erprobt wurden]{Übersicht über alle Attribute, die für die Voice Activity Detection erprobt wurden.}
 	\label{img:vadAllFeatures}
 \end{figure}
 
@@ -405,10 +405,10 @@ Die Evaluationsergebnisse werden im Anhang in Tabelle \ref{tab:reptree_results} 
 
 Der Feauture-Bereich, der zu den höchsten Klassifikationsgenauigkeiten führte, ist das in Abschnitt \ref{sec:vad_ceps_features} beschriebene Cepstrum. Das einzige Feature dieses Bereiches, welches in die jeweiligen Entscheidungsbäume eingebaut wurde, war das \emph{Differenz-Feature des höchsten Peaks im Cepstrum} [Diff($Ceps_{mag}$)]. Die Klassifikatoren, die mit dem Diff($Ceps_{mag}$)-Feature entworfen wurden, erreichten eine über die drei Testdatensätze gemittelte Genauigkeit von mindestens 91,45\%. Der nächstbeste Klassifikator mit einer gemittelten Genauigkeit von 86,96\% wurde unter Verwendung der Features des Zeitbereiches und der Autokorrelation auf dem Datensatz $D_{50+\SI{3}{\decibel}}$ entworfen. Sobald das Cepstrum in Verbindung mit den Features anderer Bereiche verwendet wurden, wurde das Diff(Ceps\textsubscript{mag})-Feature vom \emph{C4.5}-Algorithmus bevorzugt und die Features der anderen Bereiche nicht mehr in die jeweiligen Entscheidungsbäume mit eingebaut.
 
-Auf Basis der Datensätze D\textsubscript{\SI{3}{\decibel},Ceps}, D\textsubscript{\SI{3}{\decibel},Zeit+Ceps}, D\textsubscript{\SI{3}{\decibel},Freq+Ceps}, D\textsubscript{50+\SI{3}{\decibel},Ceps}, \\ D\textsubscript{50+\SI{3}{\decibel},Zeit+Ceps} sowie D\textsubscript{50+\SI{3}{\decibel},Freq+Ceps} wurde der selbe Klassifikator erzeugt, der in Gleichung \ref{eq:cepTree01} gezeigt wird. Wie zu sehen ist, handelt es sich um einen einfachen Grenzwert des \emph{Diff(Ceps\textsubscript{mag})}-Features, da trotz der höchst möglichen Baumtiefe von 2 nur eine Tiefe von 1 genutzt wurde.
+Auf Basis der Datensätze D\textsubscript{\SI{3}{\decibel},Ceps}, D\textsubscript{\SI{3}{\decibel},Zeit+Ceps}, D\textsubscript{\SI{3}{\decibel},Freq+Ceps}, D\textsubscript{50+\SI{3}{\decibel},Ceps}, \\ D\textsubscript{50+\SI{3}{\decibel},Zeit+Ceps} sowie D\textsubscript{50+\SI{3}{\decibel},Freq+Ceps} wurde der gleiche Klassifikator erzeugt, der in Gleichung \ref{eq:cepTree01} gezeigt wird. Die Funktion bildet ein Signalfenster $x[\;]$ auf die Klassen $Y = \{ 1 \; \hat{=} \; \text{stimmhaft}, 0 \; \hat{=} \; \text{nicht stimmhaft}\}$ ab. Wie zu sehen ist, handelt es sich um einen einfachen Grenzwert des \emph{Diff(Ceps\textsubscript{mag})}-Features, da trotz der höchst möglichen Baumtiefe von 2 nur eine Tiefe von 1 genutzt wurde. $c_i[\;]$ ist dabei das Cepstrum des Signalfensters $x_i[\;]$.
 
 \begin{equation}
-C(c_i[\;]) = \begin{cases}
+C(x_i[\;]) = \begin{cases}
 1, \quad \text{wenn  Diff}(Ceps_{mag}(c_i[\;])) > 0.02, \\
 0, \quad \text{sonst}
 \end{cases}
@@ -419,7 +419,7 @@ C(c_i[\;]) = \begin{cases}
 Auf Basis der Datensätze D\textsubscript{\SI{50}{\decibel},Ceps} und D\textsubscript{\SI{50}{\decibel},Zeit+Ceps} wurde der Klassifikator erzeugt, der in Gleichung \ref{eq:cepTree02} gezeigt wird. Er unterscheidet sich von dem Klassifikator aus Gleichung \ref{eq:cepTree01} nur durch die Höhe des Grenzwertes.
 
 \begin{equation}
-C(c_i[\;]) = \begin{cases}
+C(x_i[\;]) = \begin{cases}
 1, \quad \text{wenn  Diff}(Ceps_{mag}(c_i[\;])) > 0.03, \\
 0, \quad \text{sonst}
 \end{cases}
@@ -463,10 +463,7 @@ Die zeitliche Dauer eine Cry-Unit $cu \in CU$ wird nach Formel \ref{eq:cry-Lambd
 \label{eq:cry-distance}
 \end{equation}
 
-Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssignal $x[\;]$ die Schreieinheiten   gekennzeichnet werden. Die Funktion 
-
-
-Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie auf Basis der Liste aller Signalfenster eines Signals $X_{all} = [x_0[\;] ,\ldots, x_m[\;]]$ die Liste der Cry-Units $CU_{all}$ generiert wird. Die Funktion $C(x_i[\;])$ ist die Klassifikations-Funktion der Signalfenster in Stimme/Stille nach Gleichung \ref{eq:cepTree01}. Die Funktion getTimeOf$(x_i[\;])$ liefert die Anfangszeitpunkt des Signalfensters $x_i[\;]$. Output des Algorithmus ist die Liste aller Cry-Units $CU_{all} = [cu_0 , \ldots, cu_l]$
+Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssignal $x[\;]$ die Schreieinheiten   gekennzeichnet werden. Die Funktion \textsc{turnSignalIntoOverlappingWindows}($x[\;], length, hopsize$) zerlegt das Eingangssignal in einander überlappende Signalfenster. Wie in Kapitel \ref{sec:windowing} beschrieben, wurde sich für $length = \SI{25}{\milli\second}$ und $hopsize = \SI{12.5}{\milli\second}$ entschieden. Der Output dieser Funktion ist eine Liste aller Signalfenster $X_{all} = [x_0[\;] ,\ldots, x_m[\;]]$. Die Funktion $C(x_i[\;])$ klassifiziert ein Signalfenster als \emph{Stimme} oder \emph{Sille} nach Gleichung \ref{eq:cepTree01}. Die Funktion \textsc{getTimeOf}$(x_i[\;])$ liefert die Anfangszeitpunkt des Signalfensters $x_i[\;]$. Output des Algorithmus ist eine Liste aller im Signal detektierten Schreieinheiten $CU_{all} = [cu_0 , \ldots, cu_l]$. 
 
 \begin{figure}[H]
 	\centering
@@ -476,16 +473,15 @@ Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie auf Basis der Liste alle
 \end{figure}
 
 \begin{algorithm}[H]
-	\caption{Detektion Schreieinheiten in Signalfenstern}
+	\caption{Detektion Schreieinheiten in einem Audiosignal}
 	\label{alg:cryUnit}
 	\begin{algorithmic}[1]
 		\Function{DetectCryUnitsInSignal}{$x[\;], hopsize, overlap$}
 		\State $X_{all} = $ \Call{turnSignalIntoOverlappingWindows}{$x[\;], hopsize, overlap$}
-		\State $Ceps_{all} =  $ \Call{callCepstrumsOfSignalWindows}{$X_{all}$}
 		\State $ CU_{all} \gets [\;]$
 		\State $ cu\gets ([\;],0,0)$
 		\For{\textbf{all} $x_i[\;] \in X_{all}$}
-				\State $ c \gets C(x_i[\;])$
+				\State $ c \gets C(x[\;])$
 				\State \Comment Start of Cry-Unit
 				\If {$c == 1 \wedge $ \Call{isEmpty}{cu.windows}}
 						\State $cu\gets ([\;],0,0)$
@@ -518,25 +514,25 @@ Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie auf Basis der Liste alle
 \end{algorithm}
 
 
-\section{Entscheidungsglättung}
+\section{Nachträgliche Korrektur von Schreieinheiten}
 \label{sec:decision_smoothing_new}
 
-Abbildung \ref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal-Rausch-Abstand von \SI{3}{\decibel}, bei dem die Voice Activity Detection durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifikation und die grüne Linie die prognostizierte Klassifikation. Es ist zu sehen, dass einige False-Negatives sowie False-Positives prognostiziert wurden. Im folgenden werden drei charakteristische Varianten falsch prognostizierter Klassifikationen näher erläutert:
+Abbildung \ref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal/Rausch-Abstand von \SI{3}{\decibel}, bei dem die Voice Activity Detection durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifizierung und die grüne Linie die prognostizierte Klassifizierung. Es ist zu sehen, dass einige False-Negatives sowie False-Positives prognostiziert wurden. Es werden drei charakteristische Varianten falsch prognostizierter Klassifizierungen näher erläutert:
 
 \begin{description}
-	\item [False Negatives nach (a): ] Eine korrekt erkannte, längere Cry-Unit wird zu früh beendet. Oft werden kurz nach dem Ende einer längeren Cry-Unit sehr kurze Cry-Units erkannt, die eigentlich noch zu der längeren, vorhergehenden Cry-Unit gehören.
-	\item [False Positives nach (b): ] Kurze Cry-Units werden in eigentlichen Stille-Bereichen erkannt.
-	\item [False Negatives nach (c): ] Eine Cry-Unit zerfällt in zwei Cry-Units, da einige wenige Signalfenster in der Mitte als Stille erkannt wurden.
+	\item [False Negatives nach (a): ] Eine korrekt erkannte, längere Schreieinheit wird zu früh beendet. Oft werden kurz nach dem Ende einer längeren Schreieinheit sehr kurze Schreieinheiten prognostiziert, die eigentlich noch zu der längeren, vorhergehenden Schreieinheit gehören.
+	\item [False Positives nach (b): ] Kurze Schreieinheiten werden in eigentlichen Stille-Bereichen erkannt.
+	\item [False Negatives nach (c): ] Eine Schreieinheit zerfällt in zwei kürzere Schreieinheiten, da einige wenige Signalfenster in der Mitte als Stille erkannt wurden.
 \end{description}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/smoothing02.png}
-	\caption{Klassifizierung vor dem Decision Smoothing}
+	\includegraphics[width=0.8\textwidth]{bilder/smoothing02.png}
+	\caption[Klassifizierung vor dem Decision-Smoothing]{Klassifizierung vor dem Decision-Smoothing}
 	\label{img:beforeSmoothing}
 \end{figure}
 
-Im Process des \textbf{Decision Smoothing} werden kontextuelle Informationen genutzt, um nachträglich False-Positives und False-Negatives zu entfernen. Es wurden dazu die von Waheed et al. \cite{vad_entropy} präsentierten Ideen verwendet. Es wurden zwei Parameter eingeführt: $\lambda_{min}$, die Mindestlänge einer akzeptierten Cry-Unit, und d$_{min}$, die Mindestlänge eines akzeptierten Stille-Segmentes. Das Decision-Smoothing wird nach den folgenden Entscheidungsregeln durchgeführt:
+Im Process des \textbf{Decision-Smoothing} werden kontextuelle Informationen genutzt, um nachträglich False-Positives und False-Negatives zu entfernen. Es wurden dazu die von Waheed et al. \cite{vad_entropy} präsentierten Ideen verwendet. Es werden zwei Parameter eingeführt: $\lambda_{min}$, die Mindestlänge einer akzeptierten Cry-Unit, und d$_{min}$, die Mindestlänge eines akzeptierten Stille-Segmentes. Das Decision-Smoothing wird nach den folgenden Entscheidungsregeln durchgeführt:
 
 \textbf{Entscheidungsregeln: }\noindent\rule{0.7\linewidth}{0.3pt}
 \begin{itemize}
@@ -549,16 +545,25 @@ Im Process des \textbf{Decision Smoothing} werden kontextuelle Informationen gen
 \end{itemize}
 \noindent\rule{\linewidth}{0.3pt}
 
-Die Entscheidungsregeln greifen nur auf die letzten beiden erkannten Cry-Units zu, um eine kontinuierliche Analyse zu gewährleisten. Bei einer kontinuierlichen Analyse wird dadurch die Auswertung um die Zeitdauer einer Cry-Unit verzögert, da die Entscheidungsregeln erst nach Beendigung einer Cry-Unit abgefragt werden können. Bei einer offline-Analyse können die Entscheidungsregeln vereinfacht werden, da die False-Negatives nach Typ (a) und (c) mit der selben Regel abgefragt werden können. Algorithmus \ref{alg:decisionSmoothing} zeigt in Pseudo-Code, wie das Decision-Smoothing durchgeführt wird. Input der Funktion ist die Liste aller Cry-Units $CU_{all} = [cu_0 , \ldots , cu_n]$, die durch Algorithmus \ref{alg:cryUnit} entstanden ist, sowie die Grenzwerte $\lambda_{min}$ und $d_{min}$. Der Output der Funktion ist die Liste aller Cry-Units nach dem Decision-Smoothing $CU_{smoothed}$.
+Die Entscheidungsregeln greifen nur auf die letzten beiden erkannten Schreieinheiten zu, um eine kontinuierliche Analyse zu gewährleisten. Bei einer Offline-Analyse können die Entscheidungsregeln vereinfacht werden, da die False-Negatives nach Typ (a) und (c) mit der selben Regel abgefragt werden können. Algorithmus \ref{alg:decisionSmoothing} zeigt in Pseudo-Code, wie das Decision-Smoothing durchgeführt wird. Input der Funktion ist eine Liste mit Schreieinheiten $CU_{all} = [cu_0 , \ldots , cu_l]$, die durch Algorithmus \ref{alg:cryUnit} entstanden ist, sowie die Grenzwerte $\lambda_{min}$ und $d_{min}$. Die Indexierung der Liste $CU_{all}$ beginnt bei 0. Der Output der Funktion ist eine Liste aller durch das Decision-Smoothing korrigierten Schreieinheiten $CU_{smoothed}$.
+
+In verschiedenen Veröffentlichungen wurden unterschiedliche Mindestlängen von Schreieinheiten festgestellt. Varallyay \cite[S. 8]{cry_thesis} hat beispielsweise eine Mindestlänge von \SI{250}{\milli\second} gemessen. Der niedrigste Wert, der nach dem Wissen des Autors in einer Veröffentlichung genannt wurde, stammt von Zeskind et al. \cite[S. 325]{rythmic} und beträgt  \SI{60}{\milli\second}. Dieser Wert wurde für $\lambda_{min}$ in dieser Arbeit übernommen. Es konnten hingegen keine Veröffentlichungen gefunden werden, bei denen die geringste Pausenlänge gemessen wurde. Der Wert wurde ebenfalls mit $d_{min} = \SI{60}{\milli\second}$ bestimmt. Abbildung \ref{img:after-smoothing} zeigt das Beispielsignal vor und nach dem Decision-Smoothing. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{bilder/smoothing04.png}
+	\caption[Klassifizierung nach dem Decision-Smoothing]{Oben: Prognostizierte Klassifizierung vor dem Decision-Smoothing. Unten: Prognostizierte Klassifikation nach dem Decision-Smoothing.}
+	\label{img:after-smoothing}
+\end{figure}
 
 \begin{algorithm}[h]
-	\caption{Decision-Smoothing for VAD}
+	\caption{Nachträgliche Korrektur von Schreieinheiten}
 	\label{alg:decisionSmoothing}
 	\begin{algorithmic}[1]
-		\Function{decisionSmoothing}{$CU_{all}, \lambda_{min}, d_{min}$}
+		\Function{decision-Smoothing}{$CU_{all}, \lambda_{min}, d_{min}$}
 		\State $CU_{smoothed} \gets[CU_{all}[0]] $
 		\State \Comment start for-loop at the \emph{second} cry-Unit!
-		\For{ $i = 1 , \ldots , length(CU_{all}) - 1$}
+		\For{ $i = 1 , \ldots ,$ \Call{length}{$CU_{all}$} - 1}
 			\State $cu_i \gets CU_{all}[i]$
 			\State $cu_{i-1} \gets CU_{smoothed}[end]$
 			\If{$\lambda(cu_i) > \lambda_{min}$}
@@ -566,17 +571,17 @@ Die Entscheidungsregeln greifen nur auf die letzten beiden erkannten Cry-Units z
 			\If{d$(cu_{i-1},cu_{i}) > d_{min}$}
 					\State $CU_{smoothed} \gets [CU_{smoothed}, cu_i] $
 			\Else
-					\State \Comment Erase False-Negative Type (c)
-					\State $cu_i \gets \text{vereinige}(cu_i, cu_{i-1})$
+					\State \Comment Erase False-Negative of Type (c)
+					\State $cu_i \gets $ \Call{vereinige}{$cu_i, cu_{i-1}$}
 					\State $CU_{smoothed} \gets [CU_{smoothed}[1:end-1], cu_i] $
 			\EndIf
 			\Else
-			\State \Comment Erase False-Negative Type (a)
+			\State \Comment Erase False-Negative of Type (a)
 			\If{$d(cu_{i-1},cu_{i}) \leq d_{min}$ }
-			\State $cu_i \gets \text{vereinige}(cu_i, cu_{i-1})$
+			\State $cu_i \gets $ \Call{vereinige}{$cu_i, cu_{i-1}$}
 			\State $CU_{smoothed} \gets [CU_{smoothed}[0:end-1], cu_i] $
 			\Else
-			\State \Comment Don't accept $cu_i$. Erases False-Positives (b)
+			\State \Comment Don't accept $cu_i$. Erases False-Positives of Type (b)
 			\EndIf
 			\EndIf
 		\EndFor
@@ -586,15 +591,6 @@ Die Entscheidungsregeln greifen nur auf die letzten beiden erkannten Cry-Units z
 		
 	\end{algorithmic}
 \end{algorithm}
-
-In verschiedenen Veröffentlichungen wurden unterschiedliche Mindestlängen von Cry-Units festgestellt. Varallyay \cite[S. 8]{cry_thesis} hat beispielsweise eine Mindestlänge von \SI{250}{\milli\second} gemessen. Der niedrigste Wert, der nach dem Wissen des Autors in einer Veröffentlichung genannt wurde, stammt von Zeskind et al. \cite[S. 325]{rythmic} und beträgt  \SI{60}{\milli\second}. Dieser Wert wurde für $\lambda_{min}$ in dieser Arbeit übernommen. Es konnten hingegen keine Veröffentlichungen gefunden werden, bei denen die geringste Pausenlänge gemessen wurde. Der Wert wurde ebenfalls mit $d_{min} = \SI{60}{\milli\second}$ bestimmt. Abbildung \ref{img:after-smoothing} zeigt das Beispielsignal vor und nach dem Decision-Smoothing. 
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{bilder/smoothing04.png}
-	\caption{Oben: Klassifikation vor und nach dem Decision-Smoothing. Unten: Klassifikation nach dem Decision-Smoothing.}
-	\label{img:after-smoothing}
-\end{figure}
 
 
 

@@ -135,14 +135,14 @@ Abbildung \ref{img:stft01} visualisiert die Transformation eines Signals aus dem
 	\label{img:stft01}
 \end{figure}
 
-Es ist wünschenswert, einen Kompromiss aus den Vorteilen beider Bereiche zu finden, in dem man das Spektrum kürzerer Zeitabschnitte des Signals bildet. Dazu wird der Zeitbereich $x[\;]$ in Fenster der Länge $M$ zerlegt. Die zeitliche Differenz zwischen zwei Fenstern wird als \emph{Hoptime} $R$ bezeichnet. Gleichung \ref{eq:signal-Window} definiert die Bildung des \emph{Signalfensters} $x_i[\;]$. Die komplette Zerlegung eines Signals in Signalfenster wird als \emph{Windowing} bezeichnet.\cite{juliusSmith}
+Es ist wünschenswert, einen Kompromiss aus den Vorteilen beider Bereiche zu finden, in dem man das Spektrum kürzerer Zeitabschnitte des Signals bildet. Dazu wird der Zeitbereich $x[\;]$ in Fenster der Länge $M$ zerlegt. Die zeitliche Differenz zwischen zwei Fenstern wird als \emph{Hop Size} $R$ bezeichnet. Gleichung \ref{eq:signal-Window} definiert die Bildung des \emph{Signalfensters} $x_i[\;]$. Die komplette Zerlegung eines Signals in Signalfenster wird als \emph{Windowing} bezeichnet.\cite{juliusSmith}
 
 \begin{equation}
 x_{m}[n] = x[n+i\cdot R]
 \label{eq:signal-Window}
 \end{equation}
 
-Abbildung \ref{img:siganlWindows} gibt ein Beispiel für die Zerlegung eines Signals $x[\;]$ in die Signalfenster $x_0[\;] ,\ldots, x_4[\;]$. Die Samplingrate des Signals ist $f_s = 44100$, die Fensterlänge beträgt $M = 22050 / f_s = \SI{0.5}{\second}$ und die Hoptime $R = M / 2= \SI{0.25}{\second}$.
+Abbildung \ref{img:siganlWindows} gibt ein Beispiel für die Zerlegung eines Signals $x[\;]$ in die Signalfenster $x_0[\;] ,\ldots, x_4[\;]$. Die Samplingrate des Signals ist $f_s = 44100$, die Fensterlänge beträgt $M = 22050 / f_s = \SI{0.5}{\second}$ und die Hop Size $R = M / 2= \SI{0.25}{\second}$.
 
 \begin{figure}[h]
 	\centering
