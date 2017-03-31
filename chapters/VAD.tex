@@ -1,7 +1,7 @@
 \chapter{Detektion von Schreigeräuschen in Audiosignalen}
 \label{sec:vad}
 
-Der erste notwendige Schritt zur Schmerzdiagnostik auf Basis eines Audiosignals ist die Feststellung, ob in dem Signal überhaupt kindliche Lautäußerungen vorhanden sind. Das Ziel ist, in einem Audiosignal diejenigen Bereiche zu markieren, in denen Stimmaktivität vorhanden ist und daraufhin die Anfangs- und Endzeitpunkte  der Schreieinheiten zu bestimmen. Abbildung  \ref{img:vad01} verdeutlicht diese Aufgabe an einem Beispiel: Der obere Graph zeigt in Schwarz ein Audiosignal. Die rote Linie, die das Signal überspannt, zeigt, welche Regionen Stimme enthalten, wobei $1 \: \hat{=} $ \emph{stimmhaft} (engl. \emph{voiced}) und $0 \: \hat{=}  $ \emph{nicht stimmhaft} (engl. \emph{not voiced}, in diesem Zusammenhang auch bezeichnet als \emph{Stille}). Das untere Schema zeigt, wie die stimmhaften Signalbereiche zu Schreieinheiten zusammengefasst werden.
+Der erste notwendige Schritt zur Schmerzdiagnostik auf Basis eines Audiosignals ist die Feststellung, ob in dem Signal überhaupt kindliche Lautäußerungen vorhanden sind. Das Ziel ist, in einem Audiosignal diejenigen Bereiche zu markieren, in denen Stimmaktivität vorhanden ist und daraufhin die Anfangs- und Endzeitpunkte  der Schreieinheiten zu bestimmen. \autoref{img:vad01} verdeutlicht diese Aufgabe an einem Beispiel: Der obere Graph zeigt in Schwarz ein Audiosignal. Die rote Linie, die das Signal überspannt, zeigt, welche Regionen Stimme enthalten, wobei $1 \: \hat{=} $ \emph{stimmhaft} (engl. \emph{voiced}) und $0 \: \hat{=}  $ \emph{nicht stimmhaft} (engl. \emph{not voiced}, in diesem Zusammenhang auch bezeichnet als \emph{Stille}). Das untere Schema zeigt, wie die stimmhaften Signalbereiche zu Schreieinheiten zusammengefasst werden.
 
 \begin{figure}[h]
 	\centering
@@ -10,14 +10,14 @@ Der erste notwendige Schritt zur Schmerzdiagnostik auf Basis eines Audiosignals 
 	\label{img:vad01}
 \end{figure}
 
-In Kapitel \ref{sec:vad_new} wird die \emph{Voice Activity Detection} vorgestellt. In Kapitel \ref{sec:marking_cry-units_new} wird besprochen, wie stimmhafte Signalbereiche zu Schreieinheiten zusammengefasst werden. In Kapitel \ref{sec:decision_smoothing_new} wird ein Algorithmus vorgestellt, in dem inkorrekt erkannte Anfangs- und Endzeitpunkt von Schreieinheiten nachträglich korrigiert werden.
+In \autoref{sec:vad_new} wird die \emph{Voice Activity Detection} vorgestellt. In \autoref{sec:marking_cry-units_new} wird besprochen, wie stimmhafte Signalbereiche zu Schreieinheiten zusammengefasst werden. In \autoref{sec:decision_smoothing_new} wird ein Algorithmus vorgestellt, in dem inkorrekt erkannte Anfangs- und Endzeitpunkt von Schreieinheiten nachträglich korrigiert werden.
 
 \section{Automatisierte Erkennung von Stimmaktivität in Signalen}
 \label{sec:vad_new}
 
 \emph{Voice Activity Detection} (kurz \emph{VAD}) oder \emph{Speech Detection}, die Feststellung des Vorhandenseins von Stimme in Signalbereichen, ist bei jeder Art der Sprachverarbeitung von Bedeutung: Im Mobilfunk wird sie beispielsweise eingesetzt, um die Zeitbereiche zu Erkennen, in denen Teilnehmer nicht sprechen und somit keine Übertragung stattfinden muss. Die größte Herausforderung von VAD-Systemen ist die robuste Erkennung von Stimmaktivität auch bei starkem Hintergrundrauschen. Bis heute wurde keine fehlerfreie Lösung des Problems gefunden. \cite[S. 1]{vad_granada} \cite[S. 1]{vad_kola} \cite[S. 1]{vad_Lisboa}
 
-Der Grundlegende Aufbau eines VAD-Algorithmus ist wie folgt. Abbildung \ref{img:vad_pipeline} visualisiert diesen Aufbau.
+Der Grundlegende Aufbau eines VAD-Algorithmus ist wie folgt. \autoref{img:vad_pipeline} visualisiert diesen Aufbau.
 \begin{enumerate}
 	\item \textbf{Vorverarbeitung} (engl. \emph{Pre-Proccessing}) des Signals.
 	\item \textbf{Windowing: } Unterteilung des Signals in (einander überlappende) Signalfenster.
@@ -34,12 +34,12 @@ Der Grundlegende Aufbau eines VAD-Algorithmus ist wie folgt. Abbildung \ref{img:
 \end{figure}
 
 
-In Kapitel \ref{sec:methods_vad_new} werden die Methoden vorgestellt, die zur Voice Activity Detection erprobt wurden. In Kapitel \ref{sec:vad_study} wird eine Simulationsstudie beschrieben, deren Ziel die Bestimmung derjenigen Methoden war, die sich für die VAD im speziellen Fall kindlicher Lautäußerungen am besten eignen. Kapitel \ref{sec:vad_results} fasst die Ergebnisse zusammen.
+In \autoref{sec:methods_vad_new} werden die Methoden vorgestellt, die zur Voice Activity Detection erprobt wurden. In \autoref{sec:vad_study} wird eine Simulationsstudie beschrieben, deren Ziel die Bestimmung derjenigen Methoden war, die sich für die VAD im speziellen Fall kindlicher Lautäußerungen am besten eignen. \autoref{sec:vad_results} fasst die Ergebnisse zusammen.
 
 \subsection{Methoden}
 \label{sec:methods_vad_new}
 
-Die in diesem Kapitel vorgestellten Methoden kombinieren Ideen, die von Moattar et al. \cite{vad_Easy}, Kristjansson et al. \cite{vad_Lisboa}, Waheed et al. \cite{vad_entropy}, Ahmadi et al. \cite{vad_ceps} und Shen et al.\cite{vad_entropie02} vorgestellt wurden.
+Die in diesem Unterabschnitt vorgestellten Methoden kombinieren Ideen, die von Moattar et al. \cite{vad_Easy}, Kristjansson et al. \cite{vad_Lisboa}, Waheed et al. \cite{vad_entropy}, Ahmadi et al. \cite{vad_ceps} und Shen et al.\cite{vad_entropie02} vorgestellt wurden.
 
 \subsubsection{Einschränkung der zeitlichen Dynamik zur Vorverarbeitung}
 \label{sec:preprocessing}
@@ -48,7 +48,7 @@ Bei der Vorverarbeitung werden Störeinflüsse auf das Signal minimiert, um die 
 
 In dieser Arbeit wurde sich für eine Vorverarbeitung entschieden, bei der das Signal hinsichtlich seiner Dynamik im Zeitbereich eingeschränkt wird. Dies ist ein typischer Vorverarbeitungsschritt bei Sprachaufnahmen. So wird vermieden, dass die durchschnittliche Energie des Signals für eine Erkennung der Stimmaktivität zu niedrig ist. Ein Grund für eine niedrige durchschnittliche Energie des Signals trotz maximaler Aussteuerung sind sehr kurze Pegelspitzen, deren Pegel weit über dem Durchschnittspegel liegen und so eine weitere Erhöhung der Lautstärke verhindern.
 
-Die Dynamikeinschränkung wurde mit Hilfe eines Audio-Kompressors umgesetzt. Dieser verringert Signalspitzen, die über einen festgelegten \emph{Schwellwert} (engl. \emph{Threshold}) $\theta$ liegen, um ein festgelegtes \emph{Verhältnis} (engl. \emph{Ratio)} $\rho$. Ein Schwellwert von $\theta = 0.3$ mit einem Verhältnis von $\rho = 0.5$ bedeutet beispielsweise, dass alle Signalspitzen, die den Wert 0.3 über-, oder $-0.3$ unterschreiten, um 50\% verringert werden. Der Wert eines Samples nach der Kompression $x_{comp}[n]$ ergibt sich nach Gleichung \ref{eq:preprocessedX}.
+Die Dynamikeinschränkung wurde mit Hilfe eines Audio-Kompressors umgesetzt. Dieser verringert Signalspitzen, die über einen festgelegten \emph{Schwellwert} (engl. \emph{Threshold}) $\theta$ liegen, um ein festgelegtes \emph{Verhältnis} (engl. \emph{Ratio)} $\rho$. Ein Schwellwert von $\theta = 0.3$ mit einem Verhältnis von $\rho = 0.5$ bedeutet beispielsweise, dass alle Signalspitzen, die den Wert 0.3 über-, oder $-0.3$ unterschreiten, um 50\% verringert werden. Der Wert eines Samples nach der Kompression $x_{comp}[n]$ ergibt sich nach \autoref{eq:preprocessedX}.
 
 \begin{equation}
 \text{comp}(x[n], \theta, \rho) =
@@ -60,21 +60,21 @@ x[n] \quad \text{sonst}
 \label{eq:preprocessedX}
 \end{equation}
 
-Die Amplituden hoher Signalspitzen werden so verringert, wodurch Headroom gewonnen wird, welcher anschließend bei der gleichmäßigen Erhöhung aller Amplituden zur Erhöhung der insgesamten Energie genutzt werden kann. Diese Erhöhung kann beispielsweise durch eine Normalisierung nach Gleichung \ref{eq:normalizing} durchgeführt werden.
+Die Amplituden hoher Signalspitzen werden so verringert, wodurch Headroom gewonnen wird, welcher anschließend bei der gleichmäßigen Erhöhung aller Amplituden zur Erhöhung der insgesamten Energie genutzt werden kann. Diese Erhöhung kann beispielsweise durch eine Normalisierung nach \autoref{eq:normalizing} durchgeführt werden.
 
 \begin{equation}
 \text{normalize}(x_{comp}[n]) = \frac{x_{comp}[n]}{\maxi\{|x_{comp}[\;]|\}}
 \label{eq:normalizing}
 \end{equation}
 
-Bei dem Kompressor, der in dieser Verarbeitungs-Pipeline zur Vorverarbeitung eingesetzt wurde, wurden Threshold und Ratio nach Formel \ref{eq:THold} als Funktion des RMS-Wertes des Signals berechnet. Der Parameter $r_a$ gibt einen beliebigen Ziel-RMS-Wert an.
+Bei dem Kompressor, der in dieser Verarbeitungs-Pipeline zur Vorverarbeitung eingesetzt wurde, wurden Threshold und Ratio nach \autoref{eq:THold} als Funktion des RMS-Wertes des Signals berechnet. Der Parameter $r_a$ gibt einen beliebigen Ziel-RMS-Wert an.
 
 \begin{equation}
 \theta(x[\;]) = \rho(x[\;])  = \bigg[\frac{\text{RMS}(x[\;])}{r_a}\bigg]^{2}
 \label{eq:THold}
 \end{equation}
 
-Die Vorverarbeitung wurde durchgeführt, indem 1.) die Kompression mit den Parametern nach Gleichung \ref{eq:preprocessedX} und 2.) die Normalisierung nach Gleichung \ref{eq:normalizing} durchgeführt wurde. Abbildung \ref{img:compressing01} zeigt ein Signal vor und nach der Vorverarbeitung nach diesem Prinzip. Um eine zu große Beeinflussung des Signals zu vermeiden, wurde ein Minimalwert für Threshold und Ratio von $0.4$ festgelegt.
+Die Vorverarbeitung wurde durchgeführt, indem 1.) die Kompression mit den Parametern nach \autoref{eq:preprocessedX} und 2.) die Normalisierung nach \autoref{eq:normalizing} durchgeführt wurde. \autoref{img:compressing01} zeigt ein Signal vor und nach der Vorverarbeitung nach diesem Prinzip. Um eine zu große Beeinflussung des Signals zu vermeiden, wurde ein Minimalwert für Threshold und Ratio von $0.4$ festgelegt.
 
 \begin{figure}[h]
 	\centering
@@ -83,10 +83,10 @@ Die Vorverarbeitung wurde durchgeführt, indem 1.) die Kompression mit den Param
 	\label{img:compressing01}
 \end{figure}
 
-Diese Vorverarbeitung eignet sich nicht für ein kontinuierliches System, da Samples zur Berechnung des RMS-Wertes mit einbezogen werden, die zu einem Berechnungszeitpunkt in der Zukunft liegen. Das Hauptziel dieser Vorverarbeitung war die Gewährleistung ähnlicher Energieverhältnisse bei den Signalen des Trainingsdatensatzes, der in der Simulationsstudien in Kapitel \ref{sec:vad_study} verwendet wurde. Das folgende Vorgehen für den Einsatz der Vorverarbeitung in einem kontinuierlichen System wird vorgeschlagen:
+Diese Vorverarbeitung eignet sich nicht für ein kontinuierliches System, da Samples zur Berechnung des RMS-Wertes mit einbezogen werden, die zu einem Berechnungszeitpunkt in der Zukunft liegen. Das Hauptziel dieser Vorverarbeitung war die Gewährleistung ähnlicher Energieverhältnisse bei den Signalen des Trainingsdatensatzes, der in der Simulationsstudien in \autoref{sec:vad_study} verwendet wurde. Das folgende Vorgehen für den Einsatz der Vorverarbeitung in einem kontinuierlichen System wird vorgeschlagen:
 \begin{itemize}
 	\item Komplettes Überspringen der Vorverarbeitung, in dem mit Hilfe eines manuell einstellbaren Lautstärkereglers eine ausreichende Signalenergie gewährleistet wird. Würde man beispielsweise anstelle der Analyse des Audiosignals das Gesicht des Neugeborenen mit einer Kamera untersuchen, würde ebenfalls eine ausreichende Bildhelligkeit vorausgesetzt werden.
-	\item Die Initialisierung des Kompressor mit \grqq sanften Werten\grqq , wie zum Beispiel $\theta = \rho = 0.7$. Diese Parameter können nach der Beendigung eines Segmentes (Siehe Kapitel \ref{sec:segmenting}) auf Basis des RMS-Wertes des Segmentes aktualisiert und für die Vorverarbeitung der zukünftigen Werte eingesetzt werden.
+	\item Die Initialisierung des Kompressor mit \grqq sanften Werten\grqq , wie zum Beispiel $\theta = \rho = 0.7$. Diese Parameter können nach der Beendigung eines Segmentes (siehe \autoref{sec:segmenting}) auf Basis des RMS-Wertes des Segmentes aktualisiert und für die Vorverarbeitung der zukünftigen Werte eingesetzt werden.
 \end{itemize}
 
 \subsubsection{Zerlegung des Signals in überlappende Fenster}
@@ -94,16 +94,16 @@ Diese Vorverarbeitung eignet sich nicht für ein kontinuierliches System, da Sam
 
 Angenommen, man führt die Voice Activity Detection für das Signal $x[\;]$ durch und kommt zu dem Schluss, dass in dem Signal (teilweise) Stimme enthalten ist. Ist das Signal mehrere Minuten oder sogar Stunden lang, ist allein aus diesem Schluss nicht ersichtlich, in welchen Zeitbereichen genau Stimme enthalten ist, und in welchen nicht. Um die zeitliche Auflösung zu erhöhen, wird das Signal in kürzere Zeitfenster zerlegt.
 
-Nach der Vorverarbeitung wird diese Zerlegung mit Hilfe der in Kapitel \ref{sec:stft} als \emph{Windowing} bezeichneten Methode durchgeführt. Das Signal $x[\;]$ wird nach Gleichung \ref{eq:signal-Window} in die Signalfenster $x_0[\;] , \ldots , x_m[\;]$ aufgeteilt. Die Zeitfenster werden zunächst im Zeitbereich belassen. Es wurde sich für die von Waheed et al. \cite{vad_entropy} vorgeschlagene Fensterlänge von \SI{25}{\milli\second} entschieden, als Kompromiss zwischen den von Moattar et al. \cite{vad_Easy} empfohlenen \SI{10}{\milli\second} und den von Ahmadi et al. \cite{vad_ceps} empfohlenen \SI{40}{\milli\second}. Die Fenster überlappen einander um 50\%, das heißt \SI{12.5}{\milli\second}.
+Nach der Vorverarbeitung wird diese Zerlegung mit Hilfe der in \autoref{sec:stft} als \emph{Windowing} bezeichneten Methode durchgeführt. Das Signal $x[\;]$ wird nach \autoref{eq:signal-Window} in die Signalfenster $x_0[\;] , \ldots , x_m[\;]$ aufgeteilt. Die Zeitfenster werden zunächst im Zeitbereich belassen. Es wurde sich für die von Waheed et al. \cite{vad_entropy} vorgeschlagene Fensterlänge von \SI{25}{\milli\second} entschieden, als Kompromiss zwischen den von Moattar et al. \cite{vad_Easy} empfohlenen \SI{10}{\milli\second} und den von Ahmadi et al. \cite{vad_ceps} empfohlenen \SI{40}{\milli\second}. Die Fenster überlappen einander um 50\%, das heißt \SI{12.5}{\milli\second}.
 
-Die Entscheidung über das Vorhandensein von Stimme wird \emph{einzeln} für jedes der Signalfenster $x_0[\;] , \ldots , x_m[\;]$ durchgeführt. Grundlage für die Entscheidung ist eine Menge an Attributen, die für das jeweilige Signalfenster $x_i[\;]$ berechnet wird. Die Ermittlung und Evaluation geeigneter Attribute ist einer der primären Forschungsbereiche der VAD. In den folgenden Abschnitten \ref{sec:vad_time_features} bis \ref{sec:vad_dif_feature} wird eine Reihe an Features vorgestellt, die in dieser Arbeit zur VAD erprobt wurden. Jedes der in diesen Kapiteln besprochenen Attribute kann für ein Signalfenster $x_i[\;]$ \`{a} \SI{25}{\milli\second} berechnet werden und als Grundlage für eine Entscheidung dienen. Die Evaluation, welche Attribute sich am besten als Entscheidungsgrundlage für einen Klassifikator zur Feststellung von Stimme im speziellen Fall von Neugeborenen eignen, folgt in Kapitel \ref{sec:vad_study}. Die Ergebnisse werden in Kapitel \ref{sec:vad_results} zusammengefasst.
+Die Entscheidung über das Vorhandensein von Stimme wird \emph{einzeln} für jedes der Signalfenster $x_0[\;] , \ldots , x_m[\;]$ durchgeführt. Grundlage für die Entscheidung ist eine Menge an Attributen, die für das jeweilige Signalfenster $x_i[\;]$ berechnet wird. Die Ermittlung und Evaluation geeigneter Attribute ist einer der primären Forschungsbereiche der VAD. In den folgenden Unterabschnitten \ref{sec:vad_time_features} bis \ref{sec:vad_dif_feature} wird eine Reihe an Features vorgestellt, die in dieser Arbeit zur VAD erprobt wurden. Jedes der in diesen Unterabschnitten besprochenen Attribute kann für ein Signalfenster $x_i[\;]$ \`{a} \SI{25}{\milli\second} berechnet werden und als Grundlage für eine Entscheidung dienen. Die Evaluation, welche Attribute sich am besten als Entscheidungsgrundlage für einen Klassifikator zur Feststellung von Stimme im speziellen Fall von Neugeborenen eignen, folgt in \autoref{sec:vad_study}. Die Ergebnisse werden in \autoref{sec:vad_results} zusammengefasst.
 
 \subsubsection{Eigenschaften des Zeitbereiches}
 \label{sec:vad_time_features}
 
 Im Zeitbereich wurden die beiden Eigenschaften \emph{Root Mean Square} [\emph{RMS}] und \emph{Zero Crossing Rate} [\emph{ZCR}] erprobt.
 
-Moattar et al. \cite{vad_Easy} bezeichnen den Energiegehalt eines Signals als das für die VAD am häufigsten angewandte Attribut. Der RMS-Wert als Feature für ein Signalfenster wird nach Gleichung \ref{eq:rms} berechnet. Hintergrund ist, dass der Energiegehalt eines Stimmsignals typischerweise höher ist als der des Hintergrundrauschens. Bei geringem Signal/Rausch-Abständen ist diese Bedingung jedoch nicht immer erfüllt. Als zweites Attribut des Zeitbereiches wurde die \emph{Zero Crossing Rate} berechnet nach Formel Formel \ref{eq:zcr} berechnet. Dieses Feature gibt an, wie häufig ein Vorzeichenwechsel im Signal vorkommt. Stimmlose Signalbereiche haben typischerweise einen höhere ZCR als stimmhafte Signalbereiche. Problematisch ist dieses Kriterium bei Signalen, bei denen kein Hintergrundrauschen vorliegt, da sich dort eine ZCR von 0 ergibt.\cite{vad_ceps} Um den Wert in Relation zur Fensterlänge setzen zu können, wurde weiterhin die ZCR durch die Anzahl der Samples eines Signalfensters $N$ geteilt.
+Moattar et al. \cite{vad_Easy} bezeichnen den Energiegehalt eines Signals als das für die VAD am häufigsten angewandte Attribut. Der RMS-Wert als Feature für ein Signalfenster wird nach \autoref{eq:rms} berechnet. Hintergrund ist, dass der Energiegehalt eines Stimmsignals typischerweise höher ist als der des Hintergrundrauschens. Bei geringem Signal/Rausch-Abständen ist diese Bedingung jedoch nicht immer erfüllt. Als zweites Attribut des Zeitbereiches wurde die \emph{Zero Crossing Rate} berechnet nach \autoref{eq:zcr} berechnet. Dieses Feature gibt an, wie häufig ein Vorzeichenwechsel im Signal vorkommt. Stimmlose Signalbereiche haben typischerweise einen höhere ZCR als stimmhafte Signalbereiche. Problematisch ist dieses Kriterium bei Signalen, bei denen kein Hintergrundrauschen vorliegt, da sich dort eine ZCR von 0 ergibt.\cite{vad_ceps} Um den Wert in Relation zur Fensterlänge setzen zu können, wurde weiterhin die ZCR durch die Anzahl der Samples eines Signalfensters $N$ geteilt.
 
 \begin{equation}
 \text{ZCR}(x_i[\;]) = \sum_{0}^{N-1}|\text{sng}(x_i[n])-\text{sng}(x_i[n-1])|
@@ -112,16 +112,16 @@ Moattar et al. \cite{vad_Easy} bezeichnen den Energiegehalt eines Signals als da
 
 \subsubsection{Eigenschaften der Autokorrelation}
 
-Neben dem RMS-Wert und der ZCR wurde die Autokorrelation zur VAD erprobt. Die Autokorrelation eignet sich, um Periodizität in einem Signal nachzuweisen. Wie in Kapitel \ref{sec:theVoice} erläutert, weisen stimmhafte Signale ein tendenziell stärker periodisches Verhalten als stimmlose Signalteile auf. 
+Neben dem RMS-Wert und der ZCR wurde die Autokorrelation zur VAD erprobt. Die Autokorrelation eignet sich, um Periodizität in einem Signal nachzuweisen. Wie in \autoref{sec:theVoice} erläutert, weisen stimmhafte Signale ein tendenziell stärker periodisches Verhalten als stimmlose Signalteile auf. 
 
-Bei der Autokorrelation wird ein Signal mit einer verzögerten Variante von sich selbst korreliert. Gleichung \ref{eq:ACorr} definiert die Autokorrelation des $N$-Sample langen Signalfensters $x_i[\;]$, verzögert um einen als \emph{Lag} bezeichneten Wert $k$.
+Bei der Autokorrelation wird ein Signal mit einer verzögerten Variante von sich selbst korreliert. \autoref{eq:ACorr} definiert die Autokorrelation des $N$-Sample langen Signalfensters $x_i[\;]$, verzögert um einen als \emph{Lag} bezeichneten Wert $k$.
 
 \begin{equation}
 \text{A-Corr}_k(x[\;]) = \sum_{n=k}^{N} x[n-k] \cdot x[n]
 \label{eq:ACorr}
 \end{equation}
 
-Da der Autokorrelationswert neben der Stärke der Periodizität von der Signalenergie abhängig ist, ist eine Normalisierung des Wertes wünschenswert. Es gibt verschiedene Varianten dieser Normalisierung. Gleichung \ref{eq:NACorr} definiert die \glqq normalisierte Autokorrelation\grqq{}, bei der der Autokorrelationswert durch die RMS-Werte des verzögerten und des unverzögerten Signals normalisiert wird. Ein hoher Wert der normalisierten Autokorrelation mit der Verzögerung $k$ spricht für eine ausgeprägte Periodizität des Signals mit der Frequenz $f =  f_s / k $.\cite{vad_Lisboa}
+Da der Autokorrelationswert neben der Stärke der Periodizität von der Signalenergie abhängig ist, ist eine Normalisierung des Wertes wünschenswert. Es gibt verschiedene Varianten dieser Normalisierung. \autoref{eq:NACorr} definiert die \glqq normalisierte Autokorrelation\grqq{}, bei der der Autokorrelationswert durch die RMS-Werte des verzögerten und des unverzögerten Signals normalisiert wird. Ein hoher Wert der normalisierten Autokorrelation mit der Verzögerung $k$ spricht für eine ausgeprägte Periodizität des Signals mit der Frequenz $f =  f_s / k $.\cite{vad_Lisboa}
 
 \begin{equation}
 \text{NA-Corr}_k(x[\;]) = \frac{\sum_{n=k}^{N} x[n-k] \cdot x[n]}{ \sqrt{\sum_{n=1}^{N-k}  x[n]^2}  \cdot  \sqrt{\sum_{n=k}^{N}  x[n]^2} }
@@ -135,29 +135,29 @@ Da der Autokorrelationswert neben der Stärke der Periodizität von der Signalen
 %\label{eq:a-Signal}
 %\end{equation}
 
-In Bezug auf die VAD wurde die Autokorrelation als Methode genutzt, um die beiden Attribute \emph{höchste Autokorrelationsspitze} [\emph{aMax}] und \emph{Anzahl der Autokorrelationsspitzen} [\emph{aCount}] zu berechnen. Beide Eigenschaften wurden von Kristjansson et al. \cite[S. 1 - 2]{vad_Lisboa} zur VAD beschrieben. Die \emph{höchste Autokorrelationsspitze} wird in Formel \ref{eq:corrpeak} definiert und bestimmt die höchste Magnitude der normalisierten Autokorrelation für die Verzögerungswerte $k_{min} , \ldots , k_{max}$. Ein stimmhaftes Signal hat aufgrund seiner Periodizität erwartungsgemäß einen höheren [\emph{aMax}]-Wert als Rauschen.
+In Bezug auf die VAD wurde die Autokorrelation als Methode genutzt, um die beiden Attribute \emph{höchste Autokorrelationsspitze} [\emph{aMax}] und \emph{Anzahl der Autokorrelationsspitzen} [\emph{aCount}] zu berechnen. Beide Eigenschaften wurden von Kristjansson et al. \cite[S. 1 - 2]{vad_Lisboa} zur VAD beschrieben. Die \emph{höchste Autokorrelationsspitze} wird in \autoref{eq:corrpeak} definiert und bestimmt die höchste Magnitude der normalisierten Autokorrelation für die Verzögerungswerte $k_{min} , \ldots , k_{max}$. Ein stimmhaftes Signal hat aufgrund seiner Periodizität erwartungsgemäß einen höheren [\emph{aMax}]-Wert als Rauschen.
 
 \begin{equation}
 \text{aMax}(x_i[\;]) = \maxmagi_{k = k_{min} \: \ldots \: k_{max}}\{\text{NA-Corr}_k(x_i[\;])\}
 \label{eq:corrpeak}
 \end{equation}
 
-Die \emph{Anzahl der Autokorrelationsspitzen} wird nach Formel \ref{eq:corrcount} berechnet. Das Feature gibt an, wie viele Signalspitzen im Autokorrelationssignal enthalten sind. Rauschen erzeugt höhere [\emph{aCount}]-Wert als stimmhafte Signale, bedingt durch die vielen zufällig verteilten Periodizitäten.\cite[S. 1 - 2]{vad_Lisboa}
+Die \emph{Anzahl der Autokorrelationsspitzen} wird nach \autoref{eq:corrcount} berechnet. Das Feature gibt an, wie viele Signalspitzen im Autokorrelationssignal enthalten sind. Rauschen erzeugt höhere [\emph{aCount}]-Wert als stimmhafte Signale, bedingt durch die vielen zufällig verteilten Periodizitäten.\cite[S. 1 - 2]{vad_Lisboa}
 
 \begin{equation}
 \text{aCount}(x_i[\;]) = \counti_{k = k_{min} \: \ldots \: k_{max}}\{\text{NA-Corr}_k(x_i[\;])\}
 \label{eq:corrcount}
 \end{equation}
 
-Das Verzögerungsintervall $k_{min} , \ldots , k_{max}$ wurde so gewählt, dass Periodizitäten nur in dem Bereich gesucht wurden, der für die Grundfrequenz von Babystimmen in Frage kommt. Aus Kapitel \ref{sec:acousticModel} ging hervor, dass diese Grundfrequenz für Babys zwischen $250$ und $\SI{2000}{\hertz}$ liegt.
+Das Verzögerungsintervall $k_{min} , \ldots , k_{max}$ wurde so gewählt, dass Periodizitäten nur in dem Bereich gesucht wurden, der für die Grundfrequenz von Babystimmen in Frage kommt. Aus \autoref{sec:acousticModel} ging hervor, dass diese Grundfrequenz für Babys zwischen $250$ und $\SI{2000}{\hertz}$ liegt.
 
 \subsubsection{Eigenschaften des Frequenzbereiches}
 
 Aus dem Frequenzbereich wurden die drei Eigenschaften \emph{unnormalisierte spektrale Entropie} [$SEnt_{u}$], \emph{normalisierte spektrale Entropie}  [$SEnt_{n}$] und \emph{dominanteste Frequenzkomponenten} [$f_{dom}$] erprobt.\cite{vad_Lisboa}
 
-Als Vorbereitungsschritt wird das Signalfenster des Zeitbereiches $x_i[\;]$ in den Frequenzbereich $X_i[\;]$ transformiert werden. Die Berechnungsvorschrift ist $X_i[\;] = \text{DFT}\{(w[\;] \cdot x_i[\;])\}$. Wird diese Transformation für alle Signalfenster $x_0[\;], \ldots, x_m[\;]$ durchgeführt, entspricht dies der in Kapitel \ref{sec:stft} vorgestellten Short Time Fourier Transformation des ursprünglichen Eingangssignals $x[\;]$. Es wurde eine $2048$ Punkte Lange FFT und eine Hamming-Window als Fensterfunktion $w[\;]$ verwendet.
+Als Vorbereitungsschritt wird das Signalfenster des Zeitbereiches $x_i[\;]$ in den Frequenzbereich $X_i[\;]$ transformiert werden. Die Berechnungsvorschrift ist $X_i[\;] = \text{DFT}\{(w[\;] \cdot x_i[\;])\}$. Wird diese Transformation für alle Signalfenster $x_0[\;], \ldots, x_m[\;]$ durchgeführt, entspricht dies der in \autoref{sec:stft} vorgestellten Short Time Fourier Transformation des ursprünglichen Eingangssignals $x[\;]$. Es wurde eine $2048$ Punkte Lange FFT und eine Hamming-Window als Fensterfunktion $w[\;]$ verwendet.
 
-Kristjansson et al. \cite[S. 2]{vad_Lisboa} haben die \emph{spektrale Entropie} zur Voice Activity Detection beschrieben. Dabei wird das Spektrum des Frequenzfensters $X_i[\;]$ als Wahrscheinlichkeitsverteilung betrachtet. Die Entropie als Maß zur \glqq Unreinheit\grqq{} wurde in Kapitel \ref{sec:id3} erläutert. Die \emph{normalisierte spektrale Entropie} wird nach der Formel \ref{eq:norm_se} berechnet. Das Signal $px_i[\;]$ ergibt sich durch die Normalisierung des $N$-Punkte langen Spektrums nach Formel \ref{eq:norm_spek}. Bei der normalisierten spektralen Entropie ist zu erwarten, dass Frequenzfenster ohne Stimme einen höheren Wert aufweisen als Fenster mit Stimme. 
+Kristjansson et al. \cite[S. 2]{vad_Lisboa} haben die \emph{spektrale Entropie} zur Voice Activity Detection beschrieben. Dabei wird das Spektrum des Frequenzfensters $X_i[\;]$ als Wahrscheinlichkeitsverteilung betrachtet. Die Entropie als Maß zur \glqq Unreinheit\grqq{} wurde in \autoref{sec:id3} erläutert. Die \emph{normalisierte spektrale Entropie} wird nach der \autoref{eq:norm_se} berechnet. Das Signal $px_i[\;]$ ergibt sich durch die Normalisierung des $N$-Punkte langen Spektrums nach \autoref{eq:norm_spek}. Bei der normalisierten spektralen Entropie ist zu erwarten, dass Frequenzfenster ohne Stimme einen höheren Wert aufweisen als Fenster mit Stimme. 
 
 \begin{equation}
 px_i[n] = \frac{X_i[n]}{\sum_{k=1}^{N} X_i[k]}
@@ -169,16 +169,16 @@ px_i[n] = \frac{X_i[n]}{\sum_{k=1}^{N} X_i[k]}
 \label{eq:norm_se}
 \end{equation}
 
-Neben der von Kristjansson et al. \cite{vad_Lisboa} vorgestellten normalisierten spektralen Entropie wurde zusätzlich die \emph{unnormalisierte Spektrale Entropie} nach Formel \ref{eq:unnnorm_se} berechnet. Bei dieser wird das Spektrum nicht normalisiert, das heißt, es gilt $px_i[k] = X_i[k]$. Somit hat die Energie des Signals einen größeren Einfluss den Wert des Attributes. Dabei ist zu erwarten, dass Signalfenster mit Stimme einen höheren Wert aufweisen als Rauschen.\footnote{Kristjansson et al \cite[S. 2]{vad_Lisboa} verwenden zur Entropie-Berechnung den Logarithmus zur Basis 10, anstatt zur Basis 2. Es ist nicht klar, ob es sich dabei um einen Fehler handelt. In dieser Arbeit wurde, wie in dem Paper beschrieben, ebenfalls der Logarithmus zur Basis 10 verwendet.}
+Neben der von Kristjansson et al. \cite{vad_Lisboa} vorgestellten normalisierten spektralen Entropie wurde zusätzlich die \emph{unnormalisierte Spektrale Entropie} nach \autoref{eq:unnnorm_se} berechnet. Bei dieser wird das Spektrum nicht normalisiert, das heißt, es gilt $px_i[k] = X_i[k]$. Somit hat die Energie des Signals einen größeren Einfluss den Wert des Attributes. Dabei ist zu erwarten, dass Signalfenster mit Stimme einen höheren Wert aufweisen als Rauschen.\footnote{Kristjansson et al \cite[S. 2]{vad_Lisboa} verwenden zur Entropie-Berechnung den Logarithmus zur Basis 10, anstatt zur Basis 2. Es ist nicht klar, ob es sich dabei um einen Fehler handelt. In dieser Arbeit wurde, wie in dem Paper beschrieben, ebenfalls der Logarithmus zur Basis 10 verwendet.}
 
 \begin{equation}
 \text{SEnt}_u(X_i[\;]) = -\sum_{k=1}^{N}X_i[k] \cdot\log(X_i[k])
 \label{eq:unnnorm_se}
 \end{equation}
 
-In die Berechnungen wurden nur die Frequenzen im Bereich von 250 - \SI{8000}{\hertz} mit einbezogen, da nach Kapitel \ref{sec:acousticModel} die tiefst mögliche Grundfrequenz einer Babystimme bei \SI{250}{\hertz} liegt und nach Shen et al. \cite{vad_entropie02} die Stimme keine Informationen oberhalb von \SI{8000}{\hertz} enthält.
+In die Berechnungen wurden nur die Frequenzen im Bereich von 250 - \SI{8000}{\hertz} mit einbezogen, da nach \autoref{sec:acousticModel} die tiefst mögliche Grundfrequenz einer Babystimme bei \SI{250}{\hertz} liegt und nach Shen et al. \cite{vad_entropie02} die Stimme keine Informationen oberhalb von \SI{8000}{\hertz} enthält.
 
-Moattar et al \cite[S. 2550]{vad_Easy} haben die \emph{dominanteste Frequenzkomponente} zur Voice-Activity-Detection vorgestellt. Für jedes Frequenzfenster $X_i[\;]$ wird diejenige Frequenz nach Formel \ref{eq:domfreq} berechnet, welche die höchste Amplitude hat. Es wird dabei, im Gegensatz zur spektralen Entropie, der gesamte Frequenzraum betrachtet. Ein stimmhaftes Signal hat typischerweise eine höhere $f_{dom}$ als ein stimmloses Signal, bedingt durch die hohe Amplitude der Grundfrequenz.
+Moattar et al \cite[S. 2550]{vad_Easy} haben die \emph{dominanteste Frequenzkomponente} zur Voice-Activity-Detection vorgestellt. Für jedes Frequenzfenster $X_i[\;]$ wird diejenige Frequenz nach  \autoref{eq:domfreq} berechnet, welche die höchste Amplitude hat. Es wird dabei, im Gegensatz zur spektralen Entropie, der gesamte Frequenzraum betrachtet. Ein stimmhaftes Signal hat typischerweise eine höhere $f_{dom}$ als ein stimmloses Signal, bedingt durch die hohe Amplitude der Grundfrequenz.
 
 \begin{equation}
 f_{dom}(X_i[\;]) = \argmax \{X_i[\;]\}
@@ -189,7 +189,7 @@ f_{dom}(X_i[\;]) = \argmax \{X_i[\;]\}
 \subsubsection{Eigenschaften des Cepstrums}
 \label{sec:vad_ceps_features}
 
-Das Cepstrum wird nach Gleichung \ref{eq:cepstrum} als die inverse DFT des Logarithmus des Magnitudensignals des Frequenzbereiches definiert.\cite[\emph{Cepstral Analysis}]{ricardo_ceps}
+Das Cepstrum wird nach \autoref{eq:cepstrum} als die inverse DFT des Logarithmus des Magnitudensignals des Frequenzbereiches definiert.\cite[\emph{Cepstral Analysis}]{ricardo_ceps}
 
 \begin{equation}
 c[\;] =  \text{iDFT}\Big\{ \log \Big(\ \big|\ \text{DFT}\{x[\;]\} \big|\ \Big) \Big\}
@@ -203,7 +203,7 @@ c[\;] =  \text{iDFT}\Big\{ \log \Big(\ \big|\ \text{DFT}\{x[\;]\} \big|\ \Big) \
 	\label{img:cepstrumOverview}
 \end{figure}
 
-Das Vorgehen wird mit Hilfe des Beispiels aus Abbildung \ref{img:cepstrumOverview} erläutert. $ |\ \text{DFT}\{x[\;]\} \big| $  zeigt das Spektrum eines \glqq typischen stimmhaften\grqq{} Signals $x[\;]$. Es sind die in Kapitel \ref{sec:theVoice} erläuterten für ein stimmhaftes Signal typischen harmonischen Obertöne zu sehen, welche mit steigender Frequenz an Amplitude verlieren. Durch das logarithmieren des Spektrums $\log \big(\ |\ \text{DFT}\{x[\;]\} |\ \big)$ wird die Dynamik des Frequenzbereiches verringert und somit der Amplitudenverlust der höheren Obertöne reduziert. Nun stellt man sich vor, dieses Spektrum wäre ein Signal des Zeitbereiches. In diesem Fall würde man die harmonischen Obertöne als ein annähernd periodisches Signal betrachten, welches von einem niederfrequenten Signal überlagert wird. Um diese beiden Frequenzkomponenten voneinander zu trennen, müsste man eine weitere DFT anwenden. Diese DFT kommt in dem Fall einer inversen DFT gleich, da das Phasen-Signal verworfen wurde. Man erwartet in diesem \glqq Spektrum vom Spektrum\grqq{} eine Signalspitze im \glqq oberen Frequenzbereich\grqq , bedingt durch die harmonischen Obertöne, sowie eine Signalspitze im \glqq unteren Frequenzbereich\grqq, bedingt durch die Formanten.\cite[\emph{Cepstral analysis}]{ricardo_ceps}
+Das Vorgehen wird mit Hilfe des Beispiels aus \autoref{img:cepstrumOverview} erläutert. $ |\ \text{DFT}\{x[\;]\} \big| $  zeigt das Spektrum eines \glqq typischen stimmhaften\grqq{} Signals $x[\;]$. Es sind die in \autoref{sec:theVoice} erläuterten für ein stimmhaftes Signal typischen harmonischen Obertöne zu sehen, welche mit steigender Frequenz an Amplitude verlieren. Durch das logarithmieren des Spektrums $\log \big(\ |\ \text{DFT}\{x[\;]\} |\ \big)$ wird die Dynamik des Frequenzbereiches verringert und somit der Amplitudenverlust der höheren Obertöne reduziert. Nun stellt man sich vor, dieses Spektrum wäre ein Signal des Zeitbereiches. In diesem Fall würde man die harmonischen Obertöne als ein annähernd periodisches Signal betrachten, welches von einem niederfrequenten Signal überlagert wird. Um diese beiden Frequenzkomponenten voneinander zu trennen, müsste man eine weitere DFT anwenden. Diese DFT kommt in dem Fall einer inversen DFT gleich, da das Phasen-Signal verworfen wurde. Man erwartet in diesem \glqq Spektrum vom Spektrum\grqq{} eine Signalspitze im \glqq oberen Frequenzbereich\grqq , bedingt durch die harmonischen Obertöne, sowie eine Signalspitze im \glqq unteren Frequenzbereich\grqq, bedingt durch die Formanten.\cite[\emph{Cepstral analysis}]{ricardo_ceps}
 
 Der Bereich dieser \glqq Fouriertransformation der Fouriertransformation\grqq{} wird als \emph{Cepstrum} bezeichnet. Cepstrum ist ein ein Wortspiel, welches durch die Umkehrung der ersten vier Buchstaben des Wortes \glqq Spectrum\grqq{} entsteht. Die unabhängige Variable des Cepstrum wird als \emph{Quefrency} bezeichnet. So wird verdeutlicht, dass die unabhängige Variable dieses Bereichs zwar mathematisch betrachtet die Zeit darstellt, jedoch als Frequenz interpretiert wird.\cite[S. 7]{ricardo_ceps}
 
@@ -214,9 +214,9 @@ Der Bereich dieser \glqq Fouriertransformation der Fouriertransformation\grqq{} 
 	\label{img:cepstrumVoicedPeak}
 \end{figure}	
 
-Ein Aufkommen einer Signalspitze im oberen Quefrency-Bereich $> \SI{3}{\milli\second}$ spricht für das Vorhandensein von harmonischen Obertönen im Signal, wie sie beispielsweise durch Stimme erzeugt werden. Abbildung \ref{img:cepstrumVoicedPeak} verdeutlicht das Prinzip an einem Beispiel. Zu sehen ist die STFT eines Signals mit einer Fensterlänge von $\SI{50}{\milli\second}$ und einer Hopsize von $\SI{12.5}{\milli\second}$. Links wird das logarithmierte Spektrum des entsprechenden Frequenzfensters abgebildet, rechts das Cepstrum. Die Frames 1 bis 5 sind stimmlos und die Frames 8 bis 15 sind stimmhaft. Die Frames 6 und 7 bilden eine Zwischenform zwischen stimmhaft und nicht-stimmhaft. Wie zu sehen ist, haben die Cepstren der stimmhaften Frames eine Signalspitze bei der Quefrency $q \approx \SI{12}{\milli\second}$.\cite[S. 16]{ricardo_ceps}
+Ein Aufkommen einer Signalspitze im oberen Quefrency-Bereich $> \SI{3}{\milli\second}$ spricht für das Vorhandensein von harmonischen Obertönen im Signal, wie sie beispielsweise durch Stimme erzeugt werden. \autoref{img:cepstrumVoicedPeak} verdeutlicht das Prinzip an einem Beispiel. Zu sehen ist die STFT eines Signals mit einer Fensterlänge von $\SI{50}{\milli\second}$ und einer Hopsize von $\SI{12.5}{\milli\second}$. Links wird das logarithmierte Spektrum des entsprechenden Frequenzfensters abgebildet, rechts das Cepstrum. Die Frames 1 bis 5 sind stimmlos und die Frames 8 bis 15 sind stimmhaft. Die Frames 6 und 7 bilden eine Zwischenform zwischen stimmhaft und nicht-stimmhaft. Wie zu sehen ist, haben die Cepstren der stimmhaften Frames eine Signalspitze bei der Quefrency $q \approx \SI{12}{\milli\second}$.\cite[S. 16]{ricardo_ceps}
 
-Abbildung \ref{img:cepstrumPitch} verdeutlicht, wie eine Periode von $T_0$ im Zeitbereich eine Signalspitze im Frequenzbereich bei der Grundfrequenz $f_0$ bedingt, welche wiederum in Verbindung mit den harmonischen Obertönen eine Signalspitze bei der Quefrency $q_o = 1 / f_0$ im Cepstrum verursacht. Wird somit in einem Cepstrum eine Signalspitze bei $q_0$ festgestellt, weißt dies auf eine Grundfrequenz von $f_0 = 1/q_0$ hin. \cite[S. 5]{cepstrumPitchTranslation}
+\autoref{img:cepstrumPitch} verdeutlicht, wie eine Periode von $T_0$ im Zeitbereich eine Signalspitze im Frequenzbereich bei der Grundfrequenz $f_0$ bedingt, welche wiederum in Verbindung mit den harmonischen Obertönen eine Signalspitze bei der Quefrency $q_o = 1 / f_0$ im Cepstrum verursacht. Wird somit in einem Cepstrum eine Signalspitze bei $q_0$ festgestellt, weißt dies auf eine Grundfrequenz von $f_0 = 1/q_0$ hin. \cite[S. 5]{cepstrumPitchTranslation}
 
 \begin{figure}[h]
 	\centering
@@ -227,14 +227,14 @@ Abbildung \ref{img:cepstrumPitch} verdeutlicht, wie eine Periode von $T_0$ im Ze
 
 In Bezug auf die Voice Activity Detection wurde das Cepstrum genutzt, um die beiden Features \emph{Höchster Peak im Cepstrum} [$Ceps_{mag}$] und \emph{Quefrency der höchsten Peaks} [$Ceps_{loc}$] zu berechnen.
 
-Ahmadi et al. \cite{vad_ceps} sowie Kristjansson et al.\cite{vad_Lisboa} haben vorgeschlagen, die Höhe der Magnitude einer Signalspitze im oberen Bereich des Cepstrums als Maß für die Stimmhaftigkeit des Signals einzusetzen. Formel \ref{eq:ceps_maxpeak} definiert die Berechnung dieses Attributs. $c_i[\;]$ ist das Cepstrum des $i$-ten Frequenzfensters $X_i[\;]$. Wie in Kapitel \ref{sec:acousticModel} erläutert, liegt die Grundfrequenz bei kindlichen Lautäußerungen zwischen 250 und \SI{2000}{\hertz}, was einem Quefrency-Bereich von 5 - \SI{40}{\milli\second} entspricht. Deshalb wurden Signalspitzen nur innerhalb dieses Quefrency-Bereiches gesucht.
+Ahmadi et al. \cite{vad_ceps} sowie Kristjansson et al.\cite{vad_Lisboa} haben vorgeschlagen, die Höhe der Magnitude einer Signalspitze im oberen Bereich des Cepstrums als Maß für die Stimmhaftigkeit des Signals einzusetzen. \autoref{eq:ceps_maxpeak} definiert die Berechnung dieses Attributs. $c_i[\;]$ ist das Cepstrum des $i$-ten Frequenzfensters $X_i[\;]$. Wie in \autoref{sec:acousticModel} erläutert, liegt die Grundfrequenz bei kindlichen Lautäußerungen zwischen 250 und \SI{2000}{\hertz}, was einem Quefrency-Bereich von 5 - \SI{40}{\milli\second} entspricht. Deshalb wurden Signalspitzen nur innerhalb dieses Quefrency-Bereiches gesucht.
 
 \begin{equation}
 Ceps_{mag}(c_i[\;]) = \maxmagi_{q = q_{min} \ldots , q_{max}}\{ \; c[q] \; \}
 \label{eq:ceps_maxpeak}
 \end{equation}
 
-Als zweites Attribut, welches auf dem Cesptrum basiert, wurde die Quefrency der höchsten Amplitude des oberen Quefrency-Bereiches nach Formel \ref{eq:ceps_loc} berechnet. Bei Signalfenstern ohne Stimme ist es wahrscheinlicher, dass sich die höchste Amplitude am Mindest- oder Maximalwert des durchsuchten Quefrency-Bereiches befindet.
+Als zweites Attribut, welches auf dem Cesptrum basiert, wurde die Quefrency der höchsten Amplitude des oberen Quefrency-Bereiches nach \autoref{eq:ceps_loc} berechnet. Bei Signalfenstern ohne Stimme ist es wahrscheinlicher, dass sich die höchste Amplitude am Mindest- oder Maximalwert des durchsuchten Quefrency-Bereiches befindet.
 
 \begin{equation}
 Ceps_{loc}(c_i[\;]) = \argmax_{q = q_{min} \ldots , q_{max}} \{ \; c[\;] \; \}
@@ -244,7 +244,7 @@ Ceps_{loc}(c_i[\;]) = \argmax_{q = q_{min} \ldots , q_{max}} \{ \; c[\;] \; \}
 \subsubsection{Differenz-Features}
 \label{sec:vad_dif_feature}
 
-Abbildung \ref{img:vadAllFeatures} visualisiert alle Attribute, die in den vorangegangenen Abschnitten zur Voice Activity Detection vorgestellt wurden. Der oberste Plot zeigt das Audiosignal aus Abbildung \ref{img:vad01} mit einem Signal/Rausch-Abstand von \SI{20}{\decibel}. Der rote Graph über dem Plot klassifiziert die Zeitbereiche in $1 \; \hat{=} $ \emph{stimmhaft} und $0 \; \hat{=}$ \emph{nicht stimmhaft}. Alle darunter liegenden Plots zeigen den zeitlichen Verlauf der entsprechenden Attribute.
+\autoref{img:vadAllFeatures} visualisiert alle Attribute, die in den vorangegangenen Abschnitten zur Voice Activity Detection vorgestellt wurden. Der oberste Plot zeigt das Audiosignal aus \autoref{img:vad01} mit einem Signal/Rausch-Abstand von \SI{20}{\decibel}. Der rote Graph über dem Plot klassifiziert die Zeitbereiche in $1 \; \hat{=} $ \emph{stimmhaft} und $0 \; \hat{=}$ \emph{nicht stimmhaft}. Alle darunter liegenden Plots zeigen den zeitlichen Verlauf der entsprechenden Attribute.
 
 \begin{figure}[h]
 	\centering
@@ -253,7 +253,7 @@ Abbildung \ref{img:vadAllFeatures} visualisiert alle Attribute, die in den voran
 	\label{img:vadAllFeatures}
 \end{figure}
 
-Abbildung \ref{img:min-signal} zeigt den zeitlichen Verlauf des RMS-Features im Detail. (A) zeigt das verhalten des \emph{RMS}-Attributes bei einem Signal/Rauschabstand von \SI{50}{\decibel}. Die stimmlosen Zeiträume haben einen weitaus niedrigeren RMS-Wert als die Zeiträume mit Stimme. In (B) ist das selbe Signal mit einem Signal/Rauschabstand von \SI{3}{\decibel} zu sehen. Nun liegen die RMS-Werte der stimmlosen Bereiche nur noch knapp unter denen des Sprachsignals. Zu sehen ist, dass starkes Hintergrundrauschen ähnlich hohe Feature-Werte erzeugen kann wie die Stimme.
+\autoref{img:min-signal} zeigt den zeitlichen Verlauf des RMS-Features im Detail. (A) zeigt das verhalten des \emph{RMS}-Attributes bei einem Signal/Rauschabstand von \SI{50}{\decibel}. Die stimmlosen Zeiträume haben einen weitaus niedrigeren RMS-Wert als die Zeiträume mit Stimme. In (B) ist das selbe Signal mit einem Signal/Rauschabstand von \SI{3}{\decibel} zu sehen. Nun liegen die RMS-Werte der stimmlosen Bereiche nur noch knapp unter denen des Sprachsignals. Zu sehen ist, dass starkes Hintergrundrauschen ähnlich hohe Feature-Werte erzeugen kann wie die Stimme.
 
 \begin{figure}[h]
 	\centering
@@ -264,7 +264,7 @@ Abbildung \ref{img:min-signal} zeigt den zeitlichen Verlauf des RMS-Features im 
 
 Moattar et al. \cite{vad_Easy} und Waheed et al. \cite{vad_entropy} haben die Idee präsentiert, den Wert des jeweiligen Attributes zu messen, der in den stimmlosen Bereichen durch das Hintergrundrauschen erzeugt wird. Es kann davon ausgegangen werden, dass die ersten Signalfenster eines Signals stimmlos sind, und der Feature-Wert des Rauschens somit anhand dieser Fenster bestimmt werden kann. Bei einer langanhaltenden und kontinuierlichen Analyse können sich sowohl der Signal/Rausch-Abstand als auch die Qualität des Rauschens ständig ändern, weshalb in von den stimmlosen Bereichen erzeugten Attributwerte regelmäßig aktualisiert werden müssen. Es kann weiterhin davon ausgegangen werden, dass die Länge einer Cry-Unit eine bestimmte Länge $t_{max}$ nicht überschreiten kann, bevor das Baby Luft holen muss und somit mindestens ein stimmloses Zeitfenster entsteht, welches das Hintergrundrauschen enthält. Zeskind et al. \cite[S. 325]{rythmic} haben $t_{max} = \SI{4.75}{\second}$ bestimmt. In einem Zeitbereich $ t > t_{max}$ muss somit zumindest ein Feature-Wert enthalten sein, der durch stimmlose Singalbereiche erzeugt wurde. 
 
-Auf Basis dieser Überlegung wurde das \emph{Differenz-Feature} Diff\textsubscript{t}(Feat$(x_i[\;])$) nach Formel \ref{eq:difFeature} definiert als die Differenz zwischen einem aktuell gemessenen Attributwerte und dem geringsten Attributwerte, welcher im vergangenen Zeitbereich $t$ gemessen wurde. Feat$(x_i[\;])$ bezeichnet dabei einen beliebigen Feature-Wert des Signalfensters $x_i[\;]$, $t_{xi}$ die Länge eines Signalfensters in Sekunden (in diesem Fall \SI{25}{\milli\second}), und $t$ den zu durchsuchende Zeitbereich in Sekunden $> t_{max}$, welcher von dem jeweiligen Signalfenster $x[\;]$ aus betrachtet in der Vergangenheit liegt. In Abbildung \ref{img:min-signal} wird in (C) das Differenz-Feature für den RMS-Wertes gezeigt.
+Auf Basis dieser Überlegung wurde das \emph{Differenz-Feature} Diff\textsubscript{t}(Feat$(x_i[\;])$) nach \autoref{eq:difFeature} definiert als die Differenz zwischen einem aktuell gemessenen Attributwerte und dem geringsten Attributwerte, welcher im vergangenen Zeitbereich $t$ gemessen wurde. Feat$(x_i[\;])$ bezeichnet dabei einen beliebigen Feature-Wert des Signalfensters $x_i[\;]$, $t_{xi}$ die Länge eines Signalfensters in Sekunden (in diesem Fall \SI{25}{\milli\second}), und $t$ den zu durchsuchende Zeitbereich in Sekunden $> t_{max}$, welcher von dem jeweiligen Signalfenster $x[\;]$ aus betrachtet in der Vergangenheit liegt. In \autoref{img:min-signal} wird in (C) das Differenz-Feature für den RMS-Wertes gezeigt.
 
 \begin{equation}
 \text{Diff}_t(\text{Feat}(x_i[\;])) = \text{Feat}(x_i[\;])\ - \mini_{k=(i-z)...i}\{\text{Feat}(x_k[\;])\} \qquad , z = \frac{2 \cdot t}{t_{xi}}
@@ -285,7 +285,7 @@ Eine einfache Variante zur Entscheidung darüber, ob ein Signalfenster $x_i[\;]$
  \end{cases}
 \end{equation}
 
- Abbildung \ref{img:thresholded} verdeutlicht das Prinzip an einem Beispiel. Das Feature, dass als Entscheidungsgrundlage genutzt wird, ist der \emph{RMS}-Wert. Ein Grenzwert von $\theta = 0.18$ gewährleistet in diesem Fall eine weitestgehend richtige Klassifizierung.
+\autoref{img:thresholded} verdeutlicht das Prinzip an einem Beispiel. Das Feature, dass als Entscheidungsgrundlage genutzt wird, ist der \emph{RMS}-Wert. Ein Grenzwert von $\theta = 0.18$ gewährleistet in diesem Fall eine weitestgehend richtige Klassifizierung.
 
 \begin{figure}[h]
 	\centering
@@ -294,12 +294,12 @@ Eine einfache Variante zur Entscheidung darüber, ob ein Signalfenster $x_i[\;]$
 	\label{img:thresholded}
 \end{figure}
 
-Die Frage ist, wie man für ein Attribut einen Grenzwert findet, der für verschiede Signal/Rausch-Verhältnisse eine möglichst hohe Klassifizierungsgenauigkeit gewährleistet. In einigen Veröffentlichungen, so wie der von Moattar et al. \cite{vad_Easy}, wird empfohlen, den Grenzwert experimentell festzustellen. In dieser Arbeit wurde sich für den Ansatz einer automatisierten, datengetriebenen Grenzwertsuche mit Hilfe des in Kapitel \ref{sec:id3} vorgestellten \emph{C4.5}-Algorithmus entschieden. Der Grundgedanke ist der folgende: Angenommen, man hat eine Datenbank zur Verfügung, bestehend aus einer Menge an Signalen mit Audioaufnahmen kindlicher Lautäußerungen, in denen manuell die stimmhaften Signalabschnitte markiert wurden. Diese Signale zerlegt man nach den vorgestellten Methoden in kürzere Signalfenster und berechnet für jedes Signalfenster das Feature, dessen Grenzwert man sucht. Jedes Signalfenster versieht man außerdem mit dem Klassenlabel $y \in Y$ auf Basis der manuellen Markierungen. Ein \emph{Signalfenster} $x_i[\;]$ wird so zu einem \emph{Example} $e_i = (\text{Feat}(x_i[\;]), y_i)$. Alle Examples werden zu einem \emph{Trainingsdatensatz} zusammengetragen. Nun kann der \emph{C4.5}-Algorithmus verwendet werden, um für das Feature den Grenzwert zu finden, der für diesen Datensatz die Klassifizierung mit der höchsten Genauigkeit vornimmt. Voraussetzung dafür ist, dass der \emph{C4.5}-Algorithmus gezwungen wird, einen Entscheidungsbaum mit einer maximalen Tiefe von $1$ zu erzeugen, damit für das jeweilige Attribut genau ein Grenzwert festgelegt wird. Ist das Attribut, für das der Grenzwert gesucht wird, ein Differenz-Feature, so lässt sich der Grenzwert als ein adaptiver Grenzwert interpretieren, der sich an den aktuellen SNR anpasst.
+Die Frage ist, wie man für ein Attribut einen Grenzwert findet, der für verschiede Signal/Rausch-Verhältnisse eine möglichst hohe Klassifizierungsgenauigkeit gewährleistet. In einigen Veröffentlichungen, so wie der von Moattar et al. \cite{vad_Easy}, wird empfohlen, den Grenzwert experimentell festzustellen. In dieser Arbeit wurde sich für den Ansatz einer automatisierten, datengetriebenen Grenzwertsuche mit Hilfe des in \autoref{sec:id3} vorgestellten \emph{C4.5}-Algorithmus entschieden. Der Grundgedanke ist der folgende: Angenommen, man hat eine Datenbank zur Verfügung, bestehend aus einer Menge an Signalen mit Audioaufnahmen kindlicher Lautäußerungen, in denen manuell die stimmhaften Signalabschnitte markiert wurden. Diese Signale zerlegt man nach den vorgestellten Methoden in kürzere Signalfenster und berechnet für jedes Signalfenster das Feature, dessen Grenzwert man sucht. Jedes Signalfenster versieht man außerdem mit dem Klassenlabel $y \in Y$ auf Basis der manuellen Markierungen. Ein \emph{Signalfenster} $x_i[\;]$ wird so zu einem \emph{Example} $e_i = (\text{Feat}(x_i[\;]), y_i)$. Alle Examples werden zu einem \emph{Trainingsdatensatz} zusammengetragen. Nun kann der \emph{C4.5}-Algorithmus verwendet werden, um für das Feature den Grenzwert zu finden, der für diesen Datensatz die Klassifizierung mit der höchsten Genauigkeit vornimmt. Voraussetzung dafür ist, dass der \emph{C4.5}-Algorithmus gezwungen wird, einen Entscheidungsbaum mit einer maximalen Tiefe von $1$ zu erzeugen, damit für das jeweilige Attribut genau ein Grenzwert festgelegt wird. Ist das Attribut, für das der Grenzwert gesucht wird, ein Differenz-Feature, so lässt sich der Grenzwert als ein adaptiver Grenzwert interpretieren, der sich an den aktuellen SNR anpasst.
 
 %besser formulieren!
-Die Verwendung des \emph{C4.5}-Algorithmus bringt die Möglichkeit mit sich, eine beliebige Menge an Features in die Klassifizierung mit einzubeziehen. Die Klassifizierung muss also nicht zwingend auf Grundlage nur eines Attributes geschehen. Angenommen, es werden die beiden Features Ceps$_{mag}$ und der RMS-Wert für jedes Signalfenster berechnet. Dann würde der \emph{C4.5}-Algorithmus nun auf Basis des so erzeugten Trainingsdatensatzes einen Entscheidungsbaum konstruieren, bei dem durch das hierarchische Setzen von Grenzwerten die Klassifizierung vorgenommen wird. Listing \ref{lst:tree01} zeigt ein Beispiel für eine so resultierende, fiktive Klassifizierungsfunktion.
+Die Verwendung des \emph{C4.5}-Algorithmus bringt die Möglichkeit mit sich, eine beliebige Menge an Features in die Klassifizierung mit einzubeziehen. Die Klassifizierung muss also nicht zwingend auf Grundlage nur eines Attributes geschehen. Angenommen, es werden die beiden Features Ceps$_{mag}$ und der RMS-Wert für jedes Signalfenster berechnet. Dann würde der \emph{C4.5}-Algorithmus nun auf Basis des so erzeugten Trainingsdatensatzes einen Entscheidungsbaum konstruieren, bei dem durch das hierarchische Setzen von Grenzwerten die Klassifizierung vorgenommen wird. \autoref{lst:tree01} zeigt ein Beispiel für eine so resultierende, fiktive Klassifizierungsfunktion.
 
-\begin{lstlisting}[frame=single,mathescape=true,basicstyle=\footnotesize,language=Java,label=lst:tree01,caption=Beispiel eines CART-Entscheidungsbaums,linewidth=1\textwidth]
+\begin{lstlisting}[frame=single,mathescape=true,basicstyle=\footnotesize,language=Java,label=lst:tree01,caption=Beispiel eines Entscheidungsbaums,linewidth=1\textwidth]
 if Ceps$_{mag}$($x_i[\;]$) > 0.2
 |   if RMS($x_i[\;]$) < 0.13
 |   |   C($x_i[\;]$) = 0
@@ -314,7 +314,7 @@ Wird dem \emph{C4.5}-Algorithmus eine größere Menge an Attributen zur Verfügu
 \subsection{Simulationsstudie zur Festlegung des Klassifikators}
 \label{sec:vad_study}
 
-In Kapitel \ref{sec:methods_vad_new} wurde eine Übersicht über die Methoden gegeben, die in dieser Arbeit zur Voice Activity Detection erprobt wurden. Neben Methoden zur Vorverarbeitung und zum Windowing wurde eine Reihe an Attributen vorgestellt, die für ein Signalfenster als Entscheidungsgrundlage für die Erkennung des Vorhandenseins von Stimme dienen können. Schlussendlich wurde erläutert, wie der \emph{C4.5}-Algorithmus genutzt werden kann, um einen Klassifikator zu entwerfen, der die Entscheidung über das Vorhandensein von Stimme auf Grundlage einer Menge von Features fällt. Dafür wird ein Datensatz zum Training des \emph{C4.5}-Algorithmus benötigt.
+In \autoref{sec:methods_vad_new} wurde eine Übersicht über die Methoden gegeben, die in dieser Arbeit zur Voice Activity Detection erprobt wurden. Neben Methoden zur Vorverarbeitung und zum Windowing wurde eine Reihe an Attributen vorgestellt, die für ein Signalfenster als Entscheidungsgrundlage für die Erkennung des Vorhandenseins von Stimme dienen können. Schlussendlich wurde erläutert, wie der \emph{C4.5}-Algorithmus genutzt werden kann, um einen Klassifikator zu entwerfen, der die Entscheidung über das Vorhandensein von Stimme auf Grundlage einer Menge von Features fällt. Dafür wird ein Datensatz zum Training des \emph{C4.5}-Algorithmus benötigt.
 
 Das Ziel ist es nun, auf Grundlage dieser Methoden den tatsächlichen Klassifikator zu finden. Der Klassifikator soll dabei die folgenden Bedingungen erfüllen:
 
@@ -336,7 +336,7 @@ Das Vorgehen zum Finden des Klassifikators war wie folgt:
 \item Schlussendlich wurde sich für einen Klassifikator auf Grundlage der Evaluationsergebnisse entschieden.
 \end{enumerate}
 
-In Kapitel \ref{sec:vad_database} wird die Erstellung des Datensatzes erläutert. In Kapitel \ref{sec:vad_training} wird das Vorgehen beim Training des \emph{C4.5}-Algorithmus ausgeführt und in Kapitel \ref{sec:vad_results} die Ergebnisse ausgewertet.
+In \autoref{sec:vad_database} wird die Erstellung des Datensatzes erläutert. In \autoref{sec:vad_training} wird das Vorgehen beim Training des \emph{C4.5}-Algorithmus ausgeführt und in \autoref{sec:vad_results} die Ergebnisse ausgewertet.
 
 \subsubsection{Erstellung der Datensätze}
 \label{sec:vad_database}
@@ -361,8 +361,8 @@ So wurden vier Mengen an Audiosignalen $\boldmath{A_{\text{SNR}}}$ erstellt:
 Aus diesen Audiosignalen wurden die tatsächlichen Datensätze $\boldmath{D_{\text{SNR,Feats}}}$ nach dem folgenden Vorgehen erzeugt:
 %% NOCHMAL LESEN!!!!
 \begin{enumerate}
-\item Jedes der Signale wurde nach der in Abschnitt \ref{sec:preprocessing} vorgestellten Methode vorverarbeitet und wie in Abschnitt \ref{sec:windowing} beschrieben in Signalfenster \`{a} \SI{25}{\milli\second} zerlegt.
-\item Für jedes Signalfenster $x_i[\;]$ wurde ein Example $e_i$ erstellt. Die Instanz eines Examples beinhaltet eine bestimmte Untermenge der vorgestellten Features, die für das zugehörige Signalfenster berechnet wurde. Tabelle \ref{tab:vad_feat_subsets} gibt eine Übersicht über die insgesamt 9 Untermengen. Die Bezeichnungen der ersten vier Untermengen beziehen sich auf die Methoden zur Featureberechnung, die in den Kapiteln \ref{sec:vad_time_features} bis \ref{sec:vad_ceps_features} vorgestellt wurden, wobei jede Untermenge die in dem jeweiligen Kapitel definierten Attribute enthält, inklusive des in Kapitel \ref{sec:vad_dif_feature} eingeführten Differenz-Features. Die letzten fünf Untermengen enthalten jede mögliche paarweise Kombination der ersten vier Untermengen, mit Ausnahme der Kombination \emph{Cepstrum+Autokorrelation}, da die Features dieser Bereiche am Aufwendigsten bezüglich der Berechnung sind. Jedem Example wurde das entsprechende Klassenlabel beigefügt.
+\item Jedes der Signale wurde nach der in \autoref{sec:preprocessing} vorgestellten Methode vorverarbeitet und wie in \autoref{sec:windowing} beschrieben in Signalfenster \`{a} \SI{25}{\milli\second} zerlegt.
+\item Für jedes Signalfenster $x_i[\;]$ wurde ein Example $e_i$ erstellt. Die Instanz eines Examples beinhaltet eine bestimmte Untermenge der vorgestellten Features, die für das zugehörige Signalfenster berechnet wurde. \autoref{tab:vad_feat_subsets} gibt eine Übersicht über die insgesamt 9 Untermengen. Die Bezeichnungen der ersten vier Untermengen beziehen sich auf die Methoden zur Featureberechnung, die in den Unterabschnitten \ref{sec:vad_time_features} bis \ref{sec:vad_ceps_features} vorgestellt wurden, wobei jede Untermenge die in dem jeweiligen Unterabschnitten definierten Attribute enthält, inklusive des in \autoref{sec:vad_dif_feature} eingeführten Differenz-Features. Die letzten fünf Untermengen enthalten jede mögliche paarweise Kombination der ersten vier Untermengen, mit Ausnahme der Kombination \emph{Cepstrum+Autokorrelation}, da die Features dieser Bereiche am Aufwendigsten bezüglich der Berechnung sind. Jedem Example wurde das entsprechende Klassenlabel beigefügt.
 
 \begin{table}[h]
 \centering
@@ -383,7 +383,7 @@ Spek.+Cepstrum           & SEnt$_u$, \ldots, Ceps$_{mag}$ ,\ldots               
 \end{tabular}
 \end{table}
 
-\item Alle Examples, die aus der selben Signalmenge $\boldmath{A_{\text{SNR}}}$ stammen und die selbe Feature-Untermenge teilen, werden in einem Datensatz $\boldmath{D_{\text{SNR,Feats}}}$ zusammengefasst. Beispielsweise enthält der Datensatz $\boldmath{D_{\SI{50}{\decibel},\text{Zeit}}}$ alle Examples, die auf Grundlage der Signalmenge mit einem Signal/Rausch-Abstand von \SI{50}{\decibel} unter Verwendung der in Tabelle \ref{tab:vad_feat_subsets} aufgelisteten \emph{Zeit}-Features erzeugt wurden.
+\item Alle Examples, die aus der selben Signalmenge $\boldmath{A_{\text{SNR}}}$ stammen und die selbe Feature-Untermenge teilen, werden in einem Datensatz $\boldmath{D_{\text{SNR,Feats}}}$ zusammengefasst. Beispielsweise enthält der Datensatz $\boldmath{D_{\SI{50}{\decibel},\text{Zeit}}}$ alle Examples, die auf Grundlage der Signalmenge mit einem Signal/Rausch-Abstand von \SI{50}{\decibel} unter Verwendung der in \autoref{tab:vad_feat_subsets} aufgelisteten \emph{Zeit}-Features erzeugt wurden.
 \item Da in allen Datensätzen rund dreimal so viele Positives (das heißt, Examples aus stimmhaften Signalfenstern) enthalten waren wie Negatives, wurde jedes in einem Datensatz enthaltene Negative-Example dreimal eingefügt. So wurde ein ausgewogenes Verhältnis an Positives und Negatives gewährleistet.
 \end{enumerate}
 
@@ -401,11 +401,11 @@ Die Implementierung, die für den \emph{C4.5}-Algorithmus verwendet wurde, ist d
 \subsection{Ergebnisse}
 \label{sec:vad_results}
 
-Die Evaluationsergebnisse werden im Anhang in Tabelle \ref{tab:reptree_results} aufgelistet. Für jeden Trainingsdatensatz wurde die Genauigkeit des jeweiligen Klassifikators für jeden der drei Testdatensätze angegeben. Außerdem wurde der Durchschnittswert aller drei Klassifikationsgenauigkeiten berechnet.
+Die Evaluationsergebnisse werden im Anhang in \autoref{tab:reptree_results} aufgelistet. Für jeden Trainingsdatensatz wurde die Genauigkeit des jeweiligen Klassifikators für jeden der drei Testdatensätze angegeben. Außerdem wurde der Durchschnittswert aller drei Klassifikationsgenauigkeiten berechnet.
 
-Der Feauture-Bereich, der zu den höchsten Klassifikationsgenauigkeiten führte, ist das in Abschnitt \ref{sec:vad_ceps_features} beschriebene Cepstrum. Das einzige Feature dieses Bereiches, welches in die jeweiligen Entscheidungsbäume eingebaut wurde, war das \emph{Differenz-Feature des höchsten Peaks im Cepstrum} [Diff($Ceps_{mag}$)]. Die Klassifikatoren, die mit dem Diff($Ceps_{mag}$)-Feature entworfen wurden, erreichten eine über die drei Testdatensätze gemittelte Genauigkeit von mindestens 91,45\%. Der nächstbeste Klassifikator mit einer gemittelten Genauigkeit von 86,96\% wurde unter Verwendung der Features des Zeitbereiches und der Autokorrelation auf dem Datensatz $D_{50+\SI{3}{\decibel}}$ entworfen. Sobald das Cepstrum in Verbindung mit den Features anderer Bereiche verwendet wurden, wurde das Diff(Ceps\textsubscript{mag})-Feature vom \emph{C4.5}-Algorithmus bevorzugt und die Features der anderen Bereiche nicht mehr in die jeweiligen Entscheidungsbäume mit eingebaut.
+Der Feauture-Bereich, der zu den höchsten Klassifikationsgenauigkeiten führte, ist das in \autoref{sec:vad_ceps_features} beschriebene Cepstrum. Das einzige Feature dieses Bereiches, welches in die jeweiligen Entscheidungsbäume eingebaut wurde, war das \emph{Differenz-Feature des höchsten Peaks im Cepstrum} [Diff($Ceps_{mag}$)]. Die Klassifikatoren, die mit dem Diff($Ceps_{mag}$)-Feature entworfen wurden, erreichten eine über die drei Testdatensätze gemittelte Genauigkeit von mindestens 91,45\%. Der nächstbeste Klassifikator mit einer gemittelten Genauigkeit von 86,96\% wurde unter Verwendung der Features des Zeitbereiches und der Autokorrelation auf dem Datensatz $D_{50+\SI{3}{\decibel}}$ entworfen. Sobald das Cepstrum in Verbindung mit den Features anderer Bereiche verwendet wurden, wurde das Diff(Ceps\textsubscript{mag})-Feature vom \emph{C4.5}-Algorithmus bevorzugt und die Features der anderen Bereiche nicht mehr in die jeweiligen Entscheidungsbäume mit eingebaut.
 
-Auf Basis der Datensätze D\textsubscript{\SI{3}{\decibel},Ceps}, D\textsubscript{\SI{3}{\decibel},Zeit+Ceps}, D\textsubscript{\SI{3}{\decibel},Freq+Ceps}, D\textsubscript{50+\SI{3}{\decibel},Ceps}, \\ D\textsubscript{50+\SI{3}{\decibel},Zeit+Ceps} sowie D\textsubscript{50+\SI{3}{\decibel},Freq+Ceps} wurde der gleiche Klassifikator erzeugt, der in Gleichung \ref{eq:cepTree01} gezeigt wird. Die Funktion bildet ein Signalfenster $x[\;]$ auf die Klassen $Y = \{ 1 \; \hat{=} \; \text{stimmhaft}, 0 \; \hat{=} \; \text{nicht stimmhaft}\}$ ab. Wie zu sehen ist, handelt es sich um einen einfachen Grenzwert des \emph{Diff(Ceps\textsubscript{mag})}-Features, da trotz der höchst möglichen Baumtiefe von 2 nur eine Tiefe von 1 genutzt wurde. $c_i[\;]$ ist dabei das Cepstrum des Signalfensters $x_i[\;]$.
+Auf Basis der Datensätze D\textsubscript{\SI{3}{\decibel},Ceps}, D\textsubscript{\SI{3}{\decibel},Zeit+Ceps}, D\textsubscript{\SI{3}{\decibel},Freq+Ceps}, D\textsubscript{50+\SI{3}{\decibel},Ceps}, \\ D\textsubscript{50+\SI{3}{\decibel},Zeit+Ceps} sowie D\textsubscript{50+\SI{3}{\decibel},Freq+Ceps} wurde der gleiche Klassifikator erzeugt, der in \autoref{eq:cepTree01} gezeigt wird. Die Funktion bildet ein Signalfenster $x[\;]$ auf die Klassen $Y = \{ 1 \; \hat{=} \; \text{stimmhaft}, 0 \; \hat{=} \; \text{nicht stimmhaft}\}$ ab. Wie zu sehen ist, handelt es sich um einen einfachen Grenzwert des \emph{Diff(Ceps\textsubscript{mag})}-Features, da trotz der höchst möglichen Baumtiefe von 2 nur eine Tiefe von 1 genutzt wurde. $c_i[\;]$ ist dabei das Cepstrum des Signalfensters $x_i[\;]$.
 
 \begin{equation}
 C(x_i[\;]) = \begin{cases}
@@ -416,7 +416,7 @@ C(x_i[\;]) = \begin{cases}
 \end{equation}
 
 
-Auf Basis der Datensätze D\textsubscript{\SI{50}{\decibel},Ceps} und D\textsubscript{\SI{50}{\decibel},Zeit+Ceps} wurde der Klassifikator erzeugt, der in Gleichung \ref{eq:cepTree02} gezeigt wird. Er unterscheidet sich von dem Klassifikator aus Gleichung \ref{eq:cepTree01} nur durch die Höhe des Grenzwertes.
+Auf Basis der Datensätze D\textsubscript{\SI{50}{\decibel},Ceps} und D\textsubscript{\SI{50}{\decibel},Zeit+Ceps} wurde der Klassifikator erzeugt, der in \autoref{eq:cepTree02} gezeigt wird. Er unterscheidet sich von dem Klassifikator aus \autoref{eq:cepTree01} nur durch die Höhe des Grenzwertes.
 
 \begin{equation}
 C(x_i[\;]) = \begin{cases}
@@ -426,16 +426,16 @@ C(x_i[\;]) = \begin{cases}
 \label{eq:cepTree02}
 \end{equation}
 
-Da der Klassifikator aus Gleichung \ref{eq:cepTree01} eine durchschnittliche Genaugikeit von 92,22\% und der Klassifikator aus Gleichung \ref{eq:cepTree02} eine unwesentlich geringere Genauigkeit von 91,45\% erzielte, wurden für beide Modelle die Spezifität und Sensitivität berechnet, um eine Entscheidung für eines der beiden Modelle fällen zu können. Dazu wurden die Signalmengen A\textsubscript{\SI{3}{\decibel}}, A\textsubscript{\SI{50}{\decibel}} und A\textsubscript{\SI{7}{\decibel}*} in Frames \`{a} 100 Windows zerlegt und für jedes Zeitfenster die Sensitivität, Spezifität und Genauigkeit bezüglich der beiden Klassifikatoren berechnet. Die Ergebnisse werden durch die Boxplots im Anhang in Abbildung \ref{img:boxplots} gezeigt. Die Modelle unterscheiden sich am stärksten hinsichtlich der Datensätze mit \SI{3}{\decibel} und \SI{7}{\decibel}. Der Klassifikator mit dem Grenzwert von 0.03 erzielte in beiden Fällen eine höhere Spezifität, aber geringere Sensitivität als das Modell mit dem Grenzwert von 0.02. 
+Da der Klassifikator aus \autoref{eq:cepTree01} eine durchschnittliche Genaugikeit von 92,22\% und der Klassifikator aus \autoref{eq:cepTree02} eine unwesentlich geringere Genauigkeit von 91,45\% erzielte, wurden für beide Modelle die Spezifität und Sensitivität berechnet, um eine Entscheidung für eines der beiden Modelle fällen zu können. Dazu wurden die Signalmengen A\textsubscript{\SI{3}{\decibel}}, A\textsubscript{\SI{50}{\decibel}} und A\textsubscript{\SI{7}{\decibel}*} in Frames \`{a} 100 Windows zerlegt und für jedes Zeitfenster die Sensitivität, Spezifität und Genauigkeit bezüglich der beiden Klassifikatoren berechnet. Die Ergebnisse werden durch die Boxplots im Anhang in \autoref{img:boxplots} gezeigt. Die Modelle unterscheiden sich am stärksten hinsichtlich der Datensätze mit \SI{3}{\decibel} und \SI{7}{\decibel}. Der Klassifikator mit dem Grenzwert von 0.03 erzielte in beiden Fällen eine höhere Spezifität, aber geringere Sensitivität als das Modell mit dem Grenzwert von 0.02. 
 
-Es wurde sich für das Modell für mit einem Grenzwert von 0.02 entschieden, da durch die höhere Sensitivtät mehr Cry-Units erkannt werden, die in späteren Verarbeitungsschritten immernoch als False-Positives erkannt und verworfen werden können. Einmal im Prozess der VAD als stimmlos markierte Fenster werden jedoch nicht weiter verarbeitet und gehen somit \glqq verloren\grqq. Die finale Klassifizierungsfunktion eines Signalfensters zur Voice Activity Detection ist somit die, die in Gleichung \ref{eq:cepTree01} definiert wird.
+Es wurde sich für das Modell für mit einem Grenzwert von 0.02 entschieden, da durch die höhere Sensitivtät mehr Cry-Units erkannt werden, die in späteren Verarbeitungsschritten immernoch als False-Positives erkannt und verworfen werden können. Einmal im Prozess der VAD als stimmlos markierte Fenster werden jedoch nicht weiter verarbeitet und gehen somit \glqq verloren\grqq. Die finale Klassifizierungsfunktion eines Signalfensters zur Voice Activity Detection ist somit die, die in \autoref{eq:cepTree01} definiert wird.
 
 \section{Zusammenfassung stimmhafter Signalbereiche zu Schreieinheiten}
 \label{sec:marking_cry-units_new}
 
-In Kapitel \ref{sec:vad_new} wurde die automatisierte Erkennung von Stimmaktivität in Signalen besprochen. Das Ergebnis der Evaluation verschiedener Methoden der Voice Activity Detection war eine Klassifizierungsfunktion, die ein Signalfenster $x_i[\;]$ als \emph{stimmhaft} oder \emph{nicht stimmhaft} markiert. Varallyay \cite[S. 16 - 17]{cry_thesis} stellte die Idee vor, auf Grundlage des Ergebnisses der Stimmdetektion die Anfangs- und Endzeitpunkte der Schreieinheiten zu markieren.\footnote{\glqq Schreieinheiten\grqq{} wurden von Varallyay als \glqq Segmente\grqq{} bezeichnet. Es wurde sich gegen diese Bezeichnung entschieden, um Konsistenz zu dem in Kapitel \ref{sec:acousticModel} eingeführten Begriffen zu gewährleisten.} Das genaue Vorgehen von Varallyay zur Kennzeichnung der Schreieinheiten konnte jedoch nicht eingesehen werden, da der Autor keine Zugriffsrechte auf die Publikation erhielt.
+In \autoref{sec:vad_new} wurde die automatisierte Erkennung von Stimmaktivität in Signalen besprochen. Das Ergebnis der Evaluation verschiedener Methoden der Voice Activity Detection war eine Klassifizierungsfunktion, die ein Signalfenster $x_i[\;]$ als \emph{stimmhaft} oder \emph{nicht stimmhaft} markiert. Varallyay \cite[S. 16 - 17]{cry_thesis} stellte die Idee vor, auf Grundlage des Ergebnisses der Stimmdetektion die Anfangs- und Endzeitpunkte der Schreieinheiten zu markieren.\footnote{\glqq Schreieinheiten\grqq{} wurden von Varallyay als \glqq Segmente\grqq{} bezeichnet. Es wurde sich gegen diese Bezeichnung entschieden, um Konsistenz zu dem in \autoref{sec:acousticModel} eingeführten Begriffen zu gewährleisten.} Das genaue Vorgehen von Varallyay zur Kennzeichnung der Schreieinheiten konnte jedoch nicht eingesehen werden, da der Autor keine Zugriffsrechte auf die Publikation erhielt.
 
-Waheed et al. \cite{vad_entropy} stellten in einer Veröffentlichung über Methoden der Voice Activity Detection die Idee vor, zusammenhängende und ununterbrochene Ketten als \emph{stimmhaft} klassifizierter Signalfenster zu \emph{Stimm-Segmenten} zusammenzufassen. Dieser Ansatz wurde übernommen, wobei ein Stimm-Segment im Kontext dieser Arbeit einer \emph{Schreieinheit} entspricht. Möglicherweise ist dies der Ansatz, den auch  Varallyay \cite[S. 16 - 17]{cry_thesis} gewählt hatte. Abbildung \ref{img:cryUnit} veranschaulicht diese Gruppierung. 
+Waheed et al. \cite{vad_entropy} stellten in einer Veröffentlichung über Methoden der Voice Activity Detection die Idee vor, zusammenhängende und ununterbrochene Ketten als \emph{stimmhaft} klassifizierter Signalfenster zu \emph{Stimm-Segmenten} zusammenzufassen. Dieser Ansatz wurde übernommen, wobei ein Stimm-Segment im Kontext dieser Arbeit einer \emph{Schreieinheit} entspricht. Möglicherweise ist dies der Ansatz, den auch  Varallyay \cite[S. 16 - 17]{cry_thesis} gewählt hatte. \autoref{img:cryUnit} veranschaulicht diese Gruppierung. 
 
 \begin{figure}[h]
 	\centering
@@ -444,14 +444,14 @@ Waheed et al. \cite{vad_entropy} stellten in einer Veröffentlichung über Metho
 	\label{img:cryUnit}
 \end{figure}
 
-Formel \ref{eq:cry-Unit} gibt die Definition des Datentyps \emph{Schreieinheit} (engl. \emph{Cry-Unit}) [$CU$]. Eine Cry-Unit wird definiert durch den Anfangszeitpunkt $start$, einen Endzeitpunkt $end$ und der Liste seiner Signalfenster $windows = \big[x_0[\;], \ldots, x_n[\;]\big]$.
+\autoref{eq:cry-Unit} gibt die Definition des Datentyps \emph{Schreieinheit} (engl. \emph{Cry-Unit}) [$CU$]. Eine Cry-Unit wird definiert durch den Anfangszeitpunkt $start$, einen Endzeitpunkt $end$ und der Liste seiner Signalfenster $windows = \big[x_0[\;], \ldots, x_n[\;]\big]$.
 
 \begin{equation}
 CU := \quad \Big(windows = \big[x_0[\;] \; ,\ldots, x_n[\;] \big] \;, start \in Zeit \;, end \in Zeit \Big)
 \label{eq:cry-Unit}
 \end{equation}
 
-Die zeitliche Dauer eine Cry-Unit $cu \in CU$ wird nach Formel \ref{eq:cry-Lambda} berechnet und mit $\lambda$ bezeichnet. Die Dauer der Pause zwischen zwei Cry-Units d($cu_i, cu_j$), wird nach Formel \ref{eq:cry-distance} berechnet. Diese Zusammenhänge werden in Abbildung \ref{img:cryUnit-details} visualisiert.\cite[S. 2]{vad_entropy}
+Die zeitliche Dauer eine Cry-Unit $cu \in CU$ wird nach \autoref{eq:cry-Lambda} berechnet und mit $\lambda$ bezeichnet. Die Dauer der Pause zwischen zwei Cry-Units d($cu_i, cu_j$), wird nach \autoref{eq:cry-distance} berechnet. Diese Zusammenhänge werden in \autoref{img:cryUnit-details} visualisiert.\cite[S. 2]{vad_entropy}
 
 \begin{equation}
 \lambda (cu) = cu.end - cu.start
@@ -463,7 +463,7 @@ Die zeitliche Dauer eine Cry-Unit $cu \in CU$ wird nach Formel \ref{eq:cry-Lambd
 \label{eq:cry-distance}
 \end{equation}
 
-Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssignal $x[\;]$ die Schreieinheiten   gekennzeichnet werden. Die Funktion \textsc{turnSignalIntoOverlappingWindows}($x[\;], length, hopsize$) zerlegt das Eingangssignal in einander überlappende Signalfenster. Wie in Kapitel \ref{sec:windowing} beschrieben, wurde sich für $length = \SI{25}{\milli\second}$ und $hopsize = \SI{12.5}{\milli\second}$ entschieden. Der Output dieser Funktion ist eine Liste aller Signalfenster $X_{all} = [x_0[\;] ,\ldots, x_m[\;]]$. Die Funktion $C(x_i[\;])$ klassifiziert ein Signalfenster als \emph{Stimme} oder \emph{Sille} nach Gleichung \ref{eq:cepTree01}. Die Funktion \textsc{getTimeOf}$(x_i[\;])$ liefert die Anfangszeitpunkt des Signalfensters $x_i[\;]$. Output des Algorithmus ist eine Liste aller im Signal detektierten Schreieinheiten $CU_{all} = [cu_0 , \ldots, cu_l]$. 
+Algorithmus \autoref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssignal $x[\;]$ die Schreieinheiten   gekennzeichnet werden. Die Funktion \textsc{turnSignalIntoOverlappingWindows} \linebreak ($x[\;], length, hopsize$) zerlegt das Eingangssignal in einander überlappende Signalfenster. Wie in \autoref{sec:windowing} beschrieben, wurde sich für $length = \SI{25}{\milli\second}$ und $hopsize = \SI{12.5}{\milli\second}$ entschieden. Der Output dieser Funktion ist eine Liste aller Signalfenster $X_{all} = [x_0[\;] ,\ldots, x_m[\;]]$. Die Funktion $C(x_i[\;])$ klassifiziert ein Signalfenster als \emph{Stimme} oder \emph{Sille} nach \autoref{eq:cepTree01}. Die Funktion \textsc{getTimeOf}$(x_i[\;])$ liefert die Anfangszeitpunkt des Signalfensters $x_i[\;]$. Output des Algorithmus ist eine Liste aller im Signal detektierten Schreieinheiten $CU_{all} = [cu_0 , \ldots, cu_l]$. 
 
 \begin{figure}[H]
 	\centering
@@ -517,7 +517,7 @@ Algorithmus \ref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssignal 
 \section{Nachträgliche Korrektur von Schreieinheiten}
 \label{sec:decision_smoothing_new}
 
-Abbildung \ref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal/Rausch-Abstand von \SI{3}{\decibel}, bei dem die Voice Activity Detection durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifizierung und die grüne Linie die prognostizierte Klassifizierung. Es ist zu sehen, dass einige False-Negatives sowie False-Positives prognostiziert wurden. Es werden drei charakteristische Varianten falsch prognostizierter Klassifizierungen näher erläutert:
+\autoref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal/Rausch-Abstand von \SI{3}{\decibel}, bei dem die Voice Activity Detection durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifizierung und die grüne Linie die prognostizierte Klassifizierung. Es ist zu sehen, dass einige False-Negatives sowie False-Positives prognostiziert wurden. Es werden drei charakteristische Varianten falsch prognostizierter Klassifizierungen näher erläutert:
 
 \begin{description}
 	\item [False Negatives nach (a): ] Eine korrekt erkannte, längere Schreieinheit wird zu früh beendet. Oft werden kurz nach dem Ende einer längeren Schreieinheit sehr kurze Schreieinheiten prognostiziert, die eigentlich noch zu der längeren, vorhergehenden Schreieinheit gehören.
@@ -545,9 +545,9 @@ Im Process des \textbf{Decision-Smoothing} werden kontextuelle Informationen gen
 \end{itemize}
 \noindent\rule{\linewidth}{0.3pt}
 
-Die Entscheidungsregeln greifen nur auf die letzten beiden erkannten Schreieinheiten zu, um eine kontinuierliche Analyse zu gewährleisten. Bei einer Offline-Analyse können die Entscheidungsregeln vereinfacht werden, da die False-Negatives nach Typ (a) und (c) mit der selben Regel abgefragt werden können. Algorithmus \ref{alg:decisionSmoothing} zeigt in Pseudo-Code, wie das Decision-Smoothing durchgeführt wird. Input der Funktion ist eine Liste mit Schreieinheiten $CU_{all} = [cu_0 , \ldots , cu_l]$, die durch Algorithmus \ref{alg:cryUnit} entstanden ist, sowie die Grenzwerte $\lambda_{min}$ und $d_{min}$. Die Indexierung der Liste $CU_{all}$ beginnt bei 0. Der Output der Funktion ist eine Liste aller durch das Decision-Smoothing korrigierten Schreieinheiten $CU_{smoothed}$.
+Die Entscheidungsregeln greifen nur auf die letzten beiden erkannten Schreieinheiten zu, um eine kontinuierliche Analyse zu gewährleisten. Bei einer Offline-Analyse können die Entscheidungsregeln vereinfacht werden, da die False-Negatives nach Typ (a) und (c) mit der selben Regel abgefragt werden können. Algorithmus \autoref{alg:decisionSmoothing} zeigt in Pseudo-Code, wie das Decision-Smoothing durchgeführt wird. Input der Funktion ist eine Liste mit Schreieinheiten $CU_{all} = [cu_0 , \ldots , cu_l]$, die durch Algorithmus \ref{alg:cryUnit} entstanden ist, sowie die Grenzwerte $\lambda_{min}$ und $d_{min}$. Die Indexierung der Liste $CU_{all}$ beginnt bei 0. Der Output der Funktion ist eine Liste aller durch das Decision-Smoothing korrigierten Schreieinheiten $CU_{smoothed}$.
 
-In verschiedenen Veröffentlichungen wurden unterschiedliche Mindestlängen von Schreieinheiten festgestellt. Varallyay \cite[S. 8]{cry_thesis} hat beispielsweise eine Mindestlänge von \SI{250}{\milli\second} gemessen. Der niedrigste Wert, der nach dem Wissen des Autors in einer Veröffentlichung genannt wurde, stammt von Zeskind et al. \cite[S. 325]{rythmic} und beträgt  \SI{60}{\milli\second}. Dieser Wert wurde für $\lambda_{min}$ in dieser Arbeit übernommen. Es konnten hingegen keine Veröffentlichungen gefunden werden, bei denen die geringste Pausenlänge gemessen wurde. Der Wert wurde ebenfalls mit $d_{min} = \SI{60}{\milli\second}$ bestimmt. Abbildung \ref{img:after-smoothing} zeigt das Beispielsignal vor und nach dem Decision-Smoothing. 
+In verschiedenen Veröffentlichungen wurden unterschiedliche Mindestlängen von Schreieinheiten festgestellt. Varallyay \cite[S. 8]{cry_thesis} hat beispielsweise eine Mindestlänge von \SI{250}{\milli\second} gemessen. Der niedrigste Wert, der nach dem Wissen des Autors in einer Veröffentlichung genannt wurde, stammt von Zeskind et al. \cite[S. 325]{rythmic} und beträgt  \SI{60}{\milli\second}. Dieser Wert wurde für $\lambda_{min}$ in dieser Arbeit übernommen. Es konnten hingegen keine Veröffentlichungen gefunden werden, bei denen die geringste Pausenlänge gemessen wurde. Der Wert wurde ebenfalls mit $d_{min} = \SI{60}{\milli\second}$ bestimmt. \autoref{img:after-smoothing} zeigt das Beispielsignal vor und nach dem Decision-Smoothing. 
 
 \begin{figure}[h]
 	\centering

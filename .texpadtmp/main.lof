@@ -4,7 +4,7 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Beispiel f\IeC {\"u}r die DFT}}{6}{figure.caption.5}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Windowing: Die Zerlegung eines Signals in k\IeC {\"u}rzere Fenster.\relax }}{7}{figure.caption.6}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Das Hamming-Window\relax }}{7}{figure.caption.7}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces STFT des Beispielsignals aus Abbildung \ref {img:siganlWindows}\relax }}{8}{figure.caption.8}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces STFT des Beispielsignals aus \autoref {img:siganlWindows}\relax }}{8}{figure.caption.8}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber die Organe des Sprechapparates}}{8}{figure.caption.9}
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Schematische \IeC {\"U}bersicht \IeC {\"u}ber das Source-Filter-Modell}}{9}{figure.caption.10}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Zeitbereiche der periodischen und der turbulenten Quelle}}{10}{figure.caption.11}
@@ -35,16 +35,16 @@
 \contentsline {figure}{\numberline {4.12}{\ignorespaces Klassifizierung vor dem Decision-Smoothing}}{53}{figure.caption.37}
 \contentsline {figure}{\numberline {4.13}{\ignorespaces Klassifizierung nach dem Decision-Smoothing}}{54}{figure.caption.38}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Beispiel f\IeC {\"u}r eine Segmentierung}}{59}{figure.caption.39}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Beispiel f\IeC {\"u}r die Ableitung von Pain Scores f\IeC {\"u}r ein Signal nach einer fiktiven Pain Scale ohne Beobachtungszeitraum oder Aktualisierungsintervall\relax }}{67}{figure.caption.43}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Beispiel f\IeC {\"u}r die Ableitung von Pain Scores f\IeC {\"u}r ein Signal nach einer fiktiven Pain Scale mit $t_{act} = \SI {7.5}{\second }$ und $t_{obs} = \SI {15}{\second }$\relax }}{68}{figure.caption.44}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Beispiel f\IeC {\"u}r eine Segmentierung}}{58}{figure.caption.39}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Beispiel f\IeC {\"u}r die Ableitung von Pain Scores f\IeC {\"u}r ein Signal nach einer fiktiven Pain Scale ohne Beobachtungszeitraum oder Aktualisierungsintervall\relax }}{66}{figure.caption.41}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Beispiel f\IeC {\"u}r die Ableitung von Pain Scores f\IeC {\"u}r ein Signal nach einer fiktiven Pain Scale mit $t_{act} = \SI {7.5}{\second }$ und $t_{obs} = \SI {15}{\second }$\relax }}{67}{figure.caption.42}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Oben: Ein Beispielsignal mit zwei Segmenten, die mit $t_s = \SI {10}{\second }$ gefunden wurden. Darunter: Pain Scores, die f\IeC {\"u}r die beiden Segmente berechnet wurden. Darunter: Schematische Darstellung des Signals als Regionen. Unten: Scores der Regionen.\relax }}{70}{figure.caption.46}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Erstellte Farbpaletten mit zwei bis sieben Farben inklusive der zugeh\IeC {\"o}rigen RGB-Koordinaten als Hex-Code.\relax }}{72}{figure.caption.48}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Visualisierung der \emph {Length-Scale} und der \emph {Min-Scale} f\IeC {\"u}r das Beispielsignal. \relax }}{73}{figure.caption.50}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Oben: Beispielsignal mit zwei Segmenten. Unten: \IeC {\"U}berlappende Regionen, eingef\IeC {\"a}rbt nach dem Farbschema der \emph {Min-Scale}.\relax }}{74}{figure.caption.51}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Visualisierung der Min-Scale bei Aktualisierungen. Die jeweils \glqq aktuellere\grqq {} Region \IeC {\"u}berlagert die jeweils \glqq \IeC {\"a}ltere\grqq {}. Oben: Visualisierung zum Aktualisierungszeitpunkt $t=\SI {146}{\second }$. Unten: Visualisierung zum Aktualisierungszeitpunkt $t=\SI {166}{\second }$.\relax }}{75}{figure.caption.52}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Visualisierung der Min-Scale bei Aktualisierungen. Die jeweils \glqq \IeC {\"a}ltere\grqq {} Region \IeC {\"u}berlagert die jeweils \glqq aktuellere\grqq {}.\relax }}{76}{figure.caption.53}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Oben: Ein Beispielsignal mit zwei Segmenten, die mit $t_s = \SI {10}{\second }$ gefunden wurden. Darunter: Pain Scores, die f\IeC {\"u}r die beiden Segmente berechnet wurden. Darunter: Schematische Darstellung des Signals als Regionen. Unten: Scores der Regionen.\relax }}{69}{figure.caption.44}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Erstellte Farbpaletten mit zwei bis sieben Farben inklusive der zugeh\IeC {\"o}rigen RGB-Koordinaten als Hex-Code.\relax }}{71}{figure.caption.46}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Visualisierung der \emph {Length-Scale} und der \emph {Min-Scale} f\IeC {\"u}r das Beispielsignal. \relax }}{72}{figure.caption.48}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Oben: Beispielsignal mit zwei Segmenten. Unten: \IeC {\"U}berlappende Regionen, eingef\IeC {\"a}rbt nach dem Farbschema der \emph {Min-Scale}.\relax }}{73}{figure.caption.49}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Visualisierung der Min-Scale bei Aktualisierungen. Die jeweils \glqq aktuellere\grqq {} Region \IeC {\"u}berlagert die jeweils \glqq \IeC {\"a}ltere\grqq {}. Oben: Visualisierung zum Aktualisierungszeitpunkt $t=\SI {146}{\second }$. Unten: Visualisierung zum Aktualisierungszeitpunkt $t=\SI {166}{\second }$.\relax }}{74}{figure.caption.50}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Visualisierung der Min-Scale bei Aktualisierungen. Die jeweils \glqq \IeC {\"a}ltere\grqq {} Region \IeC {\"u}berlagert die jeweils \glqq aktuellere\grqq {}.\relax }}{75}{figure.caption.51}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivit\IeC {\"a}t, Spezifit\IeC {\"a}t und Genauigkeit der beiden besten Modelle\relax }}{87}{figure.caption.57}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivit\IeC {\"a}t, Spezifit\IeC {\"a}t und Genauigkeit der beiden besten Modelle\relax }}{86}{figure.caption.55}

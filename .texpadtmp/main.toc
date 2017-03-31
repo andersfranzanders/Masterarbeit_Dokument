@@ -39,15 +39,16 @@
 \contentsline {section}{\numberline {4.3}Nachtr\IeC {\"a}gliche Korrektur von Schreieinheiten}{53}{section.4.3}
 \contentsline {chapter}{\numberline {5}Automatisierte Schmerzbewertung anhand von Schreiger\IeC {\"a}uschen}{56}{chapter.5}
 \contentsline {section}{\numberline {5.1}Zusammenfassung von Schreiger\IeC {\"a}uschen zu Segmenten}{56}{section.5.1}
-\contentsline {section}{\numberline {5.2}Methoden zur Ableitung des Schmerz-Score aus Segmenten}{59}{section.5.2}
+\contentsline {section}{\numberline {5.2}Methoden zur Berechnung des Schmerz-Score f\IeC {\"u}r Segmente}{59}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Extrahierung von Eigenschaften als Grundlage zur Schmerzbewertung}{61}{subsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.1.1}Features des Zeitbereiches}{61}{subsubsection.5.2.1.1}
-\contentsline {subsection}{\numberline {5.2.2}Schmerzverlauf innerhalb von Segmenten}{65}{subsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.2.1}Aktualisierungsintervall}{65}{subsubsection.5.2.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2.2}Beobachtungszeitraum}{66}{subsubsection.5.2.2.2}
-\contentsline {chapter}{\numberline {6}Visualisierung der Schmerzbewertung}{69}{chapter.6}
-\contentsline {section}{\numberline {6.1}Visualierungskonzept}{69}{section.6.1}
-\contentsline {section}{\numberline {6.2}Ergebnis der Visualisierung}{73}{section.6.2}
-\contentsline {chapter}{\numberline {7}Zusammenfassung}{77}{chapter.7}
-\contentsline {chapter}{Appendices}{85}{section*.55}
-\contentsline {chapter}{\numberline {A}Auswertungsdetails VAD}{86}{Anhang.1.A}
+\contentsline {subsubsection}{\numberline {5.2.1.1}Eigenschaften des Zeitbereiches}{61}{subsubsection.5.2.1.1}
+\contentsline {subsubsection}{\numberline {5.2.1.2}Eigenschaften des Frequenzbereiches und der Melodie}{63}{subsubsection.5.2.1.2}
+\contentsline {subsection}{\numberline {5.2.2}Schmerzverlauf innerhalb von Segmenten}{64}{subsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.2.1}Aktualisierungsintervall}{64}{subsubsection.5.2.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2.2}Beobachtungszeitraum}{65}{subsubsection.5.2.2.2}
+\contentsline {chapter}{\numberline {6}Visualisierung der Schmerzbewertung}{68}{chapter.6}
+\contentsline {section}{\numberline {6.1}Visualierungskonzept}{68}{section.6.1}
+\contentsline {section}{\numberline {6.2}Ergebnis der Visualisierung}{72}{section.6.2}
+\contentsline {chapter}{\numberline {7}Zusammenfassung}{76}{chapter.7}
+\contentsline {chapter}{Appendices}{84}{section*.53}
+\contentsline {chapter}{\numberline {A}Auswertungsdetails VAD}{85}{Anhang.1.A}
