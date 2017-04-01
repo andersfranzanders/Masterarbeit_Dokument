@@ -99,12 +99,12 @@ Das hier vorgestellte Segmentierungsverfahren wurde bewusst möglichst einfach g
 
 Das Ziel ist nun, nach dem Ende jeder Schmerzepisode einen Schmerz-Score für diese zu berechnen. Wie in Kapitel \ref{sec:medicalFoundations} erläutert wurde, ergibt sich ein Schmerz-Score aus der Summe der Scores, die für die einzelnen Schmerzindikatoren vergeben wurden. Auf Basis des akustischen Signals wird der Score des Schmerzindikators \emph{Weinen} berechnet. Betrachtet man allein diesen Schmerzindikator, so entspricht eine Schmerzepisode einem Schrei-Segment, wie im vergangenen Unterabschnitt argumentiert wurde.
 
-Das nächste Teilproblem ist somit, \emph{Hypothesen} (auch: \emph{Modelle}, siehe \autoref{sec:learning}) zu finden, die für Schreisegmente Scores berechnen. Eine Hypothese ist abhängig von der jeweiligen Schmerz-Scale, da verschiedene Schmerz-Scales unterschiedliche Scorings definieren. Mathematisch formalisiert ist eine solche Hypothese $P_{Scale}$ eine von der jeweiligen Schmerz-\emph{Scale} abhängige Funktion, die ein Schreisegment $cs \in CS$ auf einen von der Schmerz-Scale abhängigen \emph{Score} $s \in S_{Scale}$ abbildet, da heißt $P_{Scale}: CS \mapsto S_{Scale}$.
+Das nächste Teilproblem ist somit, \emph{Hypothesen} (auch: \emph{Modelle}, siehe \autoref{sec:learning}) zu finden, die für Schreisegmente Scores berechnen. Eine Hypothese ist abhängig von der jeweiligen Schmerz-Scale, da verschiedene Schmerz-Scales unterschiedliche Scorings definieren. Mathematisch formalisiert ist eine solche Hypothese $PC_{Scale}$ eine von der jeweiligen Schmerz-\emph{Scale} abhängige Funktion, die ein Schreisegment $cs \in CS$ auf einen von der Schmerz-Scale abhängigen \emph{Score} $s \in S_{Scale}$ abbildet, da heißt $PC_{Scale}: CS \mapsto S_{Scale}$. Die Bezeichnung der Funktion $PC$ verdeutlicht, dass die Hypothese zur Berechnung des Scores des Weinens (\textbf{P}ain-\textbf{C}ry) für die jeweilige Scale gedacht ist.
 
-Angenommen, es soll die Schmerz-Scale \emph{NIPS} aus \autoref{tab:nips} zur Schmerzbewertung verwendet werden. In Bezug auf den Schmerzindikator \emph{Weinen} wird ein Score von 0 vergeben, wenn kein Weinen vorliegt, ein Score von 1, wenn das Weinen als \glqq mumbling\grqq{} (murmelnd) bewertet wird und ein Score von 2, wenn das Weinen als \glqq vigorous\grqq{} (energisch) bewertet wird. Formuliert als Modell $P_{NIPS}:CS \mapsto \{0, 1 , 2\}$ ergibt sich:
+Angenommen, es soll die Schmerz-Scale \emph{NIPS} aus \autoref{tab:nips} zur Schmerzbewertung verwendet werden. In Bezug auf den Schmerzindikator \emph{Weinen} wird ein Score von 0 vergeben, wenn kein Weinen vorliegt, ein Score von 1, wenn das Weinen als \glqq mumbling\grqq{} (murmelnd) bewertet wird und ein Score von 2, wenn das Weinen als \glqq vigorous\grqq{} (energisch) bewertet wird. Formuliert als Modell $PC_{NIPS}:CS \mapsto \{0, 1 , 2\}$ ergibt sich:
 
 \begin{equation}
-P_{NIPS}(cs) = \begin{cases}
+PC_{NIPS}(cs) = \begin{cases}
  2 \quad ,\text{wenn } cs \text{ \glqq energisch ist\grqq } \\
  1 \quad ,\text{wenn } cs \text{ \glqq murmelnd ist\grqq } \\
  0 \quad ,\text{wenn } cs \text{ \glqq kein Weinen ist\grqq }
@@ -113,20 +113,28 @@ P_{NIPS}(cs) = \begin{cases}
 
 Das Problem ist offensichtlich: \glqq murmelnd\grqq{} und \glqq energisch\grqq{} sind subjektiv behaftete Begriffe und lassen sich nicht ohne weiteres aus den Eigenschaften eines Segmentes feststellen. Es muss somit für jede Schmerz-Scale eine Hypothese konstruiert werden, welches den Score für ein Schrei-Segment anhand \emph{objektiv messbarer Signaleigenschaften} berechnet. 
 
-Die folgende Strategie wird vorgeschlagen, um für eine beliebige Schmerz-Scale eine solche Hypothese $P_{Scale}$ zu gewinnen:
+Die folgende Strategie wird vorgeschlagen, um für eine beliebige Schmerz-Scale eine solche Hypothese $PC_{Scale}$ zu gewinnen:
 
 \begin{enumerate}
  \item Man erstellt eine Datenbank mit Audioaufnahmen mit dem Weinen von Babys. Jede Audioaufnahme wird so beschnitten, dass sie eine Scherzepisode / ein Schrei-Segment enthält.
  \item Man errechnet für jede Audioaufnahme \glqq so viele \emph{objektiv} messbare Eigenschaften wie möglich\grqq{}, wie zum Beispiel die insgesamt Segment-Länge, die durchschnittliche Länge der enthaltenen Schreieinheiten, durchschnittliche Tonhöhe usw.
  \item Man bittet medizinische Fachkräfte, für jede Aufnahme der Datenbank einen Score auf Basis der Kriterien der jeweiligen Schmerz-Scale zu vergeben, für die man eine Hypothese sucht. So erhält man einen gelabelte Trainingsdatensatz.
- \item Man trainiert einen \emph{Algorithmus zur ordinalen Regression} mit diesem Datensatz, um den Zusammenhang zwischen den in Schritt 2 objektiv gemessenen Eigenschaften der Schreisegmente und den in Schritt 3 vergebenen Scores herzustellen (siehe \autoref{sec:learning}). Es wird darauf hingewiesen, dass es sich hierbei \emph{nicht} um ein herkömmliches Regressionsproblem handelt, da die Schmerz-Scales Ordinalskalen, und keine kontinuierlichen Skalen definieren. In diesem Arbeitsschritt wird sich herausstellen, welche der Segment-Eigenschaften mit der Höhe des Scores korrelieren und zur Prognose sinnvoll sind. Das Ergebnis dieses Schrittes ist eine Hypothese $P_{Scale}$.
+ \item Man trainiert einen \emph{Algorithmus zur ordinalen Regression} mit diesem Datensatz, um den Zusammenhang zwischen den in Schritt 2 objektiv gemessenen Eigenschaften der Schreisegmente und den in Schritt 3 vergebenen Scores herzustellen (siehe \autoref{sec:learning}). Es wird darauf hingewiesen, dass es sich hierbei \emph{nicht} um ein herkömmliches Regressionsproblem handelt, da die Schmerz-Scales Ordinalskalen, und keine kontinuierlichen Skalen definieren. In diesem Arbeitsschritt wird sich herausstellen, welche der Segment-Eigenschaften mit der Höhe des Scores korrelieren und zur Prognose sinnvoll sind. Das Ergebnis dieses Schrittes ist eine Hypothese $PC_{Scale}$.
 \end{enumerate}
 
-Eine Hypothese $P_{Scale}$ kann daraufhin in dem automatisierten System eingesetzt werden, um für neue, bisher unbekannte Schrei-Segmente den Score für das Weinen zu prognostizieren. Der Vorteil dieser Vorgehensweise zur Erstellung der Hypothesen ist, dass das Problem der Übersetzung der objektiv messbaren Signaleigenschaften in die subjektiv behafteten Begriffe, die von den Schmerz-Scales verwendet werden, überbrückt wird, indem man die Regression direkt von den Signaleigenschaften auf den Score durchführt. Der Nachteil dieser Strategie ist, dass für jede Schmerz-Scale eine gesonderte Hypothese konstruiert werden muss, auch, wenn zwei Schmerz-Scales den selben subjektiv behafteten Begriff verwenden.
+Eine Hypothese $PC_{Scale}$ kann daraufhin in dem automatisierten System eingesetzt werden, um für neue, bisher unbekannte Schrei-Segmente den Score für das Weinen zu prognostizieren. Der Vorteil dieser Vorgehensweise zur Erstellung der Hypothesen ist, dass das Problem der Übersetzung der objektiv messbaren Signaleigenschaften in die subjektiv behafteten Begriffe, die von den Schmerz-Scales verwendet werden, überbrückt wird, indem man die Regression direkt von den Signaleigenschaften auf den Score durchführt. Der Nachteil dieser Strategie ist, dass für jede Schmerz-Scale eine gesonderte Hypothese konstruiert werden muss, auch, wenn zwei Schmerz-Scales den selben subjektiv behafteten Begriff verwenden.
 
-Dieser Vorschlag ist nur eines von mehreren denkbaren Vorgehen zur Gewinnung von Hypothesen für Schmerz-Scales. So könnte beispielsweise Anstatt der ordinalen Regression von den Segmenteigenschaften auf den Score eine Klassifizierung auf die subjektiv behafteten Begriffe durchgeführt werden, und diese daraufhin zur Berechnung des Scores zu verwenden. Es ist im zeitlichen Rahmen dieser Arbeit nicht möglich gewesen, selber Hypothesen für Schmerz-Scales nach dem vorgestellten Vorgehen zu erstellen. Die Akquise von Audioaufnahmen von Babys sowie die Schmerzbewertung dieser in Zusammenarbeit mit medizinischen Fachkräften erfordern nicht nur Zeit, sondern das Fachwissen über das Führen und die Auswerten von Interviews.
+Dieser Vorschlag ist nur eines von mehreren denkbaren Vorgehen zur Gewinnung von Hypothesen für Schmerz-Scales. So könnte beispielsweise Anstatt der ordinalen Regression von den Segmenteigenschaften auf den Score eine Klassifizierung auf die subjektiv behafteten Begriffe durchgeführt werden, und diese daraufhin zur Berechnung des Scores zu verwenden. Es ist im zeitlichen Rahmen dieser Arbeit nicht möglich gewesen, selber Hypothesen für Schmerz-Scales nach dem vorgestellten Vorgehen zu erstellen. Die Akquise von Audioaufnahmen von Babys sowie die Schmerzbewertung dieser in Zusammenarbeit mit medizinischen Fachkräften erfordern nicht nur Zeit, sondern das Fachwissen über das Führen und die Auswerten von Interviews. 
 
-In den folgenden Teilabschnitte werden zwei Teilprobleme der Schmerzbewertung genauer beleuchtet. \autoref{sec:segmentFeatures} erläutert die Berechnung objektiv messbarer Eigenschaften für Schrei-Segmente, auf die sich die Hypothesen stützen können. In \autoref{sec:regressionTimeStuff} werden Möglichkeiten vorgestellt, um den Verlauf des Schmerzgrades innerhalb von Schrei-Segmenten auszuwerten.
+In Hinblick auf die Schmerzbewertung im multimodalen Verbund ist es darüber hinaus notwendig, Hypothesen für die anderen Schmerzindikatoren zu erstellen. Der insgesamte Schmerz-Score einer Schmerzepisode ergibt sich daraufhin, indem alle Scores aufaddiert werden, die durch die Hypothesen der jeweiligen Schmerzindikatoren prognostiziert wurden. \autoref{eq:multimodal_pain_caluclation} verdeutlicht, nach welchem Muster eine solche Berechnung durchgeführt wird. $PF_{Scale}$ ist eine fiktive Funktion, die den Score für den Schmerzindikator \emph{Gesichtsausdruck} berechnet. Eine weitere Betrachtung dieser Berechnung liegt außerhalb des Rahmens dieser Arbeit. 
+
+\begin{equation}
+\text{Pain-Score}_{Scale} = PC_{Scale}(cs) + PF_{Scale}(face-Segment) + ...
+\label{eq:multimodal_pain_caluclation}
+\end{equation}
+
+
+In den folgenden Teilabschnitte werden zwei Teilprobleme der automatisierten Schmerzbewertung des Weinens genauer beleuchtet. \autoref{sec:segmentFeatures} erläutert die Berechnung objektiv messbarer Eigenschaften für Schrei-Segmente, auf die sich die Hypothesen stützen können. In \autoref{sec:regressionTimeStuff} werden Möglichkeiten vorgestellt, um den Verlauf des Schmerzgrades innerhalb von Schrei-Segmenten auszuwerten.
 
 
 %\vspace{5mm}
@@ -177,10 +185,10 @@ Das Ziel dieses Abschnittes ist vor Allem, Möglichkeiten der Analyse der Schrei
 
 \subsubsection{Eigenschaften des Zeitbereiches}
 
-Mit Features des Zeitbereiches sind solche gemeint, die sich allein aus Kenntnis der Start- und Endzeitpunkte der im Segment enthaltenen Schreieinheiten sowie deren Zeitbereiche gewinnen lassen, wie beispielsweise die durchschnittliche Länge der Schreieinheiten oder die durchschnittliche Energie der Schreieinheiten.\cite[S. 16 - 17]{cry_thesis} In diesem Kapitel gilt die Konvention, dass eine Schrei-Segment $cs$ insgesamt $N$ Schreeinheiten enthält, die Indexierung wird mit $0 \ldots N-1$ definiert.
+Mit Features des Zeitbereiches sind solche gemeint, die sich allein aus Kenntnis der Start- und Endzeitpunkte der im Segment enthaltenen Schreieinheiten sowie deren Zeitbereiche gewinnen lassen, wie beispielsweise die durchschnittliche Länge der Schreieinheiten oder die durchschnittliche Energie der Schreieinheiten.\cite[S. 16 - 17]{cry_thesis} In diesem Kapitel gilt die Konvention, dass eine Schrei-Segment $cs$ insgesamt $N$ Schreieinheiten enthält, der Indexbereich wird mit $0 \ldots N-1$ definiert.
 
 \begin{description}
-\item[Segment-Length: ] Die Zeitliche Länge eines Segmentes wird nach \autoref{eq:segment_length} berechnet:
+\item[Segment-Length: ] Die zeitliche Länge eines Segmentes wird nach \autoref{eq:segment_length} berechnet:
 \begin{equation}
 \text{S-Length}(cs) = cs[N-1].end - cs[0].start
 \label{eq:segment_length}
@@ -192,13 +200,13 @@ Mit Features des Zeitbereiches sind solche gemeint, die sich allein aus Kenntnis
 \label{eq:segment_density}
 \end{equation}
 
-\item[Tempo:] Dieses Feature beschreibt das Verhältnis zwischen der Anzahl an Schreieinheiten und der Dauer des Segmentes. Die Eigenschaft ähnelt dem von LaGasse et al. \cite[S. 85]{parentalPerception} als \emph{Utterances} bezeichneten Feature.
+\item[Tempo:] Diese Eigenschaft beschreibt das Verhältnis zwischen der Anzahl an Schreieinheiten und der Dauer des Segmentes. Die Eigenschaft ähnelt dem von LaGasse et al. \cite[S. 85]{parentalPerception} als \emph{Utterances} bezeichneten Feature.
 
 \begin{equation}
 \text{Tempo}(cs) =  \frac{N}{\text{S-Length}(cs)}
 \end{equation}
 
-\item[Statistics of Cry-Units:] Es können statistische Kennwerte bezüglich der \emph{Längen aller Schreieinheiten} eines Schrei-Segmentes berechnet werden. \autoref{eq:featuresOfCryUnits} zeigt, wie der Durchschnitt, Median, Minimum, Maximum sowie die Standardabweichung der Länge der Schreieinheiten berechnet werden. Diese Liste an statistischen Kenngrößen lässt sich beliebig erweitern, beispielsweise durch die Bestimmung von Quartilen. Das $\text{mean}_{cu}(cs)$-Feature wird von LaGasse et al. \cite[S. 85]{parentalPerception} und in weiteren Veröffentlichung als \emph{Mean Duration} bezeichnet. Diese Kenngrößen wurden unter anderem von Zeskind et al. \cite{rythmic} bei der Untersuchung des Weinens Neugeborener berechnet.
+\item[Statistics of Cry-Units:] Es können statistische Kennwerte bezüglich der \emph{Längen aller Schreieinheiten} eines Schrei-Segmentes berechnet werden. \autoref{eq:featuresOfCryUnits} zeigt, wie der Durchschnitt, Median, Minimum, Maximum sowie die Standardabweichung der Länge der Schreieinheiten berechnet werden. Diese Liste an statistischen Kenngrößen lässt sich beliebig erweitern, beispielsweise durch die Bestimmung von Quartilen. Das $\text{mean}_{cu}(cs)$-Feature wurde von LaGasse et al. \cite[S. 85]{parentalPerception} und in weiteren Veröffentlichung als \emph{Mean Duration} bezeichnet. Diese Kenngrößen wurden unter anderem von Zeskind et al. \cite{rythmic} bei der Untersuchung des Weinens Neugeborener berechnet.
 
 \begin{equation}
 \begin{gathered}
@@ -216,13 +224,12 @@ Mit Features des Zeitbereiches sind solche gemeint, die sich allein aus Kenntnis
 \begin{equation}
 \begin{gathered}
 \text{mean}_{burst}(cs) = \meani_{i = 1 \ldots N-1}\{cs[i].start - cs[i-1].start\} \\
-\text{median}_{burst}(cs) = \ldots \\
 \ldots
 \end{gathered}
 \label{eq:featuresOfBursts}
 \end{equation}
 
-\item[Statistics of Pauses:] Nach dem selben Muster können statistische Kennwerte bezüglich der  \emph{Längen aller Pausen} eines Segmentes ermittelt werden. Eine Pause entspricht in diesem Zusammenhang der Distanz zwischen zwei auf einander folgenden Schreieinheiten nach \autoref{eq:cry-distance}. In \autoref{eq:featuresOfPauses} wird ebenfalls nur die Vorschrift zur Berechnung des Durchschnitts gezeigt.
+\item[Statistics of Pauses:] Nach dem selben Muster werden statistische Kennwerte bezüglich der  \emph{Längen aller Pausen} eines Segmentes ermittelt. Eine Pause entspricht in diesem Zusammenhang der Distanz zwischen zwei auf einander folgenden Schreieinheiten nach \autoref{eq:cry-distance}.
 
 \begin{equation}
 \begin{gathered}
@@ -239,7 +246,7 @@ x_{seg}[\; ] = cs[0].windows[0] \;  , \; \ldots \; , \; cs[N-1].windows[n]
 \label{eq:windowsOfSegment}
 \end{equation}
 
-Die Liste $x_{seg}[\; ]$ enthält $R$ Signalfenster, die Indexierung wird definiert mit $0, \ldots, R-1$.  \autoref{eq:energyStats} definiert die Berechnung statistischer Kennwerte bezüglich der \glqq Lautstärke Segmentes\grqq. Der MSV-Wert als Maß des durchschnittlichen Energiegehaltes wurde in \autoref{eq:msv} definiert, weitere Kenngrößen können ergänzt werden.
+Die Liste $x_{seg}[\; ]$ enthält $R$ Signalfenster, die Indexierung wird definiert mit $0, \ldots, R-1$.  \autoref{eq:energyStats} definiert die Berechnung statistischer Kennwerte bezüglich der \glqq Lautstärke Segmentes\grqq. Der MSV-Wert als Maß des durchschnittlichen Energiegehaltes wurde in \autoref{eq:msv} definiert.
 
 \begin{equation}
 \begin{gathered}
@@ -251,8 +258,7 @@ Die Liste $x_{seg}[\; ]$ enthält $R$ Signalfenster, die Indexierung wird defini
 
 \end{description}
 
-Es wird angemerkt, dass in der Schreiforschung zeitliche Eigenschaften im geringeren Maße in Betracht gezogen wurden als Features des Frequenz-Bereiches. Die einzigen zeitliche Features, die zum Beispiel von Wasz-Hockert et al. \cite{25years}, Fuller \cite{threeCryTypes} und LaGasse et al. \cite{parentalPerception} berechneten wurden, sind \emph{die durchschnittliche Länge der Schreieinheiten} sowie die \emph{Latenz zwischen Reiz und erster Schreieinheit der Schmerzantwort}. Die durchschnittliche Länge der Schreieinheiten wurde in \autoref{eq:featuresOfCryUnits} definiert.
-, welche nur auf Basis des Audiosignals nicht feststellbar ist. Es spricht jedoch nichts dagegen, die hier vorgestellten Features trotzdem zu erproben. Die anschließende Nutzung der Features zur Regression/Klassifizierung wird Auskunft darüber geben, welchen Beitrag diese Features zur Schmerzdiagnose leisten können.
+Es wird angemerkt, dass in der Schreiforschung zeitliche Eigenschaften im geringeren Maße in Betracht gezogen wurden als Features des Frequenz-Bereiches. Die einzigen zeitliche Features, die zum Beispiel von Wasz-Hockert et al. \cite{25years}, Fuller \cite{threeCryTypes} und LaGasse et al. \cite{parentalPerception} berechneten wurden, sind \emph{die durchschnittliche Länge der Schreieinheiten} sowie die \emph{Latenz zwischen Reiz und erster Schreieinheit der Schmerzantwort}. Die durchschnittliche Länge der Schreieinheiten wurde in \autoref{eq:featuresOfCryUnits} definiert, die Latenz kann jedoch nur auf Basis des Audiosignals nicht festgestellt werden. Die anschließende Nutzung der Features zur Erstellung der Hypothesen wird Auskunft darüber geben, welchen Beitrag Eigenschaften des Zeitbereichs zur Schmerzdiagnose leisten können.
 
 \subsubsection{Eigenschaften des Frequenzbereiches und der Melodie}
 
@@ -267,18 +273,18 @@ X_{seg}[\; ] = \Big[ |DFT\{x_{seg}[0] \cdot w[\;]\}| \; , \ldots , \; |DFT\{x_{s
 Die folgenden Eigenschaften des Frequenzbereiches lassen sich mit den in dieser Arbeit vorgestellten Methoden berechnen:
 
 \begin{description}
-\item[Ratio2:] Diese Eigenschaft wurde von Fuller \cite{threeCryTypes} definiert und beschreibt die Spannung des Vokaltraktes als Verhältnis der Energien oberhalb von \SI{2000}{\hertz} zu den Energien unter \SI{2000}{\hertz}. Wie bei den Eigenschaften des Zeitbereiches können verschiedene statistische Kennwerte bezüglich dieser Eigenschaft berechnet werden. \autoref{eq:ratio2} zeigt die Berechnung des Durchschnitts.
+\item[Ratio2:] Diese Eigenschaft wurde von Fuller \cite{threeCryTypes} definiert und beschreibt die Spannung des Vokaltraktes als Verhältnis der Energien oberhalb von \SI{2000}{\hertz} zu den Energien unterhalb \SI{2000}{\hertz}. Wie bei den Eigenschaften des Zeitbereiches können verschiedene statistische Kennwerte bezüglich dieser Eigenschaft berechnet werden. \autoref{eq:ratio2} zeigt die Berechnung des Durchschnitts.
 
 \begin{equation}
 \begin{gathered}
-text{mean}_{Ratio2}(cs) = \meani_{i=0\ldots R-1} \Big\{ \frac{\sum_{k=0}^{\SI{2000}{\hertz}} X_{sec}[i][k]^2}{\sum_{j=\SI{2000}{\hertz}}^{f_{s}} X_{sec}[i][j]^2} \Big\} \\
+\text{mean}_{Ratio2}(cs) = \meani_{i=0\ldots R-1} \Big\{ \frac{\sum_{k=0}^{\SI{2000}{\hertz}} X_{sec}[i][k]^2}{\sum_{j=\SI{2000}{\hertz}}^{f_{s}} X_{sec}[i][j]^2} \Big\} \\
 \ldots
 \end{gathered}
 \label{eq:ratio2}
 \end{equation}
 
 
-\item[Clarity: ] Wie in Kapitel \ref{sec:vad_ceps_features} erläutert wurde, deutet eine klar ausgebildete Spitze im oberen Cepstrum-Bereich auf ein stimmhaftes Signal hin. Ein hoher Anteil hoher Cepstrum-Peaks lässt somit auf vermehrt phonierte Laute schließen, geringere Cepstrum-Peaks auf dysphoniertere Laute (Siehe Kapitel \ref{sec:acousticModel}). Der Durchschnittswert dieser Eigenschaft ist ein Maß für den Relativen Anteil dysphonierter Laute, die Standardabweichung ähnelt dem in Kapitel \ref{sec:acousticModel} vorgestellten \emph{Cry-Mode Changes}-Feature.
+\item[Clarity: ] Wie in Kapitel \ref{sec:vad_ceps_features} erläutert wurde, deutet eine klar ausgebildete Spitze im oberen Cepstrum-Bereich auf ein stimmhaftes Signal hin. Ein hoher Anteil hoher Cepstrum-Peaks lässt somit auf vermehrt phonierte Laute schließen, geringere Cepstrum-Peaks auf dysphoniertere Laute (Siehe Kapitel \ref{sec:acousticModel}). Der Durchschnittswert dieser Eigenschaft ist ein Maß für den relativen Anteil dysphonierter Laute, die Standardabweichung ähnelt dem in Kapitel \ref{sec:acousticModel} vorgestellten \emph{Cry-Mode Changes}-Feature.
 
 \begin{equation}
 \begin{gathered}
@@ -290,66 +296,74 @@ text{mean}_{Ratio2}(cs) = \meani_{i=0\ldots R-1} \Big\{ \frac{\sum_{k=0}^{\SI{20
 	
 \end{description}
 
-Alle weiteren Eigenschaften, die in Kapitel \ref{sec:acousticModel} vorgestellt wurden und sich auf den Frequenzbereich oder den Melodieverlauf der Schreieinheiten beziehen, lassen sich nicht mit den in dieser Arbeit vorgestellten Methoden berechnen. Zur Definition dieser Eigenschaften sind Methoden zur Bestimmung der Formanten oder der Grundtonhöhe notwendig. Das Muster, nach dem diese Features berechnet werden können, sollte aus den bisher vorgestellten Features ersichtlich sein. 
+Alle weiteren Eigenschaften, die in Kapitel \ref{sec:acousticModel} vorgestellt wurden und sich auf den Frequenzbereich oder den Melodieverlauf der Schreieinheiten beziehen, lassen sich nicht mit den in dieser Arbeit vorgestellten Methoden umsetzen, da diese Eigenschaften auf der Berechnung der Formanten und der Grundtonhöhe basieren. Die Berechnung der Formanten und der Grundtonhöhe ist ein Bereich, der seit vielen Jahren erforscht wird und für den eine Vielzahl robuster Algorithmen entworfen wurden. Die Form, die diese Eigenschaften annehmen würden, sollte aus den bisher vorgestellten Features ersichtlich sein. 
 
 %Bei allen vorgestellten Eigenschaften handelt es sich, nach dem Vorbild der in Kapitel \ref{sec:acousticModel} vorgestellten Methoden der klassischen Schreiforschung, um solche, bei denen die Reihenfolge der Cry-Units nicht mit in Betracht gezogen wird. Angenommen, ein Segment besteht aus $n$ Cry-Units, wobei genau eine hälfte der  Cry-Units kurz und die andere hälfte der Cry-Units lang ist. Das $\text{stats}_{cu}(cs)$-Feature wird bezüglich des Durchschnittes, Minimum, Maximum etc. die selben Werte berechnen, unabhängig davon, ob sich die kurzen Cry-Units allesamt am Beginn des Segmentes, am Ende des Segmentes oder mit den langen Cry-Units durchmischt befinden. Bei der anschließenden Nutzung der Features zu Regression/Klassifizierung wird sich zeigen, wie sehr sich diese Features zur Ableitung von Pain-Scores eignen. Stellt sich heraus, dass sich die Features nicht eignen, ist es eventuell notwendig, neue Features zu definieren, die die Position der Cry-Units mit in Betracht ziehen.
 
-\subsection{Schmerzverlauf innerhalb von Segmenten}
+\subsection{Betrachtung des Schmerzverlaufs innerhalb von Segmenten}
 \label{sec:regressionTimeStuff}
 
-Die Ableitung genau einer Pain Score für ein Cry-Segment stellt den einfachsten Fall dar. Dies ist für bestimmte Anwendungsfälle eventuell nicht ausreichend: 
+Aus \autoref{sec:segmenting} ging hervor, dass nach dem vorgestellten Konzept die Schmerzbewertung des Weinens bei Beendigung eines Schrei-Segmentes vorgenommen wird. Dieses Vorgehen hat die folgenden Nachteile:
 \begin{enumerate}
-\item Die Score kann erst nach der Beendigung eines Segmentes abgeleitet werden, was für einigen Kontexte möglicherweise zu spät ist. Besonders die Schmerzdiagnostik während Schmerzverursachenden Prozeduren kann das häufigere \glqq Aktualisieren\grqq der Schmerzscore notwendig machen.
-\item Falls der Schmerz innerhalb eines Segmentes stark ab- oder zunimmt, ist dieser Verlauf nicht erkennbar. Es würde lediglich der \glqq durchschnittliche Schmerz\grqq{} des Segmentes abgeleitet werden.
+\item Es ist denkbar, dass die Bewertung der Schmerzstärke erst zu Ende einer Schmerzepisode zu spät für einige Anwendungsfälle ist, insbesondere bei der Schmerzdiagnose während schmerzversachenden Eingriffen. Es ist daher wünschenswert, ein Methode zur Berechnung von \glqq Zwischenergebnissen\grqq{} anzubieten, noch bevor ein offenes Segment abgeschlossen wurde.
+\item Falls der Schmerz innerhalb eines Segmentes stark ab- oder zunimmt, ist dieser Verlauf nicht erkennbar, da nach der vorgestellten Methode jediglich der \glqq durchschnittliche Schmerz\grqq{} des Segmentes prognostiziert wird.
 \end{enumerate}
 
-Das vorgestellte Prinzip wird daher erweitert, indem ein Aktualisierungsintervall $t_{act}$ und Beobachtungszeitraume $t_{obs}$ eingeführt wird.
+Das vorgestellte Segmentierungs- und Bewertungsprinzip wird daher erweitert durch eine \emph{Aktualisierungsfrequenz} $[f_{act}]$ und einen \emph{Beobachtungszeitraum} $[t_{obs}]$ erweitert, welche in den folgenden Unterabschnitten näher erläutert werden.
 
-\subsubsection{Aktualisierungsintervall}
+\subsubsection{Aktualisierungsfrequenz}
 \label{sec:actualization}
 
- Die Grundlegende Idee des Aktualisierungsintervalls ist, bei einem momentan offenen Segment in regelmäßigen Abständen die Features abzufragen und direkt die Pain Score abzuleiten, um Zwischenergebnisse zu erhalten. Der am häufigsten umsetzbare Fall ist, ein Aktualisierung nach jeder neu dem Segment hinzugefügten Cry-Unit vorzunehmen. Der am wenigsten häufige Fall ist der bereits genannte, die Aktualisierung erst bei Beendigung eines Segmentes durchzuführen. Eine offensichtliche Variante zur Festlegung von $t_{act}$ ist die Bestimmung eines zeitlichen Wertes. Ein $t_{act}$ von beispielsweise \SI{10}{\second} würden bedeuten, dass alle 10 Sekunden ein neuer Pain Score für ein Segment berechnet wird. Die Beendigung eines Segmentes würde in jedem Fall eine Ableitung der Pain Score auslösen und einen \glqq erzwungenen Aktualisierungszeitpunkt\grqq{} darstellen. Die folgenden Möglichkeiten zur Festlegung von $t_{act}$ sind denkbar:
+ Die grundlegende Idee der Aktualisierungsfrequenz ist, innerhalb eines momentan offenen Schreisegments in regelmäßigen Abständen den Schmerzgrad auf Grundlage der bisherigen Segmenteigenschaften festzustellen, um häufiger Zwischenergebnisse bezüglich des Schmerzgrades zu erhalten. Die höchstmögliche, sinnvolle Aktualisierungshäufigkeit ist die Berechnung eines Schmerz-Scores nach jeder dem Segment neu hinzugefügten Schreieinheit. Die geringst mögliche Aktualisierungshäufigkeit ist, gar keine Aktualisierungen durchzuführen und den Schmerz-Score erst bei Beendigung des jeweiligen Schrei-Segmentes zu berechnen.
+ 
+Es wird vorgeschlagen, $f_{act}$ als Frequenz festzulegen. Eine Aktualisierungsfrequenz von beispielsweise $f_{act} = \SI{1/10}{\second}$ bedeutet, dass alle 10 Sekunden ein Schmerz-Score für ein Segment berechnet wird. Die Beendigung eines Segmentes soll in jedem Fall eine Berechnung eines Schmerz-Score auslösen und einen \glqq erzwungenen Aktualisierungszeitpunkt\grqq{} darstellen. Die folgenden Möglichkeiten zur Bestimmung von sinnvollen Frequenzwerten $f_{act}$ werden vorgeschlagen:
  
  \begin{itemize}
- \item $t_{act}$ als globaler, nicht veränderbarer Wert. Da in der Literatur keine Vorschlag diesbezüglich gefunden werden konnte, müsste ein sinnvoller Wert in Absprache mit medizinischen Fachkräften eruiert werden. 
- \item Man überlässt der medizinischen Fachkraft, die das System überwacht, die Festlegung des Aktualisierungsintervalls. So kann die Person selber bestimmen, wie häufig sie eine Aktualisierung der Pain Score wünscht.
- \item Die feste Bindung des Aktualisierungsintervalls an die verwendete Pain Scale. Die CRIES-Scale ist beispielsweise für das post-operative Monitoring gedacht und benötigt somit möglicherweise weniger häufige Aktualisierungen als der DAN, welcher zur Schmerzdiagnostik während einer Operation eingesetzt werden kann (siehe Tabelle \ref{tab:painscores}). Da die Pain Scales nicht für die kontinuierliche Schmerzdiagnostik ausgelegt sind, lässt sich aus den für einige Pain Scales eventuell vorgeschriebenen Beobachtungsintervallen kein Aktualisierungsintevall für ein kontinuierliches System argumentieren.
+ \item Die Festlegung einer globalen Aktualisierungsfrequenz unabhängig von der verwendeten Schmerz-Scale. Ein solcher Wert müsste in Absprache mit medizinischen Fachkräften eruiert werden.
+ \item Es wird der medizinischen Fachkraft überlassen, die das System bedient, eine Aktualisierungsfrequenz festzulegen. So kann die jeweilige Person selber bestimmen, wie häufig sie eine Aktualisierung der Schmerzbewertung wünscht.
+ \item Die feste Bindung der Aktualisierungsfrequenz an die verwendete Schmerz-Scale. Die CRIES-Scale ist beispielsweise für das post-operative Monitoring gedacht und benötigt somit möglicherweise weniger häufige Aktualisierungen als der DAN, welcher zur Schmerzdiagnostik während einer Operation eingesetzt wird (siehe \autoref{tab:painscores}).
  \end{itemize}
  
- Wenn $t_{act}$ als zeitlicher Wert definiert wird, kann es passieren, dass eine Aktualisierung in einem offenen Segment durchgeführt wird, während gerade eine neue Cry-Unit markiert wird und noch nicht abgeschlossen wurde. Da die Funktion $PS_{Scale}: cs \mapsto \mathbb{N}$ nur für Cry-Segmente definiert wurde, die vollständige Cry-Units enthalten, wird diese \glqq halbe Cry-Unit\grqq{} nicht mit zur Ableitung der Pain Score verwendet. Der Hintergrund für diese Entscheidung ist, dass bestimmte Funktionen zum Ableiten der Features für das Segment ansonsten fehlerhafte Ergebnisse liefern können. Die Funktion $PS$ wird folglich auf das \emph{Subsegment} $cs_{sub}$ angewandt, welches alle Cry-Units des möglicherweise noch offenen Segmentes $cs$ beinhaltet, die zum Aktualisierungszeitpunkt $t$ vollständig begonnen und beendet wurden. Der Endzeitpunkt des Subsegmentes wird, wie bei herkömmlichen Segmenten, auf den Endzeitpunkt der letzten vollständigen Cry-Unit im Subsegment gelegt.
+Unabhängig von der verwendeten Variante kann es durch den Einsatz einer Aktualisierungsfrequenz passieren, dass eine Aktualisierung in einem offenen Segment durchgeführt wird, während gerade eine neue Schreieinheit detektiert wird und noch nicht abgeschlossen wurde. Es wurde die Entscheidung getroffen, eine solche unabgeschlossene Schreieinheit \emph{nicht} mit in die Schmerzbewertung einzubeziehen. Der Hintergrund für diese Entscheidung ist, dass bestimmte Hypothesen ansonsten fehlerhafte Prognose treffen können. Würde beispielsweise eine Hypothese den Schmerzgrad anhand der geringste Länge einer Schreieinheit im Segment prognostizieren, würde eine unvollständige Schreieinheit das Ergebnis verfälschen.
+ 
+%Die Berechnung des Scores mit der Hypothese $PC_{Scale}$ wird bei eine Aktualisierung für ein \emph{Subsegment} $cs_{sub}$ durchgeführt, welches alle Schreieinheiten des noch gesamten, offenen Segmentes $cs$ übernimmt, die zum Aktualisierungszeitpunkt $t$ vollständig begonnen und beendet wurden. Der Endzeitpunkt des Subsegmentes wird, wie bei herkömmlichen Segmenten, auf den Endzeitpunkt der letzten vollständigen Schreieinheit im Subsegment gesetzt.
   
  \subsubsection{Beobachtungszeitraum}
+ 
+Angenommen, einem Baby wird akuter Schmerz zugefügt, indem es mit einer Nadel in den Fuß gestochen wird. Das Baby empfindet kurz nach dem Nadelstich einen starken Schmerz, welcher nach dem Verstreichen einiger Zeit abnimmt und schlussendlich vollständig verschwindet. Der anfängliche, starke Schmerz würde sich durch lange Schreieinheiten mit hoher Tonhöhe zeigen, die geringere Schmerz gegen Ende durch tendenziell kürzere Schreieinheiten mit niedrigerer Tonhöhe.\cite{acutePainResponse} Das automatisierte Schmerzbewertungsystem würde für diese Schmerzepisode ein Schreisegment eröffnen und, je nach Aktualisierungsintervall, in regelmäßigen Abständen so wie bei Beendigung des Schreisegmentes die Schmerz-Scores auf Basis des Weinens prognostizieren. Angenommen, die Hypothese schließt einen hohen Schmerz vor allem aus dem Vorhandensein von Schreieinheiten mit hoher Tonhöhe. In diesem Fall würde zu jeder Aktualisierung ein hoher Schmerzgrad festgestellt werden, da die ersten, langen Schreieinheiten bei jeder Schmerzbewertung mit einbezogen wrden. Die Abnahme der Schmerzstärke gegen Ende wäre so bei keiner Aktualisierung sichtbar. Es kann argumentiert werden, dass in diesem Fall die Hypothese das Problem darstellt und optimiert werden müsste. Eine weitere Lösungsmöglichkeit, die in diesem Unterabschnitt vorgestellt wird, ist die Verwendung eines \emph{Beobachtungszeitraums} $t_{obs}$
 
-Es gibt Eigenschaften, die sich implizit auf den gesamten Zeitraum \emph{Beginn des Segmentes} $start(cs)$ bis \emph{Aktualisierungszeitpunkt} $t$ beziehen, wie beispielsweise die \emph{Zeitliche Länge des Segmentes} nach Formel \ref{eq:segment_length}. Dieser Zeitraum ist gleichzeitig der längst mögliche Zeitraum innerhalb eines Segmentes, der für die Ableitung der Pain Score mit einbezogen werden kann. Es ist jedoch auch möglich, einen kürzere Beobachtungszeitraum $t_{obs}$ zu wählen. Dies hat zur Folge, dass bei der Ableitung die ersten Cry-Units des Segmentes ausgelassen werden, die außerhalb des Beobachtungszeitraums liegen. So können zeitliche Veränderungen der Pain-Score innerhalb eines Segmentes detaillierter dargestellt werden. Es sind wiederum verschiedene Varianten zur Festlegung von $t_{obs}$ denkbar:
+Dieser Beobachtungszeitraum $t_{obs}$ definiert, welcher Zeitraum als Grundlage für die Schmerzbewertung innerhalb eines Segmentes mit einbezogen wird. Ein Wert von $t_{obs} = \SI{1}{\minute}$ würde beispielsweise bedeuten, dass  zu einem beliebigen Aktualisierungszeitpunkt nur diejenigen Schreigeräusche mit einbezogen werden, die innerhalb der letzten Minute aufgenommen wurden, auch, wenn das Schreisegment eigentlich bereits länger andauert. In Bezug auf das eben genannte Beispiel würden nach einer gewissen Zeit die ersten, höheren Schreisegmente nicht mehr in die Schmerzbewertung mit einfließen und so die Abnahme des Schmerzes sichtbar werden.
+
+Es werden verschiedene Varianten zur Festlegung eines zeitlichen Wertes für $t_{obs}$ vorgestellt:
 \begin{itemize}
-\item Festlegung eines globalen oder eines von der medizinischen Fachkraft frei wählbaren Wertes, so wie bei dem Aktualisierungsintervall $t_{act}$.
-\item Die feste Bindung des Aktualisierungsintervalls an die verwendete Pain Scale. Einige Pain Scale empfehlen bestimmte Beobachtungszeiträume. So wird beispielsweise bei der NIPS-Scale ein Beobachtungszeitraum von einer Minute empfohlen (Siehe Kapitel \ref{sec:foundations_cryingMeta}). Es müsst wiederum in Zusammenarbeit mit medizinischen Fachkräften eruiert werden, ob diese, für die manuelle Schmerzdiagnostik vorgesehenen Werte auch für ein automatisiertes System Sinn machen.
-\item Eine weitere Variante ist, $t_{obs}$ an den Wert von $t_{act}$ zu binden. Fall $t_{obs}$ frei festlegbar sein soll, muss das Personal nicht zwei Werte festlegen. Ein Verhältnis von $t_{obs} = k \cdot t_{act}$ würde mit $k=1$ nicht-überlappende Beobachtungszeiträume und  mit $k=2$ überlappende Beobachtungszeiträume erzeugen.
+\item Festlegung eines globalen oder eines von der medizinischen Fachkraft frei wählbaren Wertes, so wie bei der Aktualisierungsfrequenz $t_{act}$.
+\item Die feste Bindung des Aktualisierungsintervalls an die jeweilige Schmerz-Scale. Hier könnten die Beobachtungszeiträume übernommen werden, die in den Anwendungsvorschriften die jeweilige Schmerz-Scale empfohlen werden (siehe Tabelle \ref{tab:painscores}). Es müsst wiederum in Zusammenarbeit mit medizinischen Fachkräften eruiert werden, ob diese, für die manuelle Schmerzdiagnostik vorgesehenen Werte auch für ein automatisiertes System Sinn machen.
+\item Eine weitere Variante ist, $t_{obs}$ an den Wert von $f_{act}$ zu binden, womit einer der Werte den anderen bedingt. Ein Verhältnis von $t_{obs} = k \cdot 1/f_{act}$ würde beispeilsweise mit $k=1$ nicht-überlappende Beobachtungszeiträume und  mit $k=2$ überlappende Beobachtungszeiträume erzeugen.
 \end{itemize}
 
-Der Beobachtungszeitraum $t_{obs}$ schränkt somit die Länge des Subsegmentes $cs_{sub}$ weiter ein, und zwar in diesem Fall bezüglich der Startzeitpunktes. Der Zeitraum innerhalb des Segmentes $cs$, der zur Bildung von $cs_{sub}$ genutzt wird, ist der Zeitraum \emph{Aktualisierungszeitpunkt} $t - t_{obs}$ bis $t$. Es werden nur solche Cry-Units von $cs$ in $cs_{sub}$ übernommen, die innerhalb dieses Zeitraumes vollständig begonnen und beendet werden konnten. Der Anfangszeitpunkt des Subsegments ist somit der Anfangszeitpunkt der ersten vollständigen Cry-Unit innerhalb  Beobachtungszeitraumes, der Endzeitpunkt des Subsegmentes entspricht dem Ende der zum Aktualisierungszeitpunkt zuletzt vollständig beendeten Cry-Unit.
+Die Verwendung einer Aktualisierungsfrequenz und eines Beobachtungszeitraumes führen dazu, dass die Schmerzbewertung anstatt für ein gesamtes Segment $cs$ für ein \emph{Subsegment} $cs_{sub}$ durchgeführt wird. Ein solches Subsegment $cs_{sub}$ wird zu einem Aktualisierungszeitpunkt $t$ gebildet und übernimmt alle \emph{vollständigen} Schreieinheiten des Segments $cs$ innerhalb des Zeitraumes $t - t_{obs}$ bis $t$. Mit \emph{vollständigen} Schreieinheiten sind solche gemeint, die innerhalb dieses Zeitraumes komplett begonnen und beendet wurden. Anfangs- und Endzeitpunkt eines Subsegmentes werden, wie bei herkömmlichen Schreisegmenten, definiert durch den Anfangszeitpunkt der ersten Schreieinheit und dem Endzeitpunkt der letzten Schreieinheit des Subsegmentes. 
 
 \vspace{5mm}
 
-\textbf{Beispiel} \noindent\rule{0.83\linewidth}{0.3pt}\\
+\section{Beispiel für die automatisierte Schmerzbewertung}
 
-Die in diesem Kapitel vorgestellten Methoden zur Ableitung von Pain Scores werden anhand eines Beispiels verdeutlicht. Tabelle \ref{tab:fiction_scale} definiert eine fiktive Pain Scale. Es werden die für Pain Scales typischen, subjektiv behafteten Worte zum Scoring verwendet.
+Die in diesem Kapitel vorgestellten Methoden zur Schmerzbewertung anhand akustischer Signale werden an einem Beispiel verdeutlicht. Tabelle \ref{tab:fiction_scale} zeigt die Schmerzbewertung des Weinens der \glqq Neonatal Infant Pain Scale\grqq{}.
 
 \begin{table}[h]
 \centering
-\caption{Fiktive Pain Scale}
+\caption[Bewertung des Weinens bei der NIPS]{Bewertung des Weinens bei der NIPS \cite{nips}}
 \label{tab:fiction_scale}
 \begin{tabular}{@{}llll@{}}
 \toprule
               & 0 Punkte    & 1 Punkt         & 2 Punkte       \\ \midrule
-Fiction Scale & kein oder sehr wenig Weinen & normales Weinen & starkes Weinen \\ \bottomrule
+Fiction Scale & absent & mumbling & vigorous \\ \bottomrule
 \end{tabular}
 \end{table}
 
-Mit Hilfe der in Kapitel \ref{sec:deduction} beschriebenen Strategien wurde die Funktion $PS_{Fiction}: CS \mapsto \{0,1,2\}$ ermittelt, definiert in Gleichung \ref{eq:ps_fiction}. Sie erlaubt die Ableitung des Schmerz Score für eine Cry-Segment mit Hilfe objektiv messbarer Features.
+Es wird angenommen, dass für diese Schmerz-Scale mit Hilfe der in \autoref{sec:overviewPainRegression} beschriebenen Strategie eine Hypothese $PC_{NIPS}: CS \mapsto \{0,1,2\}$ ermittelt wurde, definiert \autoref{eq:ps_fiction}. Diese Hypothese ist fiktiv und wird nur zur Verdeutlichung des Beispiels verwendet.
 
 \begin{equation}
-PS_{Fiction}(cs) = \begin{cases}
+PC_{NIPS}(cs) = \begin{cases}
  0 \quad ,  \text{wenn } mean_{cu}(cs) < \SI{0.3}{\second} \\
  1 \quad ,  \text{wenn } mean_{cu}(cs) < \SI{1}{\second} \\
  2 \quad ,  \text{wenn } mean_{cu}(cs) \geq \SI{1}{\second}
@@ -361,11 +375,11 @@ PS_{Fiction}(cs) = \begin{cases}
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/regression_score_example04.png}
 	\caption{Beispiel für die Ableitung von Pain Scores für ein Signal nach einer fiktiven Pain Scale ohne Beobachtungszeitraum oder Aktualisierungsintervall}
-	\label{img:regression_score_example02}
+	\label{img:regression_score_example01}
 \end{figure}
 
 
-Abbildung \ref{img:regression_score_example01} zeigt ein Beispielsignal, für das Pain Scores nach dieser Pain Scale abgeleitet werden. In dem Signal werden die stimmhaften Signalbereiche schwarz und das Hintergrundrauschen grau dargestellt. Es sind insgesamt 10 Cry-Units zu erkennen. Die ersten fünf Cry-Units haben jeweils eine Länge von \SI{2.25}{\second}, die letzten fünf Cry-Units eine jeweilige Länge von \SI{0.75}{\second}. Das Signal wurde nach der in Kapitel \ref{sec:segmenting} beschriebenen Methode segmentiert mit $t_s = \SI{5}{\second}$ und so alle 10 Cry-Units zu einem Segment zusammengefasst. Das Segment erstreckt sich von Sekunde $10$ bis Sekunde $37.5$. Für das Segment wurde eine durchschnittliche Länge der Cry-Units von $mean_{cu}(cs) = \SI{1.5}{\second}$ gemessen und dem zufolge eine Pain Score von 2 abgeleitet. In diesem Fall wurde ohne Beobachtungs- und Aktualisierungsintervall gearbeitet. Wäre die Analyse also kontinuierlich vorgenommen worden, so wäre nach Feststellung der ersten Cry-Unit das Segment eröffnet, nach Überschreitung der maximal zulässigen Stille von $t_s = \SI{5}{\second}$ nach der 10. Cry-Unit das Segment geschlossen, und daraufhin $PS_{Fiction}(cs) = 2$ berechnet worden.
+\autoref{img:regression_score_example01} zeigt ein Beispielsignal, für das Pain Scores nach dieser Pain Scale abgeleitet werden. In dem Signal werden die stimmhaften Signalbereiche schwarz und das Hintergrundrauschen grau dargestellt. Es sind insgesamt 10 Cry-Units zu erkennen. Die ersten fünf Cry-Units haben jeweils eine Länge von \SI{2.25}{\second}, die letzten fünf Cry-Units eine jeweilige Länge von \SI{0.75}{\second}. Das Signal wurde nach der in Kapitel \ref{sec:segmenting} beschriebenen Methode segmentiert mit $t_s = \SI{5}{\second}$ und so alle 10 Cry-Units zu einem Segment zusammengefasst. Das Segment erstreckt sich von Sekunde $10$ bis Sekunde $37.5$. Für das Segment wurde eine durchschnittliche Länge der Cry-Units von $mean_{cu}(cs) = \SI{1.5}{\second}$ gemessen und dem zufolge eine Pain Score von 2 abgeleitet. In diesem Fall wurde ohne Beobachtungs- und Aktualisierungsintervall gearbeitet. Wäre die Analyse also kontinuierlich vorgenommen worden, so wäre nach Feststellung der ersten Cry-Unit das Segment eröffnet, nach Überschreitung der maximal zulässigen Stille von $t_s = \SI{5}{\second}$ nach der 10. Cry-Unit das Segment geschlossen, und daraufhin $PS_{Fiction}(cs) = 2$ berechnet worden.
 
 \begin{figure}[h]
 	\centering

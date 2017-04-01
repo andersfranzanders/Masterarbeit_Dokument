@@ -30,10 +30,11 @@
 \BOOKMARK [1][-]{section.5.1}{Zusammenfassung von Schreiger\344uschen zu Segmenten}{chapter.5}% 30
 \BOOKMARK [1][-]{section.5.2}{Methoden zur Berechnung des Schmerz-Score f\374r Segmente}{chapter.5}% 31
 \BOOKMARK [2][-]{subsection.5.2.1}{Extrahierung von Eigenschaften als Grundlage zur Schmerzbewertung}{section.5.2}% 32
-\BOOKMARK [2][-]{subsection.5.2.2}{Schmerzverlauf innerhalb von Segmenten}{section.5.2}% 33
-\BOOKMARK [0][-]{chapter.6}{Visualisierung der Schmerzbewertung}{}% 34
-\BOOKMARK [1][-]{section.6.1}{Visualierungskonzept}{chapter.6}% 35
-\BOOKMARK [1][-]{section.6.2}{Ergebnis der Visualisierung}{chapter.6}% 36
-\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 37
-\BOOKMARK [0][-]{section*.53}{Appendices}{}% 38
-\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 39
+\BOOKMARK [2][-]{subsection.5.2.2}{Betrachtung des Schmerzverlaufs innerhalb von Segmenten}{section.5.2}% 33
+\BOOKMARK [1][-]{section.5.3}{Beispiel f\374r die automatisierte Schmerzbewertung}{chapter.5}% 34
+\BOOKMARK [0][-]{chapter.6}{Visualisierung der Schmerzbewertung}{}% 35
+\BOOKMARK [1][-]{section.6.1}{Visualierungskonzept}{chapter.6}% 36
+\BOOKMARK [1][-]{section.6.2}{Ergebnis der Visualisierung}{chapter.6}% 37
+\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 38
+\BOOKMARK [0][-]{section*.53}{Appendices}{}% 39
+\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 40
