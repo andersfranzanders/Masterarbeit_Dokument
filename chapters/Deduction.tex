@@ -91,7 +91,7 @@ Der Algorithmus eignet sich nicht für eine Online-Segmentierung, da das Ende ei
 \end{algorithm}
 
 
-Das hier vorgestellte Segmentierungsverfahren wurde bewusst möglichst einfach gehalten, damit die Bedeutung des Parameters $t_{s}$ leicht ersichtlich ist und somit von der medizinischen Fachkraft selbständig festgelegt werden kann. Das Ende eines Segmentes ist weiterhin ein geeigneter Zeitpunkt, um die Parameter des Kompressors der Vorverarbeitungsstufe auf Basis des RMS-Wertes des Segmentes zu aktualisieren (siehe \autoref{sec:preprocessing}).
+Das hier vorgestellte Segmentierungsverfahren wurde bewusst möglichst einfach gehalten, damit die Bedeutung des Parameters $t_{s}$ leicht ersichtlich ist und somit von der medizinischen Fachkraft selbständig festgelegt werden kann. Das Ende eines Segmentes ist weiterhin ein geeigneter Zeitpunkt, um die Parameter des Kompressors der Vorverarbeitungsstufe auf Basis des RMS-Wertes des Segmentes zu aktualisieren (siehe Unterabschnitt  \ref{sec:preprocessing}).
 
 
 \section{Methoden zur Berechnung des Schmerz-Score für Segmente}
@@ -284,7 +284,7 @@ Die folgenden Eigenschaften des Frequenzbereiches lassen sich mit den in dieser 
 \end{equation}
 
 
-\item[Clarity: ] Wie in Kapitel \ref{sec:vad_ceps_features} erläutert wurde, deutet eine klar ausgebildete Spitze im oberen Cepstrum-Bereich auf ein stimmhaftes Signal hin. Ein hoher Anteil hoher Cepstrum-Peaks lässt somit auf vermehrt phonierte Laute schließen, geringere Cepstrum-Peaks auf dysphoniertere Laute (Siehe Kapitel \ref{sec:acousticModel}). Der Durchschnittswert dieser Eigenschaft ist ein Maß für den relativen Anteil dysphonierter Laute, die Standardabweichung ähnelt dem in Kapitel \ref{sec:acousticModel} vorgestellten \emph{Cry-Mode Changes}-Feature.
+\item[Clarity: ] Wie in Unterabschnitt \ref{sec:vad_ceps_features} erläutert wurde, deutet eine klar ausgebildete Spitze im oberen Cepstrum-Bereich auf ein stimmhaftes Signal hin. Ein hoher Anteil hoher Cepstrum-Peaks lässt somit auf vermehrt phonierte Laute schließen, geringere Cepstrum-Peaks auf dysphoniertere Laute (Siehe Kapitel \ref{sec:acousticModel}). Der Durchschnittswert dieser Eigenschaft ist ein Maß für den relativen Anteil dysphonierter Laute, die Standardabweichung ähnelt dem in Kapitel \ref{sec:acousticModel} vorgestellten \emph{Cry-Mode Changes}-Feature.
 
 \begin{equation}
 \begin{gathered}
@@ -350,17 +350,18 @@ Die Verwendung einer Aktualisierungsfrequenz und eines Beobachtungszeitraumes f�
 Die in diesem Kapitel vorgestellten Methoden zur Schmerzbewertung anhand akustischer Signale werden an einem Beispiel verdeutlicht. Tabelle \ref{tab:fiction_scale} zeigt die Schmerzbewertung des Weinens der \glqq Neonatal Infant Pain Scale\grqq{}.
 
 \begin{table}[h]
+\footnotesize
 \centering
 \caption[Bewertung des Weinens bei der NIPS]{Bewertung des Weinens bei der NIPS \cite{nips}}
 \label{tab:fiction_scale}
 \begin{tabular}{@{}llll@{}}
 \toprule
-              & 0 Punkte    & 1 Punkt         & 2 Punkte       \\ \midrule
-Fiction Scale & absent & mumbling & vigorous \\ \bottomrule
+NIPS              & 0 Punkte    & 1 Punkt         & 2 Punkte       \\ \midrule
+Cry: & absent & mumbling & vigorous \\ \bottomrule
 \end{tabular}
 \end{table}
 
-Es wird angenommen, dass für diese Schmerz-Scale mit Hilfe der in \autoref{sec:overviewPainRegression} beschriebenen Strategie eine Hypothese $PC_{NIPS}: CS \mapsto \{0,1,2\}$ ermittelt wurde, definiert \autoref{eq:ps_fiction}. Diese Hypothese ist fiktiv und wird nur zur Verdeutlichung des Beispiels verwendet.
+Es wird angenommen, dass für diese Schmerz-Scale mit Hilfe der in \autoref{sec:overviewPainRegression} beschriebenen Strategie eine Hypothese $PC_{NIPS}: CS \mapsto \{0,1,2\}$ ermittelt wurde, definiert \autoref{eq:ps_fiction}. Diese Hypothese ist fiktiv und wird nur zur Verdeutlichung des Beispiels verwendet. Der Score ist bei dieser Hypothese abhängig von der durchschnittlichen Länge der Schreieinheiten $mean_{cu}(cs)$. Diese Eigenschaft wurde definiert in \autoref{eq:featuresOfCryUnits}.
 
 \begin{equation}
 PC_{NIPS}(cs) = \begin{cases}
@@ -371,23 +372,30 @@ PC_{NIPS}(cs) = \begin{cases}
  \label{eq:ps_fiction}
 \end{equation}
 
+\autoref{img:regression_score_example01} zeigt einen Ausschnitt eines beispielhaftes Audiosignal, für das die Schmerzbewertung auf Basis der fiktiven Hypothese der NIPS-Scale durchgeführt wird. In dem Signal werden die stimmhaften Signalbereiche schwarz und das Hintergrundrauschen grau dargestellt. Der Signalausschnitt enthält zehn Schreieinheiten. Die ersten fünf Schreieinheiten haben jeweils eine Länge von \SI{2.25}{\second} und die letzten fünf Schreieinheiten haben eine jeweilige Länge von \SI{0.75}{\second}. Das Signal wurde nach der in \autoref{sec:segmenting} beschriebenen Methode segmentiert mit $t_s = \SI{5}{\second}$, wodurch alle zehn Schreieinheiten zu einem Schrei-Segment zusammengefasst wurden. Das Segment erstreckt sich von Sekunde $10$ bis Sekunde $37.5$. Für das Segment wurde eine durchschnittliche Länge der Schreieinheiten von \SI{1.5}{\second} gemessen und dem zufolge eine Score von 2 für das Weinen bestimmt.
+
+In diesem Beispiel wurde kein Beobachtungszeitraum- oder Aktualisierungsfrequenz verwendet. Der zeitliche Ablauf dieser Schmerzdiangostik bei einer kontinuierlichen Analyse ist wie folgt:
+\begin{itemize}
+	\item \textbf{Sekunden 0 - 10:} Das Signal wird kontinuierlich ab Sekunde 0 eingelesen. Bis Sekunde 10 findet keine Schmerzbewertung statt, da kein Weingeräusch detektiert wird. Es wird von der Abwesenheit von Schmerz in diesem Zeitbereich ausgegangen.
+	\item \textbf{Sekunde 10:} Die erste Schreigeräusch wird detektiert, das Segment wird eröffnet
+	\item \textbf{Sekunden 10 bis 42.5:} Weitere Schreieinheiten werden detektiert und dem Segment hinzugefügt
+	\item \textbf{Sekunde 42.5:} Da Segment wird geschlossen, da seit 5 Sekunden nach Ende der letzten Schreieinheit keine neue Schreieinheit detektiert wurde. Die Schmerzbewertung für das Segment wird durchgeführt.
+\end{itemize}
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/regression_score_example04.png}
-	\caption{Beispiel für die Ableitung von Pain Scores für ein Signal nach einer fiktiven Pain Scale ohne Beobachtungszeitraum oder Aktualisierungsintervall}
+	\includegraphics[width=1\textwidth]{bilder/regression_score_example_06.png}
+	\caption[Beispiel für die Schmerzbewertung anhand einer Audioaufnahme]{Beispiel für die Schmerzbewertung anhand einer Audioaufnahme, segmentiert mit $t_s = \SI{5}{\second}$}
 	\label{img:regression_score_example01}
 \end{figure}
 
 
-\autoref{img:regression_score_example01} zeigt ein Beispielsignal, für das Pain Scores nach dieser Pain Scale abgeleitet werden. In dem Signal werden die stimmhaften Signalbereiche schwarz und das Hintergrundrauschen grau dargestellt. Es sind insgesamt 10 Cry-Units zu erkennen. Die ersten fünf Cry-Units haben jeweils eine Länge von \SI{2.25}{\second}, die letzten fünf Cry-Units eine jeweilige Länge von \SI{0.75}{\second}. Das Signal wurde nach der in Kapitel \ref{sec:segmenting} beschriebenen Methode segmentiert mit $t_s = \SI{5}{\second}$ und so alle 10 Cry-Units zu einem Segment zusammengefasst. Das Segment erstreckt sich von Sekunde $10$ bis Sekunde $37.5$. Für das Segment wurde eine durchschnittliche Länge der Cry-Units von $mean_{cu}(cs) = \SI{1.5}{\second}$ gemessen und dem zufolge eine Pain Score von 2 abgeleitet. In diesem Fall wurde ohne Beobachtungs- und Aktualisierungsintervall gearbeitet. Wäre die Analyse also kontinuierlich vorgenommen worden, so wäre nach Feststellung der ersten Cry-Unit das Segment eröffnet, nach Überschreitung der maximal zulässigen Stille von $t_s = \SI{5}{\second}$ nach der 10. Cry-Unit das Segment geschlossen, und daraufhin $PS_{Fiction}(cs) = 2$ berechnet worden.
+\autoref{img:regression_score_example02} zeigt die die Schmerzbewertung des selben Beispielsignals, wenn zusätzlich eine Aktualisierungsfrequenz von \SI{1/7.5}{\second} und ein Beobachtungszeitraum von \SI{15}{\second} verwendet wird. Nachdem das Schreisegment durch die Schreieinheit bei Sekunde 10 eröffnet wurde, werden Aktualisierungen zu den Zeitpunkten $t = \SI{17.5}{\second},\; \SI{25}{\second},\; \SI{32.5}{\second}$ und \SI{40}{\second} durchgeführt. Die Aktualisierungszeitpunkte werden in der Abbildung durch kleine, rote Pfeile verdeutlicht. Bei jeder Aktualisierung wird ein Subsegment gebildet und die für das Schmerzbewertung für das jeweilige Subsegment durchgeführt. Der Anfangszeitpunkt jedes Subsegmentes entspricht dem Anfangszeitpunkt der ersten vollständigen Schreieinheit innerhalb des jeweils ausgewerteten Zeitraums. Der Endzeitpunkt jedes Subsegmentes entspricht dem Endzeitpunkt der letzten vollständigen Schreieinheit innerhalb des jeweils ausgewerteten Zeitraums. Beispielsweise erstreckt sich der ausgewertete Zeitraum bei der 3. Aktualisierung von \SI{17.5}{\second} bis \SI{32.5}{\second}, das bei der Aktualisierung gebildete Subsegment jedoch von $19 - \SI{32}{\second}$ aufgrund der Lage der Schreieinheiten. In diesem Beispiel ist erkennbar, dass der Schmerzgrad innerhalb des gesamten Segmentes nach hinten hin abnimmt.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/regression_score_example05.png}
-	\caption{Beispiel für die Ableitung von Pain Scores für ein Signal nach einer fiktiven Pain Scale mit $t_{act} = \SI{7.5}{\second}$ und $t_{obs} = \SI{15}{\second}$}
+	\includegraphics[width=1\textwidth]{bilder/regression_score_example_07.png}
+	\caption[Beispiel für die Schmerzbewertung anhand einer Audioaufnahme mit Aktualisierungen]{Beispiel für die Schmerzbewertung anhand einer Audioaufnahme mit $f_{act} = \SI{1/7.5}{\second}$ und $t_{obs} = \SI{15}{\second}$}
 	\label{img:regression_score_example02}
 \end{figure}
-
-Abbildung \ref{img:regression_score_example03} zeigt die Ableitung der Schmerz Scores, wenn zusätzlich ein Aktualisierungsintervall von \SI{7.5}{\second} und ein Beobachtungszeitraum von \SI{15}{\second} gewählt wird. Nach dem das Segment durch die Cry-Unit an Sekunde 10 eröffnet wurde, werden Aktualisierungen zu den Zeitpunkten $t = \SI{17.5}{\second}, \SI{25}{\second}, \SI{32.5}{\second}$ und \SI{40}{\second} durchgeführt, verdeutlicht durch die kleinen, roten Pfeile in der Abbildung. Wie zu sehen ist, wird bei jeder Aktualisierung innerhalb des Beobachtungszeitraumes ein Subsegment gebildet, für das Subsegment die Features errechnet und die Pain Score abgeleitet. Der Anfangszeitpunkt jedes Subsegmentes ist der Anfang der erste Cry-Unit innerhalb des jeweiligen Beobachtungszeitraums, und das Ende des Subsegmentes das Ende letzten Cry-Unit im jeweiligen Beobachtungszeitraum. Beispielsweise erstreckt sich das bei der 3. Aktualisierung der Beobachtungszeitraum von $17.5 - \SI{32.5}{\second}$, das Subsegment jedoch von $19 - \SI{32}{\second}$ aufgrund der Lage der Cry-Units. Durch die Verwendung des Beobachtungs- und Aktualisierungsintervalls wird erkennbar, dass in diesem Beispiel der Schmerzgrad innerhalb des Segmentes nach hinten hin abnimmt.
-
 

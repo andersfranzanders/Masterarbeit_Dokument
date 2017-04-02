@@ -1,68 +1,73 @@
 \chapter{Visualisierung der Schmerzbewertung}
 \label{sec:visualisation}
 
-Ziel dieses Kapitels ist es, das erarbeitete Konzept zur Visualisierung der Pain Scores vorzustellen. Das Konzept wird anhand eines Beispielsignals erläutert, welches Aufnahmen des Weinenes eines Babys enthält. Das Signal wird in Abbildung \ref{img:visualisation_example_01} oben gezeigt. Der Signalausschnitt ist insgesamt 220 Sekunden lang. Die Abschnitte, die Stimme des Babys enthalten, werden Schwarz dargestellt, das Hintergrundrauschen grau. Das Signal wurde segmentiert mit $t_{s} = \SI{10}{\second}$ und so zwei Segmente gefunden. Die beiden Segmente sind $30.5$ Sekunden voneinander entfernt. 
+In \autoref{sec:deduction} wurde das Konzept zur Schmerzbewertung auf Basis akustischer Signale vorgestellt. Wird dieses Konzept zur kontinuierlichen Überwachung von Neugeborenen eingesetzt, fällt eine große Menge an Auswertungsergebnissen an. Daher ist es wünschenswert, die Ergebnisse der automatisierten Schmerzbewertung übersichtlich zu visualisieren. In \autoref{sec:vizConecept} wird das Konzept der Visualisierung vorgestellt. Die Visualisierung fokussiet die Visualisierung des Scores, der im Zuge der Schmerzbewertung für den Schmerzindikator \emph{Weinen} auf Basis der Audiosignals vergeben wird. \autoref{sec:vizResults} fasst die Visualisierungsergebnisse zusammen.
 
 \section{Visualierungskonzept}
+\label{sec:vizConecept}
 
-Die Schmerzdiagnostik wird auf Basis zweier fiktiver Pain Scales durchgeführt, welche in Tabelle \ref{tab:fictional_painscales_viz} definiert werden. Die \glqq Length-Scale\grqq{} bewertet den Schmerzgrad nach der Länge des Weinens und vergibt einen maximalen Score on 2, die \glqq Min-Scale\grqq{} bewertet die Qualität des Weinens und vergibt einen maximalen Score von 3.
+Das Visualisierungskonzept wird anhand eines 220 Sekunden langen Audioaufnahme eines weinenden Babys erläutert. Das Signal wird in \autoref{img:visualisation_example_01} oben gezeigt. Die stimmhaften Signalbereiche werden Schwarz dargestellt, das Hintergrundrauschen grau. Das Signal wurde nach der in \autoref{sec:segmenting} beschriebenen Methode segmentiert mit $t_{s} = \SI{10}{\second}$. Die Schreigeräusche wurden so zu zwei Segmenten $cs_1$ und $cs_2$ zusammengefasst, welche in der Abbildung ebenfalls oben hervorgehoben werden.
+
+Die Schmerzbewertung wird auf Basis von zwei fiktiven Schmerz-Scales durchgeführt. Die Bewertung des Schmerzindikators \emph{Weinen} wird in Tabelle \ref{tab:fictional_painscales_viz} definiert. Die \glqq Length-Scale\grqq{} bewertet den Schmerzgrad nach der Länge des Weinens und vergibt einen maximalen Score on 2, die \glqq Min-Scale\grqq{} bewertet die Qualität des Weinens und vergibt einen maximalen Score von 3. Es wird zunächst davon ausgegangen, dass es sich bei den Schmerz-Scales um monomdale Schmerz-Scales handelt, die nur das Weinen bei der Schmerzbewertung betrachten. Das heißt, dass der für das Weinen vergebene Score einem insgesamten Schmerz-Score entspricht.
 
 \begin{table}[h]
 \centering
-\caption{Fiktive Pain Scales zur Erläuterung der Visualisierung}
+\caption{Bewertung des Weinens von zwei fiktive Schmerz-Scales zur Erläuterung der Visualisierung}
 \label{tab:fictional_painscales_viz}
 \begin{tabular}{@{}lll@{}}
 \toprule
-         & \glqq Length-Scale\grqq  & \glqq Min-Scale\grqq        \\ \midrule
-0 Punkte & kein Weinen   & Lachen           \\
-1 Punkt  & kurzes Weinen & leichtes Weinen  \\
-2 Punkte & langes Weinen & mittleres Weinen \\
-3 Punkte & -             & starkes weinen   \\ \bottomrule
+Score       & \glqq Length-Scale\grqq  & \glqq Min-Scale\grqq        \\ \midrule
+0 & kein Weinen   & Lachen           \\
+1 & kurzes Weinen & leichtes Weinen  \\
+2 & langes Weinen & mittleres Weinen \\
+3 & -             & starkes weinen   \\ \bottomrule
 \end{tabular}
 \end{table}
 
-Mit Hilfe einer der in Kapitel \ref{sec:deduction} vorgestellten Strategien wurden Vorschriften zur Ableitung des Schmerz Scores auf Basis der Segmentattribute definiert. Gleichung \ref{eq:ps_length} definiert die Funktion $PS_{Length}$, welche den Pain Score für Segmente nach der \glqq Length-Scale\grqq{} ableitet. Aus der Gleichung geht hervor, dass ein Score von 0 für ein Segment nicht abgeleitet werden kann, da die Anwesenheit eines Segmentes der Abwesenheit von Weinen implizit widerspricht. Gleichung \ref{eq:ps_length} definiert die Funktion $PS_{Max}$ zur Schmerzableitung nach der \glqq Min-Scale\grqq. 
+Mit Hilfe des in \autoref{sec:overviewPainRegression} vorgestellten Vorgehen wurden Hypothesen zur Schmerzbewertung für die Schmerz-Scales definiert, um die Schmerzbewertung anhand objektiv messbarer Kriterien durchführen zu können. Gleichung \ref{eq:ps_length} definiert die Hypothese $PC_{Length}$ für die \emph{Length-Scale}. Die maßgebende Eigenschaft dieser Scale ist die \emph{Länge des Segmentes}. Diese Eigenschaft wurde in \autoref{eq:segment_length} definiert.
 
 \begin{equation}
-PS_{Length}(cs) = \begin{cases}
+PC_{Length}(cs) = \begin{cases}
  1 \quad ,  \text{wenn } \text{S-Length}(cs) \leq \SI{1}{\minute} \\
  2 \quad ,  \text{wenn } \text{S-Length}(cs) > \SI{1}{\minute}
  \end{cases}	
  \label{eq:ps_length}
 \end{equation}
 
+\autoref{eq:ps_length} definiert die Hypothese $PC_{Min}$ für die \emph{Min-Scale} zur Schmerzbewertung nach der \glqq Min-Scale\grqq. Die maßgebende Eigenschaft ist bei dieser Scale die \emph{geringste Länge einer Schreieinheit in einem Segment}. Diese Eigenschaft wurde in \autoref{eq:featuresOfCryUnits} definiert.
+
 \begin{equation}
-PS_{Min}(cs) = \begin{cases}
+PC_{Min}(cs) = \begin{cases}
  0 \quad ,  \text{wenn } min_{cu}(cs) < \SI{0.3}{\second}\\
  1 \quad ,  \text{wenn } \SI{0.3}{\second} \leq min_{cu}(cs) \leq \SI{1}{\second}\\
  2 \quad ,  \text{wenn } \SI{1}{\second} < min_{cu}(cs) \leq \SI{2}{\second} \\
- 3 \quad  \text{sonst }
+ 3 \quad , \text{sonst }
  \end{cases}	
  \label{eq:ps_length}
 \end{equation}
 
-Mit Hilfe dieser Funktionen werden die Pain Scores für die beiden Segmente des Beispielsignals in Abbildung \ref{img:visualisation_example_01} abgeleitet. Es wurden dabei keine Aktualisierungsintervalle oder Beobachtungszeiträume genutzt. Das erste Segment nach der \emph{Length-Scale} einen Score von 1 und nach der \emph{Min-Scale} einen Score von 2. Das zweite Segment hat nach der \emph{Length-Scale} einen Score von 2 und nach der\emph{Min-Scale} einen Score von 1.
+Mit Hilfe dieser Hypothese wurde die Schmerzbewertung für das Beispielsignal in \autoref{img:visualisation_example_01} vorgenommen. Es wurden dabei keine Aktualisierungsfrequenzen oder Beobachtungszeiträume genutzt. Das erste Segment erhält nach der \emph{Length-Scale} einen Score von 1 und nach der \emph{Min-Scale} einen Score von 2. Das zweite Segment erhält nach der \emph{Length-Scale} einen Score von 2 und nach der\emph{Min-Scale} einen Score von 1.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/visualisation_example_01.png}
-	\caption{Oben: Ein Beispielsignal mit zwei Segmenten, die mit $t_s = \SI{10}{\second}$ gefunden wurden. Darunter: Pain Scores, die für die beiden Segmente berechnet wurden. Darunter: Schematische Darstellung des Signals als Regionen. Unten: Scores der Regionen.}
+	\caption[Einteilung eines Signals in Regionen zur Vorbereitung der Visualisierung]{Oben: Ein Beispielsignal mit zwei Segmenten. Darunter: Schmerz-Scores, die für die beiden Segmente auf Basis der beiden fiktiven Schmerz-Scales aus \autoref{tab:fictional_painscales_viz} berechnet wurden. Darunter: Schematische Darstellung des Signals durch Regionen. Unten: Scores der Regionen.}
 	\label{img:visualisation_example_01}
 \end{figure}
 
-Die grundlegende Idee der Visualisierung ist, den zeitlichen Verlauf des Signals schematisch als einen \emph{Balken} darzustellen. Dieser Balken wird in \emph{Regionen} eingeteilt. Eine Region $r$ beinhaltet entweder ein Cry-Segment oder den Stillebereich zwischen zwei Cry-Segmenten. Die Länge einer Region entspricht der zeitlichen Länge des jeweiligen Stille- oder Cry-Segments. In Abbildung \ref{img:visualisation_example_01} gibt es fünf Regionen $r_{1} , \ldots , r_5 $, wobei die Region $r_2$ und $r_4$ Cry-Segmente enthalten. Die letzte Region wurde noch nicht abgeschlossen, da angenommen wird, dass das Signal weiterhin kontinuierlich eingelesen wird.
+Die grundlegende Idee der Visualisierung ist, den zeitlichen Verlauf des Signals schematisch als einen \emph{Balken} darzustellen. Dieser Balken repräsentiert die Zeitachse des Signals wird in \emph{Regionen} eingeteilt. Eine Region $R$ beinhaltet entweder ein Schrei-Segment oder den Stillebereich zwischen zwei Schrei-Segmenten. Reihenfolge und Länge der Regionen entspricht der der Segmente. Für das Beispielsignal in Abbildung \ref{img:visualisation_example_01} ergebnen sich fünf Regionen $r_{1} , \ldots , r_5 $, wobei die Region $r_2$ und $r_4$ Schrei-Segmente enthalten. Wird angenommen, dass dieses Beispielsignal noch nicht beendet wurde und weiter kontinuierlich eingelesen wird, ist die letzte Region noch nicht abgeschlossen.
 
-Jeder Region wird ein Pain Score zugewiesen. Enthält die Region ein Segment, so wird der Score des Segmentes für die Region übernommen. Regionen ohne Segment bekommen, unabhängig von der verwendeten Pain Scale, einen Score von 0, wie Gleichung \ref{eq:region_score} definiert. Es wird somit angenommen, dass ein Score von 0 bei jeder Pain Scale den Zustand \glqq kein Schmerz\grqq{} codiert, was zumindest bei allen in Kapitel \ref{tab:painscores} vorgestellten Pain Scales der Fall ist. Abbildung \ref{img:visualisation_example_01} unten visualisiert diese Zuweisung von Scores zu den Regionen.
+Jeder Region wird ein Schmerz-Score zugewiesen. Enthält die Region ein Segment, so wird der Score des Segmentes für die Region übernommen. Regionen ohne Segment erhalten, unabhängig von der verwendeten Schmerz-Scale, einen Score von 0, wie \autoref{eq:region_score} definiert. Es wird davon ausgegangen, dass ein Score von 0 bei jeder Schmerz-Scale den Zustand \glqq kein Schmerz\grqq{} codiert, was zumindest bei allen in \autoref{tab:painscores} vorgestellten Schmerz-Scales der Fall ist. Abbildung \ref{img:visualisation_example_01} unten visualisiert diese Zuweisung von Scores zu den Regionen.
 
 \begin{equation}
-PS_{\text{Scale}}(r) = \begin{cases}
+PC_{\text{Scale}}(r) = \begin{cases}
  0 \quad \quad \quad,  \text{wenn } r  \text{ kein Cry-Segment beinhaltet} \\
  PS_{\text{Scale}}(cs) \;, \text{wenn } r  \text{ ein Cry-Segment } cs \text{ beinhaltet}
  \end{cases}	
  \label{eq:region_score}
 \end{equation}
 
-Das Ziel ist es nun, jede Region mit einer Farbe einzufärben, die den entsprechenden Score anzeigt. Dazu wird für jede Pain Scale eine Funktion $F_{Scale}:S_{Scale} \mapsto P_{Scale}$ benötigt, welche einen Pain Score auf eine Farbe abbildet. Eine Abbildungsfunktion $F_{Scale}$ wird in diesem Zusammenhang als \emph{Farbschema} bezeichnet und der Funktionsbereich $P_{Scale}$ als \emph{Farbpalette}. Ein Farbschema soll die folgenden Kriterien erfüllen:
+Das Ziel ist es nun, jede Region mit einer Farbe einzufärben, die den entsprechenden Score anzeigt. Dazu wird für jede Schmerz-Scale eine Funktion $F_{Scale}:S_{Scale} \mapsto P_{Scale}$ benötigt, welche einen Score auf eine Farbe abbildet. Eine Abbildungsfunktion $F_{Scale}$ wird in diesem Zusammenhang als \emph{Farbschema} bezeichnet und der Funktionsbereich $P_{Scale}$ als \emph{Farbpalette}. Ein Farbschema soll die folgenden Kriterien erfüllen:
 
 \begin{description}
 \item[Injektivität] Jeder Score einer Scale soll anhand seiner Farbe eindeutig erkennbar sein. Dementsprechend soll gelten: $|S_{Scale}| \leq |P_{Scale}|$.
@@ -120,6 +125,7 @@ Es wurden keine Farbschemen für $n<1$ definiert, da eine Pain Scale mit nur ein
 \end{table}
 
 \section{Ergebnis der Visualisierung}
+\label{sec:vizResults}
 
 Abbildung \ref{fig:viz_without_t_01} zeigt die daraus resultierende Visualisierung der \emph{Length-Scale} und der\emph{Min-Scale}, angewandt auf das Beispielsignal. Wie bereits erläutert, verwendet die \emph{Length-Scale} zur Einfärbung der Regionen das Farbschema $L_3$. Die \emph{Min-Scale} definiert insgesamt 4 Scores und verwendet somit das Farbschema $L_4$.
 
