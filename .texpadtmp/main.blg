@@ -36,45 +36,45 @@ while executing---line 2205 of file alphadin.bst
 Warning--empty pages in vad_entropy
 Warning--there's an address but no publisher in zamziMultimodal
 Warning--empty pages in zamziMultimodal
-You've used 59 entries,
+You've used 61 entries,
             4793 wiz_defined-function locations,
-            1264 strings with 20720 characters,
-and the built_in function-call counts, 37500 in all, are:
-= -- 3957
-> -- 1131
-< -- 1183
-+ -- 1390
-- -- 436
-* -- 2508
-:= -- 6548
-add.period$ -- 60
-call.type$ -- 59
-change.case$ -- 318
-chr.to.int$ -- 58
-cite$ -- 73
-duplicate$ -- 1082
-empty$ -- 2495
-format.name$ -- 741
-if$ -- 7287
+            1277 strings with 21153 characters,
+and the built_in function-call counts, 38253 in all, are:
+= -- 4033
+> -- 1147
+< -- 1194
++ -- 1401
+- -- 440
+* -- 2547
+:= -- 6682
+add.period$ -- 62
+call.type$ -- 61
+change.case$ -- 326
+chr.to.int$ -- 60
+cite$ -- 75
+duplicate$ -- 1112
+empty$ -- 2560
+format.name$ -- 753
+if$ -- 7447
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 232
-newline$ -- 354
-num.names$ -- 172
-pop$ -- 418
+missing$ -- 240
+newline$ -- 366
+num.names$ -- 178
+pop$ -- 429
 preamble$ -- 1
-purify$ -- 436
+purify$ -- 448
 quote$ -- 0
-skip$ -- 2133
+skip$ -- 2172
 stack$ -- 0
-substring$ -- 2266
-swap$ -- 245
-text.length$ -- 184
-text.prefix$ -- 20
+substring$ -- 2297
+swap$ -- 249
+text.length$ -- 188
+text.prefix$ -- 22
 top$ -- 0
-type$ -- 511
+type$ -- 527
 warning$ -- 14
-while$ -- 332
-width$ -- 63
-write$ -- 791
+while$ -- 338
+width$ -- 65
+write$ -- 817
 (There were 2 error messages)

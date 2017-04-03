@@ -123,6 +123,14 @@
   \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.624.3471&rep=rep1&type=pdf},
   abgerufen am 22.03.2017
 
+\bibitem[Dua15]{onePitchImage}
+\textsc{Duan}, Zhiyao:
+\newblock \emph{{ECE 477 - Computer Audition - Single Pitch Detection}}.
+\newblock University of Rochester, 2015. --
+\newblock Online unter
+  \url{http://www.ece.rochester.edu/~zduan/teaching/ece477/lectures/Topic%204%20-%20Single%20Pitch%20Detection.pdf},
+  abgerufen am 22.03.2017
+
 \bibitem[EH09]{ordinalClassification}
 \textsc{Eibe}, Frank ; \textsc{Hall}, Mark:
 \newblock \emph{{A Simple Approach to Ordinal Classification}}.
@@ -284,6 +292,13 @@
 \textsc{Marsland}, Stephen:
 \newblock \emph{{Machine Learning - An Algorithmic Perspective}}.
 \newblock Chapman \& Hall / CRC, 2009
+
+\bibitem[Mat17]{matlabSNR}
+\textsc{MathWorks}:
+\newblock \emph{{Signal-to-noise ratio}}.
+\newblock 2017. --
+\newblock Online unter \url{https://de.mathworks.com/help/signal/ref/snr.html},
+  abgerufen am 22.03.2017
 
 \bibitem[MH09]{vad_Easy}
 \textsc{Moattar}, M~H. ; \textsc{Homayounpour}, M~M.:
