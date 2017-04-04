@@ -172,12 +172,28 @@
 \newblock {In: }\emph{{Infant Crying - Theoretical and Research Perspectives}}.
 \newblock Plenum, 1985, Kapitel ~3, S. 59--82
 
+\bibitem[GMR12]{compressorPaper}
+\textsc{Giannoulis}, Dimitrios ; \textsc{Massberg}, Michael  ; \textsc{Reiss},
+  Joshua~D.:
+\newblock {Digital Dynamic Range Compressor Design—A Tutorial and Analysis}.
+\newblock {In: }\emph{Journal of the Audio Engineering Society} 60 (2012), Nr.
+  6, S. 743--750. --
+\newblock Online erhältlich unter:
+  \url{https://www.researchgate.net/publication/277772168_Digital_Dynamic_Range_Compressor_Design-A_Tutorial_and_Analysis},
+  abgerufen am 22.03.2017
+
 \bibitem[GO11]{ricardo_ceps}
 \textsc{Gutierrez-Osuna}, Ricardo:
 \newblock \emph{{CSCE 689-604: Special Topics in Speech Processing}}.
 \newblock Texas A\&M University, 2011. --
 \newblock Online unter \url{http://courses.cs.tamu.edu/rgutier/csce689_s11/},
   abgerufen am 22.03.2017
+
+\bibitem[Gol15]{schottland_comp}
+\textsc{Goldi}, Robert:
+\newblock \emph{{Script Lecture: Audio Mastering. Dynamics and Raising
+  Levels}}.
+\newblock University of West of Scotland, 2015
 
 \bibitem[HBSH98]{PainAssessment03}
 \textsc{Huijer}, Huda Abu-Saad ; \textsc{Bours}, Gerrie~J. ; \textsc{Stevens},
@@ -421,8 +437,8 @@
   \url{https://com-jax-emergency-pami.sites.medinfo.ufl.edu/files/2015/02/Neonatal-Infant-Pain-Scale-NIPS-pain-scale.pdf},
   abgerufen am 22.03.2017
 
-\bibitem[Var09]{cry_thesis}
-\textsc{Varallyay}, Gyorgy~I.:
+\bibitem[V{\'a}r09]{cry_thesis}
+\textsc{V{\'a}rallyay}, Gy{\"o}rgy~Iv{\'a}n:
 \newblock \emph{{Analysis of the Infant Cry with Objective Methods}}, Budapest
   University of Technology and Economics, Diss., 2009. --
 \newblock Online erhältlich unter:

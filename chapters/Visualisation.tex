@@ -1,7 +1,7 @@
 \chapter{Visualisierung der Schmerzbewertung}
 \label{sec:visualisation}
 
-In \autoref{sec:deduction} wurde das Konzept zur Schmerzbewertung auf Basis akustischer Signale vorgestellt. Wird dieses Konzept zur kontinuierlichen Überwachung von Neugeborenen eingesetzt, fällt eine große Menge an Auswertungsergebnissen an. Daher ist es wünschenswert, die Ergebnisse der automatisierten Schmerzbewertung übersichtlich zu visualisieren. In \autoref{sec:vizConecept} wird das Konzept der Visualisierung vorgestellt. Die Visualisierung fokussiet die Visualisierung des Scores, der im Zuge der Schmerzbewertung für den Schmerzindikator \emph{Weinen} auf Basis der Audiosignals vergeben wird. \autoref{sec:vizResults} fasst die Visualisierungsergebnisse zusammen.
+In \autoref{sec:deduction} wurde das Konzept zur Schmerzbewertung auf Basis akustischer Signale vorgestellt. Wird dieses Konzept zur kontinuierlichen Überwachung von Neugeborenen eingesetzt, fällt eine große Menge an Auswertungsergebnissen an. Daher ist es wünschenswert, die Ergebnisse der automatisierten Schmerzbewertung übersichtlich zu visualisieren. In \autoref{sec:vizConecept} wird das Konzept der Visualisierung vorgestellt. In \autoref{sec:vizNoOverlap} wird das Visualisierungskonzept durch die Anwendung auf ein Beispiel veredeutlicht. Abschließend werden in \autoref{sec:vizWithOverlap} Möglichkeiten zur Visualisierung zeitlich überlappender Diagnosebereiche diskutiert.
 
 \section{Visualierungskonzept}
 \label{sec:vizConecept}
@@ -19,7 +19,7 @@ Die Schmerzbewertung wird auf Basis von zwei fiktiven Schmerz-Scales durchgefüh
 
 \begin{table}[h]
 \centering
-\caption{Bewertung des Weinens von zwei fiktive Schmerz-Scales}
+\caption{Bewertung des Weinens auf Basis von zwei fiktiven Schmerz-Scales}
 \label{tab:fictional_painscales_viz}
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -100,7 +100,7 @@ Abbildung \ref{fig:color-swatches} zeigt die Farbpaletten $\text{Swatch}_2, \ldo
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.75\textwidth]{bilder/colorpics.png}
-	\caption{Erstellte Farbpaletten mit zwei bis sieben Farben inklusive der zugehörigen RGB-Koordinaten als Hex-Code.}
+	\caption[Erstellte Farbpaletten mit zwei bis sieben Farben ]{Erstellte Farbpaletten mit zwei bis sieben Farben inklusive der zugehörigen RGB-Koordinaten als Hex-Code.}
 	\label{fig:color-swatches}
 \end{figure}
 
@@ -109,8 +109,9 @@ Auf Basis die Farbpaletten wurden die Farbschemen $L_{n}: S_{Scale} \mapsto P_{S
 Es wurde sich zunächst auf die Definition der Farbschemen für $n \leq 7$ beschränkt, da keine der in Kapitel \ref{sec:painScores} beschriebenen Schmerz-Scales mehr als 7 Scores für die Bewertung des Weinens verwendet. Für die Farbpaletten der Schemen $L_2, L_3, L_5$ und $L_7$ wurden die jeweiligen Farbpaletten $\text{Swatch}_2, \text{Swatch}_3,\text{Swatch}_5$ und $\text{Swatch}_7$ unverändert übernommen (siehe \autoref{fig:color-swatches}). Die Farbpaletten $\text{Swatch}_4$ und $\text{Swatch}_6$ wurde hingegen nicht für die Schemen $L_4$ und $L_6$ übernommen, da in ihnen der Gelbe Fixpunkt nicht enthalten war. Für das Farbschema $L_4$ wurde stattdessen die Farbpalette $\text{Swatch}_5$ unter Auslassung des zweiten Grüntons verwendet. Farbschema $L_6$ verwendet die ersten zwei Farben von $\text{Swatch}_5$ und die letzten vier Farben von $\text{Swatch}_7$. Dieses Muster kann zur Definition weiterer Farbschemen fortgesetzt werden.
 
 \begin{table}[h]
+\footnotesize
 \centering
-\caption{Definition der Farbschemen zur Visualisierung der Schmerz-Scales. Die Farbwerte werden als Hexadezimal-Codes für den RGB-Farbraum angegeben.}
+\caption[Definition der Farbschemen zur Visualisierung der Schmerz-Scales]{Definition der Farbschemen zur Visualisierung der Schmerz-Scales. Die Farbwerte werden als Hexadezimal-Codes im RGB-Farbraum angegeben.}
 \label{tab:color_shemes}
 \begin{tabular}{@{}clllllll@{}}
 \toprule
@@ -124,47 +125,62 @@ Es wurde sich zunächst auf die Definition der Farbschemen für $n \leq 7$ besch
 \end{tabular}
 \end{table}
 
+\section{Visualisierung ohne einander überlappende Zeitbereiche}
+\label{sec:vizNoOverlap}
+
 Abbildung \ref{fig:viz_without_t_01} zeigt die daraus resultierende Visualisierung der beispielhaften Schmerz-Scales \emph{Length-Scale} und der\emph{Min-Scale}, angewandt auf das Beispielsignal. Wie bereits erläutert, verwendet die \emph{Length-Scale} zur Einfärbung der Regionen das Farbschema $L_3$. Die \emph{Min-Scale} definiert insgesamt 4 Scores und verwendet somit das Farbschema $L_4$.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.85\textwidth]{bilder/viz_without_t_05.png}
-	\caption{Visualisierungen der beispielhaften Schmerz-Scales \emph{Length-Scale} und \emph{Min-Scale} für das Beispielsignal. }
+	\includegraphics[width=0.85\textwidth]{bilder/viz_without_t_06.png}
+	\caption[Visualisierungen der beispielhaften Schmerz-Scales durch schematische Balken]{Visualisierungen der beispielhaften Schmerz-Scales \emph{Length-Scale} und \emph{Min-Scale} für das Beispielsignal.}
 	\label{fig:viz_without_t_01}
 \end{figure}
 
-Wird das Signal kontinuierlich eingelesen, kann die Einfärbung einer Region mit einem Schrei-Segment erst erfolgen, sobald die Schmerzbewertung durchgeführt wurde und der entsprechende Schmerz-Score feststeht. Die Einfärbung einer Region ohne zugehöriges Schrei-Segment kann hingegen kontinuierlich geschehen, da hier der Schmerz-Score von 0 in jedem Fall feststeht. Würde das Beispielsignal in Abbildung \ref{fig:viz_without_t_01} weiter kontinuierlich eingelesen werden, so würde der Visualisierungsbalken ebenso kontinuierlich fortgesetzt und dabei grün eingefärbt werden. Sobald der Beginn eines neuen Schrei-Segmentes festgestellt wird, kann die dazugehörige, neue in den Balken eingefügte Region erst eingefärbt werden, sobald dieses neue Segment abgeschlossen und die Schmerzbewertung durchgeführt wurde.
+Wird das Signal kontinuierlich eingelesen, kann die Einfärbung einer Region mit einem Schrei-Segment erst erfolgen, sobald die Schmerzbewertung durchgeführt wurde und der entsprechende Schmerz-Score feststeht. Die Einfärbung einer Region ohne zugehöriges Schrei-Segment kann hingegen kontinuierlich geschehen, da hier der Schmerz-Score von 0 in jedem Fall feststeht. Würde somit das Beispielsignal in \autoref{fig:viz_without_t_01} weiter kontinuierlich eingelesen werden, so würde der Visualisierungsbalken ebenso kontinuierlich fortgesetzt und dabei grün eingefärbt werden. Sobald der Beginn eines neuen Schrei-Segmentes festgestellt wird, kann die dazugehörige, neu in den Balken eingefügte Region erst eingefärbt werden, sobald dieses neue Segment abgeschlossen und die Schmerzbewertung durchgeführt wurde.
+
+Bei Beobachtungen über einen langen Zeitraum wächst der Visualisierungsbalkens ebenfalls an. Zum Einsatz dieser Visualisierung in einer tatsächlichen UI wird daher empfohlen, die Achsen mit konkreten Uhrzeiten zu beschriften, sowie Scroll- und Zoom-Optionen für den Balken zu implementieren. Es ist ebenfalls möglich, den zeitlichen Verlauf des analysierten Eingangssignals durch andere Formen als durch einen Balken zu repräsentieren, wie zum Beispiel durch schematische Uhren. \autoref{fig:viz_hour_thing} zeigt ein Beispiel für die Visualisierung der Schmerzbewertung mit der \emph{Length-Scale}, welche in \autoref{fig:viz_without_t_01} durch einen Balken dargestellt wurde, durch eine Uhr. Zur besseren Veranschaulichung des Prinzips wurde das analysierte Signal auf eine Länge von 45 Minuten skaliert. In einer tatsächlichen UI würde eine Uhr für jede Stunde des Tages bereitgestellt werden.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{bilder/visualisation_hour_02.png}
+	\caption[Visualisierung der Schmerzbeurteilung durch eine schematische Uhr]{Visualisierung der Schmerzbeurteilung auf Basis der \emph{Length-Scale} durch eine schematische Uhr. Es wird in diesem Fall angenommen, dass das Beispielsignal aus \autoref{fig:viz_without_t_01} anstatt 220 Sekunden eine länge von 45 Minuten hat. Die Regionen wurden dementsprechend skaliert.}
+	\label{fig:viz_hour_thing}
+\end{figure}
+
+In diesem Abschnitt wurde angenommen, dass es sich bei den visualisierten Schmerz-Scales um monomodale Schmerz-Scales zur Bewertung des Weinens handelt. Würde es sich hingegen um multimodale Schmerz-Scales handeln, die weitere Indikatoren in die Schmerzbewertung mit einbeziehen, so ergibt sich der zu visualisierende Schmerz-Score durch die Addition der Scores aller Schmerzindikatoren (siehe Argumentation bei  \autoref{eq:multimodal_pain_caluclation}). Das hier vorgestellte Visualisierungskonzept lässt sich daraufhin unverändert anwenden, da die Visualisierungslogik getrennt ist von der Logik zur Berechnung des Schmerz-Score. Beispielsweise würde man zur Visualisierung der multimodalen NIPS aus \autoref{tab:nips}, welche unter Einbeziehung aller Indikatoren einen maximalen Schmerz-Score von 7 definiert, das Farbschema $L_7$ verwenden.
+
  
-\section{Visualisierung der Schmerzbewertung mit einander überlappenden Zeitbereichen}
-\label{sec:vizResults} 
+\section{Visualisierung mit einander überlappenden Zeitbereichen}
+\label{sec:vizWithOverlap}
  
-Die Visualisierung von \glqq Zwischenergebnissen\grqq{} bezüglich der Pain Score von Cry-Segmenten lässt sich mit Hilfe des in Kapitel \ref{sec:actulization} vorgestellten Aktualisierungsintervalls $t_{act}$ umsetzen. Die so entstehenden Subsegmente führen zu einander überlappenden Regionen, wie Abbildung \ref{fig:viz_multiple_regions} veranschaulicht. Oben in der Abbildung ist das Beispielsignal zu sehen, welches mit $t_s = \SI{10}{\second}$ segmentiert wurde. Es wurde ein Aktualisierungsintervall von  $t_{act} = \SI{20}{\second}$ und ein Beobachtungszeitraum von $t_{obs} = \infty$ verwendet. Die Aktualisierungszeitpunkte werden durch kleine Pfeile angezeigt. Die letzte Aktualisierung jedes Segmentes wird durch die jeweilige Beendigung eingeleitet. Unten werden die aus den Subsegmenten entstandenen, einander überlappenden Regionen abgebildet. Für jede Region wir der Score angegeben, der sich nach \emph{Min-Scale} ergibt. Die Regionen werden nach dem Schema $L_4$ eingefärbt.
+Die Visualisierung von \glqq Zwischenergebnissen\grqq{} der Schmerzbewertung während einer Schmerzepisode lässt sich mit Hilfe der in \autoref{sec:regressionTimeStuff} vorgestellten Aktualisierungsfrequenz $f_{act}$ umsetzen. Die so entstehenden Subsegmente führen zu einander überlappenden Regionen, wie \autoref{fig:viz_multiple_regions} veranschaulicht. Im oberen Bereich der Abbildung ist das Beispielsignal aus \autoref{sec:vizConecept} zu sehen, welches zwei Segmente enthält (bedingt durch die Segmentierung mit $t_s = \SI{10}{\second}$). Es wurde eine Aktualisierungsfrequenz von  $f_{act} = 1/ \SI{20}{\second}$. Die Aktualisierungszeitpunkte werden in der Abbildung durch kleine Pfeile angezeigt. Die letzte Aktualisierung jedes Schrei-Segmentes wird durch die jeweilige Beeindigung des Segmentes eingeleitet. Unten werden die aus den Subsegmenten entstandenen, einander überlappenden Regionen abgebildet. Für jede Region wir der Score angegeben, der sich nach \emph{Min-Scale} ergibt (siehe Hypothese \autoref{eq:min_length_hypothesis}) . Die Regionen werden nach dem Schema $L_4$ eingefärbt.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/viz-multiple-regions.png}
-	\caption{Oben: Beispielsignal mit zwei Segmenten. Unten: Überlappende Regionen, eingefärbt nach dem Farbschema der \emph{Min-Scale}.}
+	\caption[Ein Beispielsignal mit zeitlich einander überlappenden Diagnosebereichen]{Oben: Beispielsignal mit zwei Segmenten. Die Pfeile zeigen Aktualisierungszeitpunkte für eine Aktualisierungsfrequenz von $f_{act} = 1/ \SI{20}{\second}$ an. Unten: Einander überlappende Regionen infolge der einander überlappenden Diagnosebereiche. Für jede Region $r_i$ wird der entsprechende Schmerz-Score $s$ auf Basis der Basis der \emph{Min-Scale} angegeben und nach dem Schema $L_4$ eingefärbt.}
 	\label{fig:viz_multiple_regions}
 \end{figure}
 
 Es werden zwei Möglichkeiten zur Visualisierung einander überlappender Regionen vorgeschlagen:
 
 \begin{itemize}
-\item Die jeweils \glqq aktuellere\grqq{} Region, also diejenige mit dem jeweils \emph{späteren} Endzeitpunkt, überlagert die jeweils \glqq ältere\grqq{} Region, also diejenige mit dem jeweils \emph{früheren} Endzeitpunkt. So wird der jeweils aktuellere Score in den Vordergrund gestellt. Die Historie der abgeleiteten Scores geht jedoch in der Visualisierung verloren. Abbildung \ref{fig:viz_act_over} verdeutlicht dieses Prinzip an einem Beispiel. Das Beispielsignal wurde hier erst bis zu Sekunde $146$ eingelesen, das zweite Segment ist noch geöffnet. Bei der Aktualisierung zum Zeitpunkt $t=\SI{146}{\second}$ wird nach der Min-Scale ein Score von 3 abgeleitet und die Region dementsprechend rot eingefärbt. Das Signal wird nun weiter eingelesen. Bei der nächsten Aktualisierung bei $t=\SI{166}{\second}$ wird ein Score von 1 abgeleitet. Die gelb gefärbte Region überlagert die rot gefärbte Region.
+\item Die jeweils \glqq aktuellere\grqq{} Region, also diejenige mit dem jeweils \emph{späteren} Endzeitpunkt, überlagert die jeweils \glqq ältere\grqq{} Region, also diejenige mit dem jeweils \emph{früheren} Endzeitpunkt. So wird der jeweils aktuellere Schmerz-Score in den Vordergrund gestellt. Die Historie der Schmerzbewertung einer Schmerzepisode geht jedoch in der Visualisierung verloren. \autoref{fig:viz_act_over} verdeutlicht dieses Prinzip an einem Beispiel. Oben in der Abbildung ist zu sehen, wie das Beispielsignal bis zu Sekunde $146$ eingelesen wurde, das zweite Segment ist noch geöffnet. Bei der Aktualisierung zum Zeitpunkt $t=\SI{146}{\second}$ wird nach der \emph{Min-Scale} ein Schmerz-Score von 2 berechnet und die Region dementsprechend rot gefärbt. Unten in der Abbildung weiter eingelesen. Bei der Aktualisierung zu $t=\SI{166}{\second}$ wird ein Schmerz-Score von 1 berecnet. Die gelb gefärbte Region überlagert die rot gefärbte Region.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/viz_act_over_02.png}
-	\caption{Visualisierung der Min-Scale bei Aktualisierungen. Die jeweils \glqq aktuellere\grqq{} Region überlagert die jeweils \glqq ältere\grqq{}. Oben: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{146}{\second}$. Unten: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{166}{\second}$.}
+	\includegraphics[width=0.8\textwidth]{bilder/viz_act_over_03.png}
+	\caption[Visualisierung der bei Aktualisierungen mit Priorisierung der aktuelleren Schmerzbewertung]{Visualisierung der \emph{Min-Scale} bei Aktualisierungen. Die jeweils \glqq aktuellere\grqq{} Region überlagert die jeweils \glqq ältere\grqq{}. Oben: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{146}{\second}$. Unten: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{166}{\second}$.}
 	\label{fig:viz_act_over}
 \end{figure}
 
-\item Der entgegengesetzte Fall: Die Region mit dem jeweils \emph{früheren} Endzeitpunkt überlagert die Regionen mit dem jeweils \emph{späteren} Endzeitpunkt. So wird die Historie der abgeleiteten Scores in der Visualisierung erkennbar. Abbildung \ref{fig:viz_act_under} zeigt die Visualisierung der Min-Scale für das Beispielsignal nach diesem Prinzip. Wie zu sehen ist, bleibt auch nach Aktualisierung des Scores des zweiten Segmentes auf 1 erkennbar, dass bei früheren Aktualisierungen ein Score von 3 abgeleitet wurde.
+\item Der entgegengesetzte Fall: Eine Region mit einem \emph{früheren} Endzeitpunkt überlagert eine Regionen mit einem \emph{späteren} Endzeitpunkt. So wird die Historie der berechneten Schmerz-Scores in der Visualisierung erkennbar. Abbildung \ref{fig:viz_act_under} zeigt die Visualisierung der Min-Scale für das Beispielsignal nach diesem Prinzip. Wie zu sehen ist, bleibt auch nach Aktualisierung des Scores des zweiten Segmentes auf 1 erkennbar, dass bei früheren Aktualisierungen ein Score von 3 abgeleitet wurde.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/viz_act_under_02.png}
-	\caption{Visualisierung der Min-Scale bei Aktualisierungen. Die jeweils \glqq ältere\grqq{} Region überlagert die jeweils \glqq aktuellere\grqq{}.}
+	\caption[Visualisierung der bei Aktualisierungen mit Priorisierung der vorangegangenen Schmerzbewertung]{Visualisierung der \emph{Min-Scale} mit Aktualisierungen. Eine jeweils \glqq ältere\grqq{} Region überlagert eine jeweils \glqq aktuellere\grqq{}.}
 	\label{fig:viz_act_under}
 \end{figure}
  

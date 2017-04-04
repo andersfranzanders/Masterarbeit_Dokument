@@ -11,7 +11,7 @@
 \BOOKMARK [1][-]{section.2.2}{Schmerz und Weinen bei Neugeborenen}{chapter.2}% 11
 \BOOKMARK [2][-]{subsection.2.2.1}{Schmerz-Scales als Instrument zur Schmerzbewertung}{section.2.2}% 12
 \BOOKMARK [2][-]{subsection.2.2.2}{Weinen als Indikator f\374r Schmerz}{section.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.3}{Phyisio-Akustische Modellierung des Weinens}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.3}{Akustische Modellierung und Analyse des Weinens}{section.2.2}% 14
 \BOOKMARK [1][-]{section.2.3}{Automatisierte Klassifizierung und Bewertung}{chapter.2}% 15
 \BOOKMARK [2][-]{subsection.2.3.1}{Klassifizierung mit den Algorithmen ID3 und C4.5}{section.2.3}% 16
 \BOOKMARK [2][-]{subsection.2.3.2}{G\374tema\337e bin\344rer Klassifikatoren}{section.2.3}% 17
@@ -34,8 +34,9 @@
 \BOOKMARK [1][-]{section.5.3}{Beispiel f\374r die automatisierte Schmerzbewertung}{chapter.5}% 34
 \BOOKMARK [0][-]{chapter.6}{Visualisierung der Schmerzbewertung}{}% 35
 \BOOKMARK [1][-]{section.6.1}{Visualierungskonzept}{chapter.6}% 36
-\BOOKMARK [1][-]{section.6.2}{Visualisierung der Schmerzbewertung mit einander \374berlappenden Zeitbereichen}{chapter.6}% 37
-\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 38
-\BOOKMARK [0][-]{chapter*.52}{Literaturverzeichnis}{}% 39
-\BOOKMARK [0][-]{section*.53}{Appendices}{}% 40
-\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 41
+\BOOKMARK [1][-]{section.6.2}{Visualisierung ohne einander \374berlappende Zeitbereiche}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.3}{Visualisierung mit einander \374berlappenden Zeitbereichen}{chapter.6}% 38
+\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 39
+\BOOKMARK [0][-]{chapter*.53}{Literaturverzeichnis}{}% 40
+\BOOKMARK [0][-]{section*.54}{Appendices}{}% 41
+\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 42
