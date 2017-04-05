@@ -276,7 +276,7 @@ In dieser Arbeit wurde $t = \SI{5}{\second}$ festgelegt. Es ist zu beachten, das
 
 \subsubsection{Entscheidung über das Vorhandensein von Stimme auf Basis der Attribute}
 
-Eine einfache Variante zur Entscheidung darüber, ob ein Signalfenster $x_i[\;]$ Stimme enthält, ist, eines der vorgestellten Attribute als Entscheidungsgrundlage zu wählen und einen festen Grenzwert $\theta$ festzulegen, bei dessen Über- oder Unterschreitung das Fenster als stimmhaft klassifiziert wird. Die Entscheidung lässt sich als \emph{Klassifizierungsfunktion} (auch: \emph{Klassifikator}) $C: x_i[\;] \mapsto Y$ definieren, welche ein Signalfenster abbildet auf $Y = \{ 1 \; \hat{=} \; \text{stimmhaft}, \; 0 \; \hat{=} \; \text{nicht stimmhaft}\}$ . Die Klassifizierungsfunktion nimmt dann die folgende Form an:
+Eine einfache Variante zur Entscheidung darüber, ob ein Signalfenster $x_i[\;]$ Stimme enthält, ist, eines der vorgestellten Attribute als Entscheidungsgrundlage zu wählen und einen festen Grenzwert $\theta$ festzulegen, bei dessen Über- oder Unterschreitung das Fenster als stimmhaft klassifiziert wird. Die Entscheidung lässt sich als \emph{Klassifizierungsfunktion} (auch: \emph{Klassifikator}) $C: \{ x_i[\;] \} \mapsto Y$ definieren, welche ein Signalfenster abbildet auf $Y = \{ 1 \; \hat{=} \; \text{stimmhaft}, \; 0 \; \hat{=} \; \text{nicht stimmhaft}\}$. Die Klassifizierungsfunktion nimmt dann die folgende Form an:
 
 \begin{equation}
 	C(x_i[\;]) = 
@@ -404,7 +404,7 @@ Als Implementierung für den $C4.5$-Algorithmus wurde der \emph{REPTree}\footnot
 \subsection{Ergebnisse}
 \label{sec:vad_results}
 
-Die Evaluationsergebnisse werden im Anhang in \autoref{tab:reptree_results} aufgelistet. Für jeden Trainingsdatensatz wurde die Genauigkeit des jeweiligen Klassifikators für jeden der drei Testdatensätze angegeben. Außerdem wurde jeweils der Durchschnittswert aller drei Klassifikationsgenauigkeiten berechnet.
+Die Evaluationsergebnisse werden im Anhang in \autoref{tab:reptree_results} aufgelistet. Für jeden Trainingsdatensatz wird die Genauigkeit des jeweiligen Klassifikators für jeden der drei Testdatensätze angegeben. Außerdem wurde jeweils der Durchschnittswert aller drei Klassifikationsgenauigkeiten berechnet.
 
 Der Feauture-Bereich, der zu den höchsten Klassifikationsgenauigkeiten führte, ist das in Unterabschnitt \ref{sec:vad_ceps_features} beschriebene Cepstrum. Das einzige Feature dieses Bereiches, welches in die jeweiligen Entscheidungsbäume eingebaut wurde, war das \emph{Differenz-Feature des höchsten Peaks im Cepstrum} [Diff($Ceps_{mag}$)]. Die Klassifikatoren, die mit dem Diff($Ceps_{mag}$)-Feature entworfen wurden, erreichten eine über die drei Testdatensätze gemittelte Genauigkeit von mindestens 91,45\%. Der nächstbeste Klassifikator mit einer gemittelten Genauigkeit von 86,96\% wurde unter Verwendung der Features des Zeitbereiches und der Autokorrelation auf dem Datensatz $D_{50+\SI{3}{\decibel}}$ entworfen. Sobald das Cepstrum in Verbindung mit den Features anderer Bereiche verwendet wurden, wurde das Diff($Ceps_{mag}$)-Feature vom \emph{C4.5}-Algorithmus bevorzugt und die Features der anderen Bereiche nicht mehr in die jeweiligen Entscheidungsbäume mit eingebaut.
 
@@ -431,14 +431,14 @@ C(x_i[\;]) = \begin{cases}
 
 Da der Klassifikator aus \autoref{eq:cepTree01} eine durchschnittliche Genaugikeit von 92,22\% und der Klassifikator aus \autoref{eq:cepTree02} eine unwesentlich geringere Genauigkeit von 91,45\% erzielte, wurden für beide Modelle die Spezifität und Sensitivität berechnet, um eine Entscheidung für eines der beiden Modelle fällen zu können (siehe \autoref{sec:howGoodIsMyClassifier}). Dazu wurden die Signalmengen A\textsubscript{\SI{3}{\decibel}}, A\textsubscript{\SI{50}{\decibel}} und A\textsubscript{\SI{7}{\decibel}*} in Frames \`{a} 100 Windows zerlegt und für jedes Zeitfenster die Sensitivität, Spezifität und Genauigkeit bezüglich der beiden Klassifikatoren berechnet. Die Ergebnisse werden durch die Boxplots im Anhang in \autoref{img:boxplots} gezeigt. Die Modelle unterscheiden sich am stärksten hinsichtlich der Datensätze mit \SI{3}{\decibel} und \SI{7}{\decibel}. Der Klassifikator mit dem Grenzwert von 0.03 erzielte in beiden Fällen eine höhere Spezifität, aber geringere Sensitivität als das Modell mit dem Grenzwert von 0.02. 
 
-Es wurde sich für den Klassifikator für mit einem Grenzwert von 0.02 entschieden, da durch die höhere Sensitivität mehr Schreigeräusche erkannt werden, die in späteren Verarbeitungsschritten immernoch als False-Positives erkannt und verworfen werden können. Einmal im Prozess der VAD als stimmlos markierte Fenster werden jedoch nicht weiter verarbeitet und gehen somit \glqq verloren\grqq. Die finale Klassifizierungsfunktion eines Signalfensters zur Voice Activity Detection ist somit die, die in \autoref{eq:cepTree01} definiert wird.
+Es wurde sich für den Klassifikator für mit einem Grenzwert von 0.02 entschieden, da durch die höhere Sensitivität mehr Schreigeräusche erkannt werden, die in späteren Verarbeitungsschritten immernoch als False-Positives erkannt und verworfen werden können. Einmal im Prozess der VAD als stimmlos markierte Fenster werden jedoch nicht weiter verarbeitet und gehen somit \glqq verloren\grqq. Die finale Klassifizierungsfunktion eines Signalfensters zur VAD ist somit die, die in \autoref{eq:cepTree01} definiert wird.
 
 \section{Zusammenfassung stimmhafter Signalbereiche zu Schreieinheiten}
 \label{sec:marking_cry-units_new}
 
-In \autoref{sec:vad_new} wurde die automatisierte Erkennung von Stimmaktivität in Signalen besprochen. Das Ergebnis der Evaluation verschiedener Methoden der Voice Activity Detection war eine Klassifizierungsfunktion, die ein Signalfenster $x_i[\;]$ als \emph{stimmhaft} oder \emph{nicht stimmhaft} markiert. Várallyay \cite[S. 16 - 17]{cry_thesis} stellte die Idee vor, auf Grundlage des Ergebnisses der Stimmdetektion die Anfangs- und Endzeitpunkte der Schreieinheiten zu markieren.\footnote{\glqq Schreieinheiten\grqq{} wurden von Várallyay als \glqq Segmente\grqq{} bezeichnet. Es wurde sich gegen diese Bezeichnung entschieden, um Konsistenz zu dem in \autoref{sec:acousticModel} eingeführten Begriffen zu gewährleisten.} Das genaue Vorgehen von Várallyay zur Kennzeichnung der Schreieinheiten konnte jedoch nicht eingesehen werden, da der Autor keine Zugriffsrechte auf die Publikation erhielt.
-
-Waheed et al. \cite{vad_entropy} stellten in einer Veröffentlichung über Methoden der Voice Activity Detection die Idee vor, zusammenhängende und ununterbrochene Ketten als \emph{stimmhaft} klassifizierter Signalfenster zu \emph{Stimm-Segmenten} zusammenzufassen. Dieser Ansatz wurde übernommen, wobei ein Stimm-Segment im Kontext dieser Arbeit einer \emph{Schreieinheit} entspricht. Möglicherweise ist dies der Ansatz, den auch  Várallyay \cite[S. 16 - 17]{cry_thesis} gewählt hatte. \autoref{img:cryUnit} veranschaulicht diese Gruppierung. 
+In \autoref{sec:vad_new} wurde die automatisierte Erkennung von Stimmaktivität in Signalen besprochen. Das Ergebnis der Evaluation verschiedener Methoden der Voice Activity Detection war eine Klassifizierungsfunktion, die ein Signalfenster $x_i[\;]$ als \emph{stimmhaft} oder \emph{nicht stimmhaft} markiert. Várallyay \cite[S. 16 - 17]{cry_thesis} schlug vor, auf Grundlage des Ergebnisses der Stimmdetektion die Anfangs- und Endzeitpunkte der Schreieinheiten zu markieren. Das genaue Vorgehen von Várallyay zur Kennzeichnung der Schreieinheiten konnte jedoch nicht eingesehen werden, da der Autor keine Zugriffsrechte auf die Publikation erhielt.
+%phil wegen konsistenz fragen
+Waheed et al. \cite{vad_entropy} stellten in der Veröffentlichung \glqq A robust Algorithm for detecting speech segments using an entropic contrast\grqq{} die Idee vor, zusammenhängende und ununterbrochene Ketten als \emph{stimmhaft} klassifizierter Signalfenster zu \emph{Stimm-Segmenten} zusammenzufassen. Dieser Ansatz wurde übernommen, wobei ein Stimm-Segment im Kontext dieser Arbeit als \emph{Schreieinheit} bezeichnet wird, um dem in \autoref{sec:acousticModel} eingeführten Vokabular zu entsprechen. Möglicherweise ist dies der Ansatz, den auch  Várallyay wählte. \autoref{img:cryUnit} veranschaulicht diese Gruppierung. 
 
 \begin{figure}[h]
 	\centering
@@ -447,14 +447,14 @@ Waheed et al. \cite{vad_entropy} stellten in einer Veröffentlichung über Metho
 	\label{img:cryUnit}
 \end{figure}
 
-\autoref{eq:cry-Unit} gibt die Definition des Datentyps \emph{Schreieinheit} (engl. \emph{Cry-Unit}) [$CU$]. Eine Cry-Unit wird definiert durch den Anfangszeitpunkt $start$, einen Endzeitpunkt $end$ und der Liste seiner Signalfenster $windows = \big[x_0[\;], \ldots, x_n[\;]\big]$.
+\autoref{eq:cry-Unit} definiert den Datentyp \emph{Schreieinheit} (engl. \emph{Cry-Unit}) [$CU$]. Eine Schreieinheit wird bestimmt durch einen Anfangszeitpunkt $start$, einen Endzeitpunkt $end$ und der Liste ihrer Signalfenster $windows = \big[x_0[\;], \ldots, x_n[\;]\big]$.
 
 \begin{equation}
 CU := \quad \Big(windows = \big[x_0[\;] \; ,\ldots, x_n[\;] \big] \;, start \in Zeit \;, end \in Zeit \Big)
 \label{eq:cry-Unit}
 \end{equation}
 
-Die zeitliche Dauer eine Cry-Unit $cu \in CU$ wird nach \autoref{eq:cry-Lambda} berechnet und mit $\lambda$ bezeichnet. Die Dauer der Pause zwischen zwei Cry-Units d($cu_i, cu_j$), wird nach \autoref{eq:cry-distance} berechnet. Diese Zusammenhänge werden in \autoref{img:cryUnit-details} visualisiert.\cite[S. 2]{vad_entropy}
+Die zeitliche Dauer eine Schreieinheit $cu \in CU$ wird nach \autoref{eq:cry-Lambda} berechnet und mit $\lambda$ bezeichnet. Die Dauer der Pause zwischen zwei Schreieinheiten d($cu_i, cu_j$), wird nach \autoref{eq:cry-distance} berechnet. Diese Zusammenhänge werden in \autoref{img:cryUnit-details} visualisiert.\cite[S. 2]{vad_entropy}
 
 \begin{equation}
 \lambda (cu) = cu.end - cu.start
@@ -466,14 +466,14 @@ Die zeitliche Dauer eine Cry-Unit $cu \in CU$ wird nach \autoref{eq:cry-Lambda} 
 \label{eq:cry-distance}
 \end{equation}
 
-Algorithmus \autoref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssignal $x[\;]$ die Schreieinheiten   gekennzeichnet werden. Die Funktion \textsc{turnSignalIntoOverlappingWindows} \linebreak ($x[\;], length, hopsize$) zerlegt das Eingangssignal in einander überlappende Signalfenster. Wie in Unterabschnitt \ref{sec:windowing} beschrieben, wurde sich für $length = \SI{25}{\milli\second}$ und $hopsize = \SI{12.5}{\milli\second}$ entschieden. Der Output dieser Funktion ist eine Liste aller Signalfenster $X_{all} = [x_0[\;] ,\ldots, x_m[\;]]$. Die Funktion $C(x_i[\;])$ klassifiziert ein Signalfenster als \emph{Stimme} oder \emph{Sille} nach \autoref{eq:cepTree01}. Die Funktion \textsc{getTimeOf}$(x_i[\;])$ liefert die Anfangszeitpunkt des Signalfensters $x_i[\;]$. Output des Algorithmus ist eine Liste aller im Signal detektierten Schreieinheiten $CU_{all} = [cu_0 , \ldots, cu_l]$. 
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{bilder/newSmoothing05.png}
 	\caption[Beziehungen zwischen benachbarten Schreieinheiten]{Beziehungen zwischen benachbarten Schreieinheiten (nach \cite[S. 2]{vad_entropy})}
 	\label{img:cryUnit-details}
 \end{figure}
+
+Algorithmus \autoref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssignal $x[\;]$ die Schreieinheiten gekennzeichnet werden. Der Output des Algorithmus ist eine Liste aller im Signal detektierten Schreieinheiten $CU_{all} = [cu_0 , \ldots, cu_l]$. Die Funktion \textsc{turnSignalIntoOverlappingWindows} ($x[\;], length, hopsize$) zerlegt das Eingangssignal in einander überlappende Signalfenster. Wie in Unterabschnitt \ref{sec:windowing} beschrieben, wurde  $length = \SI{25}{\milli\second}$ und $hopsize = \SI{12.5}{\milli\second}$ festgelegt. Der Output dieser Funktion ist eine Liste aller Signalfenster $X_{all} = [x_0[\;] ,\ldots, x_m[\;]]$. Die Funktion $C(x_i[\;])$ ist diejenige, die im Zuge der Simulationsstudie der VAD festgelegt wurde und klassifiziert ein Signalfenster als \emph{Stimme} oder \emph{Sille} nach \autoref{eq:cepTree01}. Die Funktion \textsc{getTimeOf}$(x_i[\;])$ liefert den Anfangszeitpunkt des Signalfensters $x_i[\;]$. 
 
 \begin{algorithm}[H]
 	\caption{Detektion Schreieinheiten in einem Audiosignal}
@@ -484,7 +484,7 @@ Algorithmus \autoref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssig
 		\State $ CU_{all} \gets [\;]$
 		\State $ cu\gets ([\;],0,0)$
 		\For{\textbf{all} $x_i[\;] \in X_{all}$}
-				\State $ c \gets C(x[\;])$
+				\State $ c \gets C(x_i[\;])$
 				\State \Comment Start of Cry-Unit
 				\If {$c == 1 \wedge $ \Call{isEmpty}{cu.windows}}
 						\State $cu\gets ([\;],0,0)$
@@ -498,7 +498,7 @@ Algorithmus \autoref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssig
 				\State \Comment End of Cry-Unit
 				\If {$c == 0 \wedge $ ! \Call{isEmpty}{$cu.windows$}}
 						\State $cu.end \gets $ \Call{getTimeOf}{$x_i[\;]$}
-						\State $CU \gets [CU, cu]$
+						\State $CU_{all} \gets [CU_{all}, cu]$
 						\State $cu.windows \gets [\;]$
 				\EndIf
 		\EndFor
@@ -520,7 +520,7 @@ Algorithmus \autoref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssig
 \section{Nachträgliche Korrektur von Schreieinheiten}
 \label{sec:decision_smoothing_new}
 
-\autoref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal/Rausch-Abstand von \SI{3}{\decibel}, bei dem die Voice Activity Detection durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifizierung und die grüne Linie die prognostizierte Klassifizierung. Es ist zu sehen, dass einige False-Negatives sowie False-Positives prognostiziert wurden. Es werden drei charakteristische Varianten falsch prognostizierter Klassifizierungen näher erläutert:
+\autoref{img:beforeSmoothing} zeigt ein Audiosignal mit einem Signal/Rausch-Abstand von \SI{5}{\decibel}, bei dem die Voice Activity Detection durchgeführt wurde. Die rote Linie zeigt die tatsächliche Klassifizierung und die grüne Linie die prognostizierte Klassifizierung. Es ist zu sehen, dass einige False-Negatives sowie False-Positives prognostiziert wurden. Es werden drei charakteristische Varianten falsch prognostizierter Klassifizierungen näher erläutert:
 
 \begin{description}
 	\item [False Negatives nach (a): ] Eine korrekt erkannte, längere Schreieinheit wird zu früh beendet. Oft werden kurz nach dem Ende einer längeren Schreieinheit sehr kurze Schreieinheiten prognostiziert, die eigentlich noch zu der längeren, vorhergehenden Schreieinheit gehören.
@@ -535,7 +535,7 @@ Algorithmus \autoref{alg:cryUnit} zeigt in Pseudo-Code, wie in einem Eingangssig
 	\label{img:beforeSmoothing}
 \end{figure}
 
-Im Process des \textbf{Decision-Smoothing} werden kontextuelle Informationen genutzt, um nachträglich False-Positives und False-Negatives zu entfernen. Es wurden dazu die von Waheed et al. \cite{vad_entropy} präsentierten Ideen verwendet. Es werden zwei Parameter eingeführt: $\lambda_{min}$, die Mindestlänge einer akzeptierten Cry-Unit, und d$_{min}$, die Mindestlänge eines akzeptierten Stille-Segmentes. Das Decision-Smoothing wird nach den folgenden Entscheidungsregeln durchgeführt:
+Im Process des \emph{Decision-Smoothing} werden kontextuelle Informationen genutzt, um nachträglich False-Positives und False-Negatives zu entfernen. Dazu werden die von Waheed et al. \cite{vad_entropy} präsentierten Ideen verwendet. Es werden zwei Parameter eingeführt: $\lambda_{min}$, die Mindestlänge einer akzeptierten Schreieinheit, und d$_{min}$, die Mindestlänge einer akzeptierten Pause zwischen Schreieinheiten. Das Decision-Smoothing wird nach den folgenden Entscheidungsregeln durchgeführt:
 
 \textbf{Entscheidungsregeln: }\noindent\rule{0.7\linewidth}{0.3pt}
 \begin{itemize}
@@ -544,12 +544,12 @@ Im Process des \textbf{Decision-Smoothing} werden kontextuelle Informationen gen
 		\item wenn $\lambda (cu_{i-1}) > \lambda_{min}$ und $d (cu_{i-1}, cu_{i}) \leq d_{min}$, dann vereinige $cu_{i}$ mit $cu_{i-1}$ $\Longrightarrow$ behebt False-Negatives des Types (a)
 		\item ansonsten entferne $cu_i \Longrightarrow$ behebt False-Negatives des Types (b)
 	\end{itemize}
-	\item wenn $\lambda (cu_{i}) > \lambda_{min}$ und $d (cu_{i-1}, cu_{i}) \leq d_{min}$, dann vereinige $cu_{i}$ mit $cu_{i-1}$ . $\Rightarrow$ behebt False-Negatives des Types (c)
+	\item wenn $\lambda (cu_{i}) > \lambda_{min}$ und $d (cu_{i-1}, cu_{i}) \leq d_{min}$, dann vereinige $cu_{i}$ mit $cu_{i-1}$ . $\Longrightarrow$ behebt False-Negatives des Types (c)
 \end{itemize}
 \noindent\rule{\linewidth}{0.3pt}
 
-Die Entscheidungsregeln greifen nur auf die letzten beiden erkannten Schreieinheiten zu, um eine kontinuierliche Analyse zu gewährleisten. Bei einer Offline-Analyse können die Entscheidungsregeln vereinfacht werden, da die False-Negatives nach Typ (a) und (c) mit der selben Regel abgefragt werden können. Algorithmus \autoref{alg:decisionSmoothing} zeigt in Pseudo-Code, wie das Decision-Smoothing durchgeführt wird. Input der Funktion ist eine Liste mit Schreieinheiten $CU_{all} = [cu_0 , \ldots , cu_l]$, die durch Algorithmus \ref{alg:cryUnit} entstanden ist, sowie die Grenzwerte $\lambda_{min}$ und $d_{min}$. Die Indexierung der Liste $CU_{all}$ beginnt bei 0. Der Output der Funktion ist eine Liste aller durch das Decision-Smoothing korrigierten Schreieinheiten $CU_{smoothed}$.
-
+Die Entscheidungsregeln greifen nur auf die letzten beiden erkannten Schreieinheiten zu, um eine kontinuierliche Analyse zu gewährleisten. Bei einer Offline-Analyse können die Entscheidungsregeln vereinfacht werden, da die False-Negatives nach Typ (a) und (c) mit der selben Regel abgefragt werden können. Algorithmus \autoref{alg:decisionSmoothing} zeigt in Pseudo-Code, wie das Decision-Smoothing durchgeführt wird. Input des Algorithmus ist eine Liste mit Schreieinheiten $CU_{all} = [cu_0 , \ldots , cu_l]$, die durch Algorithmus \ref{alg:cryUnit} entstanden ist, sowie die Grenzwerte $\lambda_{min}$ und $d_{min}$. Die Indexierung der Liste $CU_{all}$ beginnt bei 0. Der Output der Funktion ist eine Liste aller im Signal enthaltenenen Schreieinheiten $CU_{smoothed}$ mit korrigierten Anfangs- und Endzeitpunkten.
+ 
 In verschiedenen Veröffentlichungen wurden unterschiedliche Mindestlängen von Schreieinheiten festgestellt. Várallyay \cite[S. 8]{cry_thesis} hat beispielsweise eine Mindestlänge von \SI{250}{\milli\second} gemessen. Der niedrigste Wert, der nach dem Wissen des Autors in einer Veröffentlichung genannt wurde, stammt von Zeskind et al. \cite[S. 325]{rythmic} und beträgt  \SI{60}{\milli\second}. Dieser Wert wurde für $\lambda_{min}$ in dieser Arbeit übernommen. Es konnten hingegen keine Veröffentlichungen gefunden werden, bei denen die geringste Pausenlänge gemessen wurde. Der Wert wurde ebenfalls mit $d_{min} = \SI{60}{\milli\second}$ bestimmt. \autoref{img:after-smoothing} zeigt das Beispielsignal vor und nach dem Decision-Smoothing. 
 
 \begin{figure}[h]
@@ -594,6 +594,7 @@ In verschiedenen Veröffentlichungen wurden unterschiedliche Mindestlängen von 
 		
 	\end{algorithmic}
 \end{algorithm}
+
 
 
 

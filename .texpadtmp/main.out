@@ -28,14 +28,14 @@
 \BOOKMARK [1][-]{section.4.3}{Nachtr\344gliche Korrektur von Schreieinheiten}{chapter.4}% 28
 \BOOKMARK [0][-]{chapter.5}{Automatisierte Schmerzbewertung anhand von Schreiger\344uschen}{}% 29
 \BOOKMARK [1][-]{section.5.1}{Zusammenfassung von Schreiger\344uschen zu Segmenten}{chapter.5}% 30
-\BOOKMARK [1][-]{section.5.2}{Methoden zur Berechnung des Schmerz-Score f\374r Segmente}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.2}{Methoden zur Berechnung von Schmerz-Scores f\374r Segmente}{chapter.5}% 31
 \BOOKMARK [2][-]{subsection.5.2.1}{Extrahierung von Eigenschaften als Grundlage zur Schmerzbewertung}{section.5.2}% 32
 \BOOKMARK [2][-]{subsection.5.2.2}{Betrachtung des Schmerzverlaufs innerhalb von Segmenten}{section.5.2}% 33
 \BOOKMARK [1][-]{section.5.3}{Beispiel f\374r die automatisierte Schmerzbewertung}{chapter.5}% 34
 \BOOKMARK [0][-]{chapter.6}{Visualisierung der Schmerzbewertung}{}% 35
 \BOOKMARK [1][-]{section.6.1}{Visualierungskonzept}{chapter.6}% 36
 \BOOKMARK [1][-]{section.6.2}{Visualisierung ohne einander \374berlappende Zeitbereiche}{chapter.6}% 37
-\BOOKMARK [1][-]{section.6.3}{Visualisierung mit einander \374berlappenden Zeitbereichen}{chapter.6}% 38
+\BOOKMARK [1][-]{section.6.3}{Visualisierung einander \374berlappender Zeitbereiche}{chapter.6}% 38
 \BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 39
 \BOOKMARK [0][-]{chapter*.53}{Literaturverzeichnis}{}% 40
 \BOOKMARK [0][-]{section*.54}{Appendices}{}% 41

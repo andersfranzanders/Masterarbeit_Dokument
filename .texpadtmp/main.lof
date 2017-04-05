@@ -10,43 +10,43 @@
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Zeitbereiche der periodischen und der turbulenten Quelle}}{9}{figure.caption.11}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Betrachtung der Frequenzbereiche des Source-Filter-Modell}}{10}{figure.caption.12}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Grundfrequenz und harmonische Obert\IeC {\"o}ne eines stimmhaften Sprachsignals}}{11}{figure.caption.13}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Beispiele f\IeC {\"u}r Formanten im Sprachsignal}}{12}{figure.caption.14}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Beispiele f\IeC {\"u}r Formanten im Sprachsignal}}{11}{figure.caption.14}
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Spektogramm einer Audioaufnahme eines Babys}}{12}{figure.caption.15}
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{18}{figure.caption.17}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Veranschaulichung des Grundvokabulars\relax }}{19}{figure.caption.17}
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Schematisches Spektogramm eines beispielhaften Weinens}}{20}{figure.caption.18}
 \contentsline {figure}{\numberline {2.14}{\ignorespaces Beispiel f\IeC {\"u}r einen Entscheidungsbaum}}{23}{figure.caption.20}
-\contentsline {figure}{\numberline {2.15}{\ignorespaces Aufspaltung eines kontinuierlichen Attributs im Entscheidungsbaum\relax }}{25}{figure.caption.21}
-\contentsline {figure}{\numberline {2.16}{\ignorespaces Confusion Matrix}}{26}{figure.caption.22}
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Aufspaltung eines kontinuierlichen Attributs im Entscheidungsbaum\relax }}{26}{figure.caption.21}
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Confusion Matrix}}{27}{figure.caption.22}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die Verarbeitungs-Pipeline\relax }}{31}{figure.caption.23}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Visualisierung im multimodalen Verbund}}{32}{figure.caption.24}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \IeC {\"U}berblick \IeC {\"u}ber die Verarbeitungs-Pipeline\relax }}{32}{figure.caption.23}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Visualisierung im multimodalen Verbund}}{33}{figure.caption.24}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Markierung stimmhafter Bereiche in einem Audiosignal}}{33}{figure.caption.25}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Der grundlegende Aufbau eines VAD-Algorithmus}}{34}{figure.caption.26}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Vorverarbeitung der Voice Activity Detection}}{36}{figure.caption.27}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Berechnung des Cepstrums}}{40}{figure.caption.28}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Aufkommen einer Signalspitze im oberen Quefrency-Bereich}}{41}{figure.caption.29}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Feststellung der Grundfrequenz aus dem Cepstrum}}{42}{figure.caption.30}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Attribute, die f\IeC {\"u}r die VAD erprobt wurden}}{43}{figure.caption.31}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden}}{44}{figure.caption.32}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Beispiel f\IeC {\"u}r die Grenzwertsetzung eines Features}}{45}{figure.caption.33}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Zusammenfassung der als stimmhaft klassifizierter Signalfenster zu Schreieinheiten\relax }}{51}{figure.caption.35}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Beziehungen zwischen benachbarten Schreieinheiten}}{52}{figure.caption.36}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Klassifizierung vor dem Decision-Smoothing}}{53}{figure.caption.37}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Klassifizierung nach dem Decision-Smoothing}}{54}{figure.caption.38}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Markierung stimmhafter Bereiche in einem Audiosignal}}{34}{figure.caption.25}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Der grundlegende Aufbau eines VAD-Algorithmus}}{35}{figure.caption.26}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Vorverarbeitung der Voice Activity Detection}}{37}{figure.caption.27}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Berechnung des Cepstrums}}{41}{figure.caption.28}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Aufkommen einer Signalspitze im oberen Quefrency-Bereich}}{42}{figure.caption.29}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Feststellung der Grundfrequenz aus dem Cepstrum}}{43}{figure.caption.30}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber alle Attribute, die f\IeC {\"u}r die VAD erprobt wurden}}{44}{figure.caption.31}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Das RMS-Feature bei verschiedenen Signal/Rausch-Abst\IeC {\"a}nden}}{45}{figure.caption.32}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Beispiel f\IeC {\"u}r die Grenzwertsetzung eines Features}}{46}{figure.caption.33}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Zusammenfassung der als stimmhaft klassifizierter Signalfenster zu Schreieinheiten\relax }}{52}{figure.caption.35}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Beziehungen zwischen benachbarten Schreieinheiten}}{53}{figure.caption.36}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Klassifizierung vor dem Decision-Smoothing}}{54}{figure.caption.37}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Klassifizierung nach dem Decision-Smoothing}}{55}{figure.caption.38}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Beispiel f\IeC {\"u}r eine Segmentierung}}{58}{figure.caption.39}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Beispiel f\IeC {\"u}r die Schmerzbewertung anhand einer Audioaufnahme}}{67}{figure.caption.41}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Beispiel f\IeC {\"u}r die Schmerzbewertung anhand einer Audioaufnahme mit Aktualisierungen}}{68}{figure.caption.42}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Beispiel f\IeC {\"u}r eine Segmentierung}}{59}{figure.caption.39}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Beispiel f\IeC {\"u}r die Schmerzbewertung anhand einer Audioaufnahme}}{68}{figure.caption.41}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Beispiel f\IeC {\"u}r die Schmerzbewertung anhand einer Audioaufnahme mit Aktualisierungen}}{69}{figure.caption.42}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Einteilung eines Signals in Regionen zur Vorbereitung der Visualisierung}}{70}{figure.caption.43}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Erstellte Farbpaletten mit zwei bis sieben Farben }}{73}{figure.caption.46}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Visualisierungen der beispielhaften Schmerz-Scales durch schematische Balken}}{74}{figure.caption.48}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Visualisierung der Schmerzbeurteilung durch eine schematische Uhr}}{75}{figure.caption.49}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Ein Beispielsignal mit zeitlich einander \IeC {\"u}berlappenden Diagnosebereichen}}{76}{figure.caption.50}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Visualisierung der bei Aktualisierungen mit Priorisierung der aktuelleren Schmerzbewertung}}{77}{figure.caption.51}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Visualisierung der bei Aktualisierungen mit Priorisierung der vorangegangenen Schmerzbewertung}}{77}{figure.caption.52}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Einteilung eines Signals in Regionen zur Vorbereitung der Visualisierung}}{71}{figure.caption.43}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Erstellte Farbpaletten mit zwei bis sieben Farben }}{74}{figure.caption.46}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Visualisierungen der beispielhaften Schmerz-Scales durch schematische Balken}}{75}{figure.caption.48}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Visualisierung der Schmerzbeurteilung durch eine schematische Uhr}}{76}{figure.caption.49}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Ein Beispielsignal mit zeitlich einander \IeC {\"u}berlappenden Diagnosebereichen}}{77}{figure.caption.50}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Visualisierung der bei Aktualisierungen mit Priorisierung der aktuelleren Schmerzbewertung}}{78}{figure.caption.51}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Visualisierung der bei Aktualisierungen mit Priorisierung der vorangegangenen Schmerzbewertung}}{78}{figure.caption.52}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivit\IeC {\"a}t, Spezifit\IeC {\"a}t und Genauigkeit der beiden besten Modelle\relax }}{88}{figure.caption.56}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Boxplot-Auswertung \IeC {\"u}ber Sensitivit\IeC {\"a}t, Spezifit\IeC {\"a}t und Genauigkeit der beiden besten Modelle\relax }}{89}{figure.caption.56}
