@@ -15,7 +15,7 @@
 \contentsline {subsection}{\numberline {2.2.3}Akustische Modellierung und Analyse des Weinens}{18}{subsection.2.2.3}
 \contentsline {section}{\numberline {2.3}Automatisierte Klassifizierung und Bewertung}{22}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Klassifizierung mit den Algorithmen ID3 und C4.5}{23}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{26}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.2}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{27}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Konzept zur automatisierten Schmerzbewertung anhand akustischer Signale}{29}{chapter.3}
 \contentsline {section}{\numberline {3.1}Literatur\IeC {\"u}berblick}{29}{section.3.1}
 \contentsline {section}{\numberline {3.2}\IeC {\"U}berblick \IeC {\"u}ber die Verarbeitungsschritte zum Schmerz-Scoring akustischer Signale}{31}{section.3.2}
@@ -49,9 +49,9 @@
 \contentsline {section}{\numberline {5.3}Beispiel f\IeC {\"u}r die automatisierte Schmerzbewertung}{67}{section.5.3}
 \contentsline {chapter}{\numberline {6}Visualisierung der Schmerzbewertung}{70}{chapter.6}
 \contentsline {section}{\numberline {6.1}Visualierungskonzept}{70}{section.6.1}
-\contentsline {section}{\numberline {6.2}Visualisierung ohne einander \IeC {\"u}berlappende Zeitbereiche}{75}{section.6.2}
+\contentsline {section}{\numberline {6.2}Visualisierung ohne einander \IeC {\"u}berlappende Zeitbereiche}{74}{section.6.2}
 \contentsline {section}{\numberline {6.3}Visualisierung einander \IeC {\"u}berlappender Zeitbereiche}{76}{section.6.3}
 \contentsline {chapter}{\numberline {7}Zusammenfassung}{79}{chapter.7}
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{81}{chapter*.53}
-\contentsline {chapter}{Appendices}{87}{section*.54}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{81}{chapter*.54}
+\contentsline {chapter}{Appendices}{87}{section*.55}
 \contentsline {chapter}{\numberline {A}Auswertungsdetails VAD}{88}{Anhang.1.A}

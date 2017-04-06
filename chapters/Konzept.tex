@@ -52,7 +52,7 @@ Für diese Arbeit wurde die folgende Verarbeitungs-Pipeline entworfen. Sie wird 
 	
 	\item \textbf{Segmentierung} (engl. \emph{Segmenting}): Eine Schmerzdiagnose basiert typischerweise auf der Beurteilung einer Menge mehrerer Schreieinheiten. Daher werden \emph{Schrei-Segmente} gebildet, indem Schreieinheiten, die nahe beieinander liegen, zu Segmenten gruppiert werden. Diese Schrei-Segmente bilden die Grundlage für die Schmerzbewertung des Weinens. 
 		
-	\item \textbf{Extrahierung von Eigenschaften und Schmerzbewertung} (engl. \emph{Feature Extraction} und \emph{Pain Assessment}): Für jedes Schrei-Segment werden Eigenschaften bezüglich der akustischen Informationen des Weinens berechnet, wie z.B. die durchschnittliche Tonhöhe, die durchschnittliche Pausenlänge usw. Auf Basis dieser Eigenschaften erfolgt die Schmerzbewertung in Form eines Schmerz-Scores für das Weinen. Dieser Score kann verwendet werden, um in Verbindung mit den Scores anderer Schmerzindikatoren einen multimodalen Schmerz-Score zu bestimmen. Da die Segmentierung, die Extrahierung der Eigenschaften und die Schmerzbewertung eng zusammenhängen, werden sie in \autoref{sec:deduction} gemeinsam erläutert.
+	\item \textbf{Extrahierung von Eigenschaften und Schmerzbewertung} (engl. \emph{Feature Extraction} und \emph{Pain Assessment}): Für jedes Schrei-Segment werden Eigenschaften bezüglich der akustischen Informationen des Weinens berechnet, wie z.B. die durchschnittliche Tonhöhe, die durchschnittliche Pausenlänge usw. Auf Basis dieser Eigenschaften erfolgt die Schmerzbewertung in Form eines Schmerz-Scores. Dieser Score kann verwendet werden, um in Verbindung mit den Scores anderer Schmerzindikatoren einen multimodalen Schmerz-Score zu bestimmen. Da die Segmentierung, die Extrahierung der Eigenschaften und die Schmerzbewertung eng zusammenhängen, werden sie in \autoref{sec:deduction} gemeinsam erläutert.
 	
 	\item \textbf{Visualisierung} (engl. \emph{Visualisation}): Es wird für jeden Zeitpunkt des Eingangssignals der bezüglich des Weinens prognostizierte Schmerz-Score visualisiert. Bei dem vorgestellten Visualisierungskonzept wird das Scoring farblich codiert und in seinem zeitlichen Verlauf abgebildet. Die Visualisierung wird in \autoref{sec:visualisation} erläutert.	
 	\end{enumerate}
@@ -61,7 +61,7 @@ Für diese Arbeit wurde die folgende Verarbeitungs-Pipeline entworfen. Sie wird 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{bilder/konzept04.png}
+	\includegraphics[width=0.9\textwidth]{bilder/konzept08.png}
 	\caption{Überblick über die Verarbeitungs-Pipeline}
 	\label{img:architecture-overview}
 \end{figure}
@@ -83,7 +83,7 @@ Das vorgestellte Konzept lässt sich zur Visualisierung von Schmerz-Scores in ei
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{bilder/multimodal_viz_02.png}
+	\includegraphics[width=0.7\textwidth]{bilder/multimodal_viz_04.png}
 	\caption[Visualisierung im multimodalen Verbund]{Visualisierung im multimodalen Verbund. Oben: Module, welche den Schmerzgrad jeweils eines Indikators in Form eines Scores bewerten. Unten: Visualierung des Schmerz-Scores, welcher durch Addition aller Scores entsteht. }
 	\label{img:multimodal-overview}
 \end{figure}
