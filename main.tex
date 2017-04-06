@@ -1,4 +1,4 @@
-\documentclass[bibliography=totoc, numbers=noenddot, enabledeprecatedfontcommands]{scrreprt}
+\documentclass[twoside, openright, bibliography=totoc, listof=totoc, index=totoc, numbers=noenddot, enabledeprecatedfontcommands]{scrreprt}
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \setlength{\parskip}{5.5pt}
@@ -45,7 +45,9 @@
 \setcounter{secnumdepth}{3}
 % design
 
-\geometry{a4paper,left=30mm,right=30mm, top=30mm, bottom=35mm minus 5mm} 
+%\geometry{a4paper,left=30mm,right=30mm, top=30mm, bottom=35mm minus 5mm} 
+\geometry{a4paper,left=37mm,right=23mm, top=30mm, bottom=35mm minus 5mm} 
+
 \usepackage[skip=5pt]{caption}
 \setlength{\footskip}{15mm}
 
@@ -84,6 +86,8 @@
 %   \listoffigures
 %\endgroup
 \pagenumbering{arabic}
+%set this one if chapter begins on wrong side
+\setcounter{page}{0}
 \include{chapters/Introduction} 
 \include{chapters/Foundations}
 \include{chapters/Konzept}
@@ -91,6 +95,9 @@
 \include{chapters/Deduction}
 \include{chapters/Visualisation}
 \include{chapters/Conclusion}
+
+\pagenumbering{Roman}
+%set this one if chapter begins on wrong side%\setcounter{page}{0}
 
 %\bibliographystyle{dinat}
 \bibliographystyle{alphadin}
