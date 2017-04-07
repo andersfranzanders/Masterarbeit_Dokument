@@ -3,6 +3,7 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/main.aux
 A level-1 auxiliary file: chapters/title_page_1.aux
 A level-1 auxiliary file: chapters/Erklaerung.aux
+A level-1 auxiliary file: chapters/abkurz.aux
 A level-1 auxiliary file: chapters/Introduction.aux
 A level-1 auxiliary file: chapters/Foundations.aux
 A level-1 auxiliary file: chapters/Konzept.aux
@@ -38,7 +39,7 @@ Warning--there's an address but no publisher in zamziMultimodal
 Warning--empty pages in zamziMultimodal
 You've used 64 entries,
             4793 wiz_defined-function locations,
-            1294 strings with 21914 characters,
+            1295 strings with 21933 characters,
 and the built_in function-call counts, 40174 in all, are:
 = -- 4235
 > -- 1199

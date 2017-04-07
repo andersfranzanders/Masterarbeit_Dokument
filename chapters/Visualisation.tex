@@ -3,7 +3,7 @@
 
 Im vergangenen Kapitel wurde ein Konzept zur Schmerzbewertung auf Basis akustischer Signale vorgestellt. Wird dieses Konzept zur kontinuierlichen Überwachung von Neugeborenen eingesetzt, fällt eine große Menge an Auswertungsergebnissen an. Zur schnelleren Interpretation ist es wünschenswert, die Ergebnisse der automatisierten Schmerzbewertung übersichtlich zu visualisieren. In \autoref{sec:vizConecept} wird das Konzept der Visualisierung vorgestellt. In \autoref{sec:vizNoOverlap} wird das Visualisierungskonzept durch die Anwendung auf ein Beispiel verdeutlicht. Abschließend werden in \autoref{sec:vizWithOverlap} Möglichkeiten zur Visualisierung zeitlich überlappender Diagnosebereiche diskutiert.
 
-\section{Visualierungskonzept}
+\section{Visualisierungskonzept}
 \label{sec:vizConecept}
 
 Das Visualisierungskonzept wird anhand einer 220 Sekunden langen, beispielhaften Audioaufnahme eines weinenden Babys erläutert. \autoref{img:visualisation_example_01} zeigt das Signal im oberen Bereich. Die stimmhaften Signalbereiche werden Schwarz dargestellt, das Hintergrundrauschen grau. Das Signal wurde nach der in \autoref{sec:segmenting} beschriebenen Methode mit $t_{s} = \SI{10}{\second}$ segmentiert. So wurden die Schreigeräusche zu den zwei Segmenten $cs1$ und $cs2$ zusammengefasst, welche in der Abbildung ebenfalls oben hervorgehoben werden.
@@ -107,8 +107,6 @@ Abbildung \ref{fig:color-swatches} zeigt die Farbpaletten $Swatch_2, \ldots, Swa
 
 Auf Basis die Farbpaletten wurden die Farbschemen $L_{n}: S_{Scale} \mapsto C_{Scale}$ definiert, abgebildet in Tabelle \ref{tab:color_shemes}. Es gilt $F_{Scale} = L_{|S_{Scale}|}$. Die Wahl des Farbschemas zur Visualisierung einer Schmerz-Scale richtet sich somit allein nach der jeweiligen Anzahl definierter Schmerz-Scores. Soll also beispielsweise die \emph{Length-Scale} visualisiert werden, so wird das Farbschema $F_{\text{Length-Scale}} = L_3$ verwendet. Ein Schmerz-Score von $s = 0$ wird in diesem Fall durch das Grün mit den RGB-Koordinaten \#6efa56 codiert, 1 durch \#6efa56 und 2 durch \#6efa56.
 
-Es wurde sich zunächst auf die Definition der Farbschemen mit $n \leq 7$ beschränkt, da keine der in Kapitel \ref{sec:painScores} beschriebenen Schmerz-Scales mehr als 7 Scores für die Bewertung des Weinens verwendet. Für die Farbpaletten der Schemen $L_2, L_3, L_5$ und $L_7$ wurden die jeweiligen Farbpaletten $\text{Swatch}_2, \text{Swatch}_3,\text{Swatch}_5$ und $\text{Swatch}_7$ unverändert übernommen (siehe \autoref{fig:color-swatches}). Die Farbpaletten $\text{Swatch}_4$ und $\text{Swatch}_6$ wurde hingegen nicht für die Schemen $L_4$ und $L_6$ übernommen, da in diesen die Darstellung des gelben Fixpunktes fehlt. Für das Farbschema $L_4$ wurde stattdessen die Farbpalette $\text{Swatch}_5$ unter Auslassung des zweiten Grüntons verwendet. Farbschema $L_6$ verwendet die ersten zwei Farben von $\text{Swatch}_5$ und die letzten vier Farben von $\text{Swatch}_7$. Diese Maßnahme verletzt streng genommen die visuelle Gleichabständigkeit der Farben bei Schmerz-Scales mit gerader Anzahl an Scores, wahrt jedoch besser die Farbsemantik eines Ampelschemas. Weitere Farbschemen für Schmerz-Scales mit mehr Scores können mit Hilfe des Tools generiert werden, indem Farbpaletten mit ungerader Farbanzahl direkt für das jeweilige Schema übernommen werden und Farbschemen mit gerader Anzahl aus den nächst größeren/kleineren ungeraden Farbpaletten kombiniert werden. 
-
 \begin{table}[h]
 \footnotesize
 \centering
@@ -125,6 +123,8 @@ Es wurde sich zunächst auf die Definition der Farbschemen mit $n \leq 7$ beschr
 \multicolumn{1}{l|}{$L_7(s) = $} & \multicolumn{1}{l|}{\cellcolor[HTML]{6EFA56}\#6efa56} & \multicolumn{1}{l|}{\cellcolor[HTML]{A7F938}\#a7f938} & \multicolumn{1}{l|}{\cellcolor[HTML]{D5F519}\#d5f519} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFF000}\#fff000} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFB700}\#ffb700} & \multicolumn{1}{l|}{\cellcolor[HTML]{FF7A00}\#ff7a00} & \multicolumn{1}{l|}{\cellcolor[HTML]{F32D16}\#f32d16} \\ \bottomrule
 \end{tabular}
 \end{table}
+
+Es wurde sich zunächst auf die Definition der Farbschemen mit $n \leq 7$ beschränkt, da keine der in Kapitel \ref{sec:painScores} beschriebenen Schmerz-Scales mehr als 7 Scores für die Bewertung des Weinens verwendet. Für die Farbpaletten der Schemen $L_2, L_3, L_5$ und $L_7$ wurden die jeweiligen Farbpaletten $\text{Swatch}_2, \text{Swatch}_3,\text{Swatch}_5$ und $\text{Swatch}_7$ unverändert übernommen (siehe \autoref{fig:color-swatches}). Die Farbpaletten $\text{Swatch}_4$ und $\text{Swatch}_6$ wurde hingegen nicht für die Schemen $L_4$ und $L_6$ übernommen, da in diesen die Darstellung des gelben Fixpunktes fehlt. Für das Farbschema $L_4$ wurde stattdessen die Farbpalette $\text{Swatch}_5$ unter Auslassung des zweiten Grüntons verwendet. Farbschema $L_6$ verwendet die ersten zwei Farben von $\text{Swatch}_5$ und die letzten vier Farben von $\text{Swatch}_7$. Diese Maßnahme verletzt streng genommen die visuelle Gleichabständigkeit der Farben bei Schmerz-Scales mit gerader Anzahl an Scores, wahrt jedoch besser die Farbsemantik eines Ampelschemas. Weitere Farbschemen für Schmerz-Scales mit mehr Scores können mit Hilfe des Tools generiert werden, indem Farbpaletten mit ungerader Farbanzahl direkt für das jeweilige Schema übernommen werden und Farbschemen mit gerader Anzahl aus den nächst größeren/kleineren ungeraden Farbpaletten kombiniert werden. 
 
 \section{Visualisierung ohne einander überlappende Zeitbereiche}
 \label{sec:vizNoOverlap}
@@ -172,7 +172,7 @@ Es werden zwei Möglichkeiten zur Visualisierung einander überlappender Regione
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/viz_act_over_03.png}
-	\caption[Visualisierung der bei Aktualisierungen mit Priorisierung der aktuelleren Schmerzbewertung]{Visualisierung der \emph{Min-Scale} mit Aktualisierungen nach dem Prinzip \textbf{Newest-on-Top}. Die jeweils \glqq aktuellere\grqq{} Region überlagert die jeweils \glqq ältere\grqq{}. Oben: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{146}{\second}$. Unten: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{166}{\second}$.}
+	\caption[Visualisierung bei Aktualisierungen nach dem Prinzip Newest-on-Top]{Visualisierung der \emph{Min-Scale} mit Aktualisierungen nach dem Prinzip \textbf{Newest-on-Top}. Die jeweils \glqq aktuellere\grqq{} Region überlagert die jeweils \glqq ältere\grqq{}. Oben: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{146}{\second}$. Unten: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{166}{\second}$.}
 	\label{fig:viz_act_over}
 \end{figure}
 
@@ -180,8 +180,8 @@ Es werden zwei Möglichkeiten zur Visualisierung einander überlappender Regione
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/viz_act_under_02.png}
-	\caption[Visualisierung der bei Aktualisierungen mit Priorisierung der vorangegangenen Schmerzbewertung]{Visualisierung der \emph{Min-Scale} mit Aktualisierungen nach dem Prinzip \textbf{Oldest-on-Top}. Eine jeweils \glqq ältere\grqq{} Region überlagert eine jeweils \glqq aktuellere\grqq{}.}
+	\includegraphics[trim={3cm 0 2cm 0},clip,width=1\textwidth]{bilder/viz_act_under_02.png}
+	\caption[Visualisierung bei Aktualisierungen nach dem Prinzip Oldest-on-Top]{Visualisierung der \emph{Min-Scale} mit Aktualisierungen nach dem Prinzip \textbf{Oldest-on-Top}. Eine jeweils \glqq ältere\grqq{} Region überlagert eine jeweils \glqq aktuellere\grqq{}.}
 	\label{fig:viz_act_under}
 \end{figure}
  

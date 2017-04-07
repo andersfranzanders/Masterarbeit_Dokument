@@ -1,6 +1,7 @@
 \select@language {ngerman}
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{V}{chapter*.3}
-\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{VII}{chapter*.4}
+\contentsline {chapter}{Abk\IeC {\"u}rzungsverzeichnis}{V}{chapter*.3}
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{VII}{chapter*.5}
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{IX}{chapter*.6}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Aufbau der Arbeit}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Fokus der Arbeit}{2}{section.1.2}
@@ -10,13 +11,13 @@
 \contentsline {subsection}{\numberline {2.1.2}Statistische Merkmale von Signalen}{4}{subsection.2.1.2}
 \contentsline {subsection}{\numberline {2.1.3}Fehlersignale}{5}{subsection.2.1.3}
 \contentsline {subsection}{\numberline {2.1.4}Kurzzeit-Fourier-Transformation}{5}{subsection.2.1.4}
-\contentsline {subsection}{\numberline {2.1.5}Akustische Modellierung der menschlichen Stimme}{7}{subsection.2.1.5}
+\contentsline {subsection}{\numberline {2.1.5}Akustische Modellierung der menschlichen Stimme}{8}{subsection.2.1.5}
 \contentsline {section}{\numberline {2.2}Schmerz und Weinen bei Neugeborenen}{13}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Schmerz-Scales als Instrument zur Schmerzbewertung}{13}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Weinen als Indikator f\IeC {\"u}r Schmerz}{17}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Akustische Modellierung und Analyse des Weinens}{18}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.1}Schmerz-Scales als Instrumente zur Schmerzbewertung}{13}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Weinen als Indikator f\IeC {\"u}r Schmerz}{18}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Akustische Modellierung und Analyse des Weinens}{19}{subsection.2.2.3}
 \contentsline {section}{\numberline {2.3}Automatisierte Klassifizierung und Bewertung}{22}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Klassifizierung mit den Algorithmen ID3 und C4.5}{23}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.1}Klassifizierung mit den Algorithmen ID3 und C4.5}{24}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}G\IeC {\"u}tema\IeC {\ss }e bin\IeC {\"a}rer Klassifikatoren}{27}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Konzept zur automatisierten Schmerzbewertung anhand akustischer Signale}{29}{chapter.3}
 \contentsline {section}{\numberline {3.1}Literatur\IeC {\"u}berblick}{29}{section.3.1}
@@ -50,10 +51,10 @@
 \contentsline {subsubsection}{\numberline {5.2.2.2}Beobachtungszeitraum}{68}{subsubsection.5.2.2.2}
 \contentsline {section}{\numberline {5.3}Beispiel f\IeC {\"u}r die automatisierte Schmerzbewertung}{69}{section.5.3}
 \contentsline {chapter}{\numberline {6}Visualisierung der Schmerzbewertung}{73}{chapter.6}
-\contentsline {section}{\numberline {6.1}Visualierungskonzept}{73}{section.6.1}
-\contentsline {section}{\numberline {6.2}Visualisierung ohne einander \IeC {\"u}berlappende Zeitbereiche}{77}{section.6.2}
+\contentsline {section}{\numberline {6.1}Visualisierungskonzept}{73}{section.6.1}
+\contentsline {section}{\numberline {6.2}Visualisierung ohne einander \IeC {\"u}berlappende Zeitbereiche}{78}{section.6.2}
 \contentsline {section}{\numberline {6.3}Visualisierung einander \IeC {\"u}berlappender Zeitbereiche}{79}{section.6.3}
-\contentsline {chapter}{\numberline {7}Zusammenfassung}{83}{chapter.7}
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{I}{chapter*.54}
-\contentsline {chapter}{Appendices}{VII}{section*.55}
+\contentsline {chapter}{\numberline {7}Fazit und Dikussion}{83}{chapter.7}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{I}{chapter*.56}
+\contentsline {chapter}{Appendices}{VII}{section*.57}
 \contentsline {chapter}{\numberline {A}Auswertungsdetails VAD}{IX}{Anhang.1.A}

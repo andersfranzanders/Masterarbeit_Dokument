@@ -1,44 +1,45 @@
-\BOOKMARK [0][-]{chapter*.3}{Abbildungsverzeichnis}{}% 1
-\BOOKMARK [0][-]{chapter*.4}{Tabellenverzeichnis}{}% 2
-\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 3
-\BOOKMARK [1][-]{section.1.1}{Aufbau der Arbeit}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.2}{Fokus der Arbeit}{chapter.1}% 5
-\BOOKMARK [0][-]{chapter.2}{Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}{}% 6
-\BOOKMARK [1][-]{section.2.1}{Grundlagen der Verarbeitung akustischer Signale}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.1.1}{Grundlegende Definitionen}{section.2.1}% 8
-\BOOKMARK [2][-]{subsection.2.1.2}{Statistische Merkmale von Signalen}{section.2.1}% 9
-\BOOKMARK [2][-]{subsection.2.1.3}{Fehlersignale}{section.2.1}% 10
-\BOOKMARK [2][-]{subsection.2.1.4}{Kurzzeit-Fourier-Transformation}{section.2.1}% 11
-\BOOKMARK [2][-]{subsection.2.1.5}{Akustische Modellierung der menschlichen Stimme}{section.2.1}% 12
-\BOOKMARK [1][-]{section.2.2}{Schmerz und Weinen bei Neugeborenen}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.1}{Schmerz-Scales als Instrument zur Schmerzbewertung}{section.2.2}% 14
-\BOOKMARK [2][-]{subsection.2.2.2}{Weinen als Indikator f\374r Schmerz}{section.2.2}% 15
-\BOOKMARK [2][-]{subsection.2.2.3}{Akustische Modellierung und Analyse des Weinens}{section.2.2}% 16
-\BOOKMARK [1][-]{section.2.3}{Automatisierte Klassifizierung und Bewertung}{chapter.2}% 17
-\BOOKMARK [2][-]{subsection.2.3.1}{Klassifizierung mit den Algorithmen ID3 und C4.5}{section.2.3}% 18
-\BOOKMARK [2][-]{subsection.2.3.2}{G\374tema\337e bin\344rer Klassifikatoren}{section.2.3}% 19
-\BOOKMARK [0][-]{chapter.3}{Konzept zur automatisierten Schmerzbewertung anhand akustischer Signale}{}% 20
-\BOOKMARK [1][-]{section.3.1}{Literatur\374berblick}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.2}{\334berblick \374ber die Verarbeitungsschritte zum Schmerz-Scoring akustischer Signale}{chapter.3}% 22
-\BOOKMARK [1][-]{section.3.3}{Schmerzbewertung im multimodalen Verbund}{chapter.3}% 23
-\BOOKMARK [0][-]{chapter.4}{Detektion von Schreiger\344uschen in Audiosignalen}{}% 24
-\BOOKMARK [1][-]{section.4.1}{Automatisierte Erkennung von Stimmaktivit\344t in Signalen}{chapter.4}% 25
-\BOOKMARK [2][-]{subsection.4.1.1}{Methoden}{section.4.1}% 26
-\BOOKMARK [2][-]{subsection.4.1.2}{Simulationsstudie zur Festlegung des Klassifikators}{section.4.1}% 27
-\BOOKMARK [2][-]{subsection.4.1.3}{Ergebnisse}{section.4.1}% 28
-\BOOKMARK [1][-]{section.4.2}{Zusammenfassung stimmhafter Signalbereiche zu Schreieinheiten}{chapter.4}% 29
-\BOOKMARK [1][-]{section.4.3}{Nachtr\344gliche Korrektur von Schreieinheiten}{chapter.4}% 30
-\BOOKMARK [0][-]{chapter.5}{Automatisierte Schmerzbewertung anhand von Schreiger\344uschen}{}% 31
-\BOOKMARK [1][-]{section.5.1}{Zusammenfassung von Schreiger\344uschen zu Segmenten}{chapter.5}% 32
-\BOOKMARK [1][-]{section.5.2}{Methoden zur Berechnung von Schmerz-Scores f\374r Segmente}{chapter.5}% 33
-\BOOKMARK [2][-]{subsection.5.2.1}{Extrahierung von Eigenschaften als Grundlage zur Schmerzbewertung}{section.5.2}% 34
-\BOOKMARK [2][-]{subsection.5.2.2}{Betrachtung des Schmerzverlaufs innerhalb von Segmenten}{section.5.2}% 35
-\BOOKMARK [1][-]{section.5.3}{Beispiel f\374r die automatisierte Schmerzbewertung}{chapter.5}% 36
-\BOOKMARK [0][-]{chapter.6}{Visualisierung der Schmerzbewertung}{}% 37
-\BOOKMARK [1][-]{section.6.1}{Visualierungskonzept}{chapter.6}% 38
-\BOOKMARK [1][-]{section.6.2}{Visualisierung ohne einander \374berlappende Zeitbereiche}{chapter.6}% 39
-\BOOKMARK [1][-]{section.6.3}{Visualisierung einander \374berlappender Zeitbereiche}{chapter.6}% 40
-\BOOKMARK [0][-]{chapter.7}{Zusammenfassung}{}% 41
-\BOOKMARK [0][-]{chapter*.54}{Literaturverzeichnis}{}% 42
-\BOOKMARK [0][-]{section*.55}{Appendices}{}% 43
-\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 44
+\BOOKMARK [0][-]{chapter*.3}{Abk\374rzungsverzeichnis}{}% 1
+\BOOKMARK [0][-]{chapter*.5}{Abbildungsverzeichnis}{}% 2
+\BOOKMARK [0][-]{chapter*.6}{Tabellenverzeichnis}{}% 3
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 4
+\BOOKMARK [1][-]{section.1.1}{Aufbau der Arbeit}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.2}{Fokus der Arbeit}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{Grundlagen der Schmerzbewertung mit Hilfe akustischer Signale}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Grundlagen der Verarbeitung akustischer Signale}{chapter.2}% 8
+\BOOKMARK [2][-]{subsection.2.1.1}{Grundlegende Definitionen}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.2}{Statistische Merkmale von Signalen}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.3}{Fehlersignale}{section.2.1}% 11
+\BOOKMARK [2][-]{subsection.2.1.4}{Kurzzeit-Fourier-Transformation}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.5}{Akustische Modellierung der menschlichen Stimme}{section.2.1}% 13
+\BOOKMARK [1][-]{section.2.2}{Schmerz und Weinen bei Neugeborenen}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.1}{Schmerz-Scales als Instrumente zur Schmerzbewertung}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.2}{Weinen als Indikator f\374r Schmerz}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.3}{Akustische Modellierung und Analyse des Weinens}{section.2.2}% 17
+\BOOKMARK [1][-]{section.2.3}{Automatisierte Klassifizierung und Bewertung}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.3.1}{Klassifizierung mit den Algorithmen ID3 und C4.5}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.2}{G\374tema\337e bin\344rer Klassifikatoren}{section.2.3}% 20
+\BOOKMARK [0][-]{chapter.3}{Konzept zur automatisierten Schmerzbewertung anhand akustischer Signale}{}% 21
+\BOOKMARK [1][-]{section.3.1}{Literatur\374berblick}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.2}{\334berblick \374ber die Verarbeitungsschritte zum Schmerz-Scoring akustischer Signale}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.3}{Schmerzbewertung im multimodalen Verbund}{chapter.3}% 24
+\BOOKMARK [0][-]{chapter.4}{Detektion von Schreiger\344uschen in Audiosignalen}{}% 25
+\BOOKMARK [1][-]{section.4.1}{Automatisierte Erkennung von Stimmaktivit\344t in Signalen}{chapter.4}% 26
+\BOOKMARK [2][-]{subsection.4.1.1}{Methoden}{section.4.1}% 27
+\BOOKMARK [2][-]{subsection.4.1.2}{Simulationsstudie zur Festlegung des Klassifikators}{section.4.1}% 28
+\BOOKMARK [2][-]{subsection.4.1.3}{Ergebnisse}{section.4.1}% 29
+\BOOKMARK [1][-]{section.4.2}{Zusammenfassung stimmhafter Signalbereiche zu Schreieinheiten}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.3}{Nachtr\344gliche Korrektur von Schreieinheiten}{chapter.4}% 31
+\BOOKMARK [0][-]{chapter.5}{Automatisierte Schmerzbewertung anhand von Schreiger\344uschen}{}% 32
+\BOOKMARK [1][-]{section.5.1}{Zusammenfassung von Schreiger\344uschen zu Segmenten}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.2}{Methoden zur Berechnung von Schmerz-Scores f\374r Segmente}{chapter.5}% 34
+\BOOKMARK [2][-]{subsection.5.2.1}{Extrahierung von Eigenschaften als Grundlage zur Schmerzbewertung}{section.5.2}% 35
+\BOOKMARK [2][-]{subsection.5.2.2}{Betrachtung des Schmerzverlaufs innerhalb von Segmenten}{section.5.2}% 36
+\BOOKMARK [1][-]{section.5.3}{Beispiel f\374r die automatisierte Schmerzbewertung}{chapter.5}% 37
+\BOOKMARK [0][-]{chapter.6}{Visualisierung der Schmerzbewertung}{}% 38
+\BOOKMARK [1][-]{section.6.1}{Visualisierungskonzept}{chapter.6}% 39
+\BOOKMARK [1][-]{section.6.2}{Visualisierung ohne einander \374berlappende Zeitbereiche}{chapter.6}% 40
+\BOOKMARK [1][-]{section.6.3}{Visualisierung einander \374berlappender Zeitbereiche}{chapter.6}% 41
+\BOOKMARK [0][-]{chapter.7}{Fazit und Dikussion}{}% 42
+\BOOKMARK [0][-]{chapter*.56}{Literaturverzeichnis}{}% 43
+\BOOKMARK [0][-]{section*.57}{Appendices}{}% 44
+\BOOKMARK [0][-]{Anhang.1.A}{Auswertungsdetails VAD}{}% 45
