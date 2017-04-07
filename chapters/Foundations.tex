@@ -54,14 +54,14 @@ Im folgenden wird ein Überblick über wichtige statistische Merkmale von Signal
 	\label{eq:avg}
 	\end{equation}
 	
-	\item Der \textbf{Mean Squared Value} (\emph{MSV}) beschreibt den Durchschnittswert aller quadrierten Samples nach \autoref{eq:msv}. Er wird auch als \emph{durchschnittliche Energie} oder \emph{average Power} bezeichnet.
+	\item Der \textbf{Mean Squared Value} (\emph{MSV}) beschreibt den Durchschnittswert aller quadrierten Samples nach \autoref{eq:msv}. Er wird im Deutschen auch als \emph{durchschnittliche Energie} oder \emph{quadratisches Mittel} bezeichnet.
 	
 	\begin{equation}
 	\text{MSV}(x[\;]) = \frac{1}{N} \sum_{n = 0}^{N-1} x[n]^2
 	\label{eq:msv}
 	\end{equation}
 	
-	\item Der \textbf{Root Mean Square} (\emph{RMS}) wird definiert als die Wurzel des Mean Squared Value nach \autoref{eq:rms}. Der RMS kann im Vergleich zum MSV intuitiver ins Verhältnis zu den Werten des Signals gesetzt werden kann. Er wird im Deutschen auch als \textbf{Effektivwert} oder \textbf{Durchschnittsleistung} bezeichnet.
+	\item Der \textbf{Root Mean Square} (\emph{RMS}) wird definiert als die Wurzel des Mean Squared Value nach \autoref{eq:rms}. Der RMS kann im Vergleich zum MSV intuitiver ins Verhältnis zu den Werten des Signals gesetzt werden kann. Er wird im Deutschen auch als \emph{Wurzel des quadratischen Mittels} bezeichnet.
 	
 	\begin{equation}
 	\text{RMS}(x[\;]) = \sqrt{\frac{1}{N} \sum_{n = 0}^{N-1} x[n]^2}
@@ -489,7 +489,7 @@ Bei der \textbf{Klassifizierung} wird eine Target als \emph{Klasse} bezeichnet. 
 
 Bei der \textbf{Regression} ist die Menge der möglichen Targets eines bestimmten Problems \emph{kontinuierlich} und hat einen \emph{quantitativen} Charakter, womit eine interne Ordnung der Outputs bestimmbar ist. Ein Beispiel für ein Regressions-Problem ist die Prognose des Körpergewichts des Babys mit $Y = \{ \SI{0}{\kilo\gram} , \ldots , \SI{10}{\kilo\gram} \}$. Die Hypothese wird in diesem Fall auch als \emph{Regressor} $R$ bezeichnet.\cite[S. 24]{learning_cart_dobra} \cite[S. 8]{machine_marsland} \cite[S. 28]{statistical_learning}
 
-Handelt es sich bei den Targets um eine Ordinalskala, spricht man von \textbf{Ordinaler Klassifizierung} oder \textbf{Ordinaler Regression}, da die Ansätze zum Lösen solcher Probleme auf den Methoden der Klassifizierung und der Regression aufbauen und miteinander kombinieren.\cite[S. 1]{ordinalClassification} Ein Beispiel für ein solches Problem ist die Prognose des Schmerzgrades, mit $Y = \{ 0 , \ldots, 7  \}$ bei der NIPS (siehe \autoref{tab:nips}).
+Handelt es sich bei den Targets um eine Ordinalskala, spricht man von \textbf{Ordinaler Klassifizierung} oder \textbf{Ordinaler Regression}, da die Ansätze zum Lösen solcher Probleme auf den Methoden der Klassifizierung und der Regression aufbauen und miteinander kombinieren.\cite[S. 1]{ordinalClassification} Ein Beispiel für ein solches Problem ist die Prognose des Schmerzgrades, mit $Y = \{ 0 , \ldots, 7  \}$ bei der NIPS (siehe \autoref{tab:nips} auf Seite \pageref{tab:nips}).
 
 Es gibt eine Vielzahl an Algorithmen zum Finden des Klassifikators oder Regressors. Welcher Algorithmus der \glqq beste\grqq{} ist, also für einen Testdatensatz eine möglichst hohe \emph{Genauigkeit} oder einen möglichst geringen \emph{Klassifikationsfehler} erzeugt, ist abhängig von der konkreten Problemstellung. Auf die Bestimmung der Genauigkeit wird in \autoref{sec:howGoodIsMyClassifier} eingegangen. Ein Algorithmus, der in dieser Arbeit zur Erkennung der Stimmaktivität in \autoref{sec:vad} eingesetzt wird, ist der \emph{C4.5}-Algorithmus, welcher im folgenden Unterabschnitt erläutert wird.
 

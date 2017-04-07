@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  7 APR 2017 21:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  8 APR 2017 01:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1992,7 +1992,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 500.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 500.
- [23] <bilder/id3tree02.png, id=811, 1208.515pt x 512.91624pt>
+ [23] <bilder/id3tree02.png, id=812, 1208.515pt x 512.91624pt>
 File: bilder/id3tree02.png Graphic file (type png)
  <use bilder/id3tree02.png>
 Package pdftex.def Info: bilder/id3tree02.png used on input line 521.
@@ -2033,7 +2033,7 @@ Overfull \hbox (8.95903pt too wide) in paragraph at lines 601--602
 []\T1/cmr/m/n/10.95 (-20) Wähle den-je-ni-gen Grenz-wert, der den höchs-ten In-for-ma-ti-ons-ge-winn gewährleistet.[[],
  []
 
-<bilder/continuos_variable.png, id=844, 456.70625pt x 331.2375pt>
+<bilder/continuos_variable.png, id=845, 456.70625pt x 331.2375pt>
 File: bilder/continuos_variable.png Graphic file (type png)
  <use bilder/continuos_variable.png>
 Package pdftex.def Info: bilder/continuos_variable.png used on input line 609.
@@ -2051,7 +2051,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 623.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 623.
- <bilder/Confusion-Matrix02.png, id=857, 860.21375pt x 395.4775pt>
+ <bilder/Confusion-Matrix02.png, id=858, 860.21375pt x 395.4775pt>
 File: bilder/Confusion-Matrix02.png Graphic file (type png)
  <use bilder/Confusion-Matrix02.png>
 Package pdftex.def Info: bilder/Confusion-Matrix02.png used on input line 630.
@@ -2123,7 +2123,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-<bilder/konzept08.png, id=915, 858.20625pt x 677.53125pt>
+<bilder/konzept08.png, id=916, 858.20625pt x 677.53125pt>
 File: bilder/konzept08.png Graphic file (type png)
  <use bilder/konzept08.png>
 Package pdftex.def Info: bilder/konzept08.png used on input line 64.
@@ -2154,7 +2154,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 76.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 76.
- <bilder/multimodal_viz_04.png, id=944, 800.9925pt x 691.58376pt>
+ <bilder/multimodal_viz_04.png, id=945, 800.9925pt x 691.58376pt>
 File: bilder/multimodal_viz_04.png Graphic file (type png)
  <use bilder/multimodal_viz_04.png>
 Package pdftex.def Info: bilder/multimodal_viz_04.png used on input line 86.
@@ -2191,7 +2191,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
-<bilder/vad_introduction02.png, id=955, 893.3375pt x 562.1pt>
+<bilder/vad_introduction02.png, id=956, 893.3375pt x 562.1pt>
 File: bilder/vad_introduction02.png Graphic file (type png)
  <use bilder/vad_introduction02.png>
 Package pdftex.def Info: bilder/vad_introduction02.png used on input line 8.
@@ -2208,7 +2208,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 20.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 20.
- [35 <./bilder/vad_introduction02.png>] <bilder/vad_pipeline_04.png, id=970, 549.05125pt x 694.595pt>
+ [35 <./bilder/vad_introduction02.png>] <bilder/vad_pipeline_04.png, id=971, 549.05125pt x 694.595pt>
 File: bilder/vad_pipeline_04.png Graphic file (type png)
  <use bilder/vad_pipeline_04.png>
 Package pdftex.def Info: bilder/vad_pipeline_04.png used on input line 31.
@@ -2234,7 +2234,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 79.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 79.
- [37] <bilder/compressing01.png, id=1021, 583.17876pt x 297.11pt>
+ [37] <bilder/compressing01.png, id=1022, 583.17876pt x 297.11pt>
 File: bilder/compressing01.png Graphic file (type png)
  <use bilder/compressing01.png>
 Package pdftex.def Info: bilder/compressing01.png used on input line 82.
@@ -2265,7 +2265,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 162.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 162.
- [40] <bilder/cepstrum04.png, id=1087, 508.90125pt x 783.92876pt>
+ [40] <bilder/cepstrum04.png, id=1088, 508.90125pt x 783.92876pt>
 File: bilder/cepstrum04.png Graphic file (type png)
  <use bilder/cepstrum04.png>
 Package pdftex.def Info: bilder/cepstrum04.png used on input line 204.
@@ -2291,7 +2291,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 214.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 214.
- [42 <./bilder/cepstrum04.png>] <bilder/cepstrum05.png, id=1112, 842.14626pt x 876.27374pt>
+ [42 <./bilder/cepstrum04.png>] <bilder/cepstrum05.png, id=1113, 842.14626pt x 876.27374pt>
 File: bilder/cepstrum05.png Graphic file (type png)
  <use bilder/cepstrum05.png>
 Package pdftex.def Info: bilder/cepstrum05.png used on input line 217.
@@ -2304,12 +2304,12 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 231.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 231.
- [43 <./bilder/cepstrum05.png>] <bilder/cepstrumPitch.png, id=1130, 426.59375pt x 430.60875pt>
+ [43 <./bilder/cepstrum05.png>] <bilder/cepstrumPitch.png, id=1131, 426.59375pt x 430.60875pt>
 File: bilder/cepstrumPitch.png Graphic file (type png)
  <use bilder/cepstrumPitch.png>
 Package pdftex.def Info: bilder/cepstrumPitch.png used on input line 242.
 (pdftex.def)             Requested size: 213.39568pt x 215.40897pt.
- <bilder/allFeatures03.png, id=1136, 604.2575pt x 773.89125pt>
+ <bilder/allFeatures03.png, id=1137, 604.2575pt x 773.89125pt>
 File: bilder/allFeatures03.png Graphic file (type png)
  <use bilder/allFeatures03.png>
 Package pdftex.def Info: bilder/allFeatures03.png used on input line 256.
@@ -2331,7 +2331,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 262.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 262.
- [45 <./bilder/allFeatures03.png>] <bilder/rms_diff.png, id=1151, 921.4425pt x 781.92125pt>
+ [45 <./bilder/allFeatures03.png>] <bilder/rms_diff.png, id=1152, 921.4425pt x 781.92125pt>
 File: bilder/rms_diff.png Graphic file (type png)
  <use bilder/rms_diff.png>
 Package pdftex.def Info: bilder/rms_diff.png used on input line 265.
@@ -2344,7 +2344,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 282.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 282.
- [46 <./bilder/rms_diff.png>] <bilder/thresholded02.png, id=1163, 1363.0925pt x 447.6725pt>
+ [46 <./bilder/rms_diff.png>] <bilder/thresholded02.png, id=1164, 1363.0925pt x 447.6725pt>
 File: bilder/thresholded02.png Graphic file (type png)
  <use bilder/thresholded02.png>
 Package pdftex.def Info: bilder/thresholded02.png used on input line 295.
@@ -2512,12 +2512,12 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 444.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 444.
- [52] <bilder/cry-Unit02.png, id=1266, 897.3525pt x 619.31375pt>
+ [52] <bilder/cry-Unit02.png, id=1267, 897.3525pt x 619.31375pt>
 File: bilder/cry-Unit02.png Graphic file (type png)
  <use bilder/cry-Unit02.png>
 Package pdftex.def Info: bilder/cry-Unit02.png used on input line 447.
 (pdftex.def)             Requested size: 256.07741pt x 176.73305pt.
- <bilder/newSmoothing05.png, id=1272, 1035.87pt x 294.09875pt>
+ <bilder/newSmoothing05.png, id=1273, 1035.87pt x 294.09875pt>
 File: bilder/newSmoothing05.png Graphic file (type png)
  <use bilder/newSmoothing05.png>
 Package pdftex.def Info: bilder/newSmoothing05.png used on input line 473.
@@ -2551,7 +2551,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 526.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 526.
- [54 <./bilder/newSmoothing05.png>] <bilder/smoothing02.png, id=1294, 482.80376pt x 170.6375pt>
+ [54 <./bilder/newSmoothing05.png>] <bilder/smoothing02.png, id=1295, 482.80376pt x 170.6375pt>
 File: bilder/smoothing02.png Graphic file (type png)
  <use bilder/smoothing02.png>
 Package pdftex.def Info: bilder/smoothing02.png used on input line 535.
@@ -2572,7 +2572,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 554.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 554.
-[55 <./bilder/smoothing02.png>] <bilder/smoothing04.png, id=1307, 470.75874pt x 250.9375pt>
+[55 <./bilder/smoothing02.png>] <bilder/smoothing04.png, id=1308, 470.75874pt x 250.9375pt>
 File: bilder/smoothing04.png Graphic file (type png)
  <use bilder/smoothing04.png>
 Package pdftex.def Info: bilder/smoothing04.png used on input line 559.
@@ -2643,7 +2643,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 51.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 51.
- [60] <bilder/segmentierung09.png, id=1349, 1545.775pt x 856.19875pt>
+ [60] <bilder/segmentierung09.png, id=1351, 1545.775pt x 856.19875pt>
 File: bilder/segmentierung09.png Graphic file (type png)
  <use bilder/segmentierung09.png>
 Package pdftex.def Info: bilder/segmentierung09.png used on input line 62.
@@ -2666,13 +2666,13 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 101.
 [61 <./bilder/segmentierung09.png>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 115.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 115.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 115.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 115.
  [62]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 138.
@@ -2727,6 +2727,10 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 322.
  [67]
+Overfull \hbox (1.90814pt too wide) in paragraph at lines 337--338
+\T1/cmr/m/n/10.95 (-20) Schmerz-be-wer-tung in-ner-halb ei-nes Seg-men-tes mit ein-be-zo-gen wird. Ein Wert von $[]$
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 338.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2735,7 +2739,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 338.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 338.
- [68]
+[68]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 350.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2748,7 +2752,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 375.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 375.
- [69] <bilder/regression_score_example_06.png, id=1476, 1378.14874pt x 280.04625pt>
+ [69] <bilder/regression_score_example_06.png, id=1480, 1378.14874pt x 280.04625pt>
 File: bilder/regression_score_example_06.png Graphic file (type png)
  <use bilder/regression_score_example_06.png>
 Package pdftex.def Info: bilder/regression_score_example_06.png used on input line 389.
@@ -2761,7 +2765,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 396.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 396.
- [70 <./bilder/regression_score_example_06.png>] <bilder/regression_score_example_07.png, id=1483, 1364.09625pt x 410.53375pt>
+ [70 <./bilder/regression_score_example_06.png>] <bilder/regression_score_example_07.png, id=1487, 1364.09625pt x 410.53375pt>
 File: bilder/regression_score_example_07.png Graphic file (type png)
  <use bilder/regression_score_example_07.png>
 Package pdftex.def Info: bilder/regression_score_example_07.png used on input line 399.
@@ -2802,7 +2806,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 6.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 6.
-<bilder/visualisation_example_03.png, id=1498, 1270.7475pt x 830.10126pt>
+<bilder/visualisation_example_03.png, id=1502, 1270.7475pt x 830.10126pt>
 File: bilder/visualisation_example_03.png Graphic file (type png)
  <use bilder/visualisation_example_03.png>
 Package pdftex.def Info: bilder/visualisation_example_03.png used on input line 13.
@@ -2837,7 +2841,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 77.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 77.
- [75] <bilder/colorpics.png, id=1547, 769.87625pt x 316.18124pt>
+ [75] <bilder/colorpics.png, id=1551, 769.87625pt x 316.18124pt>
 File: bilder/colorpics.png Graphic file (type png)
  <use bilder/colorpics.png>
 Package pdftex.def Info: bilder/colorpics.png used on input line 103.
@@ -2864,7 +2868,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 129.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 129.
- <bilder/viz_without_t_06.png, id=1566, 1138.2525pt x 759.83875pt>
+ <bilder/viz_without_t_06.png, id=1570, 1138.2525pt x 759.83875pt>
 File: bilder/viz_without_t_06.png Graphic file (type png)
  <use bilder/viz_without_t_06.png>
 Package pdftex.def Info: bilder/viz_without_t_06.png used on input line 136.
@@ -2877,7 +2881,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 144.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 144.
- [78 <./bilder/viz_without_t_06.png>] <bilder/visualisation_hour_02.png, id=1575, 704.6325pt x 595.22375pt>
+ [78 <./bilder/viz_without_t_06.png>] <bilder/visualisation_hour_02.png, id=1579, 704.6325pt x 595.22375pt>
 File: bilder/visualisation_hour_02.png Graphic file (type png)
  <use bilder/visualisation_hour_02.png>
 Package pdftex.def Info: bilder/visualisation_hour_02.png used on input line 147.
@@ -2894,12 +2898,12 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 159.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 159.
- [79 <./bilder/visualisation_hour_02.png>] <bilder/viz-multiple-regions.png, id=1590, 1187.43625pt x 514.92375pt>
+ [79 <./bilder/visualisation_hour_02.png>] <bilder/viz-multiple-regions.png, id=1595, 1187.43625pt x 514.92375pt>
 File: bilder/viz-multiple-regions.png Graphic file (type png)
  <use bilder/viz-multiple-regions.png>
 Package pdftex.def Info: bilder/viz-multiple-regions.png used on input line 162.
 (pdftex.def)             Requested size: 426.79135pt x 185.07384pt.
- <bilder/viz_act_over_03.png, id=1592, 966.61125pt x 672.5125pt>
+ <bilder/viz_act_over_03.png, id=1597, 966.61125pt x 672.5125pt>
 File: bilder/viz_act_over_03.png Graphic file (type png)
  <use bilder/viz_act_over_03.png>
 Package pdftex.def Info: bilder/viz_act_over_03.png used on input line 174.
@@ -2908,7 +2912,7 @@ Package pdftex.def Info: bilder/viz_act_over_03.png used on input line 174.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<bilder/viz_act_under_02.png, id=1594, 757.83125pt x 226.8475pt>
+<bilder/viz_act_under_02.png, id=1599, 757.83125pt x 226.8475pt>
 File: bilder/viz_act_under_02.png Graphic file (type png)
  <use bilder/viz_act_under_02.png>
 Package pdftex.def Info: bilder/viz_act_under_02.png used on input line 183.
@@ -3284,7 +3288,7 @@ Overfull \hbox (17.66414pt too wide) in paragraph at lines 10--24
  [][] 
  []
 
-<bilder/all_boxplots.png, id=1747, 1013.7875pt x 261.97874pt>
+<bilder/all_boxplots.png, id=1751, 1013.7875pt x 261.97874pt>
 File: bilder/all_boxplots.png Graphic file (type png)
  <use bilder/all_boxplots.png>
 Package pdftex.def Info: bilder/all_boxplots.png used on input line 28.
@@ -3342,10 +3346,10 @@ Here is how much of TeX's memory you used:
  45i,17n,66p,10377b,1206s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/20
 16/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
-Output written on "/Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/main.pdf" (106 pages, 4966599 bytes).
+Output written on "/Users/franzanders/Documents/HTWK/Master/5. Semester/Masterarbeit_LaBP/Masterarbeit_Dokument/.texpadtmp/main.pdf" (106 pages, 4963438 bytes).
 PDF statistics:
- 1966 PDF objects out of 2073 (max. 8388607)
- 1681 compressed objects within 17 object streams
+ 1970 PDF objects out of 2073 (max. 8388607)
+ 1685 compressed objects within 17 object streams
  397 named destinations out of 1000 (max. 500000)
  49232 words of extra memory for PDF output out of 51595 (max. 10000000)
 
