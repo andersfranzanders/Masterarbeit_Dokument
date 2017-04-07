@@ -57,4 +57,4 @@
 \contentsline {chapter}{\numberline {7}Fazit und Diskussion}{83}{chapter.7}
 \contentsline {chapter}{\nonumberline Literaturverzeichnis}{I}{chapter*.56}
 \contentsline {chapter}{Appendices}{VII}{section*.57}
-\contentsline {chapter}{\numberline {A}Auswertungsdetails VAD}{IX}{Anhang.1.A}
+\contentsline {chapter}{\numberline {A}Auswertungsergebnisse der Voice Activity Detection}{IX}{Anhang.1.A}
