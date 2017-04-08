@@ -10,7 +10,7 @@ Das Visualisierungskonzept wird anhand einer 220 Sekunden langen, beispielhaften
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{bilder/visualisation_example_03.png}
+	\includegraphics[width=1\textwidth]{bilder/visualisation_example_04.png}
 	\caption[Einteilung eines Signals in Regionen zur Vorbereitung der Visualisierung]{Oben: Ein Beispielsignal mit zwei Segmenten. Darunter: Schmerz-Scores, die für die beiden Segmente auf Basis der beiden Schmerz-Scales aus \autoref{tab:fictional_painscales_viz} mit Hilfe der Hypothesen aus \autoref{eq:ps_length_hypothesis} und \autoref{eq:min_length_hypothesis} berechnet wurden. Darunter: Schematische Darstellung des Signals durch Regionen. Unten: Schmerz-Scores der Regionen.}
 	\label{img:visualisation_example_01}
 \end{figure}
@@ -54,7 +54,7 @@ PC_{Min}(cs) = \begin{cases}
  \label{eq:min_length_hypothesis}
 \end{equation}
 
-Mit Hilfe dieser Hypothese wurde die Schmerzbewertung für das Beispielsignal in \autoref{img:visualisation_example_01} vorgenommen. Es wurden dabei keine Aktualisierungsfrequenzen oder Beobachtungszeiträume genutzt (siehe \autoref{sec:regressionTimeStuff}). Das erste Schrei-Segment erhält nach der \emph{Length-Scale} einen Schmerz-Score von 1 und nach der \emph{Min-Scale} einen Schmerz-Score von 2. Das zweite Schrei-Segment erhält nach der \emph{Length-Scale} einen Schmerz-Score von 2 und nach der \emph{Min-Scale} einen Schmerz-Score von 1.
+Mit Hilfe dieser Hypothese wurde die Schmerzbewertung für das Beispielsignal in \autoref{img:visualisation_example_01} vorgenommen. Es wurden dabei keine Aktualisierungsfrequenzen oder Beobachtungszeiträume genutzt (siehe \autoref{sec:regressionTimeStuff}). Das erste Schrei-Segment erhält nach der Length-Scale einen Schmerz-Score von 1 und nach der Min-Scale einen Schmerz-Score von 2. Das zweite Schrei-Segment erhält nach der Length-Scale einen Schmerz-Score von 2 und nach der Min-Scale einen Schmerz-Score von 1.
 
 Die grundlegende Idee der Visualisierung ist, den zeitlichen Verlauf des Signals schematisch als einen \emph{Balken} darzustellen. Dieser Balken repräsentiert die Zeitachse des Signals und wird in \emph{Regionen} eingeteilt. Eine Region $r$ beinhaltet entweder ein Schrei-Segment oder den Stillebereich zwischen zwei Schrei-Segmenten. Reihenfolge und Länge der Regionen entsprechen den Segmenten. Für das Beispielsignal in Abbildung \ref{img:visualisation_example_01} ergebnen sich fünf Regionen $r_{1} , \ldots , r_5 $, wobei die Region $r_2$ und $r_4$ jeweils ein Schrei-Segment enthalten. Unter der Annahme, dass dieses Beispielsignal noch nicht beendet wurde und weiter kontinuierlich eingelesen wird, ist die letzte Region noch nicht abgeschlossen.
 
@@ -105,7 +105,7 @@ Abbildung \ref{fig:color-swatches} zeigt die Farbpaletten $Swatch_2, \ldots, Swa
 	\label{fig:color-swatches}
 \end{figure}
 
-Auf Basis die Farbpaletten wurden die Farbschemen $L_{n}: S_{Scale} \mapsto C_{Scale}$ definiert, abgebildet in Tabelle \ref{tab:color_shemes}. Es gilt $F_{Scale} = L_{|S_{Scale}|}$. Die Wahl des Farbschemas zur Visualisierung einer Schmerz-Scale richtet sich somit allein nach der jeweiligen Anzahl definierter Schmerz-Scores. Soll also beispielsweise die \emph{Length-Scale} visualisiert werden, so wird das Farbschema $F_{\text{Length-Scale}} = L_3$ verwendet. Ein Schmerz-Score von $s = 0$ wird in diesem Fall durch das Grün mit den RGB-Koordinaten \#6efa56 codiert, 1 durch \#6efa56 und 2 durch \#6efa56.
+Auf Basis die Farbpaletten wurden die Farbschemen $L_{n}: S_{Scale} \mapsto C_{Scale}$ definiert, abgebildet in Tabelle \ref{tab:color_shemes}. Es gilt $F_{Scale} = L_{|S_{Scale}|}$. Die Wahl des Farbschemas zur Visualisierung einer Schmerz-Scale richtet sich somit allein nach der jeweiligen Anzahl definierter Schmerz-Scores. Soll also beispielsweise die Length-Scale visualisiert werden, so wird das Farbschema $F_{\text{Length-Scale}} = L_3$ verwendet. Ein Schmerz-Score von $s = 0$ wird in diesem Fall durch das Grün mit den RGB-Koordinaten \#6efa56 codiert, 1 durch \#6efa56 und 2 durch \#6efa56.
 
 \begin{table}[h]
 \footnotesize
@@ -129,23 +129,23 @@ Es wurde sich zunächst auf die Definition der Farbschemen mit $n \leq 7$ beschr
 \section{Visualisierung ohne einander überlappende Zeitbereiche}
 \label{sec:vizNoOverlap}
 
-Abbildung \ref{fig:viz_without_t_01} zeigt die daraus resultierende Visualisierung der beispielhaften Schmerz-Scales \emph{Length-Scale} und der\emph{Min-Scale}, angewandt auf das Beispielsignal. Dabei wird zunächst \emph{keine} Aktualisierungsfrequenz eingesetzt, eine Schmerzbewertung erfolgt jeweils für ein gesamtes Schrei-Segment. Wie bereits erläutert, verwendet die \emph{Length-Scale} zur Einfärbung der Regionen das Farbschema $L_3$. Die \emph{Min-Scale} definiert insgesamt 4 Scores und verwendet somit das Farbschema $L_4$.
+Abbildung \ref{fig:viz_without_t_01} zeigt die daraus resultierende Visualisierung der beispielhaften Schmerz-Scales Length-Scale und der Min-Scale, angewandt auf das Beispielsignal. Dabei wird zunächst \emph{keine} Aktualisierungsfrequenz eingesetzt, eine Schmerzbewertung erfolgt jeweils für ein gesamtes Schrei-Segment. Wie bereits erläutert, verwendet die Length-Scale zur Einfärbung der Regionen das Farbschema $L_3$. Die Min-Scale definiert insgesamt 4 Scores und verwendet somit das Farbschema $L_4$.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.85\textwidth]{bilder/viz_without_t_06.png}
-	\caption[Visualisierungen der beispielhaften Schmerz-Scales durch schematische Balken]{Visualisierungen der beispielhaften Schmerz-Scales \emph{Length-Scale} und \emph{Min-Scale} für das Beispielsignal.}
+	\caption[Visualisierungen der beispielhaften Schmerz-Scales durch schematische Balken]{Visualisierungen der beispielhaften Schmerz-Scales Length-Scale und Min-Scale für das Beispielsignal.}
 	\label{fig:viz_without_t_01}
 \end{figure}
 
 Wird das Signal kontinuierlich eingelesen, kann die Einfärbung einer Region mit einem Schrei-Segment erst erfolgen, sobald die Schmerzbewertung durchgeführt wurde und der entsprechende Schmerz-Score feststeht. Die Einfärbung einer Region ohne zugehöriges Schrei-Segment kann hingegen kontinuierlich geschehen, da hier in jedem Fall von einem Schmerz-Score von 0 ausgegangen wird. Würde somit das Beispielsignal in \autoref{fig:viz_without_t_01} weiter kontinuierlich eingelesen werden, so würde der Visualisierungsbalken ebenso kontinuierlich fortgesetzt und dabei grün eingefärbt werden. Sobald der Beginn eines neuen Schrei-Segmentes festgestellt wird, kann die dazugehörige, neu in den Balken eingefügte Region erst eingefärbt werden, sobald dieses neue Segment abgeschlossen und die Schmerzbewertung durchgeführt wurde.
 
-Bei Beobachtungen über einen langen Zeitraum wächst der Visualisierungsbalkens ebenfalls an. Zum Einsatz dieser Visualisierung in einer tatsächlichen Benutzeroberfläche wird daher empfohlen, die Achsen mit konkreten Uhrzeiten zu beschriften, sowie Scroll- und Zoom-Optionen für den Balken zu implementieren. Es ist ebenfalls möglich, den zeitlichen Verlauf des analysierten Eingangssignals durch andere Formen als durch einen Balken zu repräsentieren, wie zum Beispiel durch schematische Uhren. \autoref{fig:viz_hour_thing} zeigt ein Beispiel für eine solche Visualisierung der Schmerzbewertung mit der \emph{Length-Scale}, welche in \autoref{fig:viz_without_t_01} durch einen Balken dargestellt wurde. Zur besseren Veranschaulichung des Prinzips wurde das analysierte Signal auf eine Länge von 45 Minuten skaliert. Für eine Benutzeroberfläche wird vorgeschlagen, eine schematische Uhr für jede analysierte Stunde zu erzeugen.
+Bei Beobachtungen über einen langen Zeitraum wächst der Visualisierungsbalkens ebenfalls an. Zum Einsatz dieser Visualisierung in einer tatsächlichen Benutzeroberfläche wird daher empfohlen, die Achsen mit konkreten Uhrzeiten zu beschriften, sowie Scroll- und Zoom-Optionen für den Balken zu implementieren. Es ist ebenfalls möglich, den zeitlichen Verlauf des analysierten Eingangssignals durch andere Formen als durch einen Balken zu repräsentieren, wie zum Beispiel durch schematische Uhren. \autoref{fig:viz_hour_thing} zeigt ein Beispiel für eine solche Visualisierung der Schmerzbewertung mit der Length-Scale, welche in \autoref{fig:viz_without_t_01} durch einen Balken dargestellt wurde. Zur besseren Veranschaulichung des Prinzips wurde das analysierte Signal auf eine Länge von 45 Minuten skaliert. Für eine Benutzeroberfläche wird vorgeschlagen, eine schematische Uhr für jede analysierte Stunde zu erzeugen.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{bilder/visualisation_hour_02.png}
-	\caption[Visualisierung der Schmerzbeurteilung durch eine schematische Uhr]{Visualisierung der Schmerzbeurteilung auf Basis der \emph{Length-Scale} durch eine Uhrendarstellung. Es wird in diesem Fall angenommen, dass das Beispielsignal aus \autoref{fig:viz_without_t_01} anstatt 220 Sekunden eine Länge von 45 Minuten hat. Die Regionen wurden dementsprechend skaliert.}
+	\caption[Visualisierung der Schmerzbeurteilung durch eine schematische Uhr]{Visualisierung der Schmerzbeurteilung auf Basis der Length-Scale durch eine Uhrendarstellung. Es wird in diesem Fall angenommen, dass das Beispielsignal aus \autoref{fig:viz_without_t_01} anstatt 220 Sekunden eine Länge von 45 Minuten hat. Die Regionen wurden dementsprechend skaliert.}
 	\label{fig:viz_hour_thing}
 \end{figure}
 
@@ -155,24 +155,24 @@ In diesem Abschnitt wurde angenommen, dass es sich bei den visualisierten Schmer
 \section{Visualisierung einander überlappender Zeitbereiche}
 \label{sec:vizWithOverlap}
  
-Die Visualisierung von \glqq Zwischenergebnissen\grqq{} der Schmerzbewertung während einer Schmerzepisode lässt sich mit Hilfe der in \autoref{sec:regressionTimeStuff} vorgestellten Aktualisierungsfrequenz $f_{act}$ umsetzen. Die so entstehenden Subsegmente führen zu einander überlappenden Regionen, wie \autoref{fig:viz_multiple_regions} veranschaulicht. Im oberen Bereich der Abbildung ist das Beispielsignal aus \autoref{sec:vizConecept} zu sehen, welches zwei Segmente enthält (bedingt durch die Segmentierung mit $t_s = \SI{10}{\second}$). Es wurde eine Aktualisierungsfrequenz von  $f_{act} = 1/ \SI{20}{\second}$ gewählt. Die Aktualisierungszeitpunkte werden in der Abbildung durch kleine Pfeile angezeigt. Die letzte Aktualisierung jedes Schrei-Segmentes wird durch die jeweilige Beeindigung des Segmentes eingeleitet. Unten werden die aus den Subsegmenten entstandenen, einander überlappenden Regionen abgebildet. Für jede Region wir der Score angegeben, der sich nach der \emph{Min-Scale} ergibt (siehe Hypothese \autoref{eq:min_length_hypothesis}) . Die Regionen werden nach dem Schema $L_4$ eingefärbt.
+Die Visualisierung von \glqq Zwischenergebnissen\grqq{} der Schmerzbewertung während einer Schmerzepisode lässt sich mit Hilfe der in \autoref{sec:regressionTimeStuff} vorgestellten Aktualisierungsfrequenz $f_{act}$ umsetzen. Die so entstehenden Subsegmente führen zu einander überlappenden Regionen, wie \autoref{fig:viz_multiple_regions} veranschaulicht. Im oberen Bereich der Abbildung ist das Beispielsignal aus \autoref{sec:vizConecept} zu sehen, welches zwei Segmente enthält (bedingt durch die Segmentierung mit $t_s = \SI{10}{\second}$). Es wurde eine Aktualisierungsfrequenz von  $f_{act} = 1/ \SI{20}{\second}$ gewählt. Die Aktualisierungszeitpunkte werden in der Abbildung durch kleine Pfeile angezeigt. Die letzte Aktualisierung jedes Schrei-Segmentes wird durch die jeweilige Beeindigung des Segmentes eingeleitet. Unten werden die aus den Subsegmenten entstandenen, einander überlappenden Regionen abgebildet. Für jede Region wir der Score angegeben, der sich nach der Min-Scale ergibt (siehe Hypothese \autoref{eq:min_length_hypothesis}) . Die Regionen werden nach dem Schema $L_4$ eingefärbt.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/viz-multiple-regions.png}
-	\caption[Ein Beispielsignal mit zeitlich einander überlappenden Diagnosebereichen]{Oben: Beispielsignal mit zwei Segmenten. Die Pfeile zeigen Aktualisierungszeitpunkte für eine Aktualisierungsfrequenz von $f_{act} = 1/ \SI{20}{\second}$ an. Unten: Einander überlappende Regionen infolge der überlappenden Diagnosebereiche. Für jede Region $r_i$ wird der entsprechende Schmerz-Score $s$ der Basis der \emph{Min-Scale} angegeben und nach dem Schema $L_4$ eingefärbt.}
+	\caption[Ein Beispielsignal mit zeitlich einander überlappenden Diagnosebereichen]{Oben: Beispielsignal mit zwei Segmenten. Die Pfeile zeigen Aktualisierungszeitpunkte für eine Aktualisierungsfrequenz von $f_{act} = 1/ \SI{20}{\second}$ an. Unten: Einander überlappende Regionen infolge der überlappenden Diagnosebereiche. Für jede Region $r_i$ wird der entsprechende Schmerz-Score $s$ der Basis der Min-Scale angegeben und nach dem Schema $L_4$ eingefärbt.}
 	\label{fig:viz_multiple_regions}
 \end{figure}
 
 Es werden zwei Möglichkeiten zur Visualisierung einander überlappender Regionen vorgeschlagen:
 
 \begin{itemize}
-\item \textbf{Newest-on-Top: } Die jeweils \glqq aktuellere\grqq{} Region, also diejenige mit dem jeweils \emph{späteren} Endzeitpunkt, überlagert die jeweils \glqq älteren\grqq{} Regionen. So wird der jeweils aktuellere Schmerz-Score in den Vordergrund gestellt. Die Historie der Schmerzbewertung einer Schmerzepisode geht jedoch in der finalen Visualisierung verloren. \autoref{fig:viz_act_over} verdeutlicht dieses Prinzip an einem Beispiel. Oben in der Abbildung ist zu sehen, wie das Beispielsignal bis zu Sekunde $146$ eingelesen wurde, während das zweite Segment noch geöffnet ist. Bei der Aktualisierung zum Zeitpunkt $t=\SI{146}{\second}$ wird nach der \emph{Min-Scale} ein Schmerz-Score von 2 berechnet und die Region dementsprechend rot gefärbt. Unten in der Abbildung wird gezeigt, wie weitere 20 Sekunden des Signals eingelesen wurden. Bei der Aktualisierung zum Zeitpunkt $t=\SI{166}{\second}$ wird ein Schmerz-Score von 1 berechnet. Die gelb gefärbte Region überlagert die rot gefärbte Region.
+\item \textbf{Newest-on-Top: } Die jeweils \glqq aktuellere\grqq{} Region, also diejenige mit dem jeweils \emph{späteren} Endzeitpunkt, überlagert die jeweils \glqq älteren\grqq{} Regionen. So wird der jeweils aktuellere Schmerz-Score in den Vordergrund gestellt. Die Historie der Schmerzbewertung einer Schmerzepisode geht jedoch in der finalen Visualisierung verloren. \autoref{fig:viz_act_over} verdeutlicht dieses Prinzip an einem Beispiel. Oben in der Abbildung ist zu sehen, wie das Beispielsignal bis zu Sekunde $146$ eingelesen wurde, während das zweite Segment noch geöffnet ist. Bei der Aktualisierung zum Zeitpunkt $t=\SI{146}{\second}$ wird nach der Min-Scale ein Schmerz-Score von 2 berechnet und die Region dementsprechend rot gefärbt. Unten in der Abbildung wird gezeigt, wie weitere 20 Sekunden des Signals eingelesen wurden. Bei der Aktualisierung zum Zeitpunkt $t=\SI{166}{\second}$ wird ein Schmerz-Score von 1 berechnet. Die gelb gefärbte Region überlagert die rot gefärbte Region.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{bilder/viz_act_over_03.png}
-	\caption[Visualisierung bei Aktualisierungen nach dem Prinzip Newest-on-Top]{Visualisierung der \emph{Min-Scale} mit Aktualisierungen nach dem Prinzip \textbf{Newest-on-Top}. Die jeweils \glqq aktuellere\grqq{} Region überlagert die jeweils \glqq ältere\grqq{}. Oben: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{146}{\second}$. Unten: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{166}{\second}$.}
+	\caption[Visualisierung bei Aktualisierungen nach dem Prinzip Newest-on-Top]{Visualisierung der Min-Scale mit Aktualisierungen nach dem Prinzip \textbf{Newest-on-Top}. Die jeweils \glqq aktuellere\grqq{} Region überlagert die jeweils \glqq ältere\grqq{}. Oben: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{146}{\second}$. Unten: Visualisierung zum Aktualisierungszeitpunkt $t=\SI{166}{\second}$.}
 	\label{fig:viz_act_over}
 \end{figure}
 
@@ -181,7 +181,7 @@ Es werden zwei Möglichkeiten zur Visualisierung einander überlappender Regione
 \begin{figure}[h]
 	\centering
 	\includegraphics[trim={3cm 0 2cm 0},clip,width=1\textwidth]{bilder/viz_act_under_02.png}
-	\caption[Visualisierung bei Aktualisierungen nach dem Prinzip Oldest-on-Top]{Visualisierung der \emph{Min-Scale} mit Aktualisierungen nach dem Prinzip \textbf{Oldest-on-Top}. Eine jeweils \glqq ältere\grqq{} Region überlagert eine jeweils \glqq aktuellere\grqq{}.}
+	\caption[Visualisierung bei Aktualisierungen nach dem Prinzip Oldest-on-Top]{Visualisierung der Min-Scale mit Aktualisierungen nach dem Prinzip \textbf{Oldest-on-Top}. Eine jeweils \glqq ältere\grqq{} Region überlagert eine jeweils \glqq aktuellere\grqq{}.}
 	\label{fig:viz_act_under}
 \end{figure}
  
